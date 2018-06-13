@@ -8,7 +8,7 @@ The API cannot however ensure that a specific implementation of a Web Service su
 
 The only way a client might find which feature is implemented or if they are compliant would be by going through a test and fail process themselves.
 
-To mitigate the above concerns, the SDMX __T__echnical __W__orking __G__roup (TWG) decided that a __T__echnology __C__ompatibility __T__oolkit (TCK) would be necessary. The TCK would allow the validation, coverage and potentially the certification of a candidate RESTful SDMX Web Services instance.
+To mitigate the above concerns, the SDMX **T**echnical **W**orking **G**roup (TWG) decided that a **T**echnology **C**ompatibility tool**K**it (TCK) would be necessary. The TCK would allow the validation, coverage and potentially the certification of a candidate RESTful SDMX Web Services instance.
 
 We aim to provide the following:
 * Validate the parts of the API:
