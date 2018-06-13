@@ -1,0 +1,33 @@
+{
+  "name": "sdmx-tck",
+  "version": "0.1.0",
+  "description": "SDMX RestFul API TCK",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "mocha test",
+    "doc": "mocha --reporter doc test",
+    "awesome": "mocha --reporter mochawesome test",
+    "dev": "mocha --watch test"
+  },
+  "keywords": [
+    "sdmx",
+    "api",
+    "tck",
+    "restful",
+    "twg",
+    "validation"
+  ],
+  "author": "Sébastien Leroy <sebastien.leroy@ecb.int>",
+  "contributor": ["Stratos Nikoloutsos <stratos.nikoloutsos@agilis-sa.eu>"],
+  "license": "ISC",
+  "dependencies": {
+    "npm-run-all": "4.1.2",
+    "xml2js": "^0.4.19",
+    "xsd-schema-validator": "^0.6.0"
+  },
+  "devDependencies": {
+    "chakram": "1.5.0",
+    "mocha": "5.1.1",
+    "mochawesome": "3.0.2"
+  }
+}
