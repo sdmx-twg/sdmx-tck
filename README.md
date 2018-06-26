@@ -24,4 +24,4 @@ This TCK is released as an open-source repository here on Github. We welcome con
 
 ## License
 
-[ICS](LICENSE.md)
+[ISC](LICENSE.md)
