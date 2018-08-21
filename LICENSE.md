@@ -1,5 +1,4 @@
-Internet Systems Consortium license
-===================================
+The ISC License
 
 Copyright (c) `2018`, `SDMX.ORG TWG`
 
