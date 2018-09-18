@@ -1,8 +1,8 @@
 {
   "name": "sdmx-tck",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SDMX RestFul API TCK",
-  "main": "src/index.js",
+  "main": "test/index.js",
   "scripts": {
     "start": "mocha test",
     "doc": "mocha --reporter doc test",
@@ -18,7 +18,9 @@
     "validation"
   ],
   "author": "Sébastien Leroy <sebastien.leroy@ecb.int>",
-  "contributor": ["Stratos Nikoloutsos <stratos.nikoloutsos@agilis-sa.eu>"],
+  "contributor": [
+    "Stratos Nikoloutsos <stratos.nikoloutsos@agilis-sa.eu>"
+  ],
   "license": "ISC",
   "dependencies": {
     "npm-run-all": "4.1.2",
