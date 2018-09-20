@@ -1,6 +1,6 @@
 {
   "name": "sdmx-tck",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "SDMX RestFul API TCK",
   "main": "test/index.js",
   "scripts": {
@@ -31,5 +31,8 @@
     "chakram": "1.5.0",
     "mocha": "5.1.1",
     "mochawesome": "3.0.2"
+  },
+  "sdmx": {
+    "apiVersion": "1.0.0"
   }
 }
