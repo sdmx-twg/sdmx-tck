@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mes:Structure xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message /Users/sni/schemas21/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IDREF5</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2015-11-16T12:00:58.187+02:00</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="Unknown"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:ReportingTaxonomies>
+			<str:ReportingTaxonomy agencyID="SDMX" id="RT" version="1.0">
+				<com:Name xml:lang="en">Reporting Taxonomy sample</com:Name>
+				<com:Description xml:lang="en">Reporting Taxonomy descrption (not be included in simple stub)</com:Description>
+				<str:ReportingCategory id="RC_STRUCT_1">
+					<com:Name xml:lang="en">Reporting Category for DSD - level 1</com:Name>
+					<str:ReportingCategory id="RC_STRUCT_1_1">
+						<com:Name xml:lang="en">Reporting Category for DSD - level 1.1</com:Name>
+						<str:ReportingCategory id="RC_STRUCT_1_1_1">
+							<com:Name xml:lang="en">Reporting Category for DSD - level 1.1.1</com:Name>
+							<str:StructuralMetadata>
+								<Ref package="datastructure" agencyID="SDMX" id="DSD7" class="DataStructure" version="1.0"/>
+							</str:StructuralMetadata>
+							<str:StructuralMetadata>
+								<Ref package="datastructure" agencyID="SDMX" id="DSD8" class="DataStructure" version="1.0"/>
+							</str:StructuralMetadata>
+						</str:ReportingCategory>
+						<str:ReportingCategory id="RC_STRUCT_1_2">
+							<com:Name xml:lang="en">Reporting Category for MSD - level 1.2</com:Name>
+							<str:StructuralMetadata>
+								<Ref package="metadatastructure" agencyID="SDMX" id="MSD1" class="MetadataStructure" version="1.0"/>
+							</str:StructuralMetadata>
+							<str:StructuralMetadata>
+								<Ref package="metadatastructure" agencyID="SDMX" id="MSD2" class="MetadataStructure" version="1.0"/>
+							</str:StructuralMetadata>
+						</str:ReportingCategory>
+						<str:ReportingCategory id="RC_STRUCT_1_3">
+							<com:Name xml:lang="en">Reporting Category for MSD - level 1.3</com:Name>
+							<str:StructuralMetadata>
+								<Ref package="metadatastructure" agencyID="SDMX" id="MSD3" class="MetadataStructure" version="1.0"/>
+							</str:StructuralMetadata>
+							<str:StructuralMetadata>
+								<Ref package="metadatastructure" agencyID="SDMX" id="MSD4" class="MetadataStructure" version="1.0"/>
+							</str:StructuralMetadata>
+						</str:ReportingCategory>
+						<str:StructuralMetadata>
+							<Ref package="datastructure" agencyID="SDMX" id="DSD3" class="DataStructure" version="1.0"/>
+						</str:StructuralMetadata>
+						<str:StructuralMetadata>
+							<Ref package="datastructure" agencyID="SDMX" id="DSD4" class="DataStructure" version="1.0"/>
+						</str:StructuralMetadata>
+					</str:ReportingCategory>
+					<str:StructuralMetadata>
+						<Ref package="datastructure" agencyID="SDMX" id="DSD1" class="DataStructure" version="1.0"/>
+					</str:StructuralMetadata>
+					<str:StructuralMetadata>
+						<Ref package="datastructure" agencyID="SDMX" id="DSD2" class="DataStructure" version="1.0"/>
+					</str:StructuralMetadata>
+				</str:ReportingCategory>
+				<str:ReportingCategory id="RC_PROV_1">
+					<com:Name xml:lang="en">Reporting Category for Provisioning Metadata of Dataflows</com:Name>
+					<str:ProvisioningMetadata>
+						<Ref package="datastructure" agencyID="SDMX" id="DF1" class="Dataflow" version="1.0"/>
+					</str:ProvisioningMetadata>
+					<str:ProvisioningMetadata>
+						<Ref package="datastructure" agencyID="SDMX" id="DF2" class="Dataflow" version="1.0"/>
+					</str:ProvisioningMetadata>
+				</str:ReportingCategory>
+				<str:ReportingCategory id="RC_PROV_2">
+					<com:Name xml:lang="en">Reporting Category for Provisioning Metadata of Metadataflows</com:Name>
+					<str:ProvisioningMetadata>
+						<Ref package="metadatastructure" agencyID="SDMX" id="MDF3" class="Metadataflow" version="1.0"/>
+					</str:ProvisioningMetadata>
+					<str:ProvisioningMetadata>
+						<Ref package="metadatastructure" agencyID="SDMX" id="MDF4" class="Metadataflow" version="1.0"/>
+					</str:ProvisioningMetadata>
+				</str:ReportingCategory>
+			</str:ReportingTaxonomy>
+		</str:ReportingTaxonomies>
+	</mes:Structures>
+</mes:Structure>

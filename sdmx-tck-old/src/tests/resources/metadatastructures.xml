@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mes:Structure xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+  <mes:Header>
+    <mes:ID>REGISTRY_RESPONSE</mes:ID>
+    <mes:Test>false</mes:Test>
+    <mes:Prepared>2019-10-15T13:03:13.107Z</mes:Prepared>
+    <mes:Sender id="ESTAT"/>
+    <mes:Receiver id="unknown"/>
+  </mes:Header>
+  <mes:Structures>
+    <str:MetadataStructures>
+      <str:MetadataStructure id="MSD_DUPES" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataStructure=ESTAT:MSD_DUPES(1.0)" agencyID="ESTAT" version="1.0" validFrom="2017-12-31T00:00:00.000Z" isExternalReference="false" isFinal="false" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/metadatastructure/ESTAT/MSD_DUPES/1.0">
+        <com:Name xml:lang="en">Metadata Structure Definition</com:Name>
+        <str:MetadataStructureComponents>
+          <str:MetadataTarget id="FULL_ESMS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataTarget=ESTAT:MSD_DUPES(1.0).FULL_ESMS">
+            <str:IdentifiableObjectTarget id="DATAFLOW" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.IdentifiableObjectTarget=ESTAT:MSD_DUPES(1.0).FULL_ESMS.DATAFLOW" objectType="Dataflow">
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="ESTAT_DATAFLOWS_SCHEME" version="1.0" agencyID="ESTAT" package="categoryscheme" class="CategoryScheme"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+            </str:IdentifiableObjectTarget>
+            <str:IdentifiableObjectTarget id="TIME_PERIOD" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.IdentifiableObjectTarget=ESTAT:MSD_DUPES(1.0).FULL_ESMS.TIME_PERIOD" objectType="Dimension">
+              <str:LocalRepresentation>
+                <str:TextFormat textType="IdentifiableReference"/>
+              </str:LocalRepresentation>
+            </str:IdentifiableObjectTarget>
+            <str:IdentifiableObjectTarget id="DATA_PROVIDER" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.IdentifiableObjectTarget=ESTAT:MSD_DUPES(1.0).FULL_ESMS.DATA_PROVIDER" objectType="DataProvider">
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_REF_AREA" version="1.0" agencyID="ESTAT" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+            </str:IdentifiableObjectTarget>
+          </str:MetadataTarget>
+          <str:ReportStructure id="ESMS_REPORT_FULL" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.ReportStructure=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL">
+            <str:MetadataAttribute id="CONTACT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="CONTACT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="CONTACT_NAME" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_NAME" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_NAME" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_ORGANISATION" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_ORGANISATION" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_ORGANISATION" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+                <str:MetadataAttribute id="CONTACT_NAME" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_ORGANISATION.CONTACT_NAME" minOccurs="1" maxOccurs="1" isPresentational="false">
+                  <str:ConceptIdentity>
+                    <Ref id="CONTACT_NAME" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                  </str:ConceptIdentity>
+                  <str:LocalRepresentation>
+                    <str:TextFormat textType="String"/>
+                  </str:LocalRepresentation>
+                </str:MetadataAttribute>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_EMAIL" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_EMAIL" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_EMAIL" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_FAX" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_FAX" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_FAX" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="ORGANISATION_UNIT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.ORGANISATION_UNIT" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="ORGANISATION_UNIT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_PHONE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_PHONE" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_PHONE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_FUNCT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_FUNCT" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_FUNCT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_MAIL" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_MAIL" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_MAIL" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="QUALITY_MGMNT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.QUALITY_MGMNT" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="QUALITY_MGMNT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="QUALITY_ASSURE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.QUALITY_MGMNT.QUALITY_ASSURE" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="QUALITY_ASSURE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="QUALITY_ASSMNT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.QUALITY_MGMNT.QUALITY_ASSMNT" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="QUALITY_ASSMNT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="ACCURACY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCURACY" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="ACCURACY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="NONSAMPLING_ERR" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCURACY.NONSAMPLING_ERR" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="NONSAMPLING_ERR" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="ACCURACY_OVERALL" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCURACY.ACCURACY_OVERALL" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="ACCURACY_OVERALL" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="SAMPLING_ERR" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCURACY.SAMPLING_ERR" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="SAMPLING_ERR" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="TIMELINESS_PUNCT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.TIMELINESS_PUNCT" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="TIMELINESS_PUNCT" maintainableParentID="ESTAT_ADD_CONCEPTS" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="PUNCTUALITY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.TIMELINESS_PUNCT.PUNCTUALITY" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="PUNCTUALITY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="TIMELINESS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.TIMELINESS_PUNCT.TIMELINESS" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="TIMELINESS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="DISS_FORMAT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="DISS_FORMAT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="NEWS_REL" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT.NEWS_REL" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="NEWS_REL" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="PUBLICATIONS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT.PUBLICATIONS" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="PUBLICATIONS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="MICRO_DAT_ACC" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT.MICRO_DAT_ACC" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="MICRO_DAT_ACC" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="ONLINE_DB" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT.ONLINE_DB" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="ONLINE_DB" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="DISS_OTHER" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT.DISS_OTHER" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="DISS_OTHER" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="ACCESS_DOC" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCESS_DOC" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="ACCESS_DOC" maintainableParentID="ESTAT_ADD_CONCEPTS" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="QUALITY_DOC" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCESS_DOC.QUALITY_DOC" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="QUALITY_DOC" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="DOC_METHOD" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCESS_DOC.DOC_METHOD" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="DOC_METHOD" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="RELEVANCE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.RELEVANCE" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="RELEVANCE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="USER_NEEDS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.RELEVANCE.USER_NEEDS" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="USER_NEEDS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="USER_SAT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.RELEVANCE.USER_SAT" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="USER_SAT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="COMPLETENESS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.RELEVANCE.COMPLETENESS" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="COMPLETENESS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="COMMENT_DSET" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.COMMENT_DSET" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="COMMENT_DSET" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="META_UPDATE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.META_UPDATE" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="META_UPDATE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="META_POSTED" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.META_UPDATE.META_POSTED" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="META_POSTED" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="META_LAST_UPDATE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.META_UPDATE.META_LAST_UPDATE" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="META_LAST_UPDATE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="META_CERTIFIED" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.META_UPDATE.META_CERTIFIED" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="META_CERTIFIED" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="REL_POLICY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.REL_POLICY" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="REL_POLICY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="REL_CAL_POLICY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.REL_POLICY.REL_CAL_POLICY" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="REL_CAL_POLICY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="REL_POL_US_AC" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.REL_POLICY.REL_POL_US_AC" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="REL_POL_US_AC" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="REL_CAL_ACCESS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.REL_POLICY.REL_CAL_ACCESS" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="REL_CAL_ACCESS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="UNIT_MEASURE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.UNIT_MEASURE" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="UNIT_MEASURE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="CONF" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONF" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="CONF" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="CONF_DATA_TR" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONF.CONF_DATA_TR" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONF_DATA_TR" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONF_POLICY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONF.CONF_POLICY" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONF_POLICY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="FREQ_DISS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.FREQ_DISS" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="FREQ_DISS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="COST_BURDEN" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.COST_BURDEN" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="COST_BURDEN" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="COMPARABILITY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.COMPARABILITY" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="COMPARABILITY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="COMPAR_TIME" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.COMPARABILITY.COMPAR_TIME" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="COMPAR_TIME" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="COMPAR_GEO" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.COMPARABILITY.COMPAR_GEO" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="COMPAR_GEO" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataTarget>
+              <Ref id="FULL_ESMS"/>
+            </str:MetadataTarget>
+          </str:ReportStructure>
+        </str:MetadataStructureComponents>
+      </str:MetadataStructure>
+      <str:MetadataStructure id="MSD_DUPES" agencyID="ESTAT" version="2.0" validFrom="2017-12-31T00:00:00.000Z" isExternalReference="false" isFinal="false" >
+        <com:Name xml:lang="en">Metadata Structure Definition</com:Name>
+        <str:MetadataStructureComponents>
+          <str:MetadataTarget id="FULL_ESMS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataTarget=ESTAT:MSD_DUPES(1.0).FULL_ESMS">
+            <str:IdentifiableObjectTarget id="DATAFLOW" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.IdentifiableObjectTarget=ESTAT:MSD_DUPES(1.0).FULL_ESMS.DATAFLOW" objectType="Dataflow">
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="ESTAT_DATAFLOWS_SCHEME" version="1.0" agencyID="ESTAT" package="categoryscheme" class="CategoryScheme"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+            </str:IdentifiableObjectTarget>
+            <str:IdentifiableObjectTarget id="TIME_PERIOD" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.IdentifiableObjectTarget=ESTAT:MSD_DUPES(1.0).FULL_ESMS.TIME_PERIOD" objectType="Dimension">
+              <str:LocalRepresentation>
+                <str:TextFormat textType="IdentifiableReference"/>
+              </str:LocalRepresentation>
+            </str:IdentifiableObjectTarget>
+            <str:IdentifiableObjectTarget id="DATA_PROVIDER" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.IdentifiableObjectTarget=ESTAT:MSD_DUPES(1.0).FULL_ESMS.DATA_PROVIDER" objectType="DataProvider">
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_REF_AREA" version="1.0" agencyID="ESTAT" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+            </str:IdentifiableObjectTarget>
+          </str:MetadataTarget>
+          <str:ReportStructure id="ESMS_REPORT_FULL" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.ReportStructure=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL">
+            <str:MetadataAttribute id="CONTACT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="CONTACT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="CONTACT_NAME" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_NAME" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_NAME" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_ORGANISATION" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_ORGANISATION" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_ORGANISATION" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+                <str:MetadataAttribute id="CONTACT_NAME" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_ORGANISATION.CONTACT_NAME" minOccurs="1" maxOccurs="1" isPresentational="false">
+                  <str:ConceptIdentity>
+                    <Ref id="CONTACT_NAME" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                  </str:ConceptIdentity>
+                  <str:LocalRepresentation>
+                    <str:TextFormat textType="String"/>
+                  </str:LocalRepresentation>
+                </str:MetadataAttribute>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_EMAIL" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_EMAIL" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_EMAIL" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_FAX" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_FAX" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_FAX" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="ORGANISATION_UNIT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.ORGANISATION_UNIT" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="ORGANISATION_UNIT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_PHONE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_PHONE" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_PHONE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_FUNCT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_FUNCT" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_FUNCT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONTACT_MAIL" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONTACT.CONTACT_MAIL" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONTACT_MAIL" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="QUALITY_MGMNT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.QUALITY_MGMNT" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="QUALITY_MGMNT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="QUALITY_ASSURE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.QUALITY_MGMNT.QUALITY_ASSURE" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="QUALITY_ASSURE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="QUALITY_ASSMNT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.QUALITY_MGMNT.QUALITY_ASSMNT" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="QUALITY_ASSMNT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="ACCURACY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCURACY" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="ACCURACY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="NONSAMPLING_ERR" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCURACY.NONSAMPLING_ERR" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="NONSAMPLING_ERR" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="ACCURACY_OVERALL" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCURACY.ACCURACY_OVERALL" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="ACCURACY_OVERALL" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="SAMPLING_ERR" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCURACY.SAMPLING_ERR" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="SAMPLING_ERR" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="TIMELINESS_PUNCT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.TIMELINESS_PUNCT" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="TIMELINESS_PUNCT" maintainableParentID="ESTAT_ADD_CONCEPTS" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="PUNCTUALITY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.TIMELINESS_PUNCT.PUNCTUALITY" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="PUNCTUALITY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="TIMELINESS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.TIMELINESS_PUNCT.TIMELINESS" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="TIMELINESS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="DISS_FORMAT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="DISS_FORMAT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="NEWS_REL" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT.NEWS_REL" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="NEWS_REL" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="PUBLICATIONS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT.PUBLICATIONS" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="PUBLICATIONS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="MICRO_DAT_ACC" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT.MICRO_DAT_ACC" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="MICRO_DAT_ACC" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="ONLINE_DB" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT.ONLINE_DB" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="ONLINE_DB" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="DISS_OTHER" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.DISS_FORMAT.DISS_OTHER" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="DISS_OTHER" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="ACCESS_DOC" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCESS_DOC" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="ACCESS_DOC" maintainableParentID="ESTAT_ADD_CONCEPTS" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="QUALITY_DOC" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCESS_DOC.QUALITY_DOC" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="QUALITY_DOC" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="DOC_METHOD" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.ACCESS_DOC.DOC_METHOD" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="DOC_METHOD" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="RELEVANCE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.RELEVANCE" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="RELEVANCE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="USER_NEEDS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.RELEVANCE.USER_NEEDS" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="USER_NEEDS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="USER_SAT" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.RELEVANCE.USER_SAT" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="USER_SAT" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="COMPLETENESS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.RELEVANCE.COMPLETENESS" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="COMPLETENESS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="COMMENT_DSET" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.COMMENT_DSET" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="COMMENT_DSET" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="META_UPDATE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.META_UPDATE" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="META_UPDATE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="META_POSTED" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.META_UPDATE.META_POSTED" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="META_POSTED" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="META_LAST_UPDATE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.META_UPDATE.META_LAST_UPDATE" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="META_LAST_UPDATE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="META_CERTIFIED" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.META_UPDATE.META_CERTIFIED" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="META_CERTIFIED" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="REL_POLICY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.REL_POLICY" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="REL_POLICY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="REL_CAL_POLICY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.REL_POLICY.REL_CAL_POLICY" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="REL_CAL_POLICY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="REL_POL_US_AC" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.REL_POLICY.REL_POL_US_AC" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="REL_POL_US_AC" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="REL_CAL_ACCESS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.REL_POLICY.REL_CAL_ACCESS" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="REL_CAL_ACCESS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="UNIT_MEASURE" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.UNIT_MEASURE" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="UNIT_MEASURE" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="CONF" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONF" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="CONF" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="CONF_DATA_TR" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONF.CONF_DATA_TR" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONF_DATA_TR" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="CONF_POLICY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.CONF.CONF_POLICY" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="CONF_POLICY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="FREQ_DISS" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.FREQ_DISS" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="FREQ_DISS" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="COST_BURDEN" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.COST_BURDEN" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="COST_BURDEN" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+            </str:MetadataAttribute>
+            <str:MetadataAttribute id="COMPARABILITY" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.COMPARABILITY" minOccurs="1" maxOccurs="1" isPresentational="false">
+              <str:ConceptIdentity>
+                <Ref id="COMPARABILITY" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:MetadataAttribute id="COMPAR_TIME" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.COMPARABILITY.COMPAR_TIME" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="COMPAR_TIME" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+              <str:MetadataAttribute id="COMPAR_GEO" urn="urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ESTAT:MSD_DUPES(1.0).ESMS_REPORT_FULL.COMPARABILITY.COMPAR_GEO" minOccurs="1" maxOccurs="1" isPresentational="false">
+                <str:ConceptIdentity>
+                  <Ref id="COMPAR_GEO" maintainableParentID="SDMX_CDC" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+                </str:ConceptIdentity>
+                <str:LocalRepresentation>
+                  <str:TextFormat textType="String"/>
+                </str:LocalRepresentation>
+              </str:MetadataAttribute>
+            </str:MetadataAttribute>
+            <str:MetadataTarget>
+              <Ref id="FULL_ESMS"/>
+            </str:MetadataTarget>
+          </str:ReportStructure>
+        </str:MetadataStructureComponents>
+      </str:MetadataStructure>
+    </str:MetadataStructures>
+  </mes:Structures>
+</mes:Structure>

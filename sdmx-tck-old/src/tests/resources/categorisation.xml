@@ -1,0 +1,1059 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+  <mes:Header>
+    <mes:ID>IDREF2fd1f13c-1569-4c2d-a030-378e136434a6</mes:ID>
+    <mes:Test>false</mes:Test>
+    <mes:Prepared>2019-10-15T11:42:02Z</mes:Prepared>
+    <mes:Sender id="SDMX" />
+    <mes:Receiver id="not_supplied" />
+  </mes:Header>
+  <mes:Structures>
+    <str:Categorisations>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:003b47bd-566c-7547-b25c-bae6a1f5a0b8(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/003b47bd-566c-7547-b25c-bae6a1f5a0b8/1.0" isExternalReference="true" agencyID="ESTAT" id="003b47bd-566c-7547-b25c-bae6a1f5a0b8" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0102_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:0065e4b8-1bf2-c1bb-2656-74adcff87a57(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/0065e4b8-1bf2-c1bb-2656-74adcff87a57/1.0" isExternalReference="true" agencyID="ESTAT" id="0065e4b8-1bf2-c1bb-2656-74adcff87a57" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0120_Q(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:010100e2-fd56-13c2-d5bd-8780ca879da3(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/010100e2-fd56-13c2-d5bd-8780ca879da3/1.0" isExternalReference="true" agencyID="ESTAT" id="010100e2-fd56-13c2-d5bd-8780ca879da3" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2000_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:01a4e739-d0fe-deb4-8d6d-23267f5d7824(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/01a4e739-d0fe-deb4-8d6d-23267f5d7824/1.0" isExternalReference="true" agencyID="ESTAT" id="01a4e739-d0fe-deb4-8d6d-23267f5d7824" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2200_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:01cb22bc-0535-09e6-49c0-05cbf67004aa(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/01cb22bc-0535-09e6-49c0-05cbf67004aa/1.0" isExternalReference="true" agencyID="ESTAT" id="01cb22bc-0535-09e6-49c0-05cbf67004aa" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2200_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:02b63347-49ac-c816-df3e-968040acd34b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/02b63347-49ac-c816-df3e-968040acd34b/1.0" isExternalReference="true" agencyID="ESTAT" id="02b63347-49ac-c816-df3e-968040acd34b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719IN_5(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:03a1a029-fa31-3733-a6d3-ff041088e7cb(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/03a1a029-fa31-3733-a6d3-ff041088e7cb/1.0" isExternalReference="true" agencyID="ESTAT" id="03a1a029-fa31-3733-a6d3-ff041088e7cb" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0103_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:061263b4-0bb0-ee26-28a5-8851590c9269(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/061263b4-0bb0-ee26-28a5-8851590c9269/1.0" isExternalReference="true" agencyID="ESTAT" id="061263b4-0bb0-ee26-28a5-8851590c9269" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_163034_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:088e07de-87e0-061d-1ac5-7c383067344f(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/088e07de-87e0-061d-1ac5-7c383067344f/1.0" isExternalReference="true" agencyID="ESTAT" id="088e07de-87e0-061d-1ac5-7c383067344f" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0101_Q(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:0961807a-ea69-d607-c8b1-3064250ae4b4(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/0961807a-ea69-d607-c8b1-3064250ae4b4/1.0" isExternalReference="true" agencyID="ESTAT" id="0961807a-ea69-d607-c8b1-3064250ae4b4" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0111_Q(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:09a197c6-9045-3ebc-1049-3f4e9811f08d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/09a197c6-9045-3ebc-1049-3f4e9811f08d/1.0" isExternalReference="true" agencyID="ESTAT" id="09a197c6-9045-3ebc-1049-3f4e9811f08d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0710_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:0aa553b9-b67b-262d-1873-8ff8e6279a33(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/0aa553b9-b67b-262d-1873-8ff8e6279a33/1.0" isExternalReference="true" agencyID="ESTAT" id="0aa553b9-b67b-262d-1873-8ff8e6279a33" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0720_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:0d18d6af-7115-519c-8f5d-31faf1815734(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/0d18d6af-7115-519c-8f5d-31faf1815734/1.0" isExternalReference="true" agencyID="ESTAT" id="0d18d6af-7115-519c-8f5d-31faf1815734" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0121_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:0d27d3a4-4670-f068-31f0-3b04d24e8e86(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/0d27d3a4-4670-f068-31f0-3b04d24e8e86/1.0" isExternalReference="true" agencyID="ESTAT" id="0d27d3a4-4670-f068-31f0-3b04d24e8e86" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0121_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:0e247008-cacc-93c7-5ece-0b25bb2ce877(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/0e247008-cacc-93c7-5ece-0b25bb2ce877/1.0" isExternalReference="true" agencyID="ESTAT" id="0e247008-cacc-93c7-5ece-0b25bb2ce877" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0611_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:0e2d14f7-8cff-493d-8fe7-e0a0d3b6a31a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/0e2d14f7-8cff-493d-8fe7-e0a0d3b6a31a/1.0" isExternalReference="true" agencyID="ESTAT" id="0e2d14f7-8cff-493d-8fe7-e0a0d3b6a31a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0121_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:0eba266d-74bc-5da2-51d7-7cd4a1bec2c1(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/0eba266d-74bc-5da2-51d7-7cd4a1bec2c1/1.0" isExternalReference="true" agencyID="ESTAT" id="0eba266d-74bc-5da2-51d7-7cd4a1bec2c1" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0302_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:0ef13394-1cd7-f1a9-706f-d33377a9e0ce(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/0ef13394-1cd7-f1a9-706f-d33377a9e0ce/1.0" isExternalReference="true" agencyID="ESTAT" id="0ef13394-1cd7-f1a9-706f-d33377a9e0ce" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0622_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:0feff4e3-8cda-b03c-3635-b2bb69577218(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/0feff4e3-8cda-b03c-3635-b2bb69577218/1.0" isExternalReference="true" agencyID="ESTAT" id="0feff4e3-8cda-b03c-3635-b2bb69577218" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2000_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:10bc151c-a702-be21-ac9d-689db246f94d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/10bc151c-a702-be21-ac9d-689db246f94d/1.0" isExternalReference="true" agencyID="ESTAT" id="10bc151c-a702-be21-ac9d-689db246f94d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719PR_5(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:120a9437-0c2f-d88c-890b-bd83a8e03256(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/120a9437-0c2f-d88c-890b-bd83a8e03256/1.0" isExternalReference="true" agencyID="ESTAT" id="120a9437-0c2f-d88c-890b-bd83a8e03256" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0710_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:12594C4B-721C-23EF-E62D-0DBACBBD19A3(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/12594C4B-721C-23EF-E62D-0DBACBBD19A3/1.0" isExternalReference="true" agencyID="ESTAT" id="12594C4B-721C-23EF-E62D-0DBACBBD19A3" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0800_A(1.6)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:12cef611-e1c0-6331-de80-8a35c1169fd8(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/12cef611-e1c0-6331-de80-8a35c1169fd8/1.0" isExternalReference="true" agencyID="ESTAT" id="12cef611-e1c0-6331-de80-8a35c1169fd8" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0101_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:14dc45ee-ed16-eec2-bf70-85c8e7c1e89b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/14dc45ee-ed16-eec2-bf70-85c8e7c1e89b/1.0" isExternalReference="true" agencyID="ESTAT" id="14dc45ee-ed16-eec2-bf70-85c8e7c1e89b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0120_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:168de9f6-1172-eb69-0d3d-0eb57d205323(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/168de9f6-1172-eb69-0d3d-0eb57d205323/1.0" isExternalReference="true" agencyID="ESTAT" id="168de9f6-1172-eb69-0d3d-0eb57d205323" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0612_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:16f200e8-e7db-e33b-84b6-4fc9bd7e935a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/16f200e8-e7db-e33b-84b6-4fc9bd7e935a/1.0" isExternalReference="true" agencyID="ESTAT" id="16f200e8-e7db-e33b-84b6-4fc9bd7e935a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0622_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:18879252-366e-334d-4735-e36c03a25b1a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/18879252-366e-334d-4735-e36c03a25b1a/1.0" isExternalReference="true" agencyID="ESTAT" id="18879252-366e-334d-4735-e36c03a25b1a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0625_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:1910a23d-b9be-24ae-3ad9-287bc8f60f1f(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/1910a23d-b9be-24ae-3ad9-287bc8f60f1f/1.0" isExternalReference="true" agencyID="ESTAT" id="1910a23d-b9be-24ae-3ad9-287bc8f60f1f" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0611_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:1DF5DF80-274D-3631-E33D-0DBAD87FEC8A(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/1DF5DF80-274D-3631-E33D-0DBAD87FEC8A/1.0" isExternalReference="true" agencyID="ESTAT" id="1DF5DF80-274D-3631-E33D-0DBAD87FEC8A" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0800_A(1.5)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:1b5632a3-81f3-7f73-03c5-52141d0e7805(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/1b5632a3-81f3-7f73-03c5-52141d0e7805/1.0" isExternalReference="true" agencyID="ESTAT" id="1b5632a3-81f3-7f73-03c5-52141d0e7805" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0620_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:1bafdb23-a5c5-68eb-5789-8f05ac9dcf2b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/1bafdb23-a5c5-68eb-5789-8f05ac9dcf2b/1.0" isExternalReference="true" agencyID="ESTAT" id="1bafdb23-a5c5-68eb-5789-8f05ac9dcf2b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0610_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:1c967a5c-8f8a-a1db-b1f7-2d1346db6fff(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/1c967a5c-8f8a-a1db-b1f7-2d1346db6fff/1.0" isExternalReference="true" agencyID="ESTAT" id="1c967a5c-8f8a-a1db-b1f7-2d1346db6fff" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0622_A(1.3)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:1d2b2d63-804c-6d4a-fbaa-e0cc1ef38042(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/1d2b2d63-804c-6d4a-fbaa-e0cc1ef38042/1.0" isExternalReference="true" agencyID="ESTAT" id="1d2b2d63-804c-6d4a-fbaa-e0cc1ef38042" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0121_Q(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:1d69a354-e61e-d617-37a1-409dcb3831fa(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/1d69a354-e61e-d617-37a1-409dcb3831fa/1.0" isExternalReference="true" agencyID="ESTAT" id="1d69a354-e61e-d617-37a1-409dcb3831fa" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0102_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:1d6d7bfa-d70a-6b76-998c-e24be3925e11(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/1d6d7bfa-d70a-6b76-998c-e24be3925e11/1.0" isExternalReference="true" agencyID="ESTAT" id="1d6d7bfa-d70a-6b76-998c-e24be3925e11" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2200_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:1dba8e32-4812-c8fb-2451-f7078457b043(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/1dba8e32-4812-c8fb-2451-f7078457b043/1.0" isExternalReference="true" agencyID="ESTAT" id="1dba8e32-4812-c8fb-2451-f7078457b043" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0102_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:1eedc876-721f-a071-74eb-efd6101708d9(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/1eedc876-721f-a071-74eb-efd6101708d9/1.0" isExternalReference="true" agencyID="ESTAT" id="1eedc876-721f-a071-74eb-efd6101708d9" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0102_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:1fdf1b48-04b2-288d-603a-77e1bcf60ba3(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/1fdf1b48-04b2-288d-603a-77e1bcf60ba3/1.0" isExternalReference="true" agencyID="ESTAT" id="1fdf1b48-04b2-288d-603a-77e1bcf60ba3" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0501_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:20009e6a-040e-8fc5-8832-dd62d2419f6d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/20009e6a-040e-8fc5-8832-dd62d2419f6d/1.0" isExternalReference="true" agencyID="ESTAT" id="20009e6a-040e-8fc5-8832-dd62d2419f6d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0621_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:21c9431c-0be9-f713-3424-d468882ff6ab(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/21c9431c-0be9-f713-3424-d468882ff6ab/1.0" isExternalReference="true" agencyID="ESTAT" id="21c9431c-0be9-f713-3424-d468882ff6ab" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0611_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:2476c73a-de12-3f39-3738-fa179e516a62(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/2476c73a-de12-3f39-3738-fa179e516a62/1.0" isExternalReference="true" agencyID="ESTAT" id="2476c73a-de12-3f39-3738-fa179e516a62" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0303_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:24d5c98c-e7d6-a501-cc7c-2301d3345259(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/24d5c98c-e7d6-a501-cc7c-2301d3345259/1.0" isExternalReference="true" agencyID="ESTAT" id="24d5c98c-e7d6-a501-cc7c-2301d3345259" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0725_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:24da415e-2936-5c13-3d01-993803590452(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/24da415e-2936-5c13-3d01-993803590452/1.0" isExternalReference="true" agencyID="ESTAT" id="24da415e-2936-5c13-3d01-993803590452" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0621_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:250979be-3f0e-677d-b4e3-231be46684d2(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/250979be-3f0e-677d-b4e3-231be46684d2/1.0" isExternalReference="true" agencyID="ESTAT" id="250979be-3f0e-677d-b4e3-231be46684d2" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0103_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:2855f239-dd30-95c1-a51f-90290699bdb6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/2855f239-dd30-95c1-a51f-90290699bdb6/1.0" isExternalReference="true" agencyID="ESTAT" id="2855f239-dd30-95c1-a51f-90290699bdb6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0111_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:29a111e3-84a1-ac64-d1cd-ec6ddc891687(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/29a111e3-84a1-ac64-d1cd-ec6ddc891687/1.0" isExternalReference="true" agencyID="ESTAT" id="29a111e3-84a1-ac64-d1cd-ec6ddc891687" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0102_Q(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:2a2306ee-857a-cbb3-e916-890294439dc6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/2a2306ee-857a-cbb3-e916-890294439dc6/1.0" isExternalReference="true" agencyID="ESTAT" id="2a2306ee-857a-cbb3-e916-890294439dc6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0111_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:2ce2c9b4-db40-4030-2803-722a8303eead(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/2ce2c9b4-db40-4030-2803-722a8303eead/1.0" isExternalReference="true" agencyID="ESTAT" id="2ce2c9b4-db40-4030-2803-722a8303eead" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0102_Q(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:2d1f22cf-6fe2-18b4-af96-d5b7bdd55acc(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/2d1f22cf-6fe2-18b4-af96-d5b7bdd55acc/1.0" isExternalReference="true" agencyID="ESTAT" id="2d1f22cf-6fe2-18b4-af96-d5b7bdd55acc" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0303_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:2d2aaa58-7c4a-46b4-b962-419422e58b42(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/2d2aaa58-7c4a-46b4-b962-419422e58b42/1.0" isExternalReference="true" agencyID="ESTAT" id="2d2aaa58-7c4a-46b4-b962-419422e58b42" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0111_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:2d8a9f64-29ef-1520-fe40-e6e73b106e81(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/2d8a9f64-29ef-1520-fe40-e6e73b106e81/1.0" isExternalReference="true" agencyID="ESTAT" id="2d8a9f64-29ef-1520-fe40-e6e73b106e81" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010PENS' linking to Dataflow 'ESTAT:NAPENS_T2901_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:2dd85132-0265-ecbf-6439-c7cd76039126(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/2dd85132-0265-ecbf-6439-c7cd76039126/1.0" isExternalReference="true" agencyID="ESTAT" id="2dd85132-0265-ecbf-6439-c7cd76039126" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2000_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:2f05521b-f87e-dcff-b969-8d2b8f3b1007(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/2f05521b-f87e-dcff-b969-8d2b8f3b1007/1.0" isExternalReference="true" agencyID="ESTAT" id="2f05521b-f87e-dcff-b969-8d2b8f3b1007" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0121_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:2f28616f-e735-fa31-78fd-b2983c98dbe6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/2f28616f-e735-fa31-78fd-b2983c98dbe6/1.0" isExternalReference="true" agencyID="ESTAT" id="2f28616f-e735-fa31-78fd-b2983c98dbe6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010PENS' linking to Dataflow 'ESTAT:NAPENS_T2901_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:2fcf8753-e7ce-627c-9798-b816fc1d1d22(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/2fcf8753-e7ce-627c-9798-b816fc1d1d22/1.0" isExternalReference="true" agencyID="ESTAT" id="2fcf8753-e7ce-627c-9798-b816fc1d1d22" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0103_Q(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:31fb7409-ca51-8f8b-70a2-3cc65ff4acd6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/31fb7409-ca51-8f8b-70a2-3cc65ff4acd6/1.0" isExternalReference="true" agencyID="ESTAT" id="31fb7409-ca51-8f8b-70a2-3cc65ff4acd6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0121_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:32DE8CF2-33F1-1E6D-DA2F-ED84A022E680(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/32DE8CF2-33F1-1E6D-DA2F-ED84A022E680/1.0" isExternalReference="true" agencyID="ESTAT" id="32DE8CF2-33F1-1E6D-DA2F-ED84A022E680" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801SA_Q(1.3)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:34c5c2be-f7e2-ec93-2235-3e767c79786c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/34c5c2be-f7e2-ec93-2235-3e767c79786c/1.0" isExternalReference="true" agencyID="ESTAT" id="34c5c2be-f7e2-ec93-2235-3e767c79786c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0117_Q(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:358f219a-31ba-a7f9-4801-26acf1490afd(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/358f219a-31ba-a7f9-4801-26acf1490afd/1.0" isExternalReference="true" agencyID="ESTAT" id="358f219a-31ba-a7f9-4801-26acf1490afd" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0725_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:35b67ef8-d3b2-fb7c-e403-67fee6017086(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/35b67ef8-d3b2-fb7c-e403-67fee6017086/1.0" isExternalReference="true" agencyID="ESTAT" id="35b67ef8-d3b2-fb7c-e403-67fee6017086" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0111_Q(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:35ba0110-441c-04d9-833f-001bb6fadeda(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/35ba0110-441c-04d9-833f-001bb6fadeda/1.0" isExternalReference="true" agencyID="ESTAT" id="35ba0110-441c-04d9-833f-001bb6fadeda" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0102_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:364cec8c-0557-1b1f-56de-17dcbf224f8c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/364cec8c-0557-1b1f-56de-17dcbf224f8c/1.0" isExternalReference="true" agencyID="ESTAT" id="364cec8c-0557-1b1f-56de-17dcbf224f8c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0303_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:38cf0809-5e32-d48c-d692-d172bb0509fb(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/38cf0809-5e32-d48c-d692-d172bb0509fb/1.0" isExternalReference="true" agencyID="ESTAT" id="38cf0809-5e32-d48c-d692-d172bb0509fb" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0111_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:39a6799e-c3de-798f-e139-c3f3df95c9da(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/39a6799e-c3de-798f-e139-c3f3df95c9da/1.0" isExternalReference="true" agencyID="ESTAT" id="39a6799e-c3de-798f-e139-c3f3df95c9da" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0103_Q(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3B74BD65-2A1A-7BAE-FC2F-ED808FBD8805(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3B74BD65-2A1A-7BAE-FC2F-ED808FBD8805/1.0" isExternalReference="true" agencyID="ESTAT" id="3B74BD65-2A1A-7BAE-FC2F-ED808FBD8805" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0800_A(1.9)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3D0CBD2F-6216-A9C5-7FD3-ED83D7F4B8C9(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3D0CBD2F-6216-A9C5-7FD3-ED83D7F4B8C9/1.0" isExternalReference="true" agencyID="ESTAT" id="3D0CBD2F-6216-A9C5-7FD3-ED83D7F4B8C9" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801_Q(1.8)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3a0175b6-8f09-7df7-3552-b25a08e6dafa(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3a0175b6-8f09-7df7-3552-b25a08e6dafa/1.0" isExternalReference="true" agencyID="ESTAT" id="3a0175b6-8f09-7df7-3552-b25a08e6dafa" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0103_Q(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3a6e972a-3f8a-ae9f-0022-9dc745c91c4c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3a6e972a-3f8a-ae9f-0022-9dc745c91c4c/1.0" isExternalReference="true" agencyID="ESTAT" id="3a6e972a-3f8a-ae9f-0022-9dc745c91c4c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3bb5745f-4081-fb63-8095-44390272ef94(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3bb5745f-4081-fb63-8095-44390272ef94/1.0" isExternalReference="true" agencyID="ESTAT" id="3bb5745f-4081-fb63-8095-44390272ef94" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0103_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3bedfce5-f9a3-671b-f147-bf5e5f72dc1c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3bedfce5-f9a3-671b-f147-bf5e5f72dc1c/1.0" isExternalReference="true" agencyID="ESTAT" id="3bedfce5-f9a3-671b-f147-bf5e5f72dc1c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0120_Q(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3cef181d-424f-202c-dbc3-5bb7b8151cb2(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3cef181d-424f-202c-dbc3-5bb7b8151cb2/1.0" isExternalReference="true" agencyID="ESTAT" id="3cef181d-424f-202c-dbc3-5bb7b8151cb2" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0111_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3d17b502-0bd5-1bf2-f197-0468e47db321(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3d17b502-0bd5-1bf2-f197-0468e47db321/1.0" isExternalReference="true" agencyID="ESTAT" id="3d17b502-0bd5-1bf2-f197-0468e47db321" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0620_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3d188701-aac0-2720-2ca9-5497c3f99d8d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3d188701-aac0-2720-2ca9-5497c3f99d8d/1.0" isExternalReference="true" agencyID="ESTAT" id="3d188701-aac0-2720-2ca9-5497c3f99d8d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0625_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3e5ee127-c6ca-dbd8-90f5-be9f4b76db05(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3e5ee127-c6ca-dbd8-90f5-be9f4b76db05/1.0" isExternalReference="true" agencyID="ESTAT" id="3e5ee127-c6ca-dbd8-90f5-be9f4b76db05" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0111_Q(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3ee7572b-65ed-0568-3071-ee1aec27cee9(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3ee7572b-65ed-0568-3071-ee1aec27cee9/1.0" isExternalReference="true" agencyID="ESTAT" id="3ee7572b-65ed-0568-3071-ee1aec27cee9" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0301_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:3f4945fc-b376-1833-e206-a5d1941d2d67(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/3f4945fc-b376-1833-e206-a5d1941d2d67/1.0" isExternalReference="true" agencyID="ESTAT" id="3f4945fc-b376-1833-e206-a5d1941d2d67" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0120_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:406d0dcd-78e6-507b-6613-932e2ac2b523(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/406d0dcd-78e6-507b-6613-932e2ac2b523/1.0" isExternalReference="true" agencyID="ESTAT" id="406d0dcd-78e6-507b-6613-932e2ac2b523" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719IN_5(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4117a69b-6998-4309-b344-788bd6bb9387(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4117a69b-6998-4309-b344-788bd6bb9387/1.0" isExternalReference="true" agencyID="ESTAT" id="4117a69b-6998-4309-b344-788bd6bb9387" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0110_Q(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4202b40b-5221-cd7a-5dce-3293fe0dd62a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4202b40b-5221-cd7a-5dce-3293fe0dd62a/1.0" isExternalReference="true" agencyID="ESTAT" id="4202b40b-5221-cd7a-5dce-3293fe0dd62a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0110_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:423313b5-c2f9-df11-cd1d-ec63b9edb124(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/423313b5-c2f9-df11-cd1d-ec63b9edb124/1.0" isExternalReference="true" agencyID="ESTAT" id="423313b5-c2f9-df11-cd1d-ec63b9edb124" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0121_Q(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:42b047d4-7674-57bd-65ea-c72aaac9adfd(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/42b047d4-7674-57bd-65ea-c72aaac9adfd/1.0" isExternalReference="true" agencyID="ESTAT" id="42b047d4-7674-57bd-65ea-c72aaac9adfd" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0502_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:42e63ce4-5140-a09b-da35-74bb9ed17746(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/42e63ce4-5140-a09b-da35-74bb9ed17746/1.0" isExternalReference="true" agencyID="ESTAT" id="42e63ce4-5140-a09b-da35-74bb9ed17746" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0102_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4386beac-80fa-9660-ce52-6c075caccb2a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4386beac-80fa-9660-ce52-6c075caccb2a/1.0" isExternalReference="true" agencyID="ESTAT" id="4386beac-80fa-9660-ce52-6c075caccb2a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0102_Q(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:43c27d30-2106-66a4-84e2-7c101ff7c475(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/43c27d30-2106-66a4-84e2-7c101ff7c475/1.0" isExternalReference="true" agencyID="ESTAT" id="43c27d30-2106-66a4-84e2-7c101ff7c475" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:44D30867-7801-63E8-0079-ED841B88E8C9(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/44D30867-7801-63E8-0079-ED841B88E8C9/1.0" isExternalReference="true" agencyID="ESTAT" id="44D30867-7801-63E8-0079-ED841B88E8C9" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801SA_Q(1.8)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:44a4a903-953f-d687-e605-2fc39250261d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/44a4a903-953f-d687-e605-2fc39250261d/1.0" isExternalReference="true" agencyID="ESTAT" id="44a4a903-953f-d687-e605-2fc39250261d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0301_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:44c5a819-7005-b9ce-d18e-0b0fb590cbe3(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/44c5a819-7005-b9ce-d18e-0b0fb590cbe3/1.0" isExternalReference="true" agencyID="ESTAT" id="44c5a819-7005-b9ce-d18e-0b0fb590cbe3" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0120_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:451A4F8C-CEC5-02F8-BAFF-0DBB3E47BA85(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/451A4F8C-CEC5-02F8-BAFF-0DBB3E47BA85/1.0" isExternalReference="true" agencyID="ESTAT" id="451A4F8C-CEC5-02F8-BAFF-0DBB3E47BA85" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801_Q(1.5)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:45fff58d-60c3-4053-e661-45ee1ce5febd(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/45fff58d-60c3-4053-e661-45ee1ce5febd/1.0" isExternalReference="true" agencyID="ESTAT" id="45fff58d-60c3-4053-e661-45ee1ce5febd" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0120_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4679a0dc-6957-500e-626e-9bc8c44062ef(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4679a0dc-6957-500e-626e-9bc8c44062ef/1.0" isExternalReference="true" agencyID="ESTAT" id="4679a0dc-6957-500e-626e-9bc8c44062ef" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719IN_5(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:478c8391-2431-3802-f240-6e25979651ff(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/478c8391-2431-3802-f240-6e25979651ff/1.0" isExternalReference="true" agencyID="ESTAT" id="478c8391-2431-3802-f240-6e25979651ff" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_163034_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:48f79198-7568-c26e-3f18-db2aeed9aeb4(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/48f79198-7568-c26e-3f18-db2aeed9aeb4/1.0" isExternalReference="true" agencyID="ESTAT" id="48f79198-7568-c26e-3f18-db2aeed9aeb4" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0103_Q(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4943e26e-340a-befb-ac2b-33a74550ce27(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4943e26e-340a-befb-ac2b-33a74550ce27/1.0" isExternalReference="true" agencyID="ESTAT" id="4943e26e-340a-befb-ac2b-33a74550ce27" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0621_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4C0F054F-9EF1-625B-7B5D-0DBB22A50E25(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4C0F054F-9EF1-625B-7B5D-0DBB22A50E25/1.0" isExternalReference="true" agencyID="ESTAT" id="4C0F054F-9EF1-625B-7B5D-0DBB22A50E25" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801_Q(1.7)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4C7E89FE-C711-CB62-6779-0DBB56FF6546(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4C7E89FE-C711-CB62-6779-0DBB56FF6546/1.0" isExternalReference="true" agencyID="ESTAT" id="4C7E89FE-C711-CB62-6779-0DBB56FF6546" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801_Q(1.3)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4DB432F1-71D5-F86B-5E0C-0DBAFB274FF2(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4DB432F1-71D5-F86B-5E0C-0DBAFB274FF2/1.0" isExternalReference="true" agencyID="ESTAT" id="4DB432F1-71D5-F86B-5E0C-0DBAFB274FF2" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0800_A(1.3)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4b10385f-42e6-01ff-ec91-10820a5735f5(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4b10385f-42e6-01ff-ec91-10820a5735f5/1.0" isExternalReference="true" agencyID="ESTAT" id="4b10385f-42e6-01ff-ec91-10820a5735f5" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0120_Q(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4b713813-40a0-9490-269f-d67e07edaccd(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4b713813-40a0-9490-269f-d67e07edaccd/1.0" isExternalReference="true" agencyID="ESTAT" id="4b713813-40a0-9490-269f-d67e07edaccd" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719IN_5(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4cc9e2f5-faa7-5de0-8f24-ae5f254da631(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4cc9e2f5-faa7-5de0-8f24-ae5f254da631/1.0" isExternalReference="true" agencyID="ESTAT" id="4cc9e2f5-faa7-5de0-8f24-ae5f254da631" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2000_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4d2950bc-f876-532e-2ae3-493b63253668(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4d2950bc-f876-532e-2ae3-493b63253668/1.0" isExternalReference="true" agencyID="ESTAT" id="4d2950bc-f876-532e-2ae3-493b63253668" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_16BP_5(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4d441af9-e7ad-a797-6089-2c43436815a1(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4d441af9-e7ad-a797-6089-2c43436815a1/1.0" isExternalReference="true" agencyID="ESTAT" id="4d441af9-e7ad-a797-6089-2c43436815a1" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0117_Q(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4d89b17b-690b-73ea-5493-17fada072b52(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4d89b17b-690b-73ea-5493-17fada072b52/1.0" isExternalReference="true" agencyID="ESTAT" id="4d89b17b-690b-73ea-5493-17fada072b52" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0610_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4dba4d29-c2d4-6c94-a945-3b492389add8(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4dba4d29-c2d4-6c94-a945-3b492389add8/1.0" isExternalReference="true" agencyID="ESTAT" id="4dba4d29-c2d4-6c94-a945-3b492389add8" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0110_Q(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4e4514a4-98d4-d909-7fe7-fba4b347d762(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4e4514a4-98d4-d909-7fe7-fba4b347d762/1.0" isExternalReference="true" agencyID="ESTAT" id="4e4514a4-98d4-d909-7fe7-fba4b347d762" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:4ee02f0e-c893-520f-410e-95d7a1da1ae0(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/4ee02f0e-c893-520f-410e-95d7a1da1ae0/1.0" isExternalReference="true" agencyID="ESTAT" id="4ee02f0e-c893-520f-410e-95d7a1da1ae0" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0620_A(1.3)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:521d9e12-1a6a-ec25-0c8e-877a7398fe5b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/521d9e12-1a6a-ec25-0c8e-877a7398fe5b/1.0" isExternalReference="true" agencyID="ESTAT" id="521d9e12-1a6a-ec25-0c8e-877a7398fe5b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0720_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:5239b1c7-9dcc-3ad7-368d-f70fe8c6eee3(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/5239b1c7-9dcc-3ad7-368d-f70fe8c6eee3/1.0" isExternalReference="true" agencyID="ESTAT" id="5239b1c7-9dcc-3ad7-368d-f70fe8c6eee3" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0117_Q(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:52d89ff6-873c-c2a8-86c2-ad3a5949e8a6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/52d89ff6-873c-c2a8-86c2-ad3a5949e8a6/1.0" isExternalReference="true" agencyID="ESTAT" id="52d89ff6-873c-c2a8-86c2-ad3a5949e8a6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_163034_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:53142f38-b89a-7952-322c-83c2f52a69d2(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/53142f38-b89a-7952-322c-83c2f52a69d2/1.0" isExternalReference="true" agencyID="ESTAT" id="53142f38-b89a-7952-322c-83c2f52a69d2" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0502_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:5315a46f-d7af-2b43-9536-84fa0d811fd8(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/5315a46f-d7af-2b43-9536-84fa0d811fd8/1.0" isExternalReference="true" agencyID="ESTAT" id="5315a46f-d7af-2b43-9536-84fa0d811fd8" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0302_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:535e092f-e47b-1ab8-78e4-777464b4b8eb(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/535e092f-e47b-1ab8-78e4-777464b4b8eb/1.0" isExternalReference="true" agencyID="ESTAT" id="535e092f-e47b-1ab8-78e4-777464b4b8eb" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010PENS' linking to Dataflow 'ESTAT:NAPENS_T2902_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:5467ba57-2550-c10e-68e3-9e75a14a07fe(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/5467ba57-2550-c10e-68e3-9e75a14a07fe/1.0" isExternalReference="true" agencyID="ESTAT" id="5467ba57-2550-c10e-68e3-9e75a14a07fe" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0117_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:547f30aa-98b1-831c-d601-b81beeea1aa4(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/547f30aa-98b1-831c-d601-b81beeea1aa4/1.0" isExternalReference="true" agencyID="ESTAT" id="547f30aa-98b1-831c-d601-b81beeea1aa4" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0117_Q(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:54f8ea2b-88bd-84f4-5187-7dfe2d9659a9(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/54f8ea2b-88bd-84f4-5187-7dfe2d9659a9/1.0" isExternalReference="true" agencyID="ESTAT" id="54f8ea2b-88bd-84f4-5187-7dfe2d9659a9" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516ADD_5(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:57412a9b-7b7c-2a30-4105-78a4eee12716(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/57412a9b-7b7c-2a30-4105-78a4eee12716/1.0" isExternalReference="true" agencyID="ESTAT" id="57412a9b-7b7c-2a30-4105-78a4eee12716" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0610_A(1.3)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:57b02a1e-f128-6ca4-a470-c6b668f3a0cc(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/57b02a1e-f128-6ca4-a470-c6b668f3a0cc/1.0" isExternalReference="true" agencyID="ESTAT" id="57b02a1e-f128-6ca4-a470-c6b668f3a0cc" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0101_Q(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:58658110-7c1b-8e82-62fe-33003ba2caa0(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/58658110-7c1b-8e82-62fe-33003ba2caa0/1.0" isExternalReference="true" agencyID="ESTAT" id="58658110-7c1b-8e82-62fe-33003ba2caa0" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_16BP_5(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:5927618a-1860-5e75-96d0-3c64e56d6a38(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/5927618a-1860-5e75-96d0-3c64e56d6a38/1.0" isExternalReference="true" agencyID="ESTAT" id="5927618a-1860-5e75-96d0-3c64e56d6a38" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0303_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:5dbf6e91-8103-cb47-7743-a2e8e95a8b5b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/5dbf6e91-8103-cb47-7743-a2e8e95a8b5b/1.0" isExternalReference="true" agencyID="ESTAT" id="5dbf6e91-8103-cb47-7743-a2e8e95a8b5b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_16BP_5(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:614d0d86-2db4-9473-52e9-ec38d4fcb25a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/614d0d86-2db4-9473-52e9-ec38d4fcb25a/1.0" isExternalReference="true" agencyID="ESTAT" id="614d0d86-2db4-9473-52e9-ec38d4fcb25a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0103_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:621221a9-d2a1-4dd7-7c8d-7474bd07cf8e(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/621221a9-d2a1-4dd7-7c8d-7474bd07cf8e/1.0" isExternalReference="true" agencyID="ESTAT" id="621221a9-d2a1-4dd7-7c8d-7474bd07cf8e" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0621_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:62f4ebe4-ca55-7d66-85ba-694a41197e5e(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/62f4ebe4-ca55-7d66-85ba-694a41197e5e/1.0" isExternalReference="true" agencyID="ESTAT" id="62f4ebe4-ca55-7d66-85ba-694a41197e5e" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0121_Q(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6370f02f-98d0-703b-d895-be187b55ab12(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6370f02f-98d0-703b-d895-be187b55ab12/1.0" isExternalReference="true" agencyID="ESTAT" id="6370f02f-98d0-703b-d895-be187b55ab12" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0101_Q(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:63a5bfdd-adea-fe05-228f-e40a21fa4cc0(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/63a5bfdd-adea-fe05-228f-e40a21fa4cc0/1.0" isExternalReference="true" agencyID="ESTAT" id="63a5bfdd-adea-fe05-228f-e40a21fa4cc0" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2000_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:63c4b87f-3f42-d026-3d1c-82872cb68dbd(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/63c4b87f-3f42-d026-3d1c-82872cb68dbd/1.0" isExternalReference="true" agencyID="ESTAT" id="63c4b87f-3f42-d026-3d1c-82872cb68dbd" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719PR_5(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:644256c1-6c30-29a0-1af9-08e061583c96(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/644256c1-6c30-29a0-1af9-08e061583c96/1.0" isExternalReference="true" agencyID="ESTAT" id="644256c1-6c30-29a0-1af9-08e061583c96" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0501_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6509d1b0-7881-520e-a07a-75e3f0c8566a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6509d1b0-7881-520e-a07a-75e3f0c8566a/1.0" isExternalReference="true" agencyID="ESTAT" id="6509d1b0-7881-520e-a07a-75e3f0c8566a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719PR_5(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:656A65A6-8841-BF71-C3C3-ED848BC16206(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/656A65A6-8841-BF71-C3C3-ED848BC16206/1.0" isExternalReference="true" agencyID="ESTAT" id="656A65A6-8841-BF71-C3C3-ED848BC16206" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801SA_Q(1.4)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:65751094-cb90-365f-ecd0-726aa3ddebe7(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/65751094-cb90-365f-ecd0-726aa3ddebe7/1.0" isExternalReference="true" agencyID="ESTAT" id="65751094-cb90-365f-ecd0-726aa3ddebe7" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0620_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:659d9c49-ef9a-ae43-4b97-2b77d4f49822(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/659d9c49-ef9a-ae43-4b97-2b77d4f49822/1.0" isExternalReference="true" agencyID="ESTAT" id="659d9c49-ef9a-ae43-4b97-2b77d4f49822" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0302_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:659f4685-de27-e59c-20ac-be8ad8a1d120(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/659f4685-de27-e59c-20ac-be8ad8a1d120/1.0" isExternalReference="true" agencyID="ESTAT" id="659f4685-de27-e59c-20ac-be8ad8a1d120" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0622_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6709931f-3da1-8c5e-1af7-5966cd8cca71(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6709931f-3da1-8c5e-1af7-5966cd8cca71/1.0" isExternalReference="true" agencyID="ESTAT" id="6709931f-3da1-8c5e-1af7-5966cd8cca71" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0102_Q(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:68308af6-cbc5-49e3-9869-84912c3a6af4(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/68308af6-cbc5-49e3-9869-84912c3a6af4/1.0" isExternalReference="true" agencyID="ESTAT" id="68308af6-cbc5-49e3-9869-84912c3a6af4" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0111_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:69ebfca0-6db5-3ffe-db4f-86ff7b605240(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/69ebfca0-6db5-3ffe-db4f-86ff7b605240/1.0" isExternalReference="true" agencyID="ESTAT" id="69ebfca0-6db5-3ffe-db4f-86ff7b605240" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0121_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6E44A75D-850F-6683-946B-0DBB4A28F23C(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6E44A75D-850F-6683-946B-0DBB4A28F23C/1.0" isExternalReference="true" agencyID="ESTAT" id="6E44A75D-850F-6683-946B-0DBB4A28F23C" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801_Q(1.4)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6a32d919-d461-d581-c68a-b6080fc45ea1(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6a32d919-d461-d581-c68a-b6080fc45ea1/1.0" isExternalReference="true" agencyID="ESTAT" id="6a32d919-d461-d581-c68a-b6080fc45ea1" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0117_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6af802cf-3f69-a5f8-c3ba-c79bce5d8c14(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6af802cf-3f69-a5f8-c3ba-c79bce5d8c14/1.0" isExternalReference="true" agencyID="ESTAT" id="6af802cf-3f69-a5f8-c3ba-c79bce5d8c14" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0301_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6b1a9b31-7479-7945-5ade-ed81aba0af50(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6b1a9b31-7479-7945-5ade-ed81aba0af50/1.0" isExternalReference="true" agencyID="ESTAT" id="6b1a9b31-7479-7945-5ade-ed81aba0af50" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0501_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6b9fb301-0634-abbe-8faa-48d49513813f(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6b9fb301-0634-abbe-8faa-48d49513813f/1.0" isExternalReference="true" agencyID="ESTAT" id="6b9fb301-0634-abbe-8faa-48d49513813f" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010PENS' linking to Dataflow 'ESTAT:NAPENS_T2900_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6c8e13fc-faee-15c5-0f62-9e7088f47ae8(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6c8e13fc-faee-15c5-0f62-9e7088f47ae8/1.0" isExternalReference="true" agencyID="ESTAT" id="6c8e13fc-faee-15c5-0f62-9e7088f47ae8" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0102_Q(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6d031abf-476a-5574-3c0a-57005a3e43db(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6d031abf-476a-5574-3c0a-57005a3e43db/1.0" isExternalReference="true" agencyID="ESTAT" id="6d031abf-476a-5574-3c0a-57005a3e43db" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0110_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6df39a0b-3093-494a-d5f8-89ae6f666434(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6df39a0b-3093-494a-d5f8-89ae6f666434/1.0" isExternalReference="true" agencyID="ESTAT" id="6df39a0b-3093-494a-d5f8-89ae6f666434" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0110_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:6fa7d9db-1336-f865-ceda-e67ac7d00579(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/6fa7d9db-1336-f865-ceda-e67ac7d00579/1.0" isExternalReference="true" agencyID="ESTAT" id="6fa7d9db-1336-f865-ceda-e67ac7d00579" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0101_Q(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:713b28c7-7c3d-f5e4-a6d7-3a8c9d84c2b6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/713b28c7-7c3d-f5e4-a6d7-3a8c9d84c2b6/1.0" isExternalReference="true" agencyID="ESTAT" id="713b28c7-7c3d-f5e4-a6d7-3a8c9d84c2b6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0620_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:718a1db9-321f-8640-aa5a-993789b3ebbb(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/718a1db9-321f-8640-aa5a-993789b3ebbb/1.0" isExternalReference="true" agencyID="ESTAT" id="718a1db9-321f-8640-aa5a-993789b3ebbb" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0101_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:71c60140-913c-ff00-c9f1-93bfa9d2fa4f(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/71c60140-913c-ff00-c9f1-93bfa9d2fa4f/1.0" isExternalReference="true" agencyID="ESTAT" id="71c60140-913c-ff00-c9f1-93bfa9d2fa4f" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0612_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:731c33c6-0ebb-b76d-66e7-2fc635c27de6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/731c33c6-0ebb-b76d-66e7-2fc635c27de6/1.0" isExternalReference="true" agencyID="ESTAT" id="731c33c6-0ebb-b76d-66e7-2fc635c27de6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0120_Q(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:736fae4c-2328-a61a-eb7d-a88fea1c37c5(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/736fae4c-2328-a61a-eb7d-a88fea1c37c5/1.0" isExternalReference="true" agencyID="ESTAT" id="736fae4c-2328-a61a-eb7d-a88fea1c37c5" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0502_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:74077eb6-fa86-ce85-4283-5ec9c056ff7c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/74077eb6-fa86-ce85-4283-5ec9c056ff7c/1.0" isExternalReference="true" agencyID="ESTAT" id="74077eb6-fa86-ce85-4283-5ec9c056ff7c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0720_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:741391db-090f-68fe-1101-654e5a3531ed(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/741391db-090f-68fe-1101-654e5a3531ed/1.0" isExternalReference="true" agencyID="ESTAT" id="741391db-090f-68fe-1101-654e5a3531ed" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_16BP_5(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:745b1e5c-e340-c51b-e00c-3656e5b0b9f4(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/745b1e5c-e340-c51b-e00c-3656e5b0b9f4/1.0" isExternalReference="true" agencyID="ESTAT" id="745b1e5c-e340-c51b-e00c-3656e5b0b9f4" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719PR_5(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:751a1592-b5f5-f02a-51b4-060b96a0b9af(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/751a1592-b5f5-f02a-51b4-060b96a0b9af/1.0" isExternalReference="true" agencyID="ESTAT" id="751a1592-b5f5-f02a-51b4-060b96a0b9af" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0612_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:75216b15-bd57-d7a3-7344-b6d6c3cd9c02(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/75216b15-bd57-d7a3-7344-b6d6c3cd9c02/1.0" isExternalReference="true" agencyID="ESTAT" id="75216b15-bd57-d7a3-7344-b6d6c3cd9c02" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0502_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:7550439c-1312-6435-2b02-32cb33574bec(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/7550439c-1312-6435-2b02-32cb33574bec/1.0" isExternalReference="true" agencyID="ESTAT" id="7550439c-1312-6435-2b02-32cb33574bec" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0720_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:75cd902f-677b-a18b-c92a-06faaf89344f(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/75cd902f-677b-a18b-c92a-06faaf89344f/1.0" isExternalReference="true" agencyID="ESTAT" id="75cd902f-677b-a18b-c92a-06faaf89344f" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0101_Q(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:782cee8d-5e50-317c-418b-626bf85b044c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/782cee8d-5e50-317c-418b-626bf85b044c/1.0" isExternalReference="true" agencyID="ESTAT" id="782cee8d-5e50-317c-418b-626bf85b044c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0625_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:786c398f-2b0c-acf7-362f-7011eb99b26b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/786c398f-2b0c-acf7-362f-7011eb99b26b/1.0" isExternalReference="true" agencyID="ESTAT" id="786c398f-2b0c-acf7-362f-7011eb99b26b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0620_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:79130bb8-d8ad-a9fe-6e88-c7de1a351cb3(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/79130bb8-d8ad-a9fe-6e88-c7de1a351cb3/1.0" isExternalReference="true" agencyID="ESTAT" id="79130bb8-d8ad-a9fe-6e88-c7de1a351cb3" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0120_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:7a03b772-33a7-48f6-2ddf-6561015a0a27(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/7a03b772-33a7-48f6-2ddf-6561015a0a27/1.0" isExternalReference="true" agencyID="ESTAT" id="7a03b772-33a7-48f6-2ddf-6561015a0a27" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516ADD_5(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:7ad17bae-6172-a11e-f766-0d9008051527(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/7ad17bae-6172-a11e-f766-0d9008051527/1.0" isExternalReference="true" agencyID="ESTAT" id="7ad17bae-6172-a11e-f766-0d9008051527" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0110_Q(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:7c1d6879-6d49-40da-9a34-776c69027f6f(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/7c1d6879-6d49-40da-9a34-776c69027f6f/1.0" isExternalReference="true" agencyID="ESTAT" id="7c1d6879-6d49-40da-9a34-776c69027f6f" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0117_Q(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:7c6c2e1c-9a01-3944-fb63-8e7786beb78d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/7c6c2e1c-9a01-3944-fb63-8e7786beb78d/1.0" isExternalReference="true" agencyID="ESTAT" id="7c6c2e1c-9a01-3944-fb63-8e7786beb78d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0120_Q(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:7c6e829e-245f-8641-b99b-2356f26cd7f7(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/7c6e829e-245f-8641-b99b-2356f26cd7f7/1.0" isExternalReference="true" agencyID="ESTAT" id="7c6e829e-245f-8641-b99b-2356f26cd7f7" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0301_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:7c6f5d70-bb8b-3182-af96-ae60883d29f1(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/7c6f5d70-bb8b-3182-af96-ae60883d29f1/1.0" isExternalReference="true" agencyID="ESTAT" id="7c6f5d70-bb8b-3182-af96-ae60883d29f1" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2200_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:7dbbf1d4-c962-4a14-405c-0bed9ab87ce3(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/7dbbf1d4-c962-4a14-405c-0bed9ab87ce3/1.0" isExternalReference="true" agencyID="ESTAT" id="7dbbf1d4-c962-4a14-405c-0bed9ab87ce3" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0610_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:7e1d1e58-710f-275d-2ce6-9659370277b2(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/7e1d1e58-710f-275d-2ce6-9659370277b2/1.0" isExternalReference="true" agencyID="ESTAT" id="7e1d1e58-710f-275d-2ce6-9659370277b2" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719IN_5(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:7f00ad57-91b0-f818-6698-6f2d8df68152(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/7f00ad57-91b0-f818-6698-6f2d8df68152/1.0" isExternalReference="true" agencyID="ESTAT" id="7f00ad57-91b0-f818-6698-6f2d8df68152" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0610_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:80806eee-772b-409b-2031-e9fa8c67a495(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/80806eee-772b-409b-2031-e9fa8c67a495/1.0" isExternalReference="true" agencyID="ESTAT" id="80806eee-772b-409b-2031-e9fa8c67a495" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0120_Q(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:81b9c486-d7f6-a85d-492f-d3da06186797(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/81b9c486-d7f6-a85d-492f-d3da06186797/1.0" isExternalReference="true" agencyID="ESTAT" id="81b9c486-d7f6-a85d-492f-d3da06186797" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0121_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:82777352-2801-4345-E27B-0DBB309E5E28(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/82777352-2801-4345-E27B-0DBB309E5E28/1.0" isExternalReference="true" agencyID="ESTAT" id="82777352-2801-4345-E27B-0DBB309E5E28" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801_Q(1.6)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:82ca2f7c-07c5-4d98-f653-ef30e2d1cbde(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/82ca2f7c-07c5-4d98-f653-ef30e2d1cbde/1.0" isExternalReference="true" agencyID="ESTAT" id="82ca2f7c-07c5-4d98-f653-ef30e2d1cbde" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0111_Q(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:832685c1-bf26-93f4-336f-a97924dbf4f6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/832685c1-bf26-93f4-336f-a97924dbf4f6/1.0" isExternalReference="true" agencyID="ESTAT" id="832685c1-bf26-93f4-336f-a97924dbf4f6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0303_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8377bdc6-e8d0-dfc2-81bd-56e0ce05bf99(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8377bdc6-e8d0-dfc2-81bd-56e0ce05bf99/1.0" isExternalReference="true" agencyID="ESTAT" id="8377bdc6-e8d0-dfc2-81bd-56e0ce05bf99" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719PR_5(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:838708b1-9911-636d-b7b8-218241bf5116(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/838708b1-9911-636d-b7b8-218241bf5116/1.0" isExternalReference="true" agencyID="ESTAT" id="838708b1-9911-636d-b7b8-218241bf5116" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0110_Q(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8449e4b5-4359-7e7e-8629-ada4d5e5769a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8449e4b5-4359-7e7e-8629-ada4d5e5769a/1.0" isExternalReference="true" agencyID="ESTAT" id="8449e4b5-4359-7e7e-8629-ada4d5e5769a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0301_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8491b367-8cc0-5c1a-95f9-945147e88dc7(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8491b367-8cc0-5c1a-95f9-945147e88dc7/1.0" isExternalReference="true" agencyID="ESTAT" id="8491b367-8cc0-5c1a-95f9-945147e88dc7" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0101_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:84f6a7ed-5624-0cb0-3257-d448ccee1714(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/84f6a7ed-5624-0cb0-3257-d448ccee1714/1.0" isExternalReference="true" agencyID="ESTAT" id="84f6a7ed-5624-0cb0-3257-d448ccee1714" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0120_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:86983f60-8105-f61e-3a9a-3769b0f77cb9(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/86983f60-8105-f61e-3a9a-3769b0f77cb9/1.0" isExternalReference="true" agencyID="ESTAT" id="86983f60-8105-f61e-3a9a-3769b0f77cb9" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0610_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:86bb8423-ebfa-6237-ec53-421df9a5af61(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/86bb8423-ebfa-6237-ec53-421df9a5af61/1.0" isExternalReference="true" agencyID="ESTAT" id="86bb8423-ebfa-6237-ec53-421df9a5af61" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0625_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:88951b51-30df-97b6-95fc-b850d8402906(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/88951b51-30df-97b6-95fc-b850d8402906/1.0" isExternalReference="true" agencyID="ESTAT" id="88951b51-30df-97b6-95fc-b850d8402906" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0117_Q(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:88c2448c-7e11-025c-e0db-3fb87cb9edc8(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/88c2448c-7e11-025c-e0db-3fb87cb9edc8/1.0" isExternalReference="true" agencyID="ESTAT" id="88c2448c-7e11-025c-e0db-3fb87cb9edc8" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_163034_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:89fcabcd-228f-eb86-4773-016c70ef39f0(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/89fcabcd-228f-eb86-4773-016c70ef39f0/1.0" isExternalReference="true" agencyID="ESTAT" id="89fcabcd-228f-eb86-4773-016c70ef39f0" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8BA94970-64F2-5FE1-749F-0DBABA22B9DF(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8BA94970-64F2-5FE1-749F-0DBABA22B9DF/1.0" isExternalReference="true" agencyID="ESTAT" id="8BA94970-64F2-5FE1-749F-0DBABA22B9DF" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0800_A(1.7)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8C2362DC-F760-9CE5-2B88-0DBAE4845B93(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8C2362DC-F760-9CE5-2B88-0DBAE4845B93/1.0" isExternalReference="true" agencyID="ESTAT" id="8C2362DC-F760-9CE5-2B88-0DBAE4845B93" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0800_A(1.4)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8C2A7ABA-FA9C-A142-9A06-0DBB7057A354(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8C2A7ABA-FA9C-A142-9A06-0DBB7057A354/1.0" isExternalReference="true" agencyID="ESTAT" id="8C2A7ABA-FA9C-A142-9A06-0DBB7057A354" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801_Q(1.1)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8D0F15CF-1F33-FE5F-B2AE-ED84D7FA5202(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8D0F15CF-1F33-FE5F-B2AE-ED84D7FA5202/1.0" isExternalReference="true" agencyID="ESTAT" id="8D0F15CF-1F33-FE5F-B2AE-ED84D7FA5202" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801SA_Q(1.1)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8F797B4D-5541-B1C7-D0BF-ED8457D3A934(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8F797B4D-5541-B1C7-D0BF-ED8457D3A934/1.0" isExternalReference="true" agencyID="ESTAT" id="8F797B4D-5541-B1C7-D0BF-ED8457D3A934" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801SA_Q(1.6)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8a005717-0c27-cccb-0d3e-f4af1ec62bed(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8a005717-0c27-cccb-0d3e-f4af1ec62bed/1.0" isExternalReference="true" agencyID="ESTAT" id="8a005717-0c27-cccb-0d3e-f4af1ec62bed" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0117_Q(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8a2dcd34-40b2-cc21-490f-df6f59524c85(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8a2dcd34-40b2-cc21-490f-df6f59524c85/1.0" isExternalReference="true" agencyID="ESTAT" id="8a2dcd34-40b2-cc21-490f-df6f59524c85" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0625_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8b25dea9-f384-cba5-7a3b-0d8ed549ea31(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8b25dea9-f384-cba5-7a3b-0d8ed549ea31/1.0" isExternalReference="true" agencyID="ESTAT" id="8b25dea9-f384-cba5-7a3b-0d8ed549ea31" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516ADD_5(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8c9181a2-f0aa-2a3a-407f-2b52de011058(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8c9181a2-f0aa-2a3a-407f-2b52de011058/1.0" isExternalReference="true" agencyID="ESTAT" id="8c9181a2-f0aa-2a3a-407f-2b52de011058" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0710_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8ce8026c-3141-72ad-8766-e3f7f49634cf(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8ce8026c-3141-72ad-8766-e3f7f49634cf/1.0" isExternalReference="true" agencyID="ESTAT" id="8ce8026c-3141-72ad-8766-e3f7f49634cf" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0303_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8d3fa367-1503-158a-0332-e763551edd02(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8d3fa367-1503-158a-0332-e763551edd02/1.0" isExternalReference="true" agencyID="ESTAT" id="8d3fa367-1503-158a-0332-e763551edd02" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0110_Q(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:8e7018bf-a7c4-6514-67b2-9aea9d1a8aec(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/8e7018bf-a7c4-6514-67b2-9aea9d1a8aec/1.0" isExternalReference="true" agencyID="ESTAT" id="8e7018bf-a7c4-6514-67b2-9aea9d1a8aec" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0117_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9028ad6a-7f97-4f8e-7987-9ad2e3564999(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9028ad6a-7f97-4f8e-7987-9ad2e3564999/1.0" isExternalReference="true" agencyID="ESTAT" id="9028ad6a-7f97-4f8e-7987-9ad2e3564999" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0102_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:90c9fa4d-0114-eb01-d1ba-1aa1e93218b9(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/90c9fa4d-0114-eb01-d1ba-1aa1e93218b9/1.0" isExternalReference="true" agencyID="ESTAT" id="90c9fa4d-0114-eb01-d1ba-1aa1e93218b9" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0610_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:90ffd951-33fe-5469-48b6-cf65f213c148(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/90ffd951-33fe-5469-48b6-cf65f213c148/1.0" isExternalReference="true" agencyID="ESTAT" id="90ffd951-33fe-5469-48b6-cf65f213c148" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719PR_5(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:91362ca6-5063-047f-67ad-846e9c83688f(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/91362ca6-5063-047f-67ad-846e9c83688f/1.0" isExternalReference="true" agencyID="ESTAT" id="91362ca6-5063-047f-67ad-846e9c83688f" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0611_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9208ec6c-a8b2-3cbc-0aef-7a5bc02f2858(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9208ec6c-a8b2-3cbc-0aef-7a5bc02f2858/1.0" isExternalReference="true" agencyID="ESTAT" id="9208ec6c-a8b2-3cbc-0aef-7a5bc02f2858" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0501_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9371248a-7258-0c1e-17eb-38d2ead1996c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9371248a-7258-0c1e-17eb-38d2ead1996c/1.0" isExternalReference="true" agencyID="ESTAT" id="9371248a-7258-0c1e-17eb-38d2ead1996c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0110_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:93db7f23-3144-b8cf-6a70-3bd714a621e3(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/93db7f23-3144-b8cf-6a70-3bd714a621e3/1.0" isExternalReference="true" agencyID="ESTAT" id="93db7f23-3144-b8cf-6a70-3bd714a621e3" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0101_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:94732eee-95cc-3e46-9ab4-c2046daaef3e(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/94732eee-95cc-3e46-9ab4-c2046daaef3e/1.0" isExternalReference="true" agencyID="ESTAT" id="94732eee-95cc-3e46-9ab4-c2046daaef3e" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0710_A(1.3)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:94b9251d-802e-9862-7b20-d190e53c68b6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/94b9251d-802e-9862-7b20-d190e53c68b6/1.0" isExternalReference="true" agencyID="ESTAT" id="94b9251d-802e-9862-7b20-d190e53c68b6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0103_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:96012981-9f9f-e93c-ee20-9c586aba11b2(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/96012981-9f9f-e93c-ee20-9c586aba11b2/1.0" isExternalReference="true" agencyID="ESTAT" id="96012981-9f9f-e93c-ee20-9c586aba11b2" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0622_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:971d6929-659c-662c-554e-0a1babe40126(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/971d6929-659c-662c-554e-0a1babe40126/1.0" isExternalReference="true" agencyID="ESTAT" id="971d6929-659c-662c-554e-0a1babe40126" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0622_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:981b975f-3881-173a-f13f-0f24ce60da1b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/981b975f-3881-173a-f13f-0f24ce60da1b/1.0" isExternalReference="true" agencyID="ESTAT" id="981b975f-3881-173a-f13f-0f24ce60da1b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0720_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9918d1fc-4b1e-5ce8-af8e-cac8d9e16ed4(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9918d1fc-4b1e-5ce8-af8e-cac8d9e16ed4/1.0" isExternalReference="true" agencyID="ESTAT" id="9918d1fc-4b1e-5ce8-af8e-cac8d9e16ed4" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0710_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9a2ec710-f2f8-c573-ca2e-266543b784c0(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9a2ec710-f2f8-c573-ca2e-266543b784c0/1.0" isExternalReference="true" agencyID="ESTAT" id="9a2ec710-f2f8-c573-ca2e-266543b784c0" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0301_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9a3a564c-1489-609b-4606-57ddf45ce7e7(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9a3a564c-1489-609b-4606-57ddf45ce7e7/1.0" isExternalReference="true" agencyID="ESTAT" id="9a3a564c-1489-609b-4606-57ddf45ce7e7" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0502_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9a6b1b8a-e386-189d-3371-0a5ea783194e(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9a6b1b8a-e386-189d-3371-0a5ea783194e/1.0" isExternalReference="true" agencyID="ESTAT" id="9a6b1b8a-e386-189d-3371-0a5ea783194e" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0725_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9c89a8e2-1d56-26f4-1653-6ecd754c270a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9c89a8e2-1d56-26f4-1653-6ecd754c270a/1.0" isExternalReference="true" agencyID="ESTAT" id="9c89a8e2-1d56-26f4-1653-6ecd754c270a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516ADD_5(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9cb2bd58-1485-5fd7-9bb0-db9de3e22313(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9cb2bd58-1485-5fd7-9bb0-db9de3e22313/1.0" isExternalReference="true" agencyID="ESTAT" id="9cb2bd58-1485-5fd7-9bb0-db9de3e22313" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0611_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9d344756-884e-fca7-0240-fca7029c363b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9d344756-884e-fca7-0240-fca7029c363b/1.0" isExternalReference="true" agencyID="ESTAT" id="9d344756-884e-fca7-0240-fca7029c363b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0103_Q(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9edc63e1-0d2e-b606-e2d2-59b6d2f4b3e0(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9edc63e1-0d2e-b606-e2d2-59b6d2f4b3e0/1.0" isExternalReference="true" agencyID="ESTAT" id="9edc63e1-0d2e-b606-e2d2-59b6d2f4b3e0" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0612_A(1.3)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9eece474-4210-5b69-b240-44ce891ff0c1(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9eece474-4210-5b69-b240-44ce891ff0c1/1.0" isExternalReference="true" agencyID="ESTAT" id="9eece474-4210-5b69-b240-44ce891ff0c1" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0120_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9f08b774-aa88-6d44-ae4d-397b5156519a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9f08b774-aa88-6d44-ae4d-397b5156519a/1.0" isExternalReference="true" agencyID="ESTAT" id="9f08b774-aa88-6d44-ae4d-397b5156519a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0117_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9fa3770f-936a-9b53-95b1-903ece14511a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9fa3770f-936a-9b53-95b1-903ece14511a/1.0" isExternalReference="true" agencyID="ESTAT" id="9fa3770f-936a-9b53-95b1-903ece14511a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0621_A(1.3)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:9fd240cf-0861-651c-aeef-5d28b9695fea(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/9fd240cf-0861-651c-aeef-5d28b9695fea/1.0" isExternalReference="true" agencyID="ESTAT" id="9fd240cf-0861-651c-aeef-5d28b9695fea" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0710_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:A6F46E64-AF0C-36C3-1959-0DBB09F57A92(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/A6F46E64-AF0C-36C3-1959-0DBB09F57A92/1.0" isExternalReference="true" agencyID="ESTAT" id="A6F46E64-AF0C-36C3-1959-0DBB09F57A92" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0800_A(1.2)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:C1A298E6-0A98-74CC-4DCB-ED8403CBC96E(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/C1A298E6-0A98-74CC-4DCB-ED8403CBC96E/1.0" isExternalReference="true" agencyID="ESTAT" id="C1A298E6-0A98-74CC-4DCB-ED8403CBC96E" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801SA_Q(1.9)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:D4A3D4A9-1CC0-60A4-4448-ED8442B144B6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/D4A3D4A9-1CC0-60A4-4448-ED8442B144B6/1.0" isExternalReference="true" agencyID="ESTAT" id="D4A3D4A9-1CC0-60A4-4448-ED8442B144B6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801SA_Q(1.7)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:D6F58BF5-CE87-D4D0-F1CB-0DBB631DEEDC(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/D6F58BF5-CE87-D4D0-F1CB-0DBB631DEEDC/1.0" isExternalReference="true" agencyID="ESTAT" id="D6F58BF5-CE87-D4D0-F1CB-0DBB631DEEDC" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801_Q(1.2)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:E081D634-8131-365F-FD5A-ED84B69BEF5D(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/E081D634-8131-365F-FD5A-ED84B69BEF5D/1.0" isExternalReference="true" agencyID="ESTAT" id="E081D634-8131-365F-FD5A-ED84B69BEF5D" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801SA_Q(1.2)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:F37A1851-618C-64F7-1933-0DBB1564860F(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/F37A1851-618C-64F7-1933-0DBB1564860F/1.0" isExternalReference="true" agencyID="ESTAT" id="F37A1851-618C-64F7-1933-0DBB1564860F" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0800_A(1.1)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:F45AAACE-1F95-2136-8A25-ED83BE453A11(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/F45AAACE-1F95-2136-8A25-ED83BE453A11/1.0" isExternalReference="true" agencyID="ESTAT" id="F45AAACE-1F95-2136-8A25-ED83BE453A11" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801_Q(1.9)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:FA90B908-93D7-CBAC-0B94-ED847544DFA6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/FA90B908-93D7-CBAC-0B94-ED847544DFA6/1.0" isExternalReference="true" agencyID="ESTAT" id="FA90B908-93D7-CBAC-0B94-ED847544DFA6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0801SA_Q(1.5)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:FEC2C18E-65AB-DC37-3EBA-ED80F2F85593(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/FEC2C18E-65AB-DC37-3EBA-ED80F2F85593/1.0" isExternalReference="true" agencyID="ESTAT" id="FEC2C18E-65AB-DC37-3EBA-ED80F2F85593" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: DATAFLOWESTAT:NASEC_T0800_A(1.8)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a013697e-c466-c635-db35-63c5bb0751c4(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a013697e-c466-c635-db35-63c5bb0751c4/1.0" isExternalReference="true" agencyID="ESTAT" id="a013697e-c466-c635-db35-63c5bb0751c4" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0502_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a122ee80-03bc-f371-6cc7-d32e105dd48c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a122ee80-03bc-f371-6cc7-d32e105dd48c/1.0" isExternalReference="true" agencyID="ESTAT" id="a122ee80-03bc-f371-6cc7-d32e105dd48c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0103_Q(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a17cf671-2d87-1cc3-7f5e-33e6505da0ff(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a17cf671-2d87-1cc3-7f5e-33e6505da0ff/1.0" isExternalReference="true" agencyID="ESTAT" id="a17cf671-2d87-1cc3-7f5e-33e6505da0ff" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0102_Q(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a184f7de-d8f3-8b64-4dc5-818bbb6084b1(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a184f7de-d8f3-8b64-4dc5-818bbb6084b1/1.0" isExternalReference="true" agencyID="ESTAT" id="a184f7de-d8f3-8b64-4dc5-818bbb6084b1" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0111_Q(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a1c40c88-0c45-18cb-5f79-8920871268d8(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a1c40c88-0c45-18cb-5f79-8920871268d8/1.0" isExternalReference="true" agencyID="ESTAT" id="a1c40c88-0c45-18cb-5f79-8920871268d8" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0725_A(1.3)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a4bea0d5-d17f-a292-3f4a-90ef21f7a1f6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a4bea0d5-d17f-a292-3f4a-90ef21f7a1f6/1.0" isExternalReference="true" agencyID="ESTAT" id="a4bea0d5-d17f-a292-3f4a-90ef21f7a1f6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0301_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a4ffa93b-0821-20cc-b025-bfac1005141e(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a4ffa93b-0821-20cc-b025-bfac1005141e/1.0" isExternalReference="true" agencyID="ESTAT" id="a4ffa93b-0821-20cc-b025-bfac1005141e" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0621_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a680cb8c-eb95-1d74-022e-055664540622(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a680cb8c-eb95-1d74-022e-055664540622/1.0" isExternalReference="true" agencyID="ESTAT" id="a680cb8c-eb95-1d74-022e-055664540622" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0103_Q(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a8d318b0-f2f5-f38a-19ee-5b03f1261778(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a8d318b0-f2f5-f38a-19ee-5b03f1261778/1.0" isExternalReference="true" agencyID="ESTAT" id="a8d318b0-f2f5-f38a-19ee-5b03f1261778" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0120_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a925d2ea-df86-2f63-f639-4f1c20f8989b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a925d2ea-df86-2f63-f639-4f1c20f8989b/1.0" isExternalReference="true" agencyID="ESTAT" id="a925d2ea-df86-2f63-f639-4f1c20f8989b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0501_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a9733d2f-4a96-5146-f5a9-06f71ebf2137(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a9733d2f-4a96-5146-f5a9-06f71ebf2137/1.0" isExternalReference="true" agencyID="ESTAT" id="a9733d2f-4a96-5146-f5a9-06f71ebf2137" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0720_A(1.3)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:a9813894-5b39-a0c0-9e71-2cc9429602b2(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/a9813894-5b39-a0c0-9e71-2cc9429602b2/1.0" isExternalReference="true" agencyID="ESTAT" id="a9813894-5b39-a0c0-9e71-2cc9429602b2" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0110_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:aad70243-8273-50e2-f164-47f523b3a398(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/aad70243-8273-50e2-f164-47f523b3a398/1.0" isExternalReference="true" agencyID="ESTAT" id="aad70243-8273-50e2-f164-47f523b3a398" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0121_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:abae8fcd-b266-c919-99b9-96490d77b1ed(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/abae8fcd-b266-c919-99b9-96490d77b1ed/1.0" isExternalReference="true" agencyID="ESTAT" id="abae8fcd-b266-c919-99b9-96490d77b1ed" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0110_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:ac0e0620-5ef0-c8ba-b60e-9010d64d4025(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/ac0e0620-5ef0-c8ba-b60e-9010d64d4025/1.0" isExternalReference="true" agencyID="ESTAT" id="ac0e0620-5ef0-c8ba-b60e-9010d64d4025" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0111_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:ac8535f6-7009-724e-a5b4-a1340d4020c7(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/ac8535f6-7009-724e-a5b4-a1340d4020c7/1.0" isExternalReference="true" agencyID="ESTAT" id="ac8535f6-7009-724e-a5b4-a1340d4020c7" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0303_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:ad3d4e47-85fa-1bc9-b8e9-85ff07fad0c7(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/ad3d4e47-85fa-1bc9-b8e9-85ff07fad0c7/1.0" isExternalReference="true" agencyID="ESTAT" id="ad3d4e47-85fa-1bc9-b8e9-85ff07fad0c7" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010PENS' linking to Dataflow 'ESTAT:NAPENS_T2900_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:adad55bc-050c-8cd3-c336-b11ef66b5ed5(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/adad55bc-050c-8cd3-c336-b11ef66b5ed5/1.0" isExternalReference="true" agencyID="ESTAT" id="adad55bc-050c-8cd3-c336-b11ef66b5ed5" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0612_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:adc87e4b-7b7a-3631-c2ed-849e0b5be3cc(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/adc87e4b-7b7a-3631-c2ed-849e0b5be3cc/1.0" isExternalReference="true" agencyID="ESTAT" id="adc87e4b-7b7a-3631-c2ed-849e0b5be3cc" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0725_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:aeb8a124-01a0-06aa-632e-7cb524bbcc72(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/aeb8a124-01a0-06aa-632e-7cb524bbcc72/1.0" isExternalReference="true" agencyID="ESTAT" id="aeb8a124-01a0-06aa-632e-7cb524bbcc72" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0625_A(1.3)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:af5d06b5-7139-2a51-1746-01353d8d90d6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/af5d06b5-7139-2a51-1746-01353d8d90d6/1.0" isExternalReference="true" agencyID="ESTAT" id="af5d06b5-7139-2a51-1746-01353d8d90d6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0625_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:af63a093-33ad-3ec9-0afc-11e8e39493da(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/af63a093-33ad-3ec9-0afc-11e8e39493da/1.0" isExternalReference="true" agencyID="ESTAT" id="af63a093-33ad-3ec9-0afc-11e8e39493da" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0120_Q(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:af76af00-ba87-5eed-7464-0efeaaa7d345(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/af76af00-ba87-5eed-7464-0efeaaa7d345/1.0" isExternalReference="true" agencyID="ESTAT" id="af76af00-ba87-5eed-7464-0efeaaa7d345" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_163034_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:af906326-4a4e-c4f5-b1cd-6fb7266c96ab(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/af906326-4a4e-c4f5-b1cd-6fb7266c96ab/1.0" isExternalReference="true" agencyID="ESTAT" id="af906326-4a4e-c4f5-b1cd-6fb7266c96ab" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516ADD_5(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:b01c0fa1-fc07-d76a-7ce0-2430d94766e8(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/b01c0fa1-fc07-d76a-7ce0-2430d94766e8/1.0" isExternalReference="true" agencyID="ESTAT" id="b01c0fa1-fc07-d76a-7ce0-2430d94766e8" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0502_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:b13cb8b5-e609-495a-5220-cd9c13efcd33(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/b13cb8b5-e609-495a-5220-cd9c13efcd33/1.0" isExternalReference="true" agencyID="ESTAT" id="b13cb8b5-e609-495a-5220-cd9c13efcd33" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0303_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:b295ba60-5e26-403d-7e53-65b6868a4b6d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/b295ba60-5e26-403d-7e53-65b6868a4b6d/1.0" isExternalReference="true" agencyID="ESTAT" id="b295ba60-5e26-403d-7e53-65b6868a4b6d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0622_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:b2da5cd0-2f92-4486-1a93-c046454bff96(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/b2da5cd0-2f92-4486-1a93-c046454bff96/1.0" isExternalReference="true" agencyID="ESTAT" id="b2da5cd0-2f92-4486-1a93-c046454bff96" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0120_Q(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:b34a4890-5b01-2ba6-c265-1b2f6d36c176(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/b34a4890-5b01-2ba6-c265-1b2f6d36c176/1.0" isExternalReference="true" agencyID="ESTAT" id="b34a4890-5b01-2ba6-c265-1b2f6d36c176" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:b3facb00-ec90-afa4-9999-80192e052b02(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/b3facb00-ec90-afa4-9999-80192e052b02/1.0" isExternalReference="true" agencyID="ESTAT" id="b3facb00-ec90-afa4-9999-80192e052b02" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2000_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:b4585d5a-a7c6-43a3-4c24-f534efc93813(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/b4585d5a-a7c6-43a3-4c24-f534efc93813/1.0" isExternalReference="true" agencyID="ESTAT" id="b4585d5a-a7c6-43a3-4c24-f534efc93813" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0117_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:b497e466-86b6-32e1-383c-9ddd8516f0bc(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/b497e466-86b6-32e1-383c-9ddd8516f0bc/1.0" isExternalReference="true" agencyID="ESTAT" id="b497e466-86b6-32e1-383c-9ddd8516f0bc" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2200_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:b5e2598c-9f62-d1bc-ca35-edc6347eb28a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/b5e2598c-9f62-d1bc-ca35-edc6347eb28a/1.0" isExternalReference="true" agencyID="ESTAT" id="b5e2598c-9f62-d1bc-ca35-edc6347eb28a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0121_Q(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:b68a89a8-2d45-8930-fab2-cd7ff920a7aa(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/b68a89a8-2d45-8930-fab2-cd7ff920a7aa/1.0" isExternalReference="true" agencyID="ESTAT" id="b68a89a8-2d45-8930-fab2-cd7ff920a7aa" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0621_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:b69eb0ef-3dfb-6963-b68d-7650bc46d49b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/b69eb0ef-3dfb-6963-b68d-7650bc46d49b/1.0" isExternalReference="true" agencyID="ESTAT" id="b69eb0ef-3dfb-6963-b68d-7650bc46d49b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719PR_5(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:ba88dcec-ec8c-91bd-b709-3680fdd2d6af(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/ba88dcec-ec8c-91bd-b709-3680fdd2d6af/1.0" isExternalReference="true" agencyID="ESTAT" id="ba88dcec-ec8c-91bd-b709-3680fdd2d6af" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0620_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:bb295548-1489-c86d-1692-b7527b965187(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/bb295548-1489-c86d-1692-b7527b965187/1.0" isExternalReference="true" agencyID="ESTAT" id="bb295548-1489-c86d-1692-b7527b965187" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0710_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:bd948b3c-2ca3-433f-96e4-5df299232e1a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/bd948b3c-2ca3-433f-96e4-5df299232e1a/1.0" isExternalReference="true" agencyID="ESTAT" id="bd948b3c-2ca3-433f-96e4-5df299232e1a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0101_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:be1d8bc4-792f-aa35-341a-3f2ed5f5e84f(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/be1d8bc4-792f-aa35-341a-3f2ed5f5e84f/1.0" isExternalReference="true" agencyID="ESTAT" id="be1d8bc4-792f-aa35-341a-3f2ed5f5e84f" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_16BP_5(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:bebc0b02-707a-7dd8-fe23-7c6e28088945(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/bebc0b02-707a-7dd8-fe23-7c6e28088945/1.0" isExternalReference="true" agencyID="ESTAT" id="bebc0b02-707a-7dd8-fe23-7c6e28088945" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516ADD_5(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:beefceb3-0c97-62ce-7af8-5ff69f49752b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/beefceb3-0c97-62ce-7af8-5ff69f49752b/1.0" isExternalReference="true" agencyID="ESTAT" id="beefceb3-0c97-62ce-7af8-5ff69f49752b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0725_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c021fa02-a85b-5f77-5567-e19a2473a18a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c021fa02-a85b-5f77-5567-e19a2473a18a/1.0" isExternalReference="true" agencyID="ESTAT" id="c021fa02-a85b-5f77-5567-e19a2473a18a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0302_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c02e7236-526b-75fe-c6ba-62dac5b23eb9(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c02e7236-526b-75fe-c6ba-62dac5b23eb9/1.0" isExternalReference="true" agencyID="ESTAT" id="c02e7236-526b-75fe-c6ba-62dac5b23eb9" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0720_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c38b383c-99a9-2645-2d92-9e417e0897d2(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c38b383c-99a9-2645-2d92-9e417e0897d2/1.0" isExternalReference="true" agencyID="ESTAT" id="c38b383c-99a9-2645-2d92-9e417e0897d2" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_163034_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c3eb9074-c0e8-47e5-a82f-b8a10bd6fa7b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c3eb9074-c0e8-47e5-a82f-b8a10bd6fa7b/1.0" isExternalReference="true" agencyID="ESTAT" id="c3eb9074-c0e8-47e5-a82f-b8a10bd6fa7b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0121_Q(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c43cc986-604f-bb64-d7c4-7f7355d98233(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c43cc986-604f-bb64-d7c4-7f7355d98233/1.0" isExternalReference="true" agencyID="ESTAT" id="c43cc986-604f-bb64-d7c4-7f7355d98233" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_16BP_5(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c44dc969-f05a-2167-8f8f-7b1f1766e632(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c44dc969-f05a-2167-8f8f-7b1f1766e632/1.0" isExternalReference="true" agencyID="ESTAT" id="c44dc969-f05a-2167-8f8f-7b1f1766e632" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0117_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c498900e-cc21-416f-7020-94fe35859144(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c498900e-cc21-416f-7020-94fe35859144/1.0" isExternalReference="true" agencyID="ESTAT" id="c498900e-cc21-416f-7020-94fe35859144" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2000_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c4dc8a21-3152-e07e-2b96-f3ade691f8fa(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c4dc8a21-3152-e07e-2b96-f3ade691f8fa/1.0" isExternalReference="true" agencyID="ESTAT" id="c4dc8a21-3152-e07e-2b96-f3ade691f8fa" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_163034_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c4ef8f27-7a5b-bae8-87f4-f015ac6e2c61(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c4ef8f27-7a5b-bae8-87f4-f015ac6e2c61/1.0" isExternalReference="true" agencyID="ESTAT" id="c4ef8f27-7a5b-bae8-87f4-f015ac6e2c61" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0725_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c52ef07b-ed22-c3be-fe55-0752eae1c557(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c52ef07b-ed22-c3be-fe55-0752eae1c557/1.0" isExternalReference="true" agencyID="ESTAT" id="c52ef07b-ed22-c3be-fe55-0752eae1c557" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0720_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c5c0f4e2-d89d-3253-7f9d-d0e3728b0872(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c5c0f4e2-d89d-3253-7f9d-d0e3728b0872/1.0" isExternalReference="true" agencyID="ESTAT" id="c5c0f4e2-d89d-3253-7f9d-d0e3728b0872" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0103_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c615e5e6-f48a-2f1e-4405-4d7ee084834b(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c615e5e6-f48a-2f1e-4405-4d7ee084834b/1.0" isExternalReference="true" agencyID="ESTAT" id="c615e5e6-f48a-2f1e-4405-4d7ee084834b" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0302_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c68efb80-cc0a-776d-7f36-32458a723d72(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c68efb80-cc0a-776d-7f36-32458a723d72/1.0" isExternalReference="true" agencyID="ESTAT" id="c68efb80-cc0a-776d-7f36-32458a723d72" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0121_Q(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c6cc6bc9-d393-80e9-2eb5-f96f2a1ec187(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c6cc6bc9-d393-80e9-2eb5-f96f2a1ec187/1.0" isExternalReference="true" agencyID="ESTAT" id="c6cc6bc9-d393-80e9-2eb5-f96f2a1ec187" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0710_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c7035954-d416-83ac-0f55-3aded5b7462e(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c7035954-d416-83ac-0f55-3aded5b7462e/1.0" isExternalReference="true" agencyID="ESTAT" id="c7035954-d416-83ac-0f55-3aded5b7462e" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0620_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c736e74f-2626-12db-92b5-88601a842939(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c736e74f-2626-12db-92b5-88601a842939/1.0" isExternalReference="true" agencyID="ESTAT" id="c736e74f-2626-12db-92b5-88601a842939" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0502_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c76bc20f-bbff-e091-8e4d-998669b53c2d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c76bc20f-bbff-e091-8e4d-998669b53c2d/1.0" isExternalReference="true" agencyID="ESTAT" id="c76bc20f-bbff-e091-8e4d-998669b53c2d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0625_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c8b759dc-3013-6372-a6f6-dc702ab13a34(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c8b759dc-3013-6372-a6f6-dc702ab13a34/1.0" isExternalReference="true" agencyID="ESTAT" id="c8b759dc-3013-6372-a6f6-dc702ab13a34" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516ADD_5(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c917f18e-7a7e-f3e9-63a3-256e9a2ee904(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c917f18e-7a7e-f3e9-63a3-256e9a2ee904/1.0" isExternalReference="true" agencyID="ESTAT" id="c917f18e-7a7e-f3e9-63a3-256e9a2ee904" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0101_Q(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c95f9175-9b6c-047c-ad80-44635d24d2ca(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c95f9175-9b6c-047c-ad80-44635d24d2ca/1.0" isExternalReference="true" agencyID="ESTAT" id="c95f9175-9b6c-047c-ad80-44635d24d2ca" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0101_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:c9830cae-ae42-80ff-11d5-9847cb5c7a53(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/c9830cae-ae42-80ff-11d5-9847cb5c7a53/1.0" isExternalReference="true" agencyID="ESTAT" id="c9830cae-ae42-80ff-11d5-9847cb5c7a53" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0121_Q(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:caef3237-2ccb-56c7-a76d-10308e87f0e7(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/caef3237-2ccb-56c7-a76d-10308e87f0e7/1.0" isExternalReference="true" agencyID="ESTAT" id="caef3237-2ccb-56c7-a76d-10308e87f0e7" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0110_Q(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:cb1b97e7-d859-6bd9-ad65-c2235d07f7f5(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/cb1b97e7-d859-6bd9-ad65-c2235d07f7f5/1.0" isExternalReference="true" agencyID="ESTAT" id="cb1b97e7-d859-6bd9-ad65-c2235d07f7f5" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0501_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:cb69df3f-469e-ab2d-9dec-5ce95a6906ed(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/cb69df3f-469e-ab2d-9dec-5ce95a6906ed/1.0" isExternalReference="true" agencyID="ESTAT" id="cb69df3f-469e-ab2d-9dec-5ce95a6906ed" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2200_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:cc375d61-885e-c311-eea4-f90e37b221d9(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/cc375d61-885e-c311-eea4-f90e37b221d9/1.0" isExternalReference="true" agencyID="ESTAT" id="cc375d61-885e-c311-eea4-f90e37b221d9" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2000_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:cca07fc8-b25f-4053-373b-72685d84f682(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/cca07fc8-b25f-4053-373b-72685d84f682/1.0" isExternalReference="true" agencyID="ESTAT" id="cca07fc8-b25f-4053-373b-72685d84f682" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719IN_5(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:cd1dbade-3428-8966-a97c-97a63000b733(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/cd1dbade-3428-8966-a97c-97a63000b733/1.0" isExternalReference="true" agencyID="ESTAT" id="cd1dbade-3428-8966-a97c-97a63000b733" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0611_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:d08f5aa2-5220-7bbd-dc0d-3a710df3c78d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/d08f5aa2-5220-7bbd-dc0d-3a710df3c78d/1.0" isExternalReference="true" agencyID="ESTAT" id="d08f5aa2-5220-7bbd-dc0d-3a710df3c78d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0611_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:d1ace05c-211a-21d7-5176-fa21695f1b25(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/d1ace05c-211a-21d7-5176-fa21695f1b25/1.0" isExternalReference="true" agencyID="ESTAT" id="d1ace05c-211a-21d7-5176-fa21695f1b25" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_16BP_5(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:d4704ebb-8b8f-b2bc-af2b-44565f0dad06(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/d4704ebb-8b8f-b2bc-af2b-44565f0dad06/1.0" isExternalReference="true" agencyID="ESTAT" id="d4704ebb-8b8f-b2bc-af2b-44565f0dad06" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0621_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:d4b51e63-a037-b120-5759-2f66a23ed5f7(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/d4b51e63-a037-b120-5759-2f66a23ed5f7/1.0" isExternalReference="true" agencyID="ESTAT" id="d4b51e63-a037-b120-5759-2f66a23ed5f7" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0302_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:d644d0af-5ad8-8e2e-b443-fc1d65ded9e3(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/d644d0af-5ad8-8e2e-b443-fc1d65ded9e3/1.0" isExternalReference="true" agencyID="ESTAT" id="d644d0af-5ad8-8e2e-b443-fc1d65ded9e3" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719IN_5(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:d7693806-de77-fd5b-06a3-b00c62c2a714(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/d7693806-de77-fd5b-06a3-b00c62c2a714/1.0" isExternalReference="true" agencyID="ESTAT" id="d7693806-de77-fd5b-06a3-b00c62c2a714" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0103_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:d863e7f2-5490-a3a3-e313-ee9079934883(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/d863e7f2-5490-a3a3-e313-ee9079934883/1.0" isExternalReference="true" agencyID="ESTAT" id="d863e7f2-5490-a3a3-e313-ee9079934883" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2200_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:da91bfcf-d905-7a83-a8c7-eabcb9b8f23e(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/da91bfcf-d905-7a83-a8c7-eabcb9b8f23e/1.0" isExternalReference="true" agencyID="ESTAT" id="da91bfcf-d905-7a83-a8c7-eabcb9b8f23e" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:daaf16b7-0bf2-fd24-2c4a-050d9349becc(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/daaf16b7-0bf2-fd24-2c4a-050d9349becc/1.0" isExternalReference="true" agencyID="ESTAT" id="daaf16b7-0bf2-fd24-2c4a-050d9349becc" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0725_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:dcc5b438-7e71-bdb0-eb79-0357d02ef92c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/dcc5b438-7e71-bdb0-eb79-0357d02ef92c/1.0" isExternalReference="true" agencyID="ESTAT" id="dcc5b438-7e71-bdb0-eb79-0357d02ef92c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0117_Q(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:dcf69479-8737-9afb-dacd-d3b86431b172(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/dcf69479-8737-9afb-dacd-d3b86431b172/1.0" isExternalReference="true" agencyID="ESTAT" id="dcf69479-8737-9afb-dacd-d3b86431b172" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0101_Q(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:df27e6ce-f513-9559-5937-bfd7c13ff538(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/df27e6ce-f513-9559-5937-bfd7c13ff538/1.0" isExternalReference="true" agencyID="ESTAT" id="df27e6ce-f513-9559-5937-bfd7c13ff538" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0101_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:e097d6d7-7d19-e916-865e-a89e37b19127(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/e097d6d7-7d19-e916-865e-a89e37b19127/1.0" isExternalReference="true" agencyID="ESTAT" id="e097d6d7-7d19-e916-865e-a89e37b19127" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0117_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:e21c1b94-8c71-5ca4-c93e-2f586cde4c1d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/e21c1b94-8c71-5ca4-c93e-2f586cde4c1d/1.0" isExternalReference="true" agencyID="ESTAT" id="e21c1b94-8c71-5ca4-c93e-2f586cde4c1d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0110_Q(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:e235ca07-e16a-df17-72db-473baf5f45b3(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/e235ca07-e16a-df17-72db-473baf5f45b3/1.0" isExternalReference="true" agencyID="ESTAT" id="e235ca07-e16a-df17-72db-473baf5f45b3" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0117_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:e305e8aa-da49-f783-aec4-ba12326b4a8d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/e305e8aa-da49-f783-aec4-ba12326b4a8d/1.0" isExternalReference="true" agencyID="ESTAT" id="e305e8aa-da49-f783-aec4-ba12326b4a8d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0102_Q(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:e3ed2110-ed80-4fba-73fd-bb5228bfee05(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/e3ed2110-ed80-4fba-73fd-bb5228bfee05/1.0" isExternalReference="true" agencyID="ESTAT" id="e3ed2110-ed80-4fba-73fd-bb5228bfee05" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0501_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:e3f31bb9-1e44-aeb6-8846-b9f9778e4576(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/e3f31bb9-1e44-aeb6-8846-b9f9778e4576/1.0" isExternalReference="true" agencyID="ESTAT" id="e3f31bb9-1e44-aeb6-8846-b9f9778e4576" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_163034_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:e5461650-7a79-6431-9b0b-eda120d9df66(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/e5461650-7a79-6431-9b0b-eda120d9df66/1.0" isExternalReference="true" agencyID="ESTAT" id="e5461650-7a79-6431-9b0b-eda120d9df66" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516ADD_5(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:e55ac34e-d878-a87b-9e41-42b87f300cd6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/e55ac34e-d878-a87b-9e41-42b87f300cd6/1.0" isExternalReference="true" agencyID="ESTAT" id="e55ac34e-d878-a87b-9e41-42b87f300cd6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0301_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:e57f899c-af86-8ac8-c574-3ceecc05e4ed(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/e57f899c-af86-8ac8-c574-3ceecc05e4ed/1.0" isExternalReference="true" agencyID="ESTAT" id="e57f899c-af86-8ac8-c574-3ceecc05e4ed" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719IN_5(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:e5e11e6e-7857-8350-500c-babe93cd9fce(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/e5e11e6e-7857-8350-500c-babe93cd9fce/1.0" isExternalReference="true" agencyID="ESTAT" id="e5e11e6e-7857-8350-500c-babe93cd9fce" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0121_Q(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:e9229ce0-ea34-0a3e-64d0-02090f2239c5(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/e9229ce0-ea34-0a3e-64d0-02090f2239c5/1.0" isExternalReference="true" agencyID="ESTAT" id="e9229ce0-ea34-0a3e-64d0-02090f2239c5" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010PENS' linking to Dataflow 'ESTAT:NAPENS_T2902_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:ea1bb936-83b4-f0f5-14db-4b2e7e07403c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/ea1bb936-83b4-f0f5-14db-4b2e7e07403c/1.0" isExternalReference="true" agencyID="ESTAT" id="ea1bb936-83b4-f0f5-14db-4b2e7e07403c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0103_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:ebb96d5d-eefa-2102-f224-d3b38f124864(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/ebb96d5d-eefa-2102-f224-d3b38f124864/1.0" isExternalReference="true" agencyID="ESTAT" id="ebb96d5d-eefa-2102-f224-d3b38f124864" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0103_Q(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:ec42c8ae-bf88-04c9-614f-c4dc7db79428(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/ec42c8ae-bf88-04c9-614f-c4dc7db79428/1.0" isExternalReference="true" agencyID="ESTAT" id="ec42c8ae-bf88-04c9-614f-c4dc7db79428" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1719PR_5(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:ec6e1194-8ced-9965-ec7d-50ae8fce7a96(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/ec6e1194-8ced-9965-ec7d-50ae8fce7a96/1.0" isExternalReference="true" agencyID="ESTAT" id="ec6e1194-8ced-9965-ec7d-50ae8fce7a96" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T2200_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:ee824c6c-1c11-7706-87b6-eea13509907d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/ee824c6c-1c11-7706-87b6-eea13509907d/1.0" isExternalReference="true" agencyID="ESTAT" id="ee824c6c-1c11-7706-87b6-eea13509907d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0101_Q(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:ee8c784f-379d-0609-874c-bc40571c0c5f(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/ee8c784f-379d-0609-874c-bc40571c0c5f/1.0" isExternalReference="true" agencyID="ESTAT" id="ee8c784f-379d-0609-874c-bc40571c0c5f" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0111_Q(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:ef2a5716-4e88-a98e-be96-49de6e988bc6(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/ef2a5716-4e88-a98e-be96-49de6e988bc6/1.0" isExternalReference="true" agencyID="ESTAT" id="ef2a5716-4e88-a98e-be96-49de6e988bc6" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0622_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:efaaea49-29bc-5e8d-8c21-5bdd41763444(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/efaaea49-29bc-5e8d-8c21-5bdd41763444/1.0" isExternalReference="true" agencyID="ESTAT" id="efaaea49-29bc-5e8d-8c21-5bdd41763444" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0302_A(1.1)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f035270c-34ab-2e87-89bb-f7ea6e4a4274(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f035270c-34ab-2e87-89bb-f7ea6e4a4274/1.0" isExternalReference="true" agencyID="ESTAT" id="f035270c-34ab-2e87-89bb-f7ea6e4a4274" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0612_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f0ec0caa-65b4-9612-6c8f-62b975d6864c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f0ec0caa-65b4-9612-6c8f-62b975d6864c/1.0" isExternalReference="true" agencyID="ESTAT" id="f0ec0caa-65b4-9612-6c8f-62b975d6864c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f18c2a45-deff-11c7-4e42-f370ddc4ce27(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f18c2a45-deff-11c7-4e42-f370ddc4ce27/1.0" isExternalReference="true" agencyID="ESTAT" id="f18c2a45-deff-11c7-4e42-f370ddc4ce27" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0111_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f2114e25-cb23-00e6-d12a-9f1244d43404(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f2114e25-cb23-00e6-d12a-9f1244d43404/1.0" isExternalReference="true" agencyID="ESTAT" id="f2114e25-cb23-00e6-d12a-9f1244d43404" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0101_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f3745e56-5905-6ffc-87a7-0771fd00c334(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f3745e56-5905-6ffc-87a7-0771fd00c334/1.0" isExternalReference="true" agencyID="ESTAT" id="f3745e56-5905-6ffc-87a7-0771fd00c334" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0501_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f4f03181-4e97-89e0-80f6-9b6f2842d2b4(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f4f03181-4e97-89e0-80f6-9b6f2842d2b4/1.0" isExternalReference="true" agencyID="ESTAT" id="f4f03181-4e97-89e0-80f6-9b6f2842d2b4" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0302_A(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f5adb95a-7bb0-cc1c-d6d7-03773bc7634c(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f5adb95a-7bb0-cc1c-d6d7-03773bc7634c/1.0" isExternalReference="true" agencyID="ESTAT" id="f5adb95a-7bb0-cc1c-d6d7-03773bc7634c" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0612_A(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f623ec4a-de99-4ff2-20fe-91cd77091827(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f623ec4a-de99-4ff2-20fe-91cd77091827/1.0" isExternalReference="true" agencyID="ESTAT" id="f623ec4a-de99-4ff2-20fe-91cd77091827" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_1516_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f76247a7-623d-b1ae-6922-8e82ede7da28(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f76247a7-623d-b1ae-6922-8e82ede7da28/1.0" isExternalReference="true" agencyID="ESTAT" id="f76247a7-623d-b1ae-6922-8e82ede7da28" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0110_Q(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f826440a-85ff-2b71-bfaa-a1114fcf78d1(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f826440a-85ff-2b71-bfaa-a1114fcf78d1/1.0" isExternalReference="true" agencyID="ESTAT" id="f826440a-85ff-2b71-bfaa-a1114fcf78d1" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010SUIOT' linking to Dataflow 'ESTAT:NASU_16BP_5(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f832efbd-308a-f3d3-a08c-4e2e4239622d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f832efbd-308a-f3d3-a08c-4e2e4239622d/1.0" isExternalReference="true" agencyID="ESTAT" id="f832efbd-308a-f3d3-a08c-4e2e4239622d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0102_Q(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f8a17f9e-07c4-b192-8706-7e69e0b59759(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f8a17f9e-07c4-b192-8706-7e69e0b59759/1.0" isExternalReference="true" agencyID="ESTAT" id="f8a17f9e-07c4-b192-8706-7e69e0b59759" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0102_A(1.5)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f975cdd3-2b1e-aa23-4ad4-7e30baa1968d(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f975cdd3-2b1e-aa23-4ad4-7e30baa1968d/1.0" isExternalReference="true" agencyID="ESTAT" id="f975cdd3-2b1e-aa23-4ad4-7e30baa1968d" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0612_A(1.9)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:f9bf58c0-7a36-201d-3dd5-7be5b37c161f(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/f9bf58c0-7a36-201d-3dd5-7be5b37c161f/1.0" isExternalReference="true" agencyID="ESTAT" id="f9bf58c0-7a36-201d-3dd5-7be5b37c161f" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0611_A(1.3)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:fc942e93-adea-942d-8e84-a1581dd8c83a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/fc942e93-adea-942d-8e84-a1581dd8c83a/1.0" isExternalReference="true" agencyID="ESTAT" id="fc942e93-adea-942d-8e84-a1581dd8c83a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0110_A(1.8)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:fd448bef-3f7a-9a58-fd14-50d9851f7dcd(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/fd448bef-3f7a-9a58-fd14-50d9851f7dcd/1.0" isExternalReference="true" agencyID="ESTAT" id="fd448bef-3f7a-9a58-fd14-50d9851f7dcd" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0111_Q(1.7)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:fd5db6b9-6137-17f2-07e7-c71767f78c1f(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/fd5db6b9-6137-17f2-07e7-c71767f78c1f/1.0" isExternalReference="true" agencyID="ESTAT" id="fd5db6b9-6137-17f2-07e7-c71767f78c1f" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.A' linking to Dataflow 'ESTAT:NAMAIN_T0110_A(1.6)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:fd834741-439b-9847-f54b-4e264a7d54ef(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/fd834741-439b-9847-f54b-4e264a7d54ef/1.0" isExternalReference="true" agencyID="ESTAT" id="fd834741-439b-9847-f54b-4e264a7d54ef" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010FINA' linking to Dataflow 'ESTAT:NASEC_T0610_A(1.4)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=ESTAT:fe896820-3a93-fe89-9ed3-fe48e6866f5a(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/ESTAT/fe896820-3a93-fe89-9ed3-fe48e6866f5a/1.0" isExternalReference="true" agencyID="ESTAT" id="fe896820-3a93-fe89-9ed3-fe48e6866f5a" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Category 'ESTAT:ESA2010TP(1.0).ESA2010MA.Q' linking to Dataflow 'ESTAT:NAMAIN_T0111_Q(1.2)'</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=SDMX:1D2350AB-94BD-2284-5175-0F8014615849(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/SDMX/1D2350AB-94BD-2284-5175-0F8014615849/1.0" isExternalReference="true" agencyID="SDMX" id="1D2350AB-94BD-2284-5175-0F8014615849" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: CODESDMX:CL_AGE(1.0).H</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=SDMX:6EA5A9C9-85B2-4FF8-B13A-0F7EBB1F2D43(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/SDMX/6EA5A9C9-85B2-4FF8-B13A-0F7EBB1F2D43/1.0" isExternalReference="true" agencyID="SDMX" id="6EA5A9C9-85B2-4FF8-B13A-0F7EBB1F2D43" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: CODESDMX:CL_AGE(1.0).Y</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=SDMX:94DABB62-9569-B033-70FF-0F823D2B3206(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/SDMX/94DABB62-9569-B033-70FF-0F823D2B3206/1.0" isExternalReference="true" agencyID="SDMX" id="94DABB62-9569-B033-70FF-0F823D2B3206" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: CODE_LISTSDMX:CL_AGE(1.0)</com:Name>
+      </str:Categorisation>
+      <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=SDMX:DE812EFE-6872-7CA7-105E-0F80F1C6BAB2(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categorisation/SDMX/DE812EFE-6872-7CA7-105E-0F80F1C6BAB2/1.0" isExternalReference="true" agencyID="SDMX" id="DE812EFE-6872-7CA7-105E-0F80F1C6BAB2" isFinal="false" version="1.0">
+        <com:Name xml:lang="en">Categorise: CODESDMX:CL_AGE(1.0).Y</com:Name>
+      </str:Categorisation>
+    </str:Categorisations></mes:Structures></mes:Structure>

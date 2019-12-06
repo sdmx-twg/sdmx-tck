@@ -1,0 +1,2794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IDREF092210d2-b77f-41af-a6b7-3eed62cad63e</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2019-11-04T13:48:50Z</mes:Prepared>
+		<mes:Sender id="SDMX"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:Dataflows>
+			<str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:NASU2_1516_A(2.1)" isExternalReference="false" agencyID="ESTAT" id="NASU2_1516_A" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NASU2_1516_A</com:Name>
+				<str:Structure>
+					<Ref package="datastructure" agencyID="ESTAT" id="NA_SU" version="2.1" class="DataStructure"/>
+				</str:Structure>
+			</str:Dataflow>
+			<str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:NASU2_16ADD_5(2.1)" isExternalReference="false" agencyID="ESTAT" id="NASU2_16ADD_5" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NASU2_16ADD_5</com:Name>
+				<str:Structure>
+					<Ref package="datastructure" agencyID="ESTAT" id="NA_SU" version="2.1" class="DataStructure"/>
+				</str:Structure>
+			</str:Dataflow>
+			<str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:NASU2_17IN_5(2.1)" isExternalReference="false" agencyID="ESTAT" id="NASU2_17IN_5" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NASU2_17IN_5</com:Name>
+				<str:Structure>
+					<Ref package="datastructure" agencyID="ESTAT" id="NA_SU" version="2.1" class="DataStructure"/>
+				</str:Structure>
+			</str:Dataflow>
+			<str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:NASU2_17PR_5(2.1)" isExternalReference="false" agencyID="ESTAT" id="NASU2_17PR_5" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NASU2_17PR_5</com:Name>
+				<str:Structure>
+					<Ref package="datastructure" agencyID="ESTAT" id="NA_SU" version="2.1" class="DataStructure"/>
+				</str:Structure>
+			</str:Dataflow>
+			<str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:NASU_1516ADD_5(2.1)" isExternalReference="false" agencyID="ESTAT" id="NASU_1516ADD_5" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NASU_1516ADD_5</com:Name>
+				<str:Structure>
+					<Ref package="datastructure" agencyID="ESTAT" id="NA_SU" version="2.1" class="DataStructure"/>
+				</str:Structure>
+			</str:Dataflow>
+			<str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:NASU_1516_A(2.1)" isExternalReference="false" agencyID="ESTAT" id="NASU_1516_A" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NASU_1516_A</com:Name>
+				<str:Structure>
+					<Ref package="datastructure" agencyID="ESTAT" id="NA_SU" version="2.1" class="DataStructure"/>
+				</str:Structure>
+			</str:Dataflow>
+			<str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:NASU_163034_A(2.1)" isExternalReference="false" agencyID="ESTAT" id="NASU_163034_A" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NASU_163034_A</com:Name>
+				<str:Structure>
+					<Ref package="datastructure" agencyID="ESTAT" id="NA_SU" version="2.1" class="DataStructure"/>
+				</str:Structure>
+			</str:Dataflow>
+			<str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:NASU_16BP_5(2.1)" isExternalReference="false" agencyID="ESTAT" id="NASU_16BP_5" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NASU_16BP_5</com:Name>
+				<str:Structure>
+					<Ref package="datastructure" agencyID="ESTAT" id="NA_SU" version="2.1" class="DataStructure"/>
+				</str:Structure>
+			</str:Dataflow>
+			<str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:NASU_1719IN_5(2.1)" isExternalReference="false" agencyID="ESTAT" id="NASU_1719IN_5" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NASU_1719IN_5</com:Name>
+				<str:Structure>
+					<Ref package="datastructure" agencyID="ESTAT" id="NA_SU" version="2.1" class="DataStructure"/>
+				</str:Structure>
+			</str:Dataflow>
+			<str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:NASU_1719PR_5(2.1)" isExternalReference="false" agencyID="ESTAT" id="NASU_1719PR_5" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NASU_1719PR_5</com:Name>
+				<str:Structure>
+					<Ref package="datastructure" agencyID="ESTAT" id="NA_SU" version="2.1" class="DataStructure"/>
+				</str:Structure>
+			</str:Dataflow>
+			<str:Dataflow isExternalReference="false" agencyID="GPP" id="NASU2_1516_A" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NASU2_1516_A</com:Name>
+				<str:Structure>
+					<Ref package="datastructure" agencyID="ESTAT" id="NA_SU" version="2.0" class="DataStructure"/>
+				</str:Structure>
+			</str:Dataflow>
+		</str:Dataflows>
+		<str:DataStructures>
+			<str:DataStructure urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:NA_SU(2.1)" isExternalReference="false" agencyID="ESTAT" id="NA_SU" isFinal="true" version="2.1">
+				<com:Name xml:lang="en">NA Supply/Use and Input/Output</com:Name>
+				<str:DataStructureComponents>
+					<str:DimensionList urn="urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=ESTAT:NA_SU(2.1).DimensionDescriptor" id="DimensionDescriptor">
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).FREQ" id="FREQ" position="1">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="FREQ" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="SDMX" id="CL_FREQ" version="2.0" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="1" textType="String" maxLength="1"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).REP_AREA" id="REP_AREA" position="2">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="REP_AREA" class="Concept"/>
+							</str:ConceptIdentity>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).REF_AREA" id="REF_AREA" position="3">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="REF_AREA" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="IMF" id="CL_AREA" version="1.11" class="Codelist"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).COUNTERPART_AREA" id="COUNTERPART_AREA" position="4">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="COUNTERPART_AREA" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="IMF" id="CL_AREA" version="1.11" class="Codelist"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).REF_SECTOR" id="REF_SECTOR" position="5">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="REF_SECTOR" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_SECTOR" version="1.10" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="2" textType="String" maxLength="7"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).COUNTERPART_SECTOR" id="COUNTERPART_SECTOR" position="6">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="COUNTERPART_SECTOR" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_SECTOR" version="1.10" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="2" textType="String" maxLength="7"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).ACCOUNTING_ENTRY" id="ACCOUNTING_ENTRY" position="7">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="ACCOUNTING_ENTRY" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="IMF" id="CL_ACCOUNT_ENTRY" version="1.3" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="1" textType="String" maxLength="3"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).STO" id="STO" position="8">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="STO" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_NA_STO" version="1.10" class="Codelist"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).STO_TO" id="STO_TO" position="9">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="STO_TO" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_NA_STO" version="1.10" class="Codelist"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).ACTIVITY" id="ACTIVITY" position="10">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="ACTIVITY" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_ACTIVITY" version="1.6" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="1" textType="String" maxLength="9"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).ACTIVITY_TO" id="ACTIVITY_TO" position="11">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="ACTIVITY_TO" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_ACTIVITY" version="1.6" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="1" textType="String" maxLength="9"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).PRODUCT" id="PRODUCT" position="12">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="PRODUCT" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_PRODUCT" version="1.2" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="2" textType="String" maxLength="10"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).PRODUCT_TO" id="PRODUCT_TO" position="13">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="PRODUCT_TO" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_PRODUCT" version="1.2" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="2" textType="String" maxLength="10"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).UNIT_MEASURE" id="UNIT_MEASURE" position="14">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="UNIT_MEASURE" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="IMF" id="CL_UNIT" version="1.13" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="2" textType="String" maxLength="15"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).VALUATION" id="VALUATION" position="15">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="VALUATION" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_VALUATION" version="1.6" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="1" textType="String" maxLength="2"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).PRICES" id="PRICES" position="16">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="PRICES" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_NA_PRICES" version="1.1" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="1" textType="String" maxLength="2"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:NA_SU(2.1).CUST_BREAKDOWN" id="CUST_BREAKDOWN" position="17">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="CUST_BREAKDOWN" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_CUST_BREAKDOWN" version="1.2" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="2" textType="String" maxLength="3"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:TimeDimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=ESTAT:NA_SU(2.1).TIME_PERIOD" id="TIME_PERIOD" position="18">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="TIME_PERIOD" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="ObservationalTimePeriod"/>
+							</str:LocalRepresentation>
+						</str:TimeDimension>
+					</str:DimensionList>
+					<str:AttributeList urn="urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=ESTAT:NA_SU(2.1).AttributeDescriptor" id="AttributeDescriptor">
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).OBS_STATUS" assignmentStatus="Mandatory" id="OBS_STATUS">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="OBS_STATUS" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_OBS_STATUS" version="2.2" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="1" textType="String" maxLength="1"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).CONF_STATUS" assignmentStatus="Mandatory" id="CONF_STATUS">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="CONF_STATUS" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="SDMX" id="CL_CONF_STATUS" version="1.2" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="1" textType="String" maxLength="1"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).COMMENT_OBS" assignmentStatus="Conditional" id="COMMENT_OBS">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="COMMENT_OBS" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="String" maxLength="4000"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).EMBARGO_DATE" assignmentStatus="Conditional" id="EMBARGO_DATE">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="EMBARGO_DATE" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="DateTime" maxLength="25"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).REPYEARSTART" assignmentStatus="Conditional" id="REPYEARSTART">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="REPYEARSTART" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="DateTime" maxLength="25"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).REPYEAREND" assignmentStatus="Conditional" id="REPYEAREND">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="REPYEAREND" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="DateTime" maxLength="25"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).TIME_FORMAT" assignmentStatus="Mandatory" id="TIME_FORMAT">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="TIME_FORMAT" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="SDMX" id="CL_TIME_FORMAT" version="1.0" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="3" textType="String" maxLength="4"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).TIME_PER_COLLECT" assignmentStatus="Conditional" id="TIME_PER_COLLECT">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="TIME_PER_COLLECT" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="IMF" id="CL_TIME_COLLECT" version="1.0" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="1" textType="String" maxLength="1"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).DECIMALS" assignmentStatus="Mandatory" id="DECIMALS">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="DECIMALS" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="SDMX" id="CL_DECIMALS" version="1.0" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="1" textType="String" maxLength="2"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).TITLE" assignmentStatus="Conditional" id="TITLE">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="TITLE" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="String" maxLength="200"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).UNIT_MULT" assignmentStatus="Mandatory" id="UNIT_MULT">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="UNIT_MULT" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="SDMX" id="CL_UNIT_MULT" version="1.1" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="1" textType="String" maxLength="3"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).LAST_UPDATE" assignmentStatus="Conditional" id="LAST_UPDATE">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="LAST_UPDATE" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="DateTime" maxLength="25"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).COMPILING_ORG" assignmentStatus="Conditional" id="COMPILING_ORG">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="COMPILING_ORG" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="IMF" id="CL_ORGANISATION" version="1.9" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="3" textType="String" maxLength="4"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).CUST_BREAKDOWN_LB" assignmentStatus="Conditional" id="CUST_BREAKDOWN_LB">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="CUST_BREAKDOWN_LB" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="String" maxLength="1050"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).COMMENT_DSET" assignmentStatus="Conditional" id="COMMENT_DSET">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="COMMENT_DSET" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="String" maxLength="1050"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:None/>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).COMMENT_TS" assignmentStatus="Conditional" id="COMMENT_TS">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="COMMENT_TS" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="String" maxLength="1050"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).PRE_BREAK_VALUE" assignmentStatus="Conditional" id="PRE_BREAK_VALUE">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="PRE_BREAK_VALUE" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="Double" maxLength="15"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).DATA_COMP" assignmentStatus="Conditional" id="DATA_COMP">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="DATA_COMP" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="String" maxLength="4000"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).CURRENCY" assignmentStatus="Conditional" id="CURRENCY">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="CURRENCY" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="IMF" id="CL_UNIT" version="1.13" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="2" textType="String" maxLength="15"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).DISS_ORG" assignmentStatus="Conditional" id="DISS_ORG">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="DISS_ORG" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="IMF" id="CL_ORGANISATION" version="1.9" class="Codelist"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:NA_SU(2.1).TABLE_IDENTIFIER" assignmentStatus="Conditional" id="TABLE_IDENTIFIER">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="TABLE_IDENTIFIER" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref package="codelist" agencyID="ESTAT" id="CL_NA_TABLEID" version="1.7" class="Codelist"/>
+								</str:Enumeration>
+								<str:EnumerationFormat minLength="3" textType="String" maxLength="12"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REP_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="COUNTERPART_SECTOR"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACCOUNTING_ENTRY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="STO_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ACTIVITY_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRODUCT_TO"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="UNIT_MEASURE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="VALUATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="PRICES"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CUST_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+					</str:AttributeList>
+					<str:MeasureList urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=ESTAT:NA_SU(2.1).MeasureDescriptor" id="MeasureDescriptor">
+						<str:PrimaryMeasure urn="urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=ESTAT:NA_SU(2.1).OBS_VALUE" id="OBS_VALUE">
+							<str:ConceptIdentity>
+								<Ref maintainableParentID="CS_NA" package="conceptscheme" maintainableParentVersion="1.11" agencyID="ESTAT" id="OBS_VALUE" class="Concept"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="Double" maxLength="15"/>
+							</str:LocalRepresentation>
+						</str:PrimaryMeasure>
+					</str:MeasureList>
+				</str:DataStructureComponents>
+			</str:DataStructure>
+		</str:DataStructures>
+		<str:Constraints>
+			<str:ContentConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=ESTAT:CR_NASU2_1516_A(2.1)" isExternalReference="false" agencyID="ESTAT" id="CR_NASU2_1516_A" isFinal="false" type="Allowed" version="2.1">
+				<com:Name xml:lang="en">CR_NASU2_1516_A</com:Name>
+				<com:Description xml:lang="en">Constraint for Dataflow NASU2_1516_A</com:Description>
+				<str:ConstraintAttachment>
+					<str:Dataflow>
+						<Ref package="datastructure" agencyID="ESTAT" id="NASU2_1516_A" version="2.1" class="Dataflow"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref package="datastructure" agencyID="ESTAT" id="NASU2_1516_A" version="2.0" class="Dataflow"/>
+					</str:Dataflow>
+				</str:ConstraintAttachment>
+				<str:CubeRegion include="true">
+					<com:KeyValue id="REF_SECTOR">
+						<com:Value>S14</com:Value>
+						<com:Value>S15</com:Value>
+						<com:Value>S13</com:Value>
+						<com:Value>S1</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="COUNTERPART_AREA">
+						<com:Value>W1</com:Value>
+						<com:Value>W2</com:Value>
+						<com:Value>D0</com:Value>
+						<com:Value>B0</com:Value>
+						<com:Value>U3</com:Value>
+						<com:Value>U2</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRICES">
+						<com:Value>V</com:Value>
+						<com:Value>_Z</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="VALUATION">
+						<com:Value>T</com:Value>
+						<com:Value>_Z</com:Value>
+						<com:Value>S</com:Value>
+						<com:Value>B</com:Value>
+						<com:Value>O</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACTIVITY">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="UNIT_MEASURE">
+						<com:Value>XDC</com:Value>
+						<com:Value>HW</com:Value>
+						<com:Value>PS</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRODUCT">
+						<com:Value>CPA_A</com:Value>
+						<com:Value>CPA_A01</com:Value>
+						<com:Value>CPA_A02</com:Value>
+						<com:Value>CPA_A03</com:Value>
+						<com:Value>CPA_BTE</com:Value>
+						<com:Value>CPA_B</com:Value>
+						<com:Value>CPA_B05</com:Value>
+						<com:Value>CPA_B06</com:Value>
+						<com:Value>CPA_B07</com:Value>
+						<com:Value>CPA_B08</com:Value>
+						<com:Value>CPA_B09</com:Value>
+						<com:Value>CPA_C</com:Value>
+						<com:Value>CPA_C10T12</com:Value>
+						<com:Value>CPA_C10</com:Value>
+						<com:Value>CPA_C11</com:Value>
+						<com:Value>CPA_C12</com:Value>
+						<com:Value>CPA_C13T15</com:Value>
+						<com:Value>CPA_C13</com:Value>
+						<com:Value>CPA_C14</com:Value>
+						<com:Value>CPA_C15</com:Value>
+						<com:Value>CPA_C16</com:Value>
+						<com:Value>CPA_C17</com:Value>
+						<com:Value>CPA_C18</com:Value>
+						<com:Value>CPA_C19</com:Value>
+						<com:Value>CPA_C20</com:Value>
+						<com:Value>CPA_C21</com:Value>
+						<com:Value>CPA_C22_23</com:Value>
+						<com:Value>CPA_C22</com:Value>
+						<com:Value>CPA_C23</com:Value>
+						<com:Value>CPA_C24_25</com:Value>
+						<com:Value>CPA_C24</com:Value>
+						<com:Value>CPA_C25</com:Value>
+						<com:Value>CPA_C26</com:Value>
+						<com:Value>CPA_C27</com:Value>
+						<com:Value>CPA_C28</com:Value>
+						<com:Value>CPA_C29_30</com:Value>
+						<com:Value>CPA_C29</com:Value>
+						<com:Value>CPA_C30</com:Value>
+						<com:Value>CPA_C31T33</com:Value>
+						<com:Value>CPA_C31_32</com:Value>
+						<com:Value>CPA_C31</com:Value>
+						<com:Value>CPA_C32</com:Value>
+						<com:Value>CPA_C33</com:Value>
+						<com:Value>CPA_D35</com:Value>
+						<com:Value>CPA_E</com:Value>
+						<com:Value>CPA_E36</com:Value>
+						<com:Value>CPA_E37T39</com:Value>
+						<com:Value>CPA_E37</com:Value>
+						<com:Value>CPA_E38</com:Value>
+						<com:Value>CPA_E39</com:Value>
+						<com:Value>CPA_F</com:Value>
+						<com:Value>CPA_F41</com:Value>
+						<com:Value>CPA_F42</com:Value>
+						<com:Value>CPA_F43</com:Value>
+						<com:Value>CPA_GTI</com:Value>
+						<com:Value>CPA_G</com:Value>
+						<com:Value>CPA_G45</com:Value>
+						<com:Value>CPA_G46</com:Value>
+						<com:Value>CPA_G47</com:Value>
+						<com:Value>CPA_H</com:Value>
+						<com:Value>CPA_H49</com:Value>
+						<com:Value>CPA_H50</com:Value>
+						<com:Value>CPA_H51</com:Value>
+						<com:Value>CPA_H52</com:Value>
+						<com:Value>CPA_H53</com:Value>
+						<com:Value>CPA_I</com:Value>
+						<com:Value>CPA_I55</com:Value>
+						<com:Value>CPA_I56</com:Value>
+						<com:Value>CPA_J</com:Value>
+						<com:Value>CPA_J58</com:Value>
+						<com:Value>CPA_J59_60</com:Value>
+						<com:Value>CPA_J59</com:Value>
+						<com:Value>CPA_J60</com:Value>
+						<com:Value>CPA_J61</com:Value>
+						<com:Value>CPA_J62_63</com:Value>
+						<com:Value>CPA_J62</com:Value>
+						<com:Value>CPA_J63</com:Value>
+						<com:Value>CPA_K</com:Value>
+						<com:Value>CPA_K64</com:Value>
+						<com:Value>CPA_K65</com:Value>
+						<com:Value>CPA_K66</com:Value>
+						<com:Value>CPA_L</com:Value>
+						<com:Value>CPA_L68B</com:Value>
+						<com:Value>CPA_L68A</com:Value>
+						<com:Value>CPA_M_N</com:Value>
+						<com:Value>CPA_M</com:Value>
+						<com:Value>CPA_M69T71</com:Value>
+						<com:Value>CPA_M69_70</com:Value>
+						<com:Value>CPA_M69</com:Value>
+						<com:Value>CPA_M70</com:Value>
+						<com:Value>CPA_M71</com:Value>
+						<com:Value>CPA_M72</com:Value>
+						<com:Value>CPA_M73T75</com:Value>
+						<com:Value>CPA_M73</com:Value>
+						<com:Value>CPA_M74_75</com:Value>
+						<com:Value>CPA_M74</com:Value>
+						<com:Value>CPA_M75</com:Value>
+						<com:Value>CPA_N</com:Value>
+						<com:Value>CPA_N77</com:Value>
+						<com:Value>CPA_N78</com:Value>
+						<com:Value>CPA_N79</com:Value>
+						<com:Value>CPA_N80T82</com:Value>
+						<com:Value>CPA_N80</com:Value>
+						<com:Value>CPA_N81</com:Value>
+						<com:Value>CPA_N82</com:Value>
+						<com:Value>CPA_OTQ</com:Value>
+						<com:Value>CPA_O84</com:Value>
+						<com:Value>CPA_P85</com:Value>
+						<com:Value>CPA_Q</com:Value>
+						<com:Value>CPA_Q86</com:Value>
+						<com:Value>CPA_Q87_88</com:Value>
+						<com:Value>CPA_Q87</com:Value>
+						<com:Value>CPA_Q88</com:Value>
+						<com:Value>CPA_RTU</com:Value>
+						<com:Value>CPA_R</com:Value>
+						<com:Value>CPA_R90T92</com:Value>
+						<com:Value>CPA_R90</com:Value>
+						<com:Value>CPA_R91</com:Value>
+						<com:Value>CPA_R92</com:Value>
+						<com:Value>CPA_R93</com:Value>
+						<com:Value>CPA_S</com:Value>
+						<com:Value>CPA_S94</com:Value>
+						<com:Value>CPA_S95</com:Value>
+						<com:Value>CPA_S96</com:Value>
+						<com:Value>CPA_T</com:Value>
+						<com:Value>CPA_T97</com:Value>
+						<com:Value>CPA_T98</com:Value>
+						<com:Value>CPA_U</com:Value>
+						<com:Value>_T</com:Value>
+						<com:Value>_Z</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRODUCT_TO">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="COUNTERPART_SECTOR">
+						<com:Value>S1</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="CUST_BREAKDOWN">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="FREQ">
+						<com:Value>A</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACTIVITY_TO">
+						<com:Value>A</com:Value>
+						<com:Value>A01</com:Value>
+						<com:Value>A02</com:Value>
+						<com:Value>A03</com:Value>
+						<com:Value>BTE</com:Value>
+						<com:Value>B</com:Value>
+						<com:Value>B05</com:Value>
+						<com:Value>B06</com:Value>
+						<com:Value>B07</com:Value>
+						<com:Value>B08</com:Value>
+						<com:Value>B09</com:Value>
+						<com:Value>C</com:Value>
+						<com:Value>C10T12</com:Value>
+						<com:Value>C10</com:Value>
+						<com:Value>C11</com:Value>
+						<com:Value>C12</com:Value>
+						<com:Value>C13T15</com:Value>
+						<com:Value>C13</com:Value>
+						<com:Value>C14</com:Value>
+						<com:Value>C15</com:Value>
+						<com:Value>C16</com:Value>
+						<com:Value>C17</com:Value>
+						<com:Value>C18</com:Value>
+						<com:Value>C19</com:Value>
+						<com:Value>C20</com:Value>
+						<com:Value>C21</com:Value>
+						<com:Value>C22_23</com:Value>
+						<com:Value>C22</com:Value>
+						<com:Value>C23</com:Value>
+						<com:Value>C24_25</com:Value>
+						<com:Value>C24</com:Value>
+						<com:Value>C25</com:Value>
+						<com:Value>C26</com:Value>
+						<com:Value>C27</com:Value>
+						<com:Value>C28</com:Value>
+						<com:Value>C29_30</com:Value>
+						<com:Value>C29</com:Value>
+						<com:Value>C30</com:Value>
+						<com:Value>C31T33</com:Value>
+						<com:Value>C31_32</com:Value>
+						<com:Value>C31</com:Value>
+						<com:Value>C32</com:Value>
+						<com:Value>C33</com:Value>
+						<com:Value>D35</com:Value>
+						<com:Value>E</com:Value>
+						<com:Value>E36</com:Value>
+						<com:Value>E37T39</com:Value>
+						<com:Value>E37</com:Value>
+						<com:Value>E38</com:Value>
+						<com:Value>E39</com:Value>
+						<com:Value>F</com:Value>
+						<com:Value>F41</com:Value>
+						<com:Value>F42</com:Value>
+						<com:Value>F43</com:Value>
+						<com:Value>GTI</com:Value>
+						<com:Value>G</com:Value>
+						<com:Value>G45</com:Value>
+						<com:Value>G46</com:Value>
+						<com:Value>G47</com:Value>
+						<com:Value>H</com:Value>
+						<com:Value>H49</com:Value>
+						<com:Value>H50</com:Value>
+						<com:Value>H51</com:Value>
+						<com:Value>H52</com:Value>
+						<com:Value>H53</com:Value>
+						<com:Value>I</com:Value>
+						<com:Value>I55</com:Value>
+						<com:Value>I56</com:Value>
+						<com:Value>J</com:Value>
+						<com:Value>J58</com:Value>
+						<com:Value>J59_60</com:Value>
+						<com:Value>J59</com:Value>
+						<com:Value>J60</com:Value>
+						<com:Value>J61</com:Value>
+						<com:Value>J62_63</com:Value>
+						<com:Value>J62</com:Value>
+						<com:Value>J63</com:Value>
+						<com:Value>K</com:Value>
+						<com:Value>K64</com:Value>
+						<com:Value>K65</com:Value>
+						<com:Value>K66</com:Value>
+						<com:Value>L</com:Value>
+						<com:Value>L68B</com:Value>
+						<com:Value>L68A</com:Value>
+						<com:Value>M_N</com:Value>
+						<com:Value>M</com:Value>
+						<com:Value>M69T71</com:Value>
+						<com:Value>M69_70</com:Value>
+						<com:Value>M69</com:Value>
+						<com:Value>M70</com:Value>
+						<com:Value>M71</com:Value>
+						<com:Value>M72</com:Value>
+						<com:Value>M73T75</com:Value>
+						<com:Value>M73</com:Value>
+						<com:Value>M74_75</com:Value>
+						<com:Value>M74</com:Value>
+						<com:Value>M75</com:Value>
+						<com:Value>N</com:Value>
+						<com:Value>N77</com:Value>
+						<com:Value>N78</com:Value>
+						<com:Value>N79</com:Value>
+						<com:Value>N80T82</com:Value>
+						<com:Value>N80</com:Value>
+						<com:Value>N81</com:Value>
+						<com:Value>N82</com:Value>
+						<com:Value>OTQ</com:Value>
+						<com:Value>O84</com:Value>
+						<com:Value>P85</com:Value>
+						<com:Value>Q</com:Value>
+						<com:Value>Q86</com:Value>
+						<com:Value>Q87_88</com:Value>
+						<com:Value>Q87</com:Value>
+						<com:Value>Q88</com:Value>
+						<com:Value>RTU</com:Value>
+						<com:Value>R</com:Value>
+						<com:Value>R90T92</com:Value>
+						<com:Value>R90</com:Value>
+						<com:Value>R91</com:Value>
+						<com:Value>R92</com:Value>
+						<com:Value>R93</com:Value>
+						<com:Value>S</com:Value>
+						<com:Value>S94</com:Value>
+						<com:Value>S95</com:Value>
+						<com:Value>S96</com:Value>
+						<com:Value>T</com:Value>
+						<com:Value>T97</com:Value>
+						<com:Value>T98</com:Value>
+						<com:Value>U</com:Value>
+						<com:Value>_T</com:Value>
+						<com:Value>_Z</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACCOUNTING_ENTRY">
+						<com:Value>D</com:Value>
+						<com:Value>_Z</com:Value>
+						<com:Value>B</com:Value>
+						<com:Value>C</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="STO">
+						<com:Value>TU</com:Value>
+						<com:Value>CIFFOB</com:Value>
+						<com:Value>OP</com:Value>
+						<com:Value>TUADJ</com:Value>
+						<com:Value>D1</com:Value>
+						<com:Value>D11</com:Value>
+						<com:Value>D29X39</com:Value>
+						<com:Value>P51C</com:Value>
+						<com:Value>B2A3N</com:Value>
+						<com:Value>B2A3G</com:Value>
+						<com:Value>B3G</com:Value>
+						<com:Value>B1G</com:Value>
+						<com:Value>P1</com:Value>
+						<com:Value>P51G</com:Value>
+						<com:Value>LE</com:Value>
+						<com:Value>EMP</com:Value>
+						<com:Value>P11</com:Value>
+						<com:Value>P12</com:Value>
+						<com:Value>P13</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="STO_TO">
+						<com:Value>P1</com:Value>
+						<com:Value>P2</com:Value>
+						<com:Value>P3</com:Value>
+						<com:Value>P51G</com:Value>
+						<com:Value>P53</com:Value>
+						<com:Value>P52</com:Value>
+						<com:Value>P5M</com:Value>
+						<com:Value>P5</com:Value>
+						<com:Value>P6</com:Value>
+						<com:Value>P7</com:Value>
+						<com:Value>TFU</com:Value>
+						<com:Value>TU</com:Value>
+						<com:Value>P6A</com:Value>
+						<com:Value>P61C</com:Value>
+						<com:Value>P61B</com:Value>
+						<com:Value>P61D</com:Value>
+						<com:Value>P61E</com:Value>
+						<com:Value>P62D</com:Value>
+						<com:Value>OTTM</com:Value>
+						<com:Value>D21X31</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="TABLE_IDENTIFIER">
+						<com:Value>T1600</com:Value>
+						<com:Value>T1500</com:Value>
+					</com:KeyValue>
+					<com:Attribute id="UNIT_MULT">
+						<com:Value>3</com:Value>
+						<com:Value>6</com:Value>
+					</com:Attribute>
+					<com:Attribute id="TIME_FORMAT">
+						<com:Value>P1Y</com:Value>
+					</com:Attribute>
+				</str:CubeRegion>
+			</str:ContentConstraint>
+			<str:ContentConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=ESTAT:CR_NASU2_16ADD_5(2.1)" isExternalReference="false" agencyID="ESTAT" id="CR_NASU2_16ADD_5" isFinal="false" type="Allowed" version="2.1">
+				<com:Name xml:lang="en">CR_NASU2_16ADD_5</com:Name>
+				<com:Description xml:lang="en">Constraint for Dataflow NASU2_16ADD_5</com:Description>
+				<str:ConstraintAttachment>
+					<str:Dataflow>
+						<Ref package="datastructure" agencyID="ESTAT" id="NASU2_16ADD_5" version="2.1" class="Dataflow"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref package="datastructure" agencyID="ESTAT" id="NASU2_16ADD_5" version="2.0" class="Dataflow"/>
+					</str:Dataflow>
+				</str:ConstraintAttachment>
+				<str:CubeRegion include="true">
+					<com:KeyValue id="REF_SECTOR">
+						<com:Value>S1</com:Value>
+						<com:Value>S13</com:Value>
+						<com:Value>S14</com:Value>
+						<com:Value>S15</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="COUNTERPART_AREA">
+						<com:Value>W1</com:Value>
+						<com:Value>W2</com:Value>
+						<com:Value>U2</com:Value>
+						<com:Value>U3</com:Value>
+						<com:Value>B0</com:Value>
+						<com:Value>D0</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRICES">
+						<com:Value>V</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="VALUATION">
+						<com:Value>_Z</com:Value>
+						<com:Value>S</com:Value>
+						<com:Value>O</com:Value>
+						<com:Value>B</com:Value>
+						<com:Value>T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACTIVITY_TO">
+						<com:Value>A</com:Value>
+						<com:Value>A01</com:Value>
+						<com:Value>A02</com:Value>
+						<com:Value>A03</com:Value>
+						<com:Value>BTE</com:Value>
+						<com:Value>B</com:Value>
+						<com:Value>B05</com:Value>
+						<com:Value>B06</com:Value>
+						<com:Value>B07</com:Value>
+						<com:Value>B08</com:Value>
+						<com:Value>B09</com:Value>
+						<com:Value>C</com:Value>
+						<com:Value>C10T12</com:Value>
+						<com:Value>C10</com:Value>
+						<com:Value>C11</com:Value>
+						<com:Value>C12</com:Value>
+						<com:Value>C13T15</com:Value>
+						<com:Value>C13</com:Value>
+						<com:Value>C14</com:Value>
+						<com:Value>C15</com:Value>
+						<com:Value>C16</com:Value>
+						<com:Value>C17</com:Value>
+						<com:Value>C18</com:Value>
+						<com:Value>C19</com:Value>
+						<com:Value>C20</com:Value>
+						<com:Value>C21</com:Value>
+						<com:Value>C22_23</com:Value>
+						<com:Value>C22</com:Value>
+						<com:Value>C23</com:Value>
+						<com:Value>C24_25</com:Value>
+						<com:Value>C24</com:Value>
+						<com:Value>C25</com:Value>
+						<com:Value>C26</com:Value>
+						<com:Value>C27</com:Value>
+						<com:Value>C28</com:Value>
+						<com:Value>C29_30</com:Value>
+						<com:Value>C29</com:Value>
+						<com:Value>C30</com:Value>
+						<com:Value>C31T33</com:Value>
+						<com:Value>C31_32</com:Value>
+						<com:Value>C31</com:Value>
+						<com:Value>C32</com:Value>
+						<com:Value>C33</com:Value>
+						<com:Value>D35</com:Value>
+						<com:Value>E</com:Value>
+						<com:Value>E36</com:Value>
+						<com:Value>E37T39</com:Value>
+						<com:Value>E37</com:Value>
+						<com:Value>E38</com:Value>
+						<com:Value>E39</com:Value>
+						<com:Value>F</com:Value>
+						<com:Value>F41</com:Value>
+						<com:Value>F42</com:Value>
+						<com:Value>F43</com:Value>
+						<com:Value>GTI</com:Value>
+						<com:Value>G</com:Value>
+						<com:Value>G45</com:Value>
+						<com:Value>G46</com:Value>
+						<com:Value>G47</com:Value>
+						<com:Value>H</com:Value>
+						<com:Value>H49</com:Value>
+						<com:Value>H50</com:Value>
+						<com:Value>H51</com:Value>
+						<com:Value>H52</com:Value>
+						<com:Value>H53</com:Value>
+						<com:Value>I</com:Value>
+						<com:Value>I55</com:Value>
+						<com:Value>I56</com:Value>
+						<com:Value>J</com:Value>
+						<com:Value>J58</com:Value>
+						<com:Value>J59_60</com:Value>
+						<com:Value>J59</com:Value>
+						<com:Value>J60</com:Value>
+						<com:Value>J61</com:Value>
+						<com:Value>J62_63</com:Value>
+						<com:Value>J62</com:Value>
+						<com:Value>J63</com:Value>
+						<com:Value>K</com:Value>
+						<com:Value>K64</com:Value>
+						<com:Value>K65</com:Value>
+						<com:Value>K66</com:Value>
+						<com:Value>L</com:Value>
+						<com:Value>L68B</com:Value>
+						<com:Value>L68A</com:Value>
+						<com:Value>M_N</com:Value>
+						<com:Value>M</com:Value>
+						<com:Value>M69T71</com:Value>
+						<com:Value>M69_70</com:Value>
+						<com:Value>M69</com:Value>
+						<com:Value>M70</com:Value>
+						<com:Value>M71</com:Value>
+						<com:Value>M72</com:Value>
+						<com:Value>M73T75</com:Value>
+						<com:Value>M73</com:Value>
+						<com:Value>M74_75</com:Value>
+						<com:Value>M74</com:Value>
+						<com:Value>M75</com:Value>
+						<com:Value>N</com:Value>
+						<com:Value>N77</com:Value>
+						<com:Value>N78</com:Value>
+						<com:Value>N79</com:Value>
+						<com:Value>N80T82</com:Value>
+						<com:Value>N80</com:Value>
+						<com:Value>N81</com:Value>
+						<com:Value>N82</com:Value>
+						<com:Value>OTQ</com:Value>
+						<com:Value>O84</com:Value>
+						<com:Value>P85</com:Value>
+						<com:Value>Q</com:Value>
+						<com:Value>Q86</com:Value>
+						<com:Value>Q87_88</com:Value>
+						<com:Value>Q87</com:Value>
+						<com:Value>Q88</com:Value>
+						<com:Value>RTU</com:Value>
+						<com:Value>R</com:Value>
+						<com:Value>R90T92</com:Value>
+						<com:Value>R90</com:Value>
+						<com:Value>R91</com:Value>
+						<com:Value>R92</com:Value>
+						<com:Value>R93</com:Value>
+						<com:Value>S</com:Value>
+						<com:Value>S94</com:Value>
+						<com:Value>S95</com:Value>
+						<com:Value>S96</com:Value>
+						<com:Value>T</com:Value>
+						<com:Value>T97</com:Value>
+						<com:Value>T98</com:Value>
+						<com:Value>U</com:Value>
+						<com:Value>_T</com:Value>
+						<com:Value>_Z</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="UNIT_MEASURE">
+						<com:Value>XDC</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRODUCT">
+						<com:Value>CPA_A</com:Value>
+						<com:Value>CPA_A01</com:Value>
+						<com:Value>CPA_A02</com:Value>
+						<com:Value>CPA_A03</com:Value>
+						<com:Value>CPA_BTE</com:Value>
+						<com:Value>CPA_B</com:Value>
+						<com:Value>CPA_B05</com:Value>
+						<com:Value>CPA_B06</com:Value>
+						<com:Value>CPA_B07</com:Value>
+						<com:Value>CPA_B08</com:Value>
+						<com:Value>CPA_B09</com:Value>
+						<com:Value>CPA_C</com:Value>
+						<com:Value>CPA_C10T12</com:Value>
+						<com:Value>CPA_C10</com:Value>
+						<com:Value>CPA_C11</com:Value>
+						<com:Value>CPA_C12</com:Value>
+						<com:Value>CPA_C13T15</com:Value>
+						<com:Value>CPA_C13</com:Value>
+						<com:Value>CPA_C14</com:Value>
+						<com:Value>CPA_C15</com:Value>
+						<com:Value>CPA_C16</com:Value>
+						<com:Value>CPA_C17</com:Value>
+						<com:Value>CPA_C18</com:Value>
+						<com:Value>CPA_C19</com:Value>
+						<com:Value>CPA_C20</com:Value>
+						<com:Value>CPA_C21</com:Value>
+						<com:Value>CPA_C22_23</com:Value>
+						<com:Value>CPA_C22</com:Value>
+						<com:Value>CPA_C23</com:Value>
+						<com:Value>CPA_C24_25</com:Value>
+						<com:Value>CPA_C24</com:Value>
+						<com:Value>CPA_C25</com:Value>
+						<com:Value>CPA_C26</com:Value>
+						<com:Value>CPA_C27</com:Value>
+						<com:Value>CPA_C28</com:Value>
+						<com:Value>CPA_C29_30</com:Value>
+						<com:Value>CPA_C29</com:Value>
+						<com:Value>CPA_C30</com:Value>
+						<com:Value>CPA_C31T33</com:Value>
+						<com:Value>CPA_C31_32</com:Value>
+						<com:Value>CPA_C31</com:Value>
+						<com:Value>CPA_C32</com:Value>
+						<com:Value>CPA_C33</com:Value>
+						<com:Value>CPA_D35</com:Value>
+						<com:Value>CPA_E</com:Value>
+						<com:Value>CPA_E36</com:Value>
+						<com:Value>CPA_E37T39</com:Value>
+						<com:Value>CPA_E37</com:Value>
+						<com:Value>CPA_E38</com:Value>
+						<com:Value>CPA_E39</com:Value>
+						<com:Value>CPA_F</com:Value>
+						<com:Value>CPA_F41</com:Value>
+						<com:Value>CPA_F42</com:Value>
+						<com:Value>CPA_F43</com:Value>
+						<com:Value>CPA_GTI</com:Value>
+						<com:Value>CPA_G</com:Value>
+						<com:Value>CPA_G45</com:Value>
+						<com:Value>CPA_G46</com:Value>
+						<com:Value>CPA_G47</com:Value>
+						<com:Value>CPA_H</com:Value>
+						<com:Value>CPA_H49</com:Value>
+						<com:Value>CPA_H50</com:Value>
+						<com:Value>CPA_H51</com:Value>
+						<com:Value>CPA_H52</com:Value>
+						<com:Value>CPA_H53</com:Value>
+						<com:Value>CPA_I</com:Value>
+						<com:Value>CPA_I55</com:Value>
+						<com:Value>CPA_I56</com:Value>
+						<com:Value>CPA_J</com:Value>
+						<com:Value>CPA_J58</com:Value>
+						<com:Value>CPA_J59_60</com:Value>
+						<com:Value>CPA_J59</com:Value>
+						<com:Value>CPA_J60</com:Value>
+						<com:Value>CPA_J61</com:Value>
+						<com:Value>CPA_J62_63</com:Value>
+						<com:Value>CPA_J62</com:Value>
+						<com:Value>CPA_J63</com:Value>
+						<com:Value>CPA_K</com:Value>
+						<com:Value>CPA_K64</com:Value>
+						<com:Value>CPA_K65</com:Value>
+						<com:Value>CPA_K66</com:Value>
+						<com:Value>CPA_L</com:Value>
+						<com:Value>CPA_L68B</com:Value>
+						<com:Value>CPA_L68A</com:Value>
+						<com:Value>CPA_M_N</com:Value>
+						<com:Value>CPA_M</com:Value>
+						<com:Value>CPA_M69T71</com:Value>
+						<com:Value>CPA_M69_70</com:Value>
+						<com:Value>CPA_M69</com:Value>
+						<com:Value>CPA_M70</com:Value>
+						<com:Value>CPA_M71</com:Value>
+						<com:Value>CPA_M72</com:Value>
+						<com:Value>CPA_M73T75</com:Value>
+						<com:Value>CPA_M73</com:Value>
+						<com:Value>CPA_M74_75</com:Value>
+						<com:Value>CPA_M74</com:Value>
+						<com:Value>CPA_M75</com:Value>
+						<com:Value>CPA_N</com:Value>
+						<com:Value>CPA_N77</com:Value>
+						<com:Value>CPA_N78</com:Value>
+						<com:Value>CPA_N79</com:Value>
+						<com:Value>CPA_N80T82</com:Value>
+						<com:Value>CPA_N80</com:Value>
+						<com:Value>CPA_N81</com:Value>
+						<com:Value>CPA_N82</com:Value>
+						<com:Value>CPA_OTQ</com:Value>
+						<com:Value>CPA_O84</com:Value>
+						<com:Value>CPA_P85</com:Value>
+						<com:Value>CPA_Q</com:Value>
+						<com:Value>CPA_Q86</com:Value>
+						<com:Value>CPA_Q87_88</com:Value>
+						<com:Value>CPA_Q87</com:Value>
+						<com:Value>CPA_Q88</com:Value>
+						<com:Value>CPA_RTU</com:Value>
+						<com:Value>CPA_R</com:Value>
+						<com:Value>CPA_R90T92</com:Value>
+						<com:Value>CPA_R90</com:Value>
+						<com:Value>CPA_R91</com:Value>
+						<com:Value>CPA_R92</com:Value>
+						<com:Value>CPA_R93</com:Value>
+						<com:Value>CPA_S</com:Value>
+						<com:Value>CPA_S94</com:Value>
+						<com:Value>CPA_S95</com:Value>
+						<com:Value>CPA_S96</com:Value>
+						<com:Value>CPA_T</com:Value>
+						<com:Value>CPA_T97</com:Value>
+						<com:Value>CPA_T98</com:Value>
+						<com:Value>CPA_U</com:Value>
+						<com:Value>_T</com:Value>
+						<com:Value>_Z</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="COUNTERPART_SECTOR">
+						<com:Value>S1</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="CUST_BREAKDOWN">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRODUCT_TO">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="FREQ">
+						<com:Value>A</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACTIVITY">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACCOUNTING_ENTRY">
+						<com:Value>B</com:Value>
+						<com:Value>C</com:Value>
+						<com:Value>D</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="STO">
+						<com:Value>TU</com:Value>
+						<com:Value>D21X31</com:Value>
+						<com:Value>CIFFOB</com:Value>
+						<com:Value>OP</com:Value>
+						<com:Value>TUADJ</com:Value>
+						<com:Value>D1</com:Value>
+						<com:Value>D11</com:Value>
+						<com:Value>D29X39</com:Value>
+						<com:Value>P51C</com:Value>
+						<com:Value>B2A3N</com:Value>
+						<com:Value>B2A3G</com:Value>
+						<com:Value>B3G</com:Value>
+						<com:Value>B1G</com:Value>
+						<com:Value>P1</com:Value>
+						<com:Value>TUXP7</com:Value>
+						<com:Value>P7</com:Value>
+						<com:Value>OTTM</com:Value>
+						<com:Value>D21X31X211</com:Value>
+						<com:Value>D211</com:Value>
+						<com:Value>D21</com:Value>
+						<com:Value>D31</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="STO_TO">
+						<com:Value>P2</com:Value>
+						<com:Value>P3</com:Value>
+						<com:Value>P51G</com:Value>
+						<com:Value>P53</com:Value>
+						<com:Value>P52</com:Value>
+						<com:Value>P5M</com:Value>
+						<com:Value>P5</com:Value>
+						<com:Value>P6</com:Value>
+						<com:Value>TFU</com:Value>
+						<com:Value>TU</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="TABLE_IDENTIFIER">
+						<com:Value>T1610</com:Value>
+						<com:Value>T1611</com:Value>
+						<com:Value>T1612</com:Value>
+						<com:Value>T1620</com:Value>
+						<com:Value>T1630</com:Value>
+						<com:Value>T1631</com:Value>
+						<com:Value>T1632</com:Value>
+						<com:Value>T1633</com:Value>
+						<com:Value>T1634</com:Value>
+					</com:KeyValue>
+					<com:Attribute id="UNIT_MULT">
+						<com:Value>6</com:Value>
+					</com:Attribute>
+					<com:Attribute id="TIME_FORMAT">
+						<com:Value>P1Y</com:Value>
+					</com:Attribute>
+				</str:CubeRegion>
+			</str:ContentConstraint>
+			<str:ContentConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=ESTAT:CR_NASU2_17IN_5(2.1)" isExternalReference="false" agencyID="ESTAT" id="CR_NASU2_17IN_5" isFinal="false" type="Allowed" version="2.1">
+				<com:Name xml:lang="en">CR_NASU2_17IN_5</com:Name>
+				<com:Description xml:lang="en">Constraint for Dataflow NASU2_17IN_5</com:Description>
+				<str:ConstraintAttachment>
+					<str:Dataflow>
+						<Ref package="datastructure" agencyID="ESTAT" id="NASU2_17IN_5" version="2.0" class="Dataflow"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref package="datastructure" agencyID="ESTAT" id="NASU2_17IN_5" version="2.1" class="Dataflow"/>
+					</str:Dataflow>
+				</str:ConstraintAttachment>
+				<str:CubeRegion include="true">
+					<com:KeyValue id="REF_SECTOR">
+						<com:Value>S14</com:Value>
+						<com:Value>S15</com:Value>
+						<com:Value>S13</com:Value>
+						<com:Value>S1</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="COUNTERPART_AREA">
+						<com:Value>W1</com:Value>
+						<com:Value>W2</com:Value>
+						<com:Value>D0</com:Value>
+						<com:Value>B0</com:Value>
+						<com:Value>U3</com:Value>
+						<com:Value>U2</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRICES">
+						<com:Value>V</com:Value>
+						<com:Value>Y</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="VALUATION">
+						<com:Value>_Z</com:Value>
+						<com:Value>S</com:Value>
+						<com:Value>B</com:Value>
+						<com:Value>O</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACTIVITY">
+						<com:Value>A</com:Value>
+						<com:Value>A01</com:Value>
+						<com:Value>A02</com:Value>
+						<com:Value>A03</com:Value>
+						<com:Value>BTE</com:Value>
+						<com:Value>B</com:Value>
+						<com:Value>B05</com:Value>
+						<com:Value>B06</com:Value>
+						<com:Value>B07</com:Value>
+						<com:Value>B08</com:Value>
+						<com:Value>B09</com:Value>
+						<com:Value>C</com:Value>
+						<com:Value>C10T12</com:Value>
+						<com:Value>C10</com:Value>
+						<com:Value>C11</com:Value>
+						<com:Value>C12</com:Value>
+						<com:Value>C13T15</com:Value>
+						<com:Value>C13</com:Value>
+						<com:Value>C14</com:Value>
+						<com:Value>C15</com:Value>
+						<com:Value>C16</com:Value>
+						<com:Value>C17</com:Value>
+						<com:Value>C18</com:Value>
+						<com:Value>C19</com:Value>
+						<com:Value>C20</com:Value>
+						<com:Value>C21</com:Value>
+						<com:Value>C22_23</com:Value>
+						<com:Value>C22</com:Value>
+						<com:Value>C23</com:Value>
+						<com:Value>C24_25</com:Value>
+						<com:Value>C24</com:Value>
+						<com:Value>C25</com:Value>
+						<com:Value>C26</com:Value>
+						<com:Value>C27</com:Value>
+						<com:Value>C28</com:Value>
+						<com:Value>C29_30</com:Value>
+						<com:Value>C29</com:Value>
+						<com:Value>C30</com:Value>
+						<com:Value>C31T33</com:Value>
+						<com:Value>C31_32</com:Value>
+						<com:Value>C31</com:Value>
+						<com:Value>C32</com:Value>
+						<com:Value>C33</com:Value>
+						<com:Value>D35</com:Value>
+						<com:Value>E</com:Value>
+						<com:Value>E36</com:Value>
+						<com:Value>E37T39</com:Value>
+						<com:Value>E37</com:Value>
+						<com:Value>E38</com:Value>
+						<com:Value>E39</com:Value>
+						<com:Value>F</com:Value>
+						<com:Value>F41</com:Value>
+						<com:Value>F42</com:Value>
+						<com:Value>F43</com:Value>
+						<com:Value>GTI</com:Value>
+						<com:Value>G</com:Value>
+						<com:Value>G45</com:Value>
+						<com:Value>G46</com:Value>
+						<com:Value>G47</com:Value>
+						<com:Value>H</com:Value>
+						<com:Value>H49</com:Value>
+						<com:Value>H50</com:Value>
+						<com:Value>H51</com:Value>
+						<com:Value>H52</com:Value>
+						<com:Value>H53</com:Value>
+						<com:Value>I</com:Value>
+						<com:Value>I55</com:Value>
+						<com:Value>I56</com:Value>
+						<com:Value>J</com:Value>
+						<com:Value>J58</com:Value>
+						<com:Value>J59_60</com:Value>
+						<com:Value>J59</com:Value>
+						<com:Value>J60</com:Value>
+						<com:Value>J61</com:Value>
+						<com:Value>J62_63</com:Value>
+						<com:Value>J62</com:Value>
+						<com:Value>J63</com:Value>
+						<com:Value>K</com:Value>
+						<com:Value>K64</com:Value>
+						<com:Value>K65</com:Value>
+						<com:Value>K66</com:Value>
+						<com:Value>L</com:Value>
+						<com:Value>L68B</com:Value>
+						<com:Value>L68A</com:Value>
+						<com:Value>M_N</com:Value>
+						<com:Value>M</com:Value>
+						<com:Value>M69T71</com:Value>
+						<com:Value>M69_70</com:Value>
+						<com:Value>M69</com:Value>
+						<com:Value>M70</com:Value>
+						<com:Value>M71</com:Value>
+						<com:Value>M72</com:Value>
+						<com:Value>M73T75</com:Value>
+						<com:Value>M73</com:Value>
+						<com:Value>M74_75</com:Value>
+						<com:Value>M74</com:Value>
+						<com:Value>M75</com:Value>
+						<com:Value>N</com:Value>
+						<com:Value>N77</com:Value>
+						<com:Value>N78</com:Value>
+						<com:Value>N79</com:Value>
+						<com:Value>N80T82</com:Value>
+						<com:Value>N80</com:Value>
+						<com:Value>N81</com:Value>
+						<com:Value>N82</com:Value>
+						<com:Value>OTQ</com:Value>
+						<com:Value>O84</com:Value>
+						<com:Value>P85</com:Value>
+						<com:Value>Q</com:Value>
+						<com:Value>Q86</com:Value>
+						<com:Value>Q87_88</com:Value>
+						<com:Value>Q87</com:Value>
+						<com:Value>Q88</com:Value>
+						<com:Value>RTU</com:Value>
+						<com:Value>R</com:Value>
+						<com:Value>R90T92</com:Value>
+						<com:Value>R90</com:Value>
+						<com:Value>R91</com:Value>
+						<com:Value>R92</com:Value>
+						<com:Value>R93</com:Value>
+						<com:Value>S</com:Value>
+						<com:Value>S94</com:Value>
+						<com:Value>S95</com:Value>
+						<com:Value>S96</com:Value>
+						<com:Value>T</com:Value>
+						<com:Value>T97</com:Value>
+						<com:Value>T98</com:Value>
+						<com:Value>U</com:Value>
+						<com:Value>_T</com:Value>
+						<com:Value>_Z</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACTIVITY_TO">
+						<com:Value>A</com:Value>
+						<com:Value>A01</com:Value>
+						<com:Value>A02</com:Value>
+						<com:Value>A03</com:Value>
+						<com:Value>BTE</com:Value>
+						<com:Value>B</com:Value>
+						<com:Value>B05</com:Value>
+						<com:Value>B06</com:Value>
+						<com:Value>B07</com:Value>
+						<com:Value>B08</com:Value>
+						<com:Value>B09</com:Value>
+						<com:Value>C</com:Value>
+						<com:Value>C10T12</com:Value>
+						<com:Value>C10</com:Value>
+						<com:Value>C11</com:Value>
+						<com:Value>C12</com:Value>
+						<com:Value>C13T15</com:Value>
+						<com:Value>C13</com:Value>
+						<com:Value>C14</com:Value>
+						<com:Value>C15</com:Value>
+						<com:Value>C16</com:Value>
+						<com:Value>C17</com:Value>
+						<com:Value>C18</com:Value>
+						<com:Value>C19</com:Value>
+						<com:Value>C20</com:Value>
+						<com:Value>C21</com:Value>
+						<com:Value>C22_23</com:Value>
+						<com:Value>C22</com:Value>
+						<com:Value>C23</com:Value>
+						<com:Value>C24_25</com:Value>
+						<com:Value>C24</com:Value>
+						<com:Value>C25</com:Value>
+						<com:Value>C26</com:Value>
+						<com:Value>C27</com:Value>
+						<com:Value>C28</com:Value>
+						<com:Value>C29_30</com:Value>
+						<com:Value>C29</com:Value>
+						<com:Value>C30</com:Value>
+						<com:Value>C31T33</com:Value>
+						<com:Value>C31_32</com:Value>
+						<com:Value>C31</com:Value>
+						<com:Value>C32</com:Value>
+						<com:Value>C33</com:Value>
+						<com:Value>D35</com:Value>
+						<com:Value>E</com:Value>
+						<com:Value>E36</com:Value>
+						<com:Value>E37T39</com:Value>
+						<com:Value>E37</com:Value>
+						<com:Value>E38</com:Value>
+						<com:Value>E39</com:Value>
+						<com:Value>F</com:Value>
+						<com:Value>F41</com:Value>
+						<com:Value>F42</com:Value>
+						<com:Value>F43</com:Value>
+						<com:Value>GTI</com:Value>
+						<com:Value>G</com:Value>
+						<com:Value>G45</com:Value>
+						<com:Value>G46</com:Value>
+						<com:Value>G47</com:Value>
+						<com:Value>H</com:Value>
+						<com:Value>H49</com:Value>
+						<com:Value>H50</com:Value>
+						<com:Value>H51</com:Value>
+						<com:Value>H52</com:Value>
+						<com:Value>H53</com:Value>
+						<com:Value>I</com:Value>
+						<com:Value>I55</com:Value>
+						<com:Value>I56</com:Value>
+						<com:Value>J</com:Value>
+						<com:Value>J58</com:Value>
+						<com:Value>J59_60</com:Value>
+						<com:Value>J59</com:Value>
+						<com:Value>J60</com:Value>
+						<com:Value>J61</com:Value>
+						<com:Value>J62_63</com:Value>
+						<com:Value>J62</com:Value>
+						<com:Value>J63</com:Value>
+						<com:Value>K</com:Value>
+						<com:Value>K64</com:Value>
+						<com:Value>K65</com:Value>
+						<com:Value>K66</com:Value>
+						<com:Value>L</com:Value>
+						<com:Value>L68B</com:Value>
+						<com:Value>L68A</com:Value>
+						<com:Value>M_N</com:Value>
+						<com:Value>M</com:Value>
+						<com:Value>M69T71</com:Value>
+						<com:Value>M69_70</com:Value>
+						<com:Value>M69</com:Value>
+						<com:Value>M70</com:Value>
+						<com:Value>M71</com:Value>
+						<com:Value>M72</com:Value>
+						<com:Value>M73T75</com:Value>
+						<com:Value>M73</com:Value>
+						<com:Value>M74_75</com:Value>
+						<com:Value>M74</com:Value>
+						<com:Value>M75</com:Value>
+						<com:Value>N</com:Value>
+						<com:Value>N77</com:Value>
+						<com:Value>N78</com:Value>
+						<com:Value>N79</com:Value>
+						<com:Value>N80T82</com:Value>
+						<com:Value>N80</com:Value>
+						<com:Value>N81</com:Value>
+						<com:Value>N82</com:Value>
+						<com:Value>OTQ</com:Value>
+						<com:Value>O84</com:Value>
+						<com:Value>P85</com:Value>
+						<com:Value>Q</com:Value>
+						<com:Value>Q86</com:Value>
+						<com:Value>Q87_88</com:Value>
+						<com:Value>Q87</com:Value>
+						<com:Value>Q88</com:Value>
+						<com:Value>RTU</com:Value>
+						<com:Value>R</com:Value>
+						<com:Value>R90T92</com:Value>
+						<com:Value>R90</com:Value>
+						<com:Value>R91</com:Value>
+						<com:Value>R92</com:Value>
+						<com:Value>R93</com:Value>
+						<com:Value>S</com:Value>
+						<com:Value>S94</com:Value>
+						<com:Value>S95</com:Value>
+						<com:Value>S96</com:Value>
+						<com:Value>T</com:Value>
+						<com:Value>T97</com:Value>
+						<com:Value>T98</com:Value>
+						<com:Value>U</com:Value>
+						<com:Value>_T</com:Value>
+						<com:Value>_Z</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="UNIT_MEASURE">
+						<com:Value>XDC</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRODUCT">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="COUNTERPART_SECTOR">
+						<com:Value>S1</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="CUST_BREAKDOWN">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRODUCT_TO">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="FREQ">
+						<com:Value>A</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACCOUNTING_ENTRY">
+						<com:Value>D</com:Value>
+						<com:Value>B</com:Value>
+						<com:Value>C</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="STO">
+						<com:Value>TU</com:Value>
+						<com:Value>D21X31</com:Value>
+						<com:Value>D1</com:Value>
+						<com:Value>D11</com:Value>
+						<com:Value>D29X39</com:Value>
+						<com:Value>P51C</com:Value>
+						<com:Value>B2A3N</com:Value>
+						<com:Value>B2A3G</com:Value>
+						<com:Value>B3G</com:Value>
+						<com:Value>B1G</com:Value>
+						<com:Value>P1</com:Value>
+						<com:Value>TUXP7</com:Value>
+						<com:Value>P7</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="STO_TO">
+						<com:Value>P2</com:Value>
+						<com:Value>P3</com:Value>
+						<com:Value>P51G</com:Value>
+						<com:Value>P53</com:Value>
+						<com:Value>P52</com:Value>
+						<com:Value>P5M</com:Value>
+						<com:Value>P5</com:Value>
+						<com:Value>P6</com:Value>
+						<com:Value>TFU</com:Value>
+						<com:Value>TU</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="TABLE_IDENTIFIER">
+						<com:Value>T1950</com:Value>
+						<com:Value>T1850</com:Value>
+						<com:Value>T1750</com:Value>
+					</com:KeyValue>
+					<com:Attribute id="UNIT_MULT">
+						<com:Value>6</com:Value>
+					</com:Attribute>
+					<com:Attribute id="TIME_FORMAT">
+						<com:Value>P1Y</com:Value>
+					</com:Attribute>
+				</str:CubeRegion>
+			</str:ContentConstraint>
+			<str:ContentConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=ESTAT:CR_NASU2_17PR_5(2.1)" isExternalReference="false" agencyID="ESTAT" id="CR_NASU2_17PR_5" isFinal="false" type="Allowed" version="2.1">
+				<com:Name xml:lang="en">CR_NASU2_17PR_5</com:Name>
+				<com:Description xml:lang="en">Constraint for Dataflow NASU2_17PR_5</com:Description>
+				<str:ConstraintAttachment>
+					<str:Dataflow>
+						<Ref package="datastructure" agencyID="ESTAT" id="NASU2_17PR_5" version="2.0" class="Dataflow"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref package="datastructure" agencyID="ESTAT" id="NASU2_17PR_5" version="2.1" class="Dataflow"/>
+					</str:Dataflow>
+				</str:ConstraintAttachment>
+				<str:CubeRegion include="true">
+					<com:KeyValue id="REF_SECTOR">
+						<com:Value>S14</com:Value>
+						<com:Value>S15</com:Value>
+						<com:Value>S13</com:Value>
+						<com:Value>S1</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="COUNTERPART_AREA">
+						<com:Value>W1</com:Value>
+						<com:Value>W2</com:Value>
+						<com:Value>D0</com:Value>
+						<com:Value>B0</com:Value>
+						<com:Value>U3</com:Value>
+						<com:Value>U2</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRICES">
+						<com:Value>V</com:Value>
+						<com:Value>Y</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="VALUATION">
+						<com:Value>_Z</com:Value>
+						<com:Value>S</com:Value>
+						<com:Value>B</com:Value>
+						<com:Value>O</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACTIVITY">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="UNIT_MEASURE">
+						<com:Value>XDC</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRODUCT">
+						<com:Value>CPA_A</com:Value>
+						<com:Value>CPA_A01</com:Value>
+						<com:Value>CPA_A02</com:Value>
+						<com:Value>CPA_A03</com:Value>
+						<com:Value>CPA_BTE</com:Value>
+						<com:Value>CPA_B</com:Value>
+						<com:Value>CPA_B05</com:Value>
+						<com:Value>CPA_B06</com:Value>
+						<com:Value>CPA_B07</com:Value>
+						<com:Value>CPA_B08</com:Value>
+						<com:Value>CPA_B09</com:Value>
+						<com:Value>CPA_C</com:Value>
+						<com:Value>CPA_C10T12</com:Value>
+						<com:Value>CPA_C10</com:Value>
+						<com:Value>CPA_C11</com:Value>
+						<com:Value>CPA_C12</com:Value>
+						<com:Value>CPA_C13T15</com:Value>
+						<com:Value>CPA_C13</com:Value>
+						<com:Value>CPA_C14</com:Value>
+						<com:Value>CPA_C15</com:Value>
+						<com:Value>CPA_C16</com:Value>
+						<com:Value>CPA_C17</com:Value>
+						<com:Value>CPA_C18</com:Value>
+						<com:Value>CPA_C19</com:Value>
+						<com:Value>CPA_C20</com:Value>
+						<com:Value>CPA_C21</com:Value>
+						<com:Value>CPA_C22_23</com:Value>
+						<com:Value>CPA_C22</com:Value>
+						<com:Value>CPA_C23</com:Value>
+						<com:Value>CPA_C24_25</com:Value>
+						<com:Value>CPA_C24</com:Value>
+						<com:Value>CPA_C25</com:Value>
+						<com:Value>CPA_C26</com:Value>
+						<com:Value>CPA_C27</com:Value>
+						<com:Value>CPA_C28</com:Value>
+						<com:Value>CPA_C29_30</com:Value>
+						<com:Value>CPA_C29</com:Value>
+						<com:Value>CPA_C30</com:Value>
+						<com:Value>CPA_C31T33</com:Value>
+						<com:Value>CPA_C31_32</com:Value>
+						<com:Value>CPA_C31</com:Value>
+						<com:Value>CPA_C32</com:Value>
+						<com:Value>CPA_C33</com:Value>
+						<com:Value>CPA_D35</com:Value>
+						<com:Value>CPA_E</com:Value>
+						<com:Value>CPA_E36</com:Value>
+						<com:Value>CPA_E37T39</com:Value>
+						<com:Value>CPA_E37</com:Value>
+						<com:Value>CPA_E38</com:Value>
+						<com:Value>CPA_E39</com:Value>
+						<com:Value>CPA_F</com:Value>
+						<com:Value>CPA_F41</com:Value>
+						<com:Value>CPA_F42</com:Value>
+						<com:Value>CPA_F43</com:Value>
+						<com:Value>CPA_GTI</com:Value>
+						<com:Value>CPA_G</com:Value>
+						<com:Value>CPA_G45</com:Value>
+						<com:Value>CPA_G46</com:Value>
+						<com:Value>CPA_G47</com:Value>
+						<com:Value>CPA_H</com:Value>
+						<com:Value>CPA_H49</com:Value>
+						<com:Value>CPA_H50</com:Value>
+						<com:Value>CPA_H51</com:Value>
+						<com:Value>CPA_H52</com:Value>
+						<com:Value>CPA_H53</com:Value>
+						<com:Value>CPA_I</com:Value>
+						<com:Value>CPA_I55</com:Value>
+						<com:Value>CPA_I56</com:Value>
+						<com:Value>CPA_J</com:Value>
+						<com:Value>CPA_J58</com:Value>
+						<com:Value>CPA_J59_60</com:Value>
+						<com:Value>CPA_J59</com:Value>
+						<com:Value>CPA_J60</com:Value>
+						<com:Value>CPA_J61</com:Value>
+						<com:Value>CPA_J62_63</com:Value>
+						<com:Value>CPA_J62</com:Value>
+						<com:Value>CPA_J63</com:Value>
+						<com:Value>CPA_K</com:Value>
+						<com:Value>CPA_K64</com:Value>
+						<com:Value>CPA_K65</com:Value>
+						<com:Value>CPA_K66</com:Value>
+						<com:Value>CPA_L</com:Value>
+						<com:Value>CPA_L68B</com:Value>
+						<com:Value>CPA_L68A</com:Value>
+						<com:Value>CPA_M_N</com:Value>
+						<com:Value>CPA_M</com:Value>
+						<com:Value>CPA_M69T71</com:Value>
+						<com:Value>CPA_M69_70</com:Value>
+						<com:Value>CPA_M69</com:Value>
+						<com:Value>CPA_M70</com:Value>
+						<com:Value>CPA_M71</com:Value>
+						<com:Value>CPA_M72</com:Value>
+						<com:Value>CPA_M73T75</com:Value>
+						<com:Value>CPA_M73</com:Value>
+						<com:Value>CPA_M74_75</com:Value>
+						<com:Value>CPA_M74</com:Value>
+						<com:Value>CPA_M75</com:Value>
+						<com:Value>CPA_N</com:Value>
+						<com:Value>CPA_N77</com:Value>
+						<com:Value>CPA_N78</com:Value>
+						<com:Value>CPA_N79</com:Value>
+						<com:Value>CPA_N80T82</com:Value>
+						<com:Value>CPA_N80</com:Value>
+						<com:Value>CPA_N81</com:Value>
+						<com:Value>CPA_N82</com:Value>
+						<com:Value>CPA_OTQ</com:Value>
+						<com:Value>CPA_O84</com:Value>
+						<com:Value>CPA_P85</com:Value>
+						<com:Value>CPA_Q</com:Value>
+						<com:Value>CPA_Q86</com:Value>
+						<com:Value>CPA_Q87_88</com:Value>
+						<com:Value>CPA_Q87</com:Value>
+						<com:Value>CPA_Q88</com:Value>
+						<com:Value>CPA_RTU</com:Value>
+						<com:Value>CPA_R</com:Value>
+						<com:Value>CPA_R90T92</com:Value>
+						<com:Value>CPA_R90</com:Value>
+						<com:Value>CPA_R91</com:Value>
+						<com:Value>CPA_R92</com:Value>
+						<com:Value>CPA_R93</com:Value>
+						<com:Value>CPA_S</com:Value>
+						<com:Value>CPA_S94</com:Value>
+						<com:Value>CPA_S95</com:Value>
+						<com:Value>CPA_S96</com:Value>
+						<com:Value>CPA_T</com:Value>
+						<com:Value>CPA_T97</com:Value>
+						<com:Value>CPA_T98</com:Value>
+						<com:Value>CPA_U</com:Value>
+						<com:Value>_T</com:Value>
+						<com:Value>_Z</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="COUNTERPART_SECTOR">
+						<com:Value>S1</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="CUST_BREAKDOWN">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRODUCT_TO">
+						<com:Value>CPA_A</com:Value>
+						<com:Value>CPA_A01</com:Value>
+						<com:Value>CPA_A02</com:Value>
+						<com:Value>CPA_A03</com:Value>
+						<com:Value>CPA_BTE</com:Value>
+						<com:Value>CPA_B</com:Value>
+						<com:Value>CPA_B05</com:Value>
+						<com:Value>CPA_B06</com:Value>
+						<com:Value>CPA_B07</com:Value>
+						<com:Value>CPA_B08</com:Value>
+						<com:Value>CPA_B09</com:Value>
+						<com:Value>CPA_C</com:Value>
+						<com:Value>CPA_C10T12</com:Value>
+						<com:Value>CPA_C10</com:Value>
+						<com:Value>CPA_C11</com:Value>
+						<com:Value>CPA_C12</com:Value>
+						<com:Value>CPA_C13T15</com:Value>
+						<com:Value>CPA_C13</com:Value>
+						<com:Value>CPA_C14</com:Value>
+						<com:Value>CPA_C15</com:Value>
+						<com:Value>CPA_C16</com:Value>
+						<com:Value>CPA_C17</com:Value>
+						<com:Value>CPA_C18</com:Value>
+						<com:Value>CPA_C19</com:Value>
+						<com:Value>CPA_C20</com:Value>
+						<com:Value>CPA_C21</com:Value>
+						<com:Value>CPA_C22_23</com:Value>
+						<com:Value>CPA_C22</com:Value>
+						<com:Value>CPA_C23</com:Value>
+						<com:Value>CPA_C24_25</com:Value>
+						<com:Value>CPA_C24</com:Value>
+						<com:Value>CPA_C25</com:Value>
+						<com:Value>CPA_C26</com:Value>
+						<com:Value>CPA_C27</com:Value>
+						<com:Value>CPA_C28</com:Value>
+						<com:Value>CPA_C29_30</com:Value>
+						<com:Value>CPA_C29</com:Value>
+						<com:Value>CPA_C30</com:Value>
+						<com:Value>CPA_C31T33</com:Value>
+						<com:Value>CPA_C31_32</com:Value>
+						<com:Value>CPA_C31</com:Value>
+						<com:Value>CPA_C32</com:Value>
+						<com:Value>CPA_C33</com:Value>
+						<com:Value>CPA_D35</com:Value>
+						<com:Value>CPA_E</com:Value>
+						<com:Value>CPA_E36</com:Value>
+						<com:Value>CPA_E37T39</com:Value>
+						<com:Value>CPA_E37</com:Value>
+						<com:Value>CPA_E38</com:Value>
+						<com:Value>CPA_E39</com:Value>
+						<com:Value>CPA_F</com:Value>
+						<com:Value>CPA_F41</com:Value>
+						<com:Value>CPA_F42</com:Value>
+						<com:Value>CPA_F43</com:Value>
+						<com:Value>CPA_GTI</com:Value>
+						<com:Value>CPA_G</com:Value>
+						<com:Value>CPA_G45</com:Value>
+						<com:Value>CPA_G46</com:Value>
+						<com:Value>CPA_G47</com:Value>
+						<com:Value>CPA_H</com:Value>
+						<com:Value>CPA_H49</com:Value>
+						<com:Value>CPA_H50</com:Value>
+						<com:Value>CPA_H51</com:Value>
+						<com:Value>CPA_H52</com:Value>
+						<com:Value>CPA_H53</com:Value>
+						<com:Value>CPA_I</com:Value>
+						<com:Value>CPA_I55</com:Value>
+						<com:Value>CPA_I56</com:Value>
+						<com:Value>CPA_J</com:Value>
+						<com:Value>CPA_J58</com:Value>
+						<com:Value>CPA_J59_60</com:Value>
+						<com:Value>CPA_J59</com:Value>
+						<com:Value>CPA_J60</com:Value>
+						<com:Value>CPA_J61</com:Value>
+						<com:Value>CPA_J62_63</com:Value>
+						<com:Value>CPA_J62</com:Value>
+						<com:Value>CPA_J63</com:Value>
+						<com:Value>CPA_K</com:Value>
+						<com:Value>CPA_K64</com:Value>
+						<com:Value>CPA_K65</com:Value>
+						<com:Value>CPA_K66</com:Value>
+						<com:Value>CPA_L</com:Value>
+						<com:Value>CPA_L68B</com:Value>
+						<com:Value>CPA_L68A</com:Value>
+						<com:Value>CPA_M_N</com:Value>
+						<com:Value>CPA_M</com:Value>
+						<com:Value>CPA_M69T71</com:Value>
+						<com:Value>CPA_M69_70</com:Value>
+						<com:Value>CPA_M69</com:Value>
+						<com:Value>CPA_M70</com:Value>
+						<com:Value>CPA_M71</com:Value>
+						<com:Value>CPA_M72</com:Value>
+						<com:Value>CPA_M73T75</com:Value>
+						<com:Value>CPA_M73</com:Value>
+						<com:Value>CPA_M74_75</com:Value>
+						<com:Value>CPA_M74</com:Value>
+						<com:Value>CPA_M75</com:Value>
+						<com:Value>CPA_N</com:Value>
+						<com:Value>CPA_N77</com:Value>
+						<com:Value>CPA_N78</com:Value>
+						<com:Value>CPA_N79</com:Value>
+						<com:Value>CPA_N80T82</com:Value>
+						<com:Value>CPA_N80</com:Value>
+						<com:Value>CPA_N81</com:Value>
+						<com:Value>CPA_N82</com:Value>
+						<com:Value>CPA_OTQ</com:Value>
+						<com:Value>CPA_O84</com:Value>
+						<com:Value>CPA_P85</com:Value>
+						<com:Value>CPA_Q</com:Value>
+						<com:Value>CPA_Q86</com:Value>
+						<com:Value>CPA_Q87_88</com:Value>
+						<com:Value>CPA_Q87</com:Value>
+						<com:Value>CPA_Q88</com:Value>
+						<com:Value>CPA_RTU</com:Value>
+						<com:Value>CPA_R</com:Value>
+						<com:Value>CPA_R90T92</com:Value>
+						<com:Value>CPA_R90</com:Value>
+						<com:Value>CPA_R91</com:Value>
+						<com:Value>CPA_R92</com:Value>
+						<com:Value>CPA_R93</com:Value>
+						<com:Value>CPA_S</com:Value>
+						<com:Value>CPA_S94</com:Value>
+						<com:Value>CPA_S95</com:Value>
+						<com:Value>CPA_S96</com:Value>
+						<com:Value>CPA_T</com:Value>
+						<com:Value>CPA_T97</com:Value>
+						<com:Value>CPA_T98</com:Value>
+						<com:Value>CPA_U</com:Value>
+						<com:Value>_T</com:Value>
+						<com:Value>_Z</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="FREQ">
+						<com:Value>A</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACTIVITY_TO">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACCOUNTING_ENTRY">
+						<com:Value>D</com:Value>
+						<com:Value>B</com:Value>
+						<com:Value>C</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="STO">
+						<com:Value>TU</com:Value>
+						<com:Value>D21X31</com:Value>
+						<com:Value>D1</com:Value>
+						<com:Value>D11</com:Value>
+						<com:Value>D29X39</com:Value>
+						<com:Value>P51C</com:Value>
+						<com:Value>B2A3N</com:Value>
+						<com:Value>B2A3G</com:Value>
+						<com:Value>B3G</com:Value>
+						<com:Value>B1G</com:Value>
+						<com:Value>P1</com:Value>
+						<com:Value>TUXP7</com:Value>
+						<com:Value>P7</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="STO_TO">
+						<com:Value>P2</com:Value>
+						<com:Value>P3</com:Value>
+						<com:Value>P51G</com:Value>
+						<com:Value>P53</com:Value>
+						<com:Value>P52</com:Value>
+						<com:Value>P5M</com:Value>
+						<com:Value>P5</com:Value>
+						<com:Value>P6</com:Value>
+						<com:Value>TFU</com:Value>
+						<com:Value>TU</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="TABLE_IDENTIFIER">
+						<com:Value>T1700</com:Value>
+						<com:Value>T1900</com:Value>
+						<com:Value>T1800</com:Value>
+					</com:KeyValue>
+					<com:Attribute id="UNIT_MULT">
+						<com:Value>6</com:Value>
+					</com:Attribute>
+					<com:Attribute id="TIME_FORMAT">
+						<com:Value>P1Y</com:Value>
+					</com:Attribute>
+				</str:CubeRegion>
+			</str:ContentConstraint>
+		</str:Constraints>
+	</mes:Structures>
+</mes:Structure>

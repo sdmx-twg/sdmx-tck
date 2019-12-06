@@ -1,0 +1,318 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+  <mes:Header>
+    <mes:ID>IDREF58e3c5a2-d60e-479d-820e-3f94b368e9f0</mes:ID>
+    <mes:Test>false</mes:Test>
+    <mes:Prepared>2019-10-15T11:46:19Z</mes:Prepared>
+    <mes:Sender id="SDMX" />
+    <mes:Receiver id="not_supplied" />
+  </mes:Header>
+  <mes:Structures>
+    <str:Codelists>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_ACTIVITY(1.6)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_ACTIVITY/1.6" isExternalReference="true" agencyID="ESTAT" id="CL_ACTIVITY" isFinal="true" version="1.6">
+        <com:Name xml:lang="en">Industrial activity code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_ACTIVITY93(1.6)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_ACTIVITY93/1.6" isExternalReference="true" agencyID="ESTAT" id="CL_ACTIVITY93" isFinal="true" version="1.6">
+        <com:Name xml:lang="en">Activity classification (SNA93)</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_ADJUSTMENT(1.4)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_ADJUSTMENT/1.4" isExternalReference="true" agencyID="ESTAT" id="CL_ADJUSTMENT" isFinal="true" version="1.4">
+        <com:Name xml:lang="en">Adjustment indicator</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_AIRPOL(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_AIRPOL/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_AIRPOL" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Air pollutants and greenhouse gasses</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_AP_DEFINITION(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_AP_DEFINITION/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_AP_DEFINITION" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Administered prices indicator</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_AREA(1.8)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_AREA/1.8" isExternalReference="true" agencyID="ESTAT" id="CL_AREA" isFinal="true" version="1.8">
+        <com:Name xml:lang="en">Area code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_BRIDGE_ITEM(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_BRIDGE_ITEM/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_BRIDGE_ITEM" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Bridging items</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_COFOG(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_COFOG/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_COFOG" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">COFOG</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_COICOP(1.1)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_COICOP/1.1" isExternalReference="true" agencyID="ESTAT" id="CL_COICOP" isFinal="true" version="1.1">
+        <com:Name xml:lang="en">COICOP</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_COPNI(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_COPNI/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_COPNI" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">COPNI</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_COPP(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_COPP/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_COPP" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">COPP</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_COVERAGE_GEO(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_COVERAGE_GEO/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_COVERAGE_GEO" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Geographical coverage</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_COVERAGE_POP(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_COVERAGE_POP/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_COVERAGE_POP" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Population coverage</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_CUST_BREAKDOWN(1.2)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_CUST_BREAKDOWN/1.2" isExternalReference="true" agencyID="ESTAT" id="CL_CUST_BREAKDOWN" isFinal="true" version="1.2">
+        <com:Name xml:lang="en">Custom breakdown code list (NA)</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_DEMAND_PROD(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_DEMAND_PROD/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_DEMAND_PROD" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Demand or production</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_EDP_WBB(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_EDP_WBB/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_EDP_WBB" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">EDP working balance basis</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_ENERGY_FLOWS(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_ENERGY_FLOWS/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_ENERGY_FLOWS" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Energy flows</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_GFS_ECOFUNC(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_GFS_ECOFUNC/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_GFS_ECOFUNC" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">GFS economic function</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_GFS_TAXCAT(1.2)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_GFS_TAXCAT/1.2" isExternalReference="true" agencyID="ESTAT" id="CL_GFS_TAXCAT" isFinal="true" version="1.2">
+        <com:Name xml:lang="en">GFS tax category</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_IDX_TYPE(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_IDX_TYPE/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_IDX_TYPE" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Index type</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_IND_TYPE(1.1)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_IND_TYPE/1.1" isExternalReference="true" agencyID="ESTAT" id="CL_IND_TYPE" isFinal="true" version="1.1">
+        <com:Name xml:lang="en">Indicator type</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_INSTR_ASSET(1.9)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_INSTR_ASSET/1.9" isExternalReference="true" agencyID="ESTAT" id="CL_INSTR_ASSET" isFinal="true" version="1.9">
+        <com:Name xml:lang="en">Instrument and Assets Classification</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_INSTR_ASSET93(1.5)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_INSTR_ASSET93/1.5" isExternalReference="true" agencyID="ESTAT" id="CL_INSTR_ASSET93" isFinal="true" version="1.5">
+        <com:Name xml:lang="en">Instrument and Assets Clasification (SNA93)</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_INTERACTORS(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_INTERACTORS/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_INTERACTORS" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Units interacting with the environment</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_ITEM_PRICE(1.1)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_ITEM_PRICE/1.1" isExternalReference="true" agencyID="ESTAT" id="CL_ITEM_PRICE" isFinal="true" version="1.1">
+        <com:Name xml:lang="en">Item in the classification</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_LAND_COVER(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_LAND_COVER/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_LAND_COVER" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Land cover</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_LAND_USE(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_LAND_USE/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_LAND_USE" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Land use</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_MATERIAL(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_MATERIAL/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_MATERIAL" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Materials</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_MATURITY(1.6)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_MATURITY/1.6" isExternalReference="true" agencyID="ESTAT" id="CL_MATURITY" isFinal="true" version="1.6">
+        <com:Name xml:lang="en">Original and Residual Maturity</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_NA_CONSOLIDAT(1.3)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_NA_CONSOLIDAT/1.3" isExternalReference="true" agencyID="ESTAT" id="CL_NA_CONSOLIDAT" isFinal="true" version="1.3">
+        <com:Name xml:lang="en">Consolidation codes</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_NA_PRICES(1.1)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_NA_PRICES/1.1" isExternalReference="true" agencyID="ESTAT" id="CL_NA_PRICES" isFinal="true" version="1.1">
+        <com:Name xml:lang="en">Price codes</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_NA_STO(1.10)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_NA_STO/1.10" isExternalReference="true" agencyID="ESTAT" id="CL_NA_STO" isFinal="true" version="1.10">
+        <com:Name xml:lang="en">Stocks, Transactions, Other Flows</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_NA_STO93(1.4)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_NA_STO93/1.4" isExternalReference="true" agencyID="ESTAT" id="CL_NA_STO93" isFinal="true" version="1.4">
+        <com:Name xml:lang="en">Stocks. Transactions. Other Flows (SNA93)</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_NA_TABLEID(1.7)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_NA_TABLEID/1.7" isExternalReference="true" agencyID="ESTAT" id="CL_NA_TABLEID" isFinal="true" version="1.7">
+        <com:Name xml:lang="en">NA Table IDs</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_OBS_STATUS(2.2)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_OBS_STATUS/2.2" isExternalReference="true" agencyID="ESTAT" id="CL_OBS_STATUS" isFinal="true" version="2.2">
+        <com:Name xml:lang="en">Observation status</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_PENS_FUNDTYPE(1.2)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_PENS_FUNDTYPE/1.2" isExternalReference="true" agencyID="ESTAT" id="CL_PENS_FUNDTYPE" isFinal="true" version="1.2">
+        <com:Name xml:lang="en">Pension Fund Type</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_PRODUCT(1.2)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_PRODUCT/1.2" isExternalReference="true" agencyID="ESTAT" id="CL_PRODUCT" isFinal="true" version="1.2">
+        <com:Name xml:lang="en">Product classification</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_REF_PERIOD_DTL(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_REF_PERIOD_DTL/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_REF_PERIOD_DTL" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Reference period detail codes</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_REGIONAL(3.1.1)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_REGIONAL/3.1.1" isExternalReference="true" agencyID="ESTAT" id="CL_REGIONAL" isFinal="true" version="3.1.1">
+        <com:Name xml:lang="en">Regional codes</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_SEASON_ADJUST(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_SEASON_ADJUST/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_SEASON_ADJUST" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Seasonal adjustment</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_SECTOR(1.10)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_SECTOR/1.10" isExternalReference="true" agencyID="ESTAT" id="CL_SECTOR" isFinal="true" version="1.10">
+        <com:Name xml:lang="en">Sector codes</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_SECTOR93(1.4)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_SECTOR93/1.4" isExternalReference="true" agencyID="ESTAT" id="CL_SECTOR93" isFinal="true" version="1.4">
+        <com:Name xml:lang="en">Institutional sector</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_SEEA_STO(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_SEEA_STO/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_SEEA_STO" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Stocks, Transactions, Other Flows</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_TRANSFORMATION(1.3)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_TRANSFORMATION/1.3" isExternalReference="true" agencyID="ESTAT" id="CL_TRANSFORMATION" isFinal="true" version="1.3">
+        <com:Name xml:lang="en">Transformation codes</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_UNIT(1.2)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_UNIT/1.2" isExternalReference="true" agencyID="ESTAT" id="CL_UNIT" isFinal="true" version="1.2">
+        <com:Name xml:lang="en">Unit of measurement and derived data codes</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_VALUATION(1.6)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_VALUATION/1.6" isExternalReference="true" agencyID="ESTAT" id="CL_VALUATION" isFinal="true" version="1.6">
+        <com:Name xml:lang="en">Valuation</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_WATER_FLOWS(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/ESTAT/CL_WATER_FLOWS/1.0" isExternalReference="true" agencyID="ESTAT" id="CL_WATER_FLOWS" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Water flows</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_ACCOUNTS_ITEM(1.5)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_ACCOUNTS_ITEM/1.5" isExternalReference="true" agencyID="IMF" id="CL_ACCOUNTS_ITEM" isFinal="true" version="1.5">
+        <com:Name xml:lang="en">Item classification code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_ACCOUNT_ENTRY(1.3)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_ACCOUNT_ENTRY/1.3" isExternalReference="true" agencyID="IMF" id="CL_ACCOUNT_ENTRY" isFinal="true" version="1.3">
+        <com:Name xml:lang="en">Accounting entry code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_ADJUSTMENT(1.4)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_ADJUSTMENT/1.4" isExternalReference="true" agencyID="IMF" id="CL_ADJUSTMENT" isFinal="true" version="1.4">
+        <com:Name xml:lang="en">Adjustment indicator</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_AREA(1.11)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_AREA/1.11" isExternalReference="true" agencyID="IMF" id="CL_AREA" isFinal="true" version="1.11">
+        <com:Name xml:lang="en">Area code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_COMP_METHOD(1.2)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_COMP_METHOD/1.2" isExternalReference="true" agencyID="IMF" id="CL_COMP_METHOD" isFinal="true" version="1.2">
+        <com:Name xml:lang="en">Compilation methodology code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_CURRENCY(1.6)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_CURRENCY/1.6" isExternalReference="true" agencyID="IMF" id="CL_CURRENCY" isFinal="true" version="1.6">
+        <com:Name xml:lang="en">Currency of issuance or invoicing code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_FSENTRY(1.1)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_FSENTRY/1.1" isExternalReference="true" agencyID="IMF" id="CL_FSENTRY" isFinal="true" version="1.1">
+        <com:Name xml:lang="en">Flow or stock entry code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_FUNCTIONAL_CAT(1.9)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_FUNCTIONAL_CAT/1.9" isExternalReference="true" agencyID="IMF" id="CL_FUNCTIONAL_CAT" isFinal="true" version="1.9">
+        <com:Name xml:lang="en">Functional category code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_GFSM_STO(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_GFSM_STO/1.0" isExternalReference="true" agencyID="IMF" id="CL_GFSM_STO" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Stocks, Transactions, Other Flows</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_ORGANISATION(1.9)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_ORGANISATION/1.9" isExternalReference="true" agencyID="IMF" id="CL_ORGANISATION" isFinal="true" version="1.9">
+        <com:Name xml:lang="en">Compiling organisation code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_TIME_COLLECT(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_TIME_COLLECT/1.0" isExternalReference="true" agencyID="IMF" id="CL_TIME_COLLECT" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Time period collection code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_UNIT(1.13)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/IMF/CL_UNIT/1.13" isExternalReference="true" agencyID="IMF" id="CL_UNIT" isFinal="true" version="1.13">
+        <com:Name xml:lang="en">Unit of measure code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=OECD:CL_ACTIVITY_ALLOC(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/OECD/CL_ACTIVITY_ALLOC/1.0" isExternalReference="true" agencyID="OECD" id="CL_ACTIVITY_ALLOC" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Activity allocation code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=OECD:CL_FDI_RELATION(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/OECD/CL_FDI_RELATION/1.0" isExternalReference="true" agencyID="OECD" id="CL_FDI_RELATION" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">FDI relationship code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=OECD:CL_LEV_COUNTERPART(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/OECD/CL_LEV_COUNTERPART/1.0" isExternalReference="true" agencyID="OECD" id="CL_LEV_COUNTERPART" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Level of counterpart code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=OECD:CL_MEASURE_PRINCIP(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/OECD/CL_MEASURE_PRINCIP/1.0" isExternalReference="true" agencyID="OECD" id="CL_MEASURE_PRINCIP" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Measurement principle code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=OECD:CL_STAT_UNIT(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/OECD/CL_STAT_UNIT/1.0" isExternalReference="true" agencyID="OECD" id="CL_STAT_UNIT" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Statistical unit code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=OECD:CL_TYPE_ENTITY(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/OECD/CL_TYPE_ENTITY/1.0" isExternalReference="true" agencyID="OECD" id="CL_TYPE_ENTITY" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Type of entity code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_ACTIVITY_ANZSIC06(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_ACTIVITY_ANZSIC06/1.0" isExternalReference="true" agencyID="SDMX" id="CL_ACTIVITY_ANZSIC06" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Activity - ANZSIC 2006</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_ACTIVITY_ISIC4(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_ACTIVITY_ISIC4/1.0" isExternalReference="true" agencyID="SDMX" id="CL_ACTIVITY_ISIC4" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Activity - ISIC, Revision 4</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_ACTIVITY_NACE2(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_ACTIVITY_NACE2/1.0" isExternalReference="true" agencyID="SDMX" id="CL_ACTIVITY_NACE2" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Activity - NACE, Revision 2</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_AGE(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_AGE/1.0" isExternalReference="true" agencyID="SDMX" id="CL_AGE" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Age</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_AREA(2.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_AREA/2.0" isExternalReference="true" agencyID="SDMX" id="CL_AREA" isFinal="true" version="2.0">
+        <com:Name xml:lang="en">Reference area code list</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_CIVIL_STATUS(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_CIVIL_STATUS/1.0" isExternalReference="true" agencyID="SDMX" id="CL_CIVIL_STATUS" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Civil (or Marital) Status</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_COFOG_1999(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_COFOG_1999/1.0" isExternalReference="true" agencyID="SDMX" id="CL_COFOG_1999" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Classification of the Functions of Government</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_COICOP_1999(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_COICOP_1999/1.0" isExternalReference="true" agencyID="SDMX" id="CL_COICOP_1999" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Classification of Individual Consumption According to Purpose</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_CONF_STATUS(1.2)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_CONF_STATUS/1.2" isExternalReference="true" agencyID="SDMX" id="CL_CONF_STATUS" isFinal="true" version="1.2">
+        <com:Name xml:lang="en">Confidentiality Status</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_COPNI_1999(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_COPNI_1999/1.0" isExternalReference="true" agencyID="SDMX" id="CL_COPNI_1999" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Classification of the Purposes of Non-Profit Institutions Serving Households</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_COPP_1999(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_COPP_1999/1.0" isExternalReference="true" agencyID="SDMX" id="CL_COPP_1999" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Classification of the Outlays of Producers According to Purpose</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_DECIMALS(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_DECIMALS/1.0" isExternalReference="true" agencyID="SDMX" id="CL_DECIMALS" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Decimals</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_FREQ(2.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_FREQ/2.0" isExternalReference="true" agencyID="SDMX" id="CL_FREQ" isFinal="true" version="2.0">
+        <com:Name xml:lang="en">Frequency</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_OBS_STATUS(2.2)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_OBS_STATUS/2.2" isExternalReference="true" agencyID="SDMX" id="CL_OBS_STATUS" isFinal="true" version="2.2">
+        <com:Name xml:lang="en">Observation Status</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_OCCUPATION(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_OCCUPATION/1.0" isExternalReference="true" agencyID="SDMX" id="CL_OCCUPATION" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Occupation</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_SEASONAL_ADJUST(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_SEASONAL_ADJUST/1.0" isExternalReference="true" agencyID="SDMX" id="CL_SEASONAL_ADJUST" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Seasonal Adjustment</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_SEX(2.1)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_SEX/2.1" isExternalReference="true" agencyID="SDMX" id="CL_SEX" isFinal="true" version="2.1">
+        <com:Name xml:lang="en">Sex</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_TIMETRANS(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_TIMETRANS/1.0" isExternalReference="true" agencyID="SDMX" id="CL_TIMETRANS" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Time Transformation</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_TIMETRANS_PER(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_TIMETRANS_PER/1.0" isExternalReference="true" agencyID="SDMX" id="CL_TIMETRANS_PER" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Time Transformation Period</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_TIMETRANS_TYPE(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_TIMETRANS_TYPE/1.0" isExternalReference="true" agencyID="SDMX" id="CL_TIMETRANS_TYPE" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Time Transformation Type</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_TIME_FORMAT(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_TIME_FORMAT/1.0" isExternalReference="true" agencyID="SDMX" id="CL_TIME_FORMAT" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Time Format</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_TIME_PER_COLLECT(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_TIME_PER_COLLECT/1.0" isExternalReference="true" agencyID="SDMX" id="CL_TIME_PER_COLLECT" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Time Period - Collection</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_UNIT_MULT(1.1)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/SDMX/CL_UNIT_MULT/1.1" isExternalReference="true" agencyID="SDMX" id="CL_UNIT_MULT" isFinal="true" version="1.1">
+        <com:Name xml:lang="en">Unit Multiplier</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_AGE(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_AGE/1.0" isExternalReference="true" agencyID="UIS" id="CL_AGE" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Age</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_BREAKDOWN_GROUP(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_BREAKDOWN_GROUP/1.0" isExternalReference="true" agencyID="UIS" id="CL_BREAKDOWN_GROUP" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Breakdown group</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_EDUCATION_FIELD(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_EDUCATION_FIELD/1.0" isExternalReference="true" agencyID="UIS" id="CL_EDUCATION_FIELD" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Fields of education</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_EDUCATION_LEVEL(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_EDUCATION_LEVEL/1.0" isExternalReference="true" agencyID="UIS" id="CL_EDUCATION_LEVEL" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Education level</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_EDUCATION_TYPE(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_EDUCATION_TYPE/1.0" isExternalReference="true" agencyID="UIS" id="CL_EDUCATION_TYPE" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Education type</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_EDU_TABLEID(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_EDU_TABLEID/1.0" isExternalReference="true" agencyID="UIS" id="CL_EDU_TABLEID" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Table identifier</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_EXPENDITURE_TYPE(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_EXPENDITURE_TYPE/1.0" isExternalReference="true" agencyID="UIS" id="CL_EXPENDITURE_TYPE" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Expenditure type</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_GRADE(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_GRADE/1.0" isExternalReference="true" agencyID="UIS" id="CL_GRADE" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Grade</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_INTENSITY(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_INTENSITY/1.0" isExternalReference="true" agencyID="UIS" id="CL_INTENSITY" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Intensity</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_MOBILITY(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_MOBILITY/1.0" isExternalReference="true" agencyID="UIS" id="CL_MOBILITY" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Mobility</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_ORIGIN_CRITERION(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_ORIGIN_CRITERION/1.0" isExternalReference="true" agencyID="UIS" id="CL_ORIGIN_CRITERION" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Origin criterion</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_SECTOR(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_SECTOR/1.0" isExternalReference="true" agencyID="UIS" id="CL_SECTOR" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Reference/Counterpart institutional sector</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_STAT_UNIT(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_STAT_UNIT/1.0" isExternalReference="true" agencyID="UIS" id="CL_STAT_UNIT" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Statistical unit</com:Name>
+      </str:Codelist>
+      <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=UIS:CL_TYPE_EXP_REPORTED(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/codelist/UIS/CL_TYPE_EXP_REPORTED/1.0" isExternalReference="true" agencyID="UIS" id="CL_TYPE_EXP_REPORTED" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">Type of expenditure reported</com:Name>
+      </str:Codelist>
+    </str:Codelists></mes:Structures></mes:Structure>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+  <mes:Header>
+    <mes:ID>IDREFf551a261-9e37-46fd-a71c-322fe179be44</mes:ID>
+    <mes:Test>false</mes:Test>
+    <mes:Prepared>2019-10-15T11:44:44Z</mes:Prepared>
+    <mes:Sender id="SDMX" />
+    <mes:Receiver id="not_supplied" />
+  </mes:Header>
+  <mes:Structures>
+    <str:CategorySchemes>
+      <str:CategoryScheme urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ESTAT:ESA2010TP(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categoryscheme/ESTAT/ESA2010TP/1.0" isExternalReference="true" agencyID="ESTAT" id="ESA2010TP" isFinal="true" version="1.0">
+        <com:Name xml:lang="en">ESA 2010 - Transmission programme</com:Name>
+      </str:CategoryScheme>
+      <str:CategoryScheme urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=SDMX:STAT_SUBJECT_MATTER(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/categoryscheme/SDMX/STAT_SUBJECT_MATTER/1.0" isExternalReference="true" agencyID="SDMX" id="STAT_SUBJECT_MATTER" isFinal="false" version="1.0">
+        <com:Annotations>
+          <com:Annotation>
+            <com:AnnotationType>REFERENCE_SOURCE</com:AnnotationType>
+            <com:AnnotationText xml:lang="en">United Nations Economic Commission for Europe. This classification of statistical subject-matter domains is based on that used in the Database of International Statistical Activities (DISA - http://unece.unog.ch/disa/ ). The DISA classification includes two additional domains covering statistical methodology and strategic managerial issues, which do not relate directly to data or metadata, so are not considered relevant for SDMX purposes.</com:AnnotationText>
+          </com:Annotation>
+        </com:Annotations>
+        <com:Name xml:lang="en">SDMX Statistical Subject-Matter Domains</com:Name>
+      </str:CategoryScheme>
+    </str:CategorySchemes></mes:Structures></mes:Structure>
