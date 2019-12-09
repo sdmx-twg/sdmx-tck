@@ -49,4 +49,4 @@ class SdmxXmlParser {
     };
 };
 
-module.exports.SdmxXmlParser = SdmxXmlParser;
+module.exports = SdmxXmlParser;

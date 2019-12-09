@@ -1,4 +1,4 @@
-const API_VERSION = require('../constants/ApiVersions.js').API_VERSION;
+const API_VERSIONS = require('../constants/ApiVersions.js').API_VERSIONS;
 
 const STRUCTURE_QUERY_DETAIL = {
     FULL: "full",
@@ -15,7 +15,7 @@ function getStructureQueryDetail(apiVersion) {
     availableDetailValues.push(STRUCTURE_QUERY_DETAIL.ALL_STUBS);
     availableDetailValues.push(STRUCTURE_QUERY_DETAIL.REFERENCED_STUBS);
 
-    if (API_VERSION[apiVersion] >= API_VERSION["v1.3.0"]) {
+    if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]) {
         availableDetailValues.push(STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL)
         availableDetailValues.push(STRUCTURE_QUERY_DETAIL.ALL_COMPLETE_STUBS)
         availableDetailValues.push(STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS)

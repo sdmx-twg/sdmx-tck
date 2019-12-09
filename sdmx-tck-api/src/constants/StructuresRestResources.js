@@ -1,4 +1,4 @@
-const API_VERSION = require('./ApiVersions.js').API_VERSION;
+const API_VERSIONS = require('./ApiVersions.js').API_VERSIONS;
 
 const STRUCTURES_REST_RESOURCE = {
         datastructure: "datastructure",
@@ -31,7 +31,7 @@ function getResources(apiVersion) {
         let resourcesArray = [];
 
         for (var key in STRUCTURES_REST_RESOURCE) {
-                if (API_VERSION[apiVersion] >= API_VERSION["v1.3.0"]) {
+                if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]) {
                         resourcesArray.push(STRUCTURES_REST_RESOURCE[key]);
                 } else {
                         if (STRUCTURES_REST_RESOURCE[key] !== "allowedconstraint"
