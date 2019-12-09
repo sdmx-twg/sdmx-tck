@@ -4,8 +4,18 @@
   "description": "SDMX TCK PARSERS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jsonpath": "^1.0.2",
+    "sdmx-tck-api": "file:../sdmx-tck-api",
+    "xml2js": "^0.4.22",
+    "xsd-schema-validator": "^0.6.0"
+  },
+  "devDependencies": {
+    "fs": "0.0.1-security",
+    "mocha": "^6.2.2"
+  }
 }

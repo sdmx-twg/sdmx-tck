@@ -53,7 +53,7 @@ class TestsModelBuilder {
                     x.numOfTests = x.numOfTests + 1;
 
                     if(API_VERSION[apiVersion] >= API_VERSION["v1.3.0"] 
-                    && ITEM_SCHEME_TYPES.hasProp(SDMX_STRUCTURE_TYPE.fromRestResource(arrayOfRestResources[j]))
+                    && ITEM_SCHEME_TYPES.hasOwnProperty(SDMX_STRUCTURE_TYPE.fromRestResource(arrayOfRestResources[j]))
                     && test.url === STRUCTURE_IDENTIFICATION_PARAMETERS.AGENCY_ID_VERSION.url){
                         
                         itemReq.push({
