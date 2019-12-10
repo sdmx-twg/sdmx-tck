@@ -2,7 +2,7 @@ class UrnUtil {
     /**
      * Returns the Artefact Type from its URN.
      */
-    static getIdentifiableType = function (urn) {
+    static getIdentifiableType (urn) {
         if (urn === null || urn === undefined) {
             return null;
         }

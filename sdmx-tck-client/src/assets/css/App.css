@@ -1,0 +1,197 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+body {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin: auto;
+  max-width: 1100px;
+  background-color: whitesmoke;
+}
+
+#appContent {
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+#reRunBtn {
+  background-color: transparent;
+  width:50px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 50%;
+  border: transparent;
+  float: right;
+}
+#reRunBtn.disabled{
+  color: transparent;
+}
+#myProgress {
+  width: 98%;
+  background-color: #00000036;
+  border-radius: 10px;
+  text-align: center;
+  font-size: large;
+  padding: 1px;
+  
+}
+
+#myBar {
+  
+  height: 100%;
+  background-color: #409947;
+  border-radius: 20px;
+  text-align: center;
+  color:white;
+  font-size: large;
+}
+#buttons {
+  text-align: center;
+}
+#logo{
+  width:60px;
+  margin-right: 10px ;
+}
+.titleTable{
+  width: 100%;
+}
+.toolTitle {
+  margin-bottom: 20px;
+  border-bottom: 5px solid #1b1002;
+  padding: 5px 0;
+  max-width: 300px;
+}
+
+.testsTableContainer {
+  font-family: monospace;
+  font-size: 1rem;
+  margin: 15px 0px;
+  border: 1px solid #4cafa6;
+  /* border-bottom: 1px solid #4cafa6; */
+  max-height: 450px;
+  overflow-y: auto;
+}
+.testsTableContainer #testsTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+#testsTable td, #testsTable th {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+#testsTable tr:nth-child(even){background-color: #f2f2f2;}
+#testsTable tr:hover {background-color: #ddd;}
+#testsTable th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: #4cafa6;
+  color: white;
+}
+
+#testsTable td.success{
+  color: green;
+}
+
+#testsTable td.fail{
+  color:red;
+}
+
+.scoreContainer table {
+  width: 100%;
+  margin: 60px 0px;
+  border-collapse: collapse;
+  table-layout: fixed; 
+}
+.scoreContainer table th > div.score {
+  text-align: left;
+  color:green;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #282c34;
+  border-left: 3px solid #dee4c9;
+  border-right: 3px solid #dee4c9;
+  border-radius: 10px;
+  margin: 2px;
+  padding: 0 10px;
+}
+
+/* INPUTS */
+.tck-input-wrapper, .tck-select-wrapper { 
+  display: block;
+  padding: 15px 0;  
+}
+.tck-input-wrapper input, .tck-select-wrapper select {
+  width: 100%;
+  padding: 4px;
+  margin: 2px 0;
+  font-size: 1rem;
+  font-family: monospace; 
+  border: 1px solid black;
+}
+.tck-select-wrapper.api-version  select {
+  width: 200px
+}
+.tck-input-wrapper label, .tck-select-wrapper label {
+  display: block;
+  font-size: 0.9rem;
+  font-family: sans-serif;
+  padding-right: 10px;
+}
+button.runButton {
+  margin-top: 3%;
+  width: 150px;
+  padding: 10px 10px;
+  font-size: 1rem;
+  font-family: monospace;
+  background-color: #00a5c9;
+  
+}
+button.runButton:disabled {
+  background-color: #00000036; 
+  color: white;
+}
+.details-container {
+  font-family: monospace;
+  color: black;
+}
+
+.test-details-table {
+  table-layout: fixed; 
+  width: 100%;
+  word-wrap: break-word
+}
+
+.test-details-table tr > td:nth-child(1) {
+  font-weight: bold;
+  width: 80px;
+}
+
+.test-more-info {
+  cursor: pointer;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
