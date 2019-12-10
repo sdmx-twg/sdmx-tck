@@ -1,14 +1,14 @@
 const API_VERSIONS = require('sdmx-tck-api').constants.API_VERSIONS;
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
+const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
+
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const ITEM_SCHEME_TYPES = require('sdmx-tck-api').constants.ITEM_SCHEME_TYPES;
 const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 var getResources = require('sdmx-tck-api').constants.getResources;
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
 
-const STRUCTURES_TEST_TYPES = require('../constants/StructuresTestTypes.js');
-var SemanticChecker = require('../checker/StructuresSemanticChecker.js');
 
 var STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT = require('../constants/TestConstants.js').STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT;
 var STRUCTURE_REFERENCE_PARAMETER_TESTS = require('../constants/TestConstants.js').STRUCTURE_REFERENCE_PARAMETER_TESTS;
@@ -68,9 +68,8 @@ class TestsModelBuilder {
                             identifiers: { structureType: "", agency: "", id: "", version: "" },
                             state: TEST_STATE.WAITING,
                             failReason: "",
-                            testType: STRUCTURES_TEST_TYPES.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                            subTests: [],
-                            callback: SemanticChecker.checkIdentification
+                            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
+                            subTests: []
                         })
                         x.numOfTests = x.numOfTests + 1;
                         ts21.push({
@@ -84,9 +83,8 @@ class TestsModelBuilder {
                             identifiers: { structureType: "", agency: "", id: "", version: "" },
                             state: TEST_STATE.WAITING,
                             failReason: "",
-                            testType: STRUCTURES_TEST_TYPES.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                            subTests: itemReq,
-                            callback: SemanticChecker.checkIdentification
+                            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
+                            subTests: itemReq
                         })
 
                         itemReq = [];
@@ -102,9 +100,8 @@ class TestsModelBuilder {
                             identifiers: { structureType: "", agency: "", id: "", version: "" },
                             state: TEST_STATE.WAITING,
                             failReason: "",
-                            testType: STRUCTURES_TEST_TYPES.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                            subTests: [],
-                            callback: SemanticChecker.checkIdentification
+                            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
+                            subTests: []
                         })
                     }
                 };
@@ -135,9 +132,8 @@ class TestsModelBuilder {
                             identifiers: { structureType: "", agency: "", id: "", version: "" },
                             state: TEST_STATE.WAITING,
                             failReason: "",
-                            testType: STRUCTURES_TEST_TYPES.STRUCTURE_REFERENCE_PARAMETER,
-                            subTests: [],
-                            callback: SemanticChecker.checkReferences
+                            testType: TEST_TYPE.STRUCTURE_REFERENCE_PARAMETER,
+                            subTests: []
                         });
                     };
 
@@ -157,9 +153,8 @@ class TestsModelBuilder {
                             identifiers: { structureType: "", agency: "", id: "", version: "" },
                             state: TEST_STATE.WAITING,
                             failReason: "",
-                            testType: STRUCTURES_TEST_TYPES.STRUCTURE_DETAIL_PARAMETER,
-                            subTests: [],
-                            callback: SemanticChecker.checkDetails
+                            testType: TEST_TYPE.STRUCTURE_DETAIL_PARAMETER,
+                            subTests: []
                         });
                     };
                     if (arrayOfRestResources[j] === STRUCTURES_REST_RESOURCE.codelist) {
@@ -179,9 +174,8 @@ class TestsModelBuilder {
                                 identifiers: { structureType: "", agency: "", id: "", version: "" },
                                 state: TEST_STATE.WAITING,
                                 failReason: "",
-                                testType: STRUCTURES_TEST_TYPES.STRUCTURE_QUERY_REPRESENTATION,
+                                testType: TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION,
                                 subTests: [],
-                                callback: ""
                             });
                         };
                     }
@@ -201,9 +195,8 @@ class TestsModelBuilder {
                     index: index,
                     resource: arrayOfRestResources[j],
                     failReason: "",
-                    testType: "",
-                    subTests: ts21.concat(ts22.concat(ts23.concat(ts24))),
-                    callback: SemanticChecker.checkIdentification
+                    testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
+                    subTests: ts21.concat(ts22.concat(ts23.concat(ts24)))
                 });
             }
             return allTests;

@@ -8,42 +8,30 @@ var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
 const sdmx_requestor = require('sdmx-rest');
 
 class TestExecutionManager {
-    static async executeTest(toRun, apiVersion, endpoint) {
-        var request = StructureRequestBuilder.prepareRequest(toRun.resource, toRun.reqTemplate, toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items);
-
-        var testedService = sdmx_requestor.getService({ url: endpoint, api: apiVersion });
-
-        await sdmx_requestor.request2(request, testedService).then((response) => {
-            return ResponseValidator.validateHttpResponse(request, response);
-        }).then((validation) => {
-            toRun.httpResponseValidation = validation;
-
-            return validation.httpResponseValidation.httpResponse.text();
-        }).then((xmlBody) => {
-            /* TODO
-             * extract the workspace (sdmx structures, datasets in case of data query,
-             * metadata reports is case of metadata query).
-             */
-            return new SdmxXmlParser().getIMObjects(xmlBody);
-        }).then((workspace) => {
-            return SemanticCheckerFactory.getChecker(request).checkWorkspace(toRun, workspace);
-        }).then(async (validation) => {
-            if (toRun.requireRandomSdmxObject === true) {
-                var sdmxObj;
-                /*If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function*/
-                if (toRun.resource === "structure") {
-                    sdmxObj = validation.workspace.getRandomSdmxObject();
-                } else {
-                    sdmxObj = validation.workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
-                }
-                performAction(ACTION_NAMES.PASS_IDENTIFIERS_TO_CHILDREN_TESTS, toRun, sdmxObj);
-            }
-            return toRun;
-        }).catch(function (err) {
-            //TODO
-            console.log(err);
-            return { data: { testInfo: toRun, state: "FAILED", error: err } };
-            //store.dispatch({ type: ACTION_NAMES.UPDATE_TEST_STATE, data: { testInfo: toRun, state: TEST_STATE.FAILED, error: err } });
+    static executeTest(toRun, apiVersion, endpoint) {
+        return new Promise((resolve, reject) => {
+            StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
+                toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
+                .then((preparedRequest) => {
+                    toRun.preparedRequest = preparedRequest;
+                    return sdmx_requestor.request2(toRun.preparedRequest.request, toRun.preparedRequest.service);
+                }).then((httpResponse) => {
+                    toRun.httpResponse = httpResponse;
+                    return ResponseValidator.validateHttpResponse(toRun.preparedRequest.request, toRun.httpResponse);
+                }).then((httpResponseValidation) => {
+                    toRun.httpResponseValidation = httpResponseValidation;
+                    return toRun.httpResponse.text();
+                }).then((xmlBody) => {
+                    return new SdmxXmlParser().getIMObjects(xmlBody);
+                }).then((workspace) => {
+                    toRun.workspace = workspace.toJSON();
+                    return SemanticCheckerFactory.getChecker(toRun.request).checkWorkspace(toRun, workspace);
+                }).then((validation) => {
+                    toRun.workspaceValidation = validation;
+                    resolve(toRun);
+                }).catch(function (err) {
+                    reject({ data: { testInfo: toRun, state: "FAILED", error: err } });
+                });
         });
     };
 };

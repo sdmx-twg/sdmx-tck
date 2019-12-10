@@ -10,6 +10,7 @@ const StructureReferenceDetail = require('./constants/StructureReferenceDetail.j
 const StructuresRestResources = require('./constants/StructuresRestResources.js');
 const TestState = require('./constants/TestState.js');
 const TestIndex = require('./constants/TestIndex.js');
+const TestType = require('./constants/TestType.js');
 
 // ERRORS
 var TckError = require('./errors/TckError.js');
@@ -42,7 +43,8 @@ module.exports = {
         STRUCTURES_REST_RESOURCE: StructuresRestResources.STRUCTURES_REST_RESOURCE,
         getResources: StructuresRestResources.getResources,
         TEST_STATE: TestState.TEST_STATE,
-        TEST_INDEX: TestIndex.TEST_INDEX
+        TEST_INDEX: TestIndex.TEST_INDEX,
+        TEST_TYPE: TestType.TEST_TYPE
     },
     errors: {
         TckError: TckError,

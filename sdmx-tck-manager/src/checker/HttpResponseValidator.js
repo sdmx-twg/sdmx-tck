@@ -8,7 +8,7 @@ const sdmx_requestor = require('sdmx-rest');
 class HttpResponseValidator {
     /**
      * It returns an object with the following format:
-     * { httpResponseValidation: { status: status, query: query, httpResponse: httpResponse } }
+     * { status: status, query: query, httpResponse: httpResponse }
      * @param {*} query an object that contains the parameters used in the http request.
      * @param {*} httpResponse the http response
      */
@@ -17,7 +17,7 @@ class HttpResponseValidator {
             try {
                 sdmx_requestor.checkStatus(query, httpResponse);
                 // TODO + additional checks
-                resolve({ httpResponseValidation: { status: SUCCESS_CODE, query: query, httpResponse: httpResponse } });
+                resolve({ status: SUCCESS_CODE });
             } catch (err) {
                 reject(new TckError(err));
             }

@@ -16,9 +16,9 @@ app.get("/execute-test", (req, res) => {
     let apiVersion = req.query.apiVersion;
     let endpoint = req.query.endpoint;
 
-    let result = TestExecutionManager.executeTest(test, apiVersion, endpoint);
-    console.log(result);
-    res.send(result);
+    TestExecutionManager.executeTest(test, apiVersion, endpoint).then((result) => {
+        res.send(JSON.stringify(result));
+    });
 });
 
 app.listen(5000, () => {

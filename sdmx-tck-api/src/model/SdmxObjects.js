@@ -3,10 +3,8 @@ var SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRU
 
 class SdmxObjects {
 	constructor(structures, structuresJson) {
-		console.log("constructor invoked");
 		this.structures = structures;
-		this.structuresJson = structuresJson;
-		console.log(this);
+		//this.structuresJson = structuresJson;
 	}
 	getSdmxObjects() {
 		return this.structures;
@@ -125,15 +123,12 @@ class SdmxObjects {
 			return expression === true;
 		});
 	};
-	toString() {
-		let s = "";
-		for (const [structureType, structuresArray] of this.structures) {
-			s += "#" + structureType + "=" + structuresArray.length + " \n ";
-			for (let structure in structuresArray) {
-				s += structure + " : " + JSON.stringify(structuresArray[structure]) + " \n ";
-			}
-		}
-		return s;
+	toJSON() {
+		let s = {};
+		this.getSdmxObjects().forEach(function(v, k) {
+			s[k] = v;
+		});
+		return { structures: s };
 	};
 };
 
