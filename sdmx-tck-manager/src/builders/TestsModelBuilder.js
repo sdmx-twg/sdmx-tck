@@ -21,16 +21,25 @@ class TestsModelBuilder {
     /**
      * Method that creates the model (object) in which the data of the app will be stored.
     */
-    static createTestsModel(apiVersion) {
+    static createTestsModel(apiVersion, indices) {
         let structureTests = { numOfTests: 0 };
         let dataTests = { numOfTests: 0 };
+        let schemaTests = { numOfTests: 0 };
+        let metadataTests = { numOfTests: 0 };
 
-        let testsStruct = [
-            { id: TEST_INDEX.Structure, subTests: TestsModelBuilder.getTests(TEST_INDEX.Structure, structureTests, apiVersion), numOfValidTestResponses: 0, numOfValidRequests: 0, numOfRunTests: 0, sumOfTests: structureTests.numOfTests },
-            { id: TEST_INDEX.Data, subTests: TestsModelBuilder.getTests(TEST_INDEX.Data, dataTests, apiVersion), sumOfTests: dataTests.numOfTests },
-            { id: TEST_INDEX.Schema, subTests: [] },
-            { id: TEST_INDEX.Metadata, subTests: [] }
-        ]
+        let testsStruct = [];
+        if (indices.includes(TEST_INDEX.Structure)) {
+            testsStruct.push({ id: TEST_INDEX.Structure, subTests: TestsModelBuilder.getTests(TEST_INDEX.Structure, structureTests, apiVersion), numOfValidTestResponses: 0, numOfValidRequests: 0, numOfRunTests: 0, sumOfTests: structureTests.numOfTests });
+        }
+        if (indices.includes(TEST_INDEX.Data)) {
+            testsStruct.push({ id: TEST_INDEX.Data, subTests: TestsModelBuilder.getTests(TEST_INDEX.Data, dataTests, apiVersion), numOfValidTestResponses: 0, numOfValidRequests: 0, numOfRunTests: 0, sumOfTests: dataTests.numOfTests });
+        }
+        if (indices.includes(TEST_INDEX.Schema)) {
+            testsStruct.push({ id: TEST_INDEX.Schema, subTests: [], numOfValidTestResponses: 0, numOfValidRequests: 0, numOfRunTests: 0, sumOfTests: schemaTests.numOfTests });
+        }
+        if (indices.includes(TEST_INDEX.Metadata)) {
+            testsStruct.push({ id: TEST_INDEX.Metadata, subTests: [], numOfValidTestResponses: 0, numOfValidRequests: 0, numOfRunTests: 0, sumOfTests: metadataTests.numOfTests});
+        }
         return testsStruct;
     };
 
