@@ -17,8 +17,6 @@ const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 
 class StructuresSemanticChecker {
     static checkWorkspace(test, workspace) {
-        console.log("WORKSPACE=");
-        console.log(workspace);
         return new Promise((resolve, reject) => {
             try {
                 let query = test.preparedRequest.request;
@@ -30,13 +28,9 @@ class StructuresSemanticChecker {
                 } else if (test.testType === TEST_TYPE.STRUCTURE_DETAIL_PARAMETER) {
                     validation = SemanticChecker.checkDetails(query, workspace);
                 }
-                if (validation.status === SUCCESS_CODE) {
-                    resolve(validation);
-                } else {
-                    reject(new SemanticError(validation.error, validation.error));
-                }
+                resolve(validation);
             } catch (err) {
-                reject(new TckError(err));
+                reject(new TckError("An error occurred during the workspace validation. Cause: " + err));
             }
         });
     };
