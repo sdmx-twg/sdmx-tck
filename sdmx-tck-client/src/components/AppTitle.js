@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AppTitle extends React.Component {
+export default class AppTitle extends React.Component {
     render() {
         return (
             <table className="titleTable">
@@ -17,5 +17,3 @@ class AppTitle extends React.Component {
         );
     };
 };
-
-export default AppTitle;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { extractSelectedTests, extractScore } from "../handlers/helperFunctions";
-import { loadTests } from '../actions/StoreActions'
+import { extractScore } from "../handlers/helperFunctions";
+import { prepareTests } from '../actions/TestActions'
 
 class RunButton extends React.Component {
     /*
@@ -18,13 +18,18 @@ class RunButton extends React.Component {
         /* Get the selected version value from app GUI */
         var endpoint = document.getElementById("ws-url").value;
         var apiVersion = document.getElementById("selectVersion").value;
-        
+
         var indexSelect = document.getElementById("indexSelect");
         var indices = [];
         for (var i = 0; i < indexSelect.length; i++) {
             if (indexSelect.options[i].selected) indices.push(indexSelect.options[i].value);
         }
-        
+
+        if (indices.length === 0) {
+            alert("Please select at least one test index.");
+            return;
+        }
+
         this.props.initialiseModel(endpoint, apiVersion, indices);
     };
 
@@ -39,9 +44,7 @@ class RunButton extends React.Component {
 /*Function that is called every time that the store is updated and returns an object 
 of data that this component needs.*/
 const mapStateToProps = (state) => {
-
     var testsArray = [...state];
-    var selectedTestsArray = extractSelectedTests(testsArray);
     var scores = extractScore(testsArray);
 
     /** Return an object containing 2 boolean properties. The first one is an array with all the tests that are going to run
@@ -50,7 +53,6 @@ const mapStateToProps = (state) => {
      * is running and the 3rd one whether or not the testing procedure has finished.
      */
     return {
-        testsToRun: selectedTestsArray,
         running: (scores.numOfRunTests !== scores.numOfTests) && (scores.numOfRunTests > 0),
         finished: (scores.numOfRunTests === scores.numOfTests) && (scores.numOfRunTests > 0)
     }
@@ -58,7 +60,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        initialiseModel: (endpoint, apiVersion, testIndices) => { return dispatch(initialiseModel(endpoint, apiVersion, testIndices)) },
+        initialiseModel: (endpoint, apiVersion, testIndices) => { return dispatch(prepareTests(endpoint, apiVersion, testIndices)) },
     };
 };
 

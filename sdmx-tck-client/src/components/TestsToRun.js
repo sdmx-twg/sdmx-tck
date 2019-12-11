@@ -97,7 +97,6 @@ const mapStateToProps = (state) => {
   return {
     testsToRun: selectedTestsArray,
     finished: (scores.numOfRunTests === scores.numOfTests) && (scores.numOfRunTests > 0)
-
   }
 };
 export default connect(mapStateToProps)(TestsToRun);

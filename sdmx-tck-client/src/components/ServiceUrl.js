@@ -6,7 +6,7 @@ export default class ServiceUrl extends React.Component {
         return (
             <div className="tck-input-wrapper">
                 <label htmlFor="ws-url">Rest URL:</label>
-                <input type="text" id="ws-url" defaultValue="https://registry.sdmx.org/ws/public/sdmxapi/rest/" />
+                <input type="text" id="ws-url" defaultValue="http://192.168.0.82:8080/sdmxrr-ws/rest/" />
             </div>
         );
     }

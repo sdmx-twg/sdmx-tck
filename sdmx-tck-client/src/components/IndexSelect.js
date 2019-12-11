@@ -1,10 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { extractScore } from "../handlers/helperFunctions";
 
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 
-class IndexSelect extends React.Component {
+export default class IndexSelect extends React.Component {
   render() {
     return (
       <div className="tck-select-wrapper">
@@ -19,19 +17,3 @@ class IndexSelect extends React.Component {
     );
   }
 };
-
-const mapStateToProps = (state) => {
-  var testsArray = [...state];
-  var scores = extractScore(testsArray);
-
-  /* 
-  * Return an object containing 2 boolean properties. The 1st is checking whether or not the app (the testing procedure)
-  * is running and the 2nd one whether or not the testing procedure has finished.
-  */
-  return {
-    running: (scores.numOfRunTests !== scores.numOfTests) && (scores.numOfRunTests > 0),
-    finished: (scores.numOfRunTests === scores.numOfTests) && (scores.numOfRunTests > 0)
-  }
-};
-
-export default connect(mapStateToProps)(IndexSelect);

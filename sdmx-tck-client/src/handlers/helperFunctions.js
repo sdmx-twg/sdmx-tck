@@ -18,12 +18,10 @@ export const extractScore = (testsArray) => {
 	let numOfTests = 0;
 
 	for (let i = 0; i < testsArray.length; i++) {
-		if (testsArray[i].run === true) {
-			numOfCompliantResponses += Number(testsArray[i].numOfValidRequests);
-			numOfFullResponses += Number(testsArray[i].numOfValidTestResponses);
-			numOfRunTests += Number(testsArray[i].numOfRunTests);
-			numOfTests += Number(testsArray[i].sumOfTests);
-		}
+		numOfCompliantResponses += Number(testsArray[i].numOfValidRequests);
+		numOfFullResponses += Number(testsArray[i].numOfValidTestResponses);
+		numOfRunTests += Number(testsArray[i].numOfRunTests);
+		numOfTests += Number(testsArray[i].sumOfTests);
 	}
 	let complianceScore = parseFloat(Number(numOfCompliantResponses) / Number(numOfTests)).toFixed(2)
 	let coverageScore = parseFloat(Number(numOfFullResponses) / Number(numOfTests)).toFixed(2);
@@ -71,48 +69,15 @@ Functionality
 2. Find in which Tests the "run" property equals true (are selected to run)
 3. Organise them into an array and return it.
 */
-export const extractSelectedTests = (testsArray) => {
+export function extractSelectedTests(testsArray) {
 	let array = [];
 	testsArray.forEach((test) => {
-		if (test.run === true) {
-			test.subTests.forEach((subTest) => {
-				array.push(subTest);
-			});
-		}
+		test.subTests.forEach((subTest) => {
+			array.push(subTest);
+		});
 	});
 	return array;
 };
-
-// /**
-//  * Change the run status of tests recursively.
-//  * If a test is selected to run then its children hierarchy will run.
-//  * If a test is not selected to run then its children hierarchy will not run.
-//  * @param {*} test
-//  * @param {*} run
-//  */
-// const runTest = (test, run) => {
-// 	test.run = run;
-// 	if (test.subTests) {
-// 		for (let i = 0; i < test.subTests.length; i++) {
-// 			runTest(test.subTests[i], run);
-// 		}
-// 	}
-// };
-// /*
-// Functionality
-// 1. Iterate over a copy array of the state
-// 2. Find which Tests are selected to run and mark them
-// 3. Update the store object.
-// */
-// export const selectTests = (initialStatuses, action) => {
-// 	var testsArray = [...initialStatuses];
-// 	for (let i = 0; i < testsArray.length; i++) {
-// 		// the action.data is an array that contains the selected indices (Structures, Data, etc.).
-// 		// If the selected index is found in the array of indices, mark the tests found under the index as running.
-// 		runTest(testsArray[i], action.data.indexOf(testsArray[i].id) !== -1);
-// 	}
-// 	return testsArray;
-// };
 
 /**
  * If the parent in not found yet in the store keep looking recursively. 
@@ -153,32 +118,6 @@ export const passIdentifiersToChildren = (prevStore, action) => {
 		}
 	}
 	return testsArray;
-};
-
-export const setHttpResponseValidationResult = (prevStore, action) => {
-	var testsArray = [...prevStore];
-
-	updateTestProperty(testsArray, action.data.testInfo, action.data.result);
-
-	return testsArray;
-};
-
-const updateTestProperty = (testsArray, testInfo, property) => {
-	for (let i = 0; i < testsArray.length; i++) {
-		if (testInfo.index === testsArray[i].id) {
-			updateProperty(testsArray[i], testInfo, property);
-		}
-	}
-};
-
-const updateProperty = (currentTest, testInfo, property) => {
-	if (currentTest.testId === testInfo.testId) {
-		Object.assign(testInfo, property);
-	} else if (currentTest.subTests) {
-		for (let j = 0; j < currentTest.subTests.length; j++) {
-			updateProperty(currentTest.subTests[j], testInfo, property);
-		}
-	}
 };
 
 /**

@@ -10,7 +10,6 @@ import ScoreContainer from './components/ScoreContainer';
 function App() {
   return (
     <div id="appContent">
-
       <AppTitle />
       <ServiceUrl />
       <VersionBar />
@@ -22,7 +21,6 @@ function App() {
 
       <ScoreContainer />
       <TestsToRun />
-
     </div>
   );
 }
