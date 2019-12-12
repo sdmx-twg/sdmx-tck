@@ -1,5 +1,6 @@
 const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
+const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 var SdmxXmlParser = require('sdmx-tck-parsers').parsers.SdmxXmlParser;
 var TckError = require('sdmx-tck-api').errors.TckError;
 var StructureRequestBuilder = require('../builders/StructureRequestBuilder.js');
@@ -52,6 +53,19 @@ class TestExecutionManager {
                     }).then((xmlBody) => {
                         return new SdmxXmlParser().getIMObjects(xmlBody);
                     }).then((workspace) => {
+                        // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
+                        var randomStructure;
+                        if (toRun.resource === "structure") {
+                            randomStructure = workspace.getRandomSdmxObject();
+                        } else {
+                            randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
+                        }
+                        toRun.randomStructure = {
+                            structureType: randomStructure.getStructureType(),
+                            agencyId: randomStructure.getAgencyId(),
+                            id: randomStructure.getId(),
+                            version: randomStructure.getVersion(),
+                        };
                         toRun.workspace = workspace.toJSON();
                         return SemanticCheckerFactory.getChecker(toRun.request).checkWorkspace(toRun, workspace);
                     }).then((validation) => {

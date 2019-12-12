@@ -1,4 +1,6 @@
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
+const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
+const SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
 
 export const getTestItems = (items) => {
 	let testItems = [];
@@ -31,11 +33,23 @@ export const extractScore = (testsArray) => {
 	return scores;
 };
 
+export const increaseRunTestsNum = (prevStore, action) => {
+	var testsArray = [...prevStore];
+
+	for (let i = 0; i < testsArray.length; i++) {
+		if (testsArray[i].id === action.testIndex) {
+			testsArray[i].numOfRunTests += 1;
+		}
+	}
+	return testsArray;
+};
+
+
 export const increaseTestCompliantNumber = (prevStore, action) => {
 	var testsArray = [...prevStore];
 
 	for (let i = 0; i < testsArray.length; i++) {
-		if (testsArray[i].id === action.data) {
+		if (testsArray[i].id === action.testIndex) {
 			testsArray[i].numOfValidRequests = testsArray[i].numOfValidRequests + 1;
 			break;
 		}
@@ -47,20 +61,12 @@ export const increaseTestCoverageNumber = (prevStore, action) => {
 	var testsArray = [...prevStore];
 
 	for (let i = 0; i < testsArray.length; i++) {
-		if (testsArray[i].id === action.data) {
+		if (testsArray[i].id === action.testInde) {
 			testsArray[i].numOfValidTestResponses = testsArray[i].numOfValidTestResponses + 1;
 			break;
 		}
 	}
 	return testsArray;
-};
-
-const increaseRunTestsNum = (testsArray, runTest) => {
-	for (let i = 0; i < testsArray.length; i++) {
-		if (testsArray[i].id === runTest.index) {
-			testsArray[i].numOfRunTests += 1;
-		}
-	}
 };
 
 /*
@@ -83,25 +89,25 @@ export function extractSelectedTests(testsArray) {
  * If the parent in not found yet in the store keep looking recursively. 
  * When its found pass the identifiers to its children (only to its adjacent children).
  */
-const searchChildTestsToPassIdentifiers = (test, action) => {
-	if (action.data.testInfo.testId === test.testId) {
+const searchChildTestsToPassIdentifiers = (test, runTest) => {
+	if (runTest.testId === test.testId) {
 		// if the test is found, pass identifiers to its children.
 		if (test.subTests && Array.isArray(test.subTests)) {
 			for (let i = 0; i < test.subTests.length; i++) {
 				if (test.subTests[i].requireRandomSdmxObject === true) {
-					test.subTests[i].identifiers.structureType = action.data.randomObj.getStructureType();
-					test.subTests[i].identifiers.agency = action.data.randomObj.getAgencyId();
-					test.subTests[i].identifiers.id = action.data.randomObj.getId();
-					test.subTests[i].identifiers.version = action.data.randomObj.getVersion();
+					test.subTests[i].identifiers.structureType = runTest.randomStructure.structureType;
+					test.subTests[i].identifiers.agency = runTest.randomStructure.agencyId;
+					test.subTests[i].identifiers.id = runTest.randomStructure.id;
+					test.subTests[i].identifiers.version = runTest.randomStructure.version;
 				}
 				if (test.subTests[i].requireItems) {
-					test.subTests[i].items = action.data.items;
+					test.subTests[i].items = runTest.items;
 				}
 			}
 		}
 	} else if (test.subTests && Array.isArray(test.subTests)) {
 		for (let i = 0; i < test.subTests.length; i++) {
-			searchChildTestsToPassIdentifiers(test.subTests[i], action);
+			searchChildTestsToPassIdentifiers(test.subTests[i], runTest);
 		}
 	}
 };
@@ -112,9 +118,11 @@ const searchChildTestsToPassIdentifiers = (test, action) => {
 export const passIdentifiersToChildren = (prevStore, action) => {
 	var testsArray = [...prevStore];
 
+	var runTest = action.test;
+
 	for (let i = 0; i < testsArray.length; i++) {
-		if (testsArray[i].id === action.data.testInfo.index) {
-			searchChildTestsToPassIdentifiers(testsArray[i], action);
+		if (testsArray[i].id === runTest.index) {
+			searchChildTestsToPassIdentifiers(testsArray[i], runTest);
 		}
 	}
 	return testsArray;
