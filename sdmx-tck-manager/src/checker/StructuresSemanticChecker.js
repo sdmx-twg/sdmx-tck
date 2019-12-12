@@ -4,7 +4,7 @@ var FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 var SemanticError = require('sdmx-tck-api').errors.SemanticError;
 var TckError = require('sdmx-tck-api').errors.TckError;
 
-const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.StructureReferenceDetail;
+const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 const STRUCTURE_QUERY_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_QUERY_DETAIL;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 
@@ -24,9 +24,9 @@ class StructuresSemanticChecker {
                 if (test.testType === TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS) {
                     validation = StructuresSemanticChecker.checkIdentification(query, workspace)
                 } else if (test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARAMETER) {
-                    validation = SemanticChecker.checkReferences(query, workspace);
+                    validation = StructuresSemanticChecker.checkReferences(query, workspace);
                 } else if (test.testType === TEST_TYPE.STRUCTURE_DETAIL_PARAMETER) {
-                    validation = SemanticChecker.checkDetails(query, workspace);
+                    validation = StructuresSemanticChecker.checkDetails(query, workspace);
                 }
                 resolve(validation);
             } catch (err) {

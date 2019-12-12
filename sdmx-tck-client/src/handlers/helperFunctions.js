@@ -37,7 +37,7 @@ export const increaseExecutedTestsNumber = (prevStore, action) => {
 
 	for (let i = 0; i < testsArray.length; i++) {
 		if (testsArray[i].id === action.data) {
-			testsArray[i].numOfRunTests = testsArray[i].numOfRunTests + 1;
+			testsArray[i].numOfRunTests +=1;
 			break;
 		}
 	}
@@ -59,10 +59,9 @@ export const increaseRunTestsNum = (prevStore, action) => {
 
 export const increaseTestCompliantNumber = (prevStore, action) => {
 	var testsArray = [...prevStore];
-
 	for (let i = 0; i < testsArray.length; i++) {
 		if (testsArray[i].id === action.testIndex) {
-			testsArray[i].numOfValidRequests = testsArray[i].numOfValidRequests + 1;
+			testsArray[i].numOfValidRequests +=1;
 			break;
 		}
 	}
@@ -73,7 +72,7 @@ export const increaseTestCoverageNumber = (prevStore, action) => {
 	var testsArray = [...prevStore];
 
 	for (let i = 0; i < testsArray.length; i++) {
-		if (testsArray[i].id === action.testInde) {
+		if (testsArray[i].id === action.testIndex) {
 			testsArray[i].numOfValidTestResponses = testsArray[i].numOfValidTestResponses + 1;
 			break;
 		}
@@ -147,14 +146,6 @@ export const passIdentifiersToChildren = (prevStore, action) => {
  */
 export const updateTestsStatus = (prevStore, action) => {
 	var testsArray = [...prevStore];
-
-	/** updateTestStatus is called when a test starts to run and  when a test ends successfully or not.
-	 * However the number of running tests must be increased once for each one.
-	 */
-	if ((action.data.state === TEST_STATE.COMPLETED || action.data.state === TEST_STATE.FAILED) || action.data.state === TEST_STATE.UNABLE_TO_RUN) {
-		increaseRunTestsNum(testsArray, action.data.testInfo);
-	}
-
 	for (let i = 0; i < testsArray.length; i++) {
 		updateTestStatus(testsArray, testsArray[i], action);
 	}
@@ -162,15 +153,15 @@ export const updateTestsStatus = (prevStore, action) => {
 };
 
 function updateTestStatus(testsArray, test, action) {
-	if (action.data.testInfo.testId === test.testId) {
-		test.state = action.data.state;
-		if (action.data.state === TEST_STATE.RUNNING) {
+	if (action.test.testId === test.testId) {
+		test.state = action.state;
+		if (action.state === TEST_STATE.RUNNING) {
 			test.startTime = new Date();
-		} else if (action.data.state === TEST_STATE.FAILED || action.data.state === TEST_STATE.COMPLETED) {
+		} else if (action.state === TEST_STATE.FAILED || action.state === TEST_STATE.COMPLETED) {
 			test.endTime = new Date();
 		}
-		if (action.data.state === TEST_STATE.FAILED) {
-			test.failReason = action.data.error;
+		if (action.state === TEST_STATE.FAILED) {
+			test.failReason = action.test.failReason;
 			// if the test failed, change the status of its children to "Unable to run".
 			updateChildTestsStatus(testsArray, test);
 		}

@@ -81,15 +81,23 @@ async function runTests(endpoint, tests) {
 export async function runTest(endpoint, test) {
     let testResults = await requestTestRun(endpoint, test);
 
-    if (testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1) {
-        store.dispatch(updateComplianceNumber(testResults.index));
-    };
-    if (testResults.workspaceValidation && testResults.workspaceValidation.status === 1) {
-        store.dispatch(updateCoverageNumber(testResults.index));
-    }
     store.dispatch(updateTestsNumber(testResults.index));
-    store.dispatch(updateChildrenTests(testResults));
 
+   
+    if(testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1
+        && testResults.workspaceValidation && testResults.workspaceValidation.status === 1){
+             //Actions if a test was successfull
+            store.dispatch(updateTestState(testResults, TEST_STATE.COMPLETED));
+            store.dispatch(updateComplianceNumber(testResults.index));
+            store.dispatch(updateCoverageNumber(testResults.index));
+            store.dispatch(updateChildrenTests(testResults));
+    }else{ 
+             //Actions if a test failed
+            store.dispatch(updateTestState(testResults, TEST_STATE.FAILED));
+            if (testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1) {
+                store.dispatch(updateComplianceNumber(testResults.index));
+            };
+    }
     if (test.subTests && test.subTests.length !== 0) {
         for (let j = 0; j < test.subTests.length; j++) {
             /* In order to mark as failed Item Queries if the items to request are unknown */
