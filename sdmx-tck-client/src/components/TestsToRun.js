@@ -37,7 +37,7 @@ class TestsToRun extends React.Component {
     cells.push(<td key={test.testId}>{test.testId}</td>);
     cells.push(<td key={"testType" + test.testId}>{test.testType}</td>);
     cells.push(<td className={nameOfClass} key={"state" + test.testId} >{test.state}</td>);
-    cells.push(<td key={"duration" + test.testId} >{(test.startTime && test.endTime) ? (test.endTime - test.startTime) / 1000 : ''}</td>);
+    cells.push(<td key={"duration" + test.testId} >{(test.startTime && test.endTime) ? ((Date.parse((test.endTime).toString()) - Date.parse((test.startTime).toString()))/1000).toFixed(2) : ''}</td>);
     cells.push(<td key={"structure" + test.testId}> {structureInfo}</td>);
     cells.push(<td key={"more" + test}><TestDetails test={test} /></td>);
 

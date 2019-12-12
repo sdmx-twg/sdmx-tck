@@ -11,6 +11,9 @@ const sdmx_requestor = require('sdmx-rest');
 
 class TestExecutionManager {
     static executeTest(toRun, apiVersion, endpoint) {
+        /*Keep the starting time*/
+        toRun.startTime = new Date();
+
         if (toRun.testType === TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION) { 
             return new Promise((resolve, reject) => {
                 StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
@@ -73,11 +76,16 @@ class TestExecutionManager {
                         if (workspaceValidation.status === FAILURE_CODE) {
                             throw new TckError("Workspace validation failed: Cause: " + workspaceValidation.error);
                         }
+
+                        //Keep ending time
+                        toRun.endTime = new Date();
                         resolve(toRun);
                     }).catch((err) => {
                         if (err instanceof Error) {
                             toRun.failReason = err.toString();
                         }
+                        //Keep ending time
+                        toRun.endTime = new Date();
                         reject(toRun);
                     });
             });

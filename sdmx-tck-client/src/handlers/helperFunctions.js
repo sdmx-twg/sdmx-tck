@@ -154,12 +154,12 @@ export const updateTestsStatus = (prevStore, action) => {
 
 function updateTestStatus(testsArray, test, action) {
 	if (action.test.testId === test.testId) {
+		
+		//Saving state and duration, in order to be saved to the store.
 		test.state = action.state;
-		if (action.state === TEST_STATE.RUNNING) {
-			test.startTime = new Date();
-		} else if (action.state === TEST_STATE.FAILED || action.state === TEST_STATE.COMPLETED) {
-			test.endTime = new Date();
-		}
+		test.startTime = action.test.startTime;
+		test.endTime = action.test.endTime;
+
 		if (action.state === TEST_STATE.FAILED) {
 			test.failReason = action.test.failReason;
 			// if the test failed, change the status of its children to "Unable to run".
