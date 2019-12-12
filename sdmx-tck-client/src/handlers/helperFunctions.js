@@ -30,6 +30,18 @@ export const extractScore = (testsArray) => {
 
 	return scores;
 };
+export const increaseExecutedTestsNumber = (prevStore, action) => {
+	var testsArray = [...prevStore];
+
+	for (let i = 0; i < testsArray.length; i++) {
+		if (testsArray[i].id === action.data) {
+			testsArray[i].numOfRunTests = testsArray[i].numOfRunTests + 1;
+			break;
+		}
+	}
+	return testsArray;
+};
+
 
 export const increaseTestCompliantNumber = (prevStore, action) => {
 	var testsArray = [...prevStore];
@@ -84,6 +96,9 @@ export function extractSelectedTests(testsArray) {
  * When its found pass the identifiers to its children (only to its adjacent children).
  */
 const searchChildTestsToPassIdentifiers = (test, action) => {
+	console.log(action.data.testInfo.testId)
+	console.log(test.testId);
+	console.log(typeof action.data.randomObj)
 	if (action.data.testInfo.testId === test.testId) {
 		// if the test is found, pass identifiers to its children.
 		if (test.subTests && Array.isArray(test.subTests)) {

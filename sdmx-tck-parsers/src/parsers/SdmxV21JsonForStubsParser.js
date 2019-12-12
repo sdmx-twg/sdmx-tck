@@ -58,9 +58,9 @@ class SdmxV21JsonForStubsParser {
         }
     };
 
-    static isCompleteStub = (props) => {
+    static isCompleteStub (props)  {
         return (props.hasOwnProperty("Description") || props.hasOwnProperty("Annotations"));
-    };
+    }
 };
 
 module.exports = SdmxV21JsonForStubsParser;
