@@ -27,7 +27,7 @@ const mapStateToProps = (state) => {
   var scores = extractScore(testsArray);
 
   return {
-      running: (scores.numOfRunTests !== scores.numOfTests) && (scores.numOfRunTests > 0),
+      running: (scores.numOfRunTests !== scores.numOfTests) && (scores.numOfRunTests > 0)
   }
 };
 
