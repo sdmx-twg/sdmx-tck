@@ -68,8 +68,11 @@ class TestExecutionManager {
                         };
                         toRun.workspace = workspace.toJSON();
                         return SemanticCheckerFactory.getChecker(toRun.request).checkWorkspace(toRun, workspace);
-                    }).then((validation) => {
-                        toRun.workspaceValidation = validation;
+                    }).then((workspaceValidation) => {
+                        toRun.workspaceValidation = workspaceValidation;
+                        if (workspaceValidation.status === FAILURE_CODE) {
+                            throw new TckError("Workspace validation failed: Cause: " + workspaceValidation.error);
+                        }
                         resolve(toRun);
                     }).catch((err) => {
                         if (err instanceof Error) {

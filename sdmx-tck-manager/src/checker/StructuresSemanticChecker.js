@@ -30,7 +30,7 @@ class StructuresSemanticChecker {
                 }
                 resolve(validation);
             } catch (err) {
-                reject(new TckError("An error occurred during the workspace validation. Cause: " + err));
+                reject(new TckError(err));
             }
         });
     };
