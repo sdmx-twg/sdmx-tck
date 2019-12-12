@@ -6,7 +6,6 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 var StructureRequestBuilder = require('../builders/StructureRequestBuilder.js');
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
-var SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 
 const sdmx_requestor = require('sdmx-rest');
 
