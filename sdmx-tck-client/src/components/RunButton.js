@@ -36,7 +36,7 @@ class RunButton extends React.Component {
     /* Render the Run Test Button */
     render() {
         return (
-            <button ref="btn" className="runButton" id="runBtn" onClick={() => this.handleButtonClick()}>Run Test</button>
+            <button ref="btn" className="runButton" id="runBtn" disabled = {this.props.running} onClick={() => this.handleButtonClick()}>Run Test</button>
         );
     }
 }
@@ -46,15 +46,8 @@ of data that this component needs.*/
 const mapStateToProps = (state) => {
     var testsArray = [...state];
     var scores = extractScore(testsArray);
-
-    /** Return an object containing 2 boolean properties. The first one is an array with all the tests that are going to run
-     * according to the index selection.
-     * The 2nd is checking whether or not the app (the testing procedure)
-     * is running and the 3rd one whether or not the testing procedure has finished.
-     */
     return {
         running: (scores.numOfRunTests !== scores.numOfTests) && (scores.numOfRunTests > 0),
-        finished: (scores.numOfRunTests === scores.numOfTests) && (scores.numOfRunTests > 0)
     }
 };
 
