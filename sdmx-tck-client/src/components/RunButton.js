@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { extractScore } from "../handlers/helperFunctions";
 import { prepareTests } from '../actions/TestActions'
 
@@ -56,5 +55,4 @@ const mapDispatchToProps = (dispatch) => {
         initialiseModel: (endpoint, apiVersion, testIndices) => { return dispatch(prepareTests(endpoint, apiVersion, testIndices)) },
     };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(RunButton);
