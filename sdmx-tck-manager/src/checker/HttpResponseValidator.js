@@ -1,9 +1,10 @@
 const SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
-
-const STRUCTURE_QUERY_REPRESENTATIONS = '../constants/StructureQueryRepresentations'.STRUCTURE_QUERY_REPRESENTATIONS;
-
+const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 var TckError = require('sdmx-tck-api').TckError;
 const sdmx_requestor = require('sdmx-rest');
+
+const STRUCTURE_QUERY_REPRESENTATIONS = require('../constants/StructureQueryRepresentations').STRUCTURE_QUERY_REPRESENTATIONS;
+
 
 class HttpResponseValidator {
     /**
@@ -19,7 +20,7 @@ class HttpResponseValidator {
                 // TODO + additional checks
                 resolve({ status: SUCCESS_CODE });
             } catch (err) {
-                reject(new TckError(err));
+                resolve({ status: FAILURE_CODE, error: err.toString() });
             }
         });
     };
@@ -39,9 +40,9 @@ class HttpResponseValidator {
                 } else if (requestedRepresentation === STRUCTURE_QUERY_REPRESENTATIONS.WEIGHTED_SDMX_JSON_100) {
                     sdmx_requestor.checkMediaType(STRUCTURE_QUERY_REPRESENTATIONS.WEIGHTED_SDMX_JSON_100, response);
                 }
-                resolve('Representation Test successfully validated')
+                resolve({ status: SUCCESS_CODE });
             } catch (err) {
-                reject(new TckError(err));
+                resolve({ status: FAILURE_CODE, error: err.toString() });
             }
         });
     };

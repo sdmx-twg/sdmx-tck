@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 import { increaseExecutedTestsNumber,updateTestsStatus, passIdentifiersToChildren, increaseTestCompliantNumber, increaseTestCoverageNumber } from "../handlers/helperFunctions";
+=======
+import { increaseRunTestsNum, passIdentifiersToChildren, increaseTestCompliantNumber, increaseTestCoverageNumber } from "../handlers/helperFunctions";
+>>>>>>> e95bffb0e79a59dfb89d73866d5aab24f7f00d09
 import ACTION_NAMES from '../constants/ActionsNames';
 /*
  * The reducer which depending the action type,
@@ -9,6 +13,7 @@ const testsManagerReducer = (state = [], action) => {
 	switch (action.type) {
 		case ACTION_NAMES.INITIALISE_TESTS_MODEL:
 			return action.tests;
+<<<<<<< HEAD
 		
 		case ACTION_NAMES.UPDATE_TEST_STATE:
 			var updatedTestsStatusesArray = updateTestsStatus(state, action);
@@ -25,6 +30,16 @@ const testsManagerReducer = (state = [], action) => {
 		case ACTION_NAMES.UPDATE_COVERAGE_NUMBER:
 			var updateTestsCoverageNumber = increaseTestCoverageNumber(state, action)
 			return updateTestsCoverageNumber;
+=======
+		case ACTION_NAMES.UPDATE_TESTS_NUMBER:
+			return increaseRunTestsNum(state, action);
+		case ACTION_NAMES.UPDATE_COMPLIANT_TESTS_NUMBER:
+			return increaseTestCompliantNumber(state, action)
+		case ACTION_NAMES.PASS_IDENTIFIERS_TO_CHILDREN_TESTS:
+			return passIdentifiersToChildren(state, action);
+		case ACTION_NAMES.UPDATE_COVERAGE_NUMBER:
+			return increaseTestCoverageNumber(state, action)
+>>>>>>> e95bffb0e79a59dfb89d73866d5aab24f7f00d09
 		default:
 			return state;
 	}
