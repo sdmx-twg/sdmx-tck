@@ -2,17 +2,6 @@ const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
 
-export const getTestItems = (items) => {
-	let testItems = [];
-	if (items.length >= 2) {
-		testItems.push(items[0].id);
-		testItems.push(items[1].id);
-		return testItems;
-	} else if (items.length === 1) {
-		return [];
-	}
-};
-
 export const extractScore = (testsArray) => {
 	let numOfCompliantResponses = 0;
 	let numOfFullResponses = 0;
@@ -112,7 +101,7 @@ const searchChildTestsToPassIdentifiers = (test, runTest) => {
 					test.subTests[i].identifiers.version = runTest.randomStructure.version;
 				}
 				if (test.subTests[i].requireItems) {
-					test.subTests[i].items = runTest.items;
+					test.subTests[i].items = runTest.randomItems;
 				}
 			}
 		}

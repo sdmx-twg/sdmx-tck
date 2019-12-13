@@ -19,6 +19,17 @@ class ItemSchemeObject extends MaintainableObject {
     getItems() {
         return this.items;
     };
+    getItemsCombination(){
+        let testItems = [];
+        if (this.getItems().length >= 2) {
+            testItems.push(this.getItems()[0].id);
+            testItems.push(this.getItems()[1].id);
+            return testItems;
+        } else if (this.getItems().length === 1) {
+            return [];
+        }
+    };
+
 };
 
 module.exports = ItemSchemeObject;

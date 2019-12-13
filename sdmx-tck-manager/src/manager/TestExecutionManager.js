@@ -6,7 +6,7 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 var StructureRequestBuilder = require('../builders/StructureRequestBuilder.js');
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
-
+var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
 const sdmx_requestor = require('sdmx-rest');
 
 class TestExecutionManager {
@@ -69,6 +69,9 @@ class TestExecutionManager {
                             id: randomStructure.getId(),
                             version: randomStructure.getVersion(),
                         };
+                        if(randomStructure instanceof ItemSchemeObject){
+                           toRun.randomItems = randomStructure.getItemsCombination();
+                        }
                         toRun.workspace = workspace.toJSON();
                         return SemanticCheckerFactory.getChecker(toRun.request).checkWorkspace(toRun, workspace);
                     }).then((workspaceValidation) => {
