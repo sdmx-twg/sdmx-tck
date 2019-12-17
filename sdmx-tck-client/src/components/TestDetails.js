@@ -33,7 +33,7 @@ const TestDetails = ({ test }) => {
                                 <tr><td>Name</td><td>{test.testId}</td></tr>
                                 <tr><td>URL</td><td>{test.httpResponseValidation && test.httpResponseValidation.httpResponse && test.httpResponseValidation.httpResponse.url}</td></tr>
                                 <tr><td>State</td><td>{test.state}</td></tr>
-                                <tr><td>Duration</td><td>{(test.startTime && test.endTime) ? (test.endTime - test.startTime) / 1000 + " seconds" : ''}</td></tr>
+                                <tr><td>Duration</td><td>{(test.startTime && test.endTime) ? ((Date.parse((test.endTime).toString()) - Date.parse((test.startTime).toString()))/1000).toFixed(2) + " seconds" : ''}</td></tr>
                                 <tr><td>Errors</td><td>{test.failReason ? test.failReason.toString() : ""}</td></tr>
                             </tbody>
                         </table>
