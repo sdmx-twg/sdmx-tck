@@ -1,4 +1,5 @@
 var MaintainableObject = require('./MaintainableObject.js');
+var StructureReference = require("./StructureReference.js");
 
 class ItemSchemeObject extends MaintainableObject {
     constructor(structureType, props, children, detail, items) {
@@ -29,7 +30,7 @@ class ItemSchemeObject extends MaintainableObject {
             return [];
         }
     };
-
+   
 };
 
 module.exports = ItemSchemeObject;

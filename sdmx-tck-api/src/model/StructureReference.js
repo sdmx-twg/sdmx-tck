@@ -13,7 +13,7 @@ class StructureReference {
         this.id = id;
         this.version = version;
         this.identifiableIds = [];
-
+       
         this.addIdentifiableIds(ids);
     };
     getStructureType() {
@@ -41,6 +41,13 @@ class StructureReference {
         }
     };
     equals(structureRef) {
+        if(structureRef.identifiableIds && structureRef.identifiableIds.length>0){
+            return this.getStructureType() === structureRef.getStructureType() &&
+            this.getAgencyId() === structureRef.getAgencyId() &&
+            this.getId() === structureRef.getId() &&
+            this.getVersion() === structureRef.getVersion()&&
+            this.getIdentifiableIds().every(val => structureRef.getIdentifiableIds().includes(val.id));
+        }
         return this.getStructureType() === structureRef.getStructureType() &&
             this.getAgencyId() === structureRef.getAgencyId() &&
             this.getId() === structureRef.getId() &&

@@ -4,6 +4,7 @@ var FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 var SemanticError = require('sdmx-tck-api').errors.SemanticError;
 var TckError = require('sdmx-tck-api').errors.TckError;
 
+const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 const STRUCTURE_QUERY_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_QUERY_DETAIL;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
@@ -27,6 +28,8 @@ class StructuresSemanticChecker {
                     validation = StructuresSemanticChecker.checkReferences(query, workspace);
                 } else if (test.testType === TEST_TYPE.STRUCTURE_DETAIL_PARAMETER) {
                     validation = StructuresSemanticChecker.checkDetails(query, workspace);
+                } else if(test.testType === TEST_TYPE.STRUCTURE_TARGET_CATEGORY){
+                    validation = StructuresSemanticChecker.checkTargetCategory(query, workspace);
                 }
                 resolve(validation);
             } catch (err) {
@@ -35,6 +38,31 @@ class StructuresSemanticChecker {
         });
     };
 
+    static checkTargetCategory(query,sdmxObjects) {
+        if (!Utils.isDefined(query)) {
+            throw new Error("Missing mandatory parameter 'query'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
+
+        let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.resource);
+        let agency = query.agency;
+        let id = query.id;
+        let version = query.version && query.version === 'latest' ? null : query.version;
+
+        let reqItemValidation = StructuresSemanticChecker.exactlyOneArtefactWithCorrectNumOfItems(sdmxObjects, structureType, agency, id, version, query.item);
+        if(reqItemValidation.status === 0){
+            return { status: FAILURE_CODE, error: "Requested item not found in requested artefact "+structureType};
+        }
+
+        let targetCategoryValidation = StructuresSemanticChecker._checkCategorisationIds(sdmxObjects,query.item)
+        if(targetCategoryValidation.status === 0){
+            return { status: FAILURE_CODE, error: "Requested item not found in categorisation artefact."};
+        }
+       return StructuresSemanticChecker.checkReferences(query,sdmxObjects)
+        
+    }
     static checkIdentification(query, sdmxObjects) {
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
@@ -131,6 +159,7 @@ class StructuresSemanticChecker {
             let isReference = result.some(r => {
                 return r.ref.equals(structure.asReference())
             });
+            
             if (!structureRef.equals(structure.asReference()) && !isReference) {
                 extraStructures.push(structure.asReference());
             } else if (!structureRef.equals(structure.asReference()) && isReference) {
@@ -140,7 +169,6 @@ class StructuresSemanticChecker {
                 }
             }
         });
-
         if (extraStructures.length > 0) {
             return { status: FAILURE_CODE, error: "Non-referenced structures found in workspace: " + JSON.stringify(extraStructures) };
         }
@@ -193,7 +221,32 @@ class StructuresSemanticChecker {
         }
         return { status: FAILURE_CODE, error: "The following structures didn't pass the check: " + JSON.stringify(errors) };
     };
+    //Special workspace validation function for target category queries
+    static _checkCategorisationIds(sdmxObjects,item){
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
+        let matchingStructures = sdmxObjects.getSdmxObjectsWithCriteria(SDMX_STRUCTURE_TYPE.fromRestResource("categorisation"));
+        var identifialbleIdsToCheck = [];
+        for(var i=0;i<matchingStructures.length;i++){
+            for(var j=0;j<matchingStructures[i].getChildren().length;j++){
+                identifialbleIdsToCheck=identifialbleIdsToCheck.concat(matchingStructures[i].getChildren()[j].identifiableIds)
+            }
+        }
+        var index = identifialbleIdsToCheck.indexOf(item);
+        var indexesArr = [];
+       
+        while (index != -1) {
+            indexesArr.push(index);
+            index = identifialbleIdsToCheck.indexOf(item, index + 1);
+        }
+        if(matchingStructures.length === indexesArr.length){
+            return{status:SUCCESS_CODE};
+        }
+        
+        return{status:FAILURE_CODE};
 
+    }
     static _checkIfPartial(structureRef, itemSchemeObject) {
         let items = itemSchemeObject.getItems();
         let identifiableIds = structureRef.getIdentifiableIds();
@@ -288,7 +341,6 @@ class StructuresSemanticChecker {
         let result = [];
         let parents = StructuresSemanticChecker._getParents(sdmxObjects, structureObject);
         if (parents) result = result.concat(parents);
-
         parents.forEach((parent) => {
             let parentObject = sdmxObjects.getSdmxObject(parent.ref);
             if (!Utils.isDefined(parentObject)) {

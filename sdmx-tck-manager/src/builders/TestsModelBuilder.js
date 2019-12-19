@@ -51,6 +51,7 @@ class TestsModelBuilder {
             var ts24 = [];
 
             var itemReq = [];
+            var targCatReq = [];
             var allTests = [];
 
             var arrayOfRestResources = getResources(apiVersion)
@@ -73,11 +74,68 @@ class TestsModelBuilder {
                             resource: arrayOfRestResources[j],
                             requireRandomSdmxObject: true,
                             requireItems: true,
-                            reqTemplate: STRUCTURE_ITEM_QUERIES.AGENCY_ID_VERSION_ITEM.url.template,
+                            reqTemplate: STRUCTURE_ITEM_QUERIES.AGENCY_ID_VERSION_ITEM.template,
                             identifiers: { structureType: "", agency: "", id: "", version: "" },
                             state: TEST_STATE.WAITING,
                             failReason: "",
                             testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
+                            subTests: []
+                        })
+                        x.numOfTests = x.numOfTests + 1;
+                        if (arrayOfRestResources[j] === STRUCTURES_REST_RESOURCE.categoryscheme
+                        && test.url === STRUCTURE_IDENTIFICATION_PARAMETERS.AGENCY_ID_VERSION.url) {
+                            itemReq.push({
+                                testId: "/" + arrayOfRestResources[j] + STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.url,
+                                index: index,
+                                run: false,
+                                items: [],
+                                apiVersion: apiVersion,
+                                resource: arrayOfRestResources[j],
+                                requireRandomSdmxObject: true,
+                                requireItems: true,
+                                reqTemplate: STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.template,
+                                identifiers: { structureType: "", agency: "", id: "", version: "" },
+                                state: TEST_STATE.WAITING,
+                                failReason: "",
+                                testType: TEST_TYPE.STRUCTURE_TARGET_CATEGORY,
+                                subTests: []
+                            })
+                            x.numOfTests = x.numOfTests + 1;
+                        }      
+                        ts21.push({
+                            testId: "/" + arrayOfRestResources[j] + test.url,
+                            index: index,
+                            run: false,
+                            apiVersion: apiVersion,
+                            resource: arrayOfRestResources[j],
+                            requireRandomSdmxObject: true,
+                            reqTemplate: test.reqTemplate,
+                            identifiers: { structureType: "", agency: "", id: "", version: "" },
+                            state: TEST_STATE.WAITING,
+                            failReason: "",
+                            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
+                            subTests: itemReq
+                        })
+
+                        itemReq = [];
+                    }else if(API_VERSIONS[apiVersion] >= API_VERSIONS["v1.1.0"]
+                    && arrayOfRestResources[j] === STRUCTURES_REST_RESOURCE.categoryscheme
+                    && test.url === STRUCTURE_IDENTIFICATION_PARAMETERS.AGENCY_ID_VERSION.url){
+
+                        itemReq.push({
+                            testId: "/" + arrayOfRestResources[j] + STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.url,
+                            index: index,
+                            run: false,
+                            items: [],
+                            apiVersion: apiVersion,
+                            resource: arrayOfRestResources[j],
+                            requireRandomSdmxObject: true,
+                            requireItems: true,
+                            reqTemplate: STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.template,
+                            identifiers: { structureType: "", agency: "", id: "", version: "" },
+                            state: TEST_STATE.WAITING,
+                            failReason: "",
+                            testType: TEST_TYPE.STRUCTURE_TARGET_CATEGORY,
                             subTests: []
                         })
                         x.numOfTests = x.numOfTests + 1;
@@ -97,6 +155,7 @@ class TestsModelBuilder {
                         })
 
                         itemReq = [];
+                    
                     } else {
                         ts21.push({
                             testId: "/" + arrayOfRestResources[j] + test.url,

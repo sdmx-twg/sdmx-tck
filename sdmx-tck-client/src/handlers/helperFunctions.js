@@ -1,6 +1,5 @@
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
-const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
-const SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
+const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 
 export const extractScore = (testsArray) => {
 	let numOfCompliantResponses = 0;
@@ -101,7 +100,13 @@ const searchChildTestsToPassIdentifiers = (test, runTest) => {
 					test.subTests[i].identifiers.version = runTest.randomStructure.version;
 				}
 				if (test.subTests[i].requireItems) {
-					test.subTests[i].items = runTest.randomItems;
+					//In Target category case we need only one item in the form of array
+					if(test.subTests[i].testType === TEST_TYPE.STRUCTURE_TARGET_CATEGORY){
+						test.subTests[i].items = [runTest.randomItems[0]];
+					}else{
+						test.subTests[i].items = runTest.randomItems;
+					}
+					
 				}
 			}
 		}
