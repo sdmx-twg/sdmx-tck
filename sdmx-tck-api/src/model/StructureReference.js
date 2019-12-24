@@ -41,13 +41,14 @@ class StructureReference {
         }
     };
     equals(structureRef) {
+       
         if(structureRef.identifiableIds && structureRef.identifiableIds.length>0
             && this.getIdentifiableIds() && this.getIdentifiableIds().length>0){
             return this.getStructureType() === structureRef.getStructureType() &&
             this.getAgencyId() === structureRef.getAgencyId() &&
             this.getId() === structureRef.getId() &&
             this.getVersion() === structureRef.getVersion()&&
-            this.getIdentifiableIds().every(val => structureRef.getIdentifiableIds().includes(val.id));
+            this.getIdentifiableIds().every(val => structureRef.getIdentifiableIds().includes(val));
         }
         return this.getStructureType() === structureRef.getStructureType() &&
             this.getAgencyId() === structureRef.getAgencyId() &&
