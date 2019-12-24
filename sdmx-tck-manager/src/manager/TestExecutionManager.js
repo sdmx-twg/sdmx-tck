@@ -29,11 +29,13 @@ class TestExecutionManager {
                         if (httpResponseValidation.status === FAILURE_CODE) {
                             throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
                         }
+                        toRun.endTime = new Date();
                         resolve(toRun);
                     }).catch((err) => {
                         if (err instanceof Error) {
                             toRun.failReason = err.toString();
                         }
+                        toRun.endTime = new Date();
                         reject(toRun);
                     });
             });
