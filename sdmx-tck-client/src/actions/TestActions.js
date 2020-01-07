@@ -98,18 +98,18 @@ export async function runTest(endpoint, test) {
                 };
         }
     } 
-        if (test.subTests && test.subTests.length !== 0) {
-            for (let j = 0; j < test.subTests.length; j++) {
-                /* In order to mark as failed Item Queries if the items to request are unknown */
-                if (test.subTests[j].requireItems === true && (!test.subTests[j].items || test.subTests[j].items.length === 0)) {
-                    test.subTests[j].failReason = "Unable to run, due to missing items";
-                    store.dispatch(updateTestState(test.subTests[j], TEST_STATE.UNABLE_TO_RUN));
-                    store.dispatch(updateTestsNumber(test.subTests[j].index));
-                }else {
-                    await runTest(endpoint, test.subTests[j]);
-                }
+    if (test.subTests && test.subTests.length !== 0) {
+        for (let j = 0; j < test.subTests.length; j++) {
+            /* In order to mark as failed Item Queries if the items to request are unknown */
+            if (test.subTests[j].requireItems === true && (!test.subTests[j].items || test.subTests[j].items.length === 0)) {
+                test.subTests[j].failReason = "Unable to run, due to missing items";
+                store.dispatch(updateTestState(test.subTests[j], TEST_STATE.UNABLE_TO_RUN));
+                store.dispatch(updateTestsNumber(test.subTests[j].index));
+            }else {
+                await runTest(endpoint, test.subTests[j]);
             }
         }
+    }
     
    
 }

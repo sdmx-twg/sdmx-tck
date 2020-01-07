@@ -4,7 +4,10 @@ var getStructureQueryDetail = require('sdmx-tck-api').constants.getStructureQuer
 var SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 
 var STRUCTURE_IDENTIFICATION_PARAMETERS = require('./StructureIdentificationParameters.js').STRUCTURE_IDENTIFICATION_PARAMETERS;
-var STRUCTURE_QUERY_REPRESENTATIONS = require('./StructureQueryRepresentations').STRUCTURE_QUERY_REPRESENTATIONS;
+var STRUCTURE_QUERY_REPRESENTATIONS = require('./StructureQueryRepresentations.js').STRUCTURE_QUERY_REPRESENTATIONS;
+var SCHEMA_IDENTIFICATION_PARAMETERS = require('./SchemaIdentificationParameters.js').SCHEMA_IDENTIFICATION_PARAMETERS;
+var SCHEMA_FURTHER_DESCRIBING_RESULTS = require('./SchemaFurtherDescribingResults.js').SCHEMA_FURTHER_DESCRIBING_RESULTS;
+/*-----------------------------------------STRUCTURES-----------------------------------------*/
 
 function STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT() {
     let testsArray = [];
@@ -53,9 +56,28 @@ function STRUCTURES_REPRESENTATIONS_SUPPORT() {
     return testsArray;
 };
 
+/*-----------------------------------------SCHEMAS-----------------------------------------*/
+function SCHEMAS_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT() {
+    let testsArray = [];
+    SCHEMA_IDENTIFICATION_PARAMETERS.getValues().forEach(parameter => {
+        testsArray.push({ index: "Schema", url: parameter.url, reqTemplate: parameter.template })
+    })
+    return testsArray;
+};
+
+function SCHEMAS_FOR_FURTHER_DESCRIBING_RESULTS() {
+    let testsArray = [];
+    SCHEMA_FURTHER_DESCRIBING_RESULTS.getValues().forEach(parameter => {
+        testsArray.push({ index: "Schema", url: parameter.url, reqTemplate: parameter.template })
+    })
+    return testsArray;
+};
+
 module.exports = {
     STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT: STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT,
     STRUCTURE_REFERENCE_PARAMETER_TESTS: STRUCTURE_REFERENCE_PARAMETER_TESTS,
     STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS: STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS,
-    STRUCTURES_REPRESENTATIONS_SUPPORT: STRUCTURES_REPRESENTATIONS_SUPPORT
+    STRUCTURES_REPRESENTATIONS_SUPPORT: STRUCTURES_REPRESENTATIONS_SUPPORT,
+    SCHEMAS_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT:SCHEMAS_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT,
+    SCHEMAS_FOR_FURTHER_DESCRIBING_RESULTS,SCHEMAS_FOR_FURTHER_DESCRIBING_RESULTS
 };
