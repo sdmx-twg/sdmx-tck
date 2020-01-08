@@ -286,7 +286,7 @@ class TestsModelBuilder {
                         x.numOfTests = x.numOfTests + 1;
 
                         ts31.push({
-                            testId: "/" + arrayOfRestResources[j] + test.url,
+                            testId: "/schema/" + arrayOfRestResources[j] + test.url,
                             index: index,
                             run: false,
                             apiVersion: apiVersion,
@@ -307,7 +307,7 @@ class TestsModelBuilder {
                         x.numOfTests = x.numOfTests + 1;
 
                         ts32.push({
-                            testId: "/" + arrayOfRestResources[j] + test.url,
+                            testId: "/schema/" + arrayOfRestResources[j] + test.url,
                             index: index,
                             run: false,
                             apiVersion: apiVersion,
@@ -343,8 +343,7 @@ class TestsModelBuilder {
                     ts32=[];
                 }
             }
-            console.log(allTests)
-            return [];
+            return allTests;
         }else if (index === TEST_INDEX.Data) {
             return [];
         }
