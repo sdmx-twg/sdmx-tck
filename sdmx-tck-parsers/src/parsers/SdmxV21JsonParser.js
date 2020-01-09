@@ -131,10 +131,17 @@ class SdmxV21JsonParser {
                 if (array === null || array === undefined) {
                     structures.set(structureType, []);
                 }
+                let cubeRegionArray = [];
+                if(constraints[c].CubeRegion){
+                    for(let i=0;i<constraints[c].CubeRegion.length;i++){
+                        cubeRegionArray.push(constraints[c].CubeRegion[i])
+                    }
+                }
                 structures.get(structureType).push(
                     new ContentConstraintObject(constraints[c],
                         SdmxV21StructureReferencesParser.getReferences(constraints[c]),
-                        SdmxV21JsonForStubsParser.getDetail(structureType, constraints[c])));
+                        SdmxV21JsonForStubsParser.getDetail(structureType, constraints[c]),
+                        cubeRegionArray));
             }
         }
     };

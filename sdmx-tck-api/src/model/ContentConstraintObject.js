@@ -2,10 +2,17 @@ var MaintainableObject = require('./MaintainableObject.js');
 const SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
 
 class ContentConstraintObject extends MaintainableObject {
-    constructor(props, children, detail) {
+    constructor(props, children, detail,cubeRegion) {
         super(SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key, props, children, detail);
 
         this.setType(props.$.type);
+        this.setCubeRegion(cubeRegion)
+    };
+    setCubeRegion(cubeRegion){
+        this.cubeRegion = cubeRegion;
+    };
+    getCubeRegion(){
+        return this.cubeRegion;
     };
     setType(type) {
         this.type = type;
