@@ -9,6 +9,7 @@ var isDefined = require('sdmx-tck-api').utils.Utils.isDefined;
 var SdmxV21StructureReferencesParser = require('./SdmxV21StructureReferencesParser.js');
 var SdmxV21JsonItemsParser = require('./SdmxV21JsonItemsParser.js');
 var SdmxV21JsonForStubsParser = require('./SdmxV21JsonForStubsParser.js');
+var SdmxV21JsonCubeRegionParser = require('./SdmxV21JsonCubeRegionParser.js')
 
 class SdmxV21JsonParser {
     static parseStructures(sdmxJsonObjects) {
@@ -131,17 +132,11 @@ class SdmxV21JsonParser {
                 if (array === null || array === undefined) {
                     structures.set(structureType, []);
                 }
-                let cubeRegionArray = [];
-                if(constraints[c].CubeRegion){
-                    for(let i=0;i<constraints[c].CubeRegion.length;i++){
-                        cubeRegionArray.push(constraints[c].CubeRegion[i])
-                    }
-                }
                 structures.get(structureType).push(
                     new ContentConstraintObject(constraints[c],
                         SdmxV21StructureReferencesParser.getReferences(constraints[c]),
                         SdmxV21JsonForStubsParser.getDetail(structureType, constraints[c]),
-                        cubeRegionArray));
+                        SdmxV21JsonCubeRegionParser.getCubeRegion(structureType,constraints[c])));
             }
         }
     };
