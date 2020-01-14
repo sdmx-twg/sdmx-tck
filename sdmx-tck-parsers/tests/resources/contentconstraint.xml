@@ -21,7 +21,7 @@
 				</str:ConstraintAttachment>
 				<str:CubeRegion include="true">
 					<com:KeyValue id="ITEM">
-						<com:Value>_T</com:Value>
+						<com:Value include="false">_T</com:Value>
 						<com:Value>CP01</com:Value>
 						<com:Value>CP011</com:Value>
 						<com:Value>CP0111</com:Value>

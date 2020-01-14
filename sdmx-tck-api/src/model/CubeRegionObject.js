@@ -29,7 +29,7 @@ class CubeRegionObject {
            for(let j=0;j<KeyValue[i].Value.length;j++){
             valueArr.push({
                 value:KeyValue[i].Value[j]._ ,
-                includeType:isDefined(KeyValue[i].Value[j].include)? KeyValue[i].Value[j].include : this.includeType
+                includeType:isDefined(KeyValue[i].Value[j].$) && isDefined(KeyValue[i].Value[j].$.include)? KeyValue[i].Value[j].$.include : this.includeType
              });
             }
             keyValueArr.push({
