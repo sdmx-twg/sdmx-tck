@@ -133,6 +133,57 @@ export const passIdentifiersToChildren = (prevStore, action) => {
 	return testsArray;
 };
 
+export const findCorrectChild = (childToFind,searchArray) =>{
+	for(let i=0;i<searchArray.length;i++){
+		if(childToFind.structureType === searchArray[i].structureType
+			&&childToFind.agencyId === searchArray[i].agencyId
+			&&childToFind.id === searchArray[i].id
+			&&childToFind.version === searchArray[i].version){
+				return {found:"true",data: searchArray[i]};
+			}
+	}
+	return {found:"false"};
+}
+const getRandomParentChildRef = (children) => {
+	
+	let random =0;
+	if(children.length === 1){
+		random  = 0;
+	}else{
+		 random = Math.floor((Math.random() * children.length));
+	}
+	return children[random];
+}
+const searchParent = (possibleParents,child) => {
+	for(let j=0;j<possibleParents.length;j++){
+		if(possibleParents[j].subTests){
+			for(let k=0;k<possibleParents[j].subTests.length;k++){
+				if(possibleParents[j].subTests[k].testId === child.testId){
+					let parentDataObj = {child:getRandomParentChildRef(possibleParents[j].workspace.structures.CONTENT_CONSTRAINT[0].children),
+											cubeRegion:possibleParents[j].workspace.structures.CONTENT_CONSTRAINT[0].cubeRegion};
+					possibleParents[j].subTests[k].parentData = parentDataObj;
+					return true
+				}
+				searchParent(possibleParents[j].subTests,child)
+			}
+		}
+		
+	}
+	return false;
+}
+export const getDataFromParent = (prevStore,action) =>{
+	var testsArray = [...prevStore];
+	for(let i=0;i<testsArray.length;i++){
+		if(testsArray[i].subTests){
+			console.log(action.test)
+			let found = searchParent(testsArray[i].subTests,action.test)
+			if(found){
+				break;
+			}
+		}
+	}
+	return testsArray;
+}
 /**
  * Find and mark the tests that have run as completed or failed.
  * @param {*} prevStore 
@@ -153,6 +204,7 @@ function updateTestStatus(testsArray, test, action) {
 		test.state = action.state;
 		test.startTime = action.test.startTime;
 		test.endTime = action.test.endTime;
+		test.workspace = action.test.workspace;
 
 		if (action.state === TEST_STATE.FAILED) {
 			test.failReason = action.test.failReason;

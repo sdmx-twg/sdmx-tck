@@ -10,6 +10,7 @@ var SdmxV21StructureReferencesParser = require('./SdmxV21StructureReferencesPars
 var SdmxV21JsonItemsParser = require('./SdmxV21JsonItemsParser.js');
 var SdmxV21JsonForStubsParser = require('./SdmxV21JsonForStubsParser.js');
 var SdmxV21JsonCubeRegionParser = require('./SdmxV21JsonCubeRegionParser.js')
+var SdmxV21JsonDsdDimensionParser= require('./SdmxV21JsonDsdDimensionParser.js')
 
 class SdmxV21JsonParser {
     static parseStructures(sdmxJsonObjects) {
@@ -234,6 +235,7 @@ class SdmxV21JsonParser {
     };
     static parseDataStructures(structures, s) {
         if (s.DataStructures && s.DataStructures[0] && s.DataStructures[0].DataStructure) {
+            //console.log(s.DataStructures[0].DataStructure)
             for (var d in s.DataStructures[0].DataStructure) {
                 let dsd = s.DataStructures[0].DataStructure[d];
                 let structureType = SDMX_STRUCTURE_TYPE.DSD.key;
@@ -242,8 +244,11 @@ class SdmxV21JsonParser {
                     structures.set(structureType, []);
                 }
                 structures.get(structureType).push(
-                    new DataStructureObject(dsd, [], SdmxV21StructureReferencesParser.getReferences(dsd),
-                    SdmxV21JsonForStubsParser.getDetail(structureType, dsd)));
+                    new DataStructureObject(dsd, [] ,
+                        SdmxV21JsonDsdDimensionParser.getDimensions(dsd),
+                        SdmxV21StructureReferencesParser.getReferences(dsd),
+                        SdmxV21JsonForStubsParser.getDetail(structureType, dsd)));
+                    
             }
         }
     };

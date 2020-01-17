@@ -65,11 +65,12 @@ class TestsModelBuilder {
                 for (let i in STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT()) {
                     let test = STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT()[i]
                     x.numOfTests = x.numOfTests + 1;
+
+                     //Special case for referencepartial testing in content constraints
                     if(API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"] 
                         && STRUCTURES_REST_RESOURCE.contentconstraint === arrayOfRestResources[j]){
                         let referencePartialSubTest = [];
-                        //Special case for referencepartial testing in content constraints
-                       
+                  
                         referencePartialSubTest.push({
                                 testId: "Test for Reference Partial",
                                 index: index,
@@ -77,7 +78,7 @@ class TestsModelBuilder {
                                 apiVersion: apiVersion,
                                 resource: arrayOfRestResources[j],
                                 requireRandomSdmxObject: true,
-                                reqTemplate: STRUCTURE_ITEM_QUERIES.AGENCY_ID_VERSION_ITEM.template,
+                                reqTemplate: {references:"descendants"},
                                 identifiers: { structureType: "", agency: "", id: "", version: "" },
                                 state: TEST_STATE.WAITING,
                                 failReason: "",

@@ -33,7 +33,7 @@
 						<com:Value>CP01116</com:Value>
 						<com:Value>CP01117</com:Value>
 						<com:Value>CP01118</com:Value>
-						<com:Value>CP0112</com:Value>
+						<com:Value include="false">CP0112</com:Value>
 						<com:Value>CP01121</com:Value>
 						<com:Value>CP01122</com:Value>
 						<com:Value>CP01123</com:Value>

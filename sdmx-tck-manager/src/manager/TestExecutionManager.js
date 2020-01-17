@@ -75,7 +75,7 @@ class TestExecutionManager {
                            toRun.randomItems = randomStructure.getItemsCombination();
                         }
                         toRun.workspace = workspace.toJSON();
-                        return SemanticCheckerFactory.getChecker(toRun.request).checkWorkspace(toRun, workspace);
+                        return SemanticCheckerFactory.getChecker(toRun.request,toRun.testType).checkWorkspace(toRun, workspace);
                     }).then((workspaceValidation) => {
                         toRun.workspaceValidation = workspaceValidation;
                         if (workspaceValidation.status === FAILURE_CODE) {

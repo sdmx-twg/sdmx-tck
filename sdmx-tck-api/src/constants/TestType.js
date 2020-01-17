@@ -4,7 +4,8 @@ const TEST_TYPE = {
     STRUCTURE_DETAIL_PARAMETER: "Structure Detail Parameter Tests",
     STRUCTURE_QUERY_REPRESENTATION: "Structure Query Representation",
     STRUCTURE_TARGET_CATEGORY: "Structure Target Category",
-
+    STRUCTURE_REFERENCE_PARTIAL:"Structure Reference Partial",
+    
     SCHEMA_IDENTIFICATION_PARAMETERS:"Schema Identification Parameters",
     SCHEMA_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS:"Schema Parameters for Further Describing the Results"
 };

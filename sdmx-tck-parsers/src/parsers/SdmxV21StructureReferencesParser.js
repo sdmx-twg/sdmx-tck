@@ -10,7 +10,7 @@ class SdmxV21StructureReferencesParser {
      */
     static getReferences(sdmxJsonObject) {
         let structureReferences = [];
-        let references = jsonPath.query(sdmxJsonObject, '$..Ref');
+         let references = jsonPath.query(sdmxJsonObject, '$..Ref');        
         for (let i in references) {
             if (references[i] && references[i][0] && references[i][0].$) {
                 try {

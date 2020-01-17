@@ -15,7 +15,8 @@ class SdmxV21JsonCubeRegionParser {
         return SdmxV21JsonCubeRegionParser._getCubeRegion(sdmxJsonObject);
     }
 
-
+    /*Collect all cubeRegion properties inside of a Content Constraint in an array
+    of CubeRegion objects*/
     static _getCubeRegion(sdmxJsonObject){
         let cubeRegionArray = [];
         if(sdmxJsonObject.CubeRegion){
