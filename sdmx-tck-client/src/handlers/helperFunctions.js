@@ -144,22 +144,12 @@ export const findCorrectChild = (childToFind,searchArray) =>{
 	}
 	return {found:"false"};
 }
-const getRandomParentChildRef = (children) => {
-	
-	let random =0;
-	if(children.length === 1){
-		random  = 0;
-	}else{
-		 random = Math.floor((Math.random() * children.length));
-	}
-	return children[random];
-}
 const searchParent = (possibleParents,child) => {
 	for(let j=0;j<possibleParents.length;j++){
 		if(possibleParents[j].subTests){
 			for(let k=0;k<possibleParents[j].subTests.length;k++){
 				if(possibleParents[j].subTests[k].testId === child.testId){
-					let parentDataObj = {child:getRandomParentChildRef(possibleParents[j].workspace.structures.CONTENT_CONSTRAINT[0].children),
+					let parentDataObj = {child:possibleParents[j].workspace.structures.CONTENT_CONSTRAINT[0].children,
 											cubeRegion:possibleParents[j].workspace.structures.CONTENT_CONSTRAINT[0].cubeRegion};
 					possibleParents[j].subTests[k].parentData = parentDataObj;
 					return true
