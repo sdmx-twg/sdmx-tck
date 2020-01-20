@@ -37,6 +37,7 @@ class SpecialReferencePartialChecker {
         if(test.parentData && test.parentData.child){
            
             let t = SpecialReferencePartialChecker.createTestForChild(test,sdmxObjects);
+            console.log(t)
             // SpecialManager.executeTest(t, test.apiVersion, "https://registry.sdmx.org/ws/public/sdmxapi/rest/").then(
             //         (result) => { console.log(result)},
             //         (error) => { console.log(error)});
@@ -44,57 +45,102 @@ class SpecialReferencePartialChecker {
         }
         
     }
-    //Pick a random keyValue from a cubeRegion of the constraint
-    static getRandomKeyValue(test){
-        let randomKeyValue = {};
-        let cubeRegionIndex =0;
-        let keyValueIndex =0; 
-        if(test.parentData.cubeRegion.length !== 0){
-            cubeRegionIndex = Math.floor(Math.random() * test.parentData.cubeRegion.length);
+    //Find a KeyValue from a Cube Region that exists in the selected DSD's dimensions.
+    static findMatchingKeyValue(test,dsd){
+        let keyValue;
+        for(let i=0;i<test.parentData.cubeRegion.length;i++){
+            for(let j=0;j<test.parentData.cubeRegion[i].KeyValue.length;j++){
+                keyValue = test.parentData.cubeRegion[i].KeyValue[j]
+                let keyValFound  = SpecialReferencePartialChecker.keyValueExistsInDSD(keyValue,dsd);
+                if(keyValFound){
+                    return keyValue;
+                }
+            }
         }
-        if(test.parentData.cubeRegion[cubeRegionIndex].KeyValue.length !==0){
-            keyValueIndex = Math.floor(Math.random() * test.parentData.cubeRegion[cubeRegionIndex].KeyValue.length);
+        return {};
+    }
+    
+    //Check whether a KeyValue exists as a dimension in the provided dsd
+    static keyValueExistsInDSD(selectedkeyValue,dsd){
+        for (let i=0;i<dsd.dimensions.length;i++){
+            if(dsd.dimensions[i].dimensionId === selectedkeyValue.id){
+                return true;
+            }
+        }
+        return false;
+    };
+
+    //Return a reference from the codelist referenced by the chosen dimension.
+    //If the codeList is not found it returns an empty obj
+    static getDimensionReferencedCodelist(selectedkeyValue,dsd){
+        for (let i=0;i<dsd.dimensions.length;i++){
+            if(dsd.dimensions[i].dimensionId === selectedkeyValue.id){
+                if(dsd.dimensions[i].dimensionReferences){
+                    for(let j=0;j<dsd.dimensions[i].dimensionReferences.length;j++){
+                        if(dsd.dimensions[i].dimensionReferences[j].structureType === SDMX_STRUCTURE_TYPE.CODE_LIST.key){
+                            return new StructureReference(
+                                dsd.dimensions[i].dimensionReferences[j].structureType,
+                                dsd.dimensions[i].dimensionReferences[j].agencyId,
+                                dsd.dimensions[i].dimensionReferences[j].id,
+                                dsd.dimensions[i].dimensionReferences[j].version,
+                            )
+                        }
+                    }
+                }
+            }
+        }
+        return {};
+    };
+    
+    static findTestStruct(test,sdmxObjects){
+        for(let counter=0;counter<test.parentData.child.length;counter++){
+            if(test.parentData.child[counter].structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key){
+                let structureList = sdmxObjects.getSdmxObjectsWithCriteria(test.parentData.child[counter].structureType,test.parentData.child[counter].agency,test.parentData.child[counter].id,test.parentData.child[counter].version)
+                let structureRef = new StructureReference(test.parentData.child[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
+                //Validation for only one dsd missing!!!!
+                let dsdRef = sdmxObjects.getChildren(structureRef)
+                let dsd = sdmxObjects.getSdmxObject(dsdRef[0])
+                let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(test,dsd)
+                if(Object.entries(selectedkeyValue).length !== 0){
+                    return SpecialReferencePartialChecker.getDimensionReferencedCodelist(selectedkeyValue,dsd)
+                }
+                
+            }else if(test.parentData.child[counter].structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key){
+                 resource = "provisionagreement";
+                 references = {references:"descendants"}
+    
+            }else if(test.parentData.child[counter].structureType === SDMX_STRUCTURE_TYPE.DSD.key){
+                let dsdList = sdmxObjects.getSdmxObjectsWithCriteria(test.parentData.child[counter].structureType,test.parentData.child[counter].agency,test.parentData.child[counter].id,test.parentData.child[counter].version)
+    
+            }
         }
         
-        randomKeyValue = test.parentData.cubeRegion[cubeRegionIndex].KeyValue[keyValueIndex];
-        return randomKeyValue;
     }
     static createTestForChild(test,sdmxObjects){
-        let resource = "";
-        let references = "";
-        if(test.parentData.child.structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key){
-            let structureList = sdmxObjects.getSdmxObjectsWithCriteria(test.parentData.child.structureType,test.parentData.child.agency,test.parentData.child.id,test.parentData.child.version)
-            let structureRef = new StructureReference(test.parentData.child.structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
-            let dsdList = sdmxObjects.getChildren(structureRef)
-
-            let selectedkeyValue = SpecialReferencePartialChecker.getRandomKeyValue(test)
-            console.log(selectedkeyValue)
-            // console.log(test)
-        }else if(test.parentData.child.structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key){
-             resource = "provisionagreement";
-             references = {references:"descendants"}
-
-        }else if(test.parentData.child.structureType === SDMX_STRUCTURE_TYPE.DSD.key){
-            let dsdList = sdmxObjects.getSdmxObjectsWithCriteria(test.parentData.child.structureType,test.parentData.child.agency,test.parentData.child.id,test.parentData.child.version)
-
+        let resource = "codelist";
+        let references = {references:"referencepartial"};
+        let codelistTest = {};
+        
+        let codeListRef = SpecialReferencePartialChecker.findTestStruct(test,sdmxObjects)
+        if(Object.entries(codeListRef).length !== 0){
+            codelistTest = {
+                testId: "/"+resource+"/agency/id/version?references="+references.references,
+                index: test.index,
+                run: false,
+                apiVersion: test.apiVersion,
+                resource: resource,
+                requireRandomSdmxObject: true,
+                reqTemplate: {references:"referencepartial"},
+                identifiers: {structureType:codeListRef.getStructureType(),agency:codeListRef.getAgencyId(),id:codeListRef.getId(),version:codeListRef.getVersion()},
+                state: TEST_STATE.WAITING,
+                failReason: "",
+                testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
+                subTests: []
+            }
         }
         
-        let findDSD = {
-            testId: "/"+resource+"/agency/id/version?references="+references.references,
-            index: test.index,
-            run: false,
-            apiVersion: test.apiVersion,
-            resource: resource,
-            requireRandomSdmxObject: true,
-            reqTemplate: references,
-            identifiers: {structureType:test.parentData.child.structureType,agency:test.parentData.child.agency,id:test.parentData.child.id,version:test.parentData.child.version},
-            state: TEST_STATE.WAITING,
-            failReason: "",
-            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-            subTests: []
-        }
 
-        return findDSD;
+        return codelistTest;
     }
 };
 
