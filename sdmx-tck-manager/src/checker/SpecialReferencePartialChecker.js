@@ -18,91 +18,78 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
-var SpecialManager = require("../manager/SpecialManager.js");
+var ReferencePartialTestManager = require("../manager/ReferencePartialTestManager.js");
 
 
 class SpecialReferencePartialChecker {
     static checkWorkspace(test, workspace) {
         return new Promise((resolve, reject) => {
             try {
-                let validation = SpecialReferencePartialChecker.referencePartialTestingProcedure(test,workspace);
-                resolve(validation);
+                let finalTestData = SpecialReferencePartialChecker.referencepartialTestBuilder(test,workspace);
+                ReferencePartialTestManager.executeTest(finalTestData.codelistTest, test.apiVersion, test.preparedRequest.service.url).then(
+                    (result) => {
+                        let validation = SpecialReferencePartialChecker.checkCodelistWorkspace(result.workspace,finalTestData.keyValueToCheck);
+                        resolve(validation)
+                    },
+                    (error) => { 
+                        reject (error)
+                    });
             } catch (err) {
                 reject(new TckError(err));
             }
         });
     };
 
-    static referencePartialTestingProcedure(test,sdmxObjects){
-        if(test.parentData && test.parentData.child){
-           
-            let t = SpecialReferencePartialChecker.createTestForChild(test,sdmxObjects);
-            console.log(t)
-            // SpecialManager.executeTest(t, test.apiVersion, "https://registry.sdmx.org/ws/public/sdmxapi/rest/").then(
-            //         (result) => { console.log(result)},
-            //         (error) => { console.log(error)});
-            
-        }
-        
-    }
-    //Find a KeyValue from a Cube Region that exists in the selected DSD's dimensions.
-    static findMatchingKeyValue(test,dsd){
-        let keyValue;
-        for(let i=0;i<test.parentData.cubeRegion.length;i++){
-            for(let j=0;j<test.parentData.cubeRegion[i].KeyValue.length;j++){
-                keyValue = test.parentData.cubeRegion[i].KeyValue[j]
-                let keyValFound  = SpecialReferencePartialChecker.keyValueExistsInDSD(keyValue,dsd);
-                if(keyValFound){
-                    return keyValue;
-                }
+    static specificValueValidation(specificValue,codesArray){
+        if(specificValue.includeType === 'true'){
+            if(codesArray.indexOf(specificValue.value)!=-1){
+                return true;
             }
-        }
-        return {};
-    }
-    
-    //Check whether a KeyValue exists as a dimension in the provided dsd
-    static keyValueExistsInDSD(selectedkeyValue,dsd){
-        for (let i=0;i<dsd.dimensions.length;i++){
-            if(dsd.dimensions[i].dimensionId === selectedkeyValue.id){
+        }else if(specificValue.includeType === 'false'){
+            if(codesArray.indexOf(specificValue.value) === -1){
                 return true;
             }
         }
         return false;
-    };
-
-    //Return a reference from the codelist referenced by the chosen dimension.
-    //If the codeList is not found it returns an empty obj
-    static getDimensionReferencedCodelist(selectedkeyValue,dsd){
-        for (let i=0;i<dsd.dimensions.length;i++){
-            if(dsd.dimensions[i].dimensionId === selectedkeyValue.id){
-                if(dsd.dimensions[i].dimensionReferences){
-                    for(let j=0;j<dsd.dimensions[i].dimensionReferences.length;j++){
-                        if(dsd.dimensions[i].dimensionReferences[j].structureType === SDMX_STRUCTURE_TYPE.CODE_LIST.key){
-                            return new StructureReference(
-                                dsd.dimensions[i].dimensionReferences[j].structureType,
-                                dsd.dimensions[i].dimensionReferences[j].agencyId,
-                                dsd.dimensions[i].dimensionReferences[j].id,
-                                dsd.dimensions[i].dimensionReferences[j].version,
-                            )
-                        }
-                    }
+    }
+    static checkCodelistWorkspace(workspace,keyValue){
+        // console.log(keyValue)
+        // console.log(workspace.structures.CODE_LIST[0].getItems())
+        let codesArray =[];
+        for(let i=0;i<workspace.structures.CODE_LIST[0].getItems().length;i++){
+            codesArray.push(workspace.structures.CODE_LIST[0].getItems()[i].id);
+        }
+        if(keyValue.value){
+            for(let i=0;i<keyValue.value.length;i++){
+                if(!SpecialReferencePartialChecker.specificValueValidation(keyValue.value[i],codesArray)){
+                    return { status: FAILURE_CODE, error: "Codelist is incompatible with the given code values constraints."};
                 }
             }
         }
+        
+        return { status: SUCCESS_CODE }
+    }
+    static getRefsOfSpecificStructureType(refs,structureType){
+        for(let i=0;i<refs.length;i++){
+            if(refs[i].getStructureType() === structureType){
+                return refs[i];
+            }
+        }
         return {};
-    };
-    
-    static findTestStruct(test,sdmxObjects){
-        for(let counter=0;counter<test.parentData.child.length;counter++){
-            if(test.parentData.child[counter].structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key){
-                let structureList = sdmxObjects.getSdmxObjectsWithCriteria(test.parentData.child[counter].structureType,test.parentData.child[counter].agency,test.parentData.child[counter].id,test.parentData.child[counter].version)
-                let structureRef = new StructureReference(test.parentData.child[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
-                //Validation for only one dsd missing!!!!
-                let dsdRef = sdmxObjects.getChildren(structureRef)
-                let dsd = sdmxObjects.getSdmxObject(dsdRef[0])
-                let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(test,dsd)
+    }
+    static findTheCodeListAndKeyValue(test,sdmxObjects,constrainableArtefacts,constraintCubeRegions){
+        for(let counter=0;counter<constrainableArtefacts.length;counter++){
+            if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key){
+                let structureList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
+                let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
+                //Validation for only one dsd missing!!!!!!!!
+                //It might not be only dsds!!!!!!!!!
+                let dsdRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
+                let dsd = sdmxObjects.getSdmxObject(dsdRef)
+                let selectedkeyValue = dsd.findMatchingKeyValue(constraintCubeRegions)
                 if(Object.entries(selectedkeyValue).length !== 0){
-                    return SpecialReferencePartialChecker.getDimensionReferencedCodelist(selectedkeyValue,dsd)
+                    return {codelistRef:dsd.getDimensionReferencedCodelist(selectedkeyValue.id),
+                            keyValue:selectedkeyValue}
                 }
                 
             }else if(test.parentData.child[counter].structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key){
@@ -114,23 +101,33 @@ class SpecialReferencePartialChecker {
     
             }
         }
+        return {};
         
     }
-    static createTestForChild(test,sdmxObjects){
+    static referencepartialTestBuilder(test,sdmxObjects){
         let resource = "codelist";
-        let references = {references:"referencepartial"};
+        let template = {detail:"referencepartial"};
         let codelistTest = {};
         
-        let codeListRef = SpecialReferencePartialChecker.findTestStruct(test,sdmxObjects)
-        if(Object.entries(codeListRef).length !== 0){
+        //Get from constraint the constrainable artefacts as well as the cube region(s).
+        let constraint = sdmxObjects.getSdmxObject(new StructureReference(test.identifiers.structureType,test.identifiers.agency,test.identifiers.id,test.identifiers.version))
+        let constrainableArtefacts = constraint.getChildren();
+        let constraintCubeRegions = constraint.getCubeRegion();
+
+        //According to the constrainable artefact selected the function will return a codelist ref.
+        let testData = SpecialReferencePartialChecker.findTheCodeListAndKeyValue(test,sdmxObjects,constrainableArtefacts,constraintCubeRegions)
+        
+        let codeListRef = testData.codelistRef;
+        let keyValueToCheck = testData.keyValue;
+        if(Object.entries(testData).length !== 0){
             codelistTest = {
-                testId: "/"+resource+"/agency/id/version?references="+references.references,
+                testId: "/"+resource+"/agency/id/version?detail="+template.detail,
                 index: test.index,
                 run: false,
                 apiVersion: test.apiVersion,
                 resource: resource,
                 requireRandomSdmxObject: true,
-                reqTemplate: {references:"referencepartial"},
+                reqTemplate: template,
                 identifiers: {structureType:codeListRef.getStructureType(),agency:codeListRef.getAgencyId(),id:codeListRef.getId(),version:codeListRef.getVersion()},
                 state: TEST_STATE.WAITING,
                 failReason: "",
@@ -140,7 +137,7 @@ class SpecialReferencePartialChecker {
         }
         
 
-        return codelistTest;
+        return {codelistTest:codelistTest,keyValueToCheck:keyValueToCheck};
     }
 };
 
