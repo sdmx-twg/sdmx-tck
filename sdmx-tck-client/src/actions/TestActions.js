@@ -1,9 +1,7 @@
 import { store } from '../store/AppStore';
 import ACTION_NAMES from '../constants/ActionsNames';
-import {findCorrectChild} from '../handlers/helperFunctions';
 
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
-const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 
 export function initialiseTestsModel(tests) {
     return { type: 'INITIALISE_TESTS_MODEL', tests: tests };
@@ -31,10 +29,6 @@ export function updateChildrenTests(test) {
 
 export function updateTestState(test, state) {
     return { type: ACTION_NAMES.UPDATE_TEST_STATE, test: test, state: state };
-}
-
-export function dataFromParent(test){
-    return { type: ACTION_NAMES.GET_DATA_FROM_PARENT, test: test };
 }
 
 export function fetchTests(endpoint, apiVersion, testIndices) {
@@ -84,10 +78,6 @@ async function runTests(endpoint, tests) {
 };
 
 export async function runTest(endpoint, test) {
-    
-    if(test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL){
-        store.dispatch(dataFromParent(test));
-    }
    store.dispatch(updateTestsNumber(test.index));
    if(test.state!==TEST_STATE.COMPLETED && test.state!==TEST_STATE.FAILED && test.state!==TEST_STATE.UNABLE_TO_RUN ){
         let testResults = await requestTestRun(endpoint, test);

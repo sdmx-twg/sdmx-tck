@@ -144,36 +144,7 @@ export const findCorrectChild = (childToFind,searchArray) =>{
 	}
 	return {found:"false"};
 }
-const searchParent = (possibleParents,child) => {
-	for(let j=0;j<possibleParents.length;j++){
-		if(possibleParents[j].subTests){
-			for(let k=0;k<possibleParents[j].subTests.length;k++){
-				if(possibleParents[j].subTests[k].testId === child.testId){
-					let parentDataObj = {child:possibleParents[j].workspace.structures.CONTENT_CONSTRAINT[0].children,
-											cubeRegion:possibleParents[j].workspace.structures.CONTENT_CONSTRAINT[0].cubeRegion};
-					possibleParents[j].subTests[k].parentData = parentDataObj;
-					return true
-				}
-				searchParent(possibleParents[j].subTests,child)
-			}
-		}
-		
-	}
-	return false;
-}
-export const getDataFromParent = (prevStore,action) =>{
-	var testsArray = [...prevStore];
-	for(let i=0;i<testsArray.length;i++){
-		if(testsArray[i].subTests){
-			console.log(action.test)
-			let found = searchParent(testsArray[i].subTests,action.test)
-			if(found){
-				break;
-			}
-		}
-	}
-	return testsArray;
-}
+
 /**
  * Find and mark the tests that have run as completed or failed.
  * @param {*} prevStore 
