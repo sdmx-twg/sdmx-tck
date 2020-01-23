@@ -53,6 +53,8 @@ class TestsModelBuilder {
             var ts23 = [];
             var ts24 = [];
 
+            let referencePartialSubTest = [];
+
             var itemReq = [];
             var allTests = [];
 
@@ -60,48 +62,32 @@ class TestsModelBuilder {
             for (let j = 0; j < arrayOfRestResources.length; j++) {
                 ts21 = [];
 
-             
+                   //Special case for referencepartial testing in content constraints
+                   if(API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"] 
+                   && STRUCTURES_REST_RESOURCE.contentconstraint === arrayOfRestResources[j]){    
+                    x.numOfTests = x.numOfTests + 1;                       
+                    referencePartialSubTest.push({
+                           testId: "Test for Reference Partial",
+                           index: index,
+                           run: false,
+                           apiVersion: apiVersion,
+                           resource: arrayOfRestResources[j],
+                           requireRandomSdmxObject: true,
+                           reqTemplate: {references:"descendants"},
+                           identifiers: { structureType: "", agency: "", id: "", version: "" },
+                           state: TEST_STATE.WAITING,
+                           failReason: "",
+                           testType: TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL,
+                           subTests: []
+                    })
+                      
+                } 
 
                 for (let i in STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT()) {
                     let test = STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT()[i]
                     x.numOfTests = x.numOfTests + 1;
-
-                     //Special case for referencepartial testing in content constraints
-                    if(API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"] 
-                        && STRUCTURES_REST_RESOURCE.contentconstraint === arrayOfRestResources[j]){
-                        let referencePartialSubTest = [];
-                  
-                        referencePartialSubTest.push({
-                                testId: "Test for Reference Partial",
-                                index: index,
-                                run: false,
-                                apiVersion: apiVersion,
-                                resource: arrayOfRestResources[j],
-                                requireRandomSdmxObject: true,
-                                reqTemplate: {references:"descendants"},
-                                identifiers: { structureType: "", agency: "", id: "", version: "" },
-                                state: TEST_STATE.WAITING,
-                                failReason: "",
-                                testType: TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL,
-                                subTests: []
-                        })
-                        x.numOfTests = x.numOfTests + 1;
-                        ts21.push({
-                            testId: "/" + arrayOfRestResources[j] + test.url,
-                            index: index,
-                            run: false,
-                            apiVersion: apiVersion,
-                            resource: arrayOfRestResources[j],
-                            requireRandomSdmxObject: true,
-                            reqTemplate: test.reqTemplate,
-                            identifiers: { structureType: "", agency: "", id: "", version: "" },
-                            state: TEST_STATE.WAITING,
-                            failReason: "",
-                            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                            subTests: (referencePartialSubTest)
-                        })
-                           
-                    }else if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]
+                    
+                    if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]
                         && ITEM_SCHEME_TYPES.hasOwnProperty(SDMX_STRUCTURE_TYPE.fromRestResource(arrayOfRestResources[j]))
                         && test.url === STRUCTURE_IDENTIFICATION_PARAMETERS.AGENCY_ID_VERSION.url) {
                         
@@ -304,7 +290,7 @@ class TestsModelBuilder {
                     resource: arrayOfRestResources[j],
                     failReason: "",
                     testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                    subTests: ts21.concat(ts22.concat(ts23.concat(ts24)))
+                    subTests: ts21.concat(ts22.concat(ts23.concat(ts24.concat(referencePartialSubTest))))
                 });
             }
             return allTests;
