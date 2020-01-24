@@ -77,6 +77,22 @@ class SpecialReferencePartialChecker {
         }
         return {};
     }
+
+     //Find a KeyValue from a Cube Region that exists in the selected DSD's dimensions.
+     static findMatchingKeyValue(constraintCubeRegions,dsd){
+        let keyValue;
+        for(let i=0;i<constraintCubeRegions.length;i++){
+            for(let j=0;j<constraintCubeRegions[i].KeyValue.length;j++){
+                keyValue = constraintCubeRegions[i].KeyValue[j]
+                let keyValFound  = dsd.componentExistsInDSD(keyValue.id);
+                if(keyValFound){
+                    return keyValue;
+                }
+            }
+        }
+        return {};
+    }
+
     static findTheCodeListAndKeyValue(test,sdmxObjects,constrainableArtefacts,constraintCubeRegions){
         for(let counter=0;counter<constrainableArtefacts.length;counter++){
             if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key){
@@ -86,9 +102,9 @@ class SpecialReferencePartialChecker {
                 //It might not be only dsds!!!!!!!!!
                 let dsdRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
                 let dsd = sdmxObjects.getSdmxObject(dsdRef)
-                let selectedkeyValue = dsd.findMatchingKeyValue(constraintCubeRegions)
+                let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
                 if(Object.entries(selectedkeyValue).length !== 0){
-                    return {codelistRef:dsd.getDimensionReferencedCodelist(selectedkeyValue.id),
+                    return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
                             keyValue:selectedkeyValue}
                 }
                 

@@ -22,11 +22,11 @@ class DataStructureObject extends MaintainableObject {
     getComponents() {
         return this.components;
     }
-    //Return a reference from the codelist referenced by the chosen dimension.
+    //Return a reference from the codelist referenced by the chosen component.
     //If the codeList is not found it returns an empty obj
-    getDimensionReferencedCodelist(selectedkeyValueId){
+    getReferencedCodelistInComponent(componentId){
         for (let i=0;i<this.dimensions.length;i++){
-            if(this.dimensions[i].dimensionId === selectedkeyValueId){
+            if(this.dimensions[i].dimensionId === componentId){
                 if(this.dimensions[i].dimensionReferences){
                     for(let j=0;j<this.dimensions[i].dimensionReferences.length;j++){
                         if(this.dimensions[i].dimensionReferences[j].structureType === SDMX_STRUCTURE_TYPE.CODE_LIST.key){
@@ -44,25 +44,11 @@ class DataStructureObject extends MaintainableObject {
         return {};
     };
 
-     //Find a KeyValue from a Cube Region that exists in the selected DSD's dimensions.
-    findMatchingKeyValue(constraintCubeRegions){
-        let keyValue;
-        for(let i=0;i<constraintCubeRegions.length;i++){
-            for(let j=0;j<constraintCubeRegions[i].KeyValue.length;j++){
-                keyValue = constraintCubeRegions[i].KeyValue[j]
-                let keyValFound  = this.keyValueExistsInDSD(keyValue.id);
-                if(keyValFound){
-                    return keyValue;
-                }
-            }
-        }
-        return {};
-    }
     
     //Check whether a KeyValue exists as a dimension in the provided dsd
-    keyValueExistsInDSD(selectedkeyValueId){
+    componentExistsInDSD(componentId){
         for (let i=0;i<this.dimensions.length;i++){
-            if(this.dimensions[i].dimensionId === selectedkeyValueId){
+            if(this.dimensions[i].dimensionId === componentId){
                 return true;
             }
         }
