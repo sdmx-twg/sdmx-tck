@@ -195,7 +195,8 @@ function updateTestStatus(testsArray, test, action) {
 		test.startTime = action.test.startTime;
 		test.endTime = action.test.endTime;
 		test.workspace = action.test.workspace;
-
+		test.identifiers = action.test.identifiers;
+		
 		if (action.state === TEST_STATE.FAILED) {
 			test.failReason = action.test.failReason;
 			// if the test failed, change the status of its children to "Unable to run".
