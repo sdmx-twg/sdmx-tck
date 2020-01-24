@@ -7,6 +7,7 @@ var StructureRequestBuilder = require('../builders/StructureRequestBuilder.js');
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
 var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
+var ContentConstraintTypeValidator = require('../checker/ContentConstraintTypeValidator.js')
 const sdmx_requestor = require('sdmx-rest');
 
 class TestExecutionManager {
@@ -41,6 +42,12 @@ class TestExecutionManager {
             });
         } else {
             return new Promise((resolve, reject) => {
+
+                /*We have to make sure that the constraint is of allowed type before it runs.
+                SPECIAL HANDLING FOR STRUCTURE REFERENCE TEST ONLY*/
+                if(toRun.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL && toRun.parentWorkspace){
+                    toRun.identifiers = ContentConstraintTypeValidator.getContentConstraintOfAllowedType(toRun)
+                }
                 StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
                     toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
                     .then((preparedRequest) => {
