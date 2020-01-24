@@ -92,12 +92,12 @@ class SpecialReferencePartialChecker {
                             keyValue:selectedkeyValue}
                 }
                 
-            }else if(test.parentData.child[counter].structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key){
+            }else if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key){
                  resource = "provisionagreement";
                  references = {references:"descendants"}
     
-            }else if(test.parentData.child[counter].structureType === SDMX_STRUCTURE_TYPE.DSD.key){
-                let dsdList = sdmxObjects.getSdmxObjectsWithCriteria(test.parentData.child[counter].structureType,test.parentData.child[counter].agency,test.parentData.child[counter].id,test.parentData.child[counter].version)
+            }else if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.DSD.key){
+                let dsdList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
     
             }
         }
@@ -109,8 +109,14 @@ class SpecialReferencePartialChecker {
         let template = {detail:"referencepartial"};
         let codelistTest = {};
         
+
+        //IT HAS TO BE ALLOWED
+
         //Get from constraint the constrainable artefacts as well as the cube region(s).
         let constraint = sdmxObjects.getSdmxObject(new StructureReference(test.identifiers.structureType,test.identifiers.agency,test.identifiers.id,test.identifiers.version))
+        if(constraint.getType()!== "Allowed"){
+            throw new TckError('There is no Content Constraint of type "Allowed" to proceed with this test.')
+        }
         let constrainableArtefacts = constraint.getChildren();
         let constraintCubeRegions = constraint.getCubeRegion();
 
