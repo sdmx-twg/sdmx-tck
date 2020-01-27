@@ -1,6 +1,7 @@
 
 var SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
 var FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
+var Utils = require('sdmx-tck-api').utils.Utils;
 
 var SemanticError = require('sdmx-tck-api').errors.SemanticError;
 
@@ -26,6 +27,14 @@ class SpecialReferencePartialChecker {
         return new Promise((resolve, reject) => {
             try {
                 let finalTestData = SpecialReferencePartialChecker.referencepartialTestBuilder(test,workspace);
+
+                if(Object.entries(finalTestData.codelistTest).length === 0){
+                    throw new Error ('Not specified test for Code List under validation')
+                }
+                if(Object.entries(finalTestData.keyValueToCheck).length === 0){
+                    throw new Error ('Not specified Key Value under validation')
+                }
+
                 ReferencePartialTestManager.executeTest(finalTestData.codelistTest, test.apiVersion, test.preparedRequest.service.url).then(
                     (result) => {
                         let validation = SpecialReferencePartialChecker.checkCodelistWorkspace(result.workspace,finalTestData.keyValueToCheck);
@@ -40,45 +49,65 @@ class SpecialReferencePartialChecker {
         });
     };
 
-    static specificValueValidation(specificValue,codesArray){
-        if(specificValue.includeType === 'true'){
-            if(codesArray.indexOf(specificValue.value)!=-1){
-                return true;
-            }
-        }else if(specificValue.includeType === 'false'){
-            if(codesArray.indexOf(specificValue.value) === -1){
-                return true;
-            }
+    /*Checks whether the partial codelist is following the constraints set.
+    If the Key Value is included then the validation is the following:
+        If the Codes from the partial codelist are a subset of the values in constraint then 
+        the validation is successful. In any other case the validation fails.
+    
+    If the Key Value is excluded then the validation is the following:
+        If the Codes from the partial codelist include any constraint value then the validation fails. In the case
+        that no constraint value in included in the codes the validation is considered successful.  */
+    static specificValueValidation(keyValue,codesArray){
+        if(codesArray.length === 0){
+            throw new Error('No codes to check')
         }
-        return false;
+        if(keyValue.value.length === 0){
+            throw new Error('No constraint values to check')
+        }
+
+        if(keyValue.includeType === 'true'){
+            let includedValues = [];
+            for(let i=0;i<keyValue.value.length;i++){
+                includedValues.push(keyValue.value[i].value)
+            }
+            return codesArray.every(val => includedValues.includes(val));
+
+        }else if(keyValue.includeType === 'false'){
+            for(let i=0;i<keyValue.value.length;i++){
+                if(codesArray.indexOf(keyValue.value[i].value) !== -1){
+                    return false;
+                }
+            }
+            return true;
+            
+        }   
     }
     static checkCodelistWorkspace(workspace,keyValue){
-        // console.log(keyValue)
-        // console.log(workspace.structures.CODE_LIST[0].getItems())
+        if(!Utils.isDefined(workspace)){
+            throw new Error("Missing codelist request's workspace");
+        }
         let codesArray =[];
         for(let i=0;i<workspace.structures.CODE_LIST[0].getItems().length;i++){
             codesArray.push(workspace.structures.CODE_LIST[0].getItems()[i].id);
         }
-        if(keyValue.value){
-            for(let i=0;i<keyValue.value.length;i++){
-                if(!SpecialReferencePartialChecker.specificValueValidation(keyValue.value[i],codesArray)){
-                    return { status: FAILURE_CODE, error: "Codelist is incompatible with the given code values constraints."};
-                }
-            }
+        if(!SpecialReferencePartialChecker.specificValueValidation(keyValue,codesArray)){
+            return { status: FAILURE_CODE, error: "Codelist is incompatible with the given code values constraints."};
         }
-        
         return { status: SUCCESS_CODE }
     }
+
     static getRefsOfSpecificStructureType(refs,structureType){
-        for(let i=0;i<refs.length;i++){
-            if(refs[i].getStructureType() === structureType){
-                return refs[i];
+        if(refs.length>0){
+            for(let i=0;i<refs.length;i++){
+                if(refs[i].getStructureType() === structureType){
+                    return refs[i];
+                }
             }
         }
         return {};
     }
 
-     //Find a KeyValue from a Cube Region that exists in the selected DSD's dimensions.
+     //Find a KeyValue from a Cube Region that exists as a dimension in the selected DSD.
      static findMatchingKeyValue(constraintCubeRegions,dsd){
         let keyValue;
         for(let i=0;i<constraintCubeRegions.length;i++){
@@ -86,7 +115,7 @@ class SpecialReferencePartialChecker {
             for(let j=0;j<keyValues.length;j++){
                 keyValue = keyValues[j];
                 let keyValFound  = dsd.componentExistsInDSD(keyValue.id);
-                if(keyValFound){
+                if(keyValFound && keyValue.value && keyValue.value.length>0){
                     return keyValue;
                 }
             }
@@ -94,20 +123,34 @@ class SpecialReferencePartialChecker {
         return {};
     }
 
-    static findTheCodeListAndKeyValue(test,sdmxObjects,constrainableArtefacts,constraintCubeRegions){
+    static findTheCodeListAndKeyValue(sdmxObjects,constrainableArtefacts,constraintCubeRegions){
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
+        if (!Utils.isDefined(constrainableArtefacts) || constrainableArtefacts.length === 0) {
+            throw new Error("Missing constrainable artefacts");
+        }
+        if (!Utils.isDefined(constraintCubeRegions) || constraintCubeRegions.length === 0) {
+            throw new Error("Missing Cube Regions.");
+        }
         for(let counter=0;counter<constrainableArtefacts.length;counter++){
             if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key){
                 let structureList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
-                let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
-                //Validation for only one dsd missing!!!!!!!!
-                //It might not be only dsds!!!!!!!!!
-                let dsdRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
-                let dsd = sdmxObjects.getSdmxObject(dsdRef)
-                let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
-                if(Object.entries(selectedkeyValue).length !== 0){
-                    return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
-                            keyValue:selectedkeyValue}
+                
+                //If the constrainable artefact exists in Content Constraint 'descendats' request's workspace
+                if(structureList.length !== 0){
+                    let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
+                    let dsdRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
+                    let dsd = sdmxObjects.getSdmxObject(dsdRef)
+                    let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
+                    // console.log(dsdRef)
+                    // console.log(selectedkeyValue);
+                    if(Object.entries(selectedkeyValue).length !== 0){
+                        return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
+                                keyValue:selectedkeyValue}
+                    }
                 }
+               
                 
             }else if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key){
                  resource = "provisionagreement";
@@ -122,27 +165,30 @@ class SpecialReferencePartialChecker {
         
     }
     static referencepartialTestBuilder(test,sdmxObjects){
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
+        if(!Utils.isDefined(test)){
+            throw new Error("Missing mandatory parameter: 'descendants' test .");
+        }
         let resource = "codelist";
         let template = {detail:"referencepartial"};
         let codelistTest = {};
-        
-
-        //IT HAS TO BE ALLOWED
 
         //Get from constraint the constrainable artefacts as well as the cube region(s).
         let constraint = sdmxObjects.getSdmxObject(new StructureReference(test.identifiers.structureType,test.identifiers.agency,test.identifiers.id,test.identifiers.version))
         if(constraint.getType()!== "Allowed"){
-            throw new TckError('There is no Content Constraint of type "Allowed" to proceed with this test.')
+            throw new Error('There is no Content Constraint of type "Allowed" to proceed with this test.')
         }
         let constrainableArtefacts = constraint.getChildren();
         let constraintCubeRegions = constraint.getCubeRegion();
 
         //According to the constrainable artefact selected the function will return a codelist ref.
-        let testData = SpecialReferencePartialChecker.findTheCodeListAndKeyValue(test,sdmxObjects,constrainableArtefacts,constraintCubeRegions)
+        let testData = SpecialReferencePartialChecker.findTheCodeListAndKeyValue(sdmxObjects,constrainableArtefacts,constraintCubeRegions)
         
         let codeListRef = testData.codelistRef;
         let keyValueToCheck = testData.keyValue;
-        if(Object.entries(testData).length !== 0){
+        if(Object.entries(testData).length !== 0 && Object.entries(codeListRef).length !== 0){
             codelistTest = {
                 testId: "/"+resource+"/agency/id/version?detail="+template.detail,
                 index: test.index,
