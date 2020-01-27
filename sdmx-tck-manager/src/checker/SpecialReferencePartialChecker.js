@@ -82,8 +82,9 @@ class SpecialReferencePartialChecker {
      static findMatchingKeyValue(constraintCubeRegions,dsd){
         let keyValue;
         for(let i=0;i<constraintCubeRegions.length;i++){
-            for(let j=0;j<constraintCubeRegions[i].KeyValue.length;j++){
-                keyValue = constraintCubeRegions[i].KeyValue[j]
+            let keyValues = constraintCubeRegions[i].getKeyValue();
+            for(let j=0;j<keyValues.length;j++){
+                keyValue = keyValues[j];
                 let keyValFound  = dsd.componentExistsInDSD(keyValue.id);
                 if(keyValFound){
                     return keyValue;
