@@ -66,6 +66,7 @@ class SpecialReferencePartialChecker {
         }
 
         if(keyValue.includeType === 'true'){
+            console.log("include")
             let includedValues = [];
             for(let i=0;i<keyValue.value.length;i++){
                 includedValues.push(keyValue.value[i].value)
@@ -73,6 +74,7 @@ class SpecialReferencePartialChecker {
             return codesArray.every(val => includedValues.includes(val));
 
         }else if(keyValue.includeType === 'false'){
+            console.log("exclude")
             for(let i=0;i<keyValue.value.length;i++){
                 if(codesArray.indexOf(keyValue.value[i].value) !== -1){
                     return false;
@@ -136,16 +138,21 @@ class SpecialReferencePartialChecker {
         for(let counter=0;counter<constrainableArtefacts.length;counter++){
             if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key){
                 let structureList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
-                
+                console.log(structureList)
                 //If the constrainable artefact exists in Content Constraint 'descendats' request's workspace
                 if(structureList.length !== 0){
                     let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
                     let dsdRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
                     let dsd = sdmxObjects.getSdmxObject(dsdRef)
                     let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
-                    // console.log(dsdRef)
+                    
+                    // console.log("--------------------SELECTED DSD------------------------")
                     // console.log(selectedkeyValue);
                     if(Object.entries(selectedkeyValue).length !== 0){
+                        console.log("--------------------SELECTED DSD------------------------")
+                        console.log(dsdRef)
+                        console.log("--------------------SELECTED CONSTRAINABLE------------------------")
+                        console.log(structureRef)
                         return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
                                 keyValue:selectedkeyValue}
                     }
@@ -157,8 +164,21 @@ class SpecialReferencePartialChecker {
                  references = {references:"descendants"}
     
             }else if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.DSD.key){
-                let dsdList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
-    
+                let structureList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
+                let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
+                let dsdRef = structureRef
+
+                let dsd = structureList[0];
+                let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
+                if(Object.entries(selectedkeyValue).length !== 0){
+                    console.log("--------------------SELECTED DSD------------------------")
+                    console.log(dsdRef)
+                    console.log("--------------------SELECTED CONSTRAINABLE------------------------")
+                    console.log(structureRef)
+                    return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
+                            keyValue:selectedkeyValue}
+                }
+
             }
         }
         return {};
@@ -182,12 +202,20 @@ class SpecialReferencePartialChecker {
         }
         let constrainableArtefacts = constraint.getChildren();
         let constraintCubeRegions = constraint.getCubeRegion();
+        console.log("-------------------CONSTRAINABLE ARTEFACTS---------------------")
+        console.log(constrainableArtefacts)
+        console.log("-------------------CUBE REGIONS---------------------")
+        console.log(constraintCubeRegions)
 
         //According to the constrainable artefact selected the function will return a codelist ref.
         let testData = SpecialReferencePartialChecker.findTheCodeListAndKeyValue(sdmxObjects,constrainableArtefacts,constraintCubeRegions)
         
         let codeListRef = testData.codelistRef;
         let keyValueToCheck = testData.keyValue;
+        console.log("-------------------KEYVALUE---------------------")
+        console.log(keyValueToCheck)
+        console.log("-------------------CODELIST---------------------")
+        console.log(codeListRef)
         if(Object.entries(testData).length !== 0 && Object.entries(codeListRef).length !== 0){
             codelistTest = {
                 testId: "/"+resource+"/agency/id/version?detail="+template.detail,
