@@ -84,6 +84,7 @@ class SpecialReferencePartialChecker {
             
         }   
     }
+    //Check the partial codelist workspace if it is compatible with the constraint and return the appropriate info.
     static checkCodelistWorkspace(workspace,keyValue){
         if(!Utils.isDefined(workspace)){
             throw new Error("Missing codelist request's workspace");
@@ -98,7 +99,9 @@ class SpecialReferencePartialChecker {
         return { status: SUCCESS_CODE }
     }
 
+    //Get the reference of a specific structureType
     static getRefsOfSpecificStructureType(refs,structureType){
+        
         if(refs.length>0){
             for(let i=0;i<refs.length;i++){
                 if(refs[i].getStructureType() === structureType){
@@ -145,9 +148,6 @@ class SpecialReferencePartialChecker {
                     let dsdRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
                     let dsd = sdmxObjects.getSdmxObject(dsdRef)
                     let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
-                    
-                    // console.log("--------------------SELECTED DSD------------------------")
-                    // console.log(selectedkeyValue);
                     if(Object.entries(selectedkeyValue).length !== 0){
                         console.log("--------------------SELECTED DSD------------------------")
                         console.log(dsdRef)
@@ -160,9 +160,28 @@ class SpecialReferencePartialChecker {
                
                 
             }else if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key){
-                 resource = "provisionagreement";
-                 references = {references:"descendants"}
-    
+                let structureList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
+                let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
+                let dataflowRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DATAFLOW.key)
+
+                console.log("--------------------SELECTED DATAFLOW------------------------")
+                console.log(dataflowRef)
+                let dsdRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(dataflowRef),SDMX_STRUCTURE_TYPE.DSD.key)
+
+                console.log("--------------------SELECTED DSD------------------------")
+                console.log(dsdRef)
+                let dsd = sdmxObjects.getSdmxObject(dsdRef)
+
+                let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
+                if(Object.entries(selectedkeyValue).length !== 0){
+                    console.log("--------------------SELECTED DSD------------------------")
+                    console.log(dsdRef)
+                    console.log("--------------------SELECTED CONSTRAINABLE------------------------")
+                    console.log(structureRef)
+                    return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
+                            keyValue:selectedkeyValue}
+                }
+
             }else if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.DSD.key){
                 let structureList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
                 let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
