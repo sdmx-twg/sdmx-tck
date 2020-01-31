@@ -4,37 +4,33 @@ var StructureReference = require('../model/StructureReference.js');
 
 
 class DataStructureObject extends MaintainableObject {
-    constructor(props, components, dimensions,children, detail) {
+    constructor(props, components,children, detail) {
         super(SDMX_STRUCTURE_TYPE.DSD.key, props, children, detail);
 
-        this.setDimensions(dimensions);
         this.setComponents(components);
     };
-    setDimensions(dimensions){
-        this.dimensions = dimensions;
-    };
-    getDimensions(){
-        return this.dimensions;
-    };
+   
     setComponents(components) {
         this.components = components;
     };
     getComponents() {
         return this.components;
     }
+
     //Return a reference from the codelist referenced by the chosen component.
     //If the codeList is not found it returns an empty obj
     getReferencedCodelistInComponent(componentId){
-        for (let i=0;i<this.dimensions.length;i++){
-            if(this.dimensions[i].dimensionId === componentId){
-                if(this.dimensions[i].dimensionReferences){
-                    for(let j=0;j<this.dimensions[i].dimensionReferences.length;j++){
-                        if(this.dimensions[i].dimensionReferences[j].structureType === SDMX_STRUCTURE_TYPE.CODE_LIST.key){
+        let codedComponents = this.components.Dimensions.concat(this.components.Attributes)
+        for (let i=0;i<codedComponents.length;i++){
+            if(codedComponents[i].componentId === componentId){
+                if(codedComponents[i].componentReferences){
+                    for(let j=0;j<codedComponents[i].componentReferences.length;j++){
+                        if(codedComponents[i].componentReferences[j].structureType === SDMX_STRUCTURE_TYPE.CODE_LIST.key){
                             return new StructureReference(
-                                this.dimensions[i].dimensionReferences[j].structureType,
-                                this.dimensions[i].dimensionReferences[j].agencyId,
-                                this.dimensions[i].dimensionReferences[j].id,
-                                this.dimensions[i].dimensionReferences[j].version,
+                                codedComponents[i].componentReferences[j].structureType,
+                                codedComponents[i].componentReferences[j].agencyId,
+                                codedComponents[i].componentReferences[j].id,
+                                codedComponents[i].componentReferences[j].version,
                             )
                         }
                     }
@@ -43,13 +39,19 @@ class DataStructureObject extends MaintainableObject {
         }
         return {};
     };
-
     
-    //Check whether a KeyValue exists as a dimension in the provided dsd
-    componentExistsInDSD(componentId){
-        for (let i=0;i<this.dimensions.length;i++){
-            if(this.dimensions[i].dimensionId === componentId){
-                return true;
+    //Check whether a KeyValue exists as a coded component in the provided dsd
+    componentExistsAndItsCodedInDSD(componentId){
+        let codedComponents = this.components.Dimensions.concat(this.components.Attributes)
+        for (let i=0;i<codedComponents.length;i++){
+            if(codedComponents[i].componentId === componentId){
+                if(codedComponents[i].componentReferences){
+                    for (let j=0;j<codedComponents[i].componentReferences.length;j++){
+                        if(codedComponents[i].componentReferences[j].structureType === SDMX_STRUCTURE_TYPE.CODE_LIST.key){
+                            return true;
+                        }
+                    }
+                }
             }
         }
         return false;
