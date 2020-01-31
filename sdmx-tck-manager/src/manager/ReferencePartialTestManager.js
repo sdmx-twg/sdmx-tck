@@ -30,10 +30,7 @@ class ReferencePartialTestManager {
                         toRun.workspace = workspace.toJSON();
                         resolve(toRun)
                     }).catch((err) => {
-                        if (err instanceof Error) {
-                            toRun.failReason = err.toString();
-                        }
-                        reject(toRun);
+                        reject(err);
                     });
             });
         
