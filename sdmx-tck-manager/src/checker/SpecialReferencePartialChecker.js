@@ -26,6 +26,11 @@ class SpecialReferencePartialChecker {
     static checkWorkspace(test, workspace) {
         return new Promise((resolve, reject) => {
             try {
+
+                /*Returns an object containing:
+                    a) The codelist reference partial test info 
+                    b) The KeyValue with which the partial codelist will be validated.
+                    */
                 let finalTestData = SpecialReferencePartialChecker.referencepartialTestBuilder(test,workspace);
 
                 if(Object.entries(finalTestData.codelistTest).length === 0){
@@ -35,13 +40,16 @@ class SpecialReferencePartialChecker {
                     throw new Error ('Not specified Key Value under validation')
                 }
 
-                ReferencePartialTestManager.executeTest(finalTestData.codelistTest, test.apiVersion, test.preparedRequest.service.url).then(
-                    (result) => {
+                /*Executes the request to get the partial codelist*/
+                ReferencePartialTestManager.executeTest(finalTestData.codelistTest, test.apiVersion, test.preparedRequest.service.url).
+                    then((result) => {
+                        
+                        /*Partial codelist's workspace validation*/
                         let validation = SpecialReferencePartialChecker.checkCodelistWorkspace(result.workspace,finalTestData.keyValueToCheck);
                         resolve(validation)
                     },
                     (error) => { 
-                        reject (error)
+                        reject(error)
                     });
             } catch (err) {
                 reject(new TckError(err));
@@ -84,7 +92,7 @@ class SpecialReferencePartialChecker {
             
         }   
     }
-    //Check the partial codelist workspace if it is compatible with the constraint and return the appropriate info.
+    //Check the partial codelist workspace if it follows the constraint and return the appropriate info.
     static checkCodelistWorkspace(workspace,keyValue){
         if(!Utils.isDefined(workspace)){
             throw new Error("Missing codelist request's workspace");
@@ -119,7 +127,7 @@ class SpecialReferencePartialChecker {
             let keyValues = constraintCubeRegions[i].getKeyValue();
             for(let j=0;j<keyValues.length;j++){
                 keyValue = keyValues[j];
-                let keyValFound  = dsd.componentExistsInDSD(keyValue.id);
+                let keyValFound  = dsd.componentExistsAndItsCodedInDSD(keyValue.id)
                 if(keyValFound && keyValue.value && keyValue.value.length>0){
                     return keyValue;
                 }
