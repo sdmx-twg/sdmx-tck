@@ -4,12 +4,12 @@ const SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_ST
 class CubeRegionObject {
     constructor(props) {
         this.setIncludeValue(props.$.include);
-        this.setKeyValue(props.KeyValue)
+        this.setKeyValues(props.KeyValue)
     };
-    setKeyValue(KeyValue){
+    setKeyValues(KeyValue){
         this.KeyValue = this.createKeyValuesStruct(KeyValue);
     };
-    getKeyValue(){
+    getKeyValues(){
         return this.KeyValue;
     };
     setIncludeValue(includeType) {

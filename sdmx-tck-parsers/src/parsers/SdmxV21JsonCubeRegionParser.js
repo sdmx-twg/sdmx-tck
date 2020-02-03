@@ -4,7 +4,7 @@ const CubeRegionObject = require('sdmx-tck-api').model.CubeRegionObject;
 
 class SdmxV21JsonCubeRegionParser {
 
-    static getCubeRegion (structureType, sdmxJsonObject){
+    static getCubeRegions (structureType, sdmxJsonObject){
         if (!isDefined(structureType)) {
             throw new Error("Missing mandatory parameter 'structureType'");
         }
@@ -12,12 +12,12 @@ class SdmxV21JsonCubeRegionParser {
             throw new Error("Missing mandatory parameter 'sdmxJsonObject'.");
         }
 
-        return SdmxV21JsonCubeRegionParser._getCubeRegion(sdmxJsonObject);
+        return SdmxV21JsonCubeRegionParser._getCubeRegions(sdmxJsonObject);
     }
 
     /*Collect all cubeRegion properties inside of a Content Constraint in an array
     of CubeRegion objects*/
-    static _getCubeRegion(sdmxJsonObject){
+    static _getCubeRegions(sdmxJsonObject){
         let cubeRegionArray = [];
         if(sdmxJsonObject.CubeRegion){
             

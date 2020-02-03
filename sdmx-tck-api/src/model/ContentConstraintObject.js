@@ -6,12 +6,12 @@ class ContentConstraintObject extends MaintainableObject {
         super(SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key, props, children, detail);
 
         this.setType(props.$.type);
-        this.setCubeRegion(cubeRegion)
+        this.setCubeRegions(cubeRegion)
     };
-    setCubeRegion(cubeRegion){
+    setCubeRegions(cubeRegion){
         this.cubeRegion = cubeRegion;
     };
-    getCubeRegion(){
+    getCubeRegions(){
         return this.cubeRegion;
     };
     setType(type) {

@@ -124,7 +124,7 @@ class SpecialReferencePartialChecker {
      static findMatchingKeyValue(constraintCubeRegions,dsd){
         let keyValue;
         for(let i=0;i<constraintCubeRegions.length;i++){
-            let keyValues = constraintCubeRegions[i].getKeyValue();
+            let keyValues = constraintCubeRegions[i].getKeyValues();
             for(let j=0;j<keyValues.length;j++){
                 keyValue = keyValues[j];
                 let keyValFound  = dsd.componentExistsAndItsCodedInDSD(keyValue.id)
@@ -136,6 +136,8 @@ class SpecialReferencePartialChecker {
         return {};
     }
 
+    /*Function that returns the reference of the codelist that is under validation as well as the KeyValue, 
+      the constraints of which will be validated in the codelist */
     static findTheCodeListAndKeyValue(sdmxObjects,constrainableArtefacts,constraintCubeRegions){
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
@@ -150,7 +152,8 @@ class SpecialReferencePartialChecker {
             if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key){
                 let structureList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
                 console.log(structureList)
-                //If the constrainable artefact exists in Content Constraint 'descendats' request's workspace
+
+                //If the constrainable artefact exists in Content Constraint 'descendants' request's workspace
                 if(structureList.length !== 0){
                     let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
                     let dsdRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
@@ -228,7 +231,7 @@ class SpecialReferencePartialChecker {
             throw new Error('There is no Content Constraint of type "Allowed" to proceed with this test.')
         }
         let constrainableArtefacts = constraint.getChildren();
-        let constraintCubeRegions = constraint.getCubeRegion();
+        let constraintCubeRegions = constraint.getCubeRegions();
         console.log("-------------------CONSTRAINABLE ARTEFACTS---------------------")
         console.log(constrainableArtefacts)
         console.log("-------------------CUBE REGIONS---------------------")

@@ -137,7 +137,7 @@ class SdmxV21JsonParser {
                     new ContentConstraintObject(constraints[c],
                         SdmxV21StructureReferencesParser.getReferences(constraints[c]),
                         SdmxV21JsonForStubsParser.getDetail(structureType, constraints[c]),
-                        SdmxV21JsonCubeRegionParser.getCubeRegion(structureType,constraints[c])));
+                        SdmxV21JsonCubeRegionParser.getCubeRegions(structureType,constraints[c])));
             }
         }
     };
