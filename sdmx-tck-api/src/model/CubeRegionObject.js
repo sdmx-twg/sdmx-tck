@@ -19,6 +19,17 @@ class CubeRegionObject {
         return this.includeType;
     };
 
+    //Returns keyvalues with specific id from CubeRegion
+    getKeyValuesWithSpecificId(keyValueId){
+        let specificKeyValue = [];
+        for(let i=0;i<this.KeyValue.length;i++){
+            if(this.KeyValue[i].id === keyValueId){
+                specificKeyValue.push(this.KeyValue[i])
+            }
+        }
+        return specificKeyValue;
+    }
+
     /*Create a struct from KeyValues and their properties.
     Returns an array of objects containing the id of each KeyValue as well as its value(s) (Components)*/
     createKeyValuesStruct(KeyValue){

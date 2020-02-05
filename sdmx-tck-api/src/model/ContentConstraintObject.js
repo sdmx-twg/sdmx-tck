@@ -20,6 +20,19 @@ class ContentConstraintObject extends MaintainableObject {
     getType() {
         return this.type;
     };
+      
+    getAllSameIdKeyValues(selectedkeyValue){
+        let sumOfKeyValues = [];
+        //Collect all KeyValues with the same id from cube regions
+        for(let i=0;i<this.cubeRegion.length;i++){
+            let keyValuesWithSameId = this.cubeRegion[i].getKeyValuesWithSpecificId(selectedkeyValue.id)
+            keyValuesWithSameId.forEach(function(keyvalue) {
+                sumOfKeyValues.push(keyvalue)
+            });
+        }
+        return sumOfKeyValues;
+    }
+
 };
 
 module.exports = ContentConstraintObject;
