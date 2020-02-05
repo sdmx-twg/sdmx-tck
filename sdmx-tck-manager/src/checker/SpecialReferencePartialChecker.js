@@ -220,12 +220,18 @@ class SpecialReferencePartialChecker {
                     let dsd = sdmxObjects.getSdmxObject(dsdRef)
                     let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
                     if(Object.entries(selectedkeyValue).length !== 0){
+                        
+                        //Gather more KeyValues with the same id if there are more than one cube regions.
+                        let sumOfKeyValuesWithSameId = selectedkeyValue;
+                        if(constraintCubeRegions.length > 1){
+                            sumOfKeyValuesWithSameId = constraint.getAllSameIdKeyValues(selectedkeyValue);
+                        }
                         console.log("--------------------SELECTED DSD------------------------")
                         console.log(dsdRef)
                         console.log("--------------------SELECTED CONSTRAINABLE------------------------")
                         console.log(structureRef)
                         return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
-                            keyValueSet:selectedkeyValue}
+                            keyValueSet:sumOfKeyValuesWithSameId}
                     }
                 }
                
@@ -270,12 +276,18 @@ class SpecialReferencePartialChecker {
                 let dsd = structureList[0];
                 let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
                 if(Object.entries(selectedkeyValue).length !== 0){
+                     //Gather more KeyValues with the same id if there are more than one cube regions.
+                     let sumOfKeyValuesWithSameId = selectedkeyValue;
+                     if(constraintCubeRegions.length > 1){
+                         sumOfKeyValuesWithSameId = constraint.getAllSameIdKeyValues(selectedkeyValue);
+                     }
+                    
                     console.log("--------------------SELECTED DSD------------------------")
                     console.log(dsdRef)
                     console.log("--------------------SELECTED CONSTRAINABLE------------------------")
                     console.log(structureRef)
                     return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
-                            keyValueSet:selectedkeyValue}
+                            keyValueSet:sumOfKeyValuesWithSameId}
                 }
 
             }
