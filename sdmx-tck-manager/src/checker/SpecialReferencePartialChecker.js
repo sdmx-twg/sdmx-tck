@@ -62,17 +62,18 @@ class SpecialReferencePartialChecker {
 
                 /*Executes the request to get the partial codelist*/
                 ReferencePartialTestManager.executeTest(finalTestData.codelistTest, test.apiVersion, test.preparedRequest.service.url).
-                    then((result) => {
-                        
+                    then((partialCLworkspace) => {
                         /*Partial codelist's workspace validation*/
-                        let validation = SpecialReferencePartialChecker.checkCodelistWorkspace(result.workspace,finalTestData.keyValueToCheck);
+                        let validation = SpecialReferencePartialChecker.checkCodelistWorkspace(finalTestData.codelistTest,partialCLworkspace,finalTestData.keyValueToCheck);
                         resolve(validation)
-                    },
-                    (error) => { 
+                    }).catch((error) => {
                         reject(error)
+                        //reject(new TckError(error))
+                        
                     });
             } catch (err) {
-                reject(new TckError(err));
+                //console.log(new TckError(err))
+                reject(err);
             }
         });
     };
@@ -83,6 +84,7 @@ class SpecialReferencePartialChecker {
      * @param {*} codesArray array with the codes of the partial codelist.
      */
     static specificValueValidation(keyValue,codesArray){
+
         if(codesArray.length === 0){
             throw new Error('No codes to check')
         }
@@ -108,16 +110,19 @@ class SpecialReferencePartialChecker {
     /**
      * Returns the result of the workspace validation of a partial codelist. In case of success it returns a success code,
      * else in the case of failure it returns a failure code along with the failure reason.
+     * @param {*} codeListTestObj the test obj.
      * @param {*} workspace workspace of partial codelist.
      * @param {*} keyValue the keyValue containing the constraint values that will be checked along with the partial codelist's codes.
      */
-    static checkCodelistWorkspace(workspace,keyValue){
-        if(!Utils.isDefined(workspace)){
+    static checkCodelistWorkspace(codeListTestObj,workspace,keyValue){
+        if (!Utils.isDefined(workspace) || !(workspace instanceof SdmxObjects)) {
             throw new Error("Missing codelist request's workspace");
         }
         let codesArray =[];
-        for(let i=0;i<workspace.structures.CODE_LIST[0].getItems().length;i++){
-            codesArray.push(workspace.structures.CODE_LIST[0].getItems()[i].id);
+        let codelistObj= workspace.getSdmxObject(new StructureReference(codeListTestObj.identifiers.structureType,codeListTestObj.identifiers.agency,
+                                                        codeListTestObj.identifiers.id,codeListTestObj.identifiers.version))
+        for(let i=0;i<codelistObj.getItems().length;i++){
+            codesArray.push(codelistObj.getItems()[i].id);
         }
         if(!SpecialReferencePartialChecker.specificValueValidation(keyValue,codesArray)){
             return { status: FAILURE_CODE, error: "Codelist is incompatible with the given code values constraints."};
@@ -181,7 +186,6 @@ class SpecialReferencePartialChecker {
         if (!Utils.isDefined(constraintCubeRegions) || constraintCubeRegions.length === 0) {
             throw new Error("Missing Cube Regions.");
         }
-        
         console.log("-------------------CONSTRAINABLE ARTEFACTS---------------------")
         console.log(constrainableArtefacts)
         console.log("-------------------CUBE REGIONS---------------------")
