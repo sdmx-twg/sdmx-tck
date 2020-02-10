@@ -81,7 +81,7 @@ class SpecialReferencePartialChecker {
      * @param {*} keyValue the keyValue containing the constraint values.
      * @param {*} codesArray array with the codes of the partial codelist.
      */
-    static specificValueValidation(keyValue,codesArray){
+    static constraintValuesValidation(keyValue,codesArray){
 
         if(codesArray.length === 0){
             throw new Error('No codes to check')
@@ -113,6 +113,7 @@ class SpecialReferencePartialChecker {
      * @param {*} keyValue the keyValue containing the constraint values that will be checked along with the partial codelist's codes.
      */
     static checkCodelistWorkspace(codeListTestObj,workspace,keyValue){
+        
         if (!Utils.isDefined(workspace) || !(workspace instanceof SdmxObjects)) {
             throw new Error("Missing codelist request's workspace");
         }
@@ -122,9 +123,16 @@ class SpecialReferencePartialChecker {
         for(let i=0;i<codelistObj.getItems().length;i++){
             codesArray.push(codelistObj.getItems()[i].id);
         }
-        if(!SpecialReferencePartialChecker.specificValueValidation(keyValue,codesArray)){
+        
+        //If the codelist returned is not partial throw Error.
+        if(codelistObj.getIsPartial() !== "true"){
+            return { status: FAILURE_CODE, error: "Codelist is not partial."};
+        }
+        //If the codes of the partial codelist follow the constraint
+        if(!SpecialReferencePartialChecker.constraintValuesValidation(keyValue,codesArray)){
             return { status: FAILURE_CODE, error: "Codelist is incompatible with the given code values constraints."};
         }
+       
         return { status: SUCCESS_CODE }
     }
      /**
