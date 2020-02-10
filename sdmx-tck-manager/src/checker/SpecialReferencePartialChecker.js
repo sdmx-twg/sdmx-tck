@@ -67,13 +67,11 @@ class SpecialReferencePartialChecker {
                         let validation = SpecialReferencePartialChecker.checkCodelistWorkspace(finalTestData.codelistTest,partialCLworkspace,finalTestData.keyValueToCheck);
                         resolve(validation)
                     }).catch((error) => {
-                        reject(error)
-                        //reject(new TckError(error))
+                        reject(new TckError(error.message))
                         
                     });
             } catch (err) {
-                //console.log(new TckError(err))
-                reject(err);
+                reject(new TckError(err.message));
             }
         });
     };

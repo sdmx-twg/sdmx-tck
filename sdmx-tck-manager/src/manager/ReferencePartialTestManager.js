@@ -23,7 +23,6 @@ class ReferencePartialTestManager {
                         if (httpResponseValidation.status === FAILURE_CODE) {
                             throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
                         }
-
                         return toRun.httpResponse.text();
                     }).then((xmlBody) => {
                         return new SdmxXmlParser().getIMObjects(xmlBody);
