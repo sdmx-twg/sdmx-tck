@@ -300,28 +300,19 @@ class SpecialReferencePartialChecker {
         console.log(codeListRef)
         if(Object.entries(testData).length !== 0 && Object.entries(codeListRef).length !== 0){
             
-            // codeListTestData = {testId: "/"+resource+"/agency/id/version?detail="+template.detail,
-            // index: test.index,apiVersion: test.apiVersion,resource: resource,reqTemplate: template,
-            // identifiers: {structureType:codeListRef.getStructureType(),agency:codeListRef.getAgencyId(),id:codeListRef.getId(),version:codeListRef.getVersion()},
-            // testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,subTests: []};
-    
-            // codelistTest = TestObjectBuilder.getTestObject(codelistTest,false);
-
-
-            codelistTest = {
+            let codelistTestParams = {
                 testId: "/"+resource+"/agency/id/version?detail="+template.detail,
                 index: test.index,
-                run: false,
                 apiVersion: test.apiVersion,
                 resource: resource,
-                requireRandomSdmxObject: true,
                 reqTemplate: template,
                 identifiers: {structureType:codeListRef.getStructureType(),agency:codeListRef.getAgencyId(),id:codeListRef.getId(),version:codeListRef.getVersion()},
-                state: TEST_STATE.WAITING,
-                failReason: "",
-                testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
+                testType: TEST_TYPE.STRUCTURE_DETAIL_PARAMETER,
                 subTests: []
             }
+            codelistTest = TestObjectBuilder.getTestObject(codelistTestParams);
+            console.log("-------------------CODELIST TEST OBJ---------------------")
+            console.log(codelistTest)
         }
         
 
