@@ -9,6 +9,7 @@ const SCHEMA_RESOURCES = require('sdmx-tck-api').constants.SCHEMA_RESOURCES;
 const containsValue = require('sdmx-tck-api').constants.containsValue;
 var getResources = require('sdmx-tck-api').constants.getResources;
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
+var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 
 
 var STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT = require('../constants/TestConstants.js').STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT;
@@ -52,7 +53,7 @@ class TestsModelBuilder {
             var ts22 = [];
             var ts23 = [];
             var ts24 = [];
-
+            let testObjParams = {};
             let referencePartialSubTest = [];
 
             var itemReq = [];
@@ -61,26 +62,22 @@ class TestsModelBuilder {
             var arrayOfRestResources = getResources(apiVersion)
             for (let j = 0; j < arrayOfRestResources.length; j++) {
                 ts21 = [];
+                referencePartialSubTest = []
 
                    //Special case for referencepartial testing in content constraints
                    if(API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"] 
                    && STRUCTURES_REST_RESOURCE.contentconstraint === arrayOfRestResources[j]){    
-                    x.numOfTests = x.numOfTests + 1;                       
-                    referencePartialSubTest.push({
-                           testId: "Test for Reference Partial",
-                           index: index,
-                           run: false,
-                           apiVersion: apiVersion,
-                           resource: arrayOfRestResources[j],
-                           requireRandomSdmxObject: true,
-                           reqTemplate: {references:"descendants"},
-                           identifiers: { structureType: "", agency: "", id: "", version: "" },
-                           state: TEST_STATE.WAITING,
-                           failReason: "",
-                           testType: TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL,
-                           subTests: []
-                    })
-                      
+                    //x.numOfTests = x.numOfTests + 1;               
+                    testObjParams={
+                        testId: "Test for Reference Partial",
+                        index: index,
+                        apiVersion: apiVersion,
+                        resource: arrayOfRestResources[j],
+                        reqTemplate: {references:"descendants"},
+                        state: TEST_STATE.WAITING,
+                        testType: TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL,
+                    }                       
+                    referencePartialSubTest.push(TestObjectBuilder.getTestObject(testObjParams));  
                 } 
 
                 for (let i in STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT()) {
@@ -91,114 +88,85 @@ class TestsModelBuilder {
                         && ITEM_SCHEME_TYPES.hasOwnProperty(SDMX_STRUCTURE_TYPE.fromRestResource(arrayOfRestResources[j]))
                         && test.url === STRUCTURE_IDENTIFICATION_PARAMETERS.AGENCY_ID_VERSION.url) {
                         
-                        itemReq.push({
+                        testObjParams = {
                             testId: "/" + arrayOfRestResources[j] + STRUCTURE_ITEM_QUERIES.AGENCY_ID_VERSION_ITEM.url,
                             index: index,
-                            run: false,
-                            items: [],
                             apiVersion: apiVersion,
                             resource: arrayOfRestResources[j],
-                            requireRandomSdmxObject: true,
-                            requireItems: true,
                             reqTemplate: STRUCTURE_ITEM_QUERIES.AGENCY_ID_VERSION_ITEM.template,
-                            identifiers: { structureType: "", agency: "", id: "", version: "" },
-                            state: TEST_STATE.WAITING,
-                            failReason: "",
                             testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                            subTests: []
-                        })
+                            needsItem:true
+                        }
+                        itemReq.push(TestObjectBuilder.getTestObject(testObjParams))
                         x.numOfTests = x.numOfTests + 1;
                         if (arrayOfRestResources[j] === STRUCTURES_REST_RESOURCE.categoryscheme
                         && test.url === STRUCTURE_IDENTIFICATION_PARAMETERS.AGENCY_ID_VERSION.url) {
-                            itemReq.push({
+                            testObjParams = {
                                 testId: "/" + arrayOfRestResources[j] + STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.url,
                                 index: index,
-                                run: false,
-                                items: [],
                                 apiVersion: apiVersion,
                                 resource: arrayOfRestResources[j],
-                                requireRandomSdmxObject: true,
-                                requireItems: true,
                                 reqTemplate: STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.template,
-                                identifiers: { structureType: "", agency: "", id: "", version: "" },
-                                state: TEST_STATE.WAITING,
-                                failReason: "",
                                 testType: TEST_TYPE.STRUCTURE_TARGET_CATEGORY,
-                                subTests: []
-                            })
+                                needsItem:true
+                            }
+                            itemReq.push(TestObjectBuilder.getTestObject(testObjParams))
                             x.numOfTests = x.numOfTests + 1;
                         }      
-                        ts21.push({
+                        testObjParams = {
                             testId: "/" + arrayOfRestResources[j] + test.url,
                             index: index,
-                            run: false,
                             apiVersion: apiVersion,
                             resource: arrayOfRestResources[j],
-                            requireRandomSdmxObject: true,
                             reqTemplate: test.reqTemplate,
-                            identifiers: { structureType: "", agency: "", id: "", version: "" },
-                            state: TEST_STATE.WAITING,
-                            failReason: "",
                             testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
                             subTests: itemReq
-                        })
-
+                        }
+                        ts21.push(TestObjectBuilder.getTestObject(testObjParams))
                         itemReq = [];
                     }else if(API_VERSIONS[apiVersion] >= API_VERSIONS["v1.1.0"]
                     && arrayOfRestResources[j] === STRUCTURES_REST_RESOURCE.categoryscheme
                     && test.url === STRUCTURE_IDENTIFICATION_PARAMETERS.AGENCY_ID_VERSION.url){
-
-                        itemReq.push({
+                        testObjParams = {
                             testId: "/" + arrayOfRestResources[j] + STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.url,
                             index: index,
-                            run: false,
-                            items: [],
                             apiVersion: apiVersion,
                             resource: arrayOfRestResources[j],
-                            requireRandomSdmxObject: true,
-                            requireItems: true,
                             reqTemplate: STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.template,
-                            identifiers: { structureType: "", agency: "", id: "", version: "" },
-                            state: TEST_STATE.WAITING,
-                            failReason: "",
                             testType: TEST_TYPE.STRUCTURE_TARGET_CATEGORY,
-                            subTests: []
-                        })
+                            needsItem:true
+                        }
+                        itemReq.push(TestObjectBuilder.getTestObject(testObjParams))
                         x.numOfTests = x.numOfTests + 1;
-                        ts21.push({
+                        testObjParams = {
                             testId: "/" + arrayOfRestResources[j] + test.url,
                             index: index,
-                            run: false,
                             apiVersion: apiVersion,
                             resource: arrayOfRestResources[j],
-                            requireRandomSdmxObject: true,
                             reqTemplate: test.reqTemplate,
-                            identifiers: { structureType: "", agency: "", id: "", version: "" },
-                            state: TEST_STATE.WAITING,
-                            failReason: "",
                             testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
                             subTests: itemReq
-                        })
+                        }
+                        ts21.push(TestObjectBuilder.getTestObject(testObjParams))
 
                         itemReq = [];
                     
                     } else {
-                        ts21.push({
+                        testObjParams = {
                             testId: "/" + arrayOfRestResources[j] + test.url,
                             index: index,
-                            run: false,
                             apiVersion: apiVersion,
                             resource: arrayOfRestResources[j],
-                            requireRandomSdmxObject: true,
                             reqTemplate: test.reqTemplate,
-                            identifiers: { structureType: "", agency: "", id: "", version: "" },
-                            state: TEST_STATE.WAITING,
-                            failReason: "",
-                            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                            subTests: []
-                        })
+                            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
+                        }
+                        ts21.push(TestObjectBuilder.getTestObject(testObjParams))
                     }
                 };
+                if(ts21.length !== 0 && referencePartialSubTest.length !==0){
+                    x.numOfTests = x.numOfTests + 1
+                    ts21 = ts21.concat(referencePartialSubTest)
+                }
                 ts22 = [];
                 ts23 = [];
                 ts24 = [];
@@ -214,42 +182,31 @@ class TestsModelBuilder {
                     for (let i in referencesTests) {
                         let test = referencesTests[i];
                         x.numOfTests = x.numOfTests + 1;
-
-                        ts22.push({
+                        testObjParams = {
                             testId: "/" + arrayOfRestResources[j] + test.url,
                             index: index,
-                            run: false,
                             apiVersion: apiVersion,
                             resource: arrayOfRestResources[j],
-                            requireRandomSdmxObject: true,
                             reqTemplate: test.reqTemplate,
-                            identifiers: { structureType: "", agency: "", id: "", version: "" },
-                            state: TEST_STATE.WAITING,
-                            failReason: "",
-                            testType: TEST_TYPE.STRUCTURE_REFERENCE_PARAMETER,
-                            subTests: []
-                        });
+                            testType: TEST_TYPE.STRUCTURE_REFERENCE_PARAMETER
+                        }
+                        ts22.push(TestObjectBuilder.getTestObject(testObjParams))
                     };
 
 
                     for (let i in STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion)) {
                         let test = STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion)[i];
                         x.numOfTests = x.numOfTests + 1;
-
-                        ts23.push({
+                        
+                        testObjParams = {
                             testId: "/" + arrayOfRestResources[j] + test.url,
                             index: index,
-                            run: false,
                             apiVersion: apiVersion,
                             resource: arrayOfRestResources[j],
-                            requireRandomSdmxObject: true,
                             reqTemplate: test.reqTemplate,
-                            identifiers: { structureType: "", agency: "", id: "", version: "" },
-                            state: TEST_STATE.WAITING,
-                            failReason: "",
                             testType: TEST_TYPE.STRUCTURE_DETAIL_PARAMETER,
-                            subTests: []
-                        });
+                        }
+                        ts23.push(TestObjectBuilder.getTestObject(testObjParams))
                     };
                     if (arrayOfRestResources[j] === STRUCTURES_REST_RESOURCE.codelist) {
                         let representationTests = STRUCTURES_REPRESENTATIONS_SUPPORT();
@@ -257,41 +214,32 @@ class TestsModelBuilder {
                             let test = representationTests[i];
                             x.numOfTests = x.numOfTests + 1;
 
-                            ts24.push({
+                            testObjParams = {
                                 testId: "/" + arrayOfRestResources[j] + test.url,
                                 index: index,
-                                run: false,
                                 apiVersion: apiVersion,
                                 resource: arrayOfRestResources[j],
-                                requireRandomSdmxObject: true,
                                 reqTemplate: test.reqTemplate,
-                                identifiers: { structureType: "", agency: "", id: "", version: "" },
-                                state: TEST_STATE.WAITING,
-                                failReason: "",
-                                testType: TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION,
-                                subTests: [],
-                            });
+                                testType: TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION
+                            }
+                            ts24.push(TestObjectBuilder.getTestObject(testObjParams))
                         };
                     }
 
                 }
 
                 x.numOfTests = x.numOfTests + 1;
-                allTests.push({
+                testObjParams = {
                     testId: "/" + arrayOfRestResources[j] + "/all/all/all",
-                    run: false,
+                    index: index,
                     apiVersion: apiVersion,
-                    state: TEST_STATE.WAITING,
+                    resource: arrayOfRestResources[j],
                     reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.ALL_STUBS },
                     identifiers: { structureType: "", agency: "all", id: "all", version: "all" },
-                    hasChildren: true,
-                    requireRandomSdmxObject: true,
-                    index: index,
-                    resource: arrayOfRestResources[j],
-                    failReason: "",
                     testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                    subTests: ts21.concat(ts22.concat(ts23.concat(ts24.concat(referencePartialSubTest))))
-                });
+                    subTests: ts21.concat(ts22.concat(ts23.concat(ts24)))
+                }
+                allTests.push(TestObjectBuilder.getTestObject(testObjParams))
             }
             return allTests;
         }else if(index === TEST_INDEX.Schema){
