@@ -14,12 +14,12 @@ class TestObjectBuilder{
             apiVersion: (testParams.hasOwnProperty("apiVersion")) ? testParams.apiVersion : "",
             resource: (testParams.hasOwnProperty("resource")) ? testParams.resource : "",
             requireRandomSdmxObject: true,
-            reqTemplate: (testParams.hasOwnProperty("reqTemplate")) ? testParams.reqTemplate : "",
+            reqTemplate: (testParams.hasOwnProperty("reqTemplate")) ? testParams.reqTemplate : {},
             identifiers: (testParams.hasOwnProperty("identifiers")) ? testParams.identifiers : { structureType: "", agency: "", id: "", version: "" },
             state: TEST_STATE.WAITING,
             failReason: "",
             testType: (testParams.hasOwnProperty("testType")) ? testParams.testType : "",
-            subTests: (testParams.hasOwnProperty("subTests")) ? testParams.subTests : ""
+            subTests: (testParams.hasOwnProperty("subTests")) ? testParams.subTests : []
         }
         if(testObj.hasOwnProperty('needsItem') && testObj.needsItem === true){
             testObj.items = [];
