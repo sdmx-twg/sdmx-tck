@@ -10,7 +10,10 @@ const containsValue = require('sdmx-tck-api').constants.containsValue;
 var getResources = require('sdmx-tck-api').constants.getResources;
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
-
+var StructureIdentificationParametersTestsBuilder = require("../builders/StructureIdentificationParametersTestsBuilder.js");
+var StructureExtendedResourceIdentParamTestsBuilder = require("../builders/StructureExtendedResourceIdentParamTestsBuilder.js");
+var StructureFurtherDescribingResultsParamTestsBuilder = require("../builders/StructureFurtherDescribingResultsParamTestsBuilder.js");
+var StructureRepresentationSupportTestsBuilder = require("../builders/StructureRepresentationSupportTestsBuilder.js");
 
 var STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT = require('../constants/TestConstants.js').STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT;
 var STRUCTURE_REFERENCE_PARAMETER_TESTS = require('../constants/TestConstants.js').STRUCTURE_REFERENCE_PARAMETER_TESTS;
@@ -49,184 +52,28 @@ class TestsModelBuilder {
 
     static getTests(index, x, apiVersion) {
         if (index === TEST_INDEX.Structure) {
-            var ts21 = [];
-            var ts22 = [];
-            var ts23 = [];
-            var ts24 = [];
+            
+            let structTest1 = [];
+            let structTest2 = [];
+            let structTest3 = [];
+            let structTest4 = [];
             let testObjParams = {};
-            let referencePartialSubTest = [];
-
-            var itemReq = [];
             var allTests = [];
 
             var arrayOfRestResources = getResources(apiVersion)
             for (let j = 0; j < arrayOfRestResources.length; j++) {
-                ts21 = [];
-                referencePartialSubTest = []
 
-                   //Special case for referencepartial testing in content constraints
-                   if(API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"] 
-                   && STRUCTURES_REST_RESOURCE.contentconstraint === arrayOfRestResources[j]){    
-                    //x.numOfTests = x.numOfTests + 1;               
-                    testObjParams={
-                        testId: "Test for Reference Partial",
-                        index: index,
-                        apiVersion: apiVersion,
-                        resource: arrayOfRestResources[j],
-                        reqTemplate: {references:"descendants"},
-                        state: TEST_STATE.WAITING,
-                        testType: TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL,
-                    }                       
-                    referencePartialSubTest.push(TestObjectBuilder.getTestObject(testObjParams));  
-                } 
-
-                for (let i in STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT()) {
-                    let test = STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT()[i]
-                    x.numOfTests = x.numOfTests + 1;
-                    
-                    if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]
-                        && ITEM_SCHEME_TYPES.hasOwnProperty(SDMX_STRUCTURE_TYPE.fromRestResource(arrayOfRestResources[j]))
-                        && test.url === STRUCTURE_IDENTIFICATION_PARAMETERS.AGENCY_ID_VERSION.url) {
-                        
-                        testObjParams = {
-                            testId: "/" + arrayOfRestResources[j] + STRUCTURE_ITEM_QUERIES.AGENCY_ID_VERSION_ITEM.url,
-                            index: index,
-                            apiVersion: apiVersion,
-                            resource: arrayOfRestResources[j],
-                            reqTemplate: STRUCTURE_ITEM_QUERIES.AGENCY_ID_VERSION_ITEM.template,
-                            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                            needsItem:true
-                        }
-                        itemReq.push(TestObjectBuilder.getTestObject(testObjParams))
-                        x.numOfTests = x.numOfTests + 1;
-                        if (arrayOfRestResources[j] === STRUCTURES_REST_RESOURCE.categoryscheme
-                        && test.url === STRUCTURE_IDENTIFICATION_PARAMETERS.AGENCY_ID_VERSION.url) {
-                            testObjParams = {
-                                testId: "/" + arrayOfRestResources[j] + STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.url,
-                                index: index,
-                                apiVersion: apiVersion,
-                                resource: arrayOfRestResources[j],
-                                reqTemplate: STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.template,
-                                testType: TEST_TYPE.STRUCTURE_TARGET_CATEGORY,
-                                needsItem:true
-                            }
-                            itemReq.push(TestObjectBuilder.getTestObject(testObjParams))
-                            x.numOfTests = x.numOfTests + 1;
-                        }      
-                        testObjParams = {
-                            testId: "/" + arrayOfRestResources[j] + test.url,
-                            index: index,
-                            apiVersion: apiVersion,
-                            resource: arrayOfRestResources[j],
-                            reqTemplate: test.reqTemplate,
-                            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                            subTests: itemReq
-                        }
-                        ts21.push(TestObjectBuilder.getTestObject(testObjParams))
-                        itemReq = [];
-                    }else if(API_VERSIONS[apiVersion] >= API_VERSIONS["v1.1.0"]
-                    && arrayOfRestResources[j] === STRUCTURES_REST_RESOURCE.categoryscheme
-                    && test.url === STRUCTURE_IDENTIFICATION_PARAMETERS.AGENCY_ID_VERSION.url){
-                        testObjParams = {
-                            testId: "/" + arrayOfRestResources[j] + STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.url,
-                            index: index,
-                            apiVersion: apiVersion,
-                            resource: arrayOfRestResources[j],
-                            reqTemplate: STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.template,
-                            testType: TEST_TYPE.STRUCTURE_TARGET_CATEGORY,
-                            needsItem:true
-                        }
-                        itemReq.push(TestObjectBuilder.getTestObject(testObjParams))
-                        x.numOfTests = x.numOfTests + 1;
-                        testObjParams = {
-                            testId: "/" + arrayOfRestResources[j] + test.url,
-                            index: index,
-                            apiVersion: apiVersion,
-                            resource: arrayOfRestResources[j],
-                            reqTemplate: test.reqTemplate,
-                            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                            subTests: itemReq
-                        }
-                        ts21.push(TestObjectBuilder.getTestObject(testObjParams))
-
-                        itemReq = [];
-                    
-                    } else {
-                        testObjParams = {
-                            testId: "/" + arrayOfRestResources[j] + test.url,
-                            index: index,
-                            apiVersion: apiVersion,
-                            resource: arrayOfRestResources[j],
-                            reqTemplate: test.reqTemplate,
-                            testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
-                        }
-                        ts21.push(TestObjectBuilder.getTestObject(testObjParams))
-                    }
-                };
-                if(ts21.length !== 0 && referencePartialSubTest.length !==0){
-                    x.numOfTests = x.numOfTests + 1
-                    ts21 = ts21.concat(referencePartialSubTest)
-                }
-                ts22 = [];
-                ts23 = [];
-                ts24 = [];
-                /**
-                 * Exclude organisationscheme, actualconstraint, allowedconstraint, structure resources from references, detail & representation tests.
-                 */
-                if (arrayOfRestResources[j] !== STRUCTURES_REST_RESOURCE.organisationscheme &&
-                    arrayOfRestResources[j] !== STRUCTURES_REST_RESOURCE.allowedconstraint &&
-                    arrayOfRestResources[j] !== STRUCTURES_REST_RESOURCE.actualconstraint &&
-                    arrayOfRestResources[j] !== STRUCTURES_REST_RESOURCE.structure) {
-
-                    let referencesTests = STRUCTURE_REFERENCE_PARAMETER_TESTS(arrayOfRestResources[j]);
-                    for (let i in referencesTests) {
-                        let test = referencesTests[i];
-                        x.numOfTests = x.numOfTests + 1;
-                        testObjParams = {
-                            testId: "/" + arrayOfRestResources[j] + test.url,
-                            index: index,
-                            apiVersion: apiVersion,
-                            resource: arrayOfRestResources[j],
-                            reqTemplate: test.reqTemplate,
-                            testType: TEST_TYPE.STRUCTURE_REFERENCE_PARAMETER
-                        }
-                        ts22.push(TestObjectBuilder.getTestObject(testObjParams))
-                    };
-
-
-                    for (let i in STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion)) {
-                        let test = STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion)[i];
-                        x.numOfTests = x.numOfTests + 1;
-                        
-                        testObjParams = {
-                            testId: "/" + arrayOfRestResources[j] + test.url,
-                            index: index,
-                            apiVersion: apiVersion,
-                            resource: arrayOfRestResources[j],
-                            reqTemplate: test.reqTemplate,
-                            testType: TEST_TYPE.STRUCTURE_DETAIL_PARAMETER,
-                        }
-                        ts23.push(TestObjectBuilder.getTestObject(testObjParams))
-                    };
-                    if (arrayOfRestResources[j] === STRUCTURES_REST_RESOURCE.codelist) {
-                        let representationTests = STRUCTURES_REPRESENTATIONS_SUPPORT();
-                        for (let i in representationTests) {
-                            let test = representationTests[i];
-                            x.numOfTests = x.numOfTests + 1;
-
-                            testObjParams = {
-                                testId: "/" + arrayOfRestResources[j] + test.url,
-                                index: index,
-                                apiVersion: apiVersion,
-                                resource: arrayOfRestResources[j],
-                                reqTemplate: test.reqTemplate,
-                                testType: TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION
-                            }
-                            ts24.push(TestObjectBuilder.getTestObject(testObjParams))
-                        };
-                    }
-
-                }
+                //Structure Resource Identification Parameters Tests
+                structTest1 = StructureIdentificationParametersTestsBuilder.getStructureIdentificationParametersTests(index,x,apiVersion,arrayOfRestResources[j])
+                
+                //Structure Extended Resource Identification Parameters Tests
+                structTest2 = StructureExtendedResourceIdentParamTestsBuilder.getStructureExtendedIdentificationParametersTests(index,x,apiVersion,arrayOfRestResources[j]);
+                
+                //Structure Further Describing Results Parameters Tests
+                structTest3 = StructureFurtherDescribingResultsParamTestsBuilder.getFurtherDescribingResultsParamTests(index,x,apiVersion,arrayOfRestResources[j]);
+                
+                //Structure Representations Support Tests
+                structTest4 = StructureRepresentationSupportTestsBuilder.getStructureRepresentationSupportTests(index,x,apiVersion,arrayOfRestResources[j]);
 
                 x.numOfTests = x.numOfTests + 1;
                 testObjParams = {
@@ -237,7 +84,7 @@ class TestsModelBuilder {
                     reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.ALL_STUBS },
                     identifiers: { structureType: "", agency: "all", id: "all", version: "all" },
                     testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                    subTests: ts21.concat(ts22.concat(ts23.concat(ts24)))
+                    subTests: structTest1.concat(structTest2.concat(structTest3.concat(structTest4)))
                 }
                 allTests.push(TestObjectBuilder.getTestObject(testObjParams))
             }
