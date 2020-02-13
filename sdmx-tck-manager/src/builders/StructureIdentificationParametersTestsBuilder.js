@@ -14,24 +14,7 @@ class StructureIdentificationParametersTestsBuilder{
     static getStructureIdentificationParametersTests(index,x,apiVersion,currentRestResource){
         let structureIdentificationParametersTests = [];
         let testObjParams = {};
-        let referencePartialSubTest = [];
-
         var itemReq = [];
-
-        //Special case for referencepartial testing in content constraints
-        if(API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"] 
-        && STRUCTURES_REST_RESOURCE.contentconstraint === currentRestResource){    
-            testObjParams={
-                testId: "Test for Reference Partial",
-                index: index,
-                apiVersion: apiVersion,
-                resource: currentRestResource,
-                reqTemplate: {references:"descendants"},
-                state: TEST_STATE.WAITING,
-                testType: TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL,
-            }                       
-            referencePartialSubTest.push(TestObjectBuilder.getTestObject(testObjParams));  
-        } 
 
         for (let i in STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT()) {
             let test = STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT()[i]
@@ -116,10 +99,6 @@ class StructureIdentificationParametersTestsBuilder{
                 structureIdentificationParametersTests.push(TestObjectBuilder.getTestObject(testObjParams))
             }
         };
-        if(structureIdentificationParametersTests.length !== 0 && referencePartialSubTest.length !==0){
-            x.numOfTests = x.numOfTests + 1
-            structureIdentificationParametersTests = structureIdentificationParametersTests.concat(referencePartialSubTest)
-        }
             return structureIdentificationParametersTests;
 
         }

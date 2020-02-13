@@ -39,7 +39,9 @@ function STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion) {
             STRUCTURE_REFERENCE_DETAIL.getValues().forEach(reference => {
                 testsArray.push({ index: "Structure", url: "/agency/id/version?detail=" + detailValues[i] + "&references=" + reference, reqTemplate: { references: reference, detail: detailValues[i] } });
             });
-        } else {
+        }else if(detailValues[i] === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL){
+            testsArray.push({ index: "Structure", url: "Test for Reference Partial", reqTemplate: { references: STRUCTURE_REFERENCE_DETAIL.DESCENDANTS} });
+        }else {
             testsArray.push({ index: "Structure", url: "/agency/id/version?detail=" + detailValues[i] + "&references=" + STRUCTURE_REFERENCE_DETAIL.CHILDREN, reqTemplate: { references: STRUCTURE_REFERENCE_DETAIL.CHILDREN, detail: detailValues[i] } });
         }
     }

@@ -11,9 +11,8 @@ class StructureFurtherDescribingResultsParamTestsBuilder{
     static getFurtherDescribingResultsParamTests(index,x,apiVersion,currentRestResource){
         let furtherDescribingResultsParamTests = []
         let testObjParams = {};
-                /**
-                 * Exclude organisationscheme, actualconstraint, allowedconstraint, structure resources from references, detail & representation tests.
-                 */
+                
+                //Exclude organisationscheme, actualconstraint, allowedconstraint, structure resources from detail tests.
                 if (currentRestResource !== STRUCTURES_REST_RESOURCE.organisationscheme &&
                     currentRestResource !== STRUCTURES_REST_RESOURCE.allowedconstraint &&
                     currentRestResource !== STRUCTURES_REST_RESOURCE.actualconstraint &&
@@ -21,17 +20,37 @@ class StructureFurtherDescribingResultsParamTestsBuilder{
 
                         for (let i in STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion)) {
                             let test = STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion)[i];
-                            x.numOfTests = x.numOfTests + 1;
                             
-                            testObjParams = {
-                                testId: "/" + currentRestResource + test.url,
-                                index: index,
-                                apiVersion: apiVersion,
-                                resource: currentRestResource,
-                                reqTemplate: test.reqTemplate,
-                                testType: TEST_TYPE.STRUCTURE_DETAIL_PARAMETER,
+                            testObjParams = {}
+                            
+                            //Reference Partial Testing is only for content constraint resource
+                            if(test.url === "Test for Reference Partial"){
+                                if(currentRestResource === STRUCTURES_REST_RESOURCE.contentconstraint){
+                                    x.numOfTests = x.numOfTests + 1;
+                                    testObjParams = {
+                                        testId: test.url,
+                                        index: index,
+                                        apiVersion: apiVersion,
+                                        resource: currentRestResource,
+                                        reqTemplate: test.reqTemplate,
+                                        testType: TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL
+                                    }
+
+                                    furtherDescribingResultsParamTests.push(TestObjectBuilder.getTestObject(testObjParams))
+                                }
+                            }else{
+                                x.numOfTests = x.numOfTests + 1;
+                                testObjParams = {
+                                    testId: "/" + currentRestResource + test.url,
+                                    index: index,
+                                    apiVersion: apiVersion,
+                                    resource: currentRestResource,
+                                    reqTemplate: test.reqTemplate,
+                                    testType: TEST_TYPE.STRUCTURE_DETAIL_PARAMETER
+                                }
+                                furtherDescribingResultsParamTests.push(TestObjectBuilder.getTestObject(testObjParams))
                             }
-                            furtherDescribingResultsParamTests.push(TestObjectBuilder.getTestObject(testObjParams))
+                            
                         };
 
                     }
