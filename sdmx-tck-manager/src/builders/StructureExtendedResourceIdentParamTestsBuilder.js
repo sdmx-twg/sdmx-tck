@@ -9,9 +9,8 @@ class StructureExtendedResourceIdentParamTestsBuilder{
     static getStructureExtendedIdentificationParametersTests(index,x,apiVersion,currentRestResource){
                 let structureExtendedIdentificationParametersTests = [];
                 let testObjParams = {};
-                /**
-                 * Exclude organisationscheme, actualconstraint, allowedconstraint, structure resources from references, detail & representation tests.
-                 */
+                
+                //Exclude organisationscheme, actualconstraint, allowedconstraint, structure resources from references tests.
                 if (currentRestResource !== STRUCTURES_REST_RESOURCE.organisationscheme &&
                     currentRestResource !== STRUCTURES_REST_RESOURCE.allowedconstraint &&
                     currentRestResource !== STRUCTURES_REST_RESOURCE.actualconstraint &&

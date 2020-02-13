@@ -9,7 +9,8 @@ class StructureRepresentationSupportTestsBuilder{
     static getStructureRepresentationSupportTests(index,x,apiVersion,currentRestResource){
         let structureRepresentationSupportTestsBuilder = []
         let testObjParams = {};
-        
+
+        //Exclude organisationscheme, actualconstraint, allowedconstraint, structure resources from representation tests.
         if (currentRestResource !== STRUCTURES_REST_RESOURCE.organisationscheme &&
             currentRestResource !== STRUCTURES_REST_RESOURCE.allowedconstraint &&
             currentRestResource !== STRUCTURES_REST_RESOURCE.actualconstraint &&

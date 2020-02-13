@@ -1,12 +1,5 @@
-const API_VERSIONS = require('sdmx-tck-api').constants.API_VERSIONS;
-const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
-const ITEM_SCHEME_TYPES = require('sdmx-tck-api').constants.ITEM_SCHEME_TYPES;
-const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
-const SCHEMA_RESOURCES = require('sdmx-tck-api').constants.SCHEMA_RESOURCES;
-const containsValue = require('sdmx-tck-api').constants.containsValue;
 var getResources = require('sdmx-tck-api').constants.getResources;
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
@@ -14,15 +7,6 @@ var StructureIdentificationParametersTestsBuilder = require("../builders/Structu
 var StructureExtendedResourceIdentParamTestsBuilder = require("../builders/StructureExtendedResourceIdentParamTestsBuilder.js");
 var StructureFurtherDescribingResultsParamTestsBuilder = require("../builders/StructureFurtherDescribingResultsParamTestsBuilder.js");
 var StructureRepresentationSupportTestsBuilder = require("../builders/StructureRepresentationSupportTestsBuilder.js");
-
-var STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT = require('../constants/TestConstants.js').STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT;
-var STRUCTURE_REFERENCE_PARAMETER_TESTS = require('../constants/TestConstants.js').STRUCTURE_REFERENCE_PARAMETER_TESTS;
-var STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS = require('../constants/TestConstants.js').STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS;
-var STRUCTURES_REPRESENTATIONS_SUPPORT = require('../constants/TestConstants.js').STRUCTURES_REPRESENTATIONS_SUPPORT;
-var STRUCTURE_IDENTIFICATION_PARAMETERS = require('../constants/StructureIdentificationParameters.js').STRUCTURE_IDENTIFICATION_PARAMETERS;
-var STRUCTURE_ITEM_QUERIES = require('../constants/ItemQueries.js').STRUCTURE_ITEM_QUERIES;
-var SCHEMAS_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT = require('../constants/TestConstants.js').SCHEMAS_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT;
-var SCHEMAS_FOR_FURTHER_DESCRIBING_RESULTS = require('../constants/TestConstants.js').SCHEMAS_FOR_FURTHER_DESCRIBING_RESULTS;
 
 class TestsModelBuilder {
     /**
