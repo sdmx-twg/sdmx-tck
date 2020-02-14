@@ -263,8 +263,8 @@ class SdmxV21JsonParser {
                 }
                 structures.get(structureType).push(
                     new MaintainableObject(structureType, metadataflows[m], 
-                        SdmxV21StructureReferencesParser.getReferences(metadataflows[m])),
-                        SdmxV21JsonForStubsParser.getDetail(structureType, metadataflows[m]));
+                        SdmxV21StructureReferencesParser.getReferences(metadataflows[m]),
+                        SdmxV21JsonForStubsParser.getDetail(structureType, metadataflows[m])));
             }
         }
     };
@@ -295,8 +295,8 @@ class SdmxV21JsonParser {
                 }
                 structures.get(structureType).push(
                     new MaintainableObject(structureType, processes[p], 
-                        SdmxV21StructureReferencesParser.getReferences(processes[p])),
-                        SdmxV21JsonForStubsParser.getDetail(structureType, processes[p]));
+                        SdmxV21StructureReferencesParser.getReferences(processes[p]),
+                        SdmxV21JsonForStubsParser.getDetail(structureType, processes[p])));
             }
         }
     };
@@ -311,8 +311,8 @@ class SdmxV21JsonParser {
                 }
                 structures.get(structureType).push(
                     new MaintainableObject(structureType, structureSets[c], 
-                        SdmxV21StructureReferencesParser.getReferences(structureSets[c])),
-                        SdmxV21JsonForStubsParser.getDetail(structureType, structureSets[c]));
+                        SdmxV21StructureReferencesParser.getReferences(structureSets[c]),
+                        SdmxV21JsonForStubsParser.getDetail(structureType, structureSets[c])));
             }
         }
     };
