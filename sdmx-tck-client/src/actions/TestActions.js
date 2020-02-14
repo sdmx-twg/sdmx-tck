@@ -96,7 +96,7 @@ export async function runTest(endpoint, test) {
         console.log(testResults)
         if(testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1
             && testResults.workspaceValidation && testResults.workspaceValidation.status === 1){
-                 //Actions if a test was successfull
+                 //Actions if a test was successful
                 store.dispatch(updateTestState(testResults, TEST_STATE.COMPLETED));
                 store.dispatch(updateComplianceNumber(testResults.index));
                 store.dispatch(updateCoverageNumber(testResults.index));
