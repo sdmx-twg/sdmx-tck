@@ -5,10 +5,9 @@ var StructureRequestBuilder = require('../builders/StructureRequestBuilder.js');
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 const sdmx_requestor = require('sdmx-rest');
 
-class ReferencePartialTestManager {
+/*Special class that handles the content constraint reference partial testing*/
+class ContentConstraintReferencePartialTestManager {
     static executeTest(toRun, apiVersion, endpoint) {
-        /*Keep the starting time*/
-        toRun.startTime = new Date();
             return new Promise((resolve, reject) => {
                 StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
                     toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
@@ -37,4 +36,4 @@ class ReferencePartialTestManager {
     };
 };
 
-module.exports = ReferencePartialTestManager;
+module.exports = ContentConstraintReferencePartialTestManager;

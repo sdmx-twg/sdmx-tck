@@ -1,6 +1,6 @@
 var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
 const StructuresSemanticChecker = require('../../sdmx-tck-manager/src/checker/StructuresSemanticChecker.js');
-const SpecialReferencePartialChecker = require('../../sdmx-tck-manager/src/checker/SpecialReferencePartialChecker.js');
+const ContentConstraintReferencePartialChecker = require('../../sdmx-tck-manager/src/checker/ContentConstraintReferencePartialChecker.js');
 var SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
 
 const fs = require('fs');
@@ -27,7 +27,7 @@ describe('Tests if reference partial testing works with different xml inputs', f
             }
             //console.log(sdmxObjects)
             // var validation = StructuresSemanticChecker.checkWorkspace(test,sdmxObjects)
-            SpecialReferencePartialChecker.checkWorkspace(test,sdmxObjects)
+            ContentConstraintReferencePartialChecker.checkWorkspace(test,sdmxObjects)
             .then((result)=>{
                 console.log(result)
             }).catch((err) => {

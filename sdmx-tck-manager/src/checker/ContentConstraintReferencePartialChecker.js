@@ -20,9 +20,9 @@ const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYP
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
-var ReferencePartialTestManager = require("../manager/ReferencePartialTestManager.js");
+var ContentConstraintReferencePartialTestManager = require("../manager/ContentConstraintReferencePartialTestManager.js");
 
-/*Special class that handles the reference partial testing. Due to its complexity the referencepartial testing 
+/*Special class that handles the content constraint reference partial testing. Due to its complexity the referencepartial testing 
 consists of two subparts. The first is a content constraint with reference = descendants request. 
 From that request a specific codelist is retrieved. The second subpart is the request for this codelist with detail=referencepartial.
 Finally the validation of the second request's workspace determines whether this test was successful or not.   
@@ -35,7 +35,7 @@ Flow:
 4. Check that the Component is contained in the DSD of the selected Constraint Attachment (otherwise select another Component)
 5. Perform inclusion/exclusion checks (according to cube region) between the constraint values and the codes of the partial codelist.*/
 
-class SpecialReferencePartialChecker {
+class ContentConstraintReferencePartialChecker {
      
     /**
      * Validates the whole reference partial test as successful or not.Returns success code in case of success 
@@ -51,7 +51,7 @@ class SpecialReferencePartialChecker {
                     a) The codelist reference partial test info 
                     b) The KeyValue with which the partial codelist will be validated.
                     */
-                let finalTestData = SpecialReferencePartialChecker.referencepartialTestBuilder(test,workspace);
+                let finalTestData = ContentConstraintReferencePartialChecker.referencepartialTestBuilder(test,workspace);
 
                 if(Object.entries(finalTestData.codelistTest).length === 0){
                     throw new Error ('Not specified test for Code List under validation')
@@ -61,10 +61,10 @@ class SpecialReferencePartialChecker {
                 }
 
                 /*Executes the request to get the partial codelist*/
-                ReferencePartialTestManager.executeTest(finalTestData.codelistTest, test.apiVersion, test.preparedRequest.service.url).
+                ContentConstraintReferencePartialTestManager.executeTest(finalTestData.codelistTest, test.apiVersion, test.preparedRequest.service.url).
                     then((partialCLworkspace) => {
                         /*Partial codelist's workspace validation*/
-                        let validation = SpecialReferencePartialChecker.checkCodelistWorkspace(finalTestData.codelistTest,partialCLworkspace,finalTestData.keyValueToCheck);
+                        let validation = ContentConstraintReferencePartialChecker.checkCodelistWorkspace(finalTestData.codelistTest,partialCLworkspace,finalTestData.keyValueToCheck);
                         resolve(validation)
                     }).catch((error) => {
                         reject(new TckError(error.message))
@@ -127,7 +127,7 @@ class SpecialReferencePartialChecker {
             return { status: FAILURE_CODE, error: "Codelist is not partial."};
         }
         //If the codes of the partial codelist follow the constraint
-        if(!SpecialReferencePartialChecker.constraintValuesValidation(keyValue,codesArray)){
+        if(!ContentConstraintReferencePartialChecker.constraintValuesValidation(keyValue,codesArray)){
             return { status: FAILURE_CODE, error: "Codelist is incompatible with the given code values constraints."};
         }
        
@@ -198,9 +198,9 @@ class SpecialReferencePartialChecker {
                 //If the constrainable artefact exists in Content Constraint 'descendants' request's workspace
                 if(structureList.length !== 0){
                     let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
-                    let dsdRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
+                    let dsdRef = ContentConstraintReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
                     let dsd = sdmxObjects.getSdmxObject(dsdRef)
-                    let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
+                    let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
                     if(Object.entries(selectedkeyValue).length !== 0){
                         return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
                             keyValueSet:selectedkeyValue}
@@ -211,15 +211,15 @@ class SpecialReferencePartialChecker {
             }else if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key){
                 let structureList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
                 let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
-                let dataflowRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DATAFLOW.key)
+                let dataflowRef = ContentConstraintReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DATAFLOW.key)
 
 
-                let dsdRef = SpecialReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(dataflowRef),SDMX_STRUCTURE_TYPE.DSD.key)
+                let dsdRef = ContentConstraintReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(dataflowRef),SDMX_STRUCTURE_TYPE.DSD.key)
 
 
                 let dsd = sdmxObjects.getSdmxObject(dsdRef)
 
-                let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
+                let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
                 if(Object.entries(selectedkeyValue).length !== 0){
 
                     return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
@@ -232,7 +232,7 @@ class SpecialReferencePartialChecker {
                 let dsdRef = structureRef
 
                 let dsd = structureList[0];
-                let selectedkeyValue = SpecialReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
+                let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
                 if(Object.entries(selectedkeyValue).length !== 0){
                      
 
@@ -268,7 +268,7 @@ class SpecialReferencePartialChecker {
             throw new Error('There is no Content Constraint of type "Allowed" to proceed with this test.')
         }
         //According to the constrainable artefact selected the function will return a codelist ref.
-        let testData = SpecialReferencePartialChecker.findTheCodeListAndKeyValue(sdmxObjects,constraint)
+        let testData = ContentConstraintReferencePartialChecker.findTheCodeListAndKeyValue(sdmxObjects,constraint)
         
         let codeListRef = testData.codelistRef;
         let keyValueToCheck = testData.keyValueSet;
@@ -294,4 +294,4 @@ class SpecialReferencePartialChecker {
 };
 
 
-module.exports = SpecialReferencePartialChecker;
+module.exports = ContentConstraintReferencePartialChecker;
