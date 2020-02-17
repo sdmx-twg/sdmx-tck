@@ -93,7 +93,6 @@ export async function runTest(endpoint, test) {
     store.dispatch(updateTestsNumber(test.index));
     if(test.state!==TEST_STATE.COMPLETED && test.state!==TEST_STATE.FAILED && test.state!==TEST_STATE.UNABLE_TO_RUN ){
         let testResults = await requestTestRun(endpoint, test);
-        console.log(testResults)
         if(testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1
             && testResults.workspaceValidation && testResults.workspaceValidation.status === 1){
                  //Actions if a test was successful

@@ -165,7 +165,6 @@ export const getDataFromParent = (prevStore,action) =>{
 	var testsArray = [...prevStore];
 	for(let i=0;i<testsArray.length;i++){
 		if(testsArray[i].subTests){
-			console.log(action.test)
 			let found = searchParent(testsArray[i].subTests,action.test)
 			if(found){
 				break;
