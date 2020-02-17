@@ -2,6 +2,7 @@ const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_R
 var STRUCTURE_QUERY_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_QUERY_DETAIL;
 var getStructureQueryDetail = require('sdmx-tck-api').constants.getStructureQueryDetail;
 var SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
+const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 
 var STRUCTURE_IDENTIFICATION_PARAMETERS = require('./StructureIdentificationParameters.js').STRUCTURE_IDENTIFICATION_PARAMETERS;
 var STRUCTURE_QUERY_REPRESENTATIONS = require('./StructureQueryRepresentations.js').STRUCTURE_QUERY_REPRESENTATIONS;
@@ -30,7 +31,7 @@ function STRUCTURE_REFERENCE_PARAMETER_TESTS(restResource) {
     return testsArray;
 };
 
-function STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion) {
+function STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion,resource) {
     let testsArray = [];
 
     var detailValues = getStructureQueryDetail(apiVersion);
@@ -40,7 +41,11 @@ function STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion) {
                 testsArray.push({ index: "Structure", url: "/agency/id/version?detail=" + detailValues[i] + "&references=" + reference, reqTemplate: { references: reference, detail: detailValues[i] } });
             });
         }else if(detailValues[i] === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL){
-            testsArray.push({ index: "Structure", url: "Test for Reference Partial", reqTemplate: { references: STRUCTURE_REFERENCE_DETAIL.DESCENDANTS} });
+            if(resource === STRUCTURES_REST_RESOURCE.datastructure || resource === STRUCTURES_REST_RESOURCE.metadatastructure){
+                testsArray.push({ index: "Structure", url: "/agency/id/version?detail=" + detailValues[i] + "&references=" + STRUCTURE_REFERENCE_DETAIL.CHILDREN, reqTemplate: { references: STRUCTURE_REFERENCE_DETAIL.CHILDREN, detail: detailValues[i] } });
+            }else if(resource === STRUCTURES_REST_RESOURCE.contentconstraint){
+                testsArray.push({ index: "Structure", url: "Reference Partial Test for Content Constraint", reqTemplate: { references: STRUCTURE_REFERENCE_DETAIL.DESCENDANTS} });
+            }
         }else {
             testsArray.push({ index: "Structure", url: "/agency/id/version?detail=" + detailValues[i] + "&references=" + STRUCTURE_REFERENCE_DETAIL.CHILDREN, reqTemplate: { references: STRUCTURE_REFERENCE_DETAIL.CHILDREN, detail: detailValues[i] } });
         }

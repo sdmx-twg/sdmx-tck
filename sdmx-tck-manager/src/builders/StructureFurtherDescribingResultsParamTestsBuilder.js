@@ -18,13 +18,13 @@ class StructureFurtherDescribingResultsParamTestsBuilder{
                     currentRestResource !== STRUCTURES_REST_RESOURCE.actualconstraint &&
                     currentRestResource !== STRUCTURES_REST_RESOURCE.structure) {
 
-                        for (let i in STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion)) {
-                            let test = STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion)[i];
+                        for (let i in STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion,currentRestResource)) {
+                            let test = STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS(apiVersion,currentRestResource)[i];
                             
                             testObjParams = {}
                             
                             //Reference Partial Testing is only for content constraint resource
-                            if(test.url === "Test for Reference Partial"){
+                            if(test.url === "Reference Partial Test for Content Constraint"){
                                 if(currentRestResource === STRUCTURES_REST_RESOURCE.contentconstraint){
                                     x.numOfTests = x.numOfTests + 1;
                                     testObjParams = {

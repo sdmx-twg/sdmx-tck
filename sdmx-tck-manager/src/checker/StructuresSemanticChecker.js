@@ -191,7 +191,8 @@ class StructuresSemanticChecker {
 
         let errors = [];
         if (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCED_STUBS ||
-            query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS ){
+            query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS ||
+            query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL ){
 
             let structureRef = new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(query.resource), query.agency, query.id, query.version);
 
@@ -199,8 +200,11 @@ class StructuresSemanticChecker {
             structureObject.getChildren().forEach((childRef) => {
                 var childObject = sdmxObjects.getSdmxObject(childRef)
                 if (!Utils.isDefined(childObject)
-                    || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCED_STUBS && childObject.isStub() === false)
-                    || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS && childObject.isCompleteStub() === false)){
+                || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCED_STUBS && childObject.isStub() === false)
+                || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS && childObject.isCompleteStub() === false)
+                || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL &&
+                    (structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key || structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.MSD.key) &&
+                    childObject.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key && !StructuresSemanticChecker._checkIfPartial(childRef, childObject))) {
                     
                     errors.push(childRef);
                 }
@@ -249,6 +253,25 @@ class StructuresSemanticChecker {
         return{status:FAILURE_CODE};
 
     }
+
+    static _checkIfPartial(structureRef, itemSchemeObject) {
+        let items = itemSchemeObject.getItems();
+        let identifiableIds = structureRef.getIdentifiableIds();
+
+        if (items.length === 0 && identifiableIds.length === 0) {
+            return true;
+        } else if (items.length === 0 && identifiableIds.length !== 0) {
+            return false;
+        } else if (items.length !== 0 && identifiableIds.length === 0) {
+            return false;
+        }
+        for (let i in items) {
+            if (!identifiableIds.includes(items[i].id)) {
+                return false;
+            }
+        }
+        return true;
+    };
 
     static _getChildren(sdmxObjects, structureObject) {
         let result = [];
