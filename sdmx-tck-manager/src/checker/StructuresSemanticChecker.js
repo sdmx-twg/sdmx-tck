@@ -205,7 +205,6 @@ class StructuresSemanticChecker {
                 || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL &&
                     (structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key || structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.MSD.key) &&
                     childObject.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key && !StructuresSemanticChecker._checkIfPartial(childRef, childObject))) {
-                    
                     errors.push(childRef);
                 }
             });
@@ -257,7 +256,7 @@ class StructuresSemanticChecker {
     static _checkIfPartial(structureRef, itemSchemeObject) {
         let items = itemSchemeObject.getItems();
         let identifiableIds = structureRef.getIdentifiableIds();
-
+        
         if (items.length === 0 && identifiableIds.length === 0) {
             return true;
         } else if (items.length === 0 && identifiableIds.length !== 0) {
@@ -328,7 +327,7 @@ class StructuresSemanticChecker {
                         }
                         // check if the requested structure is child of the current structure.
                         if (structure.getChildren().some((element) => {
-                            return structureRef.equals(element);
+                            return structureRef.exists(element);
                         }
                         )) {
                             result.push({ ref: structure.asReference(), isReferenced: true });
