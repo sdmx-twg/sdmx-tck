@@ -21,10 +21,11 @@ class TestObjectBuilder{
             testType: (testParams.hasOwnProperty("testType")) ? testParams.testType : "",
             subTests: (testParams.hasOwnProperty("subTests")) ? testParams.subTests : []
         }
-        if(testObj.hasOwnProperty('needsItem') && testObj.needsItem === true){
+        if(testParams.hasOwnProperty('needsItem') && testParams.needsItem === true){
             testObj.items = [];
             testObj.requireItems = true;
         }
+
 
         return testObj;
     }
