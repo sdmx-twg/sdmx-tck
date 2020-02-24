@@ -2,23 +2,12 @@
 var SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
 var FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 var Utils = require('sdmx-tck-api').utils.Utils;
-
-var SemanticError = require('sdmx-tck-api').errors.SemanticError;
-
-
-const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
-const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
-const STRUCTURE_QUERY_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_QUERY_DETAIL;
-
 var SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
-
 var Utils = require('sdmx-tck-api').utils.Utils;
-
 var TckError = require('sdmx-tck-api').errors.TckError;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 var ContentConstraintReferencePartialTestManager = require("../manager/ContentConstraintReferencePartialTestManager.js");
 
@@ -65,6 +54,9 @@ class ContentConstraintReferencePartialChecker {
                     then((partialCLworkspace) => {
                         /*Partial codelist's workspace validation*/
                         let validation = ContentConstraintReferencePartialChecker.checkCodelistWorkspace(finalTestData.codelistTest,partialCLworkspace,finalTestData.keyValueToCheck);
+                        
+                        //Due to the second req of the reference partial testing from content constraint we need to show the last URL(codelist)
+                        validation.sourceOfWorkspace = finalTestData.codelistTest.httpResponse;
                         resolve(validation)
                     }).catch((error) => {
                         reject(new TckError(error.message))

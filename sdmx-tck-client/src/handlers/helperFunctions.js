@@ -188,13 +188,19 @@ export const updateTestsStatus = (prevStore, action) => {
 
 function updateTestStatus(testsArray, test, action) {
 	if (action.test.testId === test.testId) {
-		
 		//Saving state and duration, in order to be saved to the store.
 		test.state = action.state;
 		test.startTime = action.test.startTime;
 		test.endTime = action.test.endTime;
 		test.workspace = action.test.workspace;
 		test.identifiers = action.test.identifiers;
+		test.httpResponse = action.test.httpResponse;
+		
+		//Applicable only in reference partial from contentconstraint to show the codelist url.
+		if( action.test.workspaceValidation && action.test.workspaceValidation.sourceOfWorkspace){
+			test.extraHttpResponse = action.test.workspaceValidation.sourceOfWorkspace;
+		}
+			
 		
 		if (action.state === TEST_STATE.FAILED) {
 			test.failReason = action.test.failReason;
