@@ -1,11 +1,6 @@
-const SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
-const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
-var TckError = require('sdmx-tck-api').TckError;
-const sdmx_requestor = require('sdmx-rest');
+
 const SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
-const STRUCTURE_QUERY_REPRESENTATIONS = require('../constants/StructureQueryRepresentations').STRUCTURE_QUERY_REPRESENTATIONS;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
-var SdmxV21JsonParser = require('../../../sdmx-tck-parsers/src/parsers/SdmxV21JsonParser.js');
 
 class ContentConstraintTypeValidator {
     

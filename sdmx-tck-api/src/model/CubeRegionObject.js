@@ -1,5 +1,4 @@
 var isDefined = require('../utils/Utils').isDefined;
-const SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
 
 class CubeRegionObject {
     constructor(props) {

@@ -1,6 +1,5 @@
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
-const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-var Utils = require('sdmx-tck-api').utils.Utils;
+
 
 class TestObjectBuilder{
 
