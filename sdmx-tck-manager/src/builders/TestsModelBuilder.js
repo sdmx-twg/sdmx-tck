@@ -74,78 +74,73 @@ class TestsModelBuilder {
             }
             return allTests;
         }else if(index === TEST_INDEX.Schema){
-            // var ts31 = [];
-            // var ts32 = [];
+             var ts31 = [];
+             var ts32 = [];
              var allTests=[];
-            // var arrayOfRestResources = getResources(apiVersion)            
-            // for (let j = 0; j < arrayOfRestResources.length; j++) {
+             var arrayOfRestResources = getResources(apiVersion)            
+             for (let j = 0; j < arrayOfRestResources.length; j++) {
                 
-            //     var found = containsValue(arrayOfRestResources[j]);
-            //     if(found){
+                 var found = containsValue(arrayOfRestResources[j]);
+                 if(found){
 
-            //         var schemaIdentificationArray = SCHEMAS_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT();
-            //         for (let i=0;i<schemaIdentificationArray.length;i++){
-            //             let test = schemaIdentificationArray[i];
-            //             x.numOfTests = x.numOfTests + 1;
+                     var schemaIdentificationArray = SCHEMAS_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT();
+                    for (let i=0;i<schemaIdentificationArray.length;i++){
+                        let test = schemaIdentificationArray[i];
+                        x.numOfTests = x.numOfTests + 1;
 
-            //             ts31.push({
-            //                 testId: "/schema/" + arrayOfRestResources[j] + test.url,
-            //                 index: index,
-            //                 run: false,
-            //                 apiVersion: apiVersion,
-            //                 resource: arrayOfRestResources[j],
-            //                 requireRandomSdmxObject: true,
-            //                 reqTemplate: test.reqTemplate,
-            //                 identifiers: { structureType: "", agency: "", id: "", version: "" },
-            //                 state: TEST_STATE.WAITING,
-            //                 failReason: "",
-            //                 testType: TEST_TYPE.SCHEMA_IDENTIFICATION_PARAMETERS,
-            //                 subTests: []
-            //             });
-            //         };
+                        testObjParams = {
+                            testId: "/schema/" + arrayOfRestResources[j] + test.url,
+                            index: index,
+                            apiVersion: apiVersion,
+                            resource: arrayOfRestResources[j],
+                            reqTemplate: test.reqTemplate,
+                            identifiers: { structureType: "", agency: "", id: "", version: "" },
+                            testType: TEST_TYPE.SCHEMA_IDENTIFICATION_PARAMETERS,
+                        }
+                        ts31.push(TestObjectBuilder.getTestObject(testObjParams));
+                    };
 
-            //         var schemaFurtherDescribingResultsArray = SCHEMAS_FOR_FURTHER_DESCRIBING_RESULTS()
-            //         for (let i=0;i<schemaFurtherDescribingResultsArray.length;i++){
-            //             let test = schemaFurtherDescribingResultsArray[i];
-            //             x.numOfTests = x.numOfTests + 1;
+                    var schemaFurtherDescribingResultsArray = SCHEMAS_FOR_FURTHER_DESCRIBING_RESULTS()
+                    for (let i=0;i<schemaFurtherDescribingResultsArray.length;i++){
+                        let test = schemaFurtherDescribingResultsArray[i];
+                        x.numOfTests = x.numOfTests + 1;
 
-            //             ts32.push({
-            //                 testId: "/schema/" + arrayOfRestResources[j] + test.url,
-            //                 index: index,
-            //                 run: false,
-            //                 apiVersion: apiVersion,
-            //                 resource: arrayOfRestResources[j],
-            //                 requireRandomSdmxObject: true,
-            //                 reqTemplate: test.reqTemplate,
-            //                 identifiers: { structureType: "", agency: "", id: "", version: "" },
-            //                 state: TEST_STATE.WAITING,
-            //                 failReason: "",
-            //                 testType: TEST_TYPE.SCHEMA_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS,
-            //                 subTests: []
-            //             });
-            //         };
+                        testObjParams = {
+                            testId: "/schema/" + arrayOfRestResources[j] + test.url,
+                            index: index,
+                            apiVersion: apiVersion,
+                            resource: arrayOfRestResources[j],
+                            reqTemplate: test.reqTemplate,
+                            identifiers: { structureType: "", agency: "", id: "", version: "" },
+                            testType: TEST_TYPE.SCHEMA_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS,
+                        }
+                        ts32.push(TestObjectBuilder.getTestObject(testObjParams));
+                    };
 
-            //         x.numOfTests = x.numOfTests + 1;
-            //         allTests.push({
-            //             testId: "/" + arrayOfRestResources[j] + "/all/all/all",
-            //             run: false,
-            //             apiVersion: apiVersion,
-            //             state: TEST_STATE.WAITING,
-            //             reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.ALL_STUBS },
-            //             identifiers: { structureType: "", agency: "all", id: "all", version: "all" },
-            //             hasChildren: true,
-            //             requireRandomSdmxObject: true,
-            //             index: index,
-            //             resource: arrayOfRestResources[j],
-            //             failReason: "",
-            //             testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-            //             subTests: ts31.concat(ts32)
-            //         });
+                    // for(let i=0;i<allTests.length;i++){
+                    //     if(allTests[i].testId === )
+                    // }
+                    x.numOfTests = x.numOfTests + 1;
+                    allTests.push({
+                        testId: "/" + arrayOfRestResources[j] + "/all/all/all",
+                        run: false,
+                        apiVersion: apiVersion,
+                        state: TEST_STATE.WAITING,
+                        reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.ALL_STUBS },
+                        identifiers: { structureType: "", agency: "all", id: "all", version: "all" },
+                        hasChildren: true,
+                        requireRandomSdmxObject: true,
+                        index: index,
+                        resource: arrayOfRestResources[j],
+                        failReason: "",
+                        testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
+                        subTests: ts31.concat(ts32)
+                    });
 
-            //         ts31=[];
-            //         ts32=[];
-            //     }
-            // }
+                    ts31=[];
+                    ts32=[];
+                }
+            }
             return allTests;
         }else if (index === TEST_INDEX.Data) {
             return [];
