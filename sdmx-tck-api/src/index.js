@@ -11,7 +11,6 @@ const StructuresRestResources = require('./constants/StructuresRestResources.js'
 const TestState = require('./constants/TestState.js');
 const TestIndex = require('./constants/TestIndex.js');
 const TestType = require('./constants/TestType.js');
-const SchemaResources = require('./constants/SchemaResources.js');
 
 // ERRORS
 var TckError = require('./errors/TckError.js');
@@ -46,9 +45,7 @@ module.exports = {
         getResources: StructuresRestResources.getResources,
         TEST_STATE: TestState.TEST_STATE,
         TEST_INDEX: TestIndex.TEST_INDEX,
-        TEST_TYPE: TestType.TEST_TYPE,
-        SCHEMA_RESOURCES:SchemaResources,
-        containsValue:SchemaResources.containsValue
+        TEST_TYPE: TestType.TEST_TYPE
     },
     errors: {
         TckError: TckError,
