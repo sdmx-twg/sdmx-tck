@@ -11,7 +11,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "save": "^2.4.0",
-    "sdmx-rest": "^2.14.1",
+    "sdmx-rest": "^2.15.1",
     "sdmx-tck-api": "file:../sdmx-tck-api",
     "sdmx-tck-parsers": "file:../sdmx-tck-parsers"
   },
