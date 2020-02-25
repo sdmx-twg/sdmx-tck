@@ -8,7 +8,7 @@ class ServiceUrl extends React.Component {
         return (
             <div className="tck-input-wrapper">
                 <label htmlFor="ws-url">Rest URL:</label>
-                <input type="text" id="ws-url" disabled = {this.props.running} defaultValue="http://192.168.0.82:8080/sdmxrr-ws/rest/" />
+                <input type="text" id="ws-url" disabled = {this.props.running} defaultValue="https://registry.sdmx.org/ws/public/sdmxapi/rest/" />
             </div>
         );
     }

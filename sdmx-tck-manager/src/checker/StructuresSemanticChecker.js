@@ -4,6 +4,7 @@ var FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 var SemanticError = require('sdmx-tck-api').errors.SemanticError;
 var TckError = require('sdmx-tck-api').errors.TckError;
 
+const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 const STRUCTURE_QUERY_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_QUERY_DETAIL;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
@@ -27,6 +28,8 @@ class StructuresSemanticChecker {
                     validation = StructuresSemanticChecker.checkReferences(query, workspace);
                 } else if (test.testType === TEST_TYPE.STRUCTURE_DETAIL_PARAMETER) {
                     validation = StructuresSemanticChecker.checkDetails(query, workspace);
+                } else if(test.testType === TEST_TYPE.STRUCTURE_TARGET_CATEGORY){
+                    validation = StructuresSemanticChecker.checkTargetCategory(query, workspace);
                 }
                 resolve(validation);
             } catch (err) {
@@ -35,6 +38,31 @@ class StructuresSemanticChecker {
         });
     };
 
+    static checkTargetCategory(query,sdmxObjects) {
+        if (!Utils.isDefined(query)) {
+            throw new Error("Missing mandatory parameter 'query'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
+
+        let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.resource);
+        let agency = query.agency;
+        let id = query.id;
+        let version = query.version && query.version === 'latest' ? null : query.version;
+
+        let reqItemValidation = StructuresSemanticChecker.exactlyOneArtefactWithCorrectNumOfItems(sdmxObjects, structureType, agency, id, version, query.item);
+        if(reqItemValidation.status === 0){
+            return { status: FAILURE_CODE, error: "Requested item not found in requested artefact "+structureType};
+        }
+
+        let targetCategoryValidation = StructuresSemanticChecker._checkCategorisationIds(sdmxObjects,query.item)
+        if(targetCategoryValidation.status === 0){
+            return { status: FAILURE_CODE, error: "Requested item not found in categorisation artefact."};
+        }
+       return StructuresSemanticChecker.checkReferences(query,sdmxObjects)
+        
+    }
     static checkIdentification(query, sdmxObjects) {
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
@@ -77,14 +105,19 @@ class StructuresSemanticChecker {
     };
 
     static checkReferences(query, sdmxObjects) {
+
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
         }
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
-        let structureRef = new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(query.resource), query.agency, query.id, query.version);
-
+       
+        var itemArray;
+        if(query.item!=="all"){
+            itemArray = query.item.split('+');
+        }
+        let structureRef = new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(query.resource), query.agency, query.id, query.version,itemArray);
         let result;
         // get the requested structure from workspace
         let structureObject = sdmxObjects.getSdmxObject(structureRef);
@@ -94,17 +127,17 @@ class StructuresSemanticChecker {
         if (query.references === STRUCTURE_REFERENCE_DETAIL.NONE) {
             result = [];
         } else if (query.references === STRUCTURE_REFERENCE_DETAIL.PARENTS) {
-            result = StructuresSemanticChecker._getParents(sdmxObjects, structureObject);
+            result = StructuresSemanticChecker._getParents(sdmxObjects, structureObject, structureRef);
         } else if (query.references === STRUCTURE_REFERENCE_DETAIL.PARENTS_SIBLINGS) {
-            result = StructuresSemanticChecker._getParentsSiblings(sdmxObjects, structureObject);
+            result = StructuresSemanticChecker._getParentsSiblings(sdmxObjects, structureObject, structureRef);
         } else if (query.references === STRUCTURE_REFERENCE_DETAIL.CHILDREN) {
             result = StructuresSemanticChecker._getChildren(sdmxObjects, structureObject);
         } else if (query.references === STRUCTURE_REFERENCE_DETAIL.DESCENDANTS) {
             result = StructuresSemanticChecker._getDescendants(sdmxObjects, structureObject);
         } else if (query.references === STRUCTURE_REFERENCE_DETAIL.ALL) {
-            result = StructuresSemanticChecker._getAll(sdmxObjects, structureObject);
+            result = StructuresSemanticChecker._getAll(sdmxObjects, structureObject, structureRef);
         } else if (STRUCTURE_REFERENCE_DETAIL.isSpecificSdmxStructure(query.references)) {
-            result = StructuresSemanticChecker._getParentsChildren(sdmxObjects, structureObject);
+            result = StructuresSemanticChecker._getParentsChildren(sdmxObjects, structureObject, structureRef);
         } else {
             throw new Error("Not supported structure reference detail '" + query.references + "'");
         }
@@ -131,6 +164,7 @@ class StructuresSemanticChecker {
             let isReference = result.some(r => {
                 return r.ref.equals(structure.asReference())
             });
+            
             if (!structureRef.equals(structure.asReference()) && !isReference) {
                 extraStructures.push(structure.asReference());
             } else if (!structureRef.equals(structure.asReference()) && isReference) {
@@ -140,7 +174,6 @@ class StructuresSemanticChecker {
                 }
             }
         });
-
         if (extraStructures.length > 0) {
             return { status: FAILURE_CODE, error: "Non-referenced structures found in workspace: " + JSON.stringify(extraStructures) };
         }
@@ -159,7 +192,7 @@ class StructuresSemanticChecker {
         let errors = [];
         if (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCED_STUBS ||
             query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS ||
-            query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL) {
+            query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL ){
 
             let structureRef = new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(query.resource), query.agency, query.id, query.version);
 
@@ -167,11 +200,11 @@ class StructuresSemanticChecker {
             structureObject.getChildren().forEach((childRef) => {
                 var childObject = sdmxObjects.getSdmxObject(childRef)
                 if (!Utils.isDefined(childObject)
-                    || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCED_STUBS && childObject.isStub() === false)
-                    || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS && childObject.isCompleteStub() === false)
-                    || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL &&
-                        (structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key || structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.MSD.key) &&
-                        childObject.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key && !StructuresSemanticChecker._checkIfPartial(childRef, childObject))) {
+                || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCED_STUBS && childObject.isStub() === false)
+                || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS && childObject.isCompleteStub() === false)
+                || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL &&
+                    (structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key || structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.MSD.key) &&
+                    childObject.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key && !StructuresSemanticChecker._checkIfPartial(childRef, childObject))) {
                     errors.push(childRef);
                 }
             });
@@ -193,11 +226,37 @@ class StructuresSemanticChecker {
         }
         return { status: FAILURE_CODE, error: "The following structures didn't pass the check: " + JSON.stringify(errors) };
     };
+    //Special workspace validation function for target category queries
+    static _checkCategorisationIds(sdmxObjects,item){
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
+        let matchingStructures = sdmxObjects.getSdmxObjectsWithCriteria(SDMX_STRUCTURE_TYPE.fromRestResource("categorisation"));
+        var identifialbleIdsToCheck = [];
+        for(var i=0;i<matchingStructures.length;i++){
+            for(var j=0;j<matchingStructures[i].getChildren().length;j++){
+                identifialbleIdsToCheck=identifialbleIdsToCheck.concat(matchingStructures[i].getChildren()[j].identifiableIds)
+            }
+        }
+        var index = identifialbleIdsToCheck.indexOf(item);
+        var indexesArr = [];
+       
+        while (index != -1) {
+            indexesArr.push(index);
+            index = identifialbleIdsToCheck.indexOf(item, index + 1);
+        }
+        if(matchingStructures.length === indexesArr.length){
+            return{status:SUCCESS_CODE};
+        }
+        
+        return{status:FAILURE_CODE};
+
+    }
 
     static _checkIfPartial(structureRef, itemSchemeObject) {
         let items = itemSchemeObject.getItems();
         let identifiableIds = structureRef.getIdentifiableIds();
-
+        
         if (items.length === 0 && identifiableIds.length === 0) {
             return true;
         } else if (items.length === 0 && identifiableIds.length !== 0) {
@@ -256,7 +315,8 @@ class StructuresSemanticChecker {
      * @param {*} sdmxObjects 
      * @param {*} structureObject 
      */
-    static _getParents(sdmxObjects, structureObject) {
+    static _getParents(sdmxObjects, structureObject,structureRef) {
+        //console.log(structureObject.asReference())
         let result = [];
         sdmxObjects.getSdmxObjects().forEach((structuresList) => {
             if (Utils.isDefined(structuresList) && structuresList instanceof Array) {
@@ -267,7 +327,7 @@ class StructuresSemanticChecker {
                         }
                         // check if the requested structure is child of the current structure.
                         if (structure.getChildren().some((element) => {
-                            return structureObject.asReference().equals(element);
+                            return structureRef.exists(element);
                         }
                         )) {
                             result.push({ ref: structure.asReference(), isReferenced: true });
@@ -284,11 +344,10 @@ class StructuresSemanticChecker {
      * @param {*} sdmxObjects the workspace
      * @param {*} structureObject the requested structure
      */
-    static _getParentsSiblings(sdmxObjects, structureObject) {
+    static _getParentsSiblings(sdmxObjects, structureObject,structureRef) {
         let result = [];
-        let parents = StructuresSemanticChecker._getParents(sdmxObjects, structureObject);
+        let parents = StructuresSemanticChecker._getParents(sdmxObjects, structureObject,structureRef);
         if (parents) result = result.concat(parents);
-
         parents.forEach((parent) => {
             let parentObject = sdmxObjects.getSdmxObject(parent.ref);
             if (!Utils.isDefined(parentObject)) {
@@ -306,10 +365,10 @@ class StructuresSemanticChecker {
      * @param {*} sdmxObjects the workspace
      * @param {*} structureObject the requested structure
      */
-    static _getParentsChildren(sdmxObjects, structureObject) {
+    static _getParentsChildren(sdmxObjects, structureObject, structureRef) {
         let result = [];
 
-        let parents = StructuresSemanticChecker._getParents(sdmxObjects, structureObject);
+        let parents = StructuresSemanticChecker._getParents(sdmxObjects, structureObject, structureRef);
         if (parents) result = result.concat(parents);
 
         let children = StructuresSemanticChecker._getChildren(sdmxObjects, structureObject);
@@ -323,13 +382,13 @@ class StructuresSemanticChecker {
      * @param {*} sdmxObjects the workspace
      * @param {*} structureObject the requested structure
      */
-    static _getAll(sdmxObjects, structureObject) {
+    static _getAll(sdmxObjects, structureObject, structureRef) {
         let result = [];
 
         let descendants = StructuresSemanticChecker._getDescendants(sdmxObjects, structureObject);
         if (descendants) result = result.concat(descendants);
 
-        let parentsSiblings = StructuresSemanticChecker._getParentsSiblings(sdmxObjects, structureObject);
+        let parentsSiblings = StructuresSemanticChecker._getParentsSiblings(sdmxObjects, structureObject, structureRef);
         if (parentsSiblings) result = result.concat(parentsSiblings);
 
         return result;

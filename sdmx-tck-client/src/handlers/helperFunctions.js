@@ -1,6 +1,5 @@
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
-const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
-const SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
+const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 
 export const extractScore = (testsArray) => {
 	let numOfCompliantResponses = 0;
@@ -101,7 +100,13 @@ const searchChildTestsToPassIdentifiers = (test, runTest) => {
 					test.subTests[i].identifiers.version = runTest.randomStructure.version;
 				}
 				if (test.subTests[i].requireItems) {
-					test.subTests[i].items = runTest.randomItems;
+					//In Target category case we need only one item in the form of array
+					if(test.subTests[i].testType === TEST_TYPE.STRUCTURE_TARGET_CATEGORY){
+						test.subTests[i].items = [runTest.randomItems[0]];
+					}else{
+						test.subTests[i].items = runTest.randomItems;
+					}
+					
 				}
 			}
 		}
@@ -128,6 +133,46 @@ export const passIdentifiersToChildren = (prevStore, action) => {
 	return testsArray;
 };
 
+export const findCorrectChild = (childToFind,searchArray) =>{
+	for(let i=0;i<searchArray.length;i++){
+		if(childToFind.structureType === searchArray[i].structureType
+			&&childToFind.agencyId === searchArray[i].agencyId
+			&&childToFind.id === searchArray[i].id
+			&&childToFind.version === searchArray[i].version){
+				return {found:"true",data: searchArray[i]};
+			}
+	}
+	return {found:"false"};
+}
+
+const searchParent = (possibleParents,child) => {
+		for(let j=0;j<possibleParents.length;j++){
+			if(possibleParents[j].subTests){
+				for(let k=0;k<possibleParents[j].subTests.length;k++){
+					if(possibleParents[j].subTests[k].testId === child.testId && possibleParents[j].state === TEST_STATE.COMPLETED){
+						let parentDataObj = possibleParents[j].workspace;
+						possibleParents[j].subTests[k].parentWorkspace = parentDataObj;
+						return true
+					}
+					searchParent(possibleParents[j].subTests,child)
+				}
+			}
+			
+		}
+		return false;
+	}
+export const getDataFromParent = (prevStore,action) =>{
+	var testsArray = [...prevStore];
+	for(let i=0;i<testsArray.length;i++){
+		if(testsArray[i].subTests){
+			let found = searchParent(testsArray[i].subTests,action.test)
+			if(found){
+				break;
+			}
+		}
+	}
+	return testsArray;
+}
 /**
  * Find and mark the tests that have run as completed or failed.
  * @param {*} prevStore 
@@ -143,12 +188,20 @@ export const updateTestsStatus = (prevStore, action) => {
 
 function updateTestStatus(testsArray, test, action) {
 	if (action.test.testId === test.testId) {
-		
 		//Saving state and duration, in order to be saved to the store.
 		test.state = action.state;
 		test.startTime = action.test.startTime;
 		test.endTime = action.test.endTime;
-
+		test.workspace = action.test.workspace;
+		test.identifiers = action.test.identifiers;
+		test.httpResponse = action.test.httpResponse;
+		
+		//Applicable only in reference partial from contentconstraint to show the codelist url.
+		if( action.test.workspaceValidation && action.test.workspaceValidation.sourceOfWorkspace){
+			test.extraHttpResponse = action.test.workspaceValidation.sourceOfWorkspace;
+		}
+			
+		
 		if (action.state === TEST_STATE.FAILED) {
 			test.failReason = action.test.failReason;
 			// if the test failed, change the status of its children to "Unable to run".

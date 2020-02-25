@@ -1,0 +1,69 @@
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IDREF7f3ea6f5-01e9-4cc3-a4e4-f5bc5aad4cde</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2019-12-20T10:47:12Z</mes:Prepared>
+		<mes:Sender id="SDMX"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+	
+		<str:CategorySchemes>
+			<str:CategoryScheme agencyID="SDMX" id="STAT_SUBJECT_MATTER" isExternalReference="false" isFinal="false" isPartial="true" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=SDMX:STAT_SUBJECT_MATTER(1.0)" version="1.0">
+				<com:Annotations>
+					<com:Annotation>
+						<com:AnnotationType>REFERENCE_SOURCE</com:AnnotationType>
+						<com:AnnotationText xml:lang="en">United Nations Economic Commission for Europe. This classification of statistical subject-matter domains is based on that used in the Database of International Statistical Activities (DISA - http://unece.unog.ch/disa/ ). The DISA classification includes two additional domains covering statistical methodology and strategic managerial issues, which do not relate directly to data or metadata, so are not considered relevant for SDMX purposes.
+</com:AnnotationText>
+					</com:Annotation>
+				</com:Annotations>
+				<com:Name xml:lang="en">SDMX Statistical Subject-Matter Domains</com:Name>
+				<com:Description xml:lang="en">This is the canonical representation of the SDMX Content Guidelines for Statistical Subject-Matter Domains. Within SDMX, the list of Statistical Subject-Matter Domains (aligned to the Classification of International Statistical Activities maintained by the Conference of European Statisticians of the United Nations Economic Commission for Europe, UNECE) is a standard reference list against which the categorisation schemes of various participants in exchange arrangements can be mapped to facilitate data and metadata exchange.
+</com:Description>
+				<str:Category id="DEMO_SOCIAL_STAT" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=SDMX:STAT_SUBJECT_MATTER(1.0).DEMO_SOCIAL_STAT">
+					<com:Annotations>
+						<com:Annotation>
+							<com:AnnotationTitle>OFFICIAL CODE</com:AnnotationTitle>
+							<com:AnnotationType>OFFICIAL CODE</com:AnnotationType>
+							<com:AnnotationText xml:lang="en">1</com:AnnotationText>
+						</com:Annotation>
+					</com:Annotations>
+					<com:Name xml:lang="en">Demographic and social statistics</com:Name>
+				</str:Category>
+			</str:CategoryScheme>
+		</str:CategorySchemes>
+		<str:Categorisations>
+			<str:Categorisation agencyID="SDMX" id="6EA5A9C9-85B2-4FF8-B13A-0F7EBB1F2D43" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=SDMX:6EA5A9C9-85B2-4FF8-B13A-0F7EBB1F2D43(1.0)" version="1.0">
+				<com:Name xml:lang="en">Categorise: CODESDMX:CL_AGE(1.0).Y</com:Name>
+				<str:Source>
+					<Ref agencyID="SDMX" class="Code" id="Y" maintainableParentID="CL_AGE" maintainableParentVersion="1.0" package="codelist"/>
+				</str:Source>
+                <str:Target>
+					<Ref agencyID="SDMX" class="Category" id="DEMO_SOCIAL_STAT" maintainableParentID="STAT_SUBJECT_MATTER" maintainableParentVersion="1.0" package="categoryscheme"/>
+				</str:Target>
+			</str:Categorisation>
+		</str:Categorisations>
+		<str:Codelists>
+			<str:Codelist agencyID="SDMX" id="CL_AGE" isExternalReference="false" isFinal="true" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_AGE(1.0)" version="1.0">
+				<com:Name xml:lang="en">Age</com:Name>
+				<com:Description xml:lang="en">This code list provides a set of building blocks to be used for creating simple or complex code identifiers relating to the concept of &quot;age&quot; as defined in the Cross-Domain Concepts and the Metadata Common Vocabulary, i.e. the length of time that a person has lived or a thing has existed. This code list was formally adopted on 7 February 2014. More information about and supporting material for this code list and SDMX code lists in general (e.g. list of generic codes for expressing general concepts like &quot;Total&quot;, &quot;Unknown&quot;, etc.; syntaxes for the creation of further codes; general guidelines for the creation of SDMX code lists) can be found at this address: https://sdmx.org/?page_id=4345.
+</com:Description>
+				<str:Code id="Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=SDMX:CL_AGE(1.0).Y">
+					<com:Name xml:lang="en">Year(s)</com:Name>
+				</str:Code>
+				<str:Code id="M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=SDMX:CL_AGE(1.0).M">
+					<com:Name xml:lang="en">Month(s)</com:Name>
+				</str:Code>
+				<str:Code id="W" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=SDMX:CL_AGE(1.0).W">
+					<com:Name xml:lang="en">Week(s)</com:Name>
+				</str:Code>
+				<str:Code id="D" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=SDMX:CL_AGE(1.0).D">
+					<com:Name xml:lang="en">Day(s)</com:Name>
+				</str:Code>
+				<str:Code id="H" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=SDMX:CL_AGE(1.0).H">
+					<com:Name xml:lang="en">Hour(s)</com:Name>
+				</str:Code>
+			</str:Codelist>
+		</str:Codelists>
+	</mes:Structures>
+</mes:Structure>

@@ -7,6 +7,7 @@ var StructureRequestBuilder = require('../builders/StructureRequestBuilder.js');
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
 var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
+var ContentConstraintTypeValidator = require('../checker/ContentConstraintTypeValidator.js')
 const sdmx_requestor = require('sdmx-rest');
 
 class TestExecutionManager {
@@ -29,16 +30,24 @@ class TestExecutionManager {
                         if (httpResponseValidation.status === FAILURE_CODE) {
                             throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
                         }
+                        toRun.endTime = new Date();
                         resolve(toRun);
                     }).catch((err) => {
                         if (err instanceof Error) {
                             toRun.failReason = err.toString();
                         }
+                        toRun.endTime = new Date();
                         reject(toRun);
                     });
             });
         } else {
             return new Promise((resolve, reject) => {
+
+                /*We have to make sure that the constraint is of allowed type before it runs.
+                SPECIAL HANDLING FOR STRUCTURE REFERENCE TEST ONLY*/
+                if(toRun.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL && toRun.parentWorkspace){
+                    toRun.identifiers = ContentConstraintTypeValidator.getContentConstraintOfAllowedType(toRun)
+                }
                 StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
                     toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
                     .then((preparedRequest) => {
@@ -73,7 +82,7 @@ class TestExecutionManager {
                            toRun.randomItems = randomStructure.getItemsCombination();
                         }
                         toRun.workspace = workspace.toJSON();
-                        return SemanticCheckerFactory.getChecker(toRun.request).checkWorkspace(toRun, workspace);
+                        return SemanticCheckerFactory.getChecker(toRun.request,toRun.testType).checkWorkspace(toRun, workspace);
                     }).then((workspaceValidation) => {
                         toRun.workspaceValidation = workspaceValidation;
                         if (workspaceValidation.status === FAILURE_CODE) {

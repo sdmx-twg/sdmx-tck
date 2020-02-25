@@ -9,6 +9,8 @@ var isDefined = require('sdmx-tck-api').utils.Utils.isDefined;
 var SdmxV21StructureReferencesParser = require('./SdmxV21StructureReferencesParser.js');
 var SdmxV21JsonItemsParser = require('./SdmxV21JsonItemsParser.js');
 var SdmxV21JsonForStubsParser = require('./SdmxV21JsonForStubsParser.js');
+var SdmxV21JsonCubeRegionParser = require('./SdmxV21JsonCubeRegionParser.js')
+var SdmxV21JsonDsdComponentParser= require('./SdmxV21JsonDsdComponentParser.js')
 
 class SdmxV21JsonParser {
     static parseStructures(sdmxJsonObjects) {
@@ -134,7 +136,8 @@ class SdmxV21JsonParser {
                 structures.get(structureType).push(
                     new ContentConstraintObject(constraints[c],
                         SdmxV21StructureReferencesParser.getReferences(constraints[c]),
-                        SdmxV21JsonForStubsParser.getDetail(structureType, constraints[c])));
+                        SdmxV21JsonForStubsParser.getDetail(structureType, constraints[c]),
+                        SdmxV21JsonCubeRegionParser.getCubeRegions(structureType,constraints[c])));
             }
         }
     };
@@ -232,6 +235,7 @@ class SdmxV21JsonParser {
     };
     static parseDataStructures(structures, s) {
         if (s.DataStructures && s.DataStructures[0] && s.DataStructures[0].DataStructure) {
+            //console.log(s.DataStructures[0].DataStructure)
             for (var d in s.DataStructures[0].DataStructure) {
                 let dsd = s.DataStructures[0].DataStructure[d];
                 let structureType = SDMX_STRUCTURE_TYPE.DSD.key;
@@ -240,8 +244,11 @@ class SdmxV21JsonParser {
                     structures.set(structureType, []);
                 }
                 structures.get(structureType).push(
-                    new DataStructureObject(dsd, [], SdmxV21StructureReferencesParser.getReferences(dsd),
-                    SdmxV21JsonForStubsParser.getDetail(structureType, dsd)));
+                    new DataStructureObject(dsd,
+                        SdmxV21JsonDsdComponentParser.getComponents(dsd),
+                        SdmxV21StructureReferencesParser.getReferences(dsd),
+                        SdmxV21JsonForStubsParser.getDetail(structureType, dsd)));
+                    
             }
         }
     };
@@ -256,8 +263,8 @@ class SdmxV21JsonParser {
                 }
                 structures.get(structureType).push(
                     new MaintainableObject(structureType, metadataflows[m], 
-                        SdmxV21StructureReferencesParser.getReferences(metadataflows[m])),
-                        SdmxV21JsonForStubsParser.getDetail(structureType, metadataflows[m]));
+                        SdmxV21StructureReferencesParser.getReferences(metadataflows[m]),
+                        SdmxV21JsonForStubsParser.getDetail(structureType, metadataflows[m])));
             }
         }
     };
@@ -288,8 +295,8 @@ class SdmxV21JsonParser {
                 }
                 structures.get(structureType).push(
                     new MaintainableObject(structureType, processes[p], 
-                        SdmxV21StructureReferencesParser.getReferences(processes[p])),
-                        SdmxV21JsonForStubsParser.getDetail(structureType, processes[p]));
+                        SdmxV21StructureReferencesParser.getReferences(processes[p]),
+                        SdmxV21JsonForStubsParser.getDetail(structureType, processes[p])));
             }
         }
     };
@@ -304,8 +311,8 @@ class SdmxV21JsonParser {
                 }
                 structures.get(structureType).push(
                     new MaintainableObject(structureType, structureSets[c], 
-                        SdmxV21StructureReferencesParser.getReferences(structureSets[c])),
-                        SdmxV21JsonForStubsParser.getDetail(structureType, structureSets[c]));
+                        SdmxV21StructureReferencesParser.getReferences(structureSets[c]),
+                        SdmxV21JsonForStubsParser.getDetail(structureType, structureSets[c])));
             }
         }
     };

@@ -1,6 +1,7 @@
 
-import { updateTestsStatus,increaseRunTestsNum, passIdentifiersToChildren, increaseTestCompliantNumber, increaseTestCoverageNumber } from "../handlers/helperFunctions";
+import {getDataFromParent,updateTestsStatus,increaseRunTestsNum, passIdentifiersToChildren, increaseTestCompliantNumber, increaseTestCoverageNumber } from "../handlers/helperFunctions";
 import ACTION_NAMES from '../constants/ActionsNames';
+
 /*
  * The reducer which depending the action type,
  * updates properly the previous state in order to produce the new state of the app. 
@@ -19,6 +20,8 @@ const testsManagerReducer = (state = [], action) => {
 			return increaseTestCoverageNumber(state, action)
 		case ACTION_NAMES.UPDATE_TEST_STATE:
 			return updateTestsStatus(state, action)
+		case ACTION_NAMES.GET_DATA_FROM_PARENT:
+			return getDataFromParent(state,action)
 		default:
 			return state;
 	}
