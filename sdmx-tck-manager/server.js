@@ -4,6 +4,12 @@ const app = express();
 var TestsModelBuilder = require('./src/builders/TestsModelBuilder.js');
 var TestExecutionManager = require('./src/manager/TestExecutionManager.js');
 
+const server = app.listen(5000, () => {
+    console.log("Server is listening on port: 5000");
+});
+
+server.setTimeout(0); // NO TIMEOUT
+
 app.use(express.json())
 
 app.post("/prepare-tests", (req, res) => {
@@ -26,8 +32,4 @@ app.post("/execute-test", (req, res) => {
     TestExecutionManager.executeTest(test, apiVersion, endpoint).then(
         (result) => { res.send(JSON.stringify(result)) },
         (error) => { res.send(error) });
-});
-
-app.listen(5000, () => {
-    console.log("Server is listening on port: 5000");
 });
