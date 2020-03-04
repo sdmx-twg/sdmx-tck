@@ -38,7 +38,7 @@ export function dataFromParent(test){
 
 export function fetchTests(endpoint, apiVersion, testIndices) {
     let body = { endpoint, apiVersion, testIndices };
-    return fetch('/prepare-tests', {
+    return fetch('/tck-api/prepare-tests', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ export function fetchTests(endpoint, apiVersion, testIndices) {
 
 async function requestTestRun(endpoint, test) {
     let body = { endpoint, test };
-    const response = await fetch('/execute-test', {
+    const response = await fetch('/tck-api/execute-test', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
