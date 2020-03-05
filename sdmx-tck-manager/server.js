@@ -8,7 +8,9 @@ const server = app.listen(5000, () => {
     console.log("Server is listening on port: 5000");
 });
 
+
 var configuredTimeout = 120 * 60 * 1000; // 2 hours
+
 server.setTimeout(configuredTimeout);
 
 app.use(express.json())

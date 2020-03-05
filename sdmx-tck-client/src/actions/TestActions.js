@@ -48,11 +48,9 @@ export function fetchTests(endpoint, apiVersion, testIndices) {
 };
 
 async function requestTestRun(endpoint, test) {
-    const controller = new AbortController();
-
      try{
         let body = { endpoint, test };
-        const response = await fetch('/execute-test', {
+        const response = await fetch('/tck-api/execute-test', {
             method: 'POST',
            
             headers: {
@@ -62,7 +60,7 @@ async function requestTestRun(endpoint, test) {
         });
         return await response.json();
      }catch(err){
-             return {error:err};
+             return {error:err.toString()};
      }
 
 };
@@ -101,7 +99,7 @@ export async function runTest(endpoint, test) {
     store.dispatch(updateTestsNumber(test.index));
     if(test.state!==TEST_STATE.COMPLETED && test.state!==TEST_STATE.FAILED && test.state!==TEST_STATE.UNABLE_TO_RUN ){
         let testResults = await requestTestRun(endpoint, test);
-        if(testResults.error){
+        if(Object.keys(testResults).length === 1 && testResults.hasOwnProperty("error")){
             test.failReason  = testResults.error;
             store.dispatch(updateTestState(test, TEST_STATE.FAILED));
         }else{
