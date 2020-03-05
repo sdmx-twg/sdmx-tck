@@ -38,7 +38,7 @@ export function dataFromParent(test){
 
 export function fetchTests(endpoint, apiVersion, testIndices) {
     let body = { endpoint, apiVersion, testIndices };
-    return fetch('/prepare-tests', {
+    return fetch('/tck-api/prepare-tests', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
