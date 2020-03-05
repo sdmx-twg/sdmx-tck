@@ -48,15 +48,23 @@ export function fetchTests(endpoint, apiVersion, testIndices) {
 };
 
 async function requestTestRun(endpoint, test) {
-    let body = { endpoint, test };
-    const response = await fetch('/execute-test', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-    });
-    return await response.json();
+    const controller = new AbortController();
+
+     try{
+        let body = { endpoint, test };
+        const response = await fetch('/execute-test', {
+            method: 'POST',
+           
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+        return await response.json();
+     }catch(err){
+             return {error:err};
+     }
+
 };
 
 export function prepareTests(endpoint, apiVersion, testIndices) {
@@ -93,19 +101,24 @@ export async function runTest(endpoint, test) {
     store.dispatch(updateTestsNumber(test.index));
     if(test.state!==TEST_STATE.COMPLETED && test.state!==TEST_STATE.FAILED && test.state!==TEST_STATE.UNABLE_TO_RUN ){
         let testResults = await requestTestRun(endpoint, test);
-        if(testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1
-            && testResults.workspaceValidation && testResults.workspaceValidation.status === 1){
-                 //Actions if a test was successful
-                store.dispatch(updateTestState(testResults, TEST_STATE.COMPLETED));
-                store.dispatch(updateComplianceNumber(testResults.index));
-                store.dispatch(updateCoverageNumber(testResults.index));
-                store.dispatch(updateChildrenTests(testResults));
-        }else{ 
-                 //Actions if a test failed
-                store.dispatch(updateTestState(testResults, TEST_STATE.FAILED));
-                if (testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1) {
+        if(testResults.error){
+            test.failReason  = testResults.error;
+            store.dispatch(updateTestState(test, TEST_STATE.FAILED));
+        }else{
+            if(testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1
+                && testResults.workspaceValidation && testResults.workspaceValidation.status === 1){
+                        //Actions if a test was successful
+                    store.dispatch(updateTestState(testResults, TEST_STATE.COMPLETED));
                     store.dispatch(updateComplianceNumber(testResults.index));
-                };
+                    store.dispatch(updateCoverageNumber(testResults.index));
+                    store.dispatch(updateChildrenTests(testResults));
+            }else{ 
+                        //Actions if a test failed
+                    store.dispatch(updateTestState(testResults, TEST_STATE.FAILED));
+                    if (testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1) {
+                        store.dispatch(updateComplianceNumber(testResults.index));
+                    };
+            }
         }
     } 
     if (test.subTests && test.subTests.length !== 0) {
@@ -119,7 +132,5 @@ export async function runTest(endpoint, test) {
                 await runTest(endpoint, test.subTests[j]);
             }
         }
-    }
-    
-   
+    }    
 }
