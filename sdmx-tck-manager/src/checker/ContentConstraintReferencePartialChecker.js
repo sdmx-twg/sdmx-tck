@@ -41,11 +41,10 @@ class ContentConstraintReferencePartialChecker {
                     b) The KeyValue with which the partial codelist will be validated.
                     */
                 let finalTestData = ContentConstraintReferencePartialChecker.referencepartialTestBuilder(test,workspace);
-
                 if(Object.entries(finalTestData.codelistTest).length === 0){
-                    throw new Error ('Not specified test for Code List under validation')
+                    throw new Error ('Not specified Codelist under validation')
                 }
-                if(Object.entries(finalTestData.keyValueToCheck).length === 0){
+                if(!Utils.isDefined(finalTestData.keyValueToCheck)){
                     throw new Error ('Not specified Key Value under validation')
                 }
 
@@ -116,7 +115,7 @@ class ContentConstraintReferencePartialChecker {
         
         //If the codelist returned is not partial throw Error.
         if(codelistObj.getIsPartial() !== "true"){
-            return { status: FAILURE_CODE, error: "Codelist is not partial."};
+           return { status: FAILURE_CODE, error: "Codelist is not partial."};
         }
         //If the codes of the partial codelist follow the constraint
         if(!ContentConstraintReferencePartialChecker.constraintValuesValidation(keyValue,codesArray)){
@@ -130,7 +129,7 @@ class ContentConstraintReferencePartialChecker {
      * @param {*} childrenRefs children references of a structure.
      * @param {*} structureType the structureType needed.
      */
-    static getRefsOfSpecificStructureType(childrenRefs,structureType){
+    static getRefOfSpecificStructureType(childrenRefs,structureType){
         if(childrenRefs.length>0){
             for(let i=0;i<childrenRefs.length;i++){
                 if(childrenRefs[i].getStructureType() === structureType){
@@ -175,7 +174,6 @@ class ContentConstraintReferencePartialChecker {
         //Get children and components from the constraint object
         let constrainableArtefacts = constraint.getChildren();
         let constraintCubeRegions = constraint.getCubeRegions();
-
         if (!Utils.isDefined(constrainableArtefacts) || constrainableArtefacts.length === 0) {
             throw new Error("Missing constrainable artefacts");
         }
@@ -190,48 +188,48 @@ class ContentConstraintReferencePartialChecker {
                 //If the constrainable artefact exists in Content Constraint 'descendants' request's workspace
                 if(structureList.length !== 0){
                     let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
-                    let dsdRef = ContentConstraintReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
-                    let dsd = sdmxObjects.getSdmxObject(dsdRef)
-                    let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
-                    if(Object.entries(selectedkeyValue).length !== 0){
-                        return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
-                            keyValueSet:selectedkeyValue}
+                    let dsdRef = ContentConstraintReferencePartialChecker.getRefOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
+                    if(Object.entries(dsdRef).length !== 0){
+                        let dsd = sdmxObjects.getSdmxObject(dsdRef)
+                        let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
+                        if(Object.entries(selectedkeyValue).length !== 0){
+                            return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
+                                keyValueSet:selectedkeyValue}
+                        }
                     }
                 }
-               
-                
             }else if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key){
                 let structureList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
-                let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
-                let dataflowRef = ContentConstraintReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DATAFLOW.key)
-
-
-                let dsdRef = ContentConstraintReferencePartialChecker.getRefsOfSpecificStructureType(sdmxObjects.getChildren(dataflowRef),SDMX_STRUCTURE_TYPE.DSD.key)
-
-
-                let dsd = sdmxObjects.getSdmxObject(dsdRef)
-
-                let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
-                if(Object.entries(selectedkeyValue).length !== 0){
-
-                    return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
-                            keyValueSet:selectedkeyValue}
+                
+                //If the constrainable artefact exists in Content Constraint 'descendants' request's workspace
+                if(structureList.length !== 0){
+                    let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
+                    let dataflowRef = ContentConstraintReferencePartialChecker.getRefOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DATAFLOW.key)
+                    if(Object.entries(dataflowRef).length !== 0){
+                        let dsdRef = ContentConstraintReferencePartialChecker.getRefOfSpecificStructureType(sdmxObjects.getChildren(dataflowRef),SDMX_STRUCTURE_TYPE.DSD.key)
+                        if(Object.entries(dsdRef).length !== 0){
+                            let dsd = sdmxObjects.getSdmxObject(dsdRef)
+                            let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
+                            if(Object.entries(selectedkeyValue).length !== 0){
+            
+                                return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
+                                        keyValueSet:selectedkeyValue}
+                            }
+                        }   
+                    }
                 }
-
             }else if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.DSD.key){
                 let structureList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
-                let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
-                let dsdRef = structureRef
-
-                let dsd = structureList[0];
-                let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
-                if(Object.entries(selectedkeyValue).length !== 0){
-                     
-
-                    return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
-                            keyValueSet:selectedkeyValue}
+                
+                //If the constrainable artefact exists in Content Constraint 'descendants' request's workspace
+                if(structureList.length !== 0){
+                    let dsd = structureList[0];
+                    let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
+                    if(Object.entries(selectedkeyValue).length !== 0){
+                        return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
+                                keyValueSet:selectedkeyValue}
+                    }
                 }
-
             }
         }
         return {};
@@ -256,6 +254,9 @@ class ContentConstraintReferencePartialChecker {
 
         //Get the constraint obj from workspace
         let constraint = sdmxObjects.getSdmxObject(new StructureReference(test.identifiers.structureType,test.identifiers.agency,test.identifiers.id,test.identifiers.version))
+        if(!Utils.isDefined(constraint)){
+            throw new Error('Requested Content Constraint Artefact not found in workspace')
+        }
         if(constraint.getType()!== "Allowed"){
             throw new Error('There is no Content Constraint of type "Allowed" to proceed with this test.')
         }
