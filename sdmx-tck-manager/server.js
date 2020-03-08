@@ -33,6 +33,12 @@ app.post("/tck-api/execute-test", (req, res) => {
         let endpoint = payload.endpoint;
 
         TestExecutionManager.executeTest(test, apiVersion, endpoint).then(
-            (result) => { res.send(JSON.stringify(result)) },
-            (error) => { res.send(error) });
+            (result) => { 
+                console.log("Test: " + test.testId + " completed.");
+                res.send(JSON.stringify(result)) 
+            },
+            (error) => { 
+                console.log("Test: " + test.testId + " failed. Cause: " + error);
+                res.send(error) 
+            });
 });

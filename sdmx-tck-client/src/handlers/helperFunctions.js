@@ -194,13 +194,8 @@ function updateTestStatus(testsArray, test, action) {
 		test.endTime = action.test.endTime;
 		test.workspace = action.test.workspace;
 		test.identifiers = action.test.identifiers;
-		test.httpResponse = action.test.httpResponse;
-		
-		//Applicable only in reference partial from contentconstraint to show the codelist url.
-		if( action.test.workspaceValidation && action.test.workspaceValidation.sourceOfWorkspace){
-			test.extraHttpResponse = action.test.workspaceValidation.sourceOfWorkspace;
-		}
-			
+		test.httpResponseValidation = action.test.httpResponseValidation;
+		test.workspaceValidation = action.test.workspaceValidation;
 		
 		if (action.state === TEST_STATE.FAILED) {
 			test.failReason = action.test.failReason;

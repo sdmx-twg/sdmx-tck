@@ -9,7 +9,7 @@ import App from './App';
 import { store } from '../src/store/AppStore';
 
 // TEMP: attach the created store to window so it is accessible via chrome developer console.
-//window.store = store;
+window.store = store;
 
 ReactDOM.render(
 	<Provider store={store}>
