@@ -80,6 +80,17 @@ export function prepareTests(endpoint, apiVersion, testIndices) {
     };
 };
 
+export function exportReport(tests) {
+    let body = { tests };
+    return fetch('/tck-api/export-report', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    });
+};
+
 async function runTests(endpoint, tests) {
     for (let i = 0; i < tests.length; i++) {
         for (let j = 0; j < tests[i].subTests.length; j++) {
