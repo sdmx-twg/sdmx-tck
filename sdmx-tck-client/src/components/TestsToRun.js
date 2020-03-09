@@ -64,7 +64,7 @@ class TestsToRun extends React.Component {
 
     return (
       <div className="testsTableContainer" style={{ display: (this.props.finished) ? 'block' : 'none' }}>
-        <button ref="btn" onClick={() => exportReport(this.props.testsToRun)}>Export (.csv)</button>
+        {/* <button ref="btn" onClick={() => exportReport(this.props.testsToRun)}>Export (.csv)</button> */}
         <table id="testsTable">
           <tbody>
             <tr>
