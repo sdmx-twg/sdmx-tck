@@ -9,7 +9,7 @@ var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
 var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
 var ContentConstraintTypeValidator = require('../checker/ContentConstraintTypeValidator.js')
 const sdmx_requestor = require('sdmx-rest');
-
+const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator')
 class TestExecutionManager {
     static async executeTest(toRun, apiVersion, endpoint) {
         let testResult = toRun;
@@ -27,7 +27,10 @@ class TestExecutionManager {
 
             console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
             
-            let httpResponse = await sdmx_requestor.request2(preparedRequest.request, preparedRequest.service, preparedRequest.headers);
+            //Alternative way to pass the url generated as string in order to configure the skipDefaults parameter.
+            let url = new UrlGenerator().getUrl(preparedRequest.request, preparedRequest.service, true)
+            let httpResponse = await sdmx_requestor.request2(url, preparedRequest.headers);
+            //let httpResponse = await sdmx_requestor.request2(preparedRequest.request, preparedRequest.service, preparedRequest.headers);
             console.log("Test: " + toRun.testId + " HTTP response received.");
 
             //// HTTP RESPONSE VALIDATION ////
