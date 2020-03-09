@@ -25,9 +25,9 @@ class TestExecutionManager {
             let preparedRequest = await StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
                 toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items);
 
-            console.log("Test: " + toRun.testId + " HTTP request prepared.");
+            console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
             
-            let httpResponse = await sdmx_requestor.request2(preparedRequest.request, preparedRequest.service);
+            let httpResponse = await sdmx_requestor.request2(preparedRequest.request, preparedRequest.service, preparedRequest.headers);
             console.log("Test: " + toRun.testId + " HTTP response received.");
 
             //// HTTP RESPONSE VALIDATION ////
