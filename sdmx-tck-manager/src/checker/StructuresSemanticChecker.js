@@ -17,8 +17,9 @@ var Utils = require('sdmx-tck-api').utils.Utils;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 
 class StructuresSemanticChecker {
-    static checkWorkspace(test, query, workspace) {
+    static checkWorkspace(test, preparedRequest, workspace) {
         return new Promise((resolve, reject) => {
+            var query = preparedRequest.request;
             try {
                 let validation = {};
                 if (test.testType === TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS) {

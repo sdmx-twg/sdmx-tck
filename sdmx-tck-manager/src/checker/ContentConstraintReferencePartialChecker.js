@@ -30,10 +30,10 @@ class ContentConstraintReferencePartialChecker {
      * Validates the whole reference partial test as successful or not.Returns success code in case of success 
      * and failure code in case of an error or failure.
      * @param {*} test the test object of the above test.
-     * @param {*} query the http query parameters
+     * @param {*} preparedRequest the http query parameters
      * @param {*} workspace the workspace of content constraint descendants
      */
-    static checkWorkspace(test, query, workspace) {
+    static checkWorkspace(test, preparedRequest, workspace) {
         return new Promise((resolve, reject) => {
             try {
 
@@ -50,13 +50,13 @@ class ContentConstraintReferencePartialChecker {
                 }
 
                 /*Executes the request to get the partial codelist*/
-                ContentConstraintReferencePartialTestManager.executeTest(finalTestData.codelistTest, test.apiVersion, query.service.url).
+                ContentConstraintReferencePartialTestManager.executeTest(finalTestData.codelistTest, test.apiVersion, preparedRequest.service.url).
                     then((partialCLworkspace) => {
                         /*Partial codelist's workspace validation*/
                         let validation = ContentConstraintReferencePartialChecker.checkCodelistWorkspace(finalTestData.codelistTest,partialCLworkspace,finalTestData.keyValueToCheck);
                         
                         //Due to the second req of the reference partial testing from content constraint we need to show the last URL(codelist)
-                        validation.sourceOfWorkspace = finalTestData.codelistTest.httpResponse;
+                        validation.sourceOfWorkspace = finalTestData.codelistTest.httpResponse.url;
                         resolve(validation)
                     }).catch((error) => {
                         reject(new TckError(error.message))
