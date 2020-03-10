@@ -107,7 +107,6 @@ export async function runTest(endpoint, test) {
     if(test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL){
         store.dispatch(dataFromParent(test));
     }
-    store.dispatch(updateTestsNumber(test.index));
     if(test.state!==TEST_STATE.COMPLETED && test.state!==TEST_STATE.FAILED && test.state!==TEST_STATE.UNABLE_TO_RUN ){
         let testResults = await requestTestRun(endpoint, test);
         if(Object.keys(testResults).length === 1 && testResults.hasOwnProperty("error")){
@@ -130,6 +129,7 @@ export async function runTest(endpoint, test) {
             }
         }
     } 
+    store.dispatch(updateTestsNumber(test.index));
     if (test.subTests && test.subTests.length !== 0) {
         for (let j = 0; j < test.subTests.length; j++) {
             /* In order to mark as failed Item Queries if the items to request are unknown */
