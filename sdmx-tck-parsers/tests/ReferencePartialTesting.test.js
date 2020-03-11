@@ -8,6 +8,14 @@ describe('Tests if reference partial testing works with different xml inputs', f
     it('It should return the validation result', async () => {
         let xmlMessage = fs.readFileSync('./tests/resources/contentconstraint_PRA_constrainable.xml', 'utf8');
         let test={};
+        let preparedRequest = 
+        {   service:
+            { id: undefined,
+              name: undefined,
+              url: 'https://registry.sdmx.org/ws/public/sdmxapi/rest/',
+              api: 'v1.4.0',
+              format: undefined }
+          }
         //var test = {testType:"Structure Target Category",preparedRequest:{request:{resource:"categoryscheme",agency:"SDMX",id:"STAT_SUBJECT_MATTER",version:"1.0",detail:"full",references:"parentsandsiblings",item:"DEMO_SOCIAL_STAT"}}}
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
              test = {
@@ -27,7 +35,7 @@ describe('Tests if reference partial testing works with different xml inputs', f
             }
             //console.log(sdmxObjects)
             // var validation = StructuresSemanticChecker.checkWorkspace(test,sdmxObjects)
-            ContentConstraintReferencePartialChecker.checkWorkspace(test,sdmxObjects)
+            ContentConstraintReferencePartialChecker.checkWorkspace(test,preparedRequest,sdmxObjects)
             .then((result)=>{
                 console.log(result)
             }).catch((err) => {

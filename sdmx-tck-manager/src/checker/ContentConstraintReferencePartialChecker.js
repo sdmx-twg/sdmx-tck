@@ -4,6 +4,7 @@ var FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 var Utils = require('sdmx-tck-api').utils.Utils;
 var SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
+var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
 var Utils = require('sdmx-tck-api').utils.Utils;
 var TckError = require('sdmx-tck-api').errors.TckError;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
@@ -43,12 +44,11 @@ class ContentConstraintReferencePartialChecker {
                     */
                 let finalTestData = ContentConstraintReferencePartialChecker.referencepartialTestBuilder(test,workspace);
                 if(Object.entries(finalTestData.codelistTest).length === 0){
-                    throw new Error ('Not specified Codelist under validation')
+                    throw new Error ('Unable to locate Codelist under validation')
                 }
                 if(!Utils.isDefined(finalTestData.keyValueToCheck)){
-                    throw new Error ('Not specified Key Value under validation')
+                    throw new Error ('Unable to locate Key Value under validation')
                 }
-
                 /*Executes the request to get the partial codelist*/
                 ContentConstraintReferencePartialTestManager.executeTest(finalTestData.codelistTest, test.apiVersion, preparedRequest.service.url).
                     then((partialCLworkspace) => {
@@ -77,6 +77,14 @@ class ContentConstraintReferencePartialChecker {
 
         if(codesArray.length === 0){
             throw new Error('No codes to check')
+        }
+
+        if(!keyValue.includeType){
+            throw new Error('KeyValue type (inclusive/exclusive) is not provided')
+        }
+
+        if(!keyValue.value || !Array.isArray(keyValue.value)){
+            throw new Error('KeyValue does not contain specific values or these values are malformed')
         }
 
         if(keyValue.includeType === 'true'){
@@ -110,6 +118,11 @@ class ContentConstraintReferencePartialChecker {
         let codesArray =[];
         let codelistObj= workspace.getSdmxObject(new StructureReference(codeListTestObj.identifiers.structureType,codeListTestObj.identifiers.agency,
                                                         codeListTestObj.identifiers.id,codeListTestObj.identifiers.version))
+        
+        if (!codelistObj || !codelistObj instanceof ItemSchemeObject){
+            throw new Error("Missing codelist from its workspace");
+        }
+
         for(let i=0;i<codelistObj.getItems().length;i++){
             codesArray.push(codelistObj.getItems()[i].id);
         }
@@ -151,13 +164,16 @@ class ContentConstraintReferencePartialChecker {
         let keyValue;
         for(let i=0;i<constraintCubeRegions.length;i++){
             let keyValues = constraintCubeRegions[i].getKeyValues();
-            for(let j=0;j<keyValues.length;j++){
-                keyValue = keyValues[j];
-                let keyValFound  = dsdObj.componentExistsAndItsCodedInDSD(keyValue.id)
-                if(keyValFound && keyValue.value && keyValue.value.length>0){
-                    return keyValue;
+            if (keyValues && Array.isArray(keyValues)){
+                for(let j=0;j<keyValues.length;j++){
+                    keyValue = keyValues[j];
+                    let keyValFound  = dsdObj.componentExistsAndItsCodedInDSD(keyValue.id)
+                    if(keyValFound && keyValue.value && Array.isArray(keyValue.value) && keyValue.value.length>0){
+                        return keyValue;
+                    }
                 }
             }
+            
         }
         return {};
     }
@@ -192,11 +208,14 @@ class ContentConstraintReferencePartialChecker {
                     let dsdRef = ContentConstraintReferencePartialChecker.getRefOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
                     if(Object.entries(dsdRef).length !== 0){
                         let dsd = sdmxObjects.getSdmxObject(dsdRef)
-                        let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
-                        if(Object.entries(selectedkeyValue).length !== 0){
-                            return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
-                                keyValueSet:selectedkeyValue}
+                        if(dsd){
+                            let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
+                            if(Object.entries(selectedkeyValue).length !== 0){
+                                return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
+                                    keyValueSet:selectedkeyValue}
+                            }
                         }
+                        
                     }
                 }
             }else if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key){
@@ -210,11 +229,12 @@ class ContentConstraintReferencePartialChecker {
                         let dsdRef = ContentConstraintReferencePartialChecker.getRefOfSpecificStructureType(sdmxObjects.getChildren(dataflowRef),SDMX_STRUCTURE_TYPE.DSD.key)
                         if(Object.entries(dsdRef).length !== 0){
                             let dsd = sdmxObjects.getSdmxObject(dsdRef)
-                            let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
-                            if(Object.entries(selectedkeyValue).length !== 0){
-            
-                                return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
-                                        keyValueSet:selectedkeyValue}
+                            if(dsd){
+                                let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
+                                if(Object.entries(selectedkeyValue).length !== 0){
+                                    return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
+                                            keyValueSet:selectedkeyValue}
+                                }
                             }
                         }   
                     }
