@@ -4,6 +4,7 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 var StructureRequestBuilder = require('../builders/StructureRequestBuilder.js');
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 const sdmx_requestor = require('sdmx-rest');
+const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator')
 
 /*Special class that handles the content constraint reference partial testing*/
 class ContentConstraintReferencePartialTestManager {
@@ -13,7 +14,8 @@ class ContentConstraintReferencePartialTestManager {
                     toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
                     .then((preparedRequest) => {
                         toRun.preparedRequest = preparedRequest;
-                        return sdmx_requestor.request2(toRun.preparedRequest.request, toRun.preparedRequest.service);
+                        let url = new UrlGenerator().getUrl(preparedRequest.request, preparedRequest.service, true)
+                        return sdmx_requestor.request2(url,preparedRequest.headers);
                     }).then((httpResponse) => {
                         toRun.httpResponse = httpResponse;
                         return ResponseValidator.validateHttpResponse(toRun.preparedRequest.request, toRun.httpResponse);
