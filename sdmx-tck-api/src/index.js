@@ -25,7 +25,7 @@ var DataflowObject = require('./model/DataflowObject.js');
 var ContentConstraintObject = require('./model/ContentConstraintObject.js');
 var SdmxObjects = require('./model/SdmxObjects.js');
 var CubeRegionObject = require('./model/CubeRegionObject.js');
-
+var DataKeySetObject = require('./model/DataKeySetObject.js');
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
@@ -59,7 +59,8 @@ module.exports = {
         DataflowObject: DataflowObject,
         ContentConstraintObject: ContentConstraintObject,
         SdmxObjects: SdmxObjects,
-        CubeRegionObject: CubeRegionObject
+        CubeRegionObject: CubeRegionObject,
+        DataKeySetObject:DataKeySetObject
     },
     utils: {
         Utils,

@@ -10,6 +10,7 @@ var SdmxV21StructureReferencesParser = require('./SdmxV21StructureReferencesPars
 var SdmxV21JsonItemsParser = require('./SdmxV21JsonItemsParser.js');
 var SdmxV21JsonForStubsParser = require('./SdmxV21JsonForStubsParser.js');
 var SdmxV21JsonCubeRegionParser = require('./SdmxV21JsonCubeRegionParser.js')
+var SdmxV21JsonDataKeySetParser = require('./SdmxV21JsonDataKeySetParser.js')
 var SdmxV21JsonDsdComponentParser= require('./SdmxV21JsonDsdComponentParser.js')
 
 class SdmxV21JsonParser {
@@ -133,11 +134,13 @@ class SdmxV21JsonParser {
                 if (array === null || array === undefined) {
                     structures.set(structureType, []);
                 }
+                //console.log(constraints[c].DataKeySet[0].Key[0].KeyValue[0].Value)
                 structures.get(structureType).push(
                     new ContentConstraintObject(constraints[c],
                         SdmxV21StructureReferencesParser.getReferences(constraints[c]),
                         SdmxV21JsonForStubsParser.getDetail(structureType, constraints[c]),
-                        SdmxV21JsonCubeRegionParser.getCubeRegions(structureType,constraints[c])));
+                        SdmxV21JsonCubeRegionParser.getCubeRegions(structureType,constraints[c]),
+                        SdmxV21JsonDataKeySetParser.getDataKeySets(structureType,constraints[c])));
             }
         }
     };
