@@ -6,7 +6,7 @@ var SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
 const fs = require('fs');
 describe('Tests if reference partial testing works with different xml inputs', function () {
     it('It should return the validation result', async () => {
-        let xmlMessage = fs.readFileSync('./tests/resources/contentconstraint_PRA_constrainable.xml', 'utf8');
+        let xmlMessage = fs.readFileSync('./tests/resources/contentconstraint_DF_constrainable.xml', 'utf8');
         let test={};
         let preparedRequest = 
         {   service:
