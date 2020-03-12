@@ -206,7 +206,7 @@ class ContentConstraintReferencePartialChecker {
                 if(structureList.length !== 0){
                     let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
                     let dsdRef = ContentConstraintReferencePartialChecker.getRefOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DSD.key)
-                    if(Object.entries(dsdRef).length !== 0){
+                    if(Object.entries(dsdRef).length !== 0 && sdmxObjects.exists(dsdRef)){
                         let dsd = sdmxObjects.getSdmxObject(dsdRef)
                         if(dsd){
                             let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
@@ -225,9 +225,10 @@ class ContentConstraintReferencePartialChecker {
                 if(structureList.length !== 0){
                     let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
                     let dataflowRef = ContentConstraintReferencePartialChecker.getRefOfSpecificStructureType(sdmxObjects.getChildren(structureRef),SDMX_STRUCTURE_TYPE.DATAFLOW.key)
-                    if(Object.entries(dataflowRef).length !== 0){
+                    if(Object.entries(dataflowRef).length !== 0 && sdmxObjects.exists(dataflowRef)){
                         let dsdRef = ContentConstraintReferencePartialChecker.getRefOfSpecificStructureType(sdmxObjects.getChildren(dataflowRef),SDMX_STRUCTURE_TYPE.DSD.key)
-                        if(Object.entries(dsdRef).length !== 0){
+                        if(Object.entries(dsdRef).length !== 0 && sdmxObjects.exists(dsdRef)){
+                            
                             let dsd = sdmxObjects.getSdmxObject(dsdRef)
                             if(dsd){
                                 let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
