@@ -190,13 +190,14 @@ class ContentConstraintReferencePartialChecker {
         }
         //Get children and components from the constraint object
         let constrainableArtefacts = constraint.getChildren();
-        let constraintCubeRegions = constraint.getCubeRegions();
+        //let constraintCubeRegions = constraint.getCubeRegions();
+        //console.log(constraintCubeRegions)
         if (!Utils.isDefined(constrainableArtefacts) || constrainableArtefacts.length === 0) {
             throw new Error("Missing constrainable artefacts");
         }
-        if (!Utils.isDefined(constraintCubeRegions) || constraintCubeRegions.length === 0) {
-            throw new Error("Missing Cube Regions.");
-        }
+        // if (!Utils.isDefined(constraintCubeRegions) || constraintCubeRegions.length === 0) {
+        //     throw new Error("Missing Cube Regions.");
+        // }
 
         for(let counter=0;counter<constrainableArtefacts.length;counter++){
             if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key){
@@ -209,7 +210,8 @@ class ContentConstraintReferencePartialChecker {
                     if(Object.entries(dsdRef).length !== 0 && sdmxObjects.exists(dsdRef)){
                         let dsd = sdmxObjects.getSdmxObject(dsdRef)
                         if(dsd){
-                            let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
+                            let selectedkeyValue = constraint.findMatchingKeyValueInDSD(dsd);
+                            //let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd)
                             if(Object.entries(selectedkeyValue).length !== 0){
                                 return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
                                     keyValueSet:selectedkeyValue}
@@ -231,7 +233,8 @@ class ContentConstraintReferencePartialChecker {
                             
                             let dsd = sdmxObjects.getSdmxObject(dsdRef)
                             if(dsd){
-                                let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
+                                let selectedkeyValue = constraint.findMatchingKeyValueInDSD(dsd);
+                                //let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
                                 if(Object.entries(selectedkeyValue).length !== 0){
                                     return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
                                             keyValueSet:selectedkeyValue}
@@ -246,7 +249,8 @@ class ContentConstraintReferencePartialChecker {
                 //If the constrainable artefact exists in Content Constraint 'descendants' request's workspace
                 if(structureList.length !== 0){
                     let dsd = structureList[0];
-                    let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
+                    let selectedkeyValue = constraint.findMatchingKeyValueInDSD(dsd);
+                    //let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
                     if(Object.entries(selectedkeyValue).length !== 0){
                         return {codelistRef:dsd.getReferencedCodelistInComponent(selectedkeyValue.id),
                                 keyValueSet:selectedkeyValue}
