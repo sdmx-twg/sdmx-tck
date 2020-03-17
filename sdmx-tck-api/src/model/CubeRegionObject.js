@@ -2,7 +2,7 @@ var isDefined = require('../utils/Utils').isDefined;
 
 class CubeRegionObject {
     constructor(props) {
-        this.setIncludeValue(props.$.include);
+        this.setIncludeValue((props.$ && props.$.include) ? props.$.include : "true");
         this.setKeyValues(props.KeyValue)
     };
     setKeyValues(KeyValue){
