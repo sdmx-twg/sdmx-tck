@@ -79,10 +79,6 @@ class ContentConstraintReferencePartialChecker {
             throw new Error('No codes to check')
         }
 
-        if(!keyValue.includeType){
-            throw new Error('KeyValue type (inclusive/exclusive) is not provided')
-        }
-
         if(!keyValue.value || !Array.isArray(keyValue.value)){
             throw new Error('KeyValue does not contain specific values or these values are malformed')
         }

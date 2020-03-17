@@ -3,7 +3,7 @@ var isDefined = require('../utils/Utils').isDefined;
 class DataKeySetObject {
 
     constructor(props) {
-         this.setIncludeValue(props.$.isIncluded);
+         this.setIncludeValue((props.$ && props.$.isIncluded) ? props.$.isIncluded : "true");
          this.setKeys(props.Key)
     };
 
