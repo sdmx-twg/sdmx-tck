@@ -20,6 +20,25 @@ class DataKeySetObject {
         return this.includeType;
     };
 
+    getSameIdKeyValues(keyValueId){
+        let keyValArr = [];
+        
+        if(!isDefined(this.keys) || !Array.isArray(this.keys)){
+            return [];
+        }
+       
+        this.keys.forEach(keySet => {
+            if(isDefined(keySet.keyValues) && Array.isArray(keySet.keyValues)){
+                keySet.keyValues.forEach(keyVal => {
+                    //push keyvalues with same id - no duplicates
+                    if(keyVal.id === keyValueId && !(keyValArr.some(element => (element.includeType === keyVal.includeType && element.value === keyVal.value)))){
+                        keyValArr.push(keyVal)
+                    }
+                })
+            }
+        })
+        return keyValArr;
+    }
     createKeysStruct(keys){
         let keyValues = [];
         let keyData = [];
