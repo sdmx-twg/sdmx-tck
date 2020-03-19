@@ -46,7 +46,7 @@ class ContentConstraintObject extends MaintainableObject {
                     for(let j=0;j<keyValues.length;j++){
                         keyValue = keyValues[j];
                         let keyValFound  = dsdObj.componentExistsAndItsCodedInDSD(keyValue.id)
-                        if(keyValFound && keyValue.value && Array.isArray(keyValue.value) && keyValue.value.length>0){
+                        if(keyValFound && keyValue.values && Array.isArray(keyValue.values) && keyValue.values.length>0){
                             keyValue.source = constraintComponents[0].constructor.name.toString();
                             return keyValue;
                         }

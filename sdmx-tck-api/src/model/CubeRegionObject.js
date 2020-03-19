@@ -52,7 +52,7 @@ class CubeRegionObject {
                         keyValueArr.push({
                             id:KeyValue[i].$.id,
                             includeType:isDefined(KeyValue[i].$) && isDefined(KeyValue[i].$.include)? KeyValue[i].$.include : this.includeType,
-                            value:valueArr
+                            values:valueArr
                         })
                         valueArr = [];
                 }

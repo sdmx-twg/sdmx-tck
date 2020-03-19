@@ -79,20 +79,20 @@ class ContentConstraintReferencePartialChecker {
             throw new Error('No codes to check')
         }
 
-        if(!keyValue.value || !Array.isArray(keyValue.value)){
+        if(!keyValue.values || !Array.isArray(keyValue.values)){
             throw new Error('KeyValue does not contain specific values or these values are malformed')
         }
 
         if(keyValue.includeType === 'true'){
             let includedValues = [];
-            for(let i=0;i<keyValue.value.length;i++){
-                includedValues.push(keyValue.value[i].value)
+            for(let i=0;i<keyValue.values.length;i++){
+                includedValues.push(keyValue.values[i].value)
             }
             return includedValues.every(val => codesArray.includes(val));
     
         }else if(keyValue.includeType === 'false'){
-            for(let i=0;i<keyValue.value.length;i++){
-                if(codesArray.indexOf(keyValue.value[i].value) !== -1){
+            for(let i=0;i<keyValue.values.length;i++){
+                if(codesArray.indexOf(keyValue.values[i].value) !== -1){
                     return false;
                 }
             }
@@ -164,7 +164,7 @@ class ContentConstraintReferencePartialChecker {
                 for(let j=0;j<keyValues.length;j++){
                     keyValue = keyValues[j];
                     let keyValFound  = dsdObj.componentExistsAndItsCodedInDSD(keyValue.id)
-                    if(keyValFound && keyValue.value && Array.isArray(keyValue.value) && keyValue.value.length>0){
+                    if(keyValFound && keyValue.values && Array.isArray(keyValue.values) && keyValue.values.length>0){
                         return keyValue;
                     }
                 }
