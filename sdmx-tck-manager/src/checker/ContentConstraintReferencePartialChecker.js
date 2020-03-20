@@ -12,18 +12,13 @@ const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 var ContentConstraintReferencePartialTestManager = require("../manager/ContentConstraintReferencePartialTestManager.js");
 var STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
+
 /*Special class that handles the content constraint reference partial testing. Due to its complexity the referencepartial testing 
 consists of two subparts. The first is a content constraint with reference = descendants request. 
-From that request a specific codelist is retrieved. The second subpart is the request for this codelist with detail=referencepartial.
-Finally the validation of the second request's workspace determines whether this test was successful or not.   
+From that request a specific codelist is retrieved. The second subpart is the request using the
+constrainable (DSD/DF/PRA) that led us to the codelist, with detail=referencepartial and references = children/descendants
+depending on the constraint. The codelist retrieved above must be found and validated in the second request's workspace.*/
 
-Flow:
-
-1. Select a Content Constraint of type “allowed”
-2. Select one of the Constraint Attachments (e.g. a Dataflow)
-3. Select one of the Components constrained in a Cube Region.
-4. Check that the Component is contained in the DSD of the selected Constraint Attachment (otherwise select another Component)
-5. Perform inclusion/exclusion checks (according to cube region) between the constraint values and the codes of the partial codelist.*/
 
 class ContentConstraintReferencePartialChecker {
      
@@ -43,16 +38,8 @@ class ContentConstraintReferencePartialChecker {
                     b) The KeyValue with which the partial codelist will be validated.
                     */
                 let finalTestData = ContentConstraintReferencePartialChecker.referencepartialTestBuilder(test,workspace);
-                if(Object.entries(finalTestData.referencePartialTest).length === 0){
-                    throw new Error ('Unable to locate Constrainable artefact for the referencepartial test')
-                }
-                if(!Utils.isDefined(finalTestData.keyValueToCheck)){
-                    throw new Error ('Unable to locate Key Value under validation')
-                }
-                if(Object.entries(finalTestData.codeListRef).length === 0){
-                    throw new Error ('Unable to locate Codelist under validation')
-                }
-                
+                console.log(" --------------------- CONSTRAINABLE TEST ------------------------")
+                console.log(finalTestData.referencePartialTest)
                 /*Executes the request to get the partial codelist*/
                 ContentConstraintReferencePartialTestManager.executeTest(finalTestData.referencePartialTest, test.apiVersion, preparedRequest.service.url).
                     then((referencePartialTestWorkspace) => {
@@ -85,7 +72,6 @@ class ContentConstraintReferencePartialChecker {
         if(!keyValue.values || !Array.isArray(keyValue.values)){
             throw new Error('KeyValue does not contain specific values or these values are malformed')
         }
-
         if(keyValue.includeType === 'true'){
             let includedValues = [];
             for(let i=0;i<keyValue.values.length;i++){
@@ -244,9 +230,9 @@ class ContentConstraintReferencePartialChecker {
                 }
             }else if(constrainableArtefacts[counter].structureType === SDMX_STRUCTURE_TYPE.DSD.key){
                 let structureList = sdmxObjects.getSdmxObjectsWithCriteria(constrainableArtefacts[counter].structureType,constrainableArtefacts[counter].agency,constrainableArtefacts[counter].id,constrainableArtefacts[counter].version)
-                let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
                 //If the constrainable artefact exists in Content Constraint 'descendants' request's workspace
                 if(structureList.length !== 0){
+                    let structureRef = new StructureReference(constrainableArtefacts[counter].structureType, structureList[0].agencyId, structureList[0].id, structureList[0].version);
                     let dsd = structureList[0];
                     let selectedkeyValue = ContentConstraintReferencePartialChecker.findMatchingKeyValue(constraintCubeRegions,dsd);
                     if(Object.entries(selectedkeyValue).length !== 0){
@@ -274,8 +260,6 @@ class ContentConstraintReferencePartialChecker {
         if(!Utils.isDefined(test)){
             throw new Error("Missing mandatory parameter: 'descendants' test .");
         }
-        // let resource = "codelist";
-        // let template = {detail:"referencepartial"};
         let resource;
         let template = {detail:"referencepartial"};
         let referencePartialTest = {};
@@ -288,28 +272,40 @@ class ContentConstraintReferencePartialChecker {
         if(constraint.getType()!== "Allowed"){
             throw new Error('There is no Content Constraint of type "Allowed" to proceed with this test.')
         }
-        //According to the constrainable artefact selected the function will return a codelist ref.
+        //According to the constrainable artefact selected the function will return a codelist ref, a keyvalue and a constrainable
+        //to use for the reference partial testing.
         let testData = ContentConstraintReferencePartialChecker.findConstrainableAndCodeListAndKeyValue(sdmxObjects,constraint)
+        
+        if(Object.entries(testData).length === 0) {
+            throw new Error ('Unable to locate a codelist (concerning any KeyValue) throw the constrainable artefacts of the constraint')
+        }
         let codeListRef = testData.codelistRef;
         let keyValueToCheck = testData.keyValueSet;
         let constrainable = testData.selectedConstrainable;
         
+        console.log(" --------------------- CL ------------------------")
+        console.log(codeListRef)
+        console.log(" --------------------- KEYVALUE ------------------------")
+        console.log(keyValueToCheck)
+        console.log(" --------------------- CONSTRAINABLE ------------------------")
+        console.log(constrainable)
+        
 
-        if(constrainable.structureType === SDMX_STRUCTURE_TYPE.DSD.key){
-             resource = SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase();
-             template.references = STRUCTURE_REFERENCE_DETAIL.CHILDREN;
-        }else if(constrainable.structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key){
-             resource = SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase();
-             template.references = STRUCTURE_REFERENCE_DETAIL.DESCENDANTS;
-        }else{
-             resource = SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase();;
-             template.references = STRUCTURE_REFERENCE_DETAIL.DESCENDANTS;
-        }
+        if(Object.entries(testData).length !== 0 && Utils.isDefined(constrainable)){
 
-        if(Object.entries(testData).length !== 0 && Object.entries(codeListRef).length !== 0){
-            
+            if(constrainable.structureType === SDMX_STRUCTURE_TYPE.DSD.key){
+                resource = SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase();
+                template.references = STRUCTURE_REFERENCE_DETAIL.CHILDREN;
+            }else if(constrainable.structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key){
+                resource = SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase();
+                template.references = STRUCTURE_REFERENCE_DETAIL.DESCENDANTS;
+            }else{
+                resource = SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase();;
+                template.references = STRUCTURE_REFERENCE_DETAIL.DESCENDANTS;
+            }
+
             let referencePartialTestParams = {
-                testId: "/"+resource+"/agency/id/version?detail="+template.detail+"references="+template.references,
+                testId: "/"+resource+"/agency/id/version?detail="+template.detail+"&references="+template.references,
                 index: test.index,
                 apiVersion: test.apiVersion,
                 resource: resource,
@@ -321,8 +317,8 @@ class ContentConstraintReferencePartialChecker {
             referencePartialTest = TestObjectBuilder.getTestObject(referencePartialTestParams);
         }
         
-
         return {referencePartialTest:referencePartialTest,keyValueToCheck:keyValueToCheck,codeListRef:codeListRef};
+
     }
 };
 
