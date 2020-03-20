@@ -7105,46 +7105,745 @@ W12=W1-1A-W19</com:Description>
 					<com:Name xml:lang="en">IEA (International Energy Agency)</com:Name>
 				</str:Code>
 			</str:Codelist>
-			<str:Codelist agencyID="IMF" id="CL_FSENTRY" isExternalReference="false" isFinal="true" isPartial="true" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_FSENTRY(1.1)" version="1.1">
-				<com:Name xml:lang="en">Flow or stock entry code list</com:Name>
-				<str:Code id="_Z" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1)._Z">
+			<str:Codelist agencyID="ESTAT" id="CL_SECTOR" isExternalReference="false" isFinal="true" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_SECTOR(1.6)" version="1.6">
+				<com:Name xml:lang="en">Sector codes</com:Name>
+				<str:Code id="_Z" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6)._Z">
 					<com:Name xml:lang="en">Not applicable</com:Name>
 				</str:Code>
-				<str:Code id="FC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).FC">
-					<com:Name xml:lang="en">Future Flows, contingent</com:Name>
+				<str:Code id="S1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1">
+					<com:Name xml:lang="en">Total economy</com:Name>
+					<com:Description xml:lang="en">S1=S11+S12+S13+S14+S15+S1N</com:Description>
 				</str:Code>
-				<str:Code id="FM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).FM">
-					<com:Name xml:lang="en">Stocks and Future flows to be reported with standard periodicity and timeliness</com:Name>
+				<str:Code id="S11" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S11">
+					<com:Name xml:lang="en">Non financial corporations</com:Name>
 				</str:Code>
-				<str:Code id="FP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).FP">
-					<com:Name xml:lang="en">Future Flows, predetermined</com:Name>
+				<str:Code id="S11001" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S11001">
+					<com:Name xml:lang="en">Public non financial corporations</com:Name>
 				</str:Code>
-				<str:Code id="K" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).K">
-					<com:Name xml:lang="en">Changes in positions other than transactions</com:Name>
+				<str:Code id="S110011" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S110011">
+					<com:Name xml:lang="en">Public non financial corporations, which are part of domestic multinationals
+</com:Name>
 				</str:Code>
-				<str:Code id="K7" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).K7">
-					<com:Name xml:lang="en">Revaluations/Nominal holding gains and losses</com:Name>
+				<str:Code id="S11001C" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S11001C">
+					<com:Name xml:lang="en">Public non financial corporations controlled by general government
+</com:Name>
 				</str:Code>
-				<str:Code id="K7A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).K7A">
-					<com:Name xml:lang="en">Revaluations due to exchange rate changes</com:Name>
+				<str:Code id="S11002" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S11002">
+					<com:Name xml:lang="en">National private non financial corporations</com:Name>
 				</str:Code>
-				<str:Code id="K7B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).K7B">
-					<com:Name xml:lang="en">Revaluations due to other price changes</com:Name>
+				<str:Code id="S110021" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S110021">
+					<com:Name xml:lang="en">National private non financial corporations, which are part of domestic multinationals
+</com:Name>
 				</str:Code>
-				<str:Code id="KA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).KA">
-					<com:Name xml:lang="en">Other Changes in the volume of Assets/Liabilities = Other changes excluding revaluations</com:Name>
+				<str:Code id="S11003" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S11003">
+					<com:Name xml:lang="en">Foreign controlled non financial corporations</com:Name>
 				</str:Code>
-				<str:Code id="LE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).LE">
-					<com:Name xml:lang="en">Closing balance sheet/Positions/Stocks</com:Name>
+				<str:Code id="S1100P" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1100P">
+					<com:Name xml:lang="en">Private nonfinancial corporations</com:Name>
+					<com:Description xml:lang="en">S1100P=S11002+S11003</com:Description>
 				</str:Code>
-				<str:Code id="LS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).LS">
-					<com:Name xml:lang="en">Opening balance sheet/Positions/Stocks</com:Name>
+				<str:Code id="S11B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S11B">
+					<com:Name xml:lang="en">Head offices of non financial corporations</com:Name>
 				</str:Code>
-				<str:Code id="LX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).LX">
-					<com:Name xml:lang="en">Changes in balance sheet/Positions/Stocks</com:Name>
+				<str:Code id="S11DO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S11DO">
+					<com:Name xml:lang="en">Domestically controlled non-financial corporations</com:Name>
+					<com:Description xml:lang="en">S11DO=S11001+S11002</com:Description>
 				</str:Code>
-				<str:Code id="T" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_FSENTRY(1.1).T">
-					<com:Name xml:lang="en">Transactions</com:Name>
+				<str:Code id="S11U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S11U">
+					<com:Name xml:lang="en">Non-financial corporations (sub-sector not identified)
+</com:Name>
+				</str:Code>
+				<str:Code id="S12" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12">
+					<com:Name xml:lang="en">Financial corporations</com:Name>
+					<com:Description xml:lang="en">S12=S12K+S12M</com:Description>
+				</str:Code>
+				<str:Code id="S12001" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12001">
+					<com:Name xml:lang="en">Public financial corporations</com:Name>
+				</str:Code>
+				<str:Code id="S120011" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S120011">
+					<com:Name xml:lang="en">Public financial corporations, which are part of domestic multinationals
+</com:Name>
+				</str:Code>
+				<str:Code id="S12001C" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12001C">
+					<com:Name xml:lang="en">Public financial corporations controlled by central government
+</com:Name>
+				</str:Code>
+				<str:Code id="S12002" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12002">
+					<com:Name xml:lang="en">National private financial corporations</com:Name>
+				</str:Code>
+				<str:Code id="S120021" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S120021">
+					<com:Name xml:lang="en">National private financial corporations which are part of domestic multinationals
+</com:Name>
+				</str:Code>
+				<str:Code id="S12003" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12003">
+					<com:Name xml:lang="en">Foreign controlled financial corporations</com:Name>
+				</str:Code>
+				<str:Code id="S1200P" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1200P">
+					<com:Name xml:lang="en">Private financial corporations</com:Name>
+					<com:Description xml:lang="en">S1200P=S12002+S12003</com:Description>
+				</str:Code>
+				<str:Code id="S121" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S121">
+					<com:Name xml:lang="en">Central bank</com:Name>
+				</str:Code>
+				<str:Code id="S122" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S122">
+					<com:Name xml:lang="en">Deposit taking corporations, except the Central Bank
+</com:Name>
+				</str:Code>
+				<str:Code id="S12201" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12201">
+					<com:Name xml:lang="en">Public deposit taking corporations, except the Central Bank
+</com:Name>
+				</str:Code>
+				<str:Code id="S12202" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12202">
+					<com:Name xml:lang="en">National private deposit taking corporations, except the Central Bank
+</com:Name>
+				</str:Code>
+				<str:Code id="S12203" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12203">
+					<com:Name xml:lang="en">Foreign controlled deposit taking corporations, except the Central Bank
+</com:Name>
+				</str:Code>
+				<str:Code id="S1220P" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1220P">
+					<com:Name xml:lang="en">Private deposit-taking corporations</com:Name>
+					<com:Description xml:lang="en">S1220P=S12202+S12203</com:Description>
+				</str:Code>
+				<str:Code id="S122A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S122A">
+					<com:Name xml:lang="en">Banks headquartered in the reporting country or currency area
+</com:Name>
+				</str:Code>
+				<str:Code id="S122B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S122B">
+					<com:Name xml:lang="en">Banks headquartered outside the reporting country or currency area
+</com:Name>
+				</str:Code>
+				<str:Code id="S122U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S122U">
+					<com:Name xml:lang="en">Deposit taking corporations, except the Central Bank (sub-sector not identified)
+</com:Name>
+				</str:Code>
+				<str:Code id="S122Z" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S122Z">
+					<com:Name xml:lang="en">Deposit-taking corporations except the central bank and excluding electronic money institutions principally engaged in financial intermediation
+</com:Name>
+				</str:Code>
+				<str:Code id="S123" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S123">
+					<com:Name xml:lang="en">Money market funds</com:Name>
+				</str:Code>
+				<str:Code id="S12301" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12301">
+					<com:Name xml:lang="en">Public money market funds</com:Name>
+				</str:Code>
+				<str:Code id="S12302" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12302">
+					<com:Name xml:lang="en">National private money market funds</com:Name>
+				</str:Code>
+				<str:Code id="S12303" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12303">
+					<com:Name xml:lang="en">Foreign controlled money market funds</com:Name>
+				</str:Code>
+				<str:Code id="S123U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S123U">
+					<com:Name xml:lang="en">Money market funds (sub-sector not identified)</com:Name>
+				</str:Code>
+				<str:Code id="S124" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S124">
+					<com:Name xml:lang="en">Non MMF investment funds</com:Name>
+					<com:Description xml:lang="en">S124=S124A+S124B</com:Description>
+				</str:Code>
+				<str:Code id="S12401" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12401">
+					<com:Name xml:lang="en">Public non MMF investment funds</com:Name>
+				</str:Code>
+				<str:Code id="S12402" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12402">
+					<com:Name xml:lang="en">National private non MMF investment funds</com:Name>
+				</str:Code>
+				<str:Code id="S12403" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12403">
+					<com:Name xml:lang="en">Foreign controlled non MMF investment funds</com:Name>
+				</str:Code>
+				<str:Code id="S124A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S124A">
+					<com:Name xml:lang="en">Open-end Non MMFs</com:Name>
+					<com:Description xml:lang="en">S124=S124A+S124B; S124=S12401+S12402+S12403</com:Description>
+				</str:Code>
+				<str:Code id="S124B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S124B">
+					<com:Name xml:lang="en">Closed-end Non MMFs</com:Name>
+					<com:Description xml:lang="en">S124B=S124B1+S124B2+S124B3+S124B4+S124B5+S124B9</com:Description>
+				</str:Code>
+				<str:Code id="S124B1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S124B1">
+					<com:Name xml:lang="en">Closed-end Real Estate Funds</com:Name>
+				</str:Code>
+				<str:Code id="S124B2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S124B2">
+					<com:Name xml:lang="en">Closed-end Equity funds</com:Name>
+				</str:Code>
+				<str:Code id="S124B3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S124B3">
+					<com:Name xml:lang="en">Closed-end Bond funds</com:Name>
+				</str:Code>
+				<str:Code id="S124B4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S124B4">
+					<com:Name xml:lang="en">Closed-end Mixed funds</com:Name>
+				</str:Code>
+				<str:Code id="S124B5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S124B5">
+					<com:Name xml:lang="en">Closed-end Hedge funds</com:Name>
+				</str:Code>
+				<str:Code id="S124B9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S124B9">
+					<com:Name xml:lang="en">Other closed-end Non MMFs</com:Name>
+					<com:Description xml:lang="en">S124B9=S124B-S124B1-S124B2-S124B3-S124B4-S124B5</com:Description>
+				</str:Code>
+				<str:Code id="S124U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S124U">
+					<com:Name xml:lang="en">Non MMF investment funds (sub-sector not identified)
+</com:Name>
+				</str:Code>
+				<str:Code id="S125" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S125">
+					<com:Name xml:lang="en">Other financial intermediaries, except insurance corporations and pension funds
+</com:Name>
+				</str:Code>
+				<str:Code id="S12501" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12501">
+					<com:Name xml:lang="en">Public other financial intermediaries, except insurance corporations and pension funds
+</com:Name>
+				</str:Code>
+				<str:Code id="S12502" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12502">
+					<com:Name xml:lang="en">National private other financial intermediaries, except insurance corporations and pension funds
+</com:Name>
+				</str:Code>
+				<str:Code id="S12503" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12503">
+					<com:Name xml:lang="en">Foreign controlled other financial intermediaries, except insurance corporations and pension funds
+</com:Name>
+				</str:Code>
+				<str:Code id="S125A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S125A">
+					<com:Name xml:lang="en">Financial vehicle corporations engaged in securitisation
+</com:Name>
+					<com:Description xml:lang="en">(part of S125)</com:Description>
+				</str:Code>
+				<str:Code id="S125U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S125U">
+					<com:Name xml:lang="en">Other financial intermediaries, except insurance corporations and pension funds (sub-sector not identified)
+</com:Name>
+				</str:Code>
+				<str:Code id="S125W" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S125W">
+					<com:Name xml:lang="en">Other financial corporations excluding financial vehicle corporations
+</com:Name>
+				</str:Code>
+				<str:Code id="S126" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S126">
+					<com:Name xml:lang="en">Financial auxiliaries</com:Name>
+				</str:Code>
+				<str:Code id="S12601" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12601">
+					<com:Name xml:lang="en">Public financial auxiliaries</com:Name>
+				</str:Code>
+				<str:Code id="S12602" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12602">
+					<com:Name xml:lang="en">National private financial auxiliaries</com:Name>
+				</str:Code>
+				<str:Code id="S12603" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12603">
+					<com:Name xml:lang="en">Foreign controlled financial auxiliaries</com:Name>
+				</str:Code>
+				<str:Code id="S126B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S126B">
+					<com:Name xml:lang="en">Head offices of financial corporations</com:Name>
+				</str:Code>
+				<str:Code id="S126U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S126U">
+					<com:Name xml:lang="en">Financial auxiliaries (sub-sector not identified)</com:Name>
+				</str:Code>
+				<str:Code id="S127" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S127">
+					<com:Name xml:lang="en">Captive financial institutions and money lenders</com:Name>
+				</str:Code>
+				<str:Code id="S12701" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12701">
+					<com:Name xml:lang="en">Public captive financial institutions and money lenders
+</com:Name>
+				</str:Code>
+				<str:Code id="S12702" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12702">
+					<com:Name xml:lang="en">National private captive financial institutions and money lenders
+</com:Name>
+				</str:Code>
+				<str:Code id="S12703" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12703">
+					<com:Name xml:lang="en">Foreign controlled captive financial institutions and money lenders
+</com:Name>
+				</str:Code>
+				<str:Code id="S127A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S127A">
+					<com:Name xml:lang="en">Holding companies</com:Name>
+				</str:Code>
+				<str:Code id="S127U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S127U">
+					<com:Name xml:lang="en">Captive financial institutions and money lenders (sub-sector not identified)
+</com:Name>
+				</str:Code>
+				<str:Code id="S128" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S128">
+					<com:Name xml:lang="en">Insurance corporations</com:Name>
+					<com:Description xml:lang="en">S128=S1281+S1282</com:Description>
+				</str:Code>
+				<str:Code id="S12801" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12801">
+					<com:Name xml:lang="en">Public insurance corporations</com:Name>
+				</str:Code>
+				<str:Code id="S12802" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12802">
+					<com:Name xml:lang="en">National private insurance corporations</com:Name>
+				</str:Code>
+				<str:Code id="S12803" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12803">
+					<com:Name xml:lang="en">Foreign controlled insurance corporations</com:Name>
+				</str:Code>
+				<str:Code id="S1281" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1281">
+					<com:Name xml:lang="en">Life Insurance Corporations</com:Name>
+				</str:Code>
+				<str:Code id="S1282" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1282">
+					<com:Name xml:lang="en">Non-life Insurance Corporations</com:Name>
+				</str:Code>
+				<str:Code id="S128A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S128A">
+					<com:Name xml:lang="en">Reinsurance corporations</com:Name>
+				</str:Code>
+				<str:Code id="S128B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S128B">
+					<com:Name xml:lang="en">Life insurance corporations excluding reinsurance corporations
+</com:Name>
+				</str:Code>
+				<str:Code id="S128C" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S128C">
+					<com:Name xml:lang="en">Non-life insurance corporations excluding reinsurance corporations
+</com:Name>
+				</str:Code>
+				<str:Code id="S128D" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S128D">
+					<com:Name xml:lang="en">Composite life and non-life insurance corporations excluding reinsurance corporations
+</com:Name>
+				</str:Code>
+				<str:Code id="S128U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S128U">
+					<com:Name xml:lang="en">Insurance corporations (sub-sector not identified)</com:Name>
+				</str:Code>
+				<str:Code id="S129" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S129">
+					<com:Name xml:lang="en">Pension funds</com:Name>
+				</str:Code>
+				<str:Code id="S12901" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12901">
+					<com:Name xml:lang="en">Public pension funds</com:Name>
+				</str:Code>
+				<str:Code id="S12902" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12902">
+					<com:Name xml:lang="en">National private pension funds</com:Name>
+				</str:Code>
+				<str:Code id="S12903" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12903">
+					<com:Name xml:lang="en">Foreign controlled pension funds</com:Name>
+				</str:Code>
+				<str:Code id="S129U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S129U">
+					<com:Name xml:lang="en">Pension funds (sub-sector not identified)</com:Name>
+				</str:Code>
+				<str:Code id="S12A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12A">
+					<com:Name xml:lang="en">Banks and other financial institutions headquartered in the reporting country or currency area
+</com:Name>
+				</str:Code>
+				<str:Code id="S12B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12B">
+					<com:Name xml:lang="en">Banks and other financial institutions headquartered outside the reporting country or currency area
+</com:Name>
+				</str:Code>
+				<str:Code id="S12C" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12C">
+					<com:Name xml:lang="en">Deposit taking corporations</com:Name>
+					<com:Description xml:lang="en">S12C=S121+S122</com:Description>
+				</str:Code>
+				<str:Code id="S12D" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12D">
+					<com:Name xml:lang="en">Financial corporations other than central banks</com:Name>
+					<com:Description xml:lang="en">S12D=S12-S121</com:Description>
+				</str:Code>
+				<str:Code id="S12DO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12DO">
+					<com:Name xml:lang="en">Domestically controlled financial corporations</com:Name>
+				</str:Code>
+				<str:Code id="S12K" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12K">
+					<com:Name xml:lang="en">Monetary financial institutions (MFI)</com:Name>
+					<com:Description xml:lang="en">S12K=S121+S122+S123</com:Description>
+				</str:Code>
+				<str:Code id="S12KU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12KU">
+					<com:Name xml:lang="en">Monetary financial institutions (sub-sector not identified)
+</com:Name>
+				</str:Code>
+				<str:Code id="S12L" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12L">
+					<com:Name xml:lang="en">Investment Funds (MMFs and non-MMFs)</com:Name>
+					<com:Description xml:lang="en">S12L=S123+S124 S12L=S12L1+S12L2+S12L3+S12L4+S12L5+S12L9 S12L=S12LO+S124B
+</com:Description>
+				</str:Code>
+				<str:Code id="S12L1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12L1">
+					<com:Name xml:lang="en">Real estate funds</com:Name>
+					<com:Description xml:lang="en">S12L1=S12LO1+S124B1</com:Description>
+				</str:Code>
+				<str:Code id="S12L2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12L2">
+					<com:Name xml:lang="en">Equity funds</com:Name>
+					<com:Description xml:lang="en">S12L2=S12LO2+S124B2</com:Description>
+				</str:Code>
+				<str:Code id="S12L3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12L3">
+					<com:Name xml:lang="en">Bond funds</com:Name>
+					<com:Description xml:lang="en">S12L3=S12LO3+S124B3</com:Description>
+				</str:Code>
+				<str:Code id="S12L4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12L4">
+					<com:Name xml:lang="en">Mixed funds</com:Name>
+					<com:Description xml:lang="en">S12L4=S12LO4+S124B4</com:Description>
+				</str:Code>
+				<str:Code id="S12L5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12L5">
+					<com:Name xml:lang="en">Hedge funds</com:Name>
+					<com:Description xml:lang="en">S12L5=S12LO5+S124B5</com:Description>
+				</str:Code>
+				<str:Code id="S12L9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12L9">
+					<com:Name xml:lang="en">Other funds (other than equity, bond, mixed, real estate and hedge funds)
+</com:Name>
+					<com:Description xml:lang="en">S12L9=S12LO9+S124B9</com:Description>
+				</str:Code>
+				<str:Code id="S12LO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12LO">
+					<com:Name xml:lang="en">Open-end Investment Funds</com:Name>
+					<com:Description xml:lang="en">S12LO=S123+S124A S12LO=S12LO1+S12LO2+S12LO3+S12LO4+S12LO5+S12LO9
+</com:Description>
+				</str:Code>
+				<str:Code id="S12LO1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12LO1">
+					<com:Name xml:lang="en">Open-end Real Estate Funds</com:Name>
+				</str:Code>
+				<str:Code id="S12LO2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12LO2">
+					<com:Name xml:lang="en">Open-end Equity funds</com:Name>
+				</str:Code>
+				<str:Code id="S12LO3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12LO3">
+					<com:Name xml:lang="en">Open-end Bond funds</com:Name>
+				</str:Code>
+				<str:Code id="S12LO4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12LO4">
+					<com:Name xml:lang="en">Open-end Mixed funds</com:Name>
+				</str:Code>
+				<str:Code id="S12LO5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12LO5">
+					<com:Name xml:lang="en">Open-end Hedge funds</com:Name>
+				</str:Code>
+				<str:Code id="S12LO9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12LO9">
+					<com:Name xml:lang="en">Other open-end funds</com:Name>
+					<com:Description xml:lang="en">S12LO9=S12LO-S12LO1-S12LO2-S12LO3-S12LO4-S12LO5</com:Description>
+				</str:Code>
+				<str:Code id="S12M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12M">
+					<com:Name xml:lang="en">Financial corporations other than MFIs</com:Name>
+					<com:Description xml:lang="en">S124+S125+S126+S127+S128+S129</com:Description>
+				</str:Code>
+				<str:Code id="S12N" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12N">
+					<com:Name xml:lang="en">Other financial institutions (Financial corporations other than MFIs, insurance corporations, pension funds and financial auxiliaries)
+</com:Name>
+					<com:Description xml:lang="en">S12N=S124+S125+S127</com:Description>
+				</str:Code>
+				<str:Code id="S12O" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12O">
+					<com:Name xml:lang="en">Other financial institutions (Financial corporations other than MFIs, insurance corporations, pension funds and non MMFs Investment Funds)
+</com:Name>
+					<com:Description xml:lang="en">S12O=S125+S126+S127</com:Description>
+				</str:Code>
+				<str:Code id="S12P" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12P">
+					<com:Name xml:lang="en">Other financial institutions (Financial corporations other than MFIs, insurance corporations and pension funds)
+</com:Name>
+					<com:Description xml:lang="en">S12P=S124+S125+S126+S127</com:Description>
+				</str:Code>
+				<str:Code id="S12PU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12PU">
+					<com:Name xml:lang="en">Other Financial Institutions (sub-sector not identified)
+</com:Name>
+				</str:Code>
+				<str:Code id="S12Q" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12Q">
+					<com:Name xml:lang="en">Insurance corporations and Pension Funds</com:Name>
+					<com:Description xml:lang="en">S12Q=S128+S129</com:Description>
+				</str:Code>
+				<str:Code id="S12QU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12QU">
+					<com:Name xml:lang="en">Other insurance corporations and pension funds (sub-sector not identified)
+</com:Name>
+				</str:Code>
+				<str:Code id="S12R" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12R">
+					<com:Name xml:lang="en">Other financial corporations</com:Name>
+					<com:Description xml:lang="en">S12R=S123+S124+S125+S126+S127+S128+S129</com:Description>
+				</str:Code>
+				<str:Code id="S12R01" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12R01">
+					<com:Name xml:lang="en">Other public financial corporations</com:Name>
+					<com:Description xml:lang="en">S12R=S12301+S12401+S12501+S12601+S12701+S12801+S12901
+</com:Description>
+				</str:Code>
+				<str:Code id="S12R0P" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12R0P">
+					<com:Name xml:lang="en">Other private financial corporations</com:Name>
+					<com:Description xml:lang="en">S12R=S12302+S12303+S12402+S12403+S12502+S12503+S12602+S12603+S12702+S12703+S12802+S12803+S12902+S12903
+</com:Description>
+				</str:Code>
+				<str:Code id="S12S" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12S">
+					<com:Name xml:lang="en">Other Forms of Institutional Savings</com:Name>
+				</str:Code>
+				<str:Code id="S12T" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12T">
+					<com:Name xml:lang="en">Monetary financial institutions other than central bank
+</com:Name>
+					<com:Description xml:lang="en">S12T=S122+S123</com:Description>
+				</str:Code>
+				<str:Code id="S12U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12U">
+					<com:Name xml:lang="en">Financial corporations other than the central bank</com:Name>
+				</str:Code>
+				<str:Code id="S12V" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S12V">
+					<com:Name xml:lang="en">Financial corporations other than central banks and credit institutions
+</com:Name>
+				</str:Code>
+				<str:Code id="S13" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13">
+					<com:Name xml:lang="en">General government</com:Name>
+					<com:Description xml:lang="en">S13=S1311+S1312+S1313+S1314; S13=S1321+S1322+S1323</com:Description>
+				</str:Code>
+				<str:Code id="S131" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S131">
+					<com:Name xml:lang="en">General government excluding social security</com:Name>
+				</str:Code>
+				<str:Code id="S1311" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1311">
+					<com:Name xml:lang="en">Central government excluding social security</com:Name>
+				</str:Code>
+				<str:Code id="S13111" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13111">
+					<com:Name xml:lang="en">Central government, budgetary units</com:Name>
+				</str:Code>
+				<str:Code id="S13112" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13112">
+					<com:Name xml:lang="en">Central government, extra-budgetary units</com:Name>
+				</str:Code>
+				<str:Code id="S1311B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1311B">
+					<com:Name xml:lang="en">Budgetary Central Government</com:Name>
+				</str:Code>
+				<str:Code id="S1312" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1312">
+					<com:Name xml:lang="en">State government excluding social security</com:Name>
+				</str:Code>
+				<str:Code id="S13121" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13121">
+					<com:Name xml:lang="en">State government, budgetary units</com:Name>
+				</str:Code>
+				<str:Code id="S13122" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13122">
+					<com:Name xml:lang="en">State government, extra-budgetary units</com:Name>
+				</str:Code>
+				<str:Code id="S1313" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1313">
+					<com:Name xml:lang="en">Local government excluding social security</com:Name>
+				</str:Code>
+				<str:Code id="S13131" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13131">
+					<com:Name xml:lang="en">Local government, budgetary units</com:Name>
+				</str:Code>
+				<str:Code id="S13132" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13132">
+					<com:Name xml:lang="en">Local government, extra-budgetary units</com:Name>
+				</str:Code>
+				<str:Code id="S1314" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1314">
+					<com:Name xml:lang="en">Social security funds</com:Name>
+				</str:Code>
+				<str:Code id="S13141" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13141">
+					<com:Name xml:lang="en">Social security funds, budgetary units</com:Name>
+				</str:Code>
+				<str:Code id="S13142" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13142">
+					<com:Name xml:lang="en">Social security funds, extra-budgetary units</com:Name>
+				</str:Code>
+				<str:Code id="S1315" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1315">
+					<com:Name xml:lang="en">European institutions and bodies (EU accounts)</com:Name>
+				</str:Code>
+				<str:Code id="S1321" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1321">
+					<com:Name xml:lang="en">Central government including social security</com:Name>
+				</str:Code>
+				<str:Code id="S1322" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1322">
+					<com:Name xml:lang="en">State government including social security</com:Name>
+				</str:Code>
+				<str:Code id="S1323" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1323">
+					<com:Name xml:lang="en">Local government including social security</com:Name>
+				</str:Code>
+				<str:Code id="S133" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S133">
+					<com:Name xml:lang="en">General government non profit institutions</com:Name>
+				</str:Code>
+				<str:Code id="S1331" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1331">
+					<com:Name xml:lang="en">Central government non profit institutions</com:Name>
+				</str:Code>
+				<str:Code id="S1332" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1332">
+					<com:Name xml:lang="en">State government non profit institutions</com:Name>
+				</str:Code>
+				<str:Code id="S1333" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1333">
+					<com:Name xml:lang="en">Local government non profit institutions</com:Name>
+				</str:Code>
+				<str:Code id="S134" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S134">
+					<com:Name xml:lang="en">General government involved in monetary policy operations
+</com:Name>
+				</str:Code>
+				<str:Code id="S13L" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13L">
+					<com:Name xml:lang="en">Central and state government excluding social security
+</com:Name>
+					<com:Description xml:lang="en">S13L=S1311+S1312</com:Description>
+				</str:Code>
+				<str:Code id="S13M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13M">
+					<com:Name xml:lang="en">State and local government excluding social security
+</com:Name>
+					<com:Description xml:lang="en">S13M=S1312+S1313</com:Description>
+				</str:Code>
+				<str:Code id="S13O" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13O">
+					<com:Name xml:lang="en">General government, except central government</com:Name>
+					<com:Description xml:lang="en">S13O=S13-S1311</com:Description>
+				</str:Code>
+				<str:Code id="S13P" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13P">
+					<com:Name xml:lang="en">General government, except state government</com:Name>
+					<com:Description xml:lang="en">S13P=S13-S1312</com:Description>
+				</str:Code>
+				<str:Code id="S13R" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13R">
+					<com:Name xml:lang="en">General government, except local government</com:Name>
+					<com:Description xml:lang="en">S13R=S13-S1313</com:Description>
+				</str:Code>
+				<str:Code id="S13T" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13T">
+					<com:Name xml:lang="en">General government, except social security funds</com:Name>
+					<com:Description xml:lang="en">S13T=S13-S1314</com:Description>
+				</str:Code>
+				<str:Code id="S13U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S13U">
+					<com:Name xml:lang="en">Other General Government (sub-sector not identified)
+</com:Name>
+				</str:Code>
+				<str:Code id="S14" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S14">
+					<com:Name xml:lang="en">Households</com:Name>
+				</str:Code>
+				<str:Code id="S141" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S141">
+					<com:Name xml:lang="en">Employers</com:Name>
+				</str:Code>
+				<str:Code id="S142" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S142">
+					<com:Name xml:lang="en">Own account workers</com:Name>
+				</str:Code>
+				<str:Code id="S143" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S143">
+					<com:Name xml:lang="en">Employees</com:Name>
+				</str:Code>
+				<str:Code id="S144" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S144">
+					<com:Name xml:lang="en">Recipients of property and transfer income</com:Name>
+				</str:Code>
+				<str:Code id="S1441" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1441">
+					<com:Name xml:lang="en">Recipients of property income</com:Name>
+				</str:Code>
+				<str:Code id="S1442" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1442">
+					<com:Name xml:lang="en">Recipients of pensions</com:Name>
+				</str:Code>
+				<str:Code id="S1443" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1443">
+					<com:Name xml:lang="en">Recipients of other transfers</com:Name>
+				</str:Code>
+				<str:Code id="S15" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S15">
+					<com:Name xml:lang="en">Non profit institutions serving households</com:Name>
+				</str:Code>
+				<str:Code id="S15002" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S15002">
+					<com:Name xml:lang="en">National private</com:Name>
+				</str:Code>
+				<str:Code id="S15003" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S15003">
+					<com:Name xml:lang="en">Foreign controlled</com:Name>
+				</str:Code>
+				<str:Code id="S1A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1A">
+					<com:Name xml:lang="en">Affiliates</com:Name>
+				</str:Code>
+				<str:Code id="S1B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1B">
+					<com:Name xml:lang="en">Not affiliates</com:Name>
+					<com:Description xml:lang="en">S1B=S1-S1A</com:Description>
+				</str:Code>
+				<str:Code id="S1F" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1F">
+					<com:Name xml:lang="en">Financial intermediaries (CDIS)</com:Name>
+				</str:Code>
+				<str:Code id="S1G" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1G">
+					<com:Name xml:lang="en">All resident sectors excluding financial intermediaries (CDIS)
+</com:Name>
+				</str:Code>
+				<str:Code id="S1H" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1H">
+					<com:Name xml:lang="en">Issuer headquartered in the reporting country or currency area
+</com:Name>
+				</str:Code>
+				<str:Code id="S1K" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1K">
+					<com:Name xml:lang="en">Corporations</com:Name>
+					<com:Description xml:lang="en">S1K=S11+S12</com:Description>
+				</str:Code>
+				<str:Code id="S1K1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1K1">
+					<com:Name xml:lang="en">Public corporations</com:Name>
+					<com:Description xml:lang="en">S1K1=S11001+S12001</com:Description>
+				</str:Code>
+				<str:Code id="S1KK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1KK">
+					<com:Name xml:lang="en">Central banks and general government</com:Name>
+				</str:Code>
+				<str:Code id="S1KP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1KP">
+					<com:Name xml:lang="en">Private corporations</com:Name>
+					<com:Description xml:lang="en">S1KP=S1100P+S1200P</com:Description>
+				</str:Code>
+				<str:Code id="S1L" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1L">
+					<com:Name xml:lang="en">General government, households and non profit institutions serving households
+</com:Name>
+					<com:Description xml:lang="en">S1L=S13+S14+S15</com:Description>
+				</str:Code>
+				<str:Code id="S1M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1M">
+					<com:Name xml:lang="en">Households and non profit institutions serving households (NPISH)
+</com:Name>
+					<com:Description xml:lang="en">S1M=S14+S15</com:Description>
+				</str:Code>
+				<str:Code id="S1MU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1MU">
+					<com:Name xml:lang="en">Other households  and non-profit institutions serving households  (sub-sector not identified)  
+</com:Name>
+				</str:Code>
+				<str:Code id="S1N" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1N">
+					<com:Name xml:lang="en">Not sectorised</com:Name>
+				</str:Code>
+				<str:Code id="S1O" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1O">
+					<com:Name xml:lang="en">Other sectors than MFIs and central government</com:Name>
+					<com:Description xml:lang="en">S1O=S1V+S12M+S13O; S1O=S11+S14+S15+S124+S125+S126+S127+S128+S129+S1312+S1313+S1314
+</com:Description>
+				</str:Code>
+				<str:Code id="S1P" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1P">
+					<com:Name xml:lang="en">Other sectors than MFIs and general government</com:Name>
+					<com:Description xml:lang="en">S1P=S1V+S12M; S1P=S11+S14+S15+S124+S125+S126+S127+S128+S129
+</com:Description>
+				</str:Code>
+				<str:Code id="S1Q" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1Q">
+					<com:Name xml:lang="en">Other sectors than MFIs</com:Name>
+					<com:Description xml:lang="en">S1Q=S1S+S12M; S1Q=S11+S13+S14+S15+S124+S125+S126+S127+S128+S129
+</com:Description>
+				</str:Code>
+				<str:Code id="S1R" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1R">
+					<com:Name xml:lang="en">Non financial sectors, except households</com:Name>
+					<com:Description xml:lang="en">S1R=S11+S13+S15</com:Description>
+				</str:Code>
+				<str:Code id="S1S" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1S">
+					<com:Name xml:lang="en">Non-financial corporations, general government and households and NPISH
+</com:Name>
+					<com:Description xml:lang="en">S1S=S11+S13+S14+S15</com:Description>
+				</str:Code>
+				<str:Code id="S1T" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1T">
+					<com:Name xml:lang="en">Non-financial corporations and general government</com:Name>
+					<com:Description xml:lang="en">S1T=S11+S13</com:Description>
+				</str:Code>
+				<str:Code id="S1U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1U">
+					<com:Name xml:lang="en">Non financial sectors, except central government</com:Name>
+					<com:Description xml:lang="en">S1U=S1V+S13O; S1U=S11+S14+S15+S1312+S1313+S1314</com:Description>
+				</str:Code>
+				<str:Code id="S1V" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1V">
+					<com:Name xml:lang="en">Non financial corporations, households and NPISH</com:Name>
+					<com:Description xml:lang="en">S1V=S11+S14+S15</com:Description>
+				</str:Code>
+				<str:Code id="S1W" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1W">
+					<com:Name xml:lang="en">Other sectors than general government</com:Name>
+					<com:Description xml:lang="en">S1W=S11+S12+S14+S15+S1N</com:Description>
+				</str:Code>
+				<str:Code id="S1X" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1X">
+					<com:Name xml:lang="en">Monetary authorities</com:Name>
+					<com:Description xml:lang="en">S1X=S121+ S134</com:Description>
+				</str:Code>
+				<str:Code id="S1XA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1XA">
+					<com:Name xml:lang="en">Monetary authorities and international organizations
+</com:Name>
+				</str:Code>
+				<str:Code id="S1Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1Y">
+					<com:Name xml:lang="en">Other sectors than monetary authorities</com:Name>
+					<com:Description xml:lang="en">S1Y=S1-S1X-S1N</com:Description>
+				</str:Code>
+				<str:Code id="S1Z" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1Z">
+					<com:Name xml:lang="en">Sectors other than deposit-taking corporations and general government (Other Sectors - BPM6)
+</com:Name>
+					<com:Description xml:lang="en">S1Z=S11+S14+S15+S123+S124 +S125+S126+S127+S128+S129
+</com:Description>
+				</str:Code>
+				<str:Code id="S1ZK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1ZK">
+					<com:Name xml:lang="en">Other sectors than central bank</com:Name>
+					<com:Description xml:lang="en">S1ZK=S1-S121-S1N</com:Description>
+				</str:Code>
+				<str:Code id="S1ZL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1ZL">
+					<com:Name xml:lang="en">Other sectors than central bank and general government
+</com:Name>
+					<com:Description xml:lang="en">S1ZL=S1-S121-S13-S1N</com:Description>
+				</str:Code>
+				<str:Code id="S1ZM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1ZM">
+					<com:Name xml:lang="en">Other sectors than central government</com:Name>
+					<com:Description xml:lang="en">S1ZM=S1-S1311-S1N</com:Description>
+				</str:Code>
+				<str:Code id="S1ZN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1ZN">
+					<com:Name xml:lang="en">Other sectors than state government</com:Name>
+					<com:Description xml:lang="en">S1ZN=S1-S1312-S1N</com:Description>
+				</str:Code>
+				<str:Code id="S1ZO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1ZO">
+					<com:Name xml:lang="en">Other sectors including non-financial corporations, money market funds, non-MMF investment funds, OFIs, insurance corporations, pension funds, general government or a central bank
+</com:Name>
+					<com:Description xml:lang="en">S1ZO=S1-S1M-S122= S11+S13+S121+S123+S124+S125+S128+S129
+</com:Description>
+				</str:Code>
+				<str:Code id="S1ZP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1ZP">
+					<com:Name xml:lang="en">Other sectors than local government</com:Name>
+					<com:Description xml:lang="en">S1ZP=S1-S1313-S1N</com:Description>
+				</str:Code>
+				<str:Code id="S1ZQ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1ZQ">
+					<com:Name xml:lang="en">Other sectors than social security funds</com:Name>
+					<com:Description xml:lang="en">S1ZQ=S1-S1314-S1N</com:Description>
+				</str:Code>
+				<str:Code id="S1ZR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1ZR">
+					<com:Name xml:lang="en">Other sectors than financial corporations and general government
+</com:Name>
+					<com:Description xml:lang="en">S1ZR=S1-S12-S13-S1N</com:Description>
+				</str:Code>
+				<str:Code id="S1ZS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1ZS">
+					<com:Name xml:lang="en">Public sector</com:Name>
+					<com:Description xml:lang="en">S1ZS=S11001+S12001+S13</com:Description>
+				</str:Code>
+				<str:Code id="S1ZT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1ZT">
+					<com:Name xml:lang="en">National private financial and non financial corporations
+</com:Name>
+					<com:Description xml:lang="en">S1ZT=S11002+S12002+S15002</com:Description>
+				</str:Code>
+				<str:Code id="S1ZU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).S1ZU">
+					<com:Name xml:lang="en">Sectors other than central bank, credit institutions and general government
+</com:Name>
+				</str:Code>
+				<str:Code id="SZU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).SZU">
+					<com:Name xml:lang="en">Institutions of the European Union (ESA GFS concept)
+</com:Name>
+				</str:Code>
+				<str:Code id="SZV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ESTAT:CL_SECTOR(1.6).SZV">
+					<com:Name xml:lang="en">General government and institutions of the European Union (ESA GFS concept)
+</com:Name>
+					<com:Description xml:lang="en">SZV=SZU+S13</com:Description>
 				</str:Code>
 			</str:Codelist>
 			<str:Codelist agencyID="IMF" id="CL_FUNCTIONAL_CAT" isExternalReference="false" isFinal="true" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_FUNCTIONAL_CAT(1.9)" version="1.9">
@@ -12237,7 +12936,6 @@ W12=W1-1A-W19</com:Description>
 			</str:ConceptScheme>
 		</str:Concepts>
 		<str:DataStructures>
-		
 			<str:DataStructure agencyID="IMF" id="BOP" isExternalReference="false" isFinal="true" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=IMF:BOP(1.12)" version="1.12">
 				<com:Name xml:lang="en">Balance of Payments and International Investment Position</com:Name>
 				<str:DataStructureComponents>
@@ -12292,7 +12990,7 @@ W12=W1-1A-W19</com:Description>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:Enumeration>
-									<Ref agencyID="IMF" class="Codelist" id="CL_FSENTRY" package="codelist" version="1.1"/>
+									<Ref agencyID="ESTAT" class="Codelist" id="CL_SECTOR" package="codelist" version="1.6"/>
 								</str:Enumeration>
 								<str:EnumerationFormat maxLength="7" minLength="2" textType="String"/>
 							</str:LocalRepresentation>
@@ -13134,12 +13832,10 @@ W12=W1-1A-W19</com:Description>
 			<str:ContentConstraint agencyID="OECD" id="CR_FDI" isExternalReference="false" isFinal="false" type="Allowed" urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=OECD:CR_FDI(1.0)" version="1.0">
 				<com:Name xml:lang="en">foreign direct investment</com:Name>
 				<str:ConstraintAttachment>
-
 					<str:Dataflow>
 						<Ref agencyID="ESTAT" class="Dataflow" id="NAMAIN_IDC_N" package="datastructure" version="1.9"/>
 					</str:Dataflow>
 				</str:ConstraintAttachment>
-				
 				<str:CubeRegion include="true">
 					<com:KeyValue id="REF_SECTOR">
 						<com:Value>FC</com:Value>
