@@ -23,8 +23,8 @@ depending on the constraint. The codelist retrieved above must be found and vali
 class ContentConstraintReferencePartialChecker {
      
     /**
-     * Validates the whole reference partial test as successful or not.Returns success code in case of success 
-     * and failure code in case of an error or failure.
+     * Returns the result of the referece partial test which is ether a success code in case of success 
+     * or a failure code in case of an error or failure.
      * @param {*} test the test object of the above test.
      * @param {*} preparedRequest the http query parameters
      * @param {*} workspace the workspace of content constraint descendants
@@ -34,18 +34,18 @@ class ContentConstraintReferencePartialChecker {
             try {
 
                 /*Returns an object containing:
-                    a) The codelist reference partial test info 
+                    a) The codelist under validation 
                     b) The KeyValue with which the partial codelist will be validated.
+                    c) The referencepartial test object
                     */
                 let finalTestData = ContentConstraintReferencePartialChecker.referencepartialTestBuilder(test,workspace);
-                console.log(" --------------------- CONSTRAINABLE TEST ------------------------")
-                console.log(finalTestData.referencePartialTest)
                 /*Executes the request to get the partial codelist*/
                 ContentConstraintReferencePartialTestManager.executeTest(finalTestData.referencePartialTest, test.apiVersion, preparedRequest.service.url).
                     then((referencePartialTestWorkspace) => {
-                        /*Partial codelist's workspace validation*/
+                        /* The referencepartial test's workspace validation*/
                         let validation = ContentConstraintReferencePartialChecker.checkReferencePartialTestWorkspace(referencePartialTestWorkspace,finalTestData.keyValueToCheck,finalTestData.codeListRef);
-                        //Due to the second req of the reference partial testing from content constraint we need to show the last URL(codelist)
+                        //Due to the second req of the reference partial testing from content constraint we need to show the last URL in the GUI
+                        //(constrainable's request with reference partial)
                         validation.sourceOfWorkspace = finalTestData.referencePartialTest.httpResponse.url;
                         resolve(validation)
                     }).catch((error) => {
@@ -165,7 +165,7 @@ class ContentConstraintReferencePartialChecker {
     /**
      * Function that returns the reference of the codelist that is under validation, the constrainable
      * with which the referencepartial test will be performed as well as the KeyValue, 
-     * the constraints of which will be validated in the codelist
+     * with the values of which the codes of the codelist will be validated.
      * @param {*} sdmxObjects the workspace of content constraint descendants
      * @param {*} constraint the constraint object of the above workspace.
      */
@@ -248,8 +248,8 @@ class ContentConstraintReferencePartialChecker {
     }
     /**
      * Builds the referencepartial test for the selected constrainable artefact.
-     * Returns the test obj of the constrainable,the codelist under validation reference as well as the constraint values
-     * that will be checked in the codelist found in constrainable workspace.
+     * Returns the test obj of the constrainable,the codelist reference under validation as well as the constraint values
+     * that will be checked in the codelist found in the constrainable's workspace.
      * @param {*} test the test object of the above test.
      * @param {*} sdmxObjects the workspace of content constraint descendants
      */
@@ -277,19 +277,11 @@ class ContentConstraintReferencePartialChecker {
         let testData = ContentConstraintReferencePartialChecker.findConstrainableAndCodeListAndKeyValue(sdmxObjects,constraint)
         
         if(Object.entries(testData).length === 0) {
-            throw new Error ('Unable to locate a codelist (concerning any KeyValue) throw the constrainable artefacts of the constraint')
+            throw new Error ('Unable to locate a codelist (concerning any KeyValue) through the constrainable artefacts of the constraint')
         }
         let codeListRef = testData.codelistRef;
         let keyValueToCheck = testData.keyValueSet;
         let constrainable = testData.selectedConstrainable;
-        
-        console.log(" --------------------- CL ------------------------")
-        console.log(codeListRef)
-        console.log(" --------------------- KEYVALUE ------------------------")
-        console.log(keyValueToCheck)
-        console.log(" --------------------- CONSTRAINABLE ------------------------")
-        console.log(constrainable)
-        
 
         if(Object.entries(testData).length !== 0 && Utils.isDefined(constrainable)){
 
