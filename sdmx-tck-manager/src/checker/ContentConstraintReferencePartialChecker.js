@@ -91,7 +91,7 @@ class ContentConstraintReferencePartialChecker {
     /**
      * Returns the result of the workspace validation of a partial codelist. In case of success it returns a success code,
      * else in the case of failure it returns a failure code along with the failure reason.
-     * @param {*} workspace workspace of partial codelist.
+     * @param {*} workspace workspace of constrainable referencepartial request.
      * @param {*} keyValue the keyValue containing the constraint values that will be checked along with the partial codelist's codes.
      * @param {*} codeListRef the codelist reference which will be validated.
      */
