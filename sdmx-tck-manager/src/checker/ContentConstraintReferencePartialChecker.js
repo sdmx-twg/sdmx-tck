@@ -2,6 +2,8 @@
 var SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
 var FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 var Utils = require('sdmx-tck-api').utils.Utils;
+var CubeRegionObject = require('sdmx-tck-api').model.CubeRegionObject
+var DataKeySetObject = require('sdmx-tck-api').model.DataKeySetObject
 var SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
 var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
@@ -32,13 +34,14 @@ class ContentConstraintReferencePartialChecker {
     static checkWorkspace(test, preparedRequest, workspace) {
         return new Promise((resolve, reject) => {
             try {
-
                 /*Returns an object containing:
                     a) The codelist under validation 
                     b) The KeyValue with which the partial codelist will be validated.
                     c) The referencepartial test object
                     */
                 let finalTestData = ContentConstraintReferencePartialChecker.referencepartialTestBuilder(test,workspace);
+                console.log(finalTestData)
+                console.log(finalTestData.keyValueToCheck.values)
                 /*Executes the request to get the partial codelist*/
                 ContentConstraintReferencePartialTestManager.executeTest(finalTestData.referencePartialTest, test.apiVersion, preparedRequest.service.url).
                     then((referencePartialTestWorkspace) => {
@@ -49,6 +52,8 @@ class ContentConstraintReferencePartialChecker {
                         validation.sourceOfWorkspace = finalTestData.referencePartialTest.httpResponse.url;
                         resolve(validation)
                     }).catch((error) => {
+                        //inform the model that the referencepartial request failed
+                        test.httpResponseValidation = finalTestData.referencePartialTest.httpResponseValidation
                         reject(new TckError(error.message))
                         
                     });
@@ -72,21 +77,52 @@ class ContentConstraintReferencePartialChecker {
         if(!keyValue.values || !Array.isArray(keyValue.values)){
             throw new Error('KeyValue does not contain specific values or these values are malformed')
         }
-        if(keyValue.includeType === 'true'){
+        if(keyValue.source && keyValue.source === DataKeySetObject.name){
             let includedValues = [];
+            let excludedValues = [];
+
             for(let i=0;i<keyValue.values.length;i++){
-                includedValues.push(keyValue.values[i].value)
-            }
-            return includedValues.every(val => codesArray.includes(val));
-    
-        }else if(keyValue.includeType === 'false'){
-            for(let i=0;i<keyValue.values.length;i++){
-                if(codesArray.indexOf(keyValue.values[i].value) !== -1){
-                    return false;
+                if(keyValue.values[i].includeType === "true"){
+                    includedValues.push(keyValue.values[i].value)
+                }else if(keyValue.values[i].includeType === "false"){
+                    excludedValues.push(keyValue.values[i].value)
                 }
+            } 
+            if(keyValue.isWildCarded || excludedValues.length > 1){
+                console.log("wildcarded or more than one excluded")
+                return true;
             }
-            return true;
-        }  
+            if(includedValues.length > 0){
+                if(excludedValues.length === 0 || (excludedValues.length === 1 && includedValues.indexOf(excludedValues[0]) !== -1)){
+                    console.log("no excluded or rival excluded")
+                    return includedValues.every(val => codesArray.includes(val));
+                }else{
+                    console.log("one excluded")
+                    return (includedValues.every(val => codesArray.includes(val)) 
+                            && codesArray.indexOf(excludedValues[0]) === -1) 
+                }
+            }else{
+                console.log("no included one excluded")
+                return (codesArray.indexOf(excludedValues[0]) === -1) 
+            }
+                
+        }else{
+            if(keyValue.includeType === 'true'){
+                let includedValues = [];
+                for(let i=0;i<keyValue.values.length;i++){
+                    includedValues.push(keyValue.values[i].value)
+                }
+                return includedValues.every(val => codesArray.includes(val));
+        
+            }else if(keyValue.includeType === 'false'){
+                for(let i=0;i<keyValue.values.length;i++){
+                    if(codesArray.indexOf(keyValue.values[i].value) !== -1){
+                        return false;
+                    }
+                }
+                return true;
+            } 
+        } 
     }
     /**
      * Returns the result of the workspace validation of a partial codelist. In case of success it returns a success code,
@@ -113,7 +149,7 @@ class ContentConstraintReferencePartialChecker {
         
         //If the codelist returned is not partial throw Error.
         if(codelistObj.getIsPartial() !== "true"){
-           return { status: FAILURE_CODE, error: "Codelist is not partial."};
+           //return { status: FAILURE_CODE, error: "Codelist is not partial."};
         }
         //If the codes of the partial codelist follow the constraint
         if(!ContentConstraintReferencePartialChecker.constraintValuesValidation(keyValue,codesArray)){
@@ -265,7 +301,10 @@ class ContentConstraintReferencePartialChecker {
             throw new Error("Missing mandatory parameter: 'descendants' test .");
         }
         let resource;
-        let template = {detail:"referencepartial"};
+
+        //let template = {detail:"referencepartial"};
+        /*ONLY FOR TESTING REASONS*/
+        let template = {};
         let referencePartialTest = {};
 
         //Get the constraint obj from workspace

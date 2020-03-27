@@ -110,7 +110,10 @@ class ContentConstraintObject extends MaintainableObject {
             keyValArr = keyValArr.concat(constraintComponent.getSameIdKeyValues(keyValue.id));
         });
         keyValArr.forEach(keyVal => {
-            values.push({value:keyVal.value, includeType:keyVal.includeType})
+            //no duplicates
+            if(!(values.some(element => (element.includeType === keyVal.includeType && element.value === keyVal.value)))){
+                values.push({value:keyVal.value, includeType:keyVal.includeType})
+            }
         })
         return {id:keyValue.id,
                 values:values,

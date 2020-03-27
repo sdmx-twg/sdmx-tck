@@ -12,7 +12,7 @@ describe('Tests if DataKeySet obj gets the DataKeySet', function () {
         {   service:
             { id: undefined,
               name: undefined,
-              url: 'https://registry.sdmx.org/ws/public/sdmxapi/rest/',
+              url: 'http://sdw-wsrest.ecb.europa.eu/service/',
               api: 'v1.4.0',
               format: undefined }
           }
@@ -29,7 +29,7 @@ describe('Tests if DataKeySet obj gets the DataKeySet', function () {
                 apiVersion: "v1.3.0",
                 resource: "contentconstraint",
                 requireRandomSdmxObject: true,
-                preparedRequest:{service:{url:"https://registry.sdmx.org/ws/public/sdmxapi/rest/"}},
+                preparedRequest:{service:{url:"http://sdw-wsrest.ecb.europa.eu/service/"}},
                 reqTemplate: {references:"descendants"},
                 identifiers: {structureType: "CONTENT_CONSTRAINT", agency: "ECB.DISS", id: "SEC_PUB_CONSTRAINTS", version: "1.0" },
                 state: "Waiting",
