@@ -32,7 +32,7 @@ class ContentConstraintObject extends MaintainableObject {
         return this.type;
     };
 
-    findMatchingKeyValueInDSD(dsdObj){
+    getMatchingKeyValueDataInDSD(dsdObj){
         let keyValue;
         let constraintComponents = (Utils.isDefined(this.cubeRegions) && Array.isArray(this.cubeRegions) && this.cubeRegions.length > 0) ? this.cubeRegions:this.dataKeySets;
         
@@ -47,8 +47,9 @@ class ContentConstraintObject extends MaintainableObject {
                         keyValue = keyValues[j];
                         let keyValFound  = dsdObj.componentExistsAndItsCodedInDSD(keyValue.id)
                         if(keyValFound && keyValue.values && Array.isArray(keyValue.values) && keyValue.values.length>0){
-                            keyValue.source = constraintComponents[0].constructor.name.toString();
-                            return keyValue;
+                            let source = constraintComponents[0].constructor.name.toString();
+                            return {keyValue:keyValue,
+                                    source:source};
                         }
                     }
                 }
@@ -65,9 +66,11 @@ class ContentConstraintObject extends MaintainableObject {
                                 let keyValue = keyValues[k];
                                 let keyValFound = dsdObj.componentExistsAndItsCodedInDSD(keyValue.id)
                                 if(keyValFound && keyValue.value){
-                                    keyValue.source = constraintComponents[0].constructor.name.toString();
-                                    keyValue.isWildCarded = this.isKeyValueWildCarded(constraintComponents,keyValue.id);
-                                    return this.getValuesFromKeyValuesWithSameId(constraintComponents,keyValue);;
+                                    let source = constraintComponents[0].constructor.name.toString();
+                                    let isWildCarded = this.isKeyValueWildCarded(constraintComponents,keyValue.id);
+                                    return {keyValue:this.getValuesFromKeyValuesWithSameId(constraintComponents,keyValue),
+                                            isWildCarded:isWildCarded,
+                                            source:source}
                                 }
                             }
                         }
@@ -116,22 +119,8 @@ class ContentConstraintObject extends MaintainableObject {
             }
         })
         return {id:keyValue.id,
-                values:values,
-                source:keyValue.source,
-                isWildCarded:keyValue.isWildCarded}
+            values:values}
     }
-    // getAllSameIdKeyValues(selectedkeyValue){
-    //     let sumOfKeyValues = [];
-    //     //Collect all KeyValues with the same id from cube regions
-    //     for(let i=0;i<this.cubeRegions.length;i++){
-    //         let keyValuesWithSameId = this.cubeRegions[i].getKeyValuesWithSpecificId(selectedkeyValue.id)
-    //         keyValuesWithSameId.forEach(function(keyvalue) {
-    //             sumOfKeyValues.push(keyvalue)
-    //         });
-    //     }
-    //     return sumOfKeyValues;
-    // }
-
 };
 
 module.exports = ContentConstraintObject;

@@ -10460,7 +10460,7 @@
 						</com:KeyValue>
 					</str:Key>
 					<str:Key>
-						<com:KeyValue id="FREQ" include="false">
+						<com:KeyValue id="FREQ" include = "false">
 							<com:Value>M</com:Value>
 						</com:KeyValue>
 						<com:KeyValue id="REF_AREA">
@@ -10490,7 +10490,7 @@
 					</str:Key>
 					<str:Key>
 						<com:KeyValue id="FREQ">
-							<com:Value>M2</com:Value>
+							<com:Value>M</com:Value>
 						</com:KeyValue>
 						<com:KeyValue id="REF_AREA">
 							<com:Value>A1</com:Value>
@@ -10518,8 +10518,8 @@
 						</com:KeyValue>
 					</str:Key>
 					<str:Key>
-						<com:KeyValue id="FREQ" include="false">
-							<com:Value>M3</com:Value>
+						<com:KeyValue id="FREQ">
+							<com:Value>M</com:Value>
 						</com:KeyValue>
 						<com:KeyValue id="REF_AREA">
 							<com:Value>A1</com:Value>
