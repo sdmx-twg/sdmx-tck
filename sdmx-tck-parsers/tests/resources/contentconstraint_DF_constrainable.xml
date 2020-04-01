@@ -13828,30 +13828,19 @@ W12=W1-1A-W19</com:Description>
 				</str:Structure>
 			</str:Dataflow>
 		</str:Dataflows>
-		<str:ProvisionAgreements>
-			<str:ProvisionAgreement agencyID="ESTAT" id="PA_NAMAIN_IDC_N" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:PA_NAMAIN_IDC_N(1.9)" version="1.9">
-				<com:Name xml:lang="en">PA_NAMAIN_IDC_N</com:Name>
-				<str:StructureUsage>
-					<Ref agencyID="ESTAT" class="Dataflow" id="NAMAIN_IDC_N" package="datastructure" version="1.9"/>
-				</str:StructureUsage>
-				<str:DataProvider>
-					<Ref agencyID="ESTAT" class="DataProvider" id="ESTAT" maintainableParentID="DATA_PROVIDERS" maintainableParentVersion="1.0" package="base"/>
-				</str:DataProvider>
-			</str:ProvisionAgreement>
-		</str:ProvisionAgreements>
 		<str:Constraints>
 			<str:ContentConstraint agencyID="OECD" id="CR_FDI" isExternalReference="false" isFinal="false" type="Allowed" urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=OECD:CR_FDI(1.0)" version="1.0">
 				<com:Name xml:lang="en">foreign direct investment</com:Name>
 				<str:ConstraintAttachment>
-					<str:ProvisionAgreement>
-						<Ref agencyID="ESTAT" class="ProvisionAgreement" id="PA_NAMAIN_IDC_N" package="provisionagreement" version="1.9"/>
-					</str:ProvisionAgreement>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NAMAIN_IDC_N" package="datastructure" version="1.9"/>
+					</str:Dataflow>
 				</str:ConstraintAttachment>
 				<str:CubeRegion include="true">
 					<com:KeyValue id="REF_SECTOR">
-						<com:Value>_Z</com:Value>
-						<com:Value>S1</com:Value>
-						<com:Value>S11002</com:Value>
+						<com:Value>FC</com:Value>
+						<com:Value>FM</com:Value>
+						<com:Value>T</com:Value>
 					</com:KeyValue>
 				</str:CubeRegion>
 			</str:ContentConstraint>

@@ -31,7 +31,10 @@ const TestDetails = ({ test }) => {
                             <tbody>
                                 <tr><td>Index</td><td>{test.index}</td></tr>
                                 <tr><td>Name</td><td>{test.testId}</td></tr>
-                                <tr><td>URL</td><td><a target="_blank" rel="noopener noreferrer" href = {(test.extraHttpResponse && test.extraHttpResponse.url) ? test.extraHttpResponse.url : (test.httpResponse && test.httpResponse.url) ? test.httpResponse.url:""}>{(test.extraHttpResponse && test.extraHttpResponse.url) ? test.extraHttpResponse.url : (test.httpResponse && test.httpResponse.url) ? test.httpResponse.url:""}</a></td></tr>
+                                <tr><td>URL</td><td><a target="_blank" rel="noopener noreferrer" href = {
+                                    // workspaceValidation.sourceOfWorkspace is applicable only in reference partial from contentconstraint to show the codelist url.
+                                    (test.workspaceValidation && test.workspaceValidation.sourceOfWorkspace) ? test.workspaceValidation.sourceOfWorkspace : (test.httpResponseValidation && test.httpResponseValidation.url) ? test.httpResponseValidation.url : ""}>
+                                   {(test.workspaceValidation && test.workspaceValidation.sourceOfWorkspace) ? test.workspaceValidation.sourceOfWorkspace : (test.httpResponseValidation && test.httpResponseValidation.url) ? test.httpResponseValidation.url : ""}</a></td></tr>
                                 <tr><td>State</td><td>{test.state}</td></tr>
                                 <tr><td>Duration</td><td>{(test.startTime && test.endTime) ? ((Date.parse((test.endTime).toString()) - Date.parse((test.startTime).toString()))/1000).toFixed(2) + " seconds" : ''}</td></tr>
                                 <tr><td>Errors</td><td>{test.failReason ? test.failReason.toString() : ""}</td></tr>

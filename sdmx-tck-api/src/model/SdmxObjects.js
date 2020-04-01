@@ -46,7 +46,7 @@ class SdmxObjects {
 	 */
 	getChildren(structureRef) {
 		var sdmxObject = this.getSdmxObject(structureRef);
-		if (sdmxObject === null && sdmxObject === undefined) {
+		if (sdmxObject === null || sdmxObject === undefined) {
 			throw new Error("SDMX object " + structureRef + " not found in workspace.");
 		}
 		return sdmxObject.getChildren();

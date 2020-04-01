@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { extractSelectedTests, extractScore } from "../handlers/helperFunctions";
 import TestDetails from './TestDetails';
+import { exportReport } from '../actions/TestActions';
 
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 
@@ -63,6 +64,7 @@ class TestsToRun extends React.Component {
 
     return (
       <div className="testsTableContainer" style={{ display: (this.props.finished) ? 'block' : 'none' }}>
+        {/* <button ref="btn" onClick={() => exportReport(this.props.testsToRun)}>Export (.csv)</button> */}
         <table id="testsTable">
           <tbody>
             <tr>

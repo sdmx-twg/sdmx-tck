@@ -9,100 +9,79 @@ var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
 var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
 var ContentConstraintTypeValidator = require('../checker/ContentConstraintTypeValidator.js')
 const sdmx_requestor = require('sdmx-rest');
-
+const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator')
 class TestExecutionManager {
-    static executeTest(toRun, apiVersion, endpoint) {
-        /*Keep the starting time*/
-        toRun.startTime = new Date();
+    static async executeTest(toRun, apiVersion, endpoint) {
+        let testResult = toRun;
+        try {
+            testResult.startTime = new Date();
+            console.log("Test: " + toRun.testId + " started on " + testResult.startTime);
 
-        if (toRun.testType === TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION) { 
-            return new Promise((resolve, reject) => {
-                StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
-                    toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
-                    .then((preparedRequest) => {
-                        toRun.preparedRequest = preparedRequest;
-                        return sdmx_requestor.request2(toRun.preparedRequest.request, toRun.preparedRequest.service);
-                    }).then((httpResponse) => {
-                        toRun.httpResponse = httpResponse;
-                        return ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, toRun.httpResponse);
-                    }).then((httpResponseValidation) => {
-                        toRun.httpResponseValidation = httpResponseValidation;
-                        if (httpResponseValidation.status === FAILURE_CODE) {
-                            throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
-                        }
-                        toRun.endTime = new Date();
-                        resolve(toRun);
-                    }).catch((err) => {
-                        if (err instanceof Error) {
-                            toRun.failReason = err.toString();
-                        }
-                        toRun.endTime = new Date();
-                        reject(toRun);
-                    });
-            });
-        } else {
-            return new Promise((resolve, reject) => {
+            /*We have to make sure that the constraint is of allowed type before it runs.
+            SPECIAL HANDLING FOR STRUCTURE REFERENCE TEST ONLY*/
+            if (toRun.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL && toRun.parentWorkspace) {
+                toRun.identifiers = ContentConstraintTypeValidator.getContentConstraintOfAllowedType(toRun)
+            }
+            let preparedRequest = await StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
+                toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items);
 
-                /*We have to make sure that the constraint is of allowed type before it runs.
-                SPECIAL HANDLING FOR STRUCTURE REFERENCE TEST ONLY*/
-                if(toRun.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL && toRun.parentWorkspace){
-                    toRun.identifiers = ContentConstraintTypeValidator.getContentConstraintOfAllowedType(toRun)
+            console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
+            
+            //Alternative way to pass the url generated as string in order to configure the skipDefaults parameter.
+            let url = new UrlGenerator().getUrl(preparedRequest.request, preparedRequest.service, true)
+            let httpResponse = await sdmx_requestor.request2(url, preparedRequest.headers);
+            //let httpResponse = await sdmx_requestor.request2(preparedRequest.request, preparedRequest.service, preparedRequest.headers);
+            console.log("Test: " + toRun.testId + " HTTP response received.");
+
+            //// HTTP RESPONSE VALIDATION ////
+            let httpResponseValidation = null;
+            if (toRun.testType === TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION) {
+                httpResponseValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
+            } else {
+                httpResponseValidation = await ResponseValidator.validateHttpResponse(preparedRequest.request, httpResponse);
+            }
+            testResult.httpResponseValidation = httpResponseValidation;
+            console.log("Test: " + toRun.testId + " HTTP response validated. " + JSON.stringify(httpResponseValidation));
+            if (httpResponseValidation.status === FAILURE_CODE) {
+                throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
+            }
+
+            //// WORKSPACE VALIDATION ////
+            if (toRun.testType !== TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION) {
+                let workspace = await new SdmxXmlParser().getIMObjects(await httpResponse.text());
+                testResult.workspace = workspace;
+                console.log("Test: " + toRun.testId + " SDMX workspace created.");
+            
+                // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
+                var randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
+                if (toRun.resource === "structure") {
+                    randomStructure = workspace.getRandomSdmxObject();
                 }
-                StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
-                    toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
-                    .then((preparedRequest) => {
-                        toRun.preparedRequest = preparedRequest;
-                        return sdmx_requestor.request2(toRun.preparedRequest.request, toRun.preparedRequest.service);
-                    }).then((httpResponse) => {
-                        toRun.httpResponse = httpResponse;
-                        return ResponseValidator.validateHttpResponse(toRun.preparedRequest.request, toRun.httpResponse);
-                    }).then((httpResponseValidation) => {
-                        toRun.httpResponseValidation = httpResponseValidation;
-                        if (httpResponseValidation.status === FAILURE_CODE) {
-                            throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
-                        }
-                        return toRun.httpResponse.text();
-                    }).then((xmlBody) => {
-                        return new SdmxXmlParser().getIMObjects(xmlBody);
-                    }).then((workspace) => {
-                        // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
-                        var randomStructure;
-                        if (toRun.resource === "structure") {
-                            randomStructure = workspace.getRandomSdmxObject();
-                        } else {
-                            randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
-                        }
-                        toRun.randomStructure = {
-                            structureType: randomStructure.getStructureType(),
-                            agencyId: randomStructure.getAgencyId(),
-                            id: randomStructure.getId(),
-                            version: randomStructure.getVersion(),
-                        };
-                        if(randomStructure instanceof ItemSchemeObject){
-                           toRun.randomItems = randomStructure.getItemsCombination();
-                        }
-                        toRun.workspace = workspace.toJSON();
-                        return SemanticCheckerFactory.getChecker(toRun.request,toRun.testType).checkWorkspace(toRun, workspace);
-                    }).then((workspaceValidation) => {
-                        toRun.workspaceValidation = workspaceValidation;
-                        if (workspaceValidation.status === FAILURE_CODE) {
-                            throw new TckError("Workspace validation failed: Cause: " + workspaceValidation.error);
-                        }
+                testResult.randomStructure = {
+                    structureType: randomStructure.getStructureType(),
+                    agencyId: randomStructure.getAgencyId(),
+                    id: randomStructure.getId(),
+                    version: randomStructure.getVersion(),
+                };
+                if (randomStructure instanceof ItemSchemeObject) {
+                    testResult.randomItems = randomStructure.getItemsCombination();
+                }
 
-                        //Keep ending time
-                        toRun.endTime = new Date();
-                        resolve(toRun);
-                    }).catch((err) => {
-                        if (err instanceof Error) {
-                            toRun.failReason = err.toString();
-                        }
-                        //Keep ending time
-                        toRun.endTime = new Date();
-                        reject(toRun);
-                    });
-            });
+                // WORKSPACE VALIDATION
+                let workspaceValidation = await SemanticCheckerFactory.getChecker(preparedRequest, toRun.testType).checkWorkspace(toRun, preparedRequest, workspace);
+                testResult.workspaceValidation = workspaceValidation;
+                if (workspaceValidation.status === FAILURE_CODE) {
+                    throw new TckError("Workspace validation failed: Cause: " + workspaceValidation.error);
+                }
+            }
+        } catch (err) {
+            testResult.failReason = err.toString();
+        } finally {
+            testResult.endTime = new Date();
+            console.log("Test: " + toRun.testId + " completed on " + testResult.endTime);
         }
-    };
+        return testResult;
+    }
 };
 
 module.exports = TestExecutionManager;

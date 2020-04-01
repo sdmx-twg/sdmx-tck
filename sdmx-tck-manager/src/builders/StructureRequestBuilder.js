@@ -24,7 +24,13 @@ class StructureRequestBuilder {
                         request[k] = template[k];
                     }
                 };
-                let preparedRequest = { request: sdmx_rest.getMetadataQuery(request), service: service };
+
+                let headers = {};
+                if (template.representation) {
+                    headers = { headers: { accept: template.representation } }
+                }
+                
+                let preparedRequest = { request: sdmx_rest.getMetadataQuery(request), service: service, headers: headers };
 
                 resolve(preparedRequest);
             } catch (err) {

@@ -38,7 +38,7 @@ export function dataFromParent(test){
 
 export function fetchTests(endpoint, apiVersion, testIndices) {
     let body = { endpoint, apiVersion, testIndices };
-    return fetch('/prepare-tests', {
+    return fetch('/tck-api/prepare-tests', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -48,15 +48,21 @@ export function fetchTests(endpoint, apiVersion, testIndices) {
 };
 
 async function requestTestRun(endpoint, test) {
-    let body = { endpoint, test };
-    const response = await fetch('/execute-test', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-    });
-    return await response.json();
+     try{
+        let body = { endpoint, test };
+        const response = await fetch('/tck-api/execute-test', {
+            method: 'POST',
+           
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+        return await response.json();
+     }catch(err){
+             return {error:err.toString()};
+     }
+
 };
 
 export function prepareTests(endpoint, apiVersion, testIndices) {
@@ -72,6 +78,17 @@ export function prepareTests(endpoint, apiVersion, testIndices) {
                 dispatch(prepareTestsFailed(error));
             });
     };
+};
+
+export function exportReport(tests) {
+    let body = { tests };
+    return fetch('/tck-api/export-report', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    });
 };
 
 async function runTests(endpoint, tests) {
@@ -90,24 +107,29 @@ export async function runTest(endpoint, test) {
     if(test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL){
         store.dispatch(dataFromParent(test));
     }
-    store.dispatch(updateTestsNumber(test.index));
     if(test.state!==TEST_STATE.COMPLETED && test.state!==TEST_STATE.FAILED && test.state!==TEST_STATE.UNABLE_TO_RUN ){
         let testResults = await requestTestRun(endpoint, test);
-        if(testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1
-            && testResults.workspaceValidation && testResults.workspaceValidation.status === 1){
-                 //Actions if a test was successful
-                store.dispatch(updateTestState(testResults, TEST_STATE.COMPLETED));
-                store.dispatch(updateComplianceNumber(testResults.index));
-                store.dispatch(updateCoverageNumber(testResults.index));
-                store.dispatch(updateChildrenTests(testResults));
-        }else{ 
-                 //Actions if a test failed
-                store.dispatch(updateTestState(testResults, TEST_STATE.FAILED));
-                if (testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1) {
+        if(Object.keys(testResults).length === 1 && testResults.hasOwnProperty("error")){
+            test.failReason  = testResults.error;
+            store.dispatch(updateTestState(test, TEST_STATE.FAILED));
+        }else{
+            if(testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1
+                && testResults.workspaceValidation && testResults.workspaceValidation.status === 1){
+                        //Actions if a test was successful
+                    store.dispatch(updateTestState(testResults, TEST_STATE.COMPLETED));
                     store.dispatch(updateComplianceNumber(testResults.index));
-                };
+                    store.dispatch(updateCoverageNumber(testResults.index));
+                    store.dispatch(updateChildrenTests(testResults));
+            }else{ 
+                        //Actions if a test failed
+                    store.dispatch(updateTestState(testResults, TEST_STATE.FAILED));
+                    if (testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1) {
+                        store.dispatch(updateComplianceNumber(testResults.index));
+                    };
+            }
         }
     } 
+    store.dispatch(updateTestsNumber(test.index));
     if (test.subTests && test.subTests.length !== 0) {
         for (let j = 0; j < test.subTests.length; j++) {
             /* In order to mark as failed Item Queries if the items to request are unknown */
@@ -119,7 +141,5 @@ export async function runTest(endpoint, test) {
                 await runTest(endpoint, test.subTests[j]);
             }
         }
-    }
-    
-   
+    }    
 }

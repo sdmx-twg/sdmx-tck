@@ -1,7 +1,8 @@
 const SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
 const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
-var TckError = require('sdmx-tck-api').TckError;
+var TckError = require('sdmx-tck-api').errors.TckError;
 const sdmx_requestor = require('sdmx-rest');
+var isDefined = require('sdmx-tck-api').utils.Utils.isDefined;
 
 const STRUCTURE_QUERY_REPRESENTATIONS = require('../constants/StructureQueryRepresentations').STRUCTURE_QUERY_REPRESENTATIONS;
 
@@ -18,9 +19,9 @@ class HttpResponseValidator {
             try {
                 sdmx_requestor.checkStatus(query, httpResponse);
                 // TODO + additional checks
-                resolve({ status: SUCCESS_CODE });
+                resolve({ status: SUCCESS_CODE, url: httpResponse.url, httpStatus: httpResponse.status });
             } catch (err) {
-                resolve({ status: FAILURE_CODE, error: err.toString() });
+                resolve({ status: FAILURE_CODE, url: httpResponse.url, httpStatus: httpResponse.status, error: err.toString() });
             }
         });
     };
@@ -40,9 +41,9 @@ class HttpResponseValidator {
                 } else if (requestedRepresentation === STRUCTURE_QUERY_REPRESENTATIONS.WEIGHTED_SDMX_JSON_100) {
                     sdmx_requestor.checkMediaType(STRUCTURE_QUERY_REPRESENTATIONS.WEIGHTED_SDMX_JSON_100, response);
                 }
-                resolve({ status: SUCCESS_CODE });
+                resolve({ status: SUCCESS_CODE, url: response.url, httpStatus: response.status });
             } catch (err) {
-                resolve({ status: FAILURE_CODE, error: err.toString() });
+                resolve({ status: FAILURE_CODE, url: response.url, httpStatus: response.status, error: err.toString() });
             }
         });
     };

@@ -144,6 +144,8 @@ class TestsModelBuilder {
             return allTests;
         }else if (index === TEST_INDEX.Data) {
             return [];
+        }else if (index === TEST_INDEX.Metadata) {
+            return [];
         }
     }
 };

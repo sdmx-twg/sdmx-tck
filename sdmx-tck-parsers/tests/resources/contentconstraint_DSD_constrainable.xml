@@ -13095,12 +13095,11 @@ W12=W1-1A-W19</com:Description>
 						<Ref agencyID="OECD" class="DataStructure" id="FDI" package="datastructure" version="1.7"/>
 					</str:DataStructure>
 				</str:ConstraintAttachment>
-				<str:CubeRegion include="false">
+				<str:CubeRegion include="true">
 					<com:KeyValue id="REF_SECTOR">
-						<com:Value>S1SP</com:Value>
-						<com:Value>S12SP</com:Value>
-						<com:Value>S1SSP</com:Value>
-						<com:Value>S1273</com:Value>
+						<com:Value>S13131</com:Value>
+						<com:Value>S13132</com:Value>
+						<com:Value>S12LO</com:Value>
 					</com:KeyValue>
 				</str:CubeRegion>
 			</str:ContentConstraint>
