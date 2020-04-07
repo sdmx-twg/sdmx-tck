@@ -3,9 +3,9 @@ var STRUCTURE_QUERY_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_QUERY_D
 var getStructureQueryDetail = require('sdmx-tck-api').constants.getStructureQueryDetail;
 var SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
-
 var STRUCTURE_IDENTIFICATION_PARAMETERS = require('./StructureIdentificationParameters.js').STRUCTURE_IDENTIFICATION_PARAMETERS;
 var STRUCTURE_QUERY_REPRESENTATIONS = require('./StructureQueryRepresentations.js').STRUCTURE_QUERY_REPRESENTATIONS;
+var SCHEMA_IDENTIFICATION_PARAMETERS = require('sdmx-tck-api').constants.SCHEMA_IDENTIFICATION_PARAMETERS;
 /*-----------------------------------------STRUCTURES-----------------------------------------*/
 
 function STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT() {
@@ -61,9 +61,23 @@ function STRUCTURES_REPRESENTATIONS_SUPPORT() {
     return testsArray;
 };
 
+/*-----------------------------------------SCHEMAS-----------------------------------------*/
+
+function SCHEMA_IDENTIFICATION_PARAMETERS_TESTS() {
+    let testsArray = [];
+
+    SCHEMA_IDENTIFICATION_PARAMETERS.getValues().forEach(parameter => {
+        testsArray.push({ index: "Schema", url: parameter.url, reqTemplate: parameter.template })
+    });
+
+    return testsArray;
+};
+
+
 module.exports = {
     STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT: STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT,
     STRUCTURE_REFERENCE_PARAMETER_TESTS: STRUCTURE_REFERENCE_PARAMETER_TESTS,
     STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS: STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS,
-    STRUCTURES_REPRESENTATIONS_SUPPORT: STRUCTURES_REPRESENTATIONS_SUPPORT
+    STRUCTURES_REPRESENTATIONS_SUPPORT: STRUCTURES_REPRESENTATIONS_SUPPORT,
+    SCHEMA_IDENTIFICATION_PARAMETERS_TESTS:SCHEMA_IDENTIFICATION_PARAMETERS_TESTS
 };

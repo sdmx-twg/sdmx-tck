@@ -1,4 +1,6 @@
 const API_VERSIONS = require('./ApiVersions.js').API_VERSIONS;
+const TEST_INDEX = require('./TestIndex.js').TEST_INDEX;
+
 
 const STRUCTURES_REST_RESOURCE = {
         datastructure: "datastructure",
@@ -27,19 +29,30 @@ const STRUCTURES_REST_RESOURCE = {
         actualconstraint: "actualconstraint"
 };
 
-function getResources(apiVersion) {
+function getResources(index,apiVersion) {
         let resourcesArray = [];
 
         for (var key in STRUCTURES_REST_RESOURCE) {
-                if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]) {
-                        resourcesArray.push(STRUCTURES_REST_RESOURCE[key]);
-                } else {
-                        if (STRUCTURES_REST_RESOURCE[key] !== "allowedconstraint"
-                                && STRUCTURES_REST_RESOURCE[key] !== "actualconstraint") {
-                                resourcesArray.push(STRUCTURES_REST_RESOURCE[key]);
-                        }
-                }
+                if(index === TEST_INDEX.Structure){
 
+                        if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]) {
+                                resourcesArray.push(STRUCTURES_REST_RESOURCE[key]);
+                        } else {
+                                if (STRUCTURES_REST_RESOURCE[key] !== STRUCTURES_REST_RESOURCE.allowedconstraint
+                                        && STRUCTURES_REST_RESOURCE[key] !== STRUCTURES_REST_RESOURCE.actualconstraint) {
+                                        resourcesArray.push(STRUCTURES_REST_RESOURCE[key]);
+                                }
+                        }
+        
+                }else if(index === TEST_INDEX.Schema){
+                        if (STRUCTURES_REST_RESOURCE[key] === STRUCTURES_REST_RESOURCE.datastructure 
+                                || STRUCTURES_REST_RESOURCE[key] ===STRUCTURES_REST_RESOURCE.dataflow 
+                                || STRUCTURES_REST_RESOURCE[key] ===STRUCTURES_REST_RESOURCE.provisionagreement
+                                || STRUCTURES_REST_RESOURCE[key] ===STRUCTURES_REST_RESOURCE.metadatastructure
+                                || STRUCTURES_REST_RESOURCE[key] ===STRUCTURES_REST_RESOURCE.metadataflow){
+                                        resourcesArray.push(STRUCTURES_REST_RESOURCE[key]);
+                                }
+                }
         }
         return resourcesArray;
 };

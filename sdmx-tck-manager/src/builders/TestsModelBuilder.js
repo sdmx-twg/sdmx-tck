@@ -1,5 +1,6 @@
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
+var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 var getResources = require('sdmx-tck-api').constants.getResources;
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
@@ -7,6 +8,7 @@ var StructureIdentificationParametersTestsBuilder = require("../builders/Structu
 var StructureExtendedResourceIdentParamTestsBuilder = require("../builders/StructureExtendedResourceIdentParamTestsBuilder.js");
 var StructureFurtherDescribingResultsParamTestsBuilder = require("../builders/StructureFurtherDescribingResultsParamTestsBuilder.js");
 var StructureRepresentationSupportTestsBuilder = require("../builders/StructureRepresentationSupportTestsBuilder.js");
+var SchemaIdentificationParametersTestBuilder = require("../builders/SchemaIdentificationParametersTestBuilder.js");
 
 class TestsModelBuilder {
     /**
@@ -44,7 +46,7 @@ class TestsModelBuilder {
             let testObjParams = {};
             var allTests = [];
 
-            var arrayOfRestResources = getResources(apiVersion)
+            var arrayOfRestResources = getResources(index,apiVersion)
             for (let j = 0; j < arrayOfRestResources.length; j++) {
 
                 //Structure Resource Identification Parameters Tests
@@ -74,73 +76,26 @@ class TestsModelBuilder {
             }
             return allTests;
         }else if(index === TEST_INDEX.Schema){
-             var ts31 = [];
-             var ts32 = [];
-             var allTests=[];
-             var arrayOfRestResources = getResources(apiVersion)            
-             for (let j = 0; j < arrayOfRestResources.length; j++) {
-                
-                 var found = containsValue(arrayOfRestResources[j]);
-                 if(found){
-
-                     var schemaIdentificationArray = SCHEMAS_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT();
-                    for (let i=0;i<schemaIdentificationArray.length;i++){
-                        let test = schemaIdentificationArray[i];
-                        x.numOfTests = x.numOfTests + 1;
-
-                        testObjParams = {
-                            testId: "/schema/" + arrayOfRestResources[j] + test.url,
-                            index: index,
-                            apiVersion: apiVersion,
-                            resource: arrayOfRestResources[j],
-                            reqTemplate: test.reqTemplate,
-                            identifiers: { structureType: "", agency: "", id: "", version: "" },
-                            testType: TEST_TYPE.SCHEMA_IDENTIFICATION_PARAMETERS,
-                        }
-                        ts31.push(TestObjectBuilder.getTestObject(testObjParams));
-                    };
-
-                    var schemaFurtherDescribingResultsArray = SCHEMAS_FOR_FURTHER_DESCRIBING_RESULTS()
-                    for (let i=0;i<schemaFurtherDescribingResultsArray.length;i++){
-                        let test = schemaFurtherDescribingResultsArray[i];
-                        x.numOfTests = x.numOfTests + 1;
-
-                        testObjParams = {
-                            testId: "/schema/" + arrayOfRestResources[j] + test.url,
-                            index: index,
-                            apiVersion: apiVersion,
-                            resource: arrayOfRestResources[j],
-                            reqTemplate: test.reqTemplate,
-                            identifiers: { structureType: "", agency: "", id: "", version: "" },
-                            testType: TEST_TYPE.SCHEMA_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS,
-                        }
-                        ts32.push(TestObjectBuilder.getTestObject(testObjParams));
-                    };
-
-                    // for(let i=0;i<allTests.length;i++){
-                    //     if(allTests[i].testId === )
-                    // }
-                    x.numOfTests = x.numOfTests + 1;
-                    allTests.push({
-                        testId: "/" + arrayOfRestResources[j] + "/all/all/all",
-                        run: false,
-                        apiVersion: apiVersion,
-                        state: TEST_STATE.WAITING,
-                        reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.ALL_STUBS },
-                        identifiers: { structureType: "", agency: "all", id: "all", version: "all" },
-                        hasChildren: true,
-                        requireRandomSdmxObject: true,
-                        index: index,
-                        resource: arrayOfRestResources[j],
-                        failReason: "",
-                        testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                        subTests: ts31.concat(ts32)
-                    });
-
-                    ts31=[];
-                    ts32=[];
-                }
+            let schemaTest1 = [];
+            let schemaTest2 = [];
+            let testObjParams = {};
+            var allTests=[];
+            var arrayOfRestResources = getResources(index,apiVersion)            
+            for (let j = 0; j < arrayOfRestResources.length; j++) {
+                schemaTest1 = schemaTest1.concat(SchemaIdentificationParametersTestBuilder.getSchemaIdentificationParametersTests(index,x,apiVersion,arrayOfRestResources[j]));
             }
+            x.numOfTests = x.numOfTests + 1;
+            testObjParams = {
+                testId: "/" + STRUCTURES_REST_RESOURCE.contentconstraint + "/all/all/all?detail=full",
+                index: index,
+                apiVersion: apiVersion,
+                resource: STRUCTURES_REST_RESOURCE.contentconstraint,
+                reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.FULL },
+                identifiers: { structureType: "", agency: "all", id: "all", version: "all" },
+                testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
+                subTests: schemaTest1
+            }
+            allTests.push(TestObjectBuilder.getTestObject(testObjParams))
             return allTests;
         }else if (index === TEST_INDEX.Data) {
             return [];
