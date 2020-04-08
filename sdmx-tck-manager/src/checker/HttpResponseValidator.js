@@ -4,7 +4,7 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 const sdmx_requestor = require('sdmx-rest');
 var isDefined = require('sdmx-tck-api').utils.Utils.isDefined;
 
-const STRUCTURE_QUERY_REPRESENTATIONS = require('../constants/StructureQueryRepresentations').STRUCTURE_QUERY_REPRESENTATIONS;
+const STRUCTURE_QUERY_REPRESENTATIONS = require('sdmx-tck-api').constants.STRUCTURE_QUERY_REPRESENTATIONS;
 
 
 class HttpResponseValidator {

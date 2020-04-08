@@ -5,6 +5,9 @@ const DataQueryDetail = require('./constants/DataQueryDetail.js');
 const ItemSchemeTypes = require('./constants/ItemSchemeTypes.js');
 const SdmxStructureType = require('./constants/SdmxStructureType.js');
 const StructureDetail = require('./constants/StructureDetail.js');
+const ItemQueries = require ('./constants/ItemQueries.js');
+const StructureIdentificationParameters = require('./constants/StructureIdentificationParameters.js')
+const StructureQueryRepresentation = require('./constants/StructureQueryRepresentations.js')
 const StructureQueryDetail = require('./constants/StructureQueryDetail.js');
 const StructureReferenceDetail = require('./constants/StructureReferenceDetail.js');
 const StructuresRestResources = require('./constants/StructuresRestResources.js');
@@ -39,6 +42,9 @@ module.exports = {
         ITEM_SCHEME_TYPES: ItemSchemeTypes.ITEM_SCHEME_TYPES,
         SDMX_STRUCTURE_TYPE: SdmxStructureType.SDMX_STRUCTURE_TYPE,
         StructureDetail: StructureDetail.StructureDetail,
+        STRUCTURE_ITEM_QUERIES:ItemQueries.STRUCTURE_ITEM_QUERIES,
+        STRUCTURE_IDENTIFICATION_PARAMETERS:StructureIdentificationParameters.STRUCTURE_IDENTIFICATION_PARAMETERS,
+        STRUCTURE_QUERY_REPRESENTATIONS:StructureQueryRepresentation.STRUCTURE_QUERY_REPRESENTATIONS,
         STRUCTURE_QUERY_DETAIL: StructureQueryDetail.STRUCTURE_QUERY_DETAIL,
         getStructureQueryDetail: StructureQueryDetail.getStructureQueryDetail,
         STRUCTURE_REFERENCE_DETAIL: StructureReferenceDetail.STRUCTURE_REFERENCE_DETAIL,

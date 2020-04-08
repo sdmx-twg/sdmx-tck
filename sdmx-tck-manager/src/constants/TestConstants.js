@@ -3,8 +3,8 @@ var STRUCTURE_QUERY_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_QUERY_D
 var getStructureQueryDetail = require('sdmx-tck-api').constants.getStructureQueryDetail;
 var SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
-var STRUCTURE_IDENTIFICATION_PARAMETERS = require('./StructureIdentificationParameters.js').STRUCTURE_IDENTIFICATION_PARAMETERS;
-var STRUCTURE_QUERY_REPRESENTATIONS = require('./StructureQueryRepresentations.js').STRUCTURE_QUERY_REPRESENTATIONS;
+var STRUCTURE_IDENTIFICATION_PARAMETERS = require('sdmx-tck-api').constants.STRUCTURE_IDENTIFICATION_PARAMETERS;
+var STRUCTURE_QUERY_REPRESENTATIONS = require('sdmx-tck-api').constants.STRUCTURE_QUERY_REPRESENTATIONS;
 var SCHEMA_IDENTIFICATION_PARAMETERS = require('sdmx-tck-api').constants.SCHEMA_IDENTIFICATION_PARAMETERS;
 /*-----------------------------------------STRUCTURES-----------------------------------------*/
 
