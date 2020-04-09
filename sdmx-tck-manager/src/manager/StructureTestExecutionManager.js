@@ -10,7 +10,7 @@ var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
 var ContentConstraintTypeValidator = require('../checker/ContentConstraintTypeValidator.js')
 const sdmx_requestor = require('sdmx-rest');
 const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator')
-class TestExecutionManager {
+class StructureTestExecutionManager {
     static async executeTest(toRun, apiVersion, endpoint) {
         let testResult = toRun;
         try {
@@ -84,4 +84,4 @@ class TestExecutionManager {
     }
 };
 
-module.exports = TestExecutionManager;
+module.exports = StructureTestExecutionManager;
