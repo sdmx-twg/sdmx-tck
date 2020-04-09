@@ -2,8 +2,7 @@ var express = require('express');
 const app = express();
 
 var TestsModelBuilder = require('./src/builders/TestsModelBuilder.js');
-var TestExecutionManager = require('./src/manager/TestExecutionManager.js');
-
+var TestExecutionManagerFactory = require('./src/manager/TestExecutionManagerFactory.js')
 const server = app.listen(5000, () => {
     console.log("Server is listening on port: 5000");
 });
@@ -31,7 +30,7 @@ app.post("/tck-api/execute-test", (req, res) => {
         let apiVersion = payload.apiVersion;
         let endpoint = payload.endpoint;
 
-        TestExecutionManager.executeTest(test, apiVersion, endpoint).then(
+        TestExecutionManagerFactory.getTestsManager(test.index).executeTest(test, apiVersion, endpoint).then(
             (result) => { 
                 console.log("Test: " + test.testId + " completed.");
                 res.send(JSON.stringify(result)) 
