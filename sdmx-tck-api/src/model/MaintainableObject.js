@@ -59,6 +59,14 @@ class MaintainableObject {
     asReference() {
         return new StructureReference(this.getStructureType(), this.getAgencyId(), this.getId(), this.getVersion());
     }
+    getRandomChildOfSpecificStructureType(structureType){
+        let requestedTypeChildren = this.children.filter(child => child.getStructureType() === structureType)
+        if(!Array.isArray(requestedTypeChildren) || (Array.isArray(requestedTypeChildren) && requestedTypeChildren.length === 0)){
+                return {};
+        }
+        return requestedTypeChildren[Math.floor(Math.random() * requestedTypeChildren.length)];
+        
+    }
     toString() {
         let str = [];
         str.push("structureType=" + this.getStructureType());

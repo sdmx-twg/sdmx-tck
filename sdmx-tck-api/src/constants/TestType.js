@@ -6,6 +6,7 @@ const TEST_TYPE = {
     STRUCTURE_TARGET_CATEGORY: "Structure Target Category",
     STRUCTURE_REFERENCE_PARTIAL:"Structure Reference Partial",
 
+    PREPARE_SCHEMA_TESTS:"Prepare Schema Tests",
     SCHEMA_IDENTIFICATION_PARAMETERS:"Schema Identification Parameters"
 };
 

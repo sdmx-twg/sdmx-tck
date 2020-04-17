@@ -132,6 +132,33 @@ export const passIdentifiersToChildren = (prevStore, action) => {
 	}
 	return testsArray;
 };
+export function passIdentifiersToSchemaTests(schemaTests,schemaTestsIdentifiers){
+	if (schemaTests.subTests && Array.isArray(schemaTests.subTests)) {
+		for (let i = 0; i < schemaTests.subTests.length; i++) {
+			if(Object.keys(schemaTestsIdentifiers).indexOf(schemaTests.subTests[i].resource) !== -1){
+				schemaTests.subTests[i].identifiers.structureType = schemaTestsIdentifiers[schemaTests.subTests[i].resource].structureType
+				schemaTests.subTests[i].identifiers.agency = schemaTestsIdentifiers[schemaTests.subTests[i].resource].agencyId
+				schemaTests.subTests[i].identifiers.id = schemaTestsIdentifiers[schemaTests.subTests[i].resource].id
+				schemaTests.subTests[i].identifiers.version = schemaTestsIdentifiers[schemaTests.subTests[i].resource].version
+			}
+
+			if (schemaTests.subTests[i].subTests && Array.isArray(schemaTests.subTests[i].subTests)) {
+				passIdentifiersToSchemaTests(schemaTests.subTests[i],schemaTestsIdentifiers)
+			}
+		}
+	}
+}
+export const configSchemaTestsIdentifiers = (prevStore,action) =>{
+	var testsArray = [...prevStore];
+
+	for (let i = 0; i < testsArray.length; i++) {
+		if (testsArray[i].id === action.testIndex) {
+			passIdentifiersToSchemaTests(testsArray[i],action.schemaTestsIdentifiers);
+		}
+	}
+	console.log(testsArray)
+	return testsArray;
+}
 
 export const findCorrectChild = (childToFind,searchArray) =>{
 	for(let i=0;i<searchArray.length;i++){

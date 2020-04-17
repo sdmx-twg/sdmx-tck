@@ -1,8 +1,16 @@
 var express = require('express');
 const app = express();
 
+var TestObjectBuilder = require('./src/builders/TestObjectBuilder.js');
 var TestsModelBuilder = require('./src/builders/TestsModelBuilder.js');
 var TestExecutionManagerFactory = require('./src/manager/TestExecutionManagerFactory.js')
+var SchemaTestsPreparationReqManager = require('./src/manager/SchemaTestsPreparationReqManager.js')
+var TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
+var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
+const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
+const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
+
+
 const server = app.listen(5000, () => {
     console.log("Server is listening on port: 5000");
 });
@@ -23,11 +31,34 @@ app.post("/tck-api/prepare-tests", (req, res) => {
     res.send(JSON.stringify(tests));
 });
 
+app.post("/tck-api/configure-schema-tests", (req, res) => {
+    let payload = req.body;
+    let endpoint = payload.endpoint;
+    let apiVersion = payload.apiVersion;
+    let configParams = {
+        testId: "/" + STRUCTURES_REST_RESOURCE.contentconstraint + "/all/all/all?detail=full",
+        index: TEST_INDEX.Structure,
+        apiVersion: apiVersion,
+        resource: STRUCTURES_REST_RESOURCE.contentconstraint,
+        reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.FULL },
+        identifiers: { structureType: "", agency: "all", id: "all", version: "all" },
+        testType: TEST_TYPE.PREPARE_SCHEMA_TESTS
+    }
+    let configObj = TestObjectBuilder.getTestObject(configParams)
+    SchemaTestsPreparationReqManager.executeTest(configObj, apiVersion, endpoint).then(
+        (result) => { 
+            res.send(JSON.stringify(result)) 
+        },
+        (error) => { 
+            res.send(error) 
+        });
+});
+
 app.post("/tck-api/execute-test", (req, res) => {
         let payload = req.body;
-
         let test = payload.test;
-        let apiVersion = payload.apiVersion;
+        let apiVersion = test.apiVersion;
+        //let apiVersion = payload.apiVersion;
         let endpoint = payload.endpoint;
 
         TestExecutionManagerFactory.getTestsManager(test.index).executeTest(test, apiVersion, endpoint).then(

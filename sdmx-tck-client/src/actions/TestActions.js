@@ -1,5 +1,6 @@
 import { store } from '../store/AppStore';
 import ACTION_NAMES from '../constants/ActionsNames';
+import { TEST_INDEX } from 'sdmx-tck-api/src/constants/TestIndex';
 
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
@@ -35,6 +36,9 @@ export function updateTestState(test, state) {
 export function dataFromParent(test){
     return { type: ACTION_NAMES.GET_DATA_FROM_PARENT, test: test };
 }
+export function configSchemaTestsIdentifiers(schemaTestsIdentifiers,testIndex){
+    return {type: ACTION_NAMES.CONFIG_SCHEMA_TESTS_IDENTIFIERS, testIndex:testIndex, schemaTestsIdentifiers:schemaTestsIdentifiers}
+}
 
 export function fetchTests(endpoint, apiVersion, testIndices) {
     let body = { endpoint, apiVersion, testIndices };
@@ -49,6 +53,7 @@ export function fetchTests(endpoint, apiVersion, testIndices) {
 
 async function requestTestRun(endpoint, test) {
      try{
+        
         let body = { endpoint, test };
         const response = await fetch('/tck-api/execute-test', {
             method: 'POST',
@@ -62,6 +67,24 @@ async function requestTestRun(endpoint, test) {
      }catch(err){
              return {error:err.toString()};
      }
+
+};
+
+async function configureSchemaTests(endpoint,apiVersion) {
+    try{
+       let body = { endpoint,apiVersion };
+       const response = await fetch('/tck-api/configure-schema-tests', {
+           method: 'POST',
+          
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify(body)
+       });
+       return await response.json();
+    }catch(err){
+            return {error:err.toString()};
+    }
 
 };
 
@@ -91,8 +114,19 @@ export function exportReport(tests) {
     });
 };
 
+async function configureSchemaTestsIdentifiers(endpoint,tests){
+    if(TEST_INDEX.Schema === tests.id){
+        let apiVersion = (tests.subTests && Array.isArray(tests.subTests) && tests.subTests.length>0)?tests.subTests[0].apiVersion:undefined;
+        let schemaTestsIdentifiers = await configureSchemaTests(endpoint,apiVersion);
+        if(Object.entries(schemaTestsIdentifiers).length > 0 && schemaTestsIdentifiers instanceof Object){
+            store.dispatch(configSchemaTestsIdentifiers(schemaTestsIdentifiers,tests.id));  
+        }
+    }
+}
+
 async function runTests(endpoint, tests) {
     for (let i = 0; i < tests.length; i++) {
+        await configureSchemaTestsIdentifiers(endpoint,tests[i]);
         for (let j = 0; j < tests[i].subTests.length; j++) {
             await runTest(endpoint, tests[i].subTests[j]);
         }

@@ -78,24 +78,12 @@ class TestsModelBuilder {
         }else if(index === TEST_INDEX.Schema){
             let schemaTest1 = [];
             let schemaTest2 = [];
-            let testObjParams = {};
             var allTests=[];
             var arrayOfRestResources = getResources(index,apiVersion)            
             for (let j = 0; j < arrayOfRestResources.length; j++) {
                 schemaTest1 = schemaTest1.concat(SchemaIdentificationParametersTestBuilder.getSchemaIdentificationParametersTests(index,x,apiVersion,arrayOfRestResources[j]));
             }
-            x.numOfTests = x.numOfTests + 1;
-            testObjParams = {
-                testId: "/" + STRUCTURES_REST_RESOURCE.contentconstraint + "/all/all/all?detail=full",
-                index: index,
-                apiVersion: apiVersion,
-                resource: STRUCTURES_REST_RESOURCE.contentconstraint,
-                reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.FULL },
-                identifiers: { structureType: "", agency: "all", id: "all", version: "all" },
-                testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                subTests: schemaTest1
-            }
-            allTests.push(TestObjectBuilder.getTestObject(testObjParams))
+            allTests = schemaTest1;
             return allTests;
         }else if (index === TEST_INDEX.Data) {
             return [];
