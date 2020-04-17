@@ -28,7 +28,7 @@ class RunButton extends React.Component {
             alert("Please select at least one test index.");
             return;
         }
-
+        document.getElementById("runBtn").disabled = true;
         this.props.initialiseModel(endpoint, apiVersion, indices);
     };
 
