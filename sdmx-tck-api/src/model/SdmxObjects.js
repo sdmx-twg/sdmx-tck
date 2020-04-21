@@ -84,7 +84,7 @@ class SdmxObjects {
 			if (isDefined(dcschemes)) {
 				arrayOfStructures = arrayOfStructures.concat(dcschemes);
 			}
-			let dpschemes = this.getSdmxObjects().get(SDMX_STRUCTURE_TYPE.DATA_CONSUMER_SCHEME.key);
+			let dpschemes = this.getSdmxObjects().get(SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key);
 			if (isDefined(dpschemes)) {
 				arrayOfStructures = arrayOfStructures.concat(dpschemes);
 			}
