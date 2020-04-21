@@ -47,26 +47,24 @@ class SchemaTestsPreparationReqManager {
 
     static getSchemaTestsIdentifiers(toRun,workspace) {
         let identifiersForSchemaTestsResources = {}
+        let found = false;
+        var j=0;
         if(toRun.testType === TEST_TYPE.PREPARE_SCHEMA_TESTS && toRun.resource === STRUCTURES_REST_RESOURCE.contentconstraint){
             let schemaTestsResources = getResources(TEST_INDEX.Schema)
             let requestedStructureType = workspace.getSdmxObjectType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource))
             if(requestedStructureType){
                 requestedStructureType = requestedStructureType.filter(obj => (obj.type)&& obj.type ==="Allowed" && Array.isArray(obj.getChildren())&& obj.getChildren().length>0);
-                let found = false;
-                var j=0;
                 for(var i in schemaTestsResources){
                     found = false;
                     j=0; 
                     while(j<requestedStructureType.length && !found){
-                        let requestedArtefact = requestedStructureType[j].getRandomChildOfSpecificStructureType(SDMX_STRUCTURE_TYPE.fromRestResource(schemaTestsResources[i]))
-                        console.log(requestedArtefact)
-                        if(Object.keys(requestedArtefact).length > 0){
-                            identifiersForSchemaTestsResources[schemaTestsResources[i]] = requestedArtefact
+                        let requestedChild = requestedStructureType[j].getRandomChildOfSpecificStructureType(SDMX_STRUCTURE_TYPE.fromRestResource(schemaTestsResources[i]))
+                        if(Object.keys(requestedChild).length > 0){
+                            identifiersForSchemaTestsResources[schemaTestsResources[i]] = requestedChild
                             found = true;
                         }
                         j++;
                     }
-    
                 }
             }
         }
