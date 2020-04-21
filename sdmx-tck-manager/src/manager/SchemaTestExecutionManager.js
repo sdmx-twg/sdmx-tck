@@ -3,7 +3,7 @@ const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 var SdmxXmlParser = require('sdmx-tck-parsers').parsers.SdmxXmlParser;
 var TckError = require('sdmx-tck-api').errors.TckError;
-var StructureRequestBuilder = require('../builders/StructureRequestBuilder.js');
+var SchemaRequestBuilder = require('../builders/SchemaRequestBuilder.js');
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
 var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
@@ -22,14 +22,9 @@ class SchemaTestExecutionManager {
                 throw new TckError("Identifiers Missing either because there is no constraint constraining a "+testResult.resource+
                                     " or there were no content constraints found at all.")
             }
-            // /*We have to make sure that the constraint is of allowed type before it runs.
-            // SPECIAL HANDLING FOR STRUCTURE REFERENCE TEST ONLY*/
-            // if (toRun.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL && toRun.parentWorkspace) {
-            //     toRun.identifiers = ContentConstraintTypeValidator.getContentConstraintOfAllowedType(toRun)
-            // }
-            //endpoint = endpoint+"schema"
-            let preparedRequest = await StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
-                toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items);
+
+            let preparedRequest = await SchemaRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
+                toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version);
 
             console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
             //Alternative way to pass the url generated as string in order to configure the skipDefaults parameter.
