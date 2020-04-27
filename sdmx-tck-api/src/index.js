@@ -30,6 +30,8 @@ var ContentConstraintObject = require('./model/ContentConstraintObject.js');
 var SdmxObjects = require('./model/SdmxObjects.js');
 var CubeRegionObject = require('./model/CubeRegionObject.js');
 var DataKeySetObject = require('./model/DataKeySetObject.js');
+var XSDElement = require('./model/XSDElement.js')
+
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
@@ -68,7 +70,8 @@ module.exports = {
         ContentConstraintObject: ContentConstraintObject,
         SdmxObjects: SdmxObjects,
         CubeRegionObject: CubeRegionObject,
-        DataKeySetObject:DataKeySetObject
+        DataKeySetObject:DataKeySetObject,
+        XSDElement:XSDElement
     },
     utils: {
         Utils,
