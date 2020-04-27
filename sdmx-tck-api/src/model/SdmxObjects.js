@@ -25,15 +25,6 @@ class SdmxObjects {
 		}
 		return null;
 	};
-	getSdmxObjectType(structureType){
-		if (!isDefined(structureType)) {
-			throw new Error('SDMX structure type not provided.');
-		}
-		if(isDefined(this.getSdmxObjects())){
-			return this.getSdmxObjects().get(structureType)
-		}
-		return null;
-	}
 	getSdmxObjectsList() {
 		let array = [];
 		this.getSdmxObjects().forEach((structureList) => {

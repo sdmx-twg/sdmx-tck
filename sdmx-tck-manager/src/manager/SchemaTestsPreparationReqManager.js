@@ -51,7 +51,7 @@ class SchemaTestsPreparationReqManager {
         var j=0;
         if(toRun.testType === TEST_TYPE.PREPARE_SCHEMA_TESTS && toRun.resource === STRUCTURES_REST_RESOURCE.contentconstraint){
             let schemaTestsResources = getResources(TEST_INDEX.Schema)
-            let requestedStructureType = workspace.getSdmxObjectType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource))
+            let requestedStructureType = workspace.getSdmxObjects().get(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource))
             if(requestedStructureType){
                 requestedStructureType = requestedStructureType.filter(obj => (obj.type)&& obj.type ==="Allowed" && Array.isArray(obj.getChildren())&& obj.getChildren().length>0);
                 for(var i in schemaTestsResources){
