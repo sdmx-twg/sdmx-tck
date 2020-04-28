@@ -7,7 +7,6 @@ class SdmxV21JsonParser {
             return SdmxV21StructuresParser.parseStructures(result);
         }
         else if(result.schema){
-            console.log("HERE")
             return SdmxV21SchemasParser.parseXSD(result);
         }
     }

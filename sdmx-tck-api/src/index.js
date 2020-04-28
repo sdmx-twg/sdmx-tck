@@ -31,6 +31,7 @@ var SdmxObjects = require('./model/SdmxObjects.js');
 var CubeRegionObject = require('./model/CubeRegionObject.js');
 var DataKeySetObject = require('./model/DataKeySetObject.js');
 var XSDElement = require('./model/XSDElement.js')
+var XSDSimpleType = require('./model/XSDSimpleType.js')
 
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
@@ -71,7 +72,9 @@ module.exports = {
         SdmxObjects: SdmxObjects,
         CubeRegionObject: CubeRegionObject,
         DataKeySetObject:DataKeySetObject,
-        XSDElement:XSDElement
+        XSDElement:XSDElement,
+        XSDSimpleType:XSDSimpleType
+
     },
     utils: {
         Utils,

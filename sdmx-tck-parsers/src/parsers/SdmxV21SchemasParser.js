@@ -11,7 +11,8 @@ var SdmxV21JsonItemsParser = require('./SdmxV21JsonItemsParser.js');
 var SdmxV21JsonForStubsParser = require('./SdmxV21JsonForStubsParser.js');
 
 var XSDElement = require('sdmx-tck-api').model.XSDElement;
-
+var XSDSimpleType = require('sdmx-tck-api').model.XSDSimpleType;
+var SdmxV21SchemaEnumerationParser = require('./SdmxV21SchemaEnumerationParser.js')
 class SdmxV21SchemasParser {
     static parseXSD(sdmxJsonObjects) {
        
@@ -24,7 +25,7 @@ class SdmxV21SchemasParser {
             let s = sdmxJsonObjects.schema;
             //console.log(s)
             SdmxV21SchemasParser.parseElements(schemaComponents, s);
-            // SdmxV21SchemasParser.parseSimpleTypes(schemaComponents, s);
+            SdmxV21SchemasParser.parseSimpleTypes(schemaComponents, s);
             // SdmxV21SchemasParser.parseComplexTypes(schemaComponents, s);
         }
         return schemaComponents;
@@ -34,13 +35,22 @@ class SdmxV21SchemasParser {
             let elements = s.element;
             schemaComponents.set("elements", []);
             for (var e in elements) {
-                schemaComponents.get("elements").push(
-                    new XSDElement(elements[e])
-                );
+                schemaComponents.get("elements").push(new XSDElement(elements[e]));
             }
         }
     };
     static parseSimpleTypes(schemaComponents, s) {
+        if(s.simpleType){
+              //console.log(s.simpleType[0].$)
+              //console.log(s.simpleType[0].restriction[0].enumeration[0])
+            let simpleTypes = s.simpleType;
+            schemaComponents.set("simpleTypes",[]);
+            for (var st in simpleTypes){
+                console.log(simpleTypes[st])
+                schemaComponents.get("simpleTypes").push(new XSDSimpleType(simpleTypes[st], 
+                                                         SdmxV21SchemaEnumerationParser.getEnumerations(simpleTypes[st])));
+            }
+        }
         // if (s.OrganisationSchemes && s.OrganisationSchemes[0] && s.OrganisationSchemes[0].OrganisationUnitScheme) {
         //     let schemes = s.OrganisationSchemes[0].OrganisationUnitScheme;
         //     for (var c in schemes) {
