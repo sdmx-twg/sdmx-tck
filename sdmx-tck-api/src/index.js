@@ -15,6 +15,7 @@ const SchemaIdentificationParameters = require('./constants/SchemaIdentification
 const TestState = require('./constants/TestState.js');
 const TestIndex = require('./constants/TestIndex.js');
 const TestType = require('./constants/TestType.js');
+const SchemaFacetsMapping = require('./constants/SchemaFacetsMapping.js');
 
 // ERRORS
 var TckError = require('./errors/TckError.js');
@@ -56,7 +57,8 @@ module.exports = {
         SCHEMA_IDENTIFICATION_PARAMETERS:SchemaIdentificationParameters.SCHEMA_IDENTIFICATION_PARAMETERS,
         TEST_STATE: TestState.TEST_STATE,
         TEST_INDEX: TestIndex.TEST_INDEX,
-        TEST_TYPE: TestType.TEST_TYPE
+        TEST_TYPE: TestType.TEST_TYPE,
+        SCHEMA_FACETS:SchemaFacetsMapping.SCHEMA_FACETS
     },
     errors: {
         TckError: TckError,

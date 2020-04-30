@@ -1,18 +1,8 @@
-var MaintainableObject = require('sdmx-tck-api').model.MaintainableObject;
-var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
-var DataflowObject = require('sdmx-tck-api').model.DataflowObject;
-var DataStructureObject = require('sdmx-tck-api').model.DataStructureObject;
-var ContentConstraintObject = require('sdmx-tck-api').model.ContentConstraintObject;
-var SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
-var isDefined = require('sdmx-tck-api').utils.Utils.isDefined;
-
-var SdmxV21StructureReferencesParser = require('./SdmxV21StructureReferencesParser.js');
-var SdmxV21JsonItemsParser = require('./SdmxV21JsonItemsParser.js');
-var SdmxV21JsonForStubsParser = require('./SdmxV21JsonForStubsParser.js');
-
 var XSDElement = require('sdmx-tck-api').model.XSDElement;
 var XSDSimpleType = require('sdmx-tck-api').model.XSDSimpleType;
 var SdmxV21SchemaEnumerationParser = require('./SdmxV21SchemaEnumerationParser.js')
+var SdmxV21SchemaFacetsParser = require('./SdmxV21SchemaFacetsParser.js')
+
 class SdmxV21SchemasParser {
     static parseXSD(sdmxJsonObjects) {
        
@@ -46,9 +36,9 @@ class SdmxV21SchemasParser {
             let simpleTypes = s.simpleType;
             schemaComponents.set("simpleTypes",[]);
             for (var st in simpleTypes){
-                console.log(simpleTypes[st])
-                schemaComponents.get("simpleTypes").push(new XSDSimpleType(simpleTypes[st], 
-                                                         SdmxV21SchemaEnumerationParser.getEnumerations(simpleTypes[st])));
+                schemaComponents.get("simpleTypes").push(new XSDSimpleType(simpleTypes[st],
+                                                        SdmxV21SchemaFacetsParser.getFacets(simpleTypes[st]),
+                                                        SdmxV21SchemaEnumerationParser.getEnumerations(simpleTypes[st])));
             }
         }
         // if (s.OrganisationSchemes && s.OrganisationSchemes[0] && s.OrganisationSchemes[0].OrganisationUnitScheme) {

@@ -9,6 +9,7 @@ var SdmxV21JsonDsdComponentParser = require('./parsers/SdmxV21JsonDsdComponentPa
 var SdmxV21StructuresParser = require('./parsers/SdmxV21StructuresParser.js')
 var SdmxV21SchemasParser = require('./parsers/SdmxV21SchemasParser.js')
 var SdmxV21SchemaEnumerationParser = require('./parsers/SdmxV21SchemaEnumerationParser.js')
+var SdmxV21SchemaFacetsParser = require('./parsers/SdmxV21SchemaFacetsParser.js')
 
 module.exports = {
     parsers: {
@@ -18,6 +19,7 @@ module.exports = {
         SdmxV21StructuresParser:SdmxV21StructuresParser,
         SdmxV21SchemasParser:SdmxV21SchemasParser,
         SdmxV21SchemaEnumerationParser:SdmxV21SchemaEnumerationParser,
+        SdmxV21SchemaFacetsParser:SdmxV21SchemaFacetsParser,
         SdmxV21StructureReferencesParser: SdmxV21StructureReferencesParser,
         SdmxV21JsonCubeRegionParser: SdmxV21JsonCubeRegionParser,
         SdmxV21JsonDataKeySetParser:SdmxV21JsonDataKeySetParser,
