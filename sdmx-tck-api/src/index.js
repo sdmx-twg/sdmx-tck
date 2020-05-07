@@ -31,9 +31,13 @@ var ContentConstraintObject = require('./model/ContentConstraintObject.js');
 var SdmxObjects = require('./model/SdmxObjects.js');
 var CubeRegionObject = require('./model/CubeRegionObject.js');
 var DataKeySetObject = require('./model/DataKeySetObject.js');
-var XSDElement = require('./model/XSDElement.js')
+var XSDGlobalElement = require('./model/XSDGlobalElement.js')
 var XSDSimpleType = require('./model/XSDSimpleType.js')
-
+var XSDComplexType = require('./model/XSDComplexType.js')
+var XSDLocalElement = require('./model/XSDLocalElement.js')
+var XSDReferenceElement = require('./model/XSDReferenceElement.js')
+var XSDAttribute = require('./model/XSDAttribute.js')
+var XSDCompositor = require('./model/XSDCompositor.js')
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
@@ -74,8 +78,13 @@ module.exports = {
         SdmxObjects: SdmxObjects,
         CubeRegionObject: CubeRegionObject,
         DataKeySetObject:DataKeySetObject,
-        XSDElement:XSDElement,
-        XSDSimpleType:XSDSimpleType
+        XSDGlobalElement:XSDGlobalElement,
+        XSDSimpleType:XSDSimpleType,
+        XSDComplexType:XSDComplexType,
+        XSDLocalElement:XSDLocalElement,
+        XSDReferenceElement:XSDReferenceElement,
+        XSDAttribute:XSDAttribute,
+        XSDCompositor:XSDCompositor
 
     },
     utils: {

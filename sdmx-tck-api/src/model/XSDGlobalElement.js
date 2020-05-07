@@ -1,6 +1,6 @@
 var isDefined = require('../utils/Utils').isDefined;
 
-class XSDElement {
+class XSDGlobalElement {
     constructor(props) {
        this.name = props.$.name;
        this.type = props.$.type;
@@ -27,4 +27,4 @@ class XSDElement {
     }
 };
 
-module.exports = XSDElement;
+module.exports = XSDGlobalElement;

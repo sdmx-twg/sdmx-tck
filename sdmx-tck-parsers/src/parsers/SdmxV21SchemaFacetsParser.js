@@ -16,7 +16,6 @@ class SdmxV21SchemaFacetsParser {
                     if (facet[i] && facet[i].$ && facet[i].$.value) {
                        try {
                         listOfFacets.push({facet:SCHEMA_FACETS[property].value,value:facet[i].$.value})
-                        console.log(listOfFacets)
                        } catch (ex) {
                        }
                     }

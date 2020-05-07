@@ -1,7 +1,10 @@
-var XSDElement = require('sdmx-tck-api').model.XSDElement;
+var XSDGlobalElement = require('sdmx-tck-api').model.XSDGlobalElement;
 var XSDSimpleType = require('sdmx-tck-api').model.XSDSimpleType;
+var XSDComplexType = require('sdmx-tck-api').model.XSDComplexType;
 var SdmxV21SchemaEnumerationParser = require('./SdmxV21SchemaEnumerationParser.js')
 var SdmxV21SchemaFacetsParser = require('./SdmxV21SchemaFacetsParser.js')
+var SdmxV21SchemaCompositorsParser = require('./SdmxV21SchemaCompositorsParser.js')
+var SdmxV21SchemaAttributeParser = require('./SdmxV21SchemaAttributeParser.js')
 
 class SdmxV21SchemasParser {
     static parseXSD(sdmxJsonObjects) {
@@ -16,7 +19,7 @@ class SdmxV21SchemasParser {
             //console.log(s)
             SdmxV21SchemasParser.parseElements(schemaComponents, s);
             SdmxV21SchemasParser.parseSimpleTypes(schemaComponents, s);
-            // SdmxV21SchemasParser.parseComplexTypes(schemaComponents, s);
+            SdmxV21SchemasParser.parseComplexTypes(schemaComponents, s);
         }
         return schemaComponents;
     };
@@ -25,14 +28,12 @@ class SdmxV21SchemasParser {
             let elements = s.element;
             schemaComponents.set("elements", []);
             for (var e in elements) {
-                schemaComponents.get("elements").push(new XSDElement(elements[e]));
+                schemaComponents.get("elements").push(new XSDGlobalElement(elements[e]));
             }
         }
     };
     static parseSimpleTypes(schemaComponents, s) {
         if(s.simpleType){
-              //console.log(s.simpleType[0].$)
-              //console.log(s.simpleType[0].restriction[0].enumeration[0])
             let simpleTypes = s.simpleType;
             schemaComponents.set("simpleTypes",[]);
             for (var st in simpleTypes){
@@ -41,42 +42,17 @@ class SdmxV21SchemasParser {
                                                         SdmxV21SchemaEnumerationParser.getEnumerations(simpleTypes[st])));
             }
         }
-        // if (s.OrganisationSchemes && s.OrganisationSchemes[0] && s.OrganisationSchemes[0].OrganisationUnitScheme) {
-        //     let schemes = s.OrganisationSchemes[0].OrganisationUnitScheme;
-        //     for (var c in schemes) {
-        //         let structureType = SDMX_STRUCTURE_TYPE.ORGANISATION_UNIT_SCHEME.key;
-        //         let array = structures.get(structureType);
-        //         if (array === null || array === undefined) {
-        //             structures.set(structureType, []);
-        //         }
-        //         structures.get(structureType).push(
-        //             new ItemSchemeObject(structureType, schemes[c],
-        //                 SdmxV21StructureReferencesParser.getReferences(schemes[c]),
-        //                 SdmxV21JsonForStubsParser.getDetail(structureType, schemes[c]),
-        //                 SdmxV21JsonItemsParser.getItems(structureType, schemes[c])
-        //             )
-        //         );
-        //     }
-        // }
     };
     static parseComplexTypes(schemaComponents, s) {
-        // if (s.OrganisationSchemes && s.OrganisationSchemes[0] && s.OrganisationSchemes[0].DataProviderScheme) {
-        //     let schemes = s.OrganisationSchemes[0].DataProviderScheme;
-        //     for (var c in schemes) {
-        //         let structureType = SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key;
-        //         let array = structures.get(structureType);
-        //         if (array === null || array === undefined) {
-        //             structures.set(structureType, []);
-        //         }
-        //         structures.get(structureType).push(
-        //             new ItemSchemeObject(structureType, schemes[c],
-        //                 SdmxV21StructureReferencesParser.getReferences(schemes[c]),
-        //                 SdmxV21JsonForStubsParser.getDetail(structureType, schemes[c]),
-        //                 SdmxV21JsonItemsParser.getItems(structureType, schemes[c])
-        //             )
-        //         );
-        //     }
-        // }
+        if(s.complexType){
+          let complexTypes = s.complexType;
+          schemaComponents.set("complexTypes",[]);
+          for (var ct in complexTypes){
+              schemaComponents.get("complexTypes").push(new XSDComplexType(complexTypes[ct],
+                                                      SdmxV21SchemaCompositorsParser.getCompositors(complexTypes[ct]),
+                                                      SdmxV21SchemaAttributeParser.getAttributes(complexTypes[ct])));
+          }
+      }
     };
 
 };
