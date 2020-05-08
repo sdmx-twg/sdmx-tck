@@ -4,6 +4,7 @@ class XSDLocalElement {
     constructor(props) {
        this.name = props.$.name;
        this.type = props.$.type;
+       this.form = props.$.form;
        this.minOccurs = props.$.minOccurs;
        this.maxOccurs = props.$.maxOccurs
     };
@@ -19,6 +20,12 @@ class XSDLocalElement {
     }
     getType(){
         return this.type;
+    }
+    setForm(form){
+        this.form = form;
+    }
+    getForm(){
+        return this.form
     }
     setMinOccurs(minOccurs){
         this.minOccurs = minOccurs

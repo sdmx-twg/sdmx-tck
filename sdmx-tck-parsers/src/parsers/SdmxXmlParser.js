@@ -54,7 +54,7 @@ class SdmxXmlParser {
                     reject("An error occurred during the SDMX-ML parsing. " + err);
                 }
                 var structures = SdmxV21JsonParser.parse(result);
-                console.log(structures)
+                //console.log(structures)
                 resolve(new SdmxObjects(structures, result));
             });
         });
