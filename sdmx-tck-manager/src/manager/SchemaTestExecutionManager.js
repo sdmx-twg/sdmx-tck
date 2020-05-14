@@ -47,26 +47,32 @@ class SchemaTestExecutionManager {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
 
+            //XSD VALIDATION
+            let xsdString = await httpResponse.text();
+            await new SdmxXmlParser().schemaValidation(xsdString);
+            console.log("Test: " + toRun.testId + " Response (XSD) validated.");
+
+           
             //// WORKSPACE VALIDATION ////
-            let workspace = await new SdmxXmlParser().getIMObjects(await httpResponse.text());
+            let workspace = await new SdmxXmlParser().getIMObjects(xsdString);
             testResult.workspace = workspace;
             console.log("Test: " + toRun.testId + " SDMX workspace created.");
         
-            // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
-            var randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
-            if (toRun.resource === "structure") {
-                randomStructure = workspace.getRandomSdmxObject();
-            }
-            testResult.randomStructure = {
-                structureType: randomStructure.getStructureType(),
-                agencyId: randomStructure.getAgencyId(),
-                id: randomStructure.getId(),
-                version: randomStructure.getVersion(),
-            };
-            if (randomStructure instanceof ItemSchemeObject) {
-                testResult.randomItems = randomStructure.getItemsCombination();
-            }
-
+            // // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
+            // var randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
+            // if (toRun.resource === "structure") {
+            //     randomStructure = workspace.getRandomSdmxObject();
+            // }
+            // testResult.randomStructure = {
+            //     structureType: randomStructure.getStructureType(),
+            //     agencyId: randomStructure.getAgencyId(),
+            //     id: randomStructure.getId(),
+            //     version: randomStructure.getVersion(),
+            // };
+            // if (randomStructure instanceof ItemSchemeObject) {
+            //     testResult.randomItems = randomStructure.getItemsCombination();
+            // }
+            
             // WORKSPACE VALIDATION
             let workspaceValidation = await SemanticCheckerFactory.getChecker(preparedRequest, toRun.testType).checkWorkspace(toRun, preparedRequest, workspace);
             testResult.workspaceValidation = workspaceValidation;

@@ -1,22 +1,27 @@
 const xml2js = require('xml2js');
 const stripNamespaces = require('xml2js').processors.stripPrefix;
-const validator = require('xsd-schema-validator');
+const validator = require('@authenio/xsd-schema-validator');
 var SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
 
 var SdmxV21JsonParser = require('./SdmxV21JsonParser.js');
 
+const {validateXMLWithXSD} = require("validate-with-xmllint");
+
 class SdmxXmlParser {
 
-     schemaValidation(xmlMessage) {
-        validator.validateXML(xmlMessage, 'schema/XMLSchema.xsd', function (err, data) {
-            console.log(err)
-            if (err !== null) {
-                throw new Error("An error occurred during the XML Schema Validation.");
-            }
-           
-            return data;
+    //Validates the an XSD string against the XMLSchema files
+    schemaValidation(xsdMessage){
+        return new Promise((resolve, reject) => {
+            validator.validateXML(xsdMessage, 'schemas/XMLSchema.xsd', function (err, data) {    
+                if (err !== null) {
+                    reject("An error occurred during the XSD Validation.");
+                }
+                resolve(data);
+            });
         });
+        
     };
+    
     // Validates the SDMX-ML message against the SDMX 2.0 schema files
     validate20(xmlMessage) {
         validator.validateXML(xmlMessage, 'schemas20/SDMXMessage.xsd', function (err, data) {
@@ -29,7 +34,7 @@ class SdmxXmlParser {
 
     // Validates the SDMX-ML message against the SDMX 2.1 schema files
     validate21(xmlMessage) {
-        validator.validateXML(xmlMessage, 'schema/SDMXMessage.xsd', function (err, data) {
+        validator.validateXML(xmlMessage, 'schemas21/SDMXMessage.xsd', function (err, data) {
             if (err !== null) {
                 throw new Error("An error occurred during the SDMX 2.1 schema validation.");
             }
