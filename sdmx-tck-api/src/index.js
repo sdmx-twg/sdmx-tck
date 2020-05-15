@@ -34,11 +34,13 @@ var CubeRegionObject = require('./model/CubeRegionObject.js');
 var DataKeySetObject = require('./model/DataKeySetObject.js');
 var XSDGlobalElement = require('./model/XSDGlobalElement.js')
 var XSDSimpleType = require('./model/XSDSimpleType.js')
+var XSDFacet = require('./model/XSDFacet.js')
 var XSDComplexType = require('./model/XSDComplexType.js')
 var XSDLocalElement = require('./model/XSDLocalElement.js')
 var XSDReferenceElement = require('./model/XSDReferenceElement.js')
 var XSDAttribute = require('./model/XSDAttribute.js')
 var XSDCompositor = require('./model/XSDCompositor.js')
+
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
@@ -82,6 +84,7 @@ module.exports = {
         DataKeySetObject:DataKeySetObject,
         XSDGlobalElement:XSDGlobalElement,
         XSDSimpleType:XSDSimpleType,
+        XSDFacet:XSDFacet,
         XSDComplexType:XSDComplexType,
         XSDLocalElement:XSDLocalElement,
         XSDReferenceElement:XSDReferenceElement,
