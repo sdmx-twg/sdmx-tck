@@ -1,8 +1,7 @@
 const xml2js = require('xml2js');
 const stripNamespaces = require('xml2js').processors.stripPrefix;
 const validator = require('@authenio/xsd-schema-validator');
-var SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
-
+var SdmxObjectsFactory = require('sdmx-tck-api').model.SdmxObjectsFactory;
 var SdmxV21JsonParser = require('./SdmxV21JsonParser.js');
 
 const {validateXMLWithXSD} = require("validate-with-xmllint");
@@ -58,9 +57,8 @@ class SdmxXmlParser {
                 if (err !== null) {
                     reject("An error occurred during the SDMX-ML parsing. " + err);
                 }
-                var structures = SdmxV21JsonParser.parse(result);
-                //console.log(structures)
-                resolve(new SdmxObjects(structures, result));
+                var sdmxObjects = SdmxV21JsonParser.parse(result);
+                resolve(SdmxObjectsFactory.getWorkspace(sdmxObjects, result));
             });
         });
     };

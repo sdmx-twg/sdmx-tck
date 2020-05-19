@@ -30,6 +30,9 @@ var DataStructureObject = require('./model/DataStructureObject.js');
 var DataflowObject = require('./model/DataflowObject.js');
 var ContentConstraintObject = require('./model/ContentConstraintObject.js');
 var SdmxObjects = require('./model/SdmxObjects.js');
+var SdmxObjectsFactory = require('./model/SdmxObjectsFactory.js')
+var SdmxStructureObjects = require('./model/SdmxStructureObjects.js')
+var SdmxSchemaObjects = require('./model/SdmxSchemaObjects.js')
 var CubeRegionObject = require('./model/CubeRegionObject.js');
 var DataKeySetObject = require('./model/DataKeySetObject.js');
 var XSDGlobalElement = require('./model/XSDGlobalElement.js')
@@ -80,6 +83,9 @@ module.exports = {
         DataflowObject: DataflowObject,
         ContentConstraintObject: ContentConstraintObject,
         SdmxObjects: SdmxObjects,
+        SdmxObjectsFactory:SdmxObjectsFactory,
+        SdmxStructureObjects:SdmxStructureObjects,
+        SdmxSchemaObjects:SdmxSchemaObjects,
         CubeRegionObject: CubeRegionObject,
         DataKeySetObject:DataKeySetObject,
         XSDGlobalElement:XSDGlobalElement,
