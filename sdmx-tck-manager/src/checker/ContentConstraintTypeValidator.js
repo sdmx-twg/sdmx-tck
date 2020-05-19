@@ -1,5 +1,5 @@
+const SdmxStructureObjects = require('sdmx-tck-api').model.SdmxStructureObjects;
 
-const SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
 
 class ContentConstraintTypeValidator {
@@ -8,10 +8,10 @@ class ContentConstraintTypeValidator {
     static getContentConstraintOfAllowedType(test) {
                 //Create a Map from the workspace of the parent test.
                 let parentWorkspaceMap = new Map();
-                for(const prop in test.parentWorkspace.structures){
-                    parentWorkspaceMap.set(prop,test.parentWorkspace.structures[prop])
+                for(const prop in test.parentWorkspace.sdmxObjects){
+                    parentWorkspaceMap.set(prop,test.parentWorkspace.sdmxObjects[prop])
                 }            
-                let parentWorkspaceObj = new SdmxObjects(parentWorkspaceMap);
+                let parentWorkspaceObj = new SdmxStructureObjects(parentWorkspaceMap);
                 return ContentConstraintTypeValidator.changeContentConstraintIfNeeded(test,parentWorkspaceObj);
     };
     

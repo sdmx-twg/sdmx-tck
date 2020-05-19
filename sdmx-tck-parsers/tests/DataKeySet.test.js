@@ -20,8 +20,8 @@ describe('Tests if DataKeySet obj gets the DataKeySet', function () {
         //var test = {testType:"Structure Target Category",preparedRequest:{request:{resource:"categoryscheme",agency:"SDMX",id:"STAT_SUBJECT_MATTER",version:"1.0",detail:"full",references:"parentsandsiblings",item:"DEMO_SOCIAL_STAT"}}}
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
             // var validation = StructuresSemanticChecker.checkWorkspace(test,sdmxObjects)
-            //console.log(sdmxObjects.structures.get('CONTENT_CONSTRAINT')[0].dataKeySets[0].keys[0])//.keyValues[5].values);
-            //console.log(sdmxObjects.structures.get('CONTENT_CONSTRAINT')[0].dataKeySet)
+            //console.log(sdmxObjects.sdmxObjects.get('CONTENT_CONSTRAINT')[0].dataKeySets[0].keys[0])//.keyValues[5].values);
+            //console.log(sdmxObjects.sdmxObjects.get('CONTENT_CONSTRAINT')[0].dataKeySet)
             test = {
                 testId: "Test for Reference Partial",
                 index: "Structures",

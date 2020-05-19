@@ -1,7 +1,7 @@
+const XSD_COMPONENTS_TYPES = require('sdmx-tck-api').constants.XSD_COMPONENTS_TYPES;
 var XSDGlobalElement = require('sdmx-tck-api').model.XSDGlobalElement;
 var XSDSimpleType = require('sdmx-tck-api').model.XSDSimpleType;
 var XSDComplexType = require('sdmx-tck-api').model.XSDComplexType;
-const XSD_COMPONENTS_TYPES = require('sdmx-tck-api').constants.XSD_COMPONENTS_TYPES;
 var SdmxV21SchemaEnumerationParser = require('./SdmxV21SchemaEnumerationParser.js')
 var SdmxV21SchemaFacetsParser = require('./SdmxV21SchemaFacetsParser.js')
 var SdmxV21SchemaCompositorsParser = require('./SdmxV21SchemaCompositorsParser.js')
@@ -17,7 +17,7 @@ class SdmxV21SchemasParser {
 
         if (sdmxJsonObjects && sdmxJsonObjects.schema) {
             let s = sdmxJsonObjects.schema;
-            //console.log(s)
+
             SdmxV21SchemasParser.parseGlobalElements(schemaComponents, s);
             SdmxV21SchemasParser.parseSimpleTypes(schemaComponents, s);
             SdmxV21SchemasParser.parseComplexTypes(schemaComponents, s);

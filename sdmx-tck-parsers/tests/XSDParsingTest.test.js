@@ -7,9 +7,9 @@ describe('Tests XSD Parser', function () {
        
         let xmlMessage = fs.readFileSync('./tests/resources/XSDexample.xsd','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
-            //console.log(sdmxObjects.structures.get("complexTypes")[0].compositors)
-            //console.log(sdmxObjects.structures.get("complexTypes")[0].compositors[0].compositors[0].elements)
-            console.log(sdmxObjects.structures.get("complexTypes")[0].compositors[0].compositors[0].compositors[0])
+            //console.log(sdmxObjects.sdmxObjects.get("complexTypes")[0].compositors)
+            //console.log(sdmxObjects.sdmxObjects.get("complexTypes")[0].compositors[0].compositors[0].elements)
+            console.log(sdmxObjects.sdmxObjects.get("complexTypes")[2].compositors[0])
         }).catch(function (err) {
             console.log(err);
         });

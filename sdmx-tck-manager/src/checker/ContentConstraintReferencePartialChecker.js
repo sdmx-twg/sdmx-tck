@@ -5,6 +5,7 @@ var Utils = require('sdmx-tck-api').utils.Utils;
 var CubeRegionObject = require('sdmx-tck-api').model.CubeRegionObject
 var DataKeySetObject = require('sdmx-tck-api').model.DataKeySetObject
 var SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
+var SdmxStructureObjects = require('sdmx-tck-api').model.SdmxStructureObjects;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
 var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
 var Utils = require('sdmx-tck-api').utils.Utils;
@@ -136,7 +137,7 @@ class ContentConstraintReferencePartialChecker {
      */
     static checkReferencePartialTestWorkspace(workspace,keyValueData,codeListRef){
         
-        if (!Utils.isDefined(workspace) || !(workspace instanceof SdmxObjects)) {
+        if (!Utils.isDefined(workspace) || !(workspace instanceof SdmxStructureObjects)) {
             throw new Error("Missing codelist request's workspace");
         }
         let codesArray =[];
@@ -185,7 +186,7 @@ class ContentConstraintReferencePartialChecker {
      * @param {*} constraint the constraint object of the above workspace.
      */
     static findConstrainableAndCodeListAndKeyValue(sdmxObjects,constraint){
-        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxStructureObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
         //Get children and components from the constraint object
@@ -265,7 +266,7 @@ class ContentConstraintReferencePartialChecker {
      * @param {*} sdmxObjects the workspace of content constraint descendants
      */
     static referencepartialTestBuilder(test,sdmxObjects){
-        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxStructureObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
         if(!Utils.isDefined(test)){

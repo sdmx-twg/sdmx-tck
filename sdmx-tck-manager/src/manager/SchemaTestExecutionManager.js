@@ -57,7 +57,8 @@ class SchemaTestExecutionManager {
             let workspace = await new SdmxXmlParser().getIMObjects(xsdString);
             testResult.workspace = workspace;
             console.log("Test: " + toRun.testId + " SDMX workspace created.");
-        
+            
+            console.log(workspace.getXSDComponentByType("asd"))
             // // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
             // var randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
             // if (toRun.resource === "structure") {

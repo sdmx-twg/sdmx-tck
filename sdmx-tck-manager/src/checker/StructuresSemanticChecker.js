@@ -10,6 +10,7 @@ const STRUCTURE_QUERY_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_QUERY
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 
 var SdmxObjects = require('sdmx-tck-api').model.SdmxObjects;
+var SdmxStructureObjects = require('sdmx-tck-api').model.SdmxStructureObjects;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
 
 var Utils = require('sdmx-tck-api').utils.Utils;
@@ -42,7 +43,7 @@ class StructuresSemanticChecker {
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
         }
-        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxStructureObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
 
@@ -67,7 +68,7 @@ class StructuresSemanticChecker {
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
         }
-        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxStructureObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
 
@@ -109,7 +110,7 @@ class StructuresSemanticChecker {
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
         }
-        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxStructureObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
        
@@ -185,7 +186,7 @@ class StructuresSemanticChecker {
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
         }
-        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxStructureObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
 
@@ -228,7 +229,7 @@ class StructuresSemanticChecker {
     };
     //Special workspace validation function for target category queries
     static _checkCategorisationIds(sdmxObjects,item){
-        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxObjects)) {
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxStructureObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
         let matchingStructures = sdmxObjects.getSdmxObjectsWithCriteria(SDMX_STRUCTURE_TYPE.fromRestResource("categorisation"));

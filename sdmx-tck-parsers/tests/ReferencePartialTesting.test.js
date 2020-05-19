@@ -42,7 +42,7 @@ describe('Tests if reference partial testing works with different xml inputs', f
                 console.log(err)
             });
             
-            //console.log(sdmxObjects.structures.get('CONTENT_CONSTRAINT')[0].cubeRegion[0].KeyValue[0].value);
+            //console.log(sdmxObjects.sdmxObjects.get('CONTENT_CONSTRAINT')[0].cubeRegion[0].KeyValue[0].value);
         }).catch(function (err) {
             console.log(err);
         });
