@@ -68,7 +68,7 @@ class StructureTestExecutionManager {
                 }
 
                 // WORKSPACE VALIDATION
-                let workspaceValidation = await SemanticCheckerFactory.getChecker(preparedRequest, toRun.testType).checkWorkspace(toRun, preparedRequest, workspace);
+                let workspaceValidation = await SemanticCheckerFactory.getChecker(toRun).checkWorkspace(toRun, preparedRequest, workspace);
                 testResult.workspaceValidation = workspaceValidation;
                 if (workspaceValidation.status === FAILURE_CODE) {
                     throw new TckError("Workspace validation failed: Cause: " + workspaceValidation.error);
