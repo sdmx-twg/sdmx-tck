@@ -4,6 +4,7 @@ const ApiConstants = require('./constants/ApiConstants.js');
 const DataQueryDetail = require('./constants/DataQueryDetail.js');
 const ItemSchemeTypes = require('./constants/ItemSchemeTypes.js');
 const SdmxStructureType = require('./constants/SdmxStructureType.js');
+const DSDComponents = require('./constants/DSDComponents.js')
 const StructureDetail = require('./constants/StructureDetail.js');
 const ItemQueries = require ('./constants/ItemQueries.js');
 const StructureIdentificationParameters = require('./constants/StructureIdentificationParameters.js')
@@ -27,6 +28,8 @@ var StructureReference = require('./model/StructureReference.js');
 var MaintainableObject = require('./model/MaintainableObject.js');
 var ItemSchemeObject = require('./model/ItemSchemeObject.js');
 var DataStructureObject = require('./model/DataStructureObject.js');
+var DataStructureComponentObject = require('./model/DataStructureComponentObject.js');
+var DataStructureComponentRepresentationObject = require('./model/DataStructureComponentRepresentationObject.js')
 var DataflowObject = require('./model/DataflowObject.js');
 var ContentConstraintObject = require('./model/ContentConstraintObject.js');
 var SdmxObjects = require('./model/SdmxObjects.js');
@@ -56,6 +59,8 @@ module.exports = {
         ITEM_SCHEME_TYPES: ItemSchemeTypes.ITEM_SCHEME_TYPES,
         SDMX_STRUCTURE_TYPE: SdmxStructureType.SDMX_STRUCTURE_TYPE,
         StructureDetail: StructureDetail.StructureDetail,
+        DSD_COMPONENTS_NAMES:DSDComponents.DSD_COMPONENTS_NAMES,
+        DSD_COMPONENTS_REPRESENTATION_NAMES:DSDComponents.DSD_COMPONENTS_REPRESENTATION_NAMES,
         STRUCTURE_ITEM_QUERIES:ItemQueries.STRUCTURE_ITEM_QUERIES,
         STRUCTURE_IDENTIFICATION_PARAMETERS:StructureIdentificationParameters.STRUCTURE_IDENTIFICATION_PARAMETERS,
         STRUCTURE_QUERY_REPRESENTATIONS:StructureQueryRepresentation.STRUCTURE_QUERY_REPRESENTATIONS,
@@ -80,6 +85,8 @@ module.exports = {
         MaintainableObject: MaintainableObject,
         ItemSchemeObject: ItemSchemeObject,
         DataStructureObject: DataStructureObject,
+        DataStructureComponentObject:DataStructureComponentObject,
+        DataStructureComponentRepresentationObject:DataStructureComponentRepresentationObject,
         DataflowObject: DataflowObject,
         ContentConstraintObject: ContentConstraintObject,
         SdmxObjects: SdmxObjects,

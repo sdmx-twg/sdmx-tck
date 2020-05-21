@@ -1,18 +1,16 @@
 var jsonPath = require('jsonpath');
 var SdmxV21StructureReferencesParser = require('./SdmxV21StructureReferencesParser.js');
-
-
+var SdmxV21JsonDsdComponentRepresentationParser = require('./SdmxV21JsonDsdComponentRepresentationParser.js')
+var DataStructureComponentObject = require('sdmx-tck-api').model.DataStructureComponentObject;
+const DSD_COMPONENTS_NAMES = require('sdmx-tck-api').constants.DSD_COMPONENTS_NAMES;
 class SdmxV21JsonDsdComponentParser {
     /**
-     * Return an array containing dimensions info about SDMX DSD object.
+     * Return an array containing components info about SDMX DSD object.
      * @param {*} sdmxJsonObject 
      */
     static getComponents(sdmxJsonObject) {
-        let datastructureDimensions = [];
-        let datastructureTimeDimensions = [];
-        let datastructureAttributes = [];
-        let datastructureMeasures = [];
-        
+
+        let datastructureComponents= [];
         //Get the DSD dimensions from workspace
         let dimensions = jsonPath.query(sdmxJsonObject, '$..DimensionList..Dimension')[0];
         let timeDimensions = jsonPath.query(sdmxJsonObject, '$..DimensionList..TimeDimension')[0];
@@ -22,52 +20,56 @@ class SdmxV21JsonDsdComponentParser {
         try{
             for(let i in dimensions){
                 if (dimensions[i] && dimensions[i].$ && dimensions[i].$.id) {
-                    
                     //Push in an array the dimension id and the artefact references of the dimension
-                    datastructureDimensions.push({
-                        componentId : dimensions[i].$.id,
-                        componentReferences : SdmxV21StructureReferencesParser.getReferences(dimensions[i])
-                    })
+                    datastructureComponents.push(
+                        new DataStructureComponentObject(
+                            dimensions[i],
+                            DSD_COMPONENTS_NAMES.DIMENSION,
+                            SdmxV21StructureReferencesParser.getReferences(dimensions[i]),
+                            SdmxV21JsonDsdComponentRepresentationParser.getRepresentation(dimensions[i])))
+                    
                 }
             }
             for(let i in timeDimensions){
                 if (timeDimensions[i] && timeDimensions[i].$ && timeDimensions[i].$.id) {
-                    
                     //Push in an array the timeDimension id and the artefact references of the timeDimension
-                    datastructureTimeDimensions.push({
-                        componentId : timeDimensions[i].$.id,
-                        componentReferences : SdmxV21StructureReferencesParser.getReferences(timeDimensions[i])
-                    })
+                    datastructureComponents.push(
+                        new DataStructureComponentObject(
+                            timeDimensions[i],
+                            DSD_COMPONENTS_NAMES.TIME_DIMENSION,
+                            SdmxV21StructureReferencesParser.getReferences(timeDimensions[i]),
+                            SdmxV21JsonDsdComponentRepresentationParser.getRepresentation(timeDimensions[i])))
+                    
                 }
             }
             for(let i in attributes){
                 if (attributes[i] && attributes[i].$ && attributes[i].$.id) {
-                    
                     //Push in an array the attribute id and the artefact references of the attribute
-                    datastructureAttributes.push({
-                        componentId : attributes[i].$.id,
-                        componentReferences : SdmxV21StructureReferencesParser.getReferences(attributes[i])
-                    })
+                    datastructureComponents.push(
+                        new DataStructureComponentObject(
+                            attributes[i],
+                            DSD_COMPONENTS_NAMES.ATTRIBUTE,
+                            SdmxV21StructureReferencesParser.getReferences(attributes[i]),
+                            SdmxV21JsonDsdComponentRepresentationParser.getRepresentation(attributes[i])))
+                  
                 }
             }
             for(let i in measures){
                 if (measures[i] && measures[i].$ && measures[i].$.id) {
-                    
                     //Push in an array the measure id and the artefact references of the measure
-                    datastructureMeasures.push({
-                        componentId : measures[i].$.id,
-                        componentReferences : SdmxV21StructureReferencesParser.getReferences(measures[i])
-                    })
+                    datastructureComponents.push(
+                        new DataStructureComponentObject(
+                            measures[i],
+                            DSD_COMPONENTS_NAMES.MEASURE,
+                            SdmxV21StructureReferencesParser.getReferences(measures[i]),
+                            SdmxV21JsonDsdComponentRepresentationParser.getRepresentation(measures[i])))
+                    
                 }
             }
         }catch (ex){
-
         }
-        
-        return {Dimensions:datastructureDimensions,
-                TimeDimensions:datastructureTimeDimensions,
-                Attributes:datastructureAttributes,
-                Measures:datastructureMeasures};
+        return datastructureComponents;
+
     };
     
 };
