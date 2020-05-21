@@ -13,7 +13,7 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
-var ContentConstraintReferencePartialTestManager = require("../manager/ContentConstraintReferencePartialTestManager.js");
+var HelperManager = require("../manager/HelperManager.js");
 var STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 
 /*Special class that handles the content constraint reference partial testing. Due to its complexity the referencepartial testing 
@@ -43,7 +43,7 @@ class ContentConstraintReferencePartialChecker {
                 
                 let finalTestData = ContentConstraintReferencePartialChecker.referencepartialTestBuilder(test,workspace);
                 /*Executes the request to get the partial codelist*/
-                ContentConstraintReferencePartialTestManager.executeTest(finalTestData.referencePartialTest, test.apiVersion, preparedRequest.service.url).
+                HelperManager.getWorkspace(finalTestData.referencePartialTest, test.apiVersion, preparedRequest.service.url).
                     then((referencePartialTestWorkspace) => {
                         /* The referencepartial test's workspace validation*/
                         let validation = ContentConstraintReferencePartialChecker.checkReferencePartialTestWorkspace(referencePartialTestWorkspace,finalTestData.keyValueToCheckData,finalTestData.codeListRef);

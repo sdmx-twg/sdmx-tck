@@ -6,9 +6,9 @@ var ResponseValidator = require('../checker/HttpResponseValidator.js');
 const sdmx_requestor = require('sdmx-rest');
 const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator')
 
-/*Special class that handles the content constraint reference partial testing*/
-class ContentConstraintReferencePartialTestManager {
-    static executeTest(toRun, apiVersion, endpoint) {
+/*Special class that gets the workspace of a request*/
+class HelperManager {
+    static getWorkspace(toRun, apiVersion, endpoint) {
             return new Promise((resolve, reject) => {
                 StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
                     toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
@@ -38,4 +38,4 @@ class ContentConstraintReferencePartialTestManager {
     };
 };
 
-module.exports = ContentConstraintReferencePartialTestManager;
+module.exports = HelperManager;

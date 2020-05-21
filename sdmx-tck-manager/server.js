@@ -4,7 +4,8 @@ const app = express();
 var TestObjectBuilder = require('./src/builders/TestObjectBuilder.js');
 var TestsModelBuilder = require('./src/builders/TestsModelBuilder.js');
 var TestExecutionManagerFactory = require('./src/manager/TestExecutionManagerFactory.js')
-var SchemaTestsPreparationReqManager = require('./src/manager/SchemaTestsPreparationReqManager.js')
+var HelperManager = require('./src/manager/HelperManager.js')
+var SchemaTestsIdentifiersBuilder = require('./src/builders/SchemaTestsIdentifiersBuilder.js')
 var TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
@@ -35,6 +36,8 @@ app.post("/tck-api/configure-schema-tests", (req, res) => {
     let payload = req.body;
     let endpoint = payload.endpoint;
     let apiVersion = payload.apiVersion;
+    
+    //Test obj creation to get all the content constraints 
     let configParams = {
         testId: "/" + STRUCTURES_REST_RESOURCE.contentconstraint + "/all/all/all?detail=full",
         index: TEST_INDEX.Structure,
@@ -45,9 +48,12 @@ app.post("/tck-api/configure-schema-tests", (req, res) => {
         testType: TEST_TYPE.PREPARE_SCHEMA_TESTS
     }
     let configObj = TestObjectBuilder.getTestObject(configParams)
-    SchemaTestsPreparationReqManager.executeTest(configObj, apiVersion, endpoint).then(
+
+    //gets workspace of all content constraints
+    HelperManager.getWorkspace(configObj, apiVersion, endpoint).then(
         (result) => { 
-            res.send(JSON.stringify(result)) 
+            //sends identifiers from constraint DSD,DF,PRA,MSD,MDF (if found)
+            res.send(JSON.stringify(SchemaTestsIdentifiersBuilder.getSchemaTestsIdentifiers(configObj,result))) 
         },
         (error) => { 
             res.send(error) 
