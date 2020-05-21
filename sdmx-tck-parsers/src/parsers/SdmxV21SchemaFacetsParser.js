@@ -8,21 +8,14 @@ class SdmxV21SchemaFacetsParser {
      */
     static getFacets(sdmxJsonObject) {
         
-        let listOfFacets = [];
         for (const property in SCHEMA_FACETS) {
             let facet = jsonPath.query(sdmxJsonObject, '$..'.concat(SCHEMA_FACETS[property].value))[0];
             if(facet){
-                for (let i in facet) {
-                    if (facet[i] && facet[i].$ && facet[i].$.value) {
-                       try {
-                           listOfFacets.push(new XSDFacet(facet[i],SCHEMA_FACETS[property].value))
-                       } catch (ex) {
-                       }
-                    }
-               }
+                if (facet[0] && facet[0].$ && facet[0].$.value) {
+                    return new XSDFacet(facet[0],SCHEMA_FACETS[property].value) 
+                }
             }
         }
-        return listOfFacets;
     };
 };
 
