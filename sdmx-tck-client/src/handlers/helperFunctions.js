@@ -1,5 +1,6 @@
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
+const SCHEMA_IDENTIFICATION_PARAMETERS = require('sdmx-tck-api').constants.SCHEMA_IDENTIFICATION_PARAMETERS
 
 export const extractScore = (testsArray) => {
 	let numOfCompliantResponses = 0;
@@ -132,28 +133,38 @@ export const passIdentifiersToChildren = (prevStore, action) => {
 	}
 	return testsArray;
 };
-export function passIdentifiersToSchemaTests(schemaTests,schemaTestsIdentifiers){
+export function passConstraintDataToSchemaTests(schemaTests,schemaTestsData){
 	if (schemaTests.subTests && Array.isArray(schemaTests.subTests)) {
 		for (let i = 0; i < schemaTests.subTests.length; i++) {
-			if(Object.keys(schemaTestsIdentifiers).indexOf(schemaTests.subTests[i].resource) !== -1){
-				schemaTests.subTests[i].identifiers.structureType = schemaTestsIdentifiers[schemaTests.subTests[i].resource].structureType
-				schemaTests.subTests[i].identifiers.agency = schemaTestsIdentifiers[schemaTests.subTests[i].resource].agencyId
-				schemaTests.subTests[i].identifiers.id = schemaTestsIdentifiers[schemaTests.subTests[i].resource].id
-				schemaTests.subTests[i].identifiers.version = schemaTestsIdentifiers[schemaTests.subTests[i].resource].version
+			if(Object.keys(schemaTestsData).indexOf(schemaTests.subTests[i].resource) !== -1){
+				//PASS IDENTIFIERS
+				schemaTests.subTests[i].identifiers.structureType = schemaTestsData[schemaTests.subTests[i].resource].identifiers.structureType
+				schemaTests.subTests[i].identifiers.agency = schemaTestsData[schemaTests.subTests[i].resource].identifiers.agencyId
+				schemaTests.subTests[i].identifiers.id = schemaTestsData[schemaTests.subTests[i].resource].identifiers.id
+				schemaTests.subTests[i].identifiers.version = schemaTestsData[schemaTests.subTests[i].resource].identifiers.version
+
+				//PASS CONSTRAINT OBJECTS - USED TO VALIDATE THE ENUMERATIONS IN XSD
+				/*We do not pass the constraints data in the /schema/resource/agency/id/latest test as when executed, the version (latest) 
+				of the artefact's XSD returned by the service may differ from the version of the artefact that is constrained in the 
+				constraint.So that artefact may follow different restrictions.
+				As a result this kind of tests we will follow a different procedure to validate the enumerations*/
+				if(schemaTests.subTests[i].reqTemplate.version !== SCHEMA_IDENTIFICATION_PARAMETERS.AGENCY_ID.template.version){
+					schemaTests.subTests[i].constraintParent = schemaTestsData[schemaTests.subTests[i].resource].constraintParent
+				}
 			}
 
 			if (schemaTests.subTests[i].subTests && Array.isArray(schemaTests.subTests[i].subTests)) {
-				passIdentifiersToSchemaTests(schemaTests.subTests[i],schemaTestsIdentifiers)
+				passConstraintDataToSchemaTests(schemaTests.subTests[i],schemaTestsData)
 			}
 		}
 	}
 }
-export const configSchemaTestsIdentifiers = (prevStore,action) =>{
+export const configSchemaTests = (prevStore,action) =>{
 	var testsArray = [...prevStore];
 
 	for (let i = 0; i < testsArray.length; i++) {
 		if (testsArray[i].id === action.testIndex) {
-			passIdentifiersToSchemaTests(testsArray[i],action.schemaTestsIdentifiers);
+			passConstraintDataToSchemaTests(testsArray[i],action.schemaTestsData);
 		}
 	}
 	console.log(testsArray)

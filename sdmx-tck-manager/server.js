@@ -5,10 +5,11 @@ var TestObjectBuilder = require('./src/builders/TestObjectBuilder.js');
 var TestsModelBuilder = require('./src/builders/TestsModelBuilder.js');
 var TestExecutionManagerFactory = require('./src/manager/TestExecutionManagerFactory.js')
 var HelperManager = require('./src/manager/HelperManager.js')
-var SchemaTestsIdentifiersBuilder = require('./src/builders/SchemaTestsIdentifiersBuilder.js')
+var ConstraintDataForXSDTestsBuilder = require('./src/builders/ConstraintDataForXSDTestsBuilder.js')
 var TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
+const MetadataReferences = require('sdmx-rest').metadata.MetadataReferences
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 
 
@@ -43,7 +44,7 @@ app.post("/tck-api/configure-schema-tests", (req, res) => {
         index: TEST_INDEX.Structure,
         apiVersion: apiVersion,
         resource: STRUCTURES_REST_RESOURCE.contentconstraint,
-        reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.FULL },
+        reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.FULL},
         identifiers: { structureType: "", agency: "all", id: "all", version: "all" },
         testType: TEST_TYPE.PREPARE_SCHEMA_TESTS
     }
@@ -53,7 +54,7 @@ app.post("/tck-api/configure-schema-tests", (req, res) => {
     HelperManager.getWorkspace(configObj, apiVersion, endpoint).then(
         (result) => { 
             //sends identifiers from constraint DSD,DF,PRA,MSD,MDF (if found)
-            res.send(JSON.stringify(SchemaTestsIdentifiersBuilder.getSchemaTestsIdentifiers(configObj,result))) 
+            res.send(JSON.stringify(ConstraintDataForXSDTestsBuilder.getConstraintDataForXSDTests(configObj,result))) 
         },
         (error) => { 
             res.send(error) 

@@ -4,10 +4,11 @@ var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST
 var getResources = require('sdmx-tck-api').constants.getResources
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 
-class SchemaTestsIdentifiersBuilder{
+class ConstraintDataForXSDTestsBuilder{
 
-   static getSchemaTestsIdentifiers(toRun,workspace) {
-        let identifiersForSchemaTestsResources = {}
+   
+   static getConstraintDataForXSDTests(toRun,workspace) {
+        let dataForXSDTests = {}
         let found = false;
         var j=0;
         if(toRun.testType === TEST_TYPE.PREPARE_SCHEMA_TESTS && toRun.resource === STRUCTURES_REST_RESOURCE.contentconstraint){
@@ -21,7 +22,8 @@ class SchemaTestsIdentifiersBuilder{
                     while(j<requestedStructureType.length && !found){
                         let requestedChild = requestedStructureType[j].getRandomChildOfSpecificStructureType(SDMX_STRUCTURE_TYPE.fromRestResource(schemaTestsResources[i]))
                         if(Object.keys(requestedChild).length > 0){
-                            identifiersForSchemaTestsResources[schemaTestsResources[i]] = requestedChild
+                            dataForXSDTests[schemaTestsResources[i]] = {identifiers:requestedChild,
+                                                                        constraintParent:requestedStructureType[j]}
                             found = true;
                         }
                         j++;
@@ -29,8 +31,8 @@ class SchemaTestsIdentifiersBuilder{
                 }
             }
         }
-        return identifiersForSchemaTestsResources
+        return dataForXSDTests
     }
 }
 
-module.exports = SchemaTestsIdentifiersBuilder
+module.exports = ConstraintDataForXSDTestsBuilder

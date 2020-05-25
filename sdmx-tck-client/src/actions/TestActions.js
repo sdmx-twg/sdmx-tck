@@ -36,8 +36,8 @@ export function updateTestState(test, state) {
 export function dataFromParent(test){
     return { type: ACTION_NAMES.GET_DATA_FROM_PARENT, test: test };
 }
-export function configSchemaTestsIdentifiers(schemaTestsIdentifiers,testIndex){
-    return {type: ACTION_NAMES.CONFIG_SCHEMA_TESTS_IDENTIFIERS, testIndex:testIndex, schemaTestsIdentifiers:schemaTestsIdentifiers}
+export function XSDTestsData(schemaTestsData,testIndex){
+    return {type: ACTION_NAMES.CONFIG_SCHEMA_TESTS, testIndex:testIndex, schemaTestsData:schemaTestsData}
 }
 
 export function fetchTests(endpoint, apiVersion, testIndices) {
@@ -114,19 +114,19 @@ export function exportReport(tests) {
     });
 };
 
-async function configureSchemaTestsIdentifiers(endpoint,tests){
+async function getConstraintDataForSchemaTests(endpoint,tests){
     if(TEST_INDEX.Schema === tests.id){
         let apiVersion = (tests.subTests && Array.isArray(tests.subTests) && tests.subTests.length>0)?tests.subTests[0].apiVersion:undefined;
-        let schemaTestsIdentifiers = await configureSchemaTests(endpoint,apiVersion);
-        if(Object.entries(schemaTestsIdentifiers).length > 0 && schemaTestsIdentifiers instanceof Object){
-            store.dispatch(configSchemaTestsIdentifiers(schemaTestsIdentifiers,tests.id));  
+        let schemaTestsData = await configureSchemaTests(endpoint,apiVersion);
+        if(Object.entries(schemaTestsData).length > 0 && schemaTestsData instanceof Object){
+            store.dispatch(XSDTestsData(schemaTestsData,tests.id));  
         }
     }
 }
 
 async function runTests(endpoint, tests) {
     for (let i = 0; i < tests.length; i++) {
-        await configureSchemaTestsIdentifiers(endpoint,tests[i]);
+        await getConstraintDataForSchemaTests(endpoint,tests[i]);
         for (let j = 0; j < tests[i].subTests.length; j++) {
             await runTest(endpoint, tests[i].subTests[j]);
         }
