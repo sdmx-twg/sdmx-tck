@@ -1,10 +1,10 @@
 var isDefined = require('../utils/Utils').isDefined;
 
 class XSDSimpleType {
-    constructor(props,schemaFacet,enumerations) {
+    constructor(props,schemaFacets,enumerations) {
        this.name = props.$.name;
        this.restrictionBase =  props.restriction[0].$.base;
-       this.schemaFacet = schemaFacet;
+       this.schemaFacets = schemaFacets;
        this.enumerations = enumerations;
     };
     
@@ -20,11 +20,11 @@ class XSDSimpleType {
     getRestrictionBase(){
         return this.restrictionBase;
     }
-    setSchemaFacet(schemaFacet){
-        this.schemaFacet = schemaFacet;
+    setSchemaFacets(schemaFacets){
+        this.schemaFacets = schemaFacets;
     }
-    getSchemaFacet(){
-        return this.schemaFacet;
+    getSchemaFacets(){
+        return this.schemaFacets;
     }
     setEnumerations(enumerations){
         this.enumerations = enumerations
