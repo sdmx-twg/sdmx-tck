@@ -18,6 +18,7 @@ const TestIndex = require('./constants/TestIndex.js');
 const TestType = require('./constants/TestType.js');
 const SchemaFacetsMapping = require('./constants/SchemaFacetsMapping.js');
 const SdmxXSDComponentsTypes = require('./constants/SdmxXSDComponentsTypes.js')
+const XSDRepresentationDataType = require('./constants/XSDRepresentationDataType.js')
 
 // ERRORS
 var TckError = require('./errors/TckError.js');
@@ -74,7 +75,8 @@ module.exports = {
         TEST_INDEX: TestIndex.TEST_INDEX,
         TEST_TYPE: TestType.TEST_TYPE,
         SCHEMA_FACETS:SchemaFacetsMapping.SCHEMA_FACETS,
-        XSD_COMPONENTS_TYPES:SdmxXSDComponentsTypes.XSD_COMPONENTS_TYPES
+        XSD_COMPONENTS_TYPES:SdmxXSDComponentsTypes.XSD_COMPONENTS_TYPES,
+        XSD_DATA_TYPE:XSDRepresentationDataType.XSD_DATA_TYPE
     },
     errors: {
         TckError: TckError,
