@@ -2,6 +2,8 @@ var MaintainableObject = require('./MaintainableObject.js');
 const SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
 var CubeRegionObject = require('./CubeRegionObject.js')
 var DataKeySetObject = require('./DataKeySetObject.js');
+var ConstraintKeyValueObject = require('./ConstraintKeyValueObject.js')
+
 var Utils = require('../utils/Utils.js')
 
 
@@ -47,9 +49,7 @@ class ContentConstraintObject extends MaintainableObject {
                         keyValue = keyValues[j];
                         let keyValFound  = dsdObj.componentExistsAndItsCodedInDSD(keyValue.id)
                         if(keyValFound && keyValue.values && Array.isArray(keyValue.values) && keyValue.values.length>0){
-                            let source = constraintComponents[0].constructor.name.toString();
-                            return {keyValue:keyValue,
-                                    source:source};
+                            return keyValue;
                         }
                     }
                 }
@@ -60,17 +60,13 @@ class ContentConstraintObject extends MaintainableObject {
                 let keys = constraintComponents[i].getKeys();
                 if(keys && Array.isArray(keys)){
                     for(let j=0;j<keys.length;j++){
-                        let keyValues = keys[j].keyValues;
+                        let keyValues = keys[j];
                         if(keyValues && Array.isArray(keyValues)){
                             for(let k = 0;k<keyValues.length;k++){
                                 let keyValue = keyValues[k];
                                 let keyValFound = dsdObj.componentExistsAndItsCodedInDSD(keyValue.id)
-                                if(keyValFound && keyValue.value){
-                                    let source = constraintComponents[0].constructor.name.toString();
-                                    let isWildCarded = this.isKeyValueWildCarded(constraintComponents,keyValue.id);
-                                    return {keyValue:this.getValuesFromKeyValuesWithSameId(constraintComponents,keyValue),
-                                            isWildCarded:isWildCarded,
-                                            source:source}
+                                if(keyValFound && keyValue.values){
+                                    return keyValue;
                                 }
                             }
                         }
@@ -79,20 +75,20 @@ class ContentConstraintObject extends MaintainableObject {
             }
             
         }
-        return {};
+        return null;
     }
 
-    isKeyValueWildCarded(constraintComponents,keyValueId){
+    isKeyValueWildCarded(keyValue){
        
-        for(let i=0;i<constraintComponents.length;i++){
-            let keys = constraintComponents[i].getKeys();
+        for(let i=0;i<this.dataKeySets.length;i++){
+            let keys = this.dataKeySets[i].getKeys();
                 if(keys && Array.isArray(keys)){
                     for(let j=0;j<keys.length;j++){
                         let found = false;
-                        let keyValues = keys[j].keyValues;
+                        let keyValues = keys[j];
                         if(keyValues && Array.isArray(keyValues)){
                             for(let k = 0;k<keyValues.length;k++){
-                                if(keyValues[k].id === keyValueId){
+                                if(keyValues[k].id === keyValue.getId()){
                                     found = true;
                                 }
                             }
@@ -106,20 +102,19 @@ class ContentConstraintObject extends MaintainableObject {
 
         return false;
     }
-    getValuesFromKeyValuesWithSameId(constraintComponents,keyValue){
+    getValuesFromKeyValuesWithSameId(keyValue){
         let keyValArr = [];
         let values = [];
-        constraintComponents.forEach(constraintComponent => {
-            keyValArr = keyValArr.concat(constraintComponent.getSameIdKeyValues(keyValue.id));
+        this.dataKeySets.forEach(dataKeySet => {
+            keyValArr = keyValArr.concat(dataKeySet.getSameIdKeyValues(keyValue.id));
         });
         keyValArr.forEach(keyVal => {
             //no duplicates
-            if(!(values.some(element => (element.includeType === keyVal.includeType && element.value === keyVal.value)))){
-                values.push({value:keyVal.value, includeType:keyVal.includeType})
+            if(!(values.some(element => (element.includeType === keyVal.includeType && element.value === keyVal.values)))){
+                values.push({value:keyVal.values, includeType:keyVal.includeType})
             }
         })
-        return {id:keyValue.id,
-            values:values}
+        return values
     }
 };
 
