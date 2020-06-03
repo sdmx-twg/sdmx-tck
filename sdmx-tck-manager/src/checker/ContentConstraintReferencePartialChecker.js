@@ -14,6 +14,8 @@ const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 var HelperManager = require("../manager/HelperManager.js");
 var STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
+var ConstraintKeyValueObject =require('sdmx-tck-api').model.ConstraintKeyValueObject
+
 
 /*Special class that handles the content constraint reference partial testing. Due to its complexity the referencepartial testing 
 consists of two subparts. The first is a content constraint with reference = descendants request. 
@@ -123,7 +125,7 @@ class ContentConstraintReferencePartialChecker {
         if(codesArray.length === 0){
             throw new Error('No codes to check')
         }
-        if(Object.entries(keyValue).length === 0){
+        if(Object.entries(keyValue).length === 0 || !keyValue instanceof ConstraintKeyValueObject){
             throw new Error('No KeyValue Data')
         }
         if(keyValue.getOrigin() === DataKeySetObject.name){
@@ -144,32 +146,28 @@ class ContentConstraintReferencePartialChecker {
             
             // if the keyValue is wildcarded or there more than one excluded values - all codes are accepted in the partial codelist 
             if(keyValIsWildCarded || excludedValues.length > 1){
-                console.log("wildcarted")
                 return true;
             }
             if(includedValues.length > 0){
                 if(excludedValues.length === 0 || (excludedValues.length === 1 && includedValues.indexOf(excludedValues[0]) !== -1)){
-                    console.log("no excluded - or 1 excluded")
                     return includedValues.every(val => codesArray.includes(val));
                 }else{
-                    console.log("included & 1 excluded")
                     return (includedValues.every(val => codesArray.includes(val)) 
                             && codesArray.indexOf(excludedValues[0]) === -1) 
                 }
             }else{
-                console.log("only 1 excluded")
                 return (codesArray.indexOf(excludedValues[0]) === -1) 
             }
                 
         }else if(keyValue.getOrigin()===CubeRegionObject.name){
-            if(keyValue.includeType === 'true'){
+            if(keyValue.getIncludeType() === 'true'){
                 let includedValues = [];
                 keyValue.values.forEach((value) => includedValues.push(value))
                 return includedValues.every(val => codesArray.includes(val));
         
-            }else if(keyValue.includeType === 'false'){
-                for(let i=0;i<keyValue.values.length;i++){
-                    if(codesArray.indexOf(keyValue.values[i]) !== -1){
+            }else if(keyValue.getIncludeType() === 'false'){
+                for(let i=0;i<keyValue.getValues().length;i++){
+                    if(codesArray.indexOf(keyValue.getValues()[i]) !== -1){
                         return false;
                     }
                 }

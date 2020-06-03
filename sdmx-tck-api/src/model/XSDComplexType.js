@@ -41,6 +41,17 @@ class XSDComplexType {
     getAttributes(){
         return this.attributes;
     }
+
+    getAttributeByName(attributeName){
+        if(!attributeName){
+            return null;
+        }
+        let attribute = this.attributes.filter(attribute => attribute.getName() === attributeName);
+        if(attribute.length > 0){
+            return attribute[0]
+        }
+        return null;
+    }
 };
 
 module.exports = XSDComplexType;
