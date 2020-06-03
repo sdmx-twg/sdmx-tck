@@ -3,7 +3,7 @@ const SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_ST
 var CubeRegionObject = require('./CubeRegionObject.js')
 var DataKeySetObject = require('./DataKeySetObject.js');
 var ConstraintKeyValueObject = require('./ConstraintKeyValueObject.js')
-
+var StructureReference = require('./StructureReference.js')
 var Utils = require('../utils/Utils.js')
 
 
@@ -115,6 +115,60 @@ class ContentConstraintObject extends MaintainableObject {
             }
         })
         return values
+    }
+
+    static fromJSON(jsObj){
+        if(jsObj.structureType !== SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key){
+            throw new Error("Cannot create "+SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key+" object.")
+        }
+        let props = {
+            $:{
+                structureType:(jsObj.structureType)?jsObj.structureType:"",
+                agencyID:(jsObj.agencyId)?jsObj.agencyId:"",
+                id:(jsObj.id)?jsObj.id:"",
+                version:(jsObj.version)?jsObj.version:"",
+                urn:(jsObj.urn)?jsObj.urn:"",
+                isFinal:(jsObj.isFinal)?jsObj.isFinal:"",
+                isExternalReference:(jsObj.isExternalReference)?jsObj.isExternalReference:"",
+                structureURL:(jsObj.structureURL)?jsObj.structureURL:"",
+                type:(jsObj.type)?jsObj.type:""
+            }
+        }
+        let children= (jsObj.children)?jsObj.children:[]
+        let childrenArr = []
+        children.forEach(child=>{
+            childrenArr.push(new StructureReference(child.structureType,child.agencyId,child.id,child.version))
+        })
+        let detail = (jsObj.detail)?jsObj.detail:""
+
+       
+        let cubeRegions = (jsObj.cubeRegions)?jsObj.cubeRegions:[];
+
+        let cubeRegionsArr = []
+        cubeRegions.forEach(cubeRegion => {
+            let keyValues = []
+            cubeRegion.keyValue.forEach(keyValue => {
+                keyValues.push(new ConstraintKeyValueObject({$:{id:keyValue.id}},CubeRegionObject.name,keyValue.includeType,keyValue.values))
+            })
+            cubeRegionsArr.push(new CubeRegionObject({$:{includeType:cubeRegion.includeType}},keyValues))
+        })
+
+        let dataKeySets = (jsObj.dataKeySets)?jsObj.dataKeySets:[];
+        let dataKeySetsArr = []
+        dataKeySets.forEach(dataKeySet => {
+            let keys = []
+            dataKeySet.keys.forEach(key => {
+                keyValues = []
+                key.forEach(keyValue =>{
+                    keyValues.push(new ConstraintKeyValueObject({$:{id:keyValue.id}},DataKeySetObject.name,keyValue.includeType,keyValue.values))
+                })
+                keys.push(keyValues);
+            })
+            dataKeySetsArr.push(new DataKeySetObject({$:{includeType:dataKeySet.includeType}},keys))
+        })
+
+        return new ContentConstraintObject (props,childrenArr,detail,cubeRegionsArr,dataKeySetsArr)
+
     }
 };
 
