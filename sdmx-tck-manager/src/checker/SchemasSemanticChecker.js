@@ -46,109 +46,124 @@ class SchemasSemanticChecker {
     }
     static async checkXSDSimpleTypes(test,query,sdmxObjects){
         //1. Check SimpleTypes without enums
-        // let simpleTypeWithoutEnumValidation = await SchemasSemanticChecker.checkXSDSimpleTypesWithoutEnums(test,query,sdmxObjects)
-        // if(simpleTypeWithoutEnumValidation.status === FAILURE_CODE){return simpleTypeWithoutEnumValidation;}
+         let simpleTypeWithoutEnumValidation = await SchemasSemanticChecker.checkXSDSimpleTypesWithoutEnums(test,query,sdmxObjects)
+         if(simpleTypeWithoutEnumValidation.status === FAILURE_CODE){return simpleTypeWithoutEnumValidation;}
          
+         //REMOVE IT 
+         //return simpleTypeWithoutEnumValidation
         //2. Check SimpleTypes with enums
         return await SchemasSemanticChecker.checkXSDSimpleTypesWithEnums(test,query,sdmxObjects)
     }
 
     static async checkXSDSimpleTypesWithoutEnums(test,query,sdmxObjects){
-
-        if (!Utils.isDefined(query)) {
-            throw new Error("Missing mandatory parameter 'query'.");
-        }
-        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
-            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
-        }
-        if (!Utils.isDefined(test) || !(test.structureWorkspace instanceof SdmxStructureObjects)) {
-            throw new Error("Missing mandatory parameter 'test'.");
-        }
-
-        let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.context)
-        let agency = query.agency
-        let id = query.id
-        //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
-        
-
-        // WORKAROUND - Until a better solution is found.
-        // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
-        // In case of 'latest' we check if the workspace contains exactly one structure 
-        // but the problem here is that the version of the returned structure is not known beforehand 
-        // and the workspace cannot be filtered using the 'latest' for the structure version.
-
-        let version = (query.version!=='latest')?query.version : null;
-
-        let structure = test.structureWorkspace.getSdmxObjectsWithCriteria(structureType,agency,id,version)
-        let structureRef = structure[0].asReference();
-        let artefact;
-
-        //TODO: Check the MSD, MDF cases!!!
-        if(query.context === (SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.MSD.getClass().toLowerCase())){
-            artefact = test.structureWorkspace.getSdmxObject(structureRef)
-        }else if(query.context === (SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.METADATA_FLOW.getClass().toLowerCase())){
-            let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-            artefact = test.structureWorkspace.getSdmxObject(childRef)
-        }else if(query.context === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase()){
-            let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-            let descendantRef = test.structureWorkspace.getChildren(childRef)[0]
-            artefact = test.structureWorkspace.getSdmxObject(descendantRef)
-        }
-        let simpleTypesWithFacets = sdmxObjects.getSimpleTypesWithFacets().concat(sdmxObjects.getSimpleTypesWithDataTypeRestrictionOnly());
-
-        let dsdComponentsWithTextFormatRestriction = artefact.getComponents().filter(e=>e.getRepresentation().getType() === "TEXT_FORMAT")
-
-        console.log(simpleTypesWithFacets)
-        let errors = [];
-        //TODO:Check the case where there are extra simple types 
-        dsdComponentsWithTextFormatRestriction.forEach(function(component){
+        try{
+            if (!Utils.isDefined(query)) {
+                throw new Error("Missing mandatory parameter 'query'.");
+            }
+            if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+                throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+            }
+            if (!Utils.isDefined(test) || !(test.structureWorkspace instanceof SdmxStructureObjects)) {
+                throw new Error("Missing mandatory parameter 'test'.");
+            }
+    
+            let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.context)
+            let agency = query.agency
+            let id = query.id
+            //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
             
-                let validSimpleType = simpleTypesWithFacets.filter(function(simpleType){
-                let expression = true;
-                expression = expression && (simpleType.getName() === component.getId())
-                expression = expression && (simpleType.getRestrictionBase() === XSD_DATA_TYPE.getMapping(component.getRepresentation().getTextType()))
-
-                if(component.getRepresentation().getMinLength()){
-                    expression = expression && (simpleType.getSchemaFacets().filter(facet => 
-                        facet.getType() === SCHEMA_FACETS.MIN_LENGTH.value 
-                        && component.getRepresentation().getMinLength() === facet.getValue()).length === 1)
-                }
-                if(component.getRepresentation().getMaxLength()){
-                    expression = expression && (simpleType.getSchemaFacets().filter(facet => 
-                        facet.getType() === SCHEMA_FACETS.MAX_LENGTH.value 
-                        && component.getRepresentation().getMaxLength() === facet.getValue()).length === 1)
-                }
-                if(component.getRepresentation().getMinValue()){
-                    expression = expression && (simpleType.getSchemaFacets().filter(facet => 
-                        (facet.getType() === SCHEMA_FACETS.MIN_EXCLUSIVES.value || facet.getType() === SCHEMA_FACETS.MIN_INCLUSIVE.value)
-                        && component.getRepresentation().getMinValue() === facet.getValue()).length === 1)
-                }
-                if(component.getRepresentation().getMaxValue()){
-                    expression = expression && (simpleType.getSchemaFacets().filter(facet => 
-                        (facet.getType() === SCHEMA_FACETS.MAX_EXCLUSIVES.value || facet.getType() === SCHEMA_FACETS.MAX_INCLUSIVE.value )
-                        && component.getRepresentation().getMaxValue() === facet.getValue()).length === 1)
-                }
-                if(component.getRepresentation().getDecimals()){
-                    expression = expression && (simpleType.getSchemaFacets().filter(facet => 
-                        facet.getType() === SCHEMA_FACETS.FRACTION_DIGITS.value
-                        && component.getRepresentation().getDecimals() === facet.getValue()).length === 1)
-                }
-                if(component.getRepresentation().getPattern()){
-                    expression = expression && (simpleType.getSchemaFacets().filter(facet => 
-                        facet.getType() === SCHEMA_FACETS.PATTERN.value
-                        && component.getRepresentation().getPattern() === facet.getValue()).length === 1)
-                }
-                return expression === true
-                })
-
-                if(validSimpleType.length !==1){
-                errors.push({type:component.getType(),id:component.getId()})
-                }
-        })
-        if(errors.length>0){
-            return { status: FAILURE_CODE, error: "These components were not refered or were not refered correctly in the XSD " + JSON.stringify(errors) };
+    
+            // WORKAROUND - Until a better solution is found.
+            // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
+            // In case of 'latest' we check if the workspace contains exactly one structure 
+            // but the problem here is that the version of the returned structure is not known beforehand 
+            // and the workspace cannot be filtered using the 'latest' for the structure version.
+    
+            let version = (query.version!=='latest')?query.version : null;
+    
+            let structure = test.structureWorkspace.getSdmxObjectsWithCriteria(structureType,agency,id,version)
+            let structureRef = structure[0].asReference();
+            let artefact;
+    
+            //TODO: Check the MSD, MDF cases!!!
+            if(query.context === (SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.MSD.getClass().toLowerCase())){
+                artefact = test.structureWorkspace.getSdmxObject(structureRef)
+            }else if(query.context === (SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.METADATA_FLOW.getClass().toLowerCase())){
+                let childRef = test.structureWorkspace.getChildren(structureRef)[0]
+                artefact = test.structureWorkspace.getSdmxObject(childRef)
+            }else if(query.context === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase()){
+                let childRef = test.structureWorkspace.getChildren(structureRef)[0]
+                let descendantRef = test.structureWorkspace.getChildren(childRef)[0]
+                artefact = test.structureWorkspace.getSdmxObject(descendantRef)
+            }
+            //console.log(artefact)
+            let simpleTypesWithFacets = sdmxObjects.getSimpleTypesWithFacets().concat(sdmxObjects.getSimpleTypesWithDataTypeRestrictionOnly());
+    
+            let dsdComponentsWithTextFormatRestriction = artefact.getComponents().filter(comp=> (comp.getRepresentation()) && comp.getRepresentation().getType() === "TEXT_FORMAT")
+            
+            //The number of dsd components must be equal to the number of simple types describing them.
+            //This validation handles the case where there are more simpe types than dsd components with data type restriction.
+            if(simpleTypesWithFacets.length > dsdComponentsWithTextFormatRestriction.length){
+                return { status: FAILURE_CODE, error: "There are more simple types in the XSD than DSD components"};
+            }
+           
+            let errors = [];
+            /*This check validates each dsd component against the matching simpleType.
+            It fails when :
+            a) There are more dsd components than simpleTypes (dsd component is not described by a simple Type)
+            b) When the simple Type description of component is incorrect*/
+            dsdComponentsWithTextFormatRestriction.forEach(function(component){
+                    console.log(component.getId())
+                    let validSimpleType = simpleTypesWithFacets.filter(function(simpleType){
+                    let expression = true;
+                    expression = expression && (simpleType.getName() === component.getId())
+                    expression = expression && (simpleType.getRestrictionBase() === XSD_DATA_TYPE.getMapping(component.getRepresentation().getTextType()))
+    
+                    if(component.getRepresentation().getMinLength()){
+                        expression = expression && (simpleType.getSchemaFacets().filter(facet => 
+                            facet.getType() === SCHEMA_FACETS.MIN_LENGTH.value 
+                            && component.getRepresentation().getMinLength() === facet.getValue()).length === 1)
+                    }
+                    if(component.getRepresentation().getMaxLength()){
+                        expression = expression && (simpleType.getSchemaFacets().filter(facet => 
+                            facet.getType() === SCHEMA_FACETS.MAX_LENGTH.value 
+                            && component.getRepresentation().getMaxLength() === facet.getValue()).length === 1)
+                    }
+                    if(component.getRepresentation().getMinValue()){
+                        expression = expression && (simpleType.getSchemaFacets().filter(facet => 
+                            (facet.getType() === SCHEMA_FACETS.MIN_EXCLUSIVES.value || facet.getType() === SCHEMA_FACETS.MIN_INCLUSIVE.value)
+                            && component.getRepresentation().getMinValue() === facet.getValue()).length === 1)
+                    }
+                    if(component.getRepresentation().getMaxValue()){
+                        expression = expression && (simpleType.getSchemaFacets().filter(facet => 
+                            (facet.getType() === SCHEMA_FACETS.MAX_EXCLUSIVES.value || facet.getType() === SCHEMA_FACETS.MAX_INCLUSIVE.value )
+                            && component.getRepresentation().getMaxValue() === facet.getValue()).length === 1)
+                    }
+                    if(component.getRepresentation().getDecimals()){
+                        expression = expression && (simpleType.getSchemaFacets().filter(facet => 
+                            facet.getType() === SCHEMA_FACETS.FRACTION_DIGITS.value
+                            && component.getRepresentation().getDecimals() === facet.getValue()).length === 1)
+                    }
+                    if(component.getRepresentation().getPattern()){
+                        expression = expression && (simpleType.getSchemaFacets().filter(facet => 
+                            facet.getType() === SCHEMA_FACETS.PATTERN.value
+                            && component.getRepresentation().getPattern() === facet.getValue()).length === 1)
+                    }
+                    return expression === true
+                    })
+    
+                    if(validSimpleType.length !==1){
+                    errors.push({type:component.getType(),id:component.getId()})
+                    }
+            })
+            if(errors.length>0){
+                return { status: FAILURE_CODE, error: "These components were not refered or were not refered correctly in the XSD " + JSON.stringify(errors) };
+            }
+            return { status: SUCCESS_CODE };
+            
+        }catch(ex){
+            console.log(ex)
         }
-        return { status: SUCCESS_CODE };
         
     }
 
@@ -208,6 +223,7 @@ class SchemasSemanticChecker {
         return { status: SUCCESS_CODE };
     }
     static validateKeyValueAgainstSimpleTypeEnum(sdmxObjects,keyValue,constraintObj){
+        console.log(keyValue.getId())
         if(!keyValue || !keyValue instanceof ConstraintKeyValueObject){
             throw new Error("Missing mandatory parameter 'componentId' ")
         }
