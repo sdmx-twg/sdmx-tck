@@ -26,12 +26,12 @@ class SdmxSchemaObjects extends SdmxObjects{
 
     //Returns an array containing the XSD SimpleTypes from workspace, with a facet as representation.
     getSimpleTypesWithFacets(){
-        return getXSDSimpleTypes().filter(simpleType=>(simpleType.getSchemaFacets().length > 0));
+        return this.getXSDSimpleTypes().filter(simpleType=>(simpleType.getSchemaFacets().length > 0));
     }
 
     //Returns an array containing the XSD SimpleTypes from workspace, without facet or enumerations as representation.
     getSimpleTypesWithDataTypeRestrictionOnly(){
-        return getXSDSimpleTypes().filter(simpleType=>(simpleType.getEnumerations().length === 0 && simpleType.getSchemaFacets().length === 0));
+        return this.getXSDSimpleTypes().filter(simpleType=>(simpleType.getEnumerations().length === 0 && simpleType.getSchemaFacets().length === 0));
     }
     
     getComplexTypeContainingSpecificAttribute(attributeName){
