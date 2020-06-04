@@ -12,7 +12,6 @@ class SdmxV21JsonDataKeySetParser {
         if(dataKeySet){
             for (let i in dataKeySet) {
                 let keys = SdmxV21ConstraintKeyValueParser.getDataKeySetKeys(dataKeySet[i])
-                console.log(new DataKeySetObject(dataKeySet[i],keys).keys[0])
                 listOfDataKeySets.push(new DataKeySetObject(dataKeySet[i],keys))
             }
         }
