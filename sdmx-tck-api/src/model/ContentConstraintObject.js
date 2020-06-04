@@ -158,7 +158,7 @@ class ContentConstraintObject extends MaintainableObject {
         dataKeySets.forEach(dataKeySet => {
             let keys = []
             dataKeySet.keys.forEach(key => {
-                keyValues = []
+                let keyValues = []
                 key.forEach(keyValue =>{
                     keyValues.push(new ConstraintKeyValueObject({$:{id:keyValue.id}},DataKeySetObject.name,keyValue.includeType,keyValue.values))
                 })
