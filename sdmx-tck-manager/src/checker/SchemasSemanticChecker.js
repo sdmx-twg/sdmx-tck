@@ -13,6 +13,8 @@ var ContentConstraintReferencePartialChecker = require('./ContentConstraintRefer
 var ConstraintKeyValueObject =require('sdmx-tck-api').model.ConstraintKeyValueObject
 var CubeRegionObject = require('sdmx-tck-api').model.CubeRegionObject
 var DataKeySetObject = require('sdmx-tck-api').model.DataKeySetObject;
+var XSDReferenceElement = require('sdmx-tck-api').model.XSDReferenceElement
+var XSDLocalElement = require('sdmx-tck-api').model.XSDLocalElement
 
 class SchemasSemanticChecker {
 
@@ -39,10 +41,12 @@ class SchemasSemanticChecker {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
         //1. Check SimpleTypes
-        let simpleTypeValidation = await SchemasSemanticChecker.checkXSDSimpleTypes(test,query,sdmxObjects)
-        return simpleTypeValidation
+        // let simpleTypeValidation = await SchemasSemanticChecker.checkXSDSimpleTypes(test,query,sdmxObjects)
+        // return simpleTypeValidation
 
         //2. Check ComplexTypes
+        let complexTypeValidation = await SchemasSemanticChecker.checkXSDComplexTypes(test,query,sdmxObjects)
+        return complexTypeValidation;
     }
     static async checkXSDSimpleTypes(test,query,sdmxObjects){
         //1. Check SimpleTypes without enums
@@ -185,7 +189,6 @@ class SchemasSemanticChecker {
         let errors = []
         let dataKeySetsKeyValuesCheckedIds = []
         let constraintObj = ContentConstraintObject.fromJSON(test.constraintParent);
-        //TODO: Make constraint Object ContentConstraintObject
         let constraintComponent = (constraintObj.getCubeRegions().length > 0) ? constraintObj.getCubeRegions():constraintObj.getDataKeySets()
         constraintComponent.forEach(constraintComponent => {
             if(constraintComponent instanceof CubeRegionObject){
@@ -238,6 +241,90 @@ class SchemasSemanticChecker {
         let enums = chosenSimpleType.getEnumerations();
         return ContentConstraintReferencePartialChecker.constraintValuesValidation(keyValue,enums,constraintObj)
 
+    }
+
+    static checkXSDComplexTypes (test,query,sdmxObjects){
+        //CHECK DataSetType
+        try{
+            //GET THE CORRECT COMPLEX TYPE
+            let complexType = sdmxObjects.getXSDComplexTypeByName("DataSetType");
+            if(!complexType){throw new Error("Missing complexType 'DataSetType' "); }
+            
+            //CHECK RESTRICTION BASE OF COMPLEX TYPE
+            //If undefined means that we do not have specified observation dimension so it is its default (TIME_PERIOD)
+            if(!query.obsDimension){
+                if(complexType.getRestrictionBase()!=="dsd:TimeSeriesDataSetType"){
+                    return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: The restriction base should have been 'dsd:TimeSeriesDataSetType' but instead it is "+complexType.getRestrictionBase()+"."}
+                }
+            }else{
+                if(complexType.getRestrictionBase()!=="dsd:DataSetType"){
+                    return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: The restriction base should have been 'dsd:DataSetType' but instead it is "+complexType.getRestrictionBase()+"."}
+                }
+            }
+
+            //CHECK IF THE 'DataSetType' CONTAINS A SEQUENCE
+            if(complexType.getCompositors().length !== 1){
+                return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No compositors found' "}
+            }
+            if(complexType.getCompositors()[0].getType()!=="sequence"){
+                return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No sequence found "}
+            }
+
+            //CHECK THAT THE SEQUENCE CONTAINS THE CORRECT REFERENCE & LOCAL ELEMENTS
+            let sequence = complexType.getCompositors()[0];
+            if(sequence.getElements().filter(element => (element instanceof XSDReferenceElement) && element.getRef() === "common:Annotations" && element.getMinOccurs() === "0").length !== 1){
+                return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No valid reference element found "}
+            }
+            if(sequence.getElements().filter(element => (element instanceof XSDLocalElement) && element.getType() === "common:DataProviderReferenceType" && element.getMinOccurs() === "0" && element.getForm()==="unqualified").length !== 1){
+                return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No valid reference element found "}
+            }
+
+
+            //TODO check this properly
+            if(sdmxObjects.getXSDComplexTypeByName("GroupType")){
+            
+            }
+
+            //CHECK IF THE SEQUENCE CONTAINS A CHOICE WITH CORRECT PROPS
+            if(sequence.getCompositors().length !== 1){
+                return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No compositors found inside sequence' "}
+            }
+            if(sequence.getCompositors()[0].getType()!=="choice"){
+                return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No choice found inside sequnece "}
+            }
+
+            //CHECK IF THE CHOICE CONTAINS THE RIGHT ELEMENTS
+            let choice = sequence.getCompositors()[0];
+            if(choice.getMinOccurs() !== 0){
+                return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: Minimum occurence of choice is "+choice.getMinOccurs()+" instead of 0."}
+            }
+             //If undefined means that we do not have specified observation dimension so it is its default (TIME_PERIOD)
+            if(query.obsDimension === "AllDimensions"){
+                if(choice.getElements().filter(element => (element instanceof XSDLocalElement) && element.getName() === "Obs" && element.getType() === "ObsType" && element.getMaxOccurs() === "unbounded" && element.getForm()==="unqualified").length !== 1){
+                    return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No Local Elements found in choice"}
+                }
+            }else{
+                if(choice.getElements().filter(element => (element instanceof XSDLocalElement) && element.getName() === "Series" && element.getType() === "SeriesType" && element.getMaxOccurs() === "unbounded" && element.getForm()==="unqualified").length !== 1){
+                    return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No Local Elements found in choice"}
+                }
+            }
+
+            
+             return { status: SUCCESS_CODE };
+            }catch(ex){
+                console.log(ex)
+            }
+    
+            // if(complexType.getCompositors().length === 1 && complexType.getCompositors()[0].getType()==="sequence"){
+            //     let sequence = complexType.getCompositors()[0];
+            //     if(sequence.getElements().filter(element => (element instanceof XSDReferenceElement) && element.getRef() === "common:Annotations" && element.getMinOccurs() === "0").length === 1
+            //         && sequence.getElements().filter(element => (element instanceof XSDLocalElement) && element.getType() === "common:DataProviderReferenceType" && element.getMinOccurs() === "0" && element.getForm()==="unqualified").length === 1){
+                       
+            //             if(sdmxObjects.getXSDComplexTypeByName("GroupType")){
+
+            //             }
+            //     }
+            // } 
     }
 }
 module.exports = SchemasSemanticChecker;

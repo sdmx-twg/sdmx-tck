@@ -1,6 +1,7 @@
 var SdmxObjects = require('./SdmxObjects.js')
 const XSD_COMPONENTS_TYPES = require('../constants/SdmxXSDComponentsTypes.js').XSD_COMPONENTS_TYPES
 
+
 class SdmxSchemaObjects extends SdmxObjects{
     constructor(sdmxObjects){
         super(sdmxObjects)
@@ -69,6 +70,14 @@ class SdmxSchemaObjects extends SdmxObjects{
             return null
         }
         return chosenSimpleType[0]
+    }
+
+    getXSDComplexTypeByName(complexTypeName){
+        let complexType = this.getXSDComplexTypes().filter(complexType => complexType.getName() === complexTypeName)
+        if(complexType.length === 1){
+            return complexType[0]
+        }
+        return null;
     }
 }
 
