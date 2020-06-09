@@ -3,6 +3,8 @@ var SdmxV21StructureReferencesParser = require('./SdmxV21StructureReferencesPars
 var SdmxV21JsonDsdComponentRepresentationParser = require('./SdmxV21JsonDsdComponentRepresentationParser.js')
 var DataStructureComponentObject = require('sdmx-tck-api').model.DataStructureComponentObject;
 const DSD_COMPONENTS_NAMES = require('sdmx-tck-api').constants.DSD_COMPONENTS_NAMES;
+var SdmxV21JsonDsdAttributeRelationshipParser = require('./SdmxV21JsonDsdAttributeRelationshipParser.js')
+var DataStructureAttributeObject = require('sdmx-tck-api').model.DataStructureAttributeObject;
 class SdmxV21JsonDsdComponentParser {
     /**
      * Return an array containing components info about SDMX DSD object.
@@ -44,13 +46,15 @@ class SdmxV21JsonDsdComponentParser {
             }
             for(let i in attributes){
                 if (attributes[i] && attributes[i].$ && attributes[i].$.id) {
+
                     //Push in an array the attribute id and the artefact references of the attribute
                     datastructureComponents.push(
-                        new DataStructureComponentObject(
+                        new DataStructureAttributeObject(
                             attributes[i],
                             DSD_COMPONENTS_NAMES.ATTRIBUTE,
                             SdmxV21StructureReferencesParser.getReferences(attributes[i]),
-                            SdmxV21JsonDsdComponentRepresentationParser.getRepresentation(attributes[i])))
+                            SdmxV21JsonDsdComponentRepresentationParser.getRepresentation(attributes[i]),
+                            SdmxV21JsonDsdAttributeRelationshipParser.getAttributeRelationship(attributes[i])))
                   
                 }
             }

@@ -48,7 +48,8 @@ var XSDLocalElement = require('./model/XSDLocalElement.js')
 var XSDReferenceElement = require('./model/XSDReferenceElement.js')
 var XSDAttribute = require('./model/XSDAttribute.js')
 var XSDCompositor = require('./model/XSDCompositor.js')
-
+var DataStructureAttributeObject = require('./model/DataStructureAttributeObject.js')
+var DataStructureAttributeRelationshipObject = require('./model/DataStructureAttributeRelationshipObject.js')
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
@@ -90,6 +91,8 @@ module.exports = {
         DataStructureObject: DataStructureObject,
         DataStructureComponentObject:DataStructureComponentObject,
         DataStructureComponentRepresentationObject:DataStructureComponentRepresentationObject,
+        DataStructureAttributeRelationshipObject:DataStructureAttributeRelationshipObject,
+        DataStructureAttributeObject:DataStructureAttributeObject,
         DataflowObject: DataflowObject,
         ContentConstraintObject: ContentConstraintObject,
         SdmxObjects: SdmxObjects,
