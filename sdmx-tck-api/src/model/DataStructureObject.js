@@ -5,12 +5,19 @@ const DSD_COMPONENTS_NAMES = require('../constants/DSDComponents.js').DSD_COMPON
 
 
 class DataStructureObject extends MaintainableObject {
-    constructor(props, components,children, detail) {
+    constructor(props, components,groups,children, detail) {
         super(SDMX_STRUCTURE_TYPE.DSD.key, props, children, detail);
 
-        this.setComponents(components);
+        this.components = components
+        this.groups = groups
     };
    
+    setGroups(groups){
+        this.groups = groups;
+    }
+    getGroups(){
+        return this.groups
+    }
     setComponents(components) {
         this.components = components;
     };
