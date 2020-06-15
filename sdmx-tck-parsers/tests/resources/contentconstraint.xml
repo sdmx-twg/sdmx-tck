@@ -20,7 +20,7 @@
 					</str:Dataflow>
 				</str:ConstraintAttachment>
 				<str:CubeRegion include="true">
-					<com:KeyValue id="ITEM">
+					<com:KeyValue id="ITEM" include="false">
 						<com:Value>_T</com:Value>
 						<com:Value>CP01</com:Value>
 						<com:Value>CP011</com:Value>
@@ -500,7 +500,6 @@
 					</com:KeyValue>
 				</str:CubeRegion>
 			</str:ContentConstraint>
-			
 		</str:Constraints>
 	</mes:Structures>
 </mes:Structure>

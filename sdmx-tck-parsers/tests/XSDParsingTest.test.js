@@ -9,7 +9,7 @@ describe('Tests XSD Parser', function () {
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
             //console.log(sdmxObjects.sdmxObjects.get("complexTypes")[0].compositors)
             //console.log(sdmxObjects.sdmxObjects.get("complexTypes")[0].compositors[0].compositors[0].elements)
-            console.log(sdmxObjects.sdmxObjects.get("complexTypes")[2].compositors[0])
+            //console.log(sdmxObjects.sdmxObjects.get("SIMPLE_TYPE"))
         }).catch(function (err) {
             console.log(err);
         });

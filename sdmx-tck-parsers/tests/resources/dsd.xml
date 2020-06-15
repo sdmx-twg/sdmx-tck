@@ -1,298 +1,166 @@
 <mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
 	<mes:Header>
-		<mes:ID>IREF032986</mes:ID>
+		<mes:ID>IREF316109</mes:ID>
 		<mes:Test>false</mes:Test>
-		<mes:Prepared>2020-05-19T15:48:19Z</mes:Prepared>
+		<mes:Prepared>2020-06-08T15:53:39Z</mes:Prepared>
 		<mes:Sender id="SDMX"/>
 		<mes:Receiver id="not_supplied"/>
 	</mes:Header>
 	<mes:Structures>
 		<str:DataStructures>
-			<str:DataStructure agencyID="OECD" id="FDI" isExternalReference="false" isFinal="true" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=OECD:FDI(1.7)" version="1.7">
-				<com:Name xml:lang="en">Foreign Direct Investment</com:Name>
+			<str:DataStructure agencyID="ESTAT" id="HICPAP" isExternalReference="false" isFinal="true" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:HICPAP(2.0)" version="2.0">
+				<com:Name xml:lang="en">HICP AP DSD</com:Name>
 				<str:DataStructureComponents>
-					<str:DimensionList id="DimensionDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=OECD:FDI(1.7).DimensionDescriptor">
-						<str:Dimension id="FREQ" position="1" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).FREQ">
+					<str:DimensionList id="DimensionDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=ESTAT:HICPAP(2.0).DimensionDescriptor">
+						<str:Dimension id="FREQ" position="1" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:HICPAP(2.0).FREQ">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="FREQ" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="FREQ" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:Enumeration>
 									<Ref agencyID="SDMX" class="Codelist" id="CL_FREQ" package="codelist" version="2.0"/>
 								</str:Enumeration>
-								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
 							</str:LocalRepresentation>
 						</str:Dimension>
-						<str:Dimension id="MEASURE_PRINCIPLE" position="2" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).MEASURE_PRINCIPLE">
+						<str:Dimension id="REF_AREA" position="2" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:HICPAP(2.0).REF_AREA">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="MEASURE_PRINCIPLE" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="REF_AREA" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:Enumeration>
-									<Ref agencyID="OECD" class="Codelist" id="CL_MEASURE_PRINCIP" package="codelist" version="1.0"/>
+									<Ref agencyID="IMF" class="Codelist" id="CL_AREA" package="codelist" version="1.9"/>
 								</str:Enumeration>
-								<str:EnumerationFormat maxLength="2" minLength="1" textType="String"/>
 							</str:LocalRepresentation>
 						</str:Dimension>
-						<str:Dimension id="REF_AREA" position="3" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).REF_AREA">
+						<str:Dimension id="IND_TYPE" position="3" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:HICPAP(2.0).IND_TYPE">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="REF_AREA" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="IND_TYPE" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:Enumeration>
-									<Ref agencyID="IMF" class="Codelist" id="CL_AREA" package="codelist" version="1.11"/>
+									<Ref agencyID="ESTAT" class="Codelist" id="CL_IND_TYPE" package="codelist" version="1.1"/>
 								</str:Enumeration>
-								<str:EnumerationFormat maxLength="5" minLength="2" textType="String"/>
 							</str:LocalRepresentation>
 						</str:Dimension>
-						<str:Dimension id="COUNTERPART_AREA" position="4" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).COUNTERPART_AREA">
+						<str:Dimension id="IDX_TYPE" position="4" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:HICPAP(2.0).IDX_TYPE">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="COUNTERPART_AREA" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="IDX_TYPE" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:Enumeration>
-									<Ref agencyID="IMF" class="Codelist" id="CL_AREA" package="codelist" version="1.11"/>
+									<Ref agencyID="ESTAT" class="Codelist" id="CL_IDX_TYPE" package="codelist" version="1.0"/>
 								</str:Enumeration>
-								<str:EnumerationFormat maxLength="5" minLength="2" textType="String"/>
 							</str:LocalRepresentation>
 						</str:Dimension>
-						<str:Dimension id="REF_SECTOR" position="5" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).REF_SECTOR">
+						<str:Dimension id="ITEM" position="5" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:HICPAP(2.0).ITEM">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="REF_SECTOR" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="ITEM" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:Enumeration>
-									<Ref agencyID="ESTAT" class="Codelist" id="CL_SECTOR" package="codelist" version="1.10"/>
+									<Ref agencyID="ESTAT" class="Codelist" id="CL_ITEM_PRICE" package="codelist" version="1.1"/>
 								</str:Enumeration>
-								<str:EnumerationFormat maxLength="7" minLength="2" textType="String"/>
 							</str:LocalRepresentation>
 						</str:Dimension>
-						<str:Dimension id="LEVEL_COUNTERPART" position="6" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).LEVEL_COUNTERPART">
+						<str:TimeDimension id="TIME_PERIOD" position="6" urn="urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=ESTAT:HICPAP(2.0).TIME_PERIOD">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="LEVEL_COUNTERPART" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="OECD" class="Codelist" id="CL_LEV_COUNTERPART" package="codelist" version="1.0"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="3" minLength="3" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="FLOW_STOCK_ENTRY" position="7" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).FLOW_STOCK_ENTRY">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="FLOW_STOCK_ENTRY" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="IMF" class="Codelist" id="CL_FSENTRY" package="codelist" version="1.1"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="3" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="ACCOUNTING_ENTRY" position="8" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).ACCOUNTING_ENTRY">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="ACCOUNTING_ENTRY" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="IMF" class="Codelist" id="CL_ACCOUNT_ENTRY" package="codelist" version="1.3"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="2" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="INT_ACC_ITEM" position="9" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).INT_ACC_ITEM">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="INT_ACC_ITEM" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="IMF" class="Codelist" id="CL_ACCOUNTS_ITEM" package="codelist" version="1.5"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="8" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="FUNCTIONAL_CAT" position="10" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).FUNCTIONAL_CAT">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="FUNCTIONAL_CAT" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="IMF" class="Codelist" id="CL_FUNCTIONAL_CAT" package="codelist" version="1.9"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="5" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="INSTR_ASSET" position="11" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).INSTR_ASSET">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="INSTR_ASSET" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="ESTAT" class="Codelist" id="CL_INSTR_ASSET" package="codelist" version="1.9"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="7" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="TYPE_ENTITY" position="12" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).TYPE_ENTITY">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="TYPE_ENTITY" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="OECD" class="Codelist" id="CL_TYPE_ENTITY" package="codelist" version="1.0"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="3" minLength="3" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="UNIT_MEASURE" position="13" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).UNIT_MEASURE">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="UNIT_MEASURE" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="IMF" class="Codelist" id="CL_UNIT" package="codelist" version="1.13"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="15" minLength="2" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="FDI_RELATIONSHIP" position="14" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).FDI_RELATIONSHIP">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="FDI_RELATIONSHIP" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="OECD" class="Codelist" id="CL_FDI_RELATION" package="codelist" version="1.0"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="VALUATION" position="15" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).VALUATION">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="VALUATION" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="ESTAT" class="Codelist" id="CL_VALUATION" package="codelist" version="1.6"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="2" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="STAT_UNIT" position="16" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).STAT_UNIT">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="STAT_UNIT" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="OECD" class="Codelist" id="CL_STAT_UNIT" package="codelist" version="1.0"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="2" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="ACTIVITY" position="17" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).ACTIVITY">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="ACTIVITY" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="ESTAT" class="Codelist" id="CL_ACTIVITY" package="codelist" version="1.6"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="9" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:Dimension id="ACTIVITY_ALLOC" position="18" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=OECD:FDI(1.7).ACTIVITY_ALLOC">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="ACTIVITY_ALLOC" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="OECD" class="Codelist" id="CL_ACTIVITY_ALLOC" package="codelist" version="1.0"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="2" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-						</str:Dimension>
-						<str:TimeDimension id="TIME_PERIOD" position="19" urn="urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=OECD:FDI(1.7).TIME_PERIOD">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="TIME_PERIOD" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="TIME_PERIOD" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:TextFormat textType="ObservationalTimePeriod"/>
 							</str:LocalRepresentation>
 						</str:TimeDimension>
 					</str:DimensionList>
-					<str:AttributeList id="AttributeDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=OECD:FDI(1.7).AttributeDescriptor">
-						<str:Attribute assignmentStatus="Conditional" id="TIME_FORMAT" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).TIME_FORMAT">
+					<str:AttributeList id="AttributeDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=ESTAT:HICPAP(2.0).AttributeDescriptor">
+						<str:Attribute assignmentStatus="Conditional" id="DISS_ORG" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).DISS_ORG">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="TIME_FORMAT" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="DISS_ORG" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:Enumeration>
-									<Ref agencyID="SDMX" class="Codelist" id="CL_TIME_FORMAT" package="codelist" version="1.0"/>
+									<Ref agencyID="IMF" class="Codelist" id="CL_ORGANISATION" package="codelist" version="1.7"/>
 								</str:Enumeration>
-								<str:EnumerationFormat maxLength="4" minLength="3" textType="String"/>
 							</str:LocalRepresentation>
 							<str:AttributeRelationship>
 								<str:Dimension>
-									<Ref id="MEASURE_PRINCIPLE"/>
+									<Ref id="FREQ"/>
 								</str:Dimension>
 								<str:Dimension>
 									<Ref id="REF_AREA"/>
 								</str:Dimension>
 								<str:Dimension>
-									<Ref id="COUNTERPART_AREA"/>
+									<Ref id="IND_TYPE"/>
 								</str:Dimension>
 								<str:Dimension>
-									<Ref id="REF_SECTOR"/>
+									<Ref id="IDX_TYPE"/>
 								</str:Dimension>
 								<str:Dimension>
-									<Ref id="LEVEL_COUNTERPART"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FLOW_STOCK_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACCOUNTING_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INT_ACC_ITEM"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FUNCTIONAL_CAT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INSTR_ASSET"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="TYPE_ENTITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="UNIT_MEASURE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FDI_RELATIONSHIP"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="VALUATION"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="STAT_UNIT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY_ALLOC"/>
+									<Ref id="ITEM"/>
 								</str:Dimension>
 							</str:AttributeRelationship>
 						</str:Attribute>
-						<str:Attribute assignmentStatus="Mandatory" id="OBS_STATUS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).OBS_STATUS">
+						<str:Attribute assignmentStatus="Conditional" id="COMPILING_ORG" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).COMPILING_ORG">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="OBS_STATUS" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="COMPILING_ORG" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="IMF" class="Codelist" id="CL_ORGANISATION" package="codelist" version="1.7"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="IND_TYPE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="IDX_TYPE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="TIME_FORMAT" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).TIME_FORMAT">
+							<str:ConceptIdentity>
+								<Ref agencyID="ESTAT" class="Concept" id="TIME_FORMAT" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="SDMX" class="Codelist" id="CL_TIME_FORMAT" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="IND_TYPE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="IDX_TYPE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="OBS_STATUS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).OBS_STATUS">
+							<str:ConceptIdentity>
+								<Ref agencyID="ESTAT" class="Concept" id="OBS_STATUS" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:Enumeration>
 									<Ref agencyID="ESTAT" class="Codelist" id="CL_OBS_STATUS" package="codelist" version="2.2"/>
 								</str:Enumeration>
-								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
 							</str:LocalRepresentation>
 							<str:AttributeRelationship>
 								<str:PrimaryMeasure>
@@ -300,15 +168,27 @@
 								</str:PrimaryMeasure>
 							</str:AttributeRelationship>
 						</str:Attribute>
-						<str:Attribute assignmentStatus="Mandatory" id="CONF_STATUS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).CONF_STATUS">
+						<str:Attribute assignmentStatus="Mandatory" id="DECIMALS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).DECIMALS">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="CONF_STATUS" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="DECIMALS" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat isSequence="false" textType="Integer"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="CONF_STATUS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).CONF_STATUS">
+							<str:ConceptIdentity>
+								<Ref agencyID="ESTAT" class="Concept" id="CONF_STATUS" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:Enumeration>
 									<Ref agencyID="SDMX" class="Codelist" id="CL_CONF_STATUS" package="codelist" version="1.2"/>
 								</str:Enumeration>
-								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
 							</str:LocalRepresentation>
 							<str:AttributeRelationship>
 								<str:PrimaryMeasure>
@@ -316,22 +196,84 @@
 								</str:PrimaryMeasure>
 							</str:AttributeRelationship>
 						</str:Attribute>
-						<str:Attribute assignmentStatus="Conditional" id="PRE_BREAK_VALUE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).PRE_BREAK_VALUE">
+						<str:Attribute assignmentStatus="Conditional" id="COMMENT_TS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).COMMENT_TS">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="PRE_BREAK_VALUE" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="COMMENT_TS" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
-								<str:TextFormat maxLength="15" textType="Double"/>
+								<str:TextFormat maxLength="1050" textType="String"/>
 							</str:LocalRepresentation>
 							<str:AttributeRelationship>
-								<str:PrimaryMeasure>
-									<Ref id="OBS_VALUE"/>
-								</str:PrimaryMeasure>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="IND_TYPE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="IDX_TYPE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ITEM"/>
+								</str:Dimension>
 							</str:AttributeRelationship>
 						</str:Attribute>
-						<str:Attribute assignmentStatus="Conditional" id="COMMENT_OBS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).COMMENT_OBS">
+						<str:Attribute assignmentStatus="Conditional" id="TITLE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).TITLE">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="COMMENT_OBS" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="TITLE" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="200" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="IND_TYPE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="IDX_TYPE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="DATA_COMP" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).DATA_COMP">
+							<str:ConceptIdentity>
+								<Ref agencyID="ESTAT" class="Concept" id="DATA_COMP" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="4000" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="IND_TYPE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="IDX_TYPE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="COMMENT_OBS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).COMMENT_OBS">
+							<str:ConceptIdentity>
+								<Ref agencyID="ESTAT" class="Concept" id="COMMENT_OBS" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:TextFormat maxLength="4000" textType="String"/>
@@ -342,456 +284,28 @@
 								</str:PrimaryMeasure>
 							</str:AttributeRelationship>
 						</str:Attribute>
-						<str:Attribute assignmentStatus="Conditional" id="COMMENT_TS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).COMMENT_TS">
+						<str:Attribute assignmentStatus="Conditional" id="COMMENT_DSET" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).COMMENT_DSET">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="COMMENT_TS" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="COMMENT_DSET" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
 								<str:TextFormat maxLength="1050" textType="String"/>
 							</str:LocalRepresentation>
 							<str:AttributeRelationship>
-								<str:Dimension>
-									<Ref id="MEASURE_PRINCIPLE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="COUNTERPART_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_SECTOR"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="LEVEL_COUNTERPART"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FLOW_STOCK_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACCOUNTING_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INT_ACC_ITEM"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FUNCTIONAL_CAT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INSTR_ASSET"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="TYPE_ENTITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="UNIT_MEASURE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FDI_RELATIONSHIP"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="VALUATION"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="STAT_UNIT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY_ALLOC"/>
-								</str:Dimension>
-							</str:AttributeRelationship>
-						</str:Attribute>
-						<str:Attribute assignmentStatus="Conditional" id="TITLE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).TITLE">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="TITLE" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:TextFormat maxLength="200" textType="String"/>
-							</str:LocalRepresentation>
-							<str:AttributeRelationship>
-								<str:Dimension>
-									<Ref id="MEASURE_PRINCIPLE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="COUNTERPART_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_SECTOR"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="LEVEL_COUNTERPART"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FLOW_STOCK_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACCOUNTING_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INT_ACC_ITEM"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FUNCTIONAL_CAT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INSTR_ASSET"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="TYPE_ENTITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="UNIT_MEASURE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FDI_RELATIONSHIP"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="VALUATION"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="STAT_UNIT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY_ALLOC"/>
-								</str:Dimension>
-							</str:AttributeRelationship>
-						</str:Attribute>
-						<str:Attribute assignmentStatus="Mandatory" id="UNIT_MULT" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).UNIT_MULT">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="UNIT_MULT" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="SDMX" class="Codelist" id="CL_UNIT_MULT" package="codelist" version="1.1"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="2" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-							<str:AttributeRelationship>
-								<str:Dimension>
-									<Ref id="MEASURE_PRINCIPLE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="COUNTERPART_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_SECTOR"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="LEVEL_COUNTERPART"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FLOW_STOCK_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACCOUNTING_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INT_ACC_ITEM"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FUNCTIONAL_CAT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INSTR_ASSET"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="TYPE_ENTITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="UNIT_MEASURE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FDI_RELATIONSHIP"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="VALUATION"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="STAT_UNIT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY_ALLOC"/>
-								</str:Dimension>
-							</str:AttributeRelationship>
-						</str:Attribute>
-						<str:Attribute assignmentStatus="Mandatory" id="DECIMALS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).DECIMALS">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="DECIMALS" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="SDMX" class="Codelist" id="CL_DECIMALS" package="codelist" version="1.0"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="2" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-							<str:AttributeRelationship>
-								<str:Dimension>
-									<Ref id="MEASURE_PRINCIPLE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="COUNTERPART_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_SECTOR"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="LEVEL_COUNTERPART"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FLOW_STOCK_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACCOUNTING_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INT_ACC_ITEM"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FUNCTIONAL_CAT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INSTR_ASSET"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="TYPE_ENTITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="UNIT_MEASURE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FDI_RELATIONSHIP"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="VALUATION"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="STAT_UNIT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY_ALLOC"/>
-								</str:Dimension>
-							</str:AttributeRelationship>
-						</str:Attribute>
-						<str:Attribute assignmentStatus="Conditional" id="REF_PERIOD_DETAIL" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).REF_PERIOD_DETAIL">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="REF_PERIOD_DETAIL" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="ESTAT" class="Codelist" id="CL_REF_PERIOD_DTL" package="codelist" version="1.0"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="3" minLength="1" textType="String"/>
-							</str:LocalRepresentation>
-							<str:AttributeRelationship>
-								<str:Dimension>
-									<Ref id="MEASURE_PRINCIPLE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="COUNTERPART_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_SECTOR"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="LEVEL_COUNTERPART"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FLOW_STOCK_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACCOUNTING_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INT_ACC_ITEM"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FUNCTIONAL_CAT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INSTR_ASSET"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="TYPE_ENTITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="UNIT_MEASURE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FDI_RELATIONSHIP"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="VALUATION"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="STAT_UNIT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY_ALLOC"/>
-								</str:Dimension>
-							</str:AttributeRelationship>
-						</str:Attribute>
-						<str:Attribute assignmentStatus="Conditional" id="COMPILING_ORG" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).COMPILING_ORG">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="COMPILING_ORG" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="IMF" class="Codelist" id="CL_ORGANISATION" package="codelist" version="1.9"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="4" minLength="3" textType="String"/>
-							</str:LocalRepresentation>
-							<str:AttributeRelationship>
-								<str:Dimension>
-									<Ref id="MEASURE_PRINCIPLE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="COUNTERPART_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_SECTOR"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="LEVEL_COUNTERPART"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FLOW_STOCK_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACCOUNTING_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INT_ACC_ITEM"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FUNCTIONAL_CAT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INSTR_ASSET"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="TYPE_ENTITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="UNIT_MEASURE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FDI_RELATIONSHIP"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="VALUATION"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="STAT_UNIT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY_ALLOC"/>
-								</str:Dimension>
-							</str:AttributeRelationship>
-						</str:Attribute>
-						<str:Attribute assignmentStatus="Conditional" id="DISS_ORG" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=OECD:FDI(1.7).DISS_ORG">
-							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="DISS_ORG" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
-							</str:ConceptIdentity>
-							<str:LocalRepresentation>
-								<str:Enumeration>
-									<Ref agencyID="IMF" class="Codelist" id="CL_ORGANISATION" package="codelist" version="1.9"/>
-								</str:Enumeration>
-								<str:EnumerationFormat maxLength="4" minLength="3" textType="String"/>
-							</str:LocalRepresentation>
-							<str:AttributeRelationship>
-								<str:Dimension>
-									<Ref id="MEASURE_PRINCIPLE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="COUNTERPART_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_SECTOR"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="LEVEL_COUNTERPART"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FLOW_STOCK_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACCOUNTING_ENTRY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INT_ACC_ITEM"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FUNCTIONAL_CAT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="INSTR_ASSET"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="TYPE_ENTITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="UNIT_MEASURE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="FDI_RELATIONSHIP"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="VALUATION"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="STAT_UNIT"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ACTIVITY_ALLOC"/>
-								</str:Dimension>
+								<str:None/>
 							</str:AttributeRelationship>
 						</str:Attribute>
 					</str:AttributeList>
-					<str:MeasureList id="MeasureDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=OECD:FDI(1.7).MeasureDescriptor">
-						<str:PrimaryMeasure id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=OECD:FDI(1.7).OBS_VALUE">
+					<str:MeasureList id="MeasureDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=ESTAT:HICPAP(2.0).MeasureDescriptor">
+						<str:PrimaryMeasure id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=ESTAT:HICPAP(2.0).OBS_VALUE">
 							<str:ConceptIdentity>
-								<Ref agencyID="OECD" class="Concept" id="OBS_VALUE" maintainableParentID="CS_FDI" maintainableParentVersion="1.7" package="conceptscheme"/>
+								<Ref agencyID="ESTAT" class="Concept" id="OBS_VALUE" maintainableParentID="CS_PRICE" maintainableParentVersion="1.1" package="conceptscheme"/>
 							</str:ConceptIdentity>
 							<str:LocalRepresentation>
-								<str:TextFormat textType="Double"/>
+								<str:Enumeration>
+									<Ref agencyID="ESTAT" class="Codelist" id="CL_VALUE_AP" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="3" minLength="3" textType="String"/>
 							</str:LocalRepresentation>
 						</str:PrimaryMeasure>
 					</str:MeasureList>
