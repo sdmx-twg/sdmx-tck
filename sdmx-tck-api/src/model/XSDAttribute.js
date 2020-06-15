@@ -5,6 +5,7 @@ class XSDAttribute {
        this.name = props.$.name;
        this.type = props.$.type;
        this.use = props.$.use;
+       this.fixed = props.$.fixed;
     };
     
     setName(name){
@@ -24,6 +25,12 @@ class XSDAttribute {
     }
     getUse(){
         return this.use;
+    }
+    setFixed(fixed){
+        this.fixed = fixed
+    }
+    getFixed(){
+        return this.fixed;
     }
 };
 
