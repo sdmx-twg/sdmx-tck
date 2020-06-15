@@ -12,6 +12,7 @@ var SdmxV21JsonForStubsParser = require('./SdmxV21JsonForStubsParser.js');
 var SdmxV21JsonCubeRegionParser = require('./SdmxV21JsonCubeRegionParser.js')
 var SdmxV21JsonDataKeySetParser = require('./SdmxV21JsonDataKeySetParser.js')
 var SdmxV21JsonDsdComponentParser= require('./SdmxV21JsonDsdComponentParser.js')
+var SdmxV21DsdGroupParsers = require('./SdmxV21DsdGroupParsers.js') 
 
 class SdmxV21StructuresParser {
     static parseStructures(sdmxJsonObjects) {
@@ -249,6 +250,7 @@ class SdmxV21StructuresParser {
                 structures.get(structureType).push(
                     new DataStructureObject(dsd,
                         SdmxV21JsonDsdComponentParser.getComponents(dsd),
+                        SdmxV21DsdGroupParsers.getGroups(dsd),
                         SdmxV21StructureReferencesParser.getReferences(dsd),
                         SdmxV21JsonForStubsParser.getDetail(structureType, dsd)));
                     
