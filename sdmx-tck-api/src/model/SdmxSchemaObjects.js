@@ -72,6 +72,13 @@ class SdmxSchemaObjects extends SdmxObjects{
         return chosenSimpleType[0]
     }
 
+    getXSDSimpleTypeByName(simpleTypeName){
+        let simpleType = this.getXSDSimpleTypes().filter(simpleType => simpleType.getName() === simpleTypeName)
+        if(simpleType.length === 1){
+            return simpleType[0]
+        }
+        return null;
+    }
     getXSDComplexTypeByName(complexTypeName){
         let complexType = this.getXSDComplexTypes().filter(complexType => complexType.getName() === complexTypeName)
         if(complexType.length === 1){
