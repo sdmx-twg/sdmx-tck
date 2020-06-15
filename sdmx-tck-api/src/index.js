@@ -48,6 +48,7 @@ var XSDComplexType = require('./model/XSDComplexType.js')
 var XSDLocalElement = require('./model/XSDLocalElement.js')
 var XSDReferenceElement = require('./model/XSDReferenceElement.js')
 var XSDAttribute = require('./model/XSDAttribute.js')
+var XSDAnyAttribute = require('./model/XSDAnyAttribute.js')
 var XSDCompositor = require('./model/XSDCompositor.js')
 var DataStructureAttributeObject = require('./model/DataStructureAttributeObject.js')
 var DataStructureAttributeRelationshipObject = require('./model/DataStructureAttributeRelationshipObject.js')
@@ -111,6 +112,7 @@ module.exports = {
         XSDLocalElement:XSDLocalElement,
         XSDReferenceElement:XSDReferenceElement,
         XSDAttribute:XSDAttribute,
+        XSDAnyAttribute:XSDAnyAttribute,
         XSDCompositor:XSDCompositor
 
     },

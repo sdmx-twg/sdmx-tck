@@ -54,7 +54,8 @@ class SdmxV21SchemasParser {
           for (var ct in complexTypes){
               schemaComponents.get(xsdComponentType).push(new XSDComplexType(complexTypes[ct],
                                                       SdmxV21SchemaCompositorsParser.getCompositors(complexTypes[ct]),
-                                                      SdmxV21SchemaAttributeParser.getAttributes(complexTypes[ct])));
+                                                      SdmxV21SchemaAttributeParser.getAttributes(complexTypes[ct]),
+                                                      SdmxV21SchemaAttributeParser.getAnyAttributes(complexTypes[ct])));
           }
       }
     };

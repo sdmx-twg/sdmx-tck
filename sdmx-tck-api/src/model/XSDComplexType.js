@@ -1,7 +1,7 @@
 var isDefined = require('../utils/Utils').isDefined;
 
 class XSDComplexType {
-    constructor(props,compositors,attributes) {
+    constructor(props,compositors,attributes,anyAttributes) {
        this.name = props.$.name;
        this.isAbstract = (props.$.abstract) ? true:false;
        this.restrictionBase =  props.complexContent[0].restriction[0].$.base;
@@ -9,6 +9,7 @@ class XSDComplexType {
        //sequence & choice
        this.compositors = compositors 
        this.attributes = attributes;
+       this.anyAttributes = anyAttributes
     };
     
     setName(name){
@@ -40,6 +41,12 @@ class XSDComplexType {
     }
     getAttributes(){
         return this.attributes;
+    }
+    setAnyAttributes(anyAttributes){
+        this.anyAttributes = anyAttributes;
+    }
+    getAnyAttributes(){
+        return this.anyAttributes;
     }
 
     getAttributeByName(attributeName){
