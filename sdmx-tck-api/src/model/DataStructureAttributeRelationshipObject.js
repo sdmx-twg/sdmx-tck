@@ -15,7 +15,7 @@ class DataStructureAttributeRelationshipObject{
    setIds(ids){
        this.id = ids;
    }
-   getId(){
+   getIds(){
        return this.ids;
    }
 }
