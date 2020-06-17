@@ -245,17 +245,21 @@ class SchemasSemanticChecker {
     }
 
     static checkXSDComplexTypes (test,query,sdmxObjects){
-       let dataSetTypeValidation = SchemasSemanticChecker.checkXSDDataSetType(test,query,sdmxObjects)
-       if(dataSetTypeValidation.status === FAILURE_CODE){return dataSetTypeValidation}
-       if(query.obsDimension !== "AllDimension"){
-           let seriesTypeValidation = SchemasSemanticChecker.checkXSDSeriesType(test,query,sdmxObjects)
-           if(seriesTypeValidation.status === FAILURE_CODE){return seriesTypeValidation}
-           //return seriesTypeValidation
-       }
-       let groupTypeValidation = SchemasSemanticChecker.checkXSDGroupType(test,query,sdmxObjects)
-       //TODO: GroupType must be checked if there is 1 or more groups in dsd
-       if(groupTypeValidation.status === FAILURE_CODE){return groupTypeValidation}
-       return groupTypeValidation;
+    //    let dataSetTypeValidation = SchemasSemanticChecker.checkXSDDataSetType(test,query,sdmxObjects)
+    //    if(dataSetTypeValidation.status === FAILURE_CODE){return dataSetTypeValidation}
+    //    if(query.obsDimension !== "AllDimension"){
+    //        let seriesTypeValidation = SchemasSemanticChecker.checkXSDSeriesType(test,query,sdmxObjects)
+    //        if(seriesTypeValidation.status === FAILURE_CODE){return seriesTypeValidation}
+    //        //return seriesTypeValidation
+    //    }
+    //    let groupTypeValidation = SchemasSemanticChecker.checkXSDGroupType(test,query,sdmxObjects)
+    //    //TODO: GroupType must be checked if there is 1 or more groups in dsd
+    //    if(groupTypeValidation.status === FAILURE_CODE){return groupTypeValidation}
+    //    return groupTypeValidation;
+
+       let obsTypeValidation = SchemasSemanticChecker.checkXSDObsType(test,query,sdmxObjects)
+       return obsTypeValidation
+
           
     }
     static checkXSDDataSetType(test,query,sdmxObjects){
@@ -265,16 +269,12 @@ class SchemasSemanticChecker {
             let complexType = sdmxObjects.getXSDComplexTypeByName("DataSetType");
             if(!complexType){throw new Error("Missing complexType 'DataSetType'."); }
             
-            //CHECK RESTRICTION BASE OF COMPLEX TYPE
             //If undefined means that we do not have specified observation dimension so it is its default (TIME_PERIOD)
-            if(!query.obsDimension){
-                if(complexType.getRestrictionBase()!=="dsd:TimeSeriesDataSetType"){
-                    return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: The restriction base should have been 'dsd:TimeSeriesDataSetType' but instead it is "+complexType.getRestrictionBase()+"."}
-                }
-            }else{
-                if(complexType.getRestrictionBase()!=="dsd:DataSetType"){
-                    return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: The restriction base should have been 'dsd:DataSetType' but instead it is "+complexType.getRestrictionBase()+"."}
-                }
+            let expectedRestrictionBase = (!query.obsDimension || query.obsDimension === "TIME_PERIOD") ? "dsd:TimeSeriesDataSetType" : "dsd:DataSetType"
+            
+            //CHECK RESTRICTION BASE OF COMPLEX TYPE
+            if(complexType.getRestrictionBase()!==expectedRestrictionBase){
+                return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: The restriction base should have been "+expectedRestrictionBase+" but instead it is "+complexType.getRestrictionBase()+"."}
             }
 
             //CHECK IF THE 'DataSetType' CONTAINS A SEQUENCE
@@ -314,16 +314,16 @@ class SchemasSemanticChecker {
                 return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: Minimum occurence of choice is "+choice.getMinOccurs()+" instead of 0."}
             }
              //If undefined means that we do not have specified observation dimension so it is its default (TIME_PERIOD)
-            if(query.obsDimension === "AllDimensions"){
-                if(choice.getElements().filter(element => (element instanceof XSDLocalElement) && element.getName() === "Obs" && element.getType() === "ObsType" && element.getMaxOccurs() === "unbounded" && element.getForm()==="unqualified").length !== 1){
-                    return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No Local Elements found in choice."}
-                }
-            }else{
-                if(choice.getElements().filter(element => (element instanceof XSDLocalElement) && element.getName() === "Series" && element.getType() === "SeriesType" && element.getMaxOccurs() === "unbounded" && element.getForm()==="unqualified").length !== 1){
-                    return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No Local Elements found in choice."}
-                }
-            }
+             if(choice.getElements().filter(element => 
+                (element instanceof XSDLocalElement) 
+                && element.getName() === (query.obsDimension === "AllDimension")?"Obs":"Series" 
+                && element.getType() === (query.obsDimension === "AllDimension")?"ObsType":"SeriesType" 
+                && element.getMaxOccurs() === "unbounded" 
+                && element.getForm()==="unqualified").length !== 1){
 
+                return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No Local Elements found in choice."}
+            }
+            
             //CHECK FOR REPORTING_YEAR_START_DAY ATTRIBUTE
             let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.context)
             let agency = query.agency
@@ -358,9 +358,10 @@ class SchemasSemanticChecker {
             let reportingYearStartDayAttr = artefact.getComponents().filter(component => component.getId() === "REPORTING_YEAR_START_DAY")
             if((reportingYearStartDayAttr.length === 0) 
                 || (reportingYearStartDayAttr.length === 1 && reportingYearStartDayAttr[0].getAttributeRelationship().filter(relationship => relationship.getRelationShipType()==="None").length === 0)){
-                    if(complexType.getAttributes().filter(attr=>attr.getName()==="REPORTING_YEAR_START_DAY" && attr.getType() === XSD_DATA_TYPE.MONTH_DAY && attr.getUse()==="prohibited").length === 0){
+                    if(!complexType.hasAttribute("REPORTING_YEAR_START_DAY",XSD_DATA_TYPE.MONTH_DAY,"prohibited")){
                         return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No REPORTING_YEAR_START_DAY attribute found."}
                     }
+                    
             }
 
             //CHECK FOR ATTRIBUTE RELATIONSHIPS OF NONE ATTRIBUTES
@@ -371,19 +372,9 @@ class SchemasSemanticChecker {
                 return attrRelationships.filter(relationship=>relationship.getRelationshipType()==="None").length>0 === true
             })
             for(let i in attributesDeclaringNoneRelationship){
-                let attrId = (attributesDeclaringNoneRelationship[i].getId()) ? attributesDeclaringNoneRelationship[i].getId() : attributesDeclaringNoneRelationship[i].getReferences().filter(ref=>ref.getStructureType() === "CONCEPT_SCHEME")[0].getId()
-                let selectedAttribute = complexType.getAttributes().filter(function(attr){
-                    let nameExpression = attr.getName() === attrId;
-                    let typeExrepssion = (sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && attr.getType() === sdmxObjects.getXSDSimpleTypeByName(attr.getType()).getName() 
-                    || !sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (attributesDeclaringNoneRelationship[i].getRepresentation()) && attr.getType() === XSD_DATA_TYPE.getMapping(attributesDeclaringNoneRelationship[i].getRepresentation().getTextType()))
-                    
-                    let usageExpression = attr.getUse()==="optional"
-                    return nameExpression && typeExrepssion && usageExpression
-                })
-            
-               if(selectedAttribute.length === 0){
-                missingAttributes.push(attrId)
-               }
+                if(!complexType.hasStructComponentAsAttribute(attributesDeclaringNoneRelationship[i],sdmxObjects,"optional")){
+                    missingAttributes.push(attributesDeclaringNoneRelationship[i].getId())
+                }
             }
             if(missingAttributes.length > 0){
                 return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: The following none relationship attributes are missing."+JSON.stringify(missingAttributes)}
@@ -400,17 +391,13 @@ class SchemasSemanticChecker {
             //GET THE CORRECT COMPLEX TYPE
             let complexType = sdmxObjects.getXSDComplexTypeByName("SeriesType");
             if(!complexType){throw new Error("Missing complexType 'SeriesType'."); }
-
-            //CHECK RESTRICTION BASE OF COMPLEX TYPE
+            
             //If undefined means that we do not have specified observation dimension so it is its default (TIME_PERIOD)
-            if(!query.obsDimension){
-                if(complexType.getRestrictionBase()!=="dsd:TimeSeriesType"){
-                    return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The restriction base should have been 'dsd:TimeSeriesType' but instead it is "+complexType.getRestrictionBase()+"."}
-                }
-            }else{
-                if(complexType.getRestrictionBase()!=="dsd:SeriesType"){
-                    return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The restriction base should have been 'dsd:SeriesType' but instead it is "+complexType.getRestrictionBase()+"."}
-                }
+            let expectedRestrictionBase = (!query.obsDimension || query.obsDimension === "TIME_PERIOD") ? "dsd:TimeSeriesType" : "dsd:SeriesType"
+            
+            //CHECK RESTRICTION BASE OF COMPLEX TYPE
+            if(complexType.getRestrictionBase()!==expectedRestrictionBase){
+                return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The restriction base should have been "+expectedRestrictionBase+" but instead it is "+complexType.getRestrictionBase()+"."}
             }
 
             //CHECK IF THE 'DataSetType' CONTAINS A SEQUENCE
@@ -464,30 +451,19 @@ class SchemasSemanticChecker {
             let dimensionAtObservation = (!query.obsDimension) ? "TIME_PERIOD" : query.obsDimension;
             let requestedDimensions = artefact.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION && component.getId() !== dimensionAtObservation )
             for(let i in requestedDimensions){
-                let dimensionId = (requestedDimensions[i].getId()) ? requestedDimensions[i].getId() : requestedDimensions[i].getReferences().filter(ref=>ref.getStructureType() === "CONCEPT_SCHEME")[0].getId()
-                let selectedAttribute = complexType.getAttributes().filter(function(attr){
-                    let nameExpression = attr.getName() === dimensionId;
-                    let typeExrepssion = (sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && attr.getType() === sdmxObjects.getXSDSimpleTypeByName(attr.getType()).getName() 
-                    || !sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (requestedDimensions[i].getRepresentation()) && attr.getType() === XSD_DATA_TYPE.getMapping(requestedDimensions[i].getRepresentation().getTextType()))
-                    
-                    let usageExpression = attr.getUse()==="required"
-                    
-                    return nameExpression && typeExrepssion && usageExpression
-                })
-
-               if(selectedAttribute.length === 0){
-                missingAttributes.push(dimensionId)
-               }
+                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i],sdmxObjects,"required")){
+                    missingAttributes.push(requestedDimensions[i].getId())
+                }
             }
             if(missingAttributes.length > 0){
-                return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following none relationship attributes are missing."+JSON.stringify(missingAttributes)}
+                return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
             }
 
             let reportingYearStartDayAttr = artefact.getComponents().filter(component => component.getId() === "REPORTING_YEAR_START_DAY")
             if((reportingYearStartDayAttr.length === 0) 
                 || (reportingYearStartDayAttr.length === 1 && reportingYearStartDayAttr[0].getAttributeRelationship().filter(relationship => relationship.getRelationShipType()==="None").length === 0)){
-                    if(complexType.getAttributes().filter(attr=>attr.getName()==="REPORTING_YEAR_START_DAY" && attr.getType() === XSD_DATA_TYPE.MONTH_DAY && attr.getUse()==="prohibited").length === 0){
-                        return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: No REPORTING_YEAR_START_DAY attribute found."}
+                    if(!complexType.hasAttribute("REPORTING_YEAR_START_DAY",XSD_DATA_TYPE.MONTH_DAY,"prohibited")){
+                        return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No REPORTING_YEAR_START_DAY attribute found."}
                     }
             }
 
@@ -500,24 +476,13 @@ class SchemasSemanticChecker {
                 let expression2 = attrRelationships.filter(relationship=>relationship.getRelationshipType()==="Dimension" && relationship.getIds() !== dimensionAtObservation).length>0 === true
                 return expression1 === false && expression2 === true
             })
-            //console.log(requestedAttributes)
             for(let i in requestedAttributes){
-                let attrId = (requestedAttributes[i].getId()) ? requestedAttributes[i].getId() : requestedAttributes[i].getReferences().filter(ref=>ref.getStructureType() === "CONCEPT_SCHEME")[0].getId()
-                let selectedAttribute = complexType.getAttributes().filter(function(attr){
-                    let nameExpression = attr.getName() === attrId;
-                    let typeExrepssion = (sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && attr.getType() === sdmxObjects.getXSDSimpleTypeByName(attr.getType()).getName() 
-                    || !sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (requestedAttributes[i].getRepresentation()) && attr.getType() === XSD_DATA_TYPE.getMapping(requestedAttributes[i].getRepresentation().getTextType()))
-                    
-                    let usageExpression = attr.getUse()==="optional"
-                    return nameExpression && typeExrepssion && usageExpression
-                })
-            
-               if(selectedAttribute.length === 0){
-                missingAttributes.push(attrId)
-               }
+                if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i],sdmxObjects,"optional")){
+                    missingAttributes.push(requestedAttributes[i].getId())
+                }
             }
             if(missingAttributes.length > 0){
-                return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: The following none relationship attributes are missing."+JSON.stringify(missingAttributes)}
+                return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
             }
 
             return { status: SUCCESS_CODE };
@@ -565,70 +530,68 @@ class SchemasSemanticChecker {
     }
     static checkXSDAbstractGroupType(artefact,sdmxObjects){
         let complexType = sdmxObjects.getXSDComplexTypeByName("GroupType");
-         if(!complexType){throw new Error("Missing complexType 'GroupType'."); }
- 
-         if(complexType.getRestrictionBase()!=="dsd:GroupType"){
-             return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: The restriction base should have been 'dsd:GroupType' but instead it is "+complexType.getRestrictionBase()+"."}
-         }
+        if(!complexType){throw new Error("Missing complexType 'GroupType'."); }
 
-         if(!complexType.getIsAbstract()){
-            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: The GroupType complex type is not abstract."}
-         }
-         //CHECK IF THE 'GroupType' CONTAINS A SEQUENCE
-         if(complexType.getCompositors().length !== 1){
-             return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No compositors found."}
-         }
-         if(complexType.getCompositors()[0].getType()!=="sequence"){
-             return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No sequence found."}
-         }
- 
-         //CHECK THAT THE SEQUENCE CONTAINS THE CORRECT REFERENCE & LOCAL ELEMENTS
-         let sequence = complexType.getCompositors()[0];
-         if(sequence.getElements().filter(element => (element instanceof XSDReferenceElement) && element.getRef() === "common:Annotations" && element.getMinOccurs() === "0").length !== 1){
-             return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No valid reference element found in sequence."}
-         }
+        if(complexType.getRestrictionBase()!=="dsd:GroupType"){
+            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: The restriction base should have been 'dsd:GroupType' but instead it is "+complexType.getRestrictionBase()+"."}
+        }
 
-         //CHECK ATTRIBUTES & ANYATTRIBUTE
-         if(complexType.getAttributes().filter(attr=>attr.getName() === "type" && attr.getType() === "GroupType.ID" && attr.getUse()==="optional").length === 0){
-            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No optional attribute found with name 'Group.ID'. "}
-         }
-         if(complexType.getAnyAttributes().filter(attr=>attr.getNamespace()=== "##local").length === 0){
-            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No anyAttribute found. "}
-         }
+        if(!complexType.getIsAbstract()){
+        return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: The GroupType complex type is not abstract."}
+        }
+        //CHECK IF THE 'GroupType' CONTAINS A SEQUENCE
+        if(complexType.getCompositors().length !== 1){
+            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No compositors found."}
+        }
+        if(complexType.getCompositors()[0].getType()!=="sequence"){
+            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No sequence found."}
+        }
 
-         //CHECK GroupType.ID SIMPLE TYPE
-         let simpleType = sdmxObjects.getXSDSimpleTypeByName("GroupType.ID");
-         if(!complexType){throw new Error("Missing simpleType 'GroupType.ID'."); }
- 
-         if(simpleType.getRestrictionBase()!=="common:IDType"){
-             return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: The restriction base of 'GroupType.ID' simpleType should have been 'common:IDType' but instead it is "+complexType.getRestrictionBase()+"."}
-         }
-         if(simpleType.getEnumerations().length === 0){
-            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: Missing enumerations in simpleType 'GroupType.ID' "}
-         }
-         if(simpleType.getEnumerations().length !== artefact.getGroups().length){
-            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: Number of enumerations in simpleType 'GroupType.ID' is not correct."}
-         }
-         if(!artefact.getGroups().every(group=>simpleType.getEnumerations().indexOf(group.getId() !== 1))){
-            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: Invalid enumerations in simpleType 'GroupType.ID'."}
-         }
-         return { status: SUCCESS_CODE };
+        //CHECK THAT THE SEQUENCE CONTAINS THE CORRECT REFERENCE & LOCAL ELEMENTS
+        let sequence = complexType.getCompositors()[0];
+        if(sequence.getElements().filter(element => (element instanceof XSDReferenceElement) && element.getRef() === "common:Annotations" && element.getMinOccurs() === "0").length !== 1){
+            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No valid reference element found in sequence."}
+        }
 
+        //CHECK ATTRIBUTES & ANYATTRIBUTE
+        if(complexType.getAttributes().filter(attr=>attr.getName() === "type" && attr.getType() === "GroupType.ID" && attr.getUse()==="optional").length === 0){
+        return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No optional attribute found with name 'Group.ID'. "}
+        }
+        if(complexType.getAnyAttributes().filter(attr=>attr.getNamespace()=== "##local").length === 0){
+        return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No anyAttribute found. "}
+        }
+
+        //CHECK GroupType.ID SIMPLE TYPE
+        let simpleType = sdmxObjects.getXSDSimpleTypeByName("GroupType.ID");
+        if(!complexType){throw new Error("Missing simpleType 'GroupType.ID'."); }
+
+        if(simpleType.getRestrictionBase()!=="common:IDType"){
+            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: The restriction base of 'GroupType.ID' simpleType should have been 'common:IDType' but instead it is "+complexType.getRestrictionBase()+"."}
+        }
+        if(simpleType.getEnumerations().length === 0){
+        return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: Missing enumerations in simpleType 'GroupType.ID' "}
+        }
+        if(simpleType.getEnumerations().length !== artefact.getGroups().length){
+        return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: Number of enumerations in simpleType 'GroupType.ID' is not correct."}
+        }
+        if(!artefact.getGroups().every(group=>simpleType.getEnumerations().indexOf(group.getId() !== 1))){
+        return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: Invalid enumerations in simpleType 'GroupType.ID'."}
+        }
+        return { status: SUCCESS_CODE };
  
     }
     static checkSpecificXSDGroupType(artefact,sdmxObjects){
         let dsdGroups = artefact.getGroups()
-        let restrictionBase = (dsdGroups.length > 1)?"GroupType":"dsd:GroupType"
+        let expectedRestrictionBase = (dsdGroups.length > 1)?"GroupType":"dsd:GroupType"
         
         for(let c in dsdGroups){   
             let complexTypeName = (dsdGroups.length > 1)?dsdGroups[c].getId() : "GroupType"
-            console.log("for "+complexTypeName)
             //GET THE CORRECT COMPLEX TYPE
             let complexType = sdmxObjects.getXSDComplexTypeByName(complexTypeName);
             if(!complexType){throw new Error("Missing complexType "+complexTypeName+" ."); }
 
-            if(complexType.getRestrictionBase()!==restrictionBase){
-                return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: The restriction base should have been "+restrictionBase+" but instead it is "+complexType.getRestrictionBase()+"."}
+            if(complexType.getRestrictionBase()!==expectedRestrictionBase){
+                return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: The restriction base should have been "+expectedRestrictionBase+" but instead it is "+complexType.getRestrictionBase()+"."}
             }
             //CHECK IF THE 'GroupType' CONTAINS A SEQUENCE
             if(complexType.getCompositors().length !== 1){
@@ -644,26 +607,13 @@ class SchemasSemanticChecker {
                 return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No valid reference element found in sequence."}
             }
 
-            
-        
             //CHECK IF THERE ARE ATTRIBUTES FOR EACH DIMENSION IN DSD EXCEPT OBSERVATION LEVEL DIMENSION
             let missingAttributes = []
             let requestedDimensions = artefact.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION && dsdGroups[c].getDimensionReferences().indexOf(component.getId())!==-1 )
             for(let i in requestedDimensions){
-                let dimensionId = (requestedDimensions[i].getId()) ? requestedDimensions[i].getId() : requestedDimensions[i].getReferences().filter(ref=>ref.getStructureType() === "CONCEPT_SCHEME")[0].getId()
-                let selectedAttribute = complexType.getAttributes().filter(function(attr){
-                    let nameExpression = attr.getName() === dimensionId;
-                    let typeExrepssion = (sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && attr.getType() === sdmxObjects.getXSDSimpleTypeByName(attr.getType()).getName() 
-                    || !sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (requestedDimensions[i].getRepresentation()) && attr.getType() === XSD_DATA_TYPE.getMapping(requestedDimensions[i].getRepresentation().getTextType()))
-                    
-                    let usageExpression = attr.getUse()==="required"
-                    
-                    return nameExpression && typeExrepssion && usageExpression
-                })
-
-            if(selectedAttribute.length === 0){
-                missingAttributes.push(dimensionId)
-            }
+                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i],sdmxObjects,"required")){
+                    missingAttributes.push(requestedDimensions[i].getId())
+                }
             }
             if(missingAttributes.length > 0){
                 return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
@@ -671,8 +621,8 @@ class SchemasSemanticChecker {
             let reportingYearStartDayAttr = artefact.getComponents().filter(component => component.getId() === "REPORTING_YEAR_START_DAY")
                 if((reportingYearStartDayAttr.length === 0) 
                     || (reportingYearStartDayAttr.length === 1 && reportingYearStartDayAttr[0].getAttributeRelationship().filter(relationship => relationship.getRelationShipType()==="None").length === 0)){
-                        if(complexType.getAttributes().filter(attr=>attr.getName()==="REPORTING_YEAR_START_DAY" && attr.getType() === XSD_DATA_TYPE.MONTH_DAY && attr.getUse()==="prohibited").length === 0){
-                            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No REPORTING_YEAR_START_DAY attribute found."}
+                        if(!complexType.hasAttribute("REPORTING_YEAR_START_DAY",XSD_DATA_TYPE.MONTH_DAY,"prohibited")){
+                            return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No REPORTING_YEAR_START_DAY attribute found."}
                         }
                 }
 
@@ -687,19 +637,9 @@ class SchemasSemanticChecker {
                     return expression1 || expression2 
                 })
                 for(let i in requestedAttributes){
-                    let attrId = (requestedAttributes[i].getId()) ? requestedAttributes[i].getId() : requestedAttributes[i].getReferences().filter(ref=>ref.getStructureType() === "CONCEPT_SCHEME")[0].getId()
-                    let selectedAttribute = complexType.getAttributes().filter(function(attr){
-                        let nameExpression = attr.getName() === attrId;
-                        let typeExrepssion = (sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && attr.getType() === sdmxObjects.getXSDSimpleTypeByName(attr.getType()).getName() 
-                        || !sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (requestedAttributes[i].getRepresentation()) && attr.getType() === XSD_DATA_TYPE.getMapping(requestedAttributes[i].getRepresentation().getTextType()))
-                        
-                        let usageExpression = attr.getUse()==="optional"
-                        return nameExpression && typeExrepssion && usageExpression
-                    })
-                
-                if(selectedAttribute.length === 0){
-                    missingAttributes.push(attrId)
-                }
+                    if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i],sdmxObjects,"optional")){
+                        missingAttributes.push(requestedAttributes[i].getId())
+                    }
                 }
                 if(missingAttributes.length > 0){
                     return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
@@ -707,13 +647,129 @@ class SchemasSemanticChecker {
                 
                 //CHECK FOR ATTRIBUTE WITH FIXED VALUE
                 let expectedAttrType = (dsdGroups.length > 1)?"GroupType.ID" : "common:IDType"
-                if(complexType.getAttributes().filter(attr => attr.getType()===expectedAttrType && attr.getName()==="type" && attr.getUse()==="optional" && attr.getFixed()===dsdGroups[c].getId()).length === 0){
-                    return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No optional attribute with name 'type' and type 'common:IDType' and fixed value found "}
+                if(!complexType.hasAttribute("type",expectedAttrType,"optional")){
+                    return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No optional attribute with name 'type' and type "+expectedAttrType+" and fixed value found "}
                 }
+               
         }
         
 
         return { status: SUCCESS_CODE };
+    }
+    static checkXSDObsType(test,query,sdmxObjects){
+        let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.context)
+        let agency = query.agency
+        let id = query.id
+        //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
+        
+
+        // WORKAROUND - Until a better solution is found.
+        // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
+        // In case of 'latest' we check if the workspace contains exactly one structure 
+        // but the problem here is that the version of the returned structure is not known beforehand 
+        // and the workspace cannot be filtered using the 'latest' for the structure version.
+
+        let version = (query.version!=='latest')?query.version : null;
+
+        let structure = test.structureWorkspace.getSdmxObjectsWithCriteria(structureType,agency,id,version)
+        let structureRef = structure[0].asReference();
+        let artefact;
+
+        //TODO: Check the MSD, MDF cases!!!
+        if(query.context === (SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.MSD.getClass().toLowerCase())){
+            artefact = test.structureWorkspace.getSdmxObject(structureRef)
+        }else if(query.context === (SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.METADATA_FLOW.getClass().toLowerCase())){
+            let childRef = test.structureWorkspace.getChildren(structureRef)[0]
+            artefact = test.structureWorkspace.getSdmxObject(childRef)
+        }else if(query.context === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase()){
+            let childRef = test.structureWorkspace.getChildren(structureRef)[0]
+            let descendantRef = test.structureWorkspace.getChildren(childRef)[0]
+            artefact = test.structureWorkspace.getSdmxObject(descendantRef)
+        }
+
+        let obsTypeContentModelValidation = SchemasSemanticChecker.checkObsTypeContentModel(artefact,query,sdmxObjects)
+        return obsTypeContentModelValidation
+    }
+    static checkObsTypeContentModel(artefact,query,sdmxObjects){
+        let complexType = sdmxObjects.getXSDComplexTypeByName("ObsType");
+        if(!complexType){throw new Error("Missing complexType 'ObsType'."); }
+
+        let expectedRestrictionBase = (query.obsDimension) ? "dsd:ObsType" : "dsd:TimeSeriesObsType"
+        if(complexType.getRestrictionBase()!==expectedRestrictionBase){
+            return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: The restriction base should have been "+expectedRestrictionBase+" but instead it is "+complexType.getRestrictionBase()+"."}
+        }
+
+        //IF THE DIMENSION AT OBSERVATION IS NOT TIME_PERIOD THEN THE COMPLEX TYPE MUST BE ABSTRACT
+        if(query.explicit){
+            if(!complexType.getIsAbstract()){
+                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: The ObsType complex type is not abstract."}
+            }
+        }
+
+        //CHECK IF THE 'ObsType' CONTAINS A SEQUENCE
+        if(complexType.getCompositors().length !== 1){
+            return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No compositors found."}
+        }
+        if(complexType.getCompositors()[0].getType()!=="sequence"){
+            return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No sequence found."}
+        }
+
+        //CHECK THAT THE SEQUENCE CONTAINS THE CORRECT REFERENCE
+        let sequence = complexType.getCompositors()[0];
+        if(sequence.getElements().filter(element => (element instanceof XSDReferenceElement) && element.getRef() === "common:Annotations" && element.getMinOccurs() === "0").length !== 1){
+            return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No valid reference element found in sequence."}
+        }
+
+        if(query.obsDimension){
+            if(complexType.getAttributes().filter(attr => attr.getType()==="common:TimePeriodType" && attr.getName()==="TIME_PERIOD" && attr.getUse()==="prohibited").length === 0){
+                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No prohibited attribute with name 'TIME_PERIOD' and type 'common:TimePeriodType' found. "}
+            }
+        }
+        let missingAttributes=[];
+
+        //IF THE DIMENSION AT THE OBSERVATION IS NOT TIME PERIOD THEN CHECK ITS ATTRIBUTE EXISTANCE
+        if(query.obsDimension && query.obsDimension!=="TIME_PERIOD"){
+            let requestedDimensions = artefact.getComponents().filter(component => component.getId() === dimensionAtObservation )
+            for(let i in requestedDimensions){
+                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i],sdmxObjects,"required")){
+                    missingAttributes.push(requestedDimensions[i].getId())
+                }
+            }
+            if(missingAttributes.length > 0){
+                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+            }
+        }
+        //CHECK FOR PRIMARY MEASURE ATTRIBUTE
+        missingAttributes = []
+        let requestedDimensions = artefact.getComponents().filter(component => component.getType()===DSD_COMPONENTS_NAMES.PRIMARY_MEASURE && component.getId() === "OBS_VALUE")
+        for(let i in requestedDimensions){
+            if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i],sdmxObjects,"optional")){
+                missingAttributes.push(requestedDimensions[i].getId())
+            }
+        }
+        if(missingAttributes.length > 0){
+            return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+        }
+
+        //CHECK FOR ATTRIBUTES FOR EVERY ATTRIBUTE WITH RELATIONSHIP WITH PRIMARY MEASURE OR DIMENSION AT OBSERVATION
+        let dimensionAtObservation = (!query.obsDimension || query.obsDimension === "TIME_PERIOD") ? "TIME_PERIOD":query.obsDimension
+        missingAttributes = []
+        let attributes = artefact.getComponents().filter(component => component instanceof DataStructureAttributeObject)
+        let requestedAttributes = attributes.filter(function(attribute){
+            let attrRelationships = attribute.getAttributeRelationship()
+            let expression1 = attrRelationships.filter(relationship => relationship.getRelationshipType()==="Dimension" && relationship.getIds().indexOf(dimensionAtObservation)!==-1).length>0;
+            let expression2 = attrRelationships.filter(relationship => relationship.getRelationshipType()==="PrimaryMeasure").length>0;
+            return expression1 || expression2 
+        })
+        for(let i in requestedAttributes){
+            if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i],sdmxObjects,"optional")){
+                missingAttributes.push(requestedAttributes[i].getId())
+            }
+        }
+        if(missingAttributes.length > 0){
+            return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+        }
+        return {status:SUCCESS_CODE}
     }
 }
 module.exports = SchemasSemanticChecker;
