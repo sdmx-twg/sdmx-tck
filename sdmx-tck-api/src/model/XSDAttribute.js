@@ -1,9 +1,9 @@
 var isDefined = require('../utils/Utils').isDefined;
 
 class XSDAttribute {
-    constructor(props) {
+    constructor(props,type) {
        this.name = props.$.name;
-       this.type = props.$.type;
+       this.type = type;
        this.use = props.$.use;
        this.fixed = props.$.fixed;
     };

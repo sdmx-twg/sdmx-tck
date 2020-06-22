@@ -13,10 +13,8 @@ class SdmxV21SchemaAttributeParser {
         if(attribute){
             for (let i in attribute) {
                 if (attribute[i] && attribute[i].$) {
-                   try {
-                    listOfAttributes.push(new XSDAttribute(attribute[i]))
-                   } catch (ex) {
-                   }
+                    let type = (attribute[i].$.type)?attribute[i].$.type:(attribute[i].simpleType && attribute[i].simpleType[0].restriction && attribute[i].simpleType[0].restriction[0].$)?attribute[i].simpleType && attribute[i].simpleType[0].restriction && attribute[i].simpleType[0].restriction[0].$.base:undefined
+                    listOfAttributes.push(new XSDAttribute(attribute[i],type))
                 }
            }
         }
@@ -34,11 +32,7 @@ class SdmxV21SchemaAttributeParser {
         if(anyAttribute){
             for (let i in anyAttribute) {
                 if (anyAttribute[i] && anyAttribute[i].$) {
-                    console.log(anyAttribute[i])
-                   try {
                     listOfAnyAttributes.push(new XSDAnyAttribute(anyAttribute[i]))
-                   } catch (ex) {
-                   }
                 }
            }
         }
