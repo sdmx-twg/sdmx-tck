@@ -15,7 +15,7 @@ var SdmxV21SchemaCompositorsParser = require('./parsers/SdmxV21SchemaCompositors
 var SdmxV21SchemaLocalOrReferenceElementParser = require('./parsers/SdmxV21SchemaLocalOrReferenceElementParser.js')
 var SdmxV21SchemaAttributeParser = require('./parsers/SdmxV21SchemaAttributeParser.js')
 var SdmxV21JsonDsdAttributeRelationshipParser = require('./parsers/SdmxV21JsonDsdAttributeRelationshipParser.js')
-var SdmxV21JsonDsdComponentRepresentationParser = require('./parsers/SdmxV21JsonDsdComponentRepresentationParser.js')
+var SdmxV21JsonComponentRepresentationParser = require('./parsers/SdmxV21JsonComponentRepresentationParser.js')
 var SdmxV21DsdGroupParsers = require('./parsers/SdmxV21DsdGroupParsers.js')
 
 module.exports = {
@@ -37,7 +37,7 @@ module.exports = {
         SdmxV21JsonDsdComponentParser: SdmxV21JsonDsdComponentParser,
         SdmxV21DsdGroupParsers:SdmxV21DsdGroupParsers,
         SdmxV21JsonDsdAttributeRelationshipParser:SdmxV21JsonDsdAttributeRelationshipParser,
-        SdmxV21JsonDsdComponentRepresentationParser:SdmxV21JsonDsdComponentRepresentationParser,
+        SdmxV21JsonComponentRepresentationParser:SdmxV21JsonComponentRepresentationParser,
         SdmxXmlParser: SdmxXmlParser
     }
 };

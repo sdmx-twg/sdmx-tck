@@ -1,4 +1,4 @@
-class DataStructureComponentRepresentationObject {
+class ComponentRepresentationObject {
     constructor(props,type){
         this.type = type,
         this.minLength = props.$.minLength,
@@ -59,4 +59,4 @@ class DataStructureComponentRepresentationObject {
         return this.textType;
     }
 }
-module.exports = DataStructureComponentRepresentationObject
+module.exports = ComponentRepresentationObject

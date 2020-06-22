@@ -1,7 +1,7 @@
 var jsonPath = require('jsonpath');
-var DataStructureComponentRepresentationObject = require('sdmx-tck-api').model.DataStructureComponentRepresentationObject;
-const DSD_COMPONENTS_REPRESENTATION_NAMES = require('sdmx-tck-api').constants.DSD_COMPONENTS_REPRESENTATION_NAMES;
-class SdmxV21JsonDsdComponentRepresentationParser {
+var ComponentRepresentationObject = require('sdmx-tck-api').model.ComponentRepresentationObject;
+const COMPONENTS_REPRESENTATION_NAMES = require('sdmx-tck-api').constants.COMPONENTS_REPRESENTATION_NAMES;
+class SdmxV21JsonComponentRepresentationParser {
     /**
      * Return an array containing enumerations of the given simpleType.
      * @param {*} sdmxJsonObject 
@@ -14,16 +14,16 @@ class SdmxV21JsonDsdComponentRepresentationParser {
         
         if(enumFormat){
             if(enumFormat[0] && enumFormat[0].$) {
-                return new DataStructureComponentRepresentationObject(enumFormat[0],DSD_COMPONENTS_REPRESENTATION_NAMES.ENUMERATION_FORMAT)
+                return new ComponentRepresentationObject(enumFormat[0],COMPONENTS_REPRESENTATION_NAMES.ENUMERATION_FORMAT)
             }
         }
         if(textFormat){
             if (textFormat[0] && textFormat[0].$) {
-                return new DataStructureComponentRepresentationObject(textFormat[0],DSD_COMPONENTS_REPRESENTATION_NAMES.TEXT_FORMAT)
+                return new ComponentRepresentationObject(textFormat[0],COMPONENTS_REPRESENTATION_NAMES.TEXT_FORMAT)
             }
         }
         return representation;
     };
 };
 
-module.exports = SdmxV21JsonDsdComponentRepresentationParser;
+module.exports = SdmxV21JsonComponentRepresentationParser;
