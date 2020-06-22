@@ -1,5 +1,6 @@
 var isDefined = require('sdmx-tck-api').utils.Utils.isDefined;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
+var SdmxV21JsonComponentRepresentationParser = require('./SdmxV21JsonComponentRepresentationParser.js')
 
 class SdmxV21JsonItemsParser {
     static getItems(structureType, sdmxJsonObject) {
@@ -36,7 +37,7 @@ class SdmxV21JsonItemsParser {
         let itemsJson = sdmxJsonObject[jsonKey];
         if (isDefined(itemsJson)) {
             for (let i = 0; i < itemsJson.length; i++) {
-                items.push({ id: itemsJson[i].$.id, urn: itemsJson[i].$.urn });
+                items.push({ id: itemsJson[i].$.id, representation:SdmxV21JsonComponentRepresentationParser.getRepresentation(itemsJson[i]),urn: itemsJson[i].$.urn });
 
                 if (itemsJson[i][jsonKey]) {
                     SdmxV21JsonItemsParser._getItems(itemsJson[i], jsonKey, items);
