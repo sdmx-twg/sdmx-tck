@@ -86,6 +86,19 @@ class SdmxSchemaObjects extends SdmxObjects{
         }
         return null;
     }
+    getXSDSimpleTypesWithEnumsCriteria(listOfValues){
+        if(!listOfValues instanceof Array){
+            throw new Error("Missing Mandatory parameter 'listOfValues'. ")
+        }
+        let requestedSimpleType = this.getSimpleTypesWithEnums().filter(function(simpleType){
+            return listOfValues.every(val=> simpleType.getEnumerations().indexOf(val)!==-1)
+                     &&listOfValues.length === simpleType.getEnumerations().length;
+        })
+        if(requestedSimpleType.length === 0){
+            return null
+        }
+        return requestedSimpleType[0];
+    }
 }
 
 module.exports = SdmxSchemaObjects;
