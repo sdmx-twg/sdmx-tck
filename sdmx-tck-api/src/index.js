@@ -5,6 +5,7 @@ const DataQueryDetail = require('./constants/DataQueryDetail.js');
 const ItemSchemeTypes = require('./constants/ItemSchemeTypes.js');
 const SdmxStructureType = require('./constants/SdmxStructureType.js');
 const DSDComponents = require('./constants/DSDComponents.js')
+const ComponentsRepresentationNames = require('./constants/ComponentsRepresentationNames.js')
 const StructureDetail = require('./constants/StructureDetail.js');
 const ItemQueries = require ('./constants/ItemQueries.js');
 const StructureIdentificationParameters = require('./constants/StructureIdentificationParameters.js')
@@ -31,7 +32,7 @@ var ItemSchemeObject = require('./model/ItemSchemeObject.js');
 var DataStructureObject = require('./model/DataStructureObject.js');
 var DataStructureGroupObject = require('./model/DataStructureGroupObject.js')
 var DataStructureComponentObject = require('./model/DataStructureComponentObject.js');
-var DataStructureComponentRepresentationObject = require('./model/DataStructureComponentRepresentationObject.js')
+var ComponentRepresentationObject = require('./model/ComponentRepresentationObject.js')
 var DataflowObject = require('./model/DataflowObject.js');
 var ContentConstraintObject = require('./model/ContentConstraintObject.js');
 var SdmxObjects = require('./model/SdmxObjects.js');
@@ -65,7 +66,7 @@ module.exports = {
         SDMX_STRUCTURE_TYPE: SdmxStructureType.SDMX_STRUCTURE_TYPE,
         StructureDetail: StructureDetail.StructureDetail,
         DSD_COMPONENTS_NAMES:DSDComponents.DSD_COMPONENTS_NAMES,
-        DSD_COMPONENTS_REPRESENTATION_NAMES:DSDComponents.DSD_COMPONENTS_REPRESENTATION_NAMES,
+        COMPONENTS_REPRESENTATION_NAMES:ComponentsRepresentationNames.COMPONENTS_REPRESENTATION_NAMES,
         STRUCTURE_ITEM_QUERIES:ItemQueries.STRUCTURE_ITEM_QUERIES,
         STRUCTURE_IDENTIFICATION_PARAMETERS:StructureIdentificationParameters.STRUCTURE_IDENTIFICATION_PARAMETERS,
         STRUCTURE_QUERY_REPRESENTATIONS:StructureQueryRepresentation.STRUCTURE_QUERY_REPRESENTATIONS,
@@ -93,7 +94,7 @@ module.exports = {
         DataStructureObject: DataStructureObject,
         DataStructureGroupObject:DataStructureGroupObject,
         DataStructureComponentObject:DataStructureComponentObject,
-        DataStructureComponentRepresentationObject:DataStructureComponentRepresentationObject,
+        ComponentRepresentationObject:ComponentRepresentationObject,
         DataStructureAttributeRelationshipObject:DataStructureAttributeRelationshipObject,
         DataStructureAttributeObject:DataStructureAttributeObject,
         DataflowObject: DataflowObject,
