@@ -76,6 +76,24 @@ class DataStructureObject extends MaintainableObject {
 
         return false;
     };
+
+    getConceptObjectOfMeasureDimension(workspace){
+        //get measure dimension
+        let measureDimension = this.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION);
+        if(measureDimension.length === 0){
+            return null;
+        }
+
+        //get concept scheme from measure dimension
+        let conceptSchemeRef = measureDimension[0].getReferences().filter(ref => ref.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
+        if(conceptSchemeRef.length === 0){
+            return null;
+        }
+        
+        let conceptSchemeObj = workspace.getSdmxObject(conceptSchemeRef[0]) 
+        
+        return conceptSchemeObj;
+    }
 };
 
 module.exports = DataStructureObject;
