@@ -1,6 +1,6 @@
 class DataStructureComponentObject {
-    constructor(props,type,references,representation){
-        this.id  = props.$.id;
+    constructor(id,type,references,representation){
+        this.id  = id;
         this.type = type,
         this.references = references;
         this.representation = representation;
