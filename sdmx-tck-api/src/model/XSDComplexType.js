@@ -9,7 +9,7 @@ class XSDComplexType {
        this.isAbstract = (props.$.abstract) ? true:false;
        this.restrictionBase =  props.complexContent[0].restriction[0].$.base;
        
-       //sequence & choice
+       //sequences & choices
        this.compositors = compositors 
        this.attributes = attributes;
        this.anyAttributes = anyAttributes
@@ -62,28 +62,48 @@ class XSDComplexType {
         }
         return null;
     }
-    hasAttribute(attrName,attrType,attrUse){
-        if(this.getAttributes().filter(attr=>attr.getName()===attrName && attr.getType() === attrType && attr.getUse()===attrUse).length === 0){
+    hasAttribute(attrName,attrType,attrUse,fixedVal){
+        if(!attrName){
+            throw new Error("Missing parameter 'attrName'.")
+        }
+        if(!attrType){
+            throw new Error("Missing parameter 'attrType'.")
+        }
+        let reqAttr = this.getAttributes().filter(function(attr){
+            let expression = true;
+
+            expression = expression && attr.getName() === attrName
+            expression = expression && attr.getType() === attrType
+
+            if(attrUse){
+                expression = expression && attr.getUse() === attrUse
+            }
+            if(fixedVal){
+                expression = expression && attr.getFixed() === fixedVal
+            }
+            return expression === true
+        })
+        if(reqAttr.length === 0){
             return false;
         }
         return true
     }
-    hasStructComponentAsAttribute(componentObj,sdmxObjects,usage){
+    hasStructComponentAsAttribute(attrName,componentObj,sdmxObjects,usage){
         if(!componentObj || !componentObj instanceof DataStructureComponentObject){
             throw new Error("Missing Component Object.")
         }
         if(!sdmxObjects || !sdmxObjects instanceof SdmxSchemaObjects){
             throw new Error("Missing schema workspace object.")
         }
-        let attrId = (componentObj.getId()) ? componentObj.getId() : componentObj.getReferences().filter(ref=>ref.getStructureType() === "CONCEPT_SCHEME")[0].getId()
+        // let attrId = (componentObj.getId()) ? componentObj.getId() : componentObj.getReferences().filter(ref=>ref.getStructureType() === "CONCEPT_SCHEME")[0].getId()
         
         let selectedAttribute = this.getAttributes().filter(function(attr){
-            let nameExpression = attr.getName() === attrId;
-            let typeExrepssion = (sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && attr.getType() === sdmxObjects.getXSDSimpleTypeByName(attr.getType()).getName() 
+            let nameExpression = attr.getName() === attrName;
+            let typeExpression = (sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && attr.getType() === sdmxObjects.getXSDSimpleTypeByName(attr.getType()).getName() 
             || !sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (componentObj.getRepresentation()) && attr.getType() === XSD_DATA_TYPE.getMapping(componentObj.getRepresentation().getTextType()))
             
             let usageExpression = attr.getUse()===usage
-            return nameExpression && typeExrepssion && usageExpression
+            return nameExpression && typeExpression && usageExpression
         })
         if(selectedAttribute.length === 0){
             return false
