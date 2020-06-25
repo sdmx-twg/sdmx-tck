@@ -32,6 +32,7 @@ var ItemSchemeObject = require('./model/ItemSchemeObject.js');
 var DataStructureObject = require('./model/DataStructureObject.js');
 var DataStructureGroupObject = require('./model/DataStructureGroupObject.js')
 var DataStructureComponentObject = require('./model/DataStructureComponentObject.js');
+var ItemObject = require('./model/ItemObject.js')
 var ComponentRepresentationObject = require('./model/ComponentRepresentationObject.js')
 var DataflowObject = require('./model/DataflowObject.js');
 var ContentConstraintObject = require('./model/ContentConstraintObject.js');
@@ -94,6 +95,7 @@ module.exports = {
         DataStructureObject: DataStructureObject,
         DataStructureGroupObject:DataStructureGroupObject,
         DataStructureComponentObject:DataStructureComponentObject,
+        ItemObject:ItemObject,
         ComponentRepresentationObject:ComponentRepresentationObject,
         DataStructureAttributeRelationshipObject:DataStructureAttributeRelationshipObject,
         DataStructureAttributeObject:DataStructureAttributeObject,
