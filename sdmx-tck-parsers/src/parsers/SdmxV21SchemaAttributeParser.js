@@ -1,6 +1,7 @@
 var jsonPath = require('jsonpath');
 var XSDAttribute = require('sdmx-tck-api').model.XSDAttribute;
 var XSDAnyAttribute = require('sdmx-tck-api').model.XSDAnyAttribute;
+var XSDSimpleType 
 class SdmxV21SchemaAttributeParser {
     /**
      * Return an array containing the attributes of complexContent.
@@ -13,7 +14,17 @@ class SdmxV21SchemaAttributeParser {
         if(attribute){
             for (let i in attribute) {
                 if (attribute[i] && attribute[i].$) {
-                    let type = (attribute[i].$.type)?attribute[i].$.type:(attribute[i].simpleType && attribute[i].simpleType[0].restriction && attribute[i].simpleType[0].restriction[0].$)?attribute[i].simpleType && attribute[i].simpleType[0].restriction && attribute[i].simpleType[0].restriction[0].$.base:undefined
+                    let type;
+                    if(attribute[i].$.type){
+                        type = attribute[i].$.type
+                    }else{
+                        
+                        if(attribute[i].simpleType && attribute[i].simpleType[0].$ && attribute[i].simpleType[0].$.name){
+                            type = attribute[i].simpleType[0].$.name
+                        }else if(attribute[i].simpleType && attribute[i].simpleType[0].restriction && attribute[i].simpleType[0].restriction[0].$ && attribute[i].simpleType[0].restriction[0].$){
+                            type = attribute[i].simpleType[0].restriction[0].$.base
+                        }
+                    }
                     listOfAttributes.push(new XSDAttribute(attribute[i],type))
                 }
            }
