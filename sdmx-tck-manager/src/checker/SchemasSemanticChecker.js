@@ -42,17 +42,55 @@ class SchemasSemanticChecker {
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
+        let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.context)
+        let agency = query.agency
+        let id = query.id
+        //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
+        
+
+        // WORKAROUND - Until a better solution is found.
+        // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
+        // In case of 'latest' we check if the workspace contains exactly one structure 
+        // but the problem here is that the version of the returned structure is not known beforehand 
+        // and the workspace cannot be filtered using the 'latest' for the structure version.
+
+        let version = (query.version!=='latest')?query.version : null;
+
+        let structure = test.structureWorkspace.getSdmxObjectsWithCriteria(structureType,agency,id,version)
+        let structureRef = structure[0].asReference();
+        let artefact;
+
+        //TODO: Check the MSD, MDF cases!!!
+        if(query.context === (SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.MSD.getClass().toLowerCase())){
+            artefact = test.structureWorkspace.getSdmxObject(structureRef)
+        }else if(query.context === (SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.METADATA_FLOW.getClass().toLowerCase())){
+            let childRef = test.structureWorkspace.getChildren(structureRef)[0]
+            artefact = test.structureWorkspace.getSdmxObject(childRef)
+        }else if(query.context === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase()){
+            let childRef = test.structureWorkspace.getChildren(structureRef)[0]
+            let descendantRef = test.structureWorkspace.getChildren(childRef)[0]
+            artefact = test.structureWorkspace.getSdmxObject(descendantRef)
+        }
+
+        let dimensionAtObservation = (query.obsDimension)?query.obsDimension:"TIME_PERIOD"
+        if(query.explicit){
+            let measureDimension = artefact.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION);
+            if(measureDimension.length !== 0){
+                dimensionAtObservation = measureDimension[0].getId()
+            }
+        }
+       
         //1. Check SimpleTypes
-        // let simpleTypeValidation = await SchemasSemanticChecker.checkXSDSimpleTypes(test,query,sdmxObjects)
+        // let simpleTypeValidation = await SchemasSemanticChecker.checkXSDSimpleTypes(test,artefact,query,sdmxObjects)
         // return simpleTypeValidation
 
         //2. Check ComplexTypes
-        let complexTypeValidation = await SchemasSemanticChecker.checkXSDComplexTypes(test,query,sdmxObjects)
+        let complexTypeValidation = await SchemasSemanticChecker.checkXSDComplexTypes(test,artefact,query,sdmxObjects,dimensionAtObservation)
         return complexTypeValidation;
     }
-    static async checkXSDSimpleTypes(test,query,sdmxObjects){
+    static async checkXSDSimpleTypes(test,artefact,query,sdmxObjects){
         //1. Check SimpleTypes without enums
-         let simpleTypeWithoutEnumValidation = await SchemasSemanticChecker.checkXSDSimpleTypesWithoutEnums(test,query,sdmxObjects)
+         let simpleTypeWithoutEnumValidation = await SchemasSemanticChecker.checkXSDSimpleTypesWithoutEnums(test,artefact,query,sdmxObjects)
          if(simpleTypeWithoutEnumValidation.status === FAILURE_CODE){return simpleTypeWithoutEnumValidation;}
          
          //REMOVE IT 
@@ -61,7 +99,7 @@ class SchemasSemanticChecker {
         return await SchemasSemanticChecker.checkXSDSimpleTypesWithEnums(test,query,sdmxObjects)
     }
 
-    static async checkXSDSimpleTypesWithoutEnums(test,query,sdmxObjects){
+    static async checkXSDSimpleTypesWithoutEnums(test,artefact,query,sdmxObjects){
         try{
             if (!Utils.isDefined(query)) {
                 throw new Error("Missing mandatory parameter 'query'.");
@@ -73,36 +111,6 @@ class SchemasSemanticChecker {
                 throw new Error("Missing mandatory parameter 'test'.");
             }
     
-            let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.context)
-            let agency = query.agency
-            let id = query.id
-            //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
-            
-    
-            // WORKAROUND - Until a better solution is found.
-            // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
-            // In case of 'latest' we check if the workspace contains exactly one structure 
-            // but the problem here is that the version of the returned structure is not known beforehand 
-            // and the workspace cannot be filtered using the 'latest' for the structure version.
-    
-            let version = (query.version!=='latest')?query.version : null;
-    
-            let structure = test.structureWorkspace.getSdmxObjectsWithCriteria(structureType,agency,id,version)
-            let structureRef = structure[0].asReference();
-            let artefact;
-    
-            //TODO: Check the MSD, MDF cases!!!
-            if(query.context === (SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.MSD.getClass().toLowerCase())){
-                artefact = test.structureWorkspace.getSdmxObject(structureRef)
-            }else if(query.context === (SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.METADATA_FLOW.getClass().toLowerCase())){
-                let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-                artefact = test.structureWorkspace.getSdmxObject(childRef)
-            }else if(query.context === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase()){
-                let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-                let descendantRef = test.structureWorkspace.getChildren(childRef)[0]
-                artefact = test.structureWorkspace.getSdmxObject(descendantRef)
-            }
-            //console.log(artefact)
             let simpleTypesWithFacets = sdmxObjects.getSimpleTypesWithFacets().concat(sdmxObjects.getSimpleTypesWithDataTypeRestrictionOnly());
     
             let dsdComponentsWithTextFormatRestriction = artefact.getComponents().filter(comp=> (comp.getRepresentation()) && comp.getRepresentation().getType() === "TEXT_FORMAT")
@@ -244,26 +252,26 @@ class SchemasSemanticChecker {
 
     }
 
-    static checkXSDComplexTypes (test,query,sdmxObjects){
+    static checkXSDComplexTypes (test,artefact,query,sdmxObjects,dimensionAtObservation){
         
-       let dataSetTypeValidation = SchemasSemanticChecker.checkXSDDataSetType(test,query,sdmxObjects)
+       let dataSetTypeValidation = SchemasSemanticChecker.checkXSDDataSetType(artefact,query,sdmxObjects,dimensionAtObservation)
        if(dataSetTypeValidation.status === FAILURE_CODE){return dataSetTypeValidation}
     //    if(query.obsDimension !== "AllDimension"){
-    //        let seriesTypeValidation = SchemasSemanticChecker.checkXSDSeriesType(test,query,sdmxObjects)
+    //        let seriesTypeValidation = SchemasSemanticChecker.checkXSDSeriesType(artefact,query,sdmxObjects,dimensionAtObservation)
     //        if(seriesTypeValidation.status === FAILURE_CODE){return seriesTypeValidation}
     //        //return seriesTypeValidation
     //    }
-    //    let groupTypeValidation = SchemasSemanticChecker.checkXSDGroupType(test,query,sdmxObjects)
+    //    let groupTypeValidation = SchemasSemanticChecker.checkXSDGroupType(artefact,sdmxObjects)
     //    //TODO: GroupType must be checked if there is 1 or more groups in dsd
     //    if(groupTypeValidation.status === FAILURE_CODE){return groupTypeValidation}
     //    return groupTypeValidation;
 
-    //    let obsTypeValidation = SchemasSemanticChecker.checkXSDObsType(test,query,sdmxObjects)
+    //    let obsTypeValidation = SchemasSemanticChecker.checkXSDObsType(test,query,sdmxObjects,dimensionAtObservation)
     //    return obsTypeValidation
 
           
     }
-    static checkXSDDataSetType(test,query,sdmxObjects){
+    static checkXSDDataSetType(artefact,query,sdmxObjects,dimensionAtObservation){
          //CHECK DataSetType
          try{
             //GET THE CORRECT COMPLEX TYPE
@@ -271,7 +279,7 @@ class SchemasSemanticChecker {
             if(!complexType){throw new Error("Missing complexType 'DataSetType'."); }
             
             //If undefined means that we do not have specified observation dimension so it is its default (TIME_PERIOD)
-            let expectedRestrictionBase = (!query.obsDimension || query.obsDimension === "TIME_PERIOD") ? "dsd:TimeSeriesDataSetType" : "dsd:DataSetType"
+            let expectedRestrictionBase = (dimensionAtObservation=== "TIME_PERIOD") ? "dsd:TimeSeriesDataSetType" : "dsd:DataSetType"
             
             //CHECK RESTRICTION BASE OF COMPLEX TYPE
             if(complexType.getRestrictionBase()!==expectedRestrictionBase){
@@ -293,36 +301,6 @@ class SchemasSemanticChecker {
             }
             if(sequence.getElements().filter(element => (element instanceof XSDLocalElement) && element.getType() === "common:DataProviderReferenceType" && element.getMinOccurs() === "0" && element.getForm()==="unqualified").length !== 1){
                 return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No valid local element found in sequence."}
-            }
-
-            let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.context)
-            let agency = query.agency
-            let id = query.id
-            //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
-            
-    
-            // WORKAROUND - Until a better solution is found.
-            // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
-            // In case of 'latest' we check if the workspace contains exactly one structure 
-            // but the problem here is that the version of the returned structure is not known beforehand 
-            // and the workspace cannot be filtered using the 'latest' for the structure version.
-    
-            let version = (query.version!=='latest')?query.version : null;
-    
-            let structure = test.structureWorkspace.getSdmxObjectsWithCriteria(structureType,agency,id,version)
-            let structureRef = structure[0].asReference();
-            let artefact;
-    
-            //TODO: Check the MSD, MDF cases!!!
-            if(query.context === (SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.MSD.getClass().toLowerCase())){
-                artefact = test.structureWorkspace.getSdmxObject(structureRef)
-            }else if(query.context === (SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.METADATA_FLOW.getClass().toLowerCase())){
-                let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-                artefact = test.structureWorkspace.getSdmxObject(childRef)
-            }else if(query.context === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase()){
-                let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-                let descendantRef = test.structureWorkspace.getChildren(childRef)[0]
-                artefact = test.structureWorkspace.getSdmxObject(descendantRef)
             }
 
             //CHECK GROUP ELEMENT
@@ -355,8 +333,8 @@ class SchemasSemanticChecker {
              //If undefined means that we do not have specified observation dimension so it is its default (TIME_PERIOD)
              if(choice.getElements().filter(element => 
                 (element instanceof XSDLocalElement) 
-                && element.getName() === (query.obsDimension === "AllDimension")?"Obs":"Series" 
-                && element.getType() === (query.obsDimension === "AllDimension")?"ObsType":"SeriesType" 
+                && element.getName() === (dimensionAtObservation === "AllDimension")?"Obs":"Series" 
+                && element.getType() === (dimensionAtObservation === "AllDimension")?"ObsType":"SeriesType" 
                 && element.getMaxOccurs() === "unbounded" 
                 && element.getForm()==="unqualified").length !== 1){
 
@@ -382,7 +360,7 @@ class SchemasSemanticChecker {
                 return attrRelationships.filter(relationship=>relationship.getRelationshipType()==="None").length>0 === true
             })
             for(let i in attributesDeclaringNoneRelationship){
-                if(!complexType.hasStructComponentAsAttribute(attributesDeclaringNoneRelationship[i],sdmxObjects,"optional")){
+                if(!complexType.hasStructComponentAsAttribute(attributesDeclaringNoneRelationship[i].getId(),attributesDeclaringNoneRelationship[i],sdmxObjects,"optional")){
                     missingAttributes.push(attributesDeclaringNoneRelationship[i].getId())
                 }
             }
@@ -396,14 +374,14 @@ class SchemasSemanticChecker {
             }
     
     }
-    static checkXSDSeriesType(test,query,sdmxObjects){
+    static checkXSDSeriesType(artefact,query,sdmxObjects,dimensionAtObservation){
         try{
             //GET THE CORRECT COMPLEX TYPE
             let complexType = sdmxObjects.getXSDComplexTypeByName("SeriesType");
             if(!complexType){throw new Error("Missing complexType 'SeriesType'."); }
             
             //If undefined means that we do not have specified observation dimension so it is its default (TIME_PERIOD)
-            let expectedRestrictionBase = (!query.obsDimension || query.obsDimension === "TIME_PERIOD") ? "dsd:TimeSeriesType" : "dsd:SeriesType"
+            let expectedRestrictionBase = (dimensionAtObservation === "TIME_PERIOD") ? "dsd:TimeSeriesType" : "dsd:SeriesType"
             
             //CHECK RESTRICTION BASE OF COMPLEX TYPE
             if(complexType.getRestrictionBase()!==expectedRestrictionBase){
@@ -427,41 +405,10 @@ class SchemasSemanticChecker {
                 return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: No valid local element found in sequence."}
             }
 
-            //CHECK IF THERE ARE ATTRIBUTES FOR EACH DIMENSION IN DSD EXCEPT OBSERVATION LEVEL DIMENSION
-            let missingAttributes = []
-            let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.context)
-            let agency = query.agency
-            let id = query.id
-            //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
-            
-    
-            // WORKAROUND - Until a better solution is found.
-            // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
-            // In case of 'latest' we check if the workspace contains exactly one structure 
-            // but the problem here is that the version of the returned structure is not known beforehand 
-            // and the workspace cannot be filtered using the 'latest' for the structure version.
-    
-            let version = (query.version!=='latest')?query.version : null;
-    
-            let structure = test.structureWorkspace.getSdmxObjectsWithCriteria(structureType,agency,id,version)
-            let structureRef = structure[0].asReference();
-            let artefact;
-    
-            //TODO: Check the MSD, MDF cases!!!
-            if(query.context === (SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.MSD.getClass().toLowerCase())){
-                artefact = test.structureWorkspace.getSdmxObject(structureRef)
-            }else if(query.context === (SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.METADATA_FLOW.getClass().toLowerCase())){
-                let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-                artefact = test.structureWorkspace.getSdmxObject(childRef)
-            }else if(query.context === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase()){
-                let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-                let descendantRef = test.structureWorkspace.getChildren(childRef)[0]
-                artefact = test.structureWorkspace.getSdmxObject(descendantRef)
-            }
-            let dimensionAtObservation = (!query.obsDimension) ? "TIME_PERIOD" : query.obsDimension;
+           
             let requestedDimensions = artefact.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION && component.getId() !== dimensionAtObservation )
             for(let i in requestedDimensions){
-                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i],sdmxObjects,"required")){
+                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,"required")){
                     missingAttributes.push(requestedDimensions[i].getId())
                 }
             }
@@ -487,7 +434,24 @@ class SchemasSemanticChecker {
                 return expression1 === false && expression2 === true
             })
             for(let i in requestedAttributes){
-                if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i],sdmxObjects,"optional")){
+                if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,"optional")){
+                    missingAttributes.push(requestedAttributes[i].getId())
+                }
+            }
+            if(missingAttributes.length > 0){
+                return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+            }
+
+            //CHECK FOR ATTRIBUTES WITH DIMENSION RELATIONSHIPS ΤΗΑΤ ARE REFERENCED IN GROUPS
+            missingAttributes = []
+            let requestedAttributes = attributes.filter(function(attribute){
+                let attrRelationships = attribute.getAttributeRelationship()
+                let expression1 = dsdGroups[c].getDimensionReferences().length === attrRelationships.length && 
+                    attrRelationships.filter(relationship=>relationship.getRelationshipType()==="Dimension" && relationship.getIds().every(id=> dsdGroups[c].getDimensionReferences().indexOf(id)!==-1)).length === attrRelationships.length
+                return expression1
+            })
+            for(let i in requestedAttributes){
+                if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,"optional")){
                     missingAttributes.push(requestedAttributes[i].getId())
                 }
             }
@@ -500,41 +464,13 @@ class SchemasSemanticChecker {
             console.log(ex)
         }
     }
-    static checkXSDGroupType(test,query,sdmxObjects){
-        let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.context)
-        let agency = query.agency
-        let id = query.id
-        //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
-        
-
-        // WORKAROUND - Until a better solution is found.
-        // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
-        // In case of 'latest' we check if the workspace contains exactly one structure 
-        // but the problem here is that the version of the returned structure is not known beforehand 
-        // and the workspace cannot be filtered using the 'latest' for the structure version.
-
-        let version = (query.version!=='latest')?query.version : null;
-
-        let structure = test.structureWorkspace.getSdmxObjectsWithCriteria(structureType,agency,id,version)
-        let structureRef = structure[0].asReference();
-        let artefact;
-
-        //TODO: Check the MSD, MDF cases!!!
-        if(query.context === (SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.MSD.getClass().toLowerCase())){
-            artefact = test.structureWorkspace.getSdmxObject(structureRef)
-        }else if(query.context === (SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.METADATA_FLOW.getClass().toLowerCase())){
-            let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-            artefact = test.structureWorkspace.getSdmxObject(childRef)
-        }else if(query.context === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase()){
-            let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-            let descendantRef = test.structureWorkspace.getChildren(childRef)[0]
-            artefact = test.structureWorkspace.getSdmxObject(descendantRef)
-        }
+    static checkXSDGroupType(artefact,sdmxObjects){
+    
         if(artefact.getGroups().length>1){
-            let abstractGroupTypeValidation =  SchemasSemanticChecker.checkXSDAbstractGroupType(artefact,sdmxObjects)
+            let abstractGroupTypeValidation =  SchemasSemanticChecker.checkXSDAbstractGroupType(artefact,sdmxObjects,dimensionAtObservation)
             if(abstractGroupTypeValidation.status === FAILURE_CODE){return abstractGroupTypeValidation}
         }
-        return SchemasSemanticChecker.checkSpecificXSDGroupType(artefact,sdmxObjects)
+        return SchemasSemanticChecker.checkSpecificXSDGroupType(artefact,sdmxObjects,dimensionAtObservation)
        
        
     }
@@ -621,7 +557,7 @@ class SchemasSemanticChecker {
             let missingAttributes = []
             let requestedDimensions = artefact.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION && dsdGroups[c].getDimensionReferences().indexOf(component.getId())!==-1 )
             for(let i in requestedDimensions){
-                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i],sdmxObjects,"required")){
+                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,"required")){
                     missingAttributes.push(requestedDimensions[i].getId())
                 }
             }
@@ -647,7 +583,7 @@ class SchemasSemanticChecker {
                     return expression1 || expression2 
                 })
                 for(let i in requestedAttributes){
-                    if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i],sdmxObjects,"optional")){
+                    if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,"optional")){
                         missingAttributes.push(requestedAttributes[i].getId())
                     }
                 }
@@ -662,53 +598,22 @@ class SchemasSemanticChecker {
                 }
                
         }
-        
-
         return { status: SUCCESS_CODE };
     }
-    static checkXSDObsType(test,query,sdmxObjects){
-        let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.context)
-        let agency = query.agency
-        let id = query.id
-        //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
-        
-
-        // WORKAROUND - Until a better solution is found.
-        // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
-        // In case of 'latest' we check if the workspace contains exactly one structure 
-        // but the problem here is that the version of the returned structure is not known beforehand 
-        // and the workspace cannot be filtered using the 'latest' for the structure version.
-
-        let version = (query.version!=='latest')?query.version : null;
-
-        let structure = test.structureWorkspace.getSdmxObjectsWithCriteria(structureType,agency,id,version)
-        let structureRef = structure[0].asReference();
-        let artefact;
-
-        //TODO: Check the MSD, MDF cases!!!
-        if(query.context === (SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.MSD.getClass().toLowerCase())){
-            artefact = test.structureWorkspace.getSdmxObject(structureRef)
-        }else if(query.context === (SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase() || SDMX_STRUCTURE_TYPE.METADATA_FLOW.getClass().toLowerCase())){
-            let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-            artefact = test.structureWorkspace.getSdmxObject(childRef)
-        }else if(query.context === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase()){
-            let childRef = test.structureWorkspace.getChildren(structureRef)[0]
-            let descendantRef = test.structureWorkspace.getChildren(childRef)[0]
-            artefact = test.structureWorkspace.getSdmxObject(descendantRef)
-        }
+    static checkXSDObsType(test,artefact,query,sdmxObjects,dimensionAtObservation){
         if(query.explicit){
-            let complexTypesOfMeasureDimensionConceptsValidation = SchemasSemanticChecker.checkComplexTypesOfMeasureDimensionConcepts()
+            let complexTypesOfMeasureDimensionConceptsValidation = SchemasSemanticChecker.checkComplexTypesOfMeasureDimensionConcepts(test,artefact,sdmxObjects)
             if(complexTypesOfMeasureDimensionConceptsValidation.status === FAILURE_CODE){return complexTypesOfMeasureDimensionConceptsValidation}
         }
-        return SchemasSemanticChecker.checkObsTypeContentModel(test,artefact,query,sdmxObjects)
+        return SchemasSemanticChecker.checkObsTypeContentModel(test,artefact,sdmxObjects,dimensionAtObservation)
         
     }
-    static checkObsTypeContentModel(test,artefact,query,sdmxObjects){
+    static checkObsTypeContentModel(test,artefact,sdmxObjects,dimensionAtObservation){
         
         let complexType = sdmxObjects.getXSDComplexTypeByName("ObsType");
         if(!complexType){throw new Error("Missing complexType 'ObsType'."); }
 
-        let expectedRestrictionBase = (query.obsDimension) ? "dsd:ObsType" : "dsd:TimeSeriesObsType"
+        let expectedRestrictionBase = (dimensionAtObservation!=="TIME_PERIOD") ? "dsd:ObsType" : "dsd:TimeSeriesObsType"
         if(complexType.getRestrictionBase()!==expectedRestrictionBase){
             return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: The restriction base should have been "+expectedRestrictionBase+" but instead it is "+complexType.getRestrictionBase()+"."}
         }
@@ -734,7 +639,7 @@ class SchemasSemanticChecker {
             return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No valid reference element found in sequence."}
         }
 
-        if(query.obsDimension && query.obsDimension!=="TIME_PERIOD"){
+        if(dimensionAtObservation!=="TIME_PERIOD"){
             if(complexType.getAttributes().filter(attr => attr.getType()==="common:TimePeriodType" && attr.getName()==="TIME_PERIOD" && attr.getUse()==="prohibited").length === 0){
                 //return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No prohibited attribute with name 'TIME_PERIOD' and type 'common:TimePeriodType' found. "}
             }
@@ -742,10 +647,10 @@ class SchemasSemanticChecker {
         let missingAttributes=[];
 
         //IF THE DIMENSION AT THE OBSERVATION IS NOT TIME PERIOD THEN CHECK ITS ATTRIBUTE EXISTANCE
-        if(query.obsDimension && query.obsDimension!=="TIME_PERIOD"){
-            let requestedDimensions = artefact.getComponents().filter(component => component.getId() === query.obsDimension )
+        if(dimensionAtObservation!=="TIME_PERIOD"){
+            let requestedDimensions = artefact.getComponents().filter(component => component.getId() === dimensionAtObservation )
             for(let i in requestedDimensions){
-                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i],sdmxObjects,"required")){
+                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,"required")){
                     missingAttributes.push(requestedDimensions[i].getId())
                 }
             }
@@ -757,7 +662,7 @@ class SchemasSemanticChecker {
         missingAttributes = []
         let requestedDimensions = artefact.getComponents().filter(component => component.getType()===DSD_COMPONENTS_NAMES.PRIMARY_MEASURE && component.getId() === "OBS_VALUE")
         for(let i in requestedDimensions){
-            if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i],sdmxObjects,"optional")){
+            if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,"optional")){
                 missingAttributes.push(requestedDimensions[i].getId())
             }
         }
@@ -766,7 +671,7 @@ class SchemasSemanticChecker {
         }
 
         //CHECK FOR ATTRIBUTES FOR EVERY ATTRIBUTE WITH RELATIONSHIP WITH PRIMARY MEASURE OR DIMENSION AT OBSERVATION
-        let dimensionAtObservation = (!query.obsDimension || query.obsDimension === "TIME_PERIOD") ? "TIME_PERIOD":query.obsDimension
+        
         missingAttributes = []
         let attributes = artefact.getComponents().filter(component => component instanceof DataStructureAttributeObject)
         let requestedAttributes = attributes.filter(function(attribute){
@@ -776,7 +681,7 @@ class SchemasSemanticChecker {
             return expression1 || expression2 
         })
         for(let i in requestedAttributes){
-            if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i],sdmxObjects,"optional")){
+            if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,"optional")){
                 missingAttributes.push(requestedAttributes[i].getId())
             }
         }
@@ -813,7 +718,7 @@ class SchemasSemanticChecker {
         return {status:SUCCESS_CODE}
     }
 
-    static checkComplexTypesOfMeasureDimensionConcepts(test,artefact,query,sdmxObjects){
+    static checkComplexTypesOfMeasureDimensionConcepts(test,artefact,sdmxObjects){
         let conceptSchemeObj = artefact.getConceptObjectOfMeasureDimension(test.structureWorkspace)
         if(!conceptSchemeObj){
             return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No concept scheme found for measure dimension."} 
@@ -850,15 +755,29 @@ class SchemasSemanticChecker {
             let expectedAttrType = reqSimpleType.getName()
             let expectedUsage = "optional"
 
-            if(!complexType.hasAttribute("type",expectedAttrType,expectedUsage)){
-                return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name "+primaryMeasure[0].getId()+", type "+conceptItems[i].representation.textType+" and usage optional."}
+            console.log(expectedAttrType)
+            console.log(expectedUsage)
+            console.log(conceptItems[i].getId())
+            if(!complexType.hasAttribute("type",expectedAttrType,expectedUsage,conceptItems[i].getId())){
+                return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name type."}
             }
 
+            // console.log(conceptItems[i].references)
+            // console.log(conceptItems[i].representation)
+            // console.log(primaryMeasure[0].getReferences())
             //TODO: MUST BE CHECKED
-            if(primaryMeasure.length === 1 && primaryMeasure[0].getRepresentation().getType() ===  COMPONENTS_REPRESENTATION_NAMES.TEXT_FORMAT){
-                if(JSON.stringify(primaryMeasure[0].getRepresentation()) !== JSON.stringify(conceptItems[i].representation)){
-                    if(!complexType.hasAttribute(primaryMeasure[0].getId(),XSD_DATA_TYPE.getMapping(conceptItems[i].representation.textType),"optional")){
+            if((conceptItems[i].representation) && conceptItems[i].representation.getType() ===  COMPONENTS_REPRESENTATION_NAMES.TEXT_FORMAT){
+                console.log(conceptItems[i].id + "@1")
+                if(primaryMeasure.length === 1 && JSON.stringify(primaryMeasure[0].getRepresentation()) !== JSON.stringify(conceptItems[i].representation)){
+                    if(!complexType.hasAttribute(primaryMeasure[0].getId(),XSD_DATA_TYPE.getMapping(conceptItems[i].getRepresentation().getTextType()),"optional")){
                         return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name "+primaryMeasure[0].getId()+", type "+conceptItems[i].representation.textType+" and usage optional."}
+                    }
+                }
+            }else{
+                console.log(conceptItems[i].id + "@2")
+                if(primaryMeasure.length === 1 && !primaryMeasure[0].getReferences().some(ref=>JSON.stringify(ref) === JSON.stringify(conceptItems[i].references))){
+                    if(!complexType.hasStructComponentAsAttribute(primaryMeasure[0].getId(),conceptItems[i],sdmxObjects,"optional")){
+                        return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name "+primaryMeasure[0].getId()+" ."}
                     }
                 }
             }
