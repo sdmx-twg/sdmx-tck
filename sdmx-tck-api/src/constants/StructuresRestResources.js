@@ -47,9 +47,7 @@ function getResources(index,apiVersion) {
                 }else if(index === TEST_INDEX.Schema){
                         if (STRUCTURES_REST_RESOURCE[key] === STRUCTURES_REST_RESOURCE.datastructure 
                                 || STRUCTURES_REST_RESOURCE[key] ===STRUCTURES_REST_RESOURCE.dataflow 
-                                || STRUCTURES_REST_RESOURCE[key] ===STRUCTURES_REST_RESOURCE.provisionagreement
-                                || STRUCTURES_REST_RESOURCE[key] ===STRUCTURES_REST_RESOURCE.metadatastructure
-                                || STRUCTURES_REST_RESOURCE[key] ===STRUCTURES_REST_RESOURCE.metadataflow){
+                                || STRUCTURES_REST_RESOURCE[key] ===STRUCTURES_REST_RESOURCE.provisionagreement){
                                         resourcesArray.push(STRUCTURES_REST_RESOURCE[key]);
                                 }
                 }
