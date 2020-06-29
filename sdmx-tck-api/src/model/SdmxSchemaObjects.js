@@ -99,6 +99,18 @@ class SdmxSchemaObjects extends SdmxObjects{
         }
         return requestedSimpleType[0];
     }
+    getComplexTypeThatContainsAttribute(attributeName){
+        if(!attributeName){
+            throw new Error("Missing Mandatory parameter 'attributeName'. ")
+        }
+        let requestedComplexType = this.getXSDComplexTypes().filter(function(complexType){
+            return complexType.hasAttribute(attributeName)
+        }) 
+        if(requestedComplexType.length === 0){
+            return null
+        }
+        return requestedComplexType[0];
+    }
 }
 
 module.exports = SdmxSchemaObjects;
