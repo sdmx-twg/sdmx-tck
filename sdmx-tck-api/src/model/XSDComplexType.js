@@ -63,18 +63,17 @@ class XSDComplexType {
         return null;
     }
     hasAttribute(attrName,attrType,attrUse,fixedVal){
-        if(!attrName){
-            throw new Error("Missing parameter 'attrName'.")
-        }
-        if(!attrType){
-            throw new Error("Missing parameter 'attrType'.")
+        if(!attrName && !attrType && !attrUse && !fixedVal){
+            return false;
         }
         let reqAttr = this.getAttributes().filter(function(attr){
             let expression = true;
-
-            expression = expression && attr.getName() === attrName
-            expression = expression && attr.getType() === attrType
-
+            if(attrName){
+                expression = expression && attr.getName() === attrName
+            }
+            if(attrType){
+                expression = expression && attr.getType() === attrType
+            }
             if(attrUse){
                 expression = expression && attr.getUse() === attrUse
             }
