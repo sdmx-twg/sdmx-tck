@@ -3,7 +3,7 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 
 class SchemaRequestBuilder {
 
-    static prepareRequest(endpoint, apiVersion, context, template, agency, id, version, obsDimension) {
+    static prepareRequest(endpoint, apiVersion, context, template, agency, id, version, obsDimension, explicitMeasure) {
         return new Promise((resolve, reject) => {
             try {
                 var service = sdmx_rest.getService({ url: endpoint, api: apiVersion });
@@ -16,6 +16,9 @@ class SchemaRequestBuilder {
                 };
                 if (obsDimension) {
                     request.obsDimension = obsDimension;
+                }
+                if(explicitMeasure){
+                    request.explicit = explicitMeasure
                 }
 
                 // Copy the values from the template to the final request
