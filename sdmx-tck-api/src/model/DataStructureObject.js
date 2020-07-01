@@ -94,6 +94,15 @@ class DataStructureObject extends MaintainableObject {
         
         return conceptSchemeObj;
     }
+
+    getRandomDimension(){
+        let dimensions = this.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION);
+        if(dimensions.length === 0){
+            return null;
+        }
+        let randomIndex = Math.floor(Math.random() * dimensions.length);
+		return dimensions[randomIndex];
+    }
 };
 
 module.exports = DataStructureObject;
