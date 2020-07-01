@@ -9,6 +9,7 @@ const ComponentsRepresentationNames = require('./constants/ComponentsRepresentat
 const StructureDetail = require('./constants/StructureDetail.js');
 const ItemQueries = require ('./constants/ItemQueries.js');
 const StructureIdentificationParameters = require('./constants/StructureIdentificationParameters.js')
+const SchemaFurtherDescribingParameters = require('./constants/SchemaFurtherDescribingParameters.js')
 const StructureQueryRepresentation = require('./constants/StructureQueryRepresentations.js')
 const StructureQueryDetail = require('./constants/StructureQueryDetail.js');
 const StructureReferenceDetail = require('./constants/StructureReferenceDetail.js');
@@ -77,6 +78,7 @@ module.exports = {
         STRUCTURES_REST_RESOURCE: StructuresRestResources.STRUCTURES_REST_RESOURCE,
         getResources: StructuresRestResources.getResources,
         SCHEMA_IDENTIFICATION_PARAMETERS:SchemaIdentificationParameters.SCHEMA_IDENTIFICATION_PARAMETERS,
+        SCHEMA_FURTHER_DESCRIBING_PARAMETERS:SchemaFurtherDescribingParameters.SCHEMA_FURTHER_DESCRIBING_PARAMETERS,
         TEST_STATE: TestState.TEST_STATE,
         TEST_INDEX: TestIndex.TEST_INDEX,
         TEST_TYPE: TestType.TEST_TYPE,

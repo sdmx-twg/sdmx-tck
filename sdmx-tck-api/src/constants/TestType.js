@@ -7,7 +7,8 @@ const TEST_TYPE = {
     STRUCTURE_REFERENCE_PARTIAL:"Structure Reference Partial",
 
     PREPARE_SCHEMA_TESTS:"Prepare Schema Tests",
-    SCHEMA_IDENTIFICATION_PARAMETERS:"Schema Identification Parameters"
+    SCHEMA_IDENTIFICATION_PARAMETERS:"Schema Identification Parameters",
+    SCHEMA_FURTHER_DESCRIBING_PARAMETERS:"Schema Further Describing Parameters"
 };
 
 module.exports.TEST_TYPE = Object.freeze(TEST_TYPE);

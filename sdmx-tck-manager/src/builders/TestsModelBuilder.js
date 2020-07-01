@@ -9,7 +9,7 @@ var StructureExtendedResourceIdentParamTestsBuilder = require("../builders/Struc
 var StructureFurtherDescribingResultsParamTestsBuilder = require("../builders/StructureFurtherDescribingResultsParamTestsBuilder.js");
 var StructureRepresentationSupportTestsBuilder = require("../builders/StructureRepresentationSupportTestsBuilder.js");
 var SchemaIdentificationParametersTestBuilder = require("../builders/SchemaIdentificationParametersTestBuilder.js");
-
+var SchemaFurtherDescribingResultsParamTestsBuilder = require("../builders/SchemaFurtherDescribingResultsParamTestsBuilder.js")
 class TestsModelBuilder {
     /**
      * Method that creates the model (object) in which the data of the app will be stored.
@@ -81,9 +81,15 @@ class TestsModelBuilder {
             var allTests=[];
             var arrayOfRestResources = getResources(index,apiVersion)            
             for (let j = 0; j < arrayOfRestResources.length; j++) {
+                schemaTest1 = [];
+                schemaTest2 = [];
+                
                 schemaTest1 = schemaTest1.concat(SchemaIdentificationParametersTestBuilder.getSchemaIdentificationParametersTests(index,x,apiVersion,arrayOfRestResources[j]));
+                schemaTest2 = schemaTest1.concat(SchemaFurtherDescribingResultsParamTestsBuilder.getSchemaFurtherDescribingResultsParamTests(index,x,apiVersion,arrayOfRestResources[j]))
+                allTests = allTests.concat(schemaTest2)
             }
-            allTests = schemaTest1;
+            
+            
             return allTests;
         }else if (index === TEST_INDEX.Data) {
             return [];
