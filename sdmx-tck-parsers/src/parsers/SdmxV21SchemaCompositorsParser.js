@@ -2,6 +2,7 @@ var jsonPath = require('jsonpath');
 
 var SdmxV21SchemaLocalOrReferenceElementParser = require('./SdmxV21SchemaLocalOrReferenceElementParser.js')
 var XSDCompositor = require('sdmx-tck-api').model.XSDCompositor;
+const COMPLEX_TYPES_COMPOSITORS_NAMES = require('sdmx-tck-api').constants.COMPLEX_TYPES_COMPOSITORS_NAMES;
 
 class SdmxV21SchemaSequenceParser {
     /**
@@ -23,7 +24,7 @@ class SdmxV21SchemaSequenceParser {
         if(sequence){
             for (let i in sequence) {
                 listOfCompositors.push(new XSDCompositor(sequence[i],
-                                    "sequence",
+                                    COMPLEX_TYPES_COMPOSITORS_NAMES.SEQUENCE,
                                     SdmxV21SchemaLocalOrReferenceElementParser.getElements(sequence[i]),
                                     this.getCompositors(sequence[i])))
             }
@@ -31,7 +32,7 @@ class SdmxV21SchemaSequenceParser {
          if(choice){
             for (let i in choice) {
                 listOfCompositors.push((new XSDCompositor(choice[i],
-                                    "choice",
+                                    COMPLEX_TYPES_COMPOSITORS_NAMES.CHOICE,
                                     SdmxV21SchemaLocalOrReferenceElementParser.getElements(choice[i]),
                                     this.getCompositors(choice[i]))))
             }
