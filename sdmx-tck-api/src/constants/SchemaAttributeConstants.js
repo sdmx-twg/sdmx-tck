@@ -1,0 +1,25 @@
+const SCHEMA_ATTRIBUTE_USAGE_VALUES = {
+    REQUIRED:"required",
+    OPTIONAL:"optional",
+    PROHIBITED:"prohibited"
+}
+
+const SCHEMA_ATTRIBUTE_NAMES = {
+    TYPE:"type",
+    TIME_PERIOD:"TIME_PERIOD"
+}
+
+const SCHEMA_ATTRIBUTE_TYPES = {
+    GROUP_TYPE_ID:"GroupType.ID",
+    COMMON_ID_TYPE:"common:IDType",
+    COMMON_TIME_PERIOD_TYPE:"common:TimePeriodType"
+}
+
+const SCHEMA_ANYATTRIBUTE_NAMESPACES = {
+    LOCAL:"##local"
+}
+
+module.exports.SCHEMA_ATTRIBUTE_USAGE_VALUES = Object.freeze(SCHEMA_ATTRIBUTE_USAGE_VALUES);
+module.exports.SCHEMA_ATTRIBUTE_TYPES = Object.freeze(SCHEMA_ATTRIBUTE_TYPES);
+module.exports.SCHEMA_ATTRIBUTE_NAMES = Object.freeze(SCHEMA_ATTRIBUTE_NAMES);
+module.exports.SCHEMA_ANYATTRIBUTE_NAMESPACES = Object.freeze(SCHEMA_ANYATTRIBUTE_NAMESPACES);

@@ -21,7 +21,13 @@ const TestType = require('./constants/TestType.js');
 const SchemaFacetsMapping = require('./constants/SchemaFacetsMapping.js');
 const SdmxXSDComponentsTypes = require('./constants/SdmxXSDComponentsTypes.js')
 const XSDRepresentationDataType = require('./constants/XSDRepresentationDataType.js')
-
+const DimensionAtObservationConstants = require('./constants/DimensionAtObservationConstants.js');
+const DSDAttributeConstants = require('./constants/DSDAttributeConstants.js')
+const SchemaAttributeConstants = require('./constants/SchemaAttributeConstants.js')
+const SchemaComplexTypeConstants = require('./constants/SchemaComplexTypeConstants.js')
+const SchemaElementConstants = require('./constants/SchemaElementConstants.js')
+const SchemaSimpleTypeConstants = require('./constants/SchemaSimpleTypeConstants.js')
+const SchemaOccurenciesConstants = require('./constants/SchemaOccurenciesConstants.js')
 // ERRORS
 var TckError = require('./errors/TckError.js');
 var SemanticError = require('./errors/SemanticError.js');
@@ -84,7 +90,25 @@ module.exports = {
         TEST_TYPE: TestType.TEST_TYPE,
         SCHEMA_FACETS:SchemaFacetsMapping.SCHEMA_FACETS,
         XSD_COMPONENTS_TYPES:SdmxXSDComponentsTypes.XSD_COMPONENTS_TYPES,
-        XSD_DATA_TYPE:XSDRepresentationDataType.XSD_DATA_TYPE
+        XSD_DATA_TYPE:XSDRepresentationDataType.XSD_DATA_TYPE,
+        DIMENSION_AT_OBSERVATION_CONSTANTS:DimensionAtObservationConstants.DIMENSION_AT_OBSERVATION_CONSTANTS,
+        ATTRIBUTE_RELATIONSHIP_NAMES:DSDAttributeConstants.ATTRIBUTE_RELATIONSHIP_NAMES,
+        RELATIONSHIP_REF_ID:DSDAttributeConstants.RELATIONSHIP_REF_ID,
+        ATTRIBUTE_NAMES:DSDAttributeConstants.ATTRIBUTE_NAMES,
+        SCHEMA_ATTRIBUTE_USAGE_VALUES:SchemaAttributeConstants.SCHEMA_ATTRIBUTE_USAGE_VALUES,
+        SCHEMA_ATTRIBUTE_NAMES :SchemaAttributeConstants.SCHEMA_ATTRIBUTE_NAMES,
+        SCHEMA_ATTRIBUTE_TYPES:SchemaAttributeConstants.SCHEMA_ATTRIBUTE_TYPES,
+        SCHEMA_ANYATTRIBUTE_NAMESPACES : SchemaAttributeConstants.SCHEMA_ANYATTRIBUTE_NAMESPACES,
+        COMPLEX_TYPES_NAMES : SchemaComplexTypeConstants.COMPLEX_TYPES_NAMES,
+        COMPLEX_TYPES_COMPOSITORS_NAMES : SchemaComplexTypeConstants.COMPLEX_TYPES_COMPOSITORS_NAMES,
+        COMPLEX_TYPES_RESTRICTION_BASE : SchemaComplexTypeConstants.COMPLEX_TYPES_RESTRICTION_BASE,
+        SCHEMA_ELEMENT_NAMES : SchemaElementConstants.SCHEMA_ELEMENT_NAMES,
+        SCHEMA_ELEMENT_REF:SchemaElementConstants.SCHEMA_ELEMENT_REF,
+        SCHEMA_ELEMENT_TYPES : SchemaElementConstants.SCHEMA_ELEMENT_TYPES,
+        SCHEMA_ELEMENT_FORMS : SchemaElementConstants.SCHEMA_ELEMENT_FORMS,
+        SCHEMA_SIMPLE_TYPE_NAMES : SchemaSimpleTypeConstants.SCHEMA_SIMPLE_TYPE_NAMES,
+        SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE : SchemaSimpleTypeConstants.SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE,
+        OCCURENCIES_VALUES:SchemaOccurenciesConstants.OCCURENCIES_VALUES,
     },
     errors: {
         TckError: TckError,
