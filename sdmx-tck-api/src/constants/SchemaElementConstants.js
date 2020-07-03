@@ -1,7 +1,8 @@
 const SCHEMA_ELEMENT_NAMES = {
    GROUP:"Group",
    OBS:"Obs",
-   SERIES:"Series"
+   SERIES:"Series",
+   DATA_PROVIDER:"DataProvider"
 }
 const SCHEMA_ELEMENT_REF = {
     COMMON_ANNOTATIONS:"common:Annotations",
