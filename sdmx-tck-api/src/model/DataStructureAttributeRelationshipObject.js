@@ -1,8 +1,8 @@
 class DataStructureAttributeRelationshipObject{
-    constructor(relationshipType,ids){
+    constructor(relationshipType,id){
 
         this.relationshipType = relationshipType;
-        this.ids = ids;
+        this.id = id;
     }
 
    setRelationshipType(relationshipType){
@@ -12,11 +12,11 @@ class DataStructureAttributeRelationshipObject{
        return this.relationshipType
    }
 
-   setIds(ids){
-       this.id = ids;
+   setId(id){
+       this.id = id;
    }
-   getIds(){
-       return this.ids;
+   getId(){
+       return this.id;
    }
 }
 

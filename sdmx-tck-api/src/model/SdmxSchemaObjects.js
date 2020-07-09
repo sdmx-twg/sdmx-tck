@@ -39,17 +39,17 @@ class SdmxSchemaObjects extends SdmxObjects{
         if(!attributeName){
             throw new Error("Missing mandatory parameter 'attributeName'. ")
         }
-        let complexType = this.getXSDComplexTypes().filter(function(complexTypeObj) {
+        let complexType = this.getXSDComplexTypes().find(function(complexTypeObj) {
             let someAttribute = complexTypeObj.getAttributeByName(attributeName)
             if(someAttribute){
                 return someAttribute.getName() === attributeName
             }
             return false;
         })
-        if(complexType.length === 0){
+        if(!complexType){
             return null
         }
-        return complexType[0];
+        return complexType;
 
     }
     getEnumeratedSimpleTypeOfComponent(componentId){
@@ -65,24 +65,24 @@ class SdmxSchemaObjects extends SdmxObjects{
         if(!attribute){
             return null
         }
-        let chosenSimpleType = this.getSimpleTypesWithEnums().filter(simpleType => simpleType.getName() === attribute.getType())
-        if(chosenSimpleType.length === 0){
+        let chosenSimpleType = this.getSimpleTypesWithEnums().find(simpleType => simpleType.getName() === attribute.getType())
+        if(!chosenSimpleType){
             return null
         }
-        return chosenSimpleType[0]
+        return chosenSimpleType
     }
 
     getXSDSimpleTypeByName(simpleTypeName){
-        let simpleType = this.getXSDSimpleTypes().filter(simpleType => simpleType.getName() === simpleTypeName)
-        if(simpleType.length === 1){
-            return simpleType[0]
+        let simpleType = this.getXSDSimpleTypes().find(simpleType => simpleType.getName() === simpleTypeName)
+        if(simpleType){
+            return simpleType
         }
         return null;
     }
     getXSDComplexTypeByName(complexTypeName){
-        let complexType = this.getXSDComplexTypes().filter(complexType => complexType.getName() === complexTypeName)
-        if(complexType.length === 1){
-            return complexType[0]
+        let complexType = this.getXSDComplexTypes().find(complexType => complexType.getName() === complexTypeName)
+        if(complexType){
+            return complexType
         }
         return null;
     }
@@ -90,26 +90,26 @@ class SdmxSchemaObjects extends SdmxObjects{
         if(!listOfValues instanceof Array){
             throw new Error("Missing Mandatory parameter 'listOfValues'. ")
         }
-        let requestedSimpleType = this.getSimpleTypesWithEnums().filter(function(simpleType){
+        let requestedSimpleType = this.getSimpleTypesWithEnums().find(function(simpleType){
             return listOfValues.every(val=> simpleType.getEnumerations().indexOf(val)!==-1)
                      &&listOfValues.length === simpleType.getEnumerations().length;
         })
-        if(requestedSimpleType.length === 0){
+        if(!requestedSimpleType){
             return null
         }
-        return requestedSimpleType[0];
+        return requestedSimpleType;
     }
     getComplexTypeThatContainsAttribute(attributeName){
         if(!attributeName){
             throw new Error("Missing Mandatory parameter 'attributeName'. ")
         }
-        let requestedComplexType = this.getXSDComplexTypes().filter(function(complexType){
+        let requestedComplexType = this.getXSDComplexTypes().find(function(complexType){
             return complexType.hasAttribute(attributeName)
         }) 
-        if(requestedComplexType.length === 0){
+        if(!requestedComplexType){
             return null
         }
-        return requestedComplexType[0];
+        return requestedComplexType;
     }
 }
 

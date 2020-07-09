@@ -56,9 +56,9 @@ class XSDComplexType {
         if(!attributeName){
             return null;
         }
-        let attribute = this.attributes.filter(attribute => attribute.getName() === attributeName);
-        if(attribute.length > 0){
-            return attribute[0]
+        let attribute = this.attributes.find(attribute => attribute.getName() === attributeName);
+        if(attribute){
+            return attribute
         }
         return null;
     }
@@ -66,7 +66,7 @@ class XSDComplexType {
         if(!attrName && !attrType && !attrUse && !fixedVal){
             return false;
         }
-        let reqAttr = this.getAttributes().filter(function(attr){
+        let reqAttr = this.getAttributes().find(function(attr){
             let expression = true;
             if(attrName){
                 expression = expression && attr.getName() === attrName
@@ -82,7 +82,7 @@ class XSDComplexType {
             }
             return expression === true
         })
-        if(reqAttr.length === 0){
+        if(!reqAttr){
             return false;
         }
         return true
@@ -93,10 +93,8 @@ class XSDComplexType {
         }
         if(!sdmxObjects || !sdmxObjects instanceof SdmxSchemaObjects){
             throw new Error("Missing schema workspace object.")
-        }
-        // let attrId = (componentObj.getId()) ? componentObj.getId() : componentObj.getReferences().filter(ref=>ref.getStructureType() === "CONCEPT_SCHEME")[0].getId()
-        
-        let selectedAttribute = this.getAttributes().filter(function(attr){
+        }        
+        let selectedAttribute = this.getAttributes().find(function(attr){
             let nameExpression = attr.getName() === attrName;
             let typeExpression = (sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && attr.getType() === sdmxObjects.getXSDSimpleTypeByName(attr.getType()).getName() 
             || !sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (componentObj.getRepresentation()) && attr.getType() === XSD_DATA_TYPE.getMapping(componentObj.getRepresentation().getTextType()))
@@ -104,7 +102,7 @@ class XSDComplexType {
             let usageExpression = attr.getUse()===usage
             return nameExpression && typeExpression && usageExpression
         })
-        if(selectedAttribute.length === 0){
+        if(!selectedAttribute){
             return false
         }
         return true;

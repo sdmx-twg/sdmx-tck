@@ -167,7 +167,6 @@ export const configSchemaTests = (prevStore,action) =>{
 			passConstraintDataToSchemaTests(testsArray[i],action.schemaTestsData);
 		}
 	}
-	console.log(testsArray)
 	return testsArray;
 }
 
