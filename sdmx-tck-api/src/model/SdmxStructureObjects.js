@@ -115,6 +115,22 @@ class SdmxStructureObjects extends SdmxObjects{
 			return expression === true;
 		});
 	};
+
+	getDSDObjectForXSDTests(structureType,agency,id,version){
+        let structure = this.getSdmxObjectsWithCriteria(structureType,agency,id,version)
+        let structureRef = structure[0].asReference();
+
+        if(structureType === (SDMX_STRUCTURE_TYPE.DSD.key)){
+            return this.getSdmxObject(structureRef)
+        }else if(structureType === (SDMX_STRUCTURE_TYPE.DATAFLOW.key)){
+            let childRef = this.getChildren(structureRef)[0]
+            return this.getSdmxObject(childRef)
+        }else if(structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key){
+            let childRef = this.getChildren(structureRef)[0]
+            let descendantRef = this.getChildren(childRef)[0]
+            return this.getSdmxObject(descendantRef)
+        }
+    }
 }
 
 module.exports = SdmxStructureObjects;
