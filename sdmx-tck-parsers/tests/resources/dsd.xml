@@ -257,18 +257,7 @@
 								<str:Dimension>
 									<Ref id="FREQ"/>
 								</str:Dimension>
-								<str:Dimension>
-									<Ref id="REF_AREA"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="IND_TYPE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="IDX_TYPE"/>
-								</str:Dimension>
-								<str:Dimension>
-									<Ref id="ITEM"/>
-								</str:Dimension>
+								
 							</str:AttributeRelationship>
 						</str:Attribute>
 						<str:Attribute assignmentStatus="Conditional" id="COMMENT_OBS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:HICPAP(2.0).COMMENT_OBS">

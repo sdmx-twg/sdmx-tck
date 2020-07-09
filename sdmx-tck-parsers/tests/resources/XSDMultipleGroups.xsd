@@ -34,12 +34,13 @@
 		</xs:complexContent>
 	</xs:complexType>
 	
+	
 	<xs:simpleType name="GroupType.ID">
 		<xs:restriction base="common:IDType">
 			<xs:enumeration value="SiblingGroup"/>
 			<xs:enumeration value="RateGroup"/>
 		</xs:restriction>
-	</xs:simpleType>	
+	</xs:simpleType>
 	
 	<xs:complexType name="SiblingGroup">
 		<xs:complexContent>

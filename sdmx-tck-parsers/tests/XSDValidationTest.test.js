@@ -12,7 +12,7 @@ const {
 describe('Tests SdmxObjects class', function () {
     it('It should return a random structure', async () => {
         
-        var xmlMessage = await fs.readFileSync('./tests/resources/XSDexample.xsd');
+        var xmlMessage = await fs.readFileSync('./tests/resources/testXsd.xsd');
         //console.log(await validateXML("<hello>world!</hello>"));
         // validator.validateXML(xmlMessage, 'src/schema/XMLSchema.xsd', function (err, data) {      
            
