@@ -44,7 +44,6 @@ class SdmxV21JsonDsdAttributeRelationshipParser {
             
             
         }
-        console.log(attributeRelationshipData)
         return attributeRelationshipData
     }
 }
