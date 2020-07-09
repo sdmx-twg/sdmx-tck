@@ -1,15 +1,18 @@
 const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
+const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
+const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 var SdmxXmlParser = require('sdmx-tck-parsers').parsers.SdmxXmlParser;
 var TckError = require('sdmx-tck-api').errors.TckError;
 var SchemaRequestBuilder = require('../builders/SchemaRequestBuilder.js');
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
-var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
-var ContentConstraintTypeValidator = require('../checker/ContentConstraintTypeValidator.js')
+var HelperManager = require('../manager/HelperManager.js')
+var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 const sdmx_requestor = require('sdmx-rest');
 const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator')
+
 class SchemaTestExecutionManager {
     static async executeTest(toRun, apiVersion, endpoint) {
         let testResult = toRun;
@@ -19,13 +22,57 @@ class SchemaTestExecutionManager {
             testResult.startTime = new Date();
             console.log("Test: " + toRun.testId + " started on " + testResult.startTime);
             
+            //IF NO IDENTIFIERS WERE FOUND IN 
             if(toRun.identifiers.structureType === "" && toRun.identifiers.agency === "" && toRun.identifiers.id === "" && toRun.identifiers.version === ""){
                 throw new TckError("Identifiers Missing either because there is no constraint constraining a "+testResult.resource+
                                     " or there were no content constraints found at all.")
             }
+            //GET STRUCTURE WORKSPACE (NEEDED IN XSD WORKSPACE VALIDATION PROCESS)
+            let template = toRun.reqTemplate;
+            if(toRun.resource === (SDMX_STRUCTURE_TYPE.DSD.getClass().toLowerCase())){
+                template.references = STRUCTURE_REFERENCE_DETAIL.CHILDREN;
+            }else if(toRun.resource === (SDMX_STRUCTURE_TYPE.DATAFLOW.getClass().toLowerCase())){
+                template.references = STRUCTURE_REFERENCE_DETAIL.DESCENDANTS;
+            }else if(toRun.resource === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.getClass().toLowerCase()){
+                template.references = STRUCTURE_REFERENCE_DETAIL.DESCENDANTS;
+            }
+
+            let helpTestParams = {
+                testId: "/"+toRun.resource+"/agency/id/version?references="+template.references,
+                index: TEST_INDEX.Structure,
+                apiVersion: apiVersion,
+                resource: toRun.resource,
+                reqTemplate: template,
+                identifiers: {structureType:SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource),agency:toRun.identifiers.agency,id:toRun.identifiers.id,version:toRun.identifiers.version},
+                testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
+            }
+            toRun.structureWorkspace = await HelperManager.getWorkspace(TestObjectBuilder.getTestObject(helpTestParams),apiVersion,endpoint);
+           
+
+            if(toRun.testType === TEST_TYPE.SCHEMA_FURTHER_DESCRIBING_PARAMETERS && 
+                toRun.reqTemplate.dimensionAtObservation && 
+                toRun.reqTemplate.dimensionAtObservation!=="AllDimensions"){
+                    
+                let structureType = helpTestParams.identifiers.structureType
+                let agency = helpTestParams.identifiers.agency
+                let id = helpTestParams.identifiers.id
+                //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
+                
+    
+                // WORKAROUND - Until a better solution is found.
+                // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
+                // In case of 'latest' we check if the workspace contains exactly one structure 
+                // but the problem here is that the version of the returned structure is not known beforehand 
+                // and the workspace cannot be filtered using the 'latest' for the structure version.
+    
+                let version = (helpTestParams.identifiers.version!=='latest')?helpTestParams.identifiers.version : null;
+                let dsdObj = toRun.structureWorkspace.getDSDObjectForXSDTests(structureType,agency,id,version)
+                toRun.reqTemplate.dimensionAtObservation = dsdObj.getRandomDimension().getId()
+            }
 
             let preparedRequest = await SchemaRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
-                toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version);
+                toRun.identifiers.agency, toRun.identifiers.id, 
+                toRun.identifiers.version,toRun.reqTemplate.dimensionAtObservation,toRun.reqTemplate.explicitMeasure );
 
             console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
             //Alternative way to pass the url generated as string in order to configure the skipDefaults parameter.
@@ -53,26 +100,11 @@ class SchemaTestExecutionManager {
             console.log("Test: " + toRun.testId + " Response (XSD) validated.");
 
            
-            //// WORKSPACE VALIDATION ////
+            //// WORKSPACE CREATION ////
             let workspace = await new SdmxXmlParser().getIMObjects(xsdString);
             testResult.workspace = workspace;
             console.log("Test: " + toRun.testId + " SDMX workspace created.");
             
-            console.log(workspace.getXSDComponentByType("asd"))
-            // // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
-            // var randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
-            // if (toRun.resource === "structure") {
-            //     randomStructure = workspace.getRandomSdmxObject();
-            // }
-            // testResult.randomStructure = {
-            //     structureType: randomStructure.getStructureType(),
-            //     agencyId: randomStructure.getAgencyId(),
-            //     id: randomStructure.getId(),
-            //     version: randomStructure.getVersion(),
-            // };
-            // if (randomStructure instanceof ItemSchemeObject) {
-            //     testResult.randomItems = randomStructure.getItemsCombination();
-            // }
             
             // WORKSPACE VALIDATION
             let workspaceValidation = await SemanticCheckerFactory.getChecker(toRun).checkWorkspace(toRun, preparedRequest, workspace);
