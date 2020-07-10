@@ -18,10 +18,9 @@ class SdmxV21SchemaAttributeParser {
                     if(attribute[i].$.type){
                         type = attribute[i].$.type
                     }else{
-                        
                         if(attribute[i].simpleType && attribute[i].simpleType[0].$ && attribute[i].simpleType[0].$.name){
                             type = attribute[i].simpleType[0].$.name
-                        }else if(attribute[i].simpleType && attribute[i].simpleType[0].restriction && attribute[i].simpleType[0].restriction[0].$ && attribute[i].simpleType[0].restriction[0].$){
+                        }else if(attribute[i].simpleType && attribute[i].simpleType[0].restriction && attribute[i].simpleType[0].restriction[0].$ && attribute[i].simpleType[0].restriction[0].$.base){
                             type = attribute[i].simpleType[0].restriction[0].$.base
                         }
                     }

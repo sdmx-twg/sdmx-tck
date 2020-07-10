@@ -9,7 +9,7 @@ class SdmxV21SchemaLocalOrReferenceElementParser {
      */
     static getElements(sdmxJsonObject) {
         let elementComponents = []
-        let element = (jsonPath.query(sdmxJsonObject, '$.element').length>0) ? jsonPath.query(sdmxJsonObject, '$.element')[0]:undefined
+        let element = jsonPath.query(sdmxJsonObject, '$.element')[0]
         if(element){
             for (let i in element) {
                 if (element[i] && element[i].$) {
