@@ -7,7 +7,7 @@ class SdmxV21JsonDsdAttributeRelationshipParser {
     static getAttributeRelationship (dsdAtrributeJsonObject){
         let attributeRelationshipData = []
         let attributeRelationship = jsonPath.query(dsdAtrributeJsonObject, '$..AttributeRelationship')[0];
-        attributeRelationship = attributeRelationship[0]
+        if(attributeRelationship){attributeRelationship = attributeRelationship[0]}
         if(attributeRelationship){
             if(attributeRelationship.Dimension){
                 for (let i in attributeRelationship.Dimension) {

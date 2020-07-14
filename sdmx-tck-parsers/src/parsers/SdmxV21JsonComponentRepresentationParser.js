@@ -3,7 +3,7 @@ var ComponentRepresentationObject = require('sdmx-tck-api').model.ComponentRepre
 const COMPONENTS_REPRESENTATION_NAMES = require('sdmx-tck-api').constants.COMPONENTS_REPRESENTATION_NAMES;
 class SdmxV21JsonComponentRepresentationParser {
     /**
-     * Return an array containing enumerations of the given simpleType.
+     * Returns the representation of a component.
      * @param {*} sdmxJsonObject 
      */
     static getRepresentation(sdmxJsonObject) {
