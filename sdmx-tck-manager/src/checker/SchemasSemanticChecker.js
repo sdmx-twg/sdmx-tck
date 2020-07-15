@@ -36,6 +36,7 @@ var DataKeySetObject = require('sdmx-tck-api').model.DataKeySetObject;
 var XSDReferenceElement = require('sdmx-tck-api').model.XSDReferenceElement
 var XSDLocalElement = require('sdmx-tck-api').model.XSDLocalElement
 var DataStructureAttributeObject = require('sdmx-tck-api').model.DataStructureAttributeObject;
+var DataStructureObject  = require('sdmx-tck-api').model.DataStructureObject
 class SchemasSemanticChecker {
 
     static checkWorkspace(test, preparedRequest, workspace) { 
@@ -54,6 +55,9 @@ class SchemasSemanticChecker {
     static checkXSDComponents (test,query,sdmxObjects){
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
+        }
+        if (!Utils.isDefined(test)) {
+            throw new Error("Missing mandatory parameter 'test'.");
         }
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
@@ -96,6 +100,15 @@ class SchemasSemanticChecker {
     }
 
     static checkDefaultRules(dsdObject,sdmxObjects,dimensionAtObservation){
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(dimensionAtObservation)) {
+            throw new Error("Missing mandatory parameter 'dimensionAtObservation'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
         //DEFAULT RULES CHECK FOR DIMENSIONS
         let timeDimension = dsdObject.getComponents().find(component => component.getType() === DSD_COMPONENTS_NAMES.TIME_DIMENSION);
         let measureDimension = dsdObject.getComponents().find(component => component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION);
@@ -186,6 +199,18 @@ class SchemasSemanticChecker {
 
     }
     static checkXSDSimpleTypes(test,query,dsdObject,sdmxObjects){
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(test)) {
+            throw new Error("Missing mandatory parameter 'test'.");
+        }
+        if (!Utils.isDefined(query)) {
+            throw new Error("Missing mandatory parameter 'query'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
         //1. Check SimpleTypes without enums
         let simpleTypeWithoutEnumValidation = SchemasSemanticChecker.checkXSDSimpleTypesWithoutEnums(dsdObject,sdmxObjects)
         if(simpleTypeWithoutEnumValidation.status === FAILURE_CODE){return simpleTypeWithoutEnumValidation;}
@@ -196,7 +221,9 @@ class SchemasSemanticChecker {
     }
 
     static checkXSDSimpleTypesWithoutEnums(dsdObject,sdmxObjects){
-        
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
@@ -271,7 +298,10 @@ class SchemasSemanticChecker {
     }
 
     static checkXSDSimpleTypesWithEnums(test,query,sdmxObjects){
-        
+       
+        if (!Utils.isDefined(query)) {
+            throw new Error("Missing mandatory parameter 'query'.");
+        }
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
@@ -336,6 +366,9 @@ class SchemasSemanticChecker {
         return { status: SUCCESS_CODE };
     }
     static validateKeyValueAgainstSimpleTypeEnum(sdmxObjects,keyValue,constraintObj){
+        if (!Utils.isDefined(constraintObj) || !(constraintObj instanceof ContentConstraintObject)) {
+            throw new Error("Missing mandatory parameter 'ContentConstraintObject'.");
+        }
         if(!keyValue || !keyValue instanceof ConstraintKeyValueObject){
             throw new Error("Missing mandatory parameter 'componentId' ")
         }
@@ -355,7 +388,21 @@ class SchemasSemanticChecker {
     }
 
     static checkXSDComplexTypes (test,dsdObject,query,sdmxObjects,dimensionAtObservation){
-        
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(test)) {
+            throw new Error("Missing mandatory parameter 'test'.");
+        }
+        if (!Utils.isDefined(query)) {
+            throw new Error("Missing mandatory parameter 'query'.");
+        }
+        if (!Utils.isDefined(dimensionAtObservation)) {
+            throw new Error("Missing mandatory parameter 'dimensionAtObservation'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
         //CHECK DATASETTYPE
         let dataSetTypeValidation = SchemasSemanticChecker.checkXSDDataSetType(dsdObject,sdmxObjects,dimensionAtObservation)
         if(dataSetTypeValidation.status === FAILURE_CODE){return dataSetTypeValidation}
@@ -375,7 +422,16 @@ class SchemasSemanticChecker {
           
     }
     static checkXSDDataSetType(dsdObject,sdmxObjects,dimensionAtObservation){
-         //CHECK DataSetType
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(dimensionAtObservation)) {
+            throw new Error("Missing mandatory parameter 'dimensionAtObservation'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
+        //CHECK DataSetType
        
         //GET THE CORRECT COMPLEX TYPE
         let complexType = sdmxObjects.getXSDComplexTypeByName(COMPLEX_TYPES_NAMES.DATA_SET_TYPE);
@@ -488,6 +544,15 @@ class SchemasSemanticChecker {
     
     }
     static checkXSDSeriesType(dsdObject,sdmxObjects,dimensionAtObservation){
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(dimensionAtObservation)) {
+            throw new Error("Missing mandatory parameter 'dimensionAtObservation'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
         //GET THE CORRECT COMPLEX TYPE
         let complexType = sdmxObjects.getXSDComplexTypeByName(COMPLEX_TYPES_NAMES.SERIES_TYPE);
         if(dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.ALLDIMENSIONS){
@@ -588,7 +653,15 @@ class SchemasSemanticChecker {
         return { status: SUCCESS_CODE };
     }
     static checkXSDGroupType(dsdObject,sdmxObjects,dimensionAtObservation){
-    
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(dimensionAtObservation)) {
+            throw new Error("Missing mandatory parameter 'dimensionAtObservation'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
         if(dsdObject.getGroups().length>1){
             let abstractGroupTypeValidation =  SchemasSemanticChecker.checkXSDAbstractGroupType(dsdObject,sdmxObjects,dimensionAtObservation)
             if(abstractGroupTypeValidation.status === FAILURE_CODE){return abstractGroupTypeValidation}
@@ -598,6 +671,12 @@ class SchemasSemanticChecker {
        
     }
     static checkXSDAbstractGroupType(dsdObject,sdmxObjects){
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
         let complexType = sdmxObjects.getXSDComplexTypeByName(COMPLEX_TYPES_NAMES.GROUP_TYPE);
         if(!complexType){throw new Error("Missing complexType "+COMPLEX_TYPES_NAMES.GROUP_TYPE+"."); }
         
@@ -650,6 +729,12 @@ class SchemasSemanticChecker {
  
     }
     static checkSpecificXSDGroupType(dsdObject,sdmxObjects){
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
         let dsdGroups = dsdObject.getGroups()
         let expectedRestrictionBase = (dsdGroups.length > 1)?COMPLEX_TYPES_RESTRICTION_BASE.GROUP_TYPE:COMPLEX_TYPES_RESTRICTION_BASE.DSD_GROUP_TYPE
         for(let c in dsdGroups){   
@@ -725,6 +810,21 @@ class SchemasSemanticChecker {
         return { status: SUCCESS_CODE };
     }
     static checkXSDObsType(test,dsdObject,query,sdmxObjects,dimensionAtObservation){
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(test)) {
+            throw new Error("Missing mandatory parameter 'test'.");
+        }
+        if (!Utils.isDefined(query)) {
+            throw new Error("Missing mandatory parameter 'query'.");
+        }
+        if (!Utils.isDefined(dimensionAtObservation)) {
+            throw new Error("Missing mandatory parameter 'dimensionAtObservation'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
         if(query.explicit){
             let complexTypesOfMeasureDimensionConceptsValidation = SchemasSemanticChecker.checkComplexTypesOfMeasureDimensionConcepts(test,dsdObject,sdmxObjects)
             if(complexTypesOfMeasureDimensionConceptsValidation.status === FAILURE_CODE){return complexTypesOfMeasureDimensionConceptsValidation}
@@ -733,7 +833,21 @@ class SchemasSemanticChecker {
         
     }
     static checkObsTypeContentModel(test,dsdObject,query,sdmxObjects,dimensionAtObservation){
-        
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(test)) {
+            throw new Error("Missing mandatory parameter 'test'.");
+        }
+        if (!Utils.isDefined(query)) {
+            throw new Error("Missing mandatory parameter 'query'.");
+        }
+        if (!Utils.isDefined(dimensionAtObservation)) {
+            throw new Error("Missing mandatory parameter 'dimensionAtObservation'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
         let complexType = sdmxObjects.getXSDComplexTypeByName(COMPLEX_TYPES_NAMES.OBS_TYPE);
         if(!complexType){throw new Error("Missing complexType "+COMPLEX_TYPES_NAMES.OBS_TYPE+"."); }
         
@@ -842,6 +956,15 @@ class SchemasSemanticChecker {
         return {status:SUCCESS_CODE}
     }
     static checkComplexTypesOfMeasureDimensionConcepts(test,dsdObject,sdmxObjects){
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(test)) {
+            throw new Error("Missing mandatory parameter 'test'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
         let conceptSchemeObj = dsdObject.getConceptObjectOfMeasureDimension(test.structureWorkspace)
         if(!conceptSchemeObj){
             return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: Unable to find measure dimension or concept scheme inside for measure dimension."} 
