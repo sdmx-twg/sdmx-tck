@@ -9,8 +9,6 @@ class ConstraintDataForXSDTestsBuilder{
    
    static getConstraintDataForXSDTests(toRun,workspace) {
         let dataForXSDTests = {}
-        let found = false;
-        var j=0;
         if(toRun.testType === TEST_TYPE.PREPARE_SCHEMA_TESTS && toRun.resource === STRUCTURES_REST_RESOURCE.contentconstraint){
             let schemaTestsResources = getResources(TEST_INDEX.Schema)
             let requestedStructureType = workspace.getSdmxObjects().get(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource))
