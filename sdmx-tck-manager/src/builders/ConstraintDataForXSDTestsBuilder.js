@@ -15,23 +15,30 @@ class ConstraintDataForXSDTestsBuilder{
             let schemaTestsResources = getResources(TEST_INDEX.Schema)
             let requestedStructureType = workspace.getSdmxObjects().get(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource))
             if(requestedStructureType){
-                requestedStructureType = requestedStructureType.filter(obj => (obj.type)&& obj.type ==="Allowed" && Array.isArray(obj.getChildren())&& obj.getChildren().length>0);
+                requestedStructureType = requestedStructureType.filter(obj => 
+                                                                (obj.type)
+                                                                && obj.type ==="Allowed" 
+                                                                && Array.isArray(obj.getChildren())
+                                                                && obj.getChildren().length>0);
                 for(var i in schemaTestsResources){
-                    found = false;
-                    j=0; 
-                    while(j<requestedStructureType.length && !found){
-                        let requestedChild = requestedStructureType[j].getRandomChildOfSpecificStructureType(SDMX_STRUCTURE_TYPE.fromRestResource(schemaTestsResources[i]))
-                        if(Object.keys(requestedChild).length > 0){
-                            dataForXSDTests[schemaTestsResources[i]] = {identifiers:requestedChild,
-                                                                        constraintParent:requestedStructureType[j]}
-                            found = true;
-                        }
-                        j++;
+                    let constraintData = this.getConstraintDataForResource(schemaTestsResources[i],requestedStructureType)
+                    if(constraintData){
+                        dataForXSDTests[schemaTestsResources[i]] = constraintData
                     }
                 }
             }
         }
         return dataForXSDTests
+    }
+
+    static getConstraintDataForResource(schemaTestsResource,requestedStructureType){
+        for(let j=0;j<requestedStructureType.length;j++){
+            let requestedRef = requestedStructureType[j].getRandomRefOfSpecificStructureType(SDMX_STRUCTURE_TYPE.fromRestResource(schemaTestsResource))
+            if(requestedRef){
+                return {identifiers:requestedRef,constraintParent:requestedStructureType[j]}
+            }
+        }
+        return null;
     }
 }
 
