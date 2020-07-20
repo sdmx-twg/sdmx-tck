@@ -17,12 +17,11 @@ class SchemaTestExecutionManager {
     static async executeTest(toRun, apiVersion, endpoint) {
         let testResult = toRun;
         try {
-            
             /////PREPARING AND SENDING THE TEST REQUEST/////
             testResult.startTime = new Date();
             console.log("Test: " + toRun.testId + " started on " + testResult.startTime);
             
-            //IF NO IDENTIFIERS WERE FOUND IN 
+            //IF NO IDENTIFIERS WERE FOUND IN TESTS THEN ERROR IS THROWN
             if(toRun.identifiers.structureType === "" && toRun.identifiers.agency === "" && toRun.identifiers.id === "" && toRun.identifiers.version === ""){
                 throw new TckError("Identifiers Missing either because there is no constraint constraining a "+testResult.resource+
                                     " or there were no content constraints found at all.")
@@ -49,9 +48,11 @@ class SchemaTestExecutionManager {
             toRun.structureWorkspace = await HelperManager.getWorkspace(TestObjectBuilder.getTestObject(helpTestParams),apiVersion,endpoint);
            
 
-            if(toRun.testType === TEST_TYPE.SCHEMA_FURTHER_DESCRIBING_PARAMETERS && 
-                toRun.reqTemplate.dimensionAtObservation && 
-                toRun.reqTemplate.dimensionAtObservation!=="AllDimensions"){
+            //IF THE TEST IS "schema/resource/agency/id/version?dimensionAtObservation = dimensionId" we need to get from DSD a dimension id cause
+            //we do not have this information beforehand.
+            if(toRun.testType === TEST_TYPE.SCHEMA_FURTHER_DESCRIBING_PARAMETERS 
+                && toRun.reqTemplate.dimensionAtObservation 
+                && toRun.reqTemplate.dimensionAtObservation!=="AllDimensions"){
                     
                 let structureType = helpTestParams.identifiers.structureType
                 let agency = helpTestParams.identifiers.agency
@@ -66,10 +67,19 @@ class SchemaTestExecutionManager {
                 // and the workspace cannot be filtered using the 'latest' for the structure version.
     
                 let version = (helpTestParams.identifiers.version!=='latest')?helpTestParams.identifiers.version : null;
+                
                 let dsdObj = toRun.structureWorkspace.getDSDObjectForXSDTests(structureType,agency,id,version)
-                toRun.reqTemplate.dimensionAtObservation = dsdObj.getRandomDimension().getId()
+                if(!dsdObj){
+                    throw new TckError("Unable to get structure workspace.")
+                }
+                let dsdRandomDimension = dsdObj.getRandomDimension();
+                if(!dsdRandomDimension){
+                    throw new TckError("No dimensions available in order to perform this test.")
+                }
+                toRun.reqTemplate.dimensionAtObservation = dsdRandomDimension.getId()
             }
 
+            //PREPARE REQUEST
             let preparedRequest = await SchemaRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
                 toRun.identifiers.agency, toRun.identifiers.id, 
                 toRun.identifiers.version,toRun.reqTemplate.dimensionAtObservation,toRun.reqTemplate.explicitMeasure );
