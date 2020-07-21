@@ -5,7 +5,6 @@ var TestObjectBuilder = require('./src/builders/TestObjectBuilder.js');
 var TestsModelBuilder = require('./src/builders/TestsModelBuilder.js');
 var TestExecutionManagerFactory = require('./src/manager/TestExecutionManagerFactory.js')
 var HelperManager = require('./src/manager/HelperManager.js')
-var ConstraintDataForXSDTestsBuilder = require('./src/builders/ConstraintDataForXSDTestsBuilder.js')
 var TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
@@ -52,9 +51,9 @@ app.post("/tck-api/configure-schema-tests", (req, res) => {
 
     //gets workspace of all content constraints
     HelperManager.getWorkspace(configObj, apiVersion, endpoint).then(
-        (result) => { 
+        (workspace) => { 
             //sends identifiers from constraint DSD,DF,PRA,MSD,MDF (if found)
-            res.send(JSON.stringify(ConstraintDataForXSDTestsBuilder.getConstraintDataForXSDTests(configObj,result))) 
+            res.send(JSON.stringify(workspace.getConstraintDataForXSDTests()))  
         },
         (error) => { 
             res.send(error) 

@@ -1,6 +1,10 @@
 var SdmxObjects = require('./SdmxObjects.js')
 var isDefined = require('../utils/Utils.js').isDefined;
 var SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
+var getResources = require('../constants/StructuresRestResources.js').getResources
+const TEST_INDEX = require('../constants/TestIndex.js').TEST_INDEX
+var STRUCTURES_REST_RESOURCE = require('../constants/StructuresRestResources').STRUCTURES_REST_RESOURCE
+
 
 class SdmxStructureObjects extends SdmxObjects{
     constructor(sdmxObjects){
@@ -130,6 +134,41 @@ class SdmxStructureObjects extends SdmxObjects{
             let descendantRef = this.getChildren(childRef)[0]
             return this.getSdmxObject(descendantRef)
         }
+	}
+	
+	 /**
+     * Returns data (constraint, identifiers) for all resources needed for XSD tests (DSDs,DFs,PRAs)
+     */
+	 getConstraintDataForXSDTests() {
+        let dataForXSDTests = {}
+        let schemaTestsResources = getResources(TEST_INDEX.Schema)                
+        for(var i in schemaTestsResources){
+            let constraintData = this._getConstraintDataForResource(schemaTestsResources[i])
+            if(constraintData){
+                dataForXSDTests[schemaTestsResources[i]] = constraintData
+            }
+        }
+    
+        return dataForXSDTests
+    }
+
+    /**
+     * Returns data (constraint, identifiers) for eached requested resources needed for XSD tests (DSDs,DFs,PRAs)
+     * @param {*} xsdTestResource requested resource (datastructure,dataflow,provisionagreement).
+     */
+     _getConstraintDataForResource(xsdTestResource){
+        let contentconstraints = this.getSdmxObjects().get(SDMX_STRUCTURE_TYPE.fromRestResource(STRUCTURES_REST_RESOURCE.contentconstraint))
+        if(contentconstraints){
+            let validContentconstraints = contentconstraints.filter(constraint => 
+                                        (constraint.getType()) && constraint.getType() ==="Allowed" && constraint.getChildren().length>0);
+            for(let j=0;j<validContentconstraints.length;j++){
+                let requestedRef = validContentconstraints[j].getRandomRefOfSpecificStructureType(SDMX_STRUCTURE_TYPE.fromRestResource(xsdTestResource))
+				if(requestedRef){
+                    return {identifiers:requestedRef,constraintParent:validContentconstraints[j]}
+                }
+            }
+        }
+        return null;
     }
 }
 
