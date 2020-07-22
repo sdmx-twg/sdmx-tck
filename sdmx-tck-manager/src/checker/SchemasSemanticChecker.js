@@ -89,14 +89,14 @@ class SchemasSemanticChecker {
         //1. Check SimpleTypes
         let simpleTypeValidation = SchemasSemanticChecker.checkXSDSimpleTypes(test,query,dsdObject,sdmxObjects)
         if(simpleTypeValidation.status === FAILURE_CODE){return simpleTypeValidation;}
-
+        return simpleTypeValidation
         // //2. Check ComplexTypes
-        let complexTypeValidation = SchemasSemanticChecker.checkXSDComplexTypes(test,dsdObject,query,sdmxObjects,dimensionAtObservation)
-        if(complexTypeValidation.status === FAILURE_CODE){return complexTypeValidation;}
+        //let complexTypeValidation = SchemasSemanticChecker.checkXSDComplexTypes(test,dsdObject,query,sdmxObjects,dimensionAtObservation)
+        //if(complexTypeValidation.status === FAILURE_CODE){return complexTypeValidation;}
 
         // //CHECK DEFAULT DIMENSION AT OBSERVATION RULES
-        let defaultRulesValidation = SchemasSemanticChecker.checkDefaultRules(dsdObject,sdmxObjects,dimensionAtObservation)
-        return defaultRulesValidation
+        //let defaultRulesValidation = SchemasSemanticChecker.checkDefaultRules(dsdObject,sdmxObjects,dimensionAtObservation)
+        //return defaultRulesValidation
     }
 
     static checkDefaultRules(dsdObject,sdmxObjects,dimensionAtObservation){
@@ -213,11 +213,11 @@ class SchemasSemanticChecker {
         }
         //1. Check SimpleTypes without enums
         let simpleTypeWithoutEnumValidation = SchemasSemanticChecker.checkXSDSimpleTypesWithoutEnums(dsdObject,sdmxObjects)
-        if(simpleTypeWithoutEnumValidation.status === FAILURE_CODE){return simpleTypeWithoutEnumValidation;}
+        //if(simpleTypeWithoutEnumValidation.status === FAILURE_CODE){return simpleTypeWithoutEnumValidation;}
          
-         
+        return simpleTypeWithoutEnumValidation
         //2. Check SimpleTypes with enums
-        return  SchemasSemanticChecker.checkXSDSimpleTypesWithEnums(test,query,sdmxObjects)
+        //return  SchemasSemanticChecker.checkXSDSimpleTypesWithEnums(test,query,sdmxObjects)
     }
 
     static checkXSDSimpleTypesWithoutEnums(dsdObject,sdmxObjects){
@@ -228,15 +228,12 @@ class SchemasSemanticChecker {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
         
-
-        let simpleTypesWithFacets = sdmxObjects.getSimpleTypesWithFacets().concat(sdmxObjects.getSimpleTypesWithDataTypeRestrictionOnly());
-        
-        let dsdComponentsWithTextFormatRestriction = dsdObject.getComponents().filter(comp=> (comp.getRepresentation()) && comp.getRepresentation().getType() === COMPONENTS_REPRESENTATION_NAMES.TEXT_FORMAT)
-        
-
+        let simpleTypesWithFacets = sdmxObjects.getSimpleTypesWithFacets();
+        let dsdComponentsWithFacets = dsdObject.getComponentsWithFacets()
+       
         //The number of dsd components must be equal to the number of simple types describing them.
         //This validation handles the case where there are more simpe types than dsd components with data type restriction.
-        if(simpleTypesWithFacets.length > dsdComponentsWithTextFormatRestriction.length){
+        if(simpleTypesWithFacets.length > dsdComponentsWithFacets.length){
             return { status: FAILURE_CODE, error: "There are more simple types in the XSD than DSD components"};
         }
         
@@ -245,7 +242,7 @@ class SchemasSemanticChecker {
         It fails when :
         a) There are more dsd components than simpleTypes (dsd component is not described by a simple Type)
         b) When the simple Type description of component is incorrect*/
-        dsdComponentsWithTextFormatRestriction.forEach(function(component){
+        dsdComponentsWithFacets.forEach(function(component){
                 let validSimpleType = simpleTypesWithFacets.find(function(simpleType){
                     let expression = true;
                     expression = expression && (simpleType.getName() === component.getId())

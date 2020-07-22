@@ -2,6 +2,7 @@ var MaintainableObject = require('./MaintainableObject.js');
 var SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
 var StructureReference = require('../model/StructureReference.js');
 const DSD_COMPONENTS_NAMES = require('../constants/DSDComponents.js').DSD_COMPONENTS_NAMES;
+const COMPONENTS_REPRESENTATION_NAMES = require('../constants/ComponentsRepresentationNames.js').COMPONENTS_REPRESENTATION_NAMES;
 
 
 class DataStructureObject extends MaintainableObject {
@@ -102,6 +103,18 @@ class DataStructureObject extends MaintainableObject {
         }
         let randomIndex = Math.floor(Math.random() * dimensions.length);
 		return dimensions[randomIndex];
+    }
+
+    getComponentsWithFacets(){
+        return this.getComponents().filter(comp=> 
+            (comp.getRepresentation()) 
+            && comp.getRepresentation().getType() === COMPONENTS_REPRESENTATION_NAMES.TEXT_FORMAT
+            && (comp.getRepresentation().getMinLength() 
+                || comp.getRepresentation().getMaxLength() 
+                || comp.getRepresentation().getMinValue() 
+                || comp.getRepresentation().getMaxValue() 
+                || comp.getRepresentation().getDecimals()
+                || comp.getRepresentation().getPattern()))
     }
 };
 
