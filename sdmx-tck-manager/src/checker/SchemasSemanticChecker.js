@@ -89,14 +89,14 @@ class SchemasSemanticChecker {
         //1. Check SimpleTypes
         let simpleTypeValidation = SchemasSemanticChecker.checkXSDSimpleTypes(test,query,dsdObject,sdmxObjects)
         if(simpleTypeValidation.status === FAILURE_CODE){return simpleTypeValidation;}
-        return simpleTypeValidation
-        // //2. Check ComplexTypes
-        //let complexTypeValidation = SchemasSemanticChecker.checkXSDComplexTypes(test,dsdObject,query,sdmxObjects,dimensionAtObservation)
-        //if(complexTypeValidation.status === FAILURE_CODE){return complexTypeValidation;}
 
+        //2. Check ComplexTypes
+        let complexTypeValidation = SchemasSemanticChecker.checkXSDComplexTypes(test,dsdObject,query,sdmxObjects,dimensionAtObservation)
+        if(complexTypeValidation.status === FAILURE_CODE){return complexTypeValidation;}
+        
         // //CHECK DEFAULT DIMENSION AT OBSERVATION RULES
-        //let defaultRulesValidation = SchemasSemanticChecker.checkDefaultRules(dsdObject,sdmxObjects,dimensionAtObservation)
-        //return defaultRulesValidation
+        let defaultRulesValidation = SchemasSemanticChecker.checkDefaultRules(dsdObject,sdmxObjects,dimensionAtObservation)
+        return defaultRulesValidation
     }
 
     static checkDefaultRules(dsdObject,sdmxObjects,dimensionAtObservation){
@@ -213,11 +213,10 @@ class SchemasSemanticChecker {
         }
         //1. Check SimpleTypes without enums
         let simpleTypeWithoutEnumValidation = SchemasSemanticChecker.checkXSDSimpleTypesWithoutEnums(dsdObject,sdmxObjects)
-        //if(simpleTypeWithoutEnumValidation.status === FAILURE_CODE){return simpleTypeWithoutEnumValidation;}
+        if(simpleTypeWithoutEnumValidation.status === FAILURE_CODE){return simpleTypeWithoutEnumValidation;}
          
-        return simpleTypeWithoutEnumValidation
         //2. Check SimpleTypes with enums
-        //return  SchemasSemanticChecker.checkXSDSimpleTypesWithEnums(test,query,sdmxObjects)
+        return  SchemasSemanticChecker.checkXSDSimpleTypesWithEnums(test,query,dsdObject,sdmxObjects)
     }
 
     static checkXSDSimpleTypesWithoutEnums(dsdObject,sdmxObjects){
@@ -294,10 +293,13 @@ class SchemasSemanticChecker {
     
     }
 
-    static checkXSDSimpleTypesWithEnums(test,query,sdmxObjects){
+    static checkXSDSimpleTypesWithEnums(test,query,dsdObject,sdmxObjects){
        
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
+        }
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
         }
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
@@ -309,10 +311,16 @@ class SchemasSemanticChecker {
          /*The content constraint is chosen in the schema tests preparation. There is no guarantee that the maintainable selected from it will be 
         the same as the one returned from a query that the version='latest'. If the maintainable returned from this query is different from the one
         chosen in the first place, then the constraint of might be different and as a result the restrictions of it will be different. In this case the
-        only check that we can perform is that the worksapce of the XSD contains some Enumerated SimpleTypes.*/
+        only check that we can perform is that the workspace of the XSD contains simple types that represent the enumerated components of the dsd.*/
         if(query.version === "latest"){
-            if(sdmxObjects.getSimpleTypesWithEnums().length === 0){
-                return { status: FAILURE_CODE, error: "There are no enumerated simple types "};
+            let notFoundSimpleTypeIds = [];
+            dsdObject.getEnumeratedComponents().forEach(comp => {
+                if(!sdmxObjects.getEnumeratedSimpleTypeOfComponent(comp.getId())){
+                    notFoundSimpleTypeIds.push(comp.getId())
+                }
+            })
+            if(notFoundSimpleTypeIds.length>0){
+                return { status: FAILURE_CODE, error: "These components are not represented with enumerated simple types in the XSD: "+ JSON.stringify(notFoundSimpleTypeIds)};
             }
             return { status: SUCCESS_CODE };
         }

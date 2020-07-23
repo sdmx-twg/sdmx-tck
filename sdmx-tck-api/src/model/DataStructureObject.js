@@ -116,6 +116,11 @@ class DataStructureObject extends MaintainableObject {
                 || comp.getRepresentation().getDecimals()
                 || comp.getRepresentation().getPattern()))
     }
+    getEnumeratedComponents(){
+        return this.getComponents().filter(function(comp){
+            return comp.getReferences().some(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.CODE_LIST.key)
+        })
+    }
 };
 
 module.exports = DataStructureObject;
