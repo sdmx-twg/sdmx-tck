@@ -3,6 +3,7 @@ const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
+const DSD_COMPONENTS_NAMES = require('sdmx-tck-api').constants.DSD_COMPONENTS_NAMES;
 var SdmxXmlParser = require('sdmx-tck-parsers').parsers.SdmxXmlParser;
 var TckError = require('sdmx-tck-api').errors.TckError;
 var SchemaRequestBuilder = require('../builders/SchemaRequestBuilder.js');
@@ -46,29 +47,33 @@ class SchemaTestExecutionManager {
                 testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
             }
             toRun.structureWorkspace = await HelperManager.getWorkspace(TestObjectBuilder.getTestObject(helpTestParams),apiVersion,endpoint);
-           
+            
+            let structureType = helpTestParams.identifiers.structureType
+            let agency = helpTestParams.identifiers.agency
+            let id = helpTestParams.identifiers.id
+            //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
+            
+
+            // WORKAROUND - Until a better solution is found.
+            // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
+            // In case of 'latest' we check if the workspace contains exactly one structure 
+            // but the problem here is that the version of the returned structure is not known beforehand 
+            // and the workspace cannot be filtered using the 'latest' for the structure version.
+
+            let version = (helpTestParams.identifiers.version!=='latest')?helpTestParams.identifiers.version : null;
+            
+            let dsdObj = toRun.structureWorkspace.getDSDObjectForXSDTests(structureType,agency,id,version)
+            
+            //CHECK IF DSD HAS MEASURE DIMENSION BECAUSE IF IT IS NEEDED IN THE TEST QUERY, THE TEST CANNOT BE PERFORMED
+            if(toRun.reqTemplate.explicitMeasure && !dsdObj.getComponents().find(component => component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION)){
+                throw new TckError("Test cannot be executed because the DSD does not have a MEASURE DIMENSION");
+            }
 
             //IF THE TEST IS "schema/resource/agency/id/version?dimensionAtObservation = dimensionId" we need to get from DSD a dimension id cause
             //we do not have this information beforehand.
             if(toRun.testType === TEST_TYPE.SCHEMA_FURTHER_DESCRIBING_PARAMETERS 
                 && toRun.reqTemplate.dimensionAtObservation 
                 && toRun.reqTemplate.dimensionAtObservation!=="AllDimensions"){
-                    
-                let structureType = helpTestParams.identifiers.structureType
-                let agency = helpTestParams.identifiers.agency
-                let id = helpTestParams.identifiers.id
-                //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single artefact to be returned when the version is not defined.
-                
-    
-                // WORKAROUND - Until a better solution is found.
-                // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
-                // In case of 'latest' we check if the workspace contains exactly one structure 
-                // but the problem here is that the version of the returned structure is not known beforehand 
-                // and the workspace cannot be filtered using the 'latest' for the structure version.
-    
-                let version = (helpTestParams.identifiers.version!=='latest')?helpTestParams.identifiers.version : null;
-                
-                let dsdObj = toRun.structureWorkspace.getDSDObjectForXSDTests(structureType,agency,id,version)
                 if(!dsdObj){
                     throw new TckError("Unable to get structure workspace.")
                 }
