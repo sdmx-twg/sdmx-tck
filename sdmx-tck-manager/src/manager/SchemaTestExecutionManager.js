@@ -60,10 +60,9 @@ class SchemaTestExecutionManager {
             // but the problem here is that the version of the returned structure is not known beforehand 
             // and the workspace cannot be filtered using the 'latest' for the structure version.
 
-            let version = (helpTestParams.identifiers.version!=='latest')?helpTestParams.identifiers.version : null;
-            
+            let version = (template.version && template.version === "latest")?null:helpTestParams.identifiers.version
             let dsdObj = toRun.structureWorkspace.getDSDObjectForXSDTests(structureType,agency,id,version)
-            
+            toRun.dsdObject = dsdObj
             //CHECK IF DSD HAS MEASURE DIMENSION BECAUSE IF IT IS NEEDED IN THE TEST QUERY, THE TEST CANNOT BE PERFORMED
             if(toRun.reqTemplate.explicitMeasure && !dsdObj.getComponents().find(component => component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION)){
                 throw new TckError("Test cannot be executed because the DSD does not have a MEASURE DIMENSION");

@@ -64,19 +64,8 @@ class SchemasSemanticChecker {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
         //GET THE DSD OBJECT
-        let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.context)
-        let agency = query.agency
-        let id = query.id
-        //TODO: Change the solution because,getSdmxObjectsWithCriteria does not guarantee a single dsdObject to be returned when the version is not defined.
-        // WORKAROUND - Until a better solution is found.
-        // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
-        // In case of 'latest' we check if the workspace contains exactly one structure 
-        // but the problem here is that the version of the returned structure is not known beforehand 
-        // and the workspace cannot be filtered using the 'latest' for the structure version.
-        let version = (query.version!=='latest')?query.version : null;
-
-        let dsdObject = test.structureWorkspace.getDSDObjectForXSDTests(structureType,agency,id,version)
-
+        let dsdObject = test.dsdObject
+        
         //CALCULATE DIMENSION AT OBSERVATION
         let dimensionAtObservation = (query.obsDimension)? query.obsDimension : DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD;
         if(query.explicit){
