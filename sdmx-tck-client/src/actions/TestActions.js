@@ -114,19 +114,17 @@ export function exportReport(tests) {
     });
 };
 
-async function getConstraintDataForSchemaTests(endpoint,tests){
+async function getDataForSchemaTests(endpoint,tests){
     if(TEST_INDEX.Schema === tests.id){
         let apiVersion = (tests.subTests && Array.isArray(tests.subTests) && tests.subTests.length>0)?tests.subTests[0].apiVersion:undefined;
         let schemaTestsData = await configureSchemaTests(endpoint,apiVersion);
-        if(Object.entries(schemaTestsData).length > 0 && schemaTestsData instanceof Object){
-            store.dispatch(XSDTestsData(schemaTestsData,tests.id));  
-        }
-    }
+        store.dispatch(XSDTestsData(schemaTestsData,tests.id));  
+                                                                           }
 }
 
 async function runTests(endpoint, tests) {
     for (let i = 0; i < tests.length; i++) {
-        await getConstraintDataForSchemaTests(endpoint,tests[i]);
+        await getDataForSchemaTests(endpoint,tests[i]);
         for (let j = 0; j < tests[i].subTests.length; j++) {
             await runTest(endpoint, tests[i].subTests[j]);
         }

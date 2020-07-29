@@ -1,10 +1,12 @@
-var SdmxObjects = require('./SdmxObjects.js')
+var SdmxObjects = require('./SdmxObjects.js');
+const DataflowObject = require('./DataflowObject.js');
+const StructureReference = require('./StructureReference.js');
 var isDefined = require('../utils/Utils.js').isDefined;
 var SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
 var getResources = require('../constants/StructuresRestResources.js').getResources
 const TEST_INDEX = require('../constants/TestIndex.js').TEST_INDEX
-var STRUCTURES_REST_RESOURCE = require('../constants/StructuresRestResources').STRUCTURES_REST_RESOURCE
-
+const STRUCTURES_REST_RESOURCE = require('../constants/StructuresRestResources').STRUCTURES_REST_RESOURCE
+const DSD_COMPONENTS_NAMES = require("../constants/DSDComponents.js").DSD_COMPONENTS_NAMES
 
 class SdmxStructureObjects extends SdmxObjects{
     constructor(sdmxObjects){
@@ -157,6 +159,9 @@ class SdmxStructureObjects extends SdmxObjects{
      * @param {*} xsdTestResource requested resource (datastructure,dataflow,provisionagreement).
      */
      _getConstraintDataForResource(xsdTestResource){
+		if (!isDefined(xsdTestResource)) {
+			throw new Error('Missing mandatory parameter \'resource\'');
+		}
         let contentconstraints = this.getSdmxObjects().get(SDMX_STRUCTURE_TYPE.fromRestResource(STRUCTURES_REST_RESOURCE.contentconstraint))
         if(contentconstraints){
             let validContentconstraints = contentconstraints.filter(constraint => 
@@ -169,7 +174,56 @@ class SdmxStructureObjects extends SdmxObjects{
             }
         }
         return null;
-    }
+	}
+	
+	getDataForXSDTests(resource){
+		if (!isDefined(resource)) {
+			throw new Error('Missing mandatory parameter \'resource\'');
+		}
+		if(resource === STRUCTURES_REST_RESOURCE.datastructure){
+			let dsdWithMeasureDimension = this.getSdmxObjectsList().find(function(dsd){
+				return dsd.hasMeasureDimension();
+			})
+			if(dsdWithMeasureDimension){
+				return new StructureReference(dsdWithMeasureDimension.getStructureType(),dsdWithMeasureDimension.getAgencyId(),dsdWithMeasureDimension.getId(),dsdWithMeasureDimension.getVersion())
+			}
+			let randomDsd = this.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.DSD.key)
+			return new StructureReference(randomDsd.getStructureType(),randomDsd.getAgencyId(),randomDsd.getId(),randomDsd.getVersion())
+		}else if(resource === STRUCTURES_REST_RESOURCE.dataflow){
+			let dataflows = this.getSdmxObjectsList().filter(obj => obj instanceof DataflowObject)
+			let chosenDf = dataflows.find( (df) => {
+				let dsdRef = df.getChildren()[0];
+				let dsdObj = this.getSdmxObject(dsdRef)
+				return dsdObj.hasMeasureDimension()
+			})
+			if(chosenDf){
+				return new StructureReference(chosenDf.getStructureType(),chosenDf.getAgencyId(),chosenDf.getId(),chosenDf.getVersion())
+			}
+			let randomDf = this.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.DATAFLOW.key)
+			return new StructureReference(randomDf.getStructureType(),randomDf.getAgencyId(),randomDf.getId(),randomDf.getVersion())
+		}else if(resource === STRUCTURES_REST_RESOURCE.provisionagreement){
+			let provisionagreements = this.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)
+			let provisionagreementsReferencingDfs = provisionagreements.filter(function(pra){
+				return pra.getChildren().some(child => child.getStructureType()!==SDMX_STRUCTURE_TYPE.METADATA_FLOW.key)
+			})
+			if(provisionagreementsReferencingDfs.length === 0){
+				return null;
+			}
+			let chosenPra = provisionagreementsReferencingDfs.find( (pra) => {
+				let dfRef = pra.getChildren()[0];
+				let dsdRef = this.getChildren(dfRef)[0]
+				let dsdObj = this.getSdmxObject(dsdRef)
+				return dsdObj.hasMeasureDimension()				
+			})
+			if(chosenPra){
+				return new StructureReference(chosenPra.getStructureType(),chosenPra.getAgencyId(),chosenPra.getId(),chosenPra.getVersion())
+			}
+			let randomIndex = Math.floor(Math.random() * provisionagreementsReferencingDfs.length);
+			let randomPra = provisionagreementsReferencingDfs[randomIndex]
+			return new StructureReference(randomPra.getStructureType(),randomPra.getAgencyId(),randomPra.getId(),randomPra.getVersion())
+		}
+	return null;
+	}
 }
 
 module.exports = SdmxStructureObjects;

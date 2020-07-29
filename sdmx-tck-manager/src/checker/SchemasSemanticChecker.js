@@ -25,6 +25,7 @@ const SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE = require('sdmx-tck-api').constants.SC
 var SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
 var FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 var Utils = require('sdmx-tck-api').utils.Utils;
+var TckError = require('sdmx-tck-api').errors.TckError;
 var SdmxSchemaObjects = require('sdmx-tck-api').model.SdmxSchemaObjects;
 var SdmxStructureObjects = require('sdmx-tck-api').model.SdmxStructureObjects;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
@@ -312,7 +313,7 @@ class SchemasSemanticChecker {
         the same as the one returned from a query that the version='latest'. If the maintainable returned from this query is different from the one
         chosen in the first place, then the constraint of might be different and as a result the restrictions of it will be different. In this case the
         only check that we can perform is that the workspace of the XSD contains simple types that represent the enumerated components of the dsd.*/
-        if(query.version === "latest"){
+        if (!Utils.isDefined(test.constraintParent)){
             let notFoundSimpleTypeIds = [];
             dsdObject.getEnumeratedComponents().forEach(comp => {
                 if(!sdmxObjects.getEnumeratedSimpleTypeOfComponent(comp.getId())){
@@ -324,12 +325,6 @@ class SchemasSemanticChecker {
             }
             return { status: SUCCESS_CODE };
         }
-
-        if (!Utils.isDefined(test.constraintParent)) {
-            throw new Error("Unable to validate enumerations in XSD due to missing constraint data ");
-        }
-        
-       
 
         let errors = []
         let dataKeySetsKeyValuesCheckedIds = []

@@ -10,7 +10,7 @@ var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
 const MetadataReferences = require('sdmx-rest').metadata.MetadataReferences
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-
+var XSDTestsDataBuilder = require('./src/builders/XSDTestsDataBuilder.js')
 
 const server = app.listen(5000, () => {
     console.log("Server is listening on port: 5000");
@@ -32,32 +32,33 @@ app.post("/tck-api/prepare-tests", (req, res) => {
     res.send(JSON.stringify(tests));
 });
 
-app.post("/tck-api/configure-schema-tests", (req, res) => {
+app.post("/tck-api/configure-schema-tests", async(req, res) => {
+
+    let configData = {constraintData:undefined,
+                      randomData:{
+                          datastructure:undefined,
+                          dataflow:undefined,
+                          provisionagreement:undefined}
+                        }
     let payload = req.body;
     let endpoint = payload.endpoint;
     let apiVersion = payload.apiVersion;
     
-    //Test obj creation to get all the content constraints 
-    let configParams = {
-        testId: "/" + STRUCTURES_REST_RESOURCE.contentconstraint + "/all/all/all?detail=full",
-        index: TEST_INDEX.Structure,
-        apiVersion: apiVersion,
-        resource: STRUCTURES_REST_RESOURCE.contentconstraint,
-        reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.FULL},
-        identifiers: { structureType: "", agency: "all", id: "all", version: "all" },
-        testType: TEST_TYPE.PREPARE_SCHEMA_TESTS
-    }
-    let configObj = TestObjectBuilder.getTestObject(configParams)
+    //PREPARE SCHEMA TESTS THAT RELY ON DSDs,DFs,PRAs FOUND AS CONTRAINT CONSTRAINABLES
+    configData.constraintData =  await XSDTestsDataBuilder.buildXSDDataFromConstraint(endpoint,apiVersion)
+    
+    //PREPARE SCHEMA TESTS THAT RELY ON RANDOM DSDs,DFs,PRAs
 
-    //gets workspace of all content constraints
-    HelperManager.getWorkspace(configObj, apiVersion, endpoint).then(
-        (workspace) => { 
-            //sends identifiers from constraint DSD,DF,PRA,MSD,MDF (if found)
-            res.send(JSON.stringify(workspace.getConstraintDataForXSDTests()))  
-        },
-        (error) => { 
-            res.send(error) 
-        });
+    //DSD DATA
+    configData.randomData.datastructure =  await XSDTestsDataBuilder.buildXSDDataWithoutConstraint(STRUCTURES_REST_RESOURCE.datastructure,endpoint,apiVersion)
+
+    //DF DATA
+    configData.randomData.dataflow =  await XSDTestsDataBuilder.buildXSDDataWithoutConstraint(STRUCTURES_REST_RESOURCE.dataflow,endpoint,apiVersion)
+
+    //PRA DATA
+    configData.randomData.provisionagreement =  await XSDTestsDataBuilder.buildXSDDataWithoutConstraint(STRUCTURES_REST_RESOURCE.provisionagreement,endpoint,apiVersion)
+
+    res.send(JSON.stringify(configData))
 });
 
 app.post("/tck-api/execute-test", (req, res) => {

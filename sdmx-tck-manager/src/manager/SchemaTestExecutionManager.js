@@ -71,8 +71,7 @@ class SchemaTestExecutionManager {
 
             //IF THE TEST IS "schema/resource/agency/id/version?dimensionAtObservation = dimensionId" we need to get from DSD a dimension id cause
             //we do not have this information beforehand.
-            if(toRun.testType === TEST_TYPE.SCHEMA_FURTHER_DESCRIBING_PARAMETERS 
-                && toRun.reqTemplate.dimensionAtObservation 
+            if(toRun.reqTemplate.dimensionAtObservation 
                 && toRun.reqTemplate.dimensionAtObservation!=="AllDimensions"){
                 if(!dsdObj){
                     throw new TckError("Unable to get structure workspace.")

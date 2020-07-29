@@ -136,22 +136,33 @@ export const passIdentifiersToChildren = (prevStore, action) => {
 export function passConstraintDataToSchemaTests(schemaTests,schemaTestsData){
 	if (schemaTests.subTests && Array.isArray(schemaTests.subTests)) {
 		for (let i = 0; i < schemaTests.subTests.length; i++) {
-			if(Object.keys(schemaTestsData).indexOf(schemaTests.subTests[i].resource) !== -1){
-				//PASS IDENTIFIERS
-				schemaTests.subTests[i].identifiers.structureType = schemaTestsData[schemaTests.subTests[i].resource].identifiers.structureType
-				schemaTests.subTests[i].identifiers.agency = schemaTestsData[schemaTests.subTests[i].resource].identifiers.agencyId
-				schemaTests.subTests[i].identifiers.id = schemaTestsData[schemaTests.subTests[i].resource].identifiers.id
-				schemaTests.subTests[i].identifiers.version = schemaTestsData[schemaTests.subTests[i].resource].identifiers.version
-
-				//PASS CONSTRAINT OBJECTS - USED TO VALIDATE THE ENUMERATIONS IN XSD
-				/*We do not pass the constraints data in the /schema/resource/agency/id/latest test as when executed, the version (latest) 
-				of the artefact's XSD returned by the service may differ from the version of the artefact that is constrained in the 
-				constraint.So that artefact may follow different restrictions.
-				As a result this kind of tests we will follow a different procedure to validate the enumerations*/
-				if(schemaTests.subTests[i].reqTemplate.version !== SCHEMA_IDENTIFICATION_PARAMETERS.AGENCY_ID.template.version){
-					schemaTests.subTests[i].constraintParent = schemaTestsData[schemaTests.subTests[i].resource].constraintParent
-				}
-			}
+				//PASS IDENTIFIERS FOR XSD TESTS USING CONSTRAINTS
+				if(schemaTests.subTests[i].testType === TEST_TYPE.SCHEMA_IDENTIFICATION_PARAMETERS 
+					|| schemaTests.subTests[i].testType === TEST_TYPE.SCHEMA_FURTHER_DESCRIBING_PARAMETERS){
+						if(schemaTestsData.constraintData && schemaTestsData.constraintData[schemaTests.subTests[i].resource]){
+							schemaTests.subTests[i].identifiers.structureType = schemaTestsData.constraintData[schemaTests.subTests[i].resource].identifiers.structureType
+							schemaTests.subTests[i].identifiers.agency = schemaTestsData.constraintData[schemaTests.subTests[i].resource].identifiers.agencyId
+							schemaTests.subTests[i].identifiers.id = schemaTestsData.constraintData[schemaTests.subTests[i].resource].identifiers.id
+							schemaTests.subTests[i].identifiers.version = schemaTestsData.constraintData[schemaTests.subTests[i].resource].identifiers.version
+	
+							//PASS CONSTRAINT OBJECTS - USED TO VALIDATE THE ENUMERATIONS IN XSD
+							/*We do not pass the constraints data in the /schema/resource/agency/id/latest test as when executed, the version (latest) 
+							of the artefact's XSD returned by the service may differ from the version of the artefact that is constrained in the 
+							constraint.So that artefact may follow different restrictions.
+							As a result this kind of tests we will follow a different procedure to validate the enumerations*/
+							if(schemaTests.subTests[i].reqTemplate.version !== SCHEMA_IDENTIFICATION_PARAMETERS.AGENCY_ID.template.version){
+								schemaTests.subTests[i].constraintParent = schemaTestsData.constraintData[schemaTests.subTests[i].resource].constraintParent
+							}
+						}
+					//PASS IDENTIFIERS TO XSD TESTS WIThOUT THE USE OF CONSTRAINT
+					}else{
+						if(schemaTestsData.randomData[schemaTests.subTests[i].resource]){
+							schemaTests.subTests[i].identifiers.structureType = schemaTestsData.randomData[schemaTests.subTests[i].resource].structureType
+							schemaTests.subTests[i].identifiers.agency = schemaTestsData.randomData[schemaTests.subTests[i].resource].agencyId
+							schemaTests.subTests[i].identifiers.id = schemaTestsData.randomData[schemaTests.subTests[i].resource].id
+							schemaTests.subTests[i].identifiers.version = schemaTestsData.randomData[schemaTests.subTests[i].resource].version
+						}
+					}
 
 			if (schemaTests.subTests[i].subTests && Array.isArray(schemaTests.subTests[i].subTests)) {
 				passConstraintDataToSchemaTests(schemaTests.subTests[i],schemaTestsData)

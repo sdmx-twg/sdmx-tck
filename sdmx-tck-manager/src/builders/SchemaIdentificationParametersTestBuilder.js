@@ -11,16 +11,30 @@ class SchemaIdentificationParametersTestBuilder {
         var schemaIdentificationArray = SCHEMA_IDENTIFICATION_PARAMETERS_TESTS();
         for (let i=0;i<schemaIdentificationArray.length;i++){
             let test = schemaIdentificationArray[i];
+            
+            //XSD IDENTIFICATION TESTS (USING DSDs,DFs,PRAs FROM CONSTRAINT)
             x.numOfTests = x.numOfTests + 1;
-
             testObjParams = {
-                testId: "/schema/" + currentRestResource + test.url,
+                testId: "/schema/" + currentRestResource + test.url + " (CONSTRAINABLE)",
                 index: index,
                 apiVersion: apiVersion,
                 resource: currentRestResource,
                 reqTemplate: test.reqTemplate,
                 identifiers: { structureType: "", agency: "", id: "", version: "" },
                 testType: TEST_TYPE.SCHEMA_IDENTIFICATION_PARAMETERS,
+            }
+            structureExtendedIdentificationParametersTests.push(TestObjectBuilder.getTestObject(testObjParams));
+
+            //XSD IDENTIFICATION TESTS (USING DSDs,DFs,PRAs WITH NO CONNECTION TO CONSTRAINT)
+            x.numOfTests = x.numOfTests + 1;
+            testObjParams = {
+                testId: "/schema/" + currentRestResource + test.url + " (RANDOM)",
+                index: index,
+                apiVersion: apiVersion,
+                resource: currentRestResource,
+                reqTemplate: test.reqTemplate,
+                identifiers: { structureType: "", agency: "", id: "", version: "" },
+                testType: TEST_TYPE.SCHEMA_IDENTIFICATION_PARAMETERS_WITH_NO_CONSTRAINTS,
             }
             structureExtendedIdentificationParametersTests.push(TestObjectBuilder.getTestObject(testObjParams));
         };
