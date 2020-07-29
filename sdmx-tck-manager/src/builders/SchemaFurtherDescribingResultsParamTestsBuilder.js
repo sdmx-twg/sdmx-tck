@@ -21,7 +21,7 @@ class SchemaFurtherDescribingResultsParamTestsBuilder {
                 resource: currentRestResource,
                 reqTemplate: test.reqTemplate,
                 identifiers: { structureType: "", agency: "", id: "", version: "" },
-                testType: TEST_TYPE.SCHEMA_FURTHER_DESCRIBING_PARAMETERS,
+                testType: TEST_TYPE.SCHEMA_FURTHER_DESCRIBING_PARAMETERS_WITH_CONSTRAINTS,
             }
             schemaFurtherDescribingResultsParamTests.push(TestObjectBuilder.getTestObject(testObjParams));
 

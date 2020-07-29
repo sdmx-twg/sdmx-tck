@@ -21,7 +21,7 @@ class SchemaIdentificationParametersTestBuilder {
                 resource: currentRestResource,
                 reqTemplate: test.reqTemplate,
                 identifiers: { structureType: "", agency: "", id: "", version: "" },
-                testType: TEST_TYPE.SCHEMA_IDENTIFICATION_PARAMETERS,
+                testType: TEST_TYPE.SCHEMA_IDENTIFICATION_PARAMETERS_WITH_CONSTRAINTS,
             }
             structureExtendedIdentificationParametersTests.push(TestObjectBuilder.getTestObject(testObjParams));
 

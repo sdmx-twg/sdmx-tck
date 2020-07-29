@@ -8,8 +8,8 @@ const TEST_TYPE = {
 
     PREPARE_SCHEMA_TESTS:"Prepare Schema Tests",
 
-    SCHEMA_IDENTIFICATION_PARAMETERS:"Schema Identification Parameters",
-    SCHEMA_FURTHER_DESCRIBING_PARAMETERS:"Schema Further Describing Parameters",
+    SCHEMA_IDENTIFICATION_PARAMETERS_WITH_CONSTRAINTS:"Schema Identification Parameters With Constraints",
+    SCHEMA_FURTHER_DESCRIBING_PARAMETERS_WITH_CONSTRAINTS:"Schema Further Describing Parameters With Constraints",
 
     SCHEMA_IDENTIFICATION_PARAMETERS_WITH_NO_CONSTRAINTS:"Schema Identification Parameters With No Constraints",
     SCHEMA_FURTHER_DESCRIBING_PARAMETERS_WITH_NO_CONSTRAINTS:"Schema Further Describing Parameters With No Constraints"

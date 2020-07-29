@@ -137,8 +137,8 @@ export function passConstraintDataToSchemaTests(schemaTests,schemaTestsData){
 	if (schemaTests.subTests && Array.isArray(schemaTests.subTests)) {
 		for (let i = 0; i < schemaTests.subTests.length; i++) {
 				//PASS IDENTIFIERS FOR XSD TESTS USING CONSTRAINTS
-				if(schemaTests.subTests[i].testType === TEST_TYPE.SCHEMA_IDENTIFICATION_PARAMETERS 
-					|| schemaTests.subTests[i].testType === TEST_TYPE.SCHEMA_FURTHER_DESCRIBING_PARAMETERS){
+				if(schemaTests.subTests[i].testType === TEST_TYPE.SCHEMA_IDENTIFICATION_PARAMETERS_WITH_CONSTRAINTS 
+					|| schemaTests.subTests[i].testType === TEST_TYPE.SCHEMA_FURTHER_DESCRIBING_PARAMETERS_WITH_CONSTRAINTS){
 						if(schemaTestsData.constraintData && schemaTestsData.constraintData[schemaTests.subTests[i].resource]){
 							schemaTests.subTests[i].identifiers.structureType = schemaTestsData.constraintData[schemaTests.subTests[i].resource].identifiers.structureType
 							schemaTests.subTests[i].identifiers.agency = schemaTestsData.constraintData[schemaTests.subTests[i].resource].identifiers.agencyId
