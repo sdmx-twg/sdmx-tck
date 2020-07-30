@@ -65,6 +65,9 @@ class SchemasSemanticChecker {
         }
         //GET THE DSD OBJECT
         let dsdObject = test.dsdObject
+        if(!dsdObject){
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
         
         //CALCULATE DIMENSION AT OBSERVATION
         let dimensionAtObservation = (query.obsDimension)? query.obsDimension : DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD;

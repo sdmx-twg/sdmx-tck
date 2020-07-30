@@ -62,9 +62,15 @@ class SchemaTestExecutionManager {
 
             let version = (template.version && template.version === "latest")?null:helpTestParams.identifiers.version
             let dsdObj = toRun.structureWorkspace.getDSDObjectForXSDTests(structureType,agency,id,version)
+            
+            if(!dsdObj){
+                throw new TckError("Unable to get structure workspace.")
+            }
+            //PASS THE DSD OBJECT IN THE TEST OBJECT
             toRun.dsdObject = dsdObj
+
             //CHECK IF DSD HAS MEASURE DIMENSION BECAUSE IF IT IS NEEDED IN THE TEST QUERY, THE TEST CANNOT BE PERFORMED
-            if(toRun.reqTemplate.explicitMeasure && !dsdObj.getComponents().find(component => component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION)){
+            if(toRun.reqTemplate.explicitMeasure && !dsdObj.hasMeasureDimension()){
                 throw new TckError("Test cannot be executed because the DSD does not have a MEASURE DIMENSION");
             }
 
@@ -72,9 +78,7 @@ class SchemaTestExecutionManager {
             //we do not have this information beforehand.
             if(toRun.reqTemplate.dimensionAtObservation 
                 && toRun.reqTemplate.dimensionAtObservation!=="AllDimensions"){
-                if(!dsdObj){
-                    throw new TckError("Unable to get structure workspace.")
-                }
+                
                 let dsdRandomDimension = dsdObj.getRandomDimension();
                 if(!dsdRandomDimension){
                     throw new TckError("No dimensions available in order to perform this test.")
