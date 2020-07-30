@@ -123,7 +123,8 @@ class SdmxStructureObjects extends SdmxObjects{
 	};
 
 	getDSDObjectForXSDTests(structureType,agency,id,version){
-        let structure = this.getSdmxObjectsWithCriteria(structureType,agency,id,version)
+		let structure = this.getSdmxObjectsWithCriteria(structureType,agency,id,version)
+		if(structure.length === 0){return null;}
         let structureRef = structure[0].asReference();
 
         if(structureType === (SDMX_STRUCTURE_TYPE.DSD.key)){
@@ -185,10 +186,10 @@ class SdmxStructureObjects extends SdmxObjects{
 				return dsd.hasMeasureDimension();
 			})
 			if(dsdWithMeasureDimension){
-				return new StructureReference(dsdWithMeasureDimension.getStructureType(),dsdWithMeasureDimension.getAgencyId(),dsdWithMeasureDimension.getId(),dsdWithMeasureDimension.getVersion())
+				return dsdWithMeasureDimension.asReference()
 			}
 			let randomDsd = this.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.DSD.key)
-			return new StructureReference(randomDsd.getStructureType(),randomDsd.getAgencyId(),randomDsd.getId(),randomDsd.getVersion())
+			return randomDsd.asReference()
 		}else if(resource === STRUCTURES_REST_RESOURCE.dataflow){
 			let dataflows = this.getSdmxObjectsList().filter(obj => obj instanceof DataflowObject)
 			let chosenDf = dataflows.find( (df) => {
@@ -197,14 +198,14 @@ class SdmxStructureObjects extends SdmxObjects{
 				return dsdObj.hasMeasureDimension()
 			})
 			if(chosenDf){
-				return new StructureReference(chosenDf.getStructureType(),chosenDf.getAgencyId(),chosenDf.getId(),chosenDf.getVersion())
+				return chosenDf.asReference()
 			}
 			let randomDf = this.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.DATAFLOW.key)
-			return new StructureReference(randomDf.getStructureType(),randomDf.getAgencyId(),randomDf.getId(),randomDf.getVersion())
+			return randomDf.asReference()
 		}else if(resource === STRUCTURES_REST_RESOURCE.provisionagreement){
 			let provisionagreements = this.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)
 			let provisionagreementsReferencingDfs = provisionagreements.filter(function(pra){
-				return pra.getChildren().some(child => child.getStructureType()!==SDMX_STRUCTURE_TYPE.METADATA_FLOW.key)
+				return !pra.getChildren().some(child => child.getStructureType()===SDMX_STRUCTURE_TYPE.METADATA_FLOW.key)
 			})
 			if(provisionagreementsReferencingDfs.length === 0){
 				return null;
@@ -216,11 +217,11 @@ class SdmxStructureObjects extends SdmxObjects{
 				return dsdObj.hasMeasureDimension()				
 			})
 			if(chosenPra){
-				return new StructureReference(chosenPra.getStructureType(),chosenPra.getAgencyId(),chosenPra.getId(),chosenPra.getVersion())
+				return chosenPra.asReference()
 			}
 			let randomIndex = Math.floor(Math.random() * provisionagreementsReferencingDfs.length);
 			let randomPra = provisionagreementsReferencingDfs[randomIndex]
-			return new StructureReference(randomPra.getStructureType(),randomPra.getAgencyId(),randomPra.getId(),randomPra.getVersion())
+			return randomPra.asReference()
 		}
 	return null;
 	}
