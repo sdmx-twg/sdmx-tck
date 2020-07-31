@@ -222,7 +222,7 @@ class SchemasSemanticChecker {
         
         let simpleTypesWithFacets = sdmxObjects.getSimpleTypesWithFacets();
         let dsdComponentsWithFacets = dsdObject.getComponentsWithFacets()
-       
+      
         //The number of dsd components must be equal to the number of simple types describing them.
         //This validation handles the case where there are more simpe types than dsd components with data type restriction.
         if(simpleTypesWithFacets.length > dsdComponentsWithFacets.length){
@@ -472,6 +472,7 @@ class SchemasSemanticChecker {
                 expectedElementType = SCHEMA_ELEMENT_TYPES.GROUP_TYPE
                 
             }
+           
             if(!sequence.getElements().find(element => (element instanceof XSDLocalElement) && element.getName() === SCHEMA_ELEMENT_NAMES.GROUP && element.getType() === expectedElementType && element.getMinOccurs() === OCCURENCIES_VALUES.ZERO && element.getMaxOccurs() === OCCURENCIES_VALUES.UNBOUNDED && element.getForm()===SCHEMA_ELEMENT_FORMS.UNQUALIFIED)){
                 return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: No valid local group element found in sequence."}
             }
@@ -582,7 +583,6 @@ class SchemasSemanticChecker {
 
         let missingAttributes = []
         let requestedDimensions = dsdObject.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION && component.getId() !== dimensionAtObservation )
-
         for(let i in requestedDimensions){
             if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED)){
                 missingAttributes.push(requestedDimensions[i].getId())
@@ -730,7 +730,7 @@ class SchemasSemanticChecker {
         let dsdGroups = dsdObject.getGroups()
         let expectedRestrictionBase = (dsdGroups.length > 1)?COMPLEX_TYPES_RESTRICTION_BASE.GROUP_TYPE:COMPLEX_TYPES_RESTRICTION_BASE.DSD_GROUP_TYPE
         for(let c in dsdGroups){   
-            let complexTypeName = (dsdGroups.length > 1)?dsdGroups[c].getId() : COMPLEX_TYPES_NAMES.GROUP_TYPE
+            let complexTypeName = (dsdGroups.length > 1)?COMPLEX_TYPES_NAMES.GROUP_TYPE:dsdGroups[c].getId()
             //GET THE CORRECT COMPLEX TYPE
             let complexType = sdmxObjects.getXSDComplexTypeByName(complexTypeName);
             if(!complexType){throw new Error("Missing complexType "+complexTypeName+" ."); }
@@ -794,7 +794,8 @@ class SchemasSemanticChecker {
             
             //CHECK FOR ATTRIBUTE WITH FIXED VALUE
             let expectedAttrType = (dsdGroups.length > 1)?SCHEMA_ATTRIBUTE_TYPES.GROUP_TYPE_ID : SCHEMA_ATTRIBUTE_TYPES.COMMON_ID_TYPE
-            if(!complexType.hasAttribute("type",expectedAttrType,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+            let expectedAttrFixedVal = (dsdGroups.length > 1)?COMPLEX_TYPES_NAMES.GROUP_TYPE:dsdGroups[c].getId()
+            if(!complexType.hasAttribute("type",expectedAttrType,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,expectedAttrFixedVal)){
                 return { status: FAILURE_CODE, error: "Error in "+complexTypeName+" complex type validation: No optional attribute with name 'type' and type "+expectedAttrType+" and fixed value found "}
             }
                
@@ -943,7 +944,7 @@ class SchemasSemanticChecker {
             expectedUsage = SCHEMA_ATTRIBUTE_USAGE_VALUES.PROHIBITED
         }
         if(!complexType.hasAttribute(SCHEMA_ATTRIBUTE_NAMES.TYPE,expectedAttrType,expectedUsage)){
-            return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No attribute found with name: type, type: "+expectedAttrType+", usage "+expectedUsage+"."}
+            return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No attribute found with name: type, type: "+expectedAttrType+", usage: "+expectedUsage+"."}
         }
         return {status:SUCCESS_CODE}
     }
