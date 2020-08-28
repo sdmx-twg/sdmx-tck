@@ -530,7 +530,7 @@ class SchemasSemanticChecker {
             }
         }
         if(missingAttributes.length > 0){
-            return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: The following none relationship attributes are missing."+JSON.stringify(missingAttributes)}
+            return { status: FAILURE_CODE, error: "Error in DataSetType complex type validation: The following none relationship attributes are missing or they do not have correct type or usage values."+JSON.stringify(missingAttributes)}
         }
 
         return { status: SUCCESS_CODE };
@@ -589,7 +589,7 @@ class SchemasSemanticChecker {
             }
         }
         if(missingAttributes.length > 0){
-            return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+            return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following attributes are missing or they do not have correct type or usage values."+JSON.stringify(missingAttributes)}
         }
 
         let reportingYearStartDayAttr = dsdObject.getComponents().find(component => component.getId() === ATTRIBUTE_NAMES.REPORTING_YEAR_START_DAY)
@@ -617,7 +617,7 @@ class SchemasSemanticChecker {
             }
         }
         if(missingAttributes.length > 0){
-            return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+            return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following attributes are missing or they do not have correct type or usage values."+JSON.stringify(missingAttributes)}
         }
 
         //CHECK FOR ATTRIBUTES WITH DIMENSION RELATIONSHIPS ΤΗΑΤ ARE REFERENCED IN GROUPS
@@ -637,7 +637,7 @@ class SchemasSemanticChecker {
                 }
             }
             if(missingAttributes.length > 0){
-                return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+                return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following attributes are missing or they do not have correct type or usage values."+JSON.stringify(missingAttributes)}
             }
         }
         
@@ -728,9 +728,11 @@ class SchemasSemanticChecker {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
         let dsdGroups = dsdObject.getGroups()
-        let expectedRestrictionBase = (dsdGroups.length > 1)?COMPLEX_TYPES_RESTRICTION_BASE.GROUP_TYPE:COMPLEX_TYPES_RESTRICTION_BASE.DSD_GROUP_TYPE
+        //let expectedRestrictionBase = (dsdGroups.length > 1)?COMPLEX_TYPES_RESTRICTION_BASE.GROUP_TYPE:COMPLEX_TYPES_RESTRICTION_BASE.DSD_GROUP_TYPE
+        let expectedRestrictionBase = COMPLEX_TYPES_RESTRICTION_BASE.DSD_GROUP_TYPE
         for(let c in dsdGroups){   
-            let complexTypeName = (dsdGroups.length > 1)?COMPLEX_TYPES_NAMES.GROUP_TYPE:dsdGroups[c].getId()
+            //let complexTypeName = (dsdGroups.length > 1)?COMPLEX_TYPES_NAMES.GROUP_TYPE:dsdGroups[c].getId()
+            let complexTypeName = dsdGroups[c].getId()
             //GET THE CORRECT COMPLEX TYPE
             let complexType = sdmxObjects.getXSDComplexTypeByName(complexTypeName);
             if(!complexType){throw new Error("Missing complexType "+complexTypeName+" ."); }
@@ -763,7 +765,7 @@ class SchemasSemanticChecker {
             }
             
             if(missingAttributes.length > 0){
-                return { status: FAILURE_CODE, error: "Error in "+complexTypeName+" complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+                return { status: FAILURE_CODE, error: "Error in "+complexTypeName+" complex type validation: The following attributes are missing or they do not have correct type or usage values."+JSON.stringify(missingAttributes)}
             }
             let reportingYearStartDayAttr = dsdObject.getComponents().find(component => component.getId() === ATTRIBUTE_NAMES.REPORTING_YEAR_START_DAY)
                 if((!reportingYearStartDayAttr) 
@@ -789,12 +791,12 @@ class SchemasSemanticChecker {
                 }
             }
             if(missingAttributes.length > 0){
-                return { status: FAILURE_CODE, error: "Error in "+complexTypeName+" complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+                return { status: FAILURE_CODE, error: "Error in "+complexTypeName+" complex type validation: The following attributes are missing or they do not have correct type or usage values."+JSON.stringify(missingAttributes)}
             }
             
             //CHECK FOR ATTRIBUTE WITH FIXED VALUE
             let expectedAttrType = (dsdGroups.length > 1)?SCHEMA_ATTRIBUTE_TYPES.GROUP_TYPE_ID : SCHEMA_ATTRIBUTE_TYPES.COMMON_ID_TYPE
-            let expectedAttrFixedVal = (dsdGroups.length > 1)?COMPLEX_TYPES_NAMES.GROUP_TYPE:dsdGroups[c].getId()
+            let expectedAttrFixedVal = dsdGroups[c].getId()
             if(!complexType.hasAttribute("type",expectedAttrType,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,expectedAttrFixedVal)){
                 return { status: FAILURE_CODE, error: "Error in "+complexTypeName+" complex type validation: No optional attribute with name 'type' and type "+expectedAttrType+" and fixed value found "}
             }
@@ -886,7 +888,7 @@ class SchemasSemanticChecker {
                 }
             }
             if(missingAttributes.length > 0){
-                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: The following attributes are missing or they do not have correct type or usage values."+JSON.stringify(missingAttributes)}
             }
         }
         //CHECK FOR PRIMARY MEASURE ATTRIBUTE
@@ -898,7 +900,7 @@ class SchemasSemanticChecker {
             }
         }
         if(missingAttributes.length > 0){
-            return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+            return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: The following attributes are missing or they do not have correct type or usage values."+JSON.stringify(missingAttributes)}
         }
 
         //CHECK FOR ATTRIBUTES FOR EVERY ATTRIBUTE WITH RELATIONSHIP WITH PRIMARY MEASURE OR DIMENSION AT OBSERVATION
@@ -917,7 +919,7 @@ class SchemasSemanticChecker {
             }
         }
         if(missingAttributes.length > 0){
-            return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: The following attributes are missing."+JSON.stringify(missingAttributes)}
+            return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: The following attributes are missing or they do not have correct type or usage values."+JSON.stringify(missingAttributes)}
         }
 
         //CHECK FOR ATTRIBUTE WITH NAME TYPE
