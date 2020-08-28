@@ -25,7 +25,6 @@ class XSDTestsDataBuilder {
             let workspace = await HelperManager.getWorkspace(configObj, apiVersion, endpoint)
             return workspace.getConstraintDataForXSDTests()
         }catch(err){
-            console.log(err)
             return;
         }
    
@@ -53,7 +52,6 @@ class XSDTestsDataBuilder {
             let workspace = await HelperManager.getWorkspace(configObj, apiVersion, endpoint)
             return workspace.getDataForXSDTests(resource)
         }catch(err){
-            console.log(err)
             return;
         }
    
