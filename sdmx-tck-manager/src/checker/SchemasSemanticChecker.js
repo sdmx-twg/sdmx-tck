@@ -657,6 +657,8 @@ class SchemasSemanticChecker {
         if(dsdObject.getGroups().length>1){
             let abstractGroupTypeValidation =  SchemasSemanticChecker.checkXSDAbstractGroupType(dsdObject,sdmxObjects,dimensionAtObservation)
             if(abstractGroupTypeValidation.status === FAILURE_CODE){return abstractGroupTypeValidation}
+            let simpleTypeGroupIDValidation = SchemasSemanticChecker.checkSimpleTypeGroupID(dsdObject,sdmxObjects)
+            if(simpleTypeGroupIDValidation.status === FAILURE_CODE){return simpleTypeGroupIDValidation}
         }
         return SchemasSemanticChecker.checkSpecificXSDGroupType(dsdObject,sdmxObjects,dimensionAtObservation)
        
@@ -701,6 +703,17 @@ class SchemasSemanticChecker {
             return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: No anyAttribute found. "}
         }
 
+        return { status: SUCCESS_CODE };
+ 
+    }
+    static checkSimpleTypeGroupID(dsdObject,sdmxObjects){
+        if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
+            throw new Error("Missing mandatory parameter 'dsdObject'.");
+        }
+        if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
+            throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
+
         //CHECK GroupType.ID SIMPLE TYPE
         let simpleType = sdmxObjects.getXSDSimpleTypeByName(SCHEMA_SIMPLE_TYPE_NAMES.GROUP_TYPE_ID);
         if(!simpleType){throw new Error("Missing simpleType "+SCHEMA_SIMPLE_TYPE_NAMES.GROUP_TYPE_ID+"."); }
@@ -718,7 +731,6 @@ class SchemasSemanticChecker {
             return { status: FAILURE_CODE, error: "Error in GroupType complex type validation: Invalid enumerations in simpleType 'GroupType.ID'."}
         }
         return { status: SUCCESS_CODE };
- 
     }
     static checkSpecificXSDGroupType(dsdObject,sdmxObjects){
         if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
