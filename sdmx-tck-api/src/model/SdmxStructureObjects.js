@@ -176,8 +176,12 @@ class SdmxStructureObjects extends SdmxObjects{
         }
         return null;
 	}
-	
-	getDataForXSDTests(resource){
+	/**
+	* Returns a refernece from the resource requested (dsd,df,pra).If the resource references a dsd with a measure dimension then its ref is returned
+    * ,in any other case the ref returned is random.
+	* @param {*} resource 
+	*/
+	getNonConstraintDataForXSDTests(resource){
 		if (!isDefined(resource)) {
 			throw new Error('Missing mandatory parameter \'resource\'');
 		}

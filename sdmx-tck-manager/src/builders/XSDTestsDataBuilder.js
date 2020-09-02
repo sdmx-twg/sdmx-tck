@@ -9,6 +9,11 @@ const MetadataReferences = require('sdmx-rest').metadata.MetadataReferences
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 class XSDTestsDataBuilder {
 
+    /**
+     * Returns data for identifiers for each resource in XSD tests as well as the constraint obj from which the data was taken.
+     * @param {*} endpoint 
+     * @param {*} apiVersion 
+     */
     static async buildXSDDataFromConstraint (endpoint,apiVersion){
         try{
             //Test obj creation to get all the content constraints 
@@ -29,7 +34,14 @@ class XSDTestsDataBuilder {
         }
    
     }
-
+    
+    /**
+     * Returns a refernece from the resource requested (dsd,df,pra).If the resource references a dsd with a measure dimension then its ref is returned
+     * ,in any other case the ref returned is random.
+     * @param {*} resource 
+     * @param {*} endpoint 
+     * @param {*} apiVersion 
+     */
     static async buildXSDDataWithoutConstraint (resource,endpoint,apiVersion){
         try{
             let references = MetadataReferences.NONE;
@@ -50,7 +62,7 @@ class XSDTestsDataBuilder {
             }
             let configObj = TestObjectBuilder.getTestObject(configParams)
             let workspace = await HelperManager.getWorkspace(configObj, apiVersion, endpoint)
-            return workspace.getDataForXSDTests(resource)
+            return workspace.getNonConstraintDataForXSDTests(resource)
         }catch(err){
             return;
         }

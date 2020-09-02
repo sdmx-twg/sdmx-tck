@@ -74,8 +74,8 @@ class SchemaTestExecutionManager {
                 throw new TckError("Test cannot be executed because the DSD does not have a MEASURE DIMENSION");
             }
 
-            //IF THE TEST IS "schema/resource/agency/id/version?dimensionAtObservation = dimensionId" we need to get from DSD a dimension id cause
-            //we do not have this information beforehand.
+            //IF THE TEST IS "schema/resource/agency/id/version?dimensionAtObservation = dimensionId" 
+            //WE NEED TO GET FROM DSD A DIMENSION ID BECAUSE WE DO NOT HAVE THIS INFO BEFOREHAND.
             if(toRun.reqTemplate.dimensionAtObservation 
                 && toRun.reqTemplate.dimensionAtObservation!=="AllDimensions"){
                 
