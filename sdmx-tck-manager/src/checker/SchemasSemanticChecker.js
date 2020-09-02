@@ -606,10 +606,11 @@ class SchemasSemanticChecker {
         
         let requestedAttributes = attributes.filter(function(attribute){
             let attrRelationships = attribute.getAttributeRelationship()
-            let expression1 = attrRelationships.some(relationship => relationship.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.ATTACHMENT_GROUP);
+            let expression1 = attrRelationships.some(relationship => relationship.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.ATTACHMENT_GROUP || relationship.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.GROUP);
             let expression2 = attrRelationships.filter(relationship=>relationship.getRelationshipType()=== ATTRIBUTE_RELATIONSHIP_NAMES.DIMENSION && relationship.getId() !== dimensionAtObservation).length>0 === true
             return expression1 === false && expression2 === true
         })
+        
 
         for(let i in requestedAttributes){
             if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
