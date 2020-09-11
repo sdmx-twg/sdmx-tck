@@ -24,8 +24,12 @@ class SchemaTestExecutionManager {
             
             //IF NO IDENTIFIERS WERE FOUND IN TESTS THEN ERROR IS THROWN
             if(toRun.identifiers.structureType === "" && toRun.identifiers.agency === "" && toRun.identifiers.id === "" && toRun.identifiers.version === ""){
-                throw new TckError("Identifiers Missing either because there is no constraint constraining a "+testResult.resource+
-                                    " or there were no content constraints found at all.")
+                if(toRun.testType === TEST_TYPE.SCHEMA_IDENTIFICATION_PARAMETERS_WITH_CONSTRAINTS || toRun.testType ===TEST_TYPE.SCHEMA_FURTHER_DESCRIBING_PARAMETERS_WITH_CONSTRAINTS){
+                    throw new TckError("Identifiers Missing either because there is no constraint constraining a "+testResult.resource+
+                    " or there were no content constraints found at all.")
+                }
+                throw new TckError("Identifiers Missing because there are no "+testResult.resource+" artefacts at all")
+              
             }
             //GET STRUCTURE WORKSPACE (NEEDED IN XSD WORKSPACE VALIDATION PROCESS)
             let template = toRun.reqTemplate;
