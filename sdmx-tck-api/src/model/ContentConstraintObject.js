@@ -117,6 +117,31 @@ class ContentConstraintObject extends MaintainableObject {
         return values
     }
 
+    findKeyValueWithSpecificId(id){
+        let constraintComponents = (this.getCubeRegions().length > 0) ? this.getCubeRegions():this.getDataKeySets()
+        for(let i in constraintComponents){
+            if(constraintComponents[i] instanceof CubeRegionObject){
+                let found = constraintComponents[i].getKeyValues().find(keyValue => keyValue.id === id)
+                if(found){
+                    return found
+                }
+            }else if(constraintComponents[i] instanceof DataKeySetObject){
+                let keyValueIndex;
+                let found = constraintComponents[i].getKeys().find(function(key){
+                    keyValueIndex = key.findIndex(keyValue => keyValue.getId() === id)
+                    if(keyValueIndex!==-1){
+                        return true;
+                    }
+                    return false;
+                }); 
+                if(found){
+                    return found[keyValueIndex]
+                }
+            }
+        }
+
+        return;
+    }
     static fromJSON(jsObj){
         if(jsObj.structureType !== SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key){
             throw new Error("Cannot create "+SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key+" object.")

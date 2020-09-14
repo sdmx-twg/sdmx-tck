@@ -226,7 +226,7 @@ class SchemasSemanticChecker {
         //The number of dsd components must be equal to the number of simple types describing them.
         //This validation handles the case where there are more simpe types than dsd components with data type restriction.
         if(simpleTypesWithFacets.length > dsdComponentsWithFacets.length){
-            return { status: FAILURE_CODE, error: "There are more simple types in the XSD than DSD components"};
+            return { status: FAILURE_CODE, error: "Error in not enumerated simple types validation: There are more simple types in the XSD than DSD components"};
         }
         
         let errors = [];
@@ -278,7 +278,7 @@ class SchemasSemanticChecker {
                 }
         })
         if(errors.length>0){
-            return { status: FAILURE_CODE, error: "These components were not refered or were not refered correctly in the XSD " + JSON.stringify(errors) };
+            return { status: FAILURE_CODE, error: "Error in not enumerated simple types validation: These components were not refered or were not refered correctly in the XSD " + JSON.stringify(errors) };
         }
         return { status: SUCCESS_CODE };
         
@@ -300,7 +300,6 @@ class SchemasSemanticChecker {
         if (!Utils.isDefined(test)) {
             throw new Error("Missing mandatory parameter 'test'.");
         }
-
          /*The content constraint is chosen in the schema tests preparation. There is no guarantee that the maintainable selected from it will be 
         the same as the one returned from a query that the version='latest'. If the maintainable returned from this query is different from the one
         chosen in the first place, then the constraint of might be different and as a result the restrictions of it will be different. In this case the
@@ -313,49 +312,32 @@ class SchemasSemanticChecker {
                 }
             })
             if(notFoundSimpleTypeIds.length>0){
-                return { status: FAILURE_CODE, error: "These components are not represented with enumerated simple types in the XSD: "+ JSON.stringify(notFoundSimpleTypeIds)};
+                return { status: FAILURE_CODE, error: "Error in enumerated simple types validation: These components are not represented with enumerated simple types in the XSD: "+ JSON.stringify(notFoundSimpleTypeIds)};
             }
             return { status: SUCCESS_CODE };
         }
-
-        let errors = []
-        let dataKeySetsKeyValuesCheckedIds = []
         let constraintObj = ContentConstraintObject.fromJSON(test.constraintParent);
-        let constraintComponent = (constraintObj.getCubeRegions().length > 0) ? constraintObj.getCubeRegions():constraintObj.getDataKeySets()
-        constraintComponent.forEach(constraintComponent => {
-            if(constraintComponent instanceof CubeRegionObject){
+        let errors = []
 
-                constraintComponent.getKeyValues().forEach(keyValue =>{
-                    let outcome = this.validateKeyValueAgainstSimpleTypeEnum(sdmxObjects,keyValue,constraintObj)
-                    if(!outcome.result){
-                        errors.push({name:outcome.chosenSimpleType.getName()})
-                    }
-                })
-
-            }else if(constraintComponent instanceof DataKeySetObject){
-
-                constraintComponent.getKeys().forEach(key =>{
-                    key.forEach(keyValue => {
-                        
-                        /*DataKeySets are built in a way that keyValues with same ids are located mulitple times in multiple keySets.
-                        The validation happens for all keyValues with the same id. The array above stores the ids that have already been checked
-                        in order not to be again checked durin the dataKeySets iteration*/
-                        if(dataKeySetsKeyValuesCheckedIds.indexOf(keyValue.getId()) === -1){
-                            dataKeySetsKeyValuesCheckedIds.push(keyValue.getId())
-
-                            let outcome = this.validateKeyValueAgainstSimpleTypeEnum(sdmxObjects,keyValue,constraintObj)
-                            if(!outcome.result){
-                                errors.push({name:outcome.chosenSimpleType.getName()})
-                            }
-                        }
-                    })
-                })
+        dsdObject.getEnumeratedComponents().forEach(comp => {
+            let keyValue = constraintObj.findKeyValueWithSpecificId(comp.getId())
+            if(keyValue){
+                let outcome = this.validateKeyValueAgainstSimpleTypeEnum(sdmxObjects,keyValue,constraintObj)
+                if(!outcome.result){
+                    errors.push({name:outcome.chosenSimpleType.getName()})
+                }
+            }else{
+                if(!sdmxObjects.getEnumeratedSimpleTypeOfComponent(comp.getId())){
+                    errors.push({name:outcome.chosenSimpleType.getName()})
+                }
             }
+            
         })
         if(errors.length>0){
-            return { status: FAILURE_CODE, error: "These enumerated simple types do not follow the restrictions by their constraint " + JSON.stringify(errors) };
+            return { status: FAILURE_CODE, error: "Error in enumerated simple types validation: These components do not follow the constraint rules or they are not represented with enumerated simple types in the XSD: "+ JSON.stringify(errors)};
         }
         return { status: SUCCESS_CODE };
+
     }
     static validateKeyValueAgainstSimpleTypeEnum(sdmxObjects,keyValue,constraintObj){
         if (!Utils.isDefined(constraintObj) || !(constraintObj instanceof ContentConstraintObject)) {
