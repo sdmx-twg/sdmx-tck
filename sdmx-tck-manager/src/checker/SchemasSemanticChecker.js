@@ -317,24 +317,28 @@ class SchemasSemanticChecker {
             return { status: SUCCESS_CODE };
         }
         let constraintObj = ContentConstraintObject.fromJSON(test.constraintParent);
-        let errors = []
+        let errorsFromConstraint = []
+        let errorsFromSimpleType = []
 
         dsdObject.getEnumeratedComponents().forEach(comp => {
             let keyValue = constraintObj.findKeyValueWithSpecificId(comp.getId())
             if(keyValue){
                 let outcome = this.validateKeyValueAgainstSimpleTypeEnum(sdmxObjects,keyValue,constraintObj)
                 if(!outcome.result){
-                    errors.push({name:outcome.chosenSimpleType.getName()})
+                    errorsFromConstraint.push({name:outcome.chosenSimpleType.getName()})
                 }
             }else{
                 if(!sdmxObjects.getEnumeratedSimpleTypeOfComponent(comp.getId())){
-                    errors.push({name:outcome.chosenSimpleType.getName()})
+                    errorsFromSimpleType.push({name:comp.getId()})
                 }
             }
             
         })
-        if(errors.length>0){
-            return { status: FAILURE_CODE, error: "Error in enumerated simple types validation: These components do not follow the constraint rules or they are not represented with enumerated simple types in the XSD: "+ JSON.stringify(errors)};
+        if(errorsFromConstraint.length>0){
+            return { status: FAILURE_CODE, error: "Error in enumerated simple types validation: These simpleTypes do not follow the rules of the constraint : "+ JSON.stringify(errorsFromConstraint)};
+        }
+        if(errorsFromSimpleType.length>0){
+            return { status: FAILURE_CODE, error: "Error in enumerated simple types validation: These components are not represented with enumerated simple types in the XSD: "+ JSON.stringify(errorsFromSimpleType)};
         }
         return { status: SUCCESS_CODE };
 
