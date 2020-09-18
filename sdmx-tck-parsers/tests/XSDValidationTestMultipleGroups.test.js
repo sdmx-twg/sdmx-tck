@@ -13,7 +13,7 @@ describe('XSD with Multiple Groups test', function () {
         let artefact;
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
             // console inside of getIMObjects
-            console.log(sdmxObjects.sdmxObjects.get("DSD")[0].getGroups())
+            //console.log(sdmxObjects.sdmxObjects.get("DSD")[0].getGroups())
             artefact = sdmxObjects.sdmxObjects.get("DSD")[0]
         }).catch(function (err) {
             console.log(err);
@@ -24,12 +24,12 @@ describe('XSD with Multiple Groups test', function () {
         await new SdmxXmlParser().getIMObjects(xsdMessage).then(function (sdmxObjects) {
             // console inside of getIMObjects
             xsdWorkspace = sdmxObjects;
-            console.log(sdmxObjects.sdmxObjects.get("SIMPLE_TYPE"))
+            //console.log(sdmxObjects.sdmxObjects.get("SIMPLE_TYPE"))
         }).catch(function (err) {
             console.log(err);
         });
 
-        console.log(SchemasSemanticChecker.checkXSDAbstractGroupType(artefact,xsdWorkspace))
+        //console.log(SchemasSemanticChecker.checkXSDAbstractGroupType(artefact,xsdWorkspace))
         console.log(SchemasSemanticChecker.checkSpecificXSDGroupType(artefact,xsdWorkspace))
     });
 });

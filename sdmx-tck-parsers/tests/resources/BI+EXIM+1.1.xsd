@@ -1,0 +1,2152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:dsd="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/structurespecific" xmlns="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=BI:EXIM(1.1):ObsLevelDim:TIME_PERIOD" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:compact="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structurespecific" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/structurespecific" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=BI:EXIM(1.1):ObsLevelDim:TIME_PERIOD" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/structurespecific" schemaLocation="SDMXMessage.xsd"/>
+  <xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" schemaLocation="SDMXCommon.xsd"/>
+  <xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/structurespecific" schemaLocation="SDMXDataStructureSpecific.xsd"/>
+  <xs:simpleType name="TIME_FORMAT_CL_TIME_FORMAT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="203">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for series with freq. higher than daily) year/month/day/hours/minutes</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="102">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for daily and business series) year/month/day</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="616">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for weekly series) year/week</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="610">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for monthly series) year/month</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="608">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for quarterly series) year/quarter</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="604">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for half yearly series) year/semester</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="602">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for annual series) year</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="719">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for series with freq. higher than daily) year/month/day/hours/minutes to year/month/day/hours/minutes</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="711">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for daily and business series) from year/month/day to year/month/day</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="716">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for weekly series) from year/week to year/week</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="710">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for monthly series) from year/month to year/month</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="708">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for quarterly series) from year/quarter to year/quarter</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="704">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for half yearly series) from half-year to half-year</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="702">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">(Used in SDMX-EDI for annual series) from year to year</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="P1D">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used only in SDMX-ML messages</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="P1M">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used only in SDMX-ML messages</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="P1Y">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used only in SDMX-ML messages</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="P3M">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used only in SDMX-ML messages</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="P6M">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used only in SDMX-ML messages</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="P7D">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used only in SDMX-ML messages</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PT1M">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used only in SDMX-ML messages</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ISIC_CL_ISIC">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="_T">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="01">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="02">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="05">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="10">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="11">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="12">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="13">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="14">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="15">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="16">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="17">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="18">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="19">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="20">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="21">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="22">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="23">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="24">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="25">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="26">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="27">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="28">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="29">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="30">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="31">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="32">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="33">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="34">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="35">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="36">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="37">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="40">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="41">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="45">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="50">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="51">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="52">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="55">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="60">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="61">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="62">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="63">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="64">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="65">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="66">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="67">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="70">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="71">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="72">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="73">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="74">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="75">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="80">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="85">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="90">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="91">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="92">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="93">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="95">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="99">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XX">
+        <xs:annotation/>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OBS_STATUS_CL_OBS_STATUS">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">To be used as default value if no value is provided or when no special coded qualification is assumed. Usually, it can be assumed that the source agency assigns sufficient confidence to the provided observation and/or the value is not expected to be dramatically revised.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="B">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Observations are characterised as such when different content exists or a different methodology has been applied to this observation as compared with the preceding one (the one given for the previous period).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="D">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used to indicate slight deviations from the established methodology (footnote-type information); these divergences do not imply a break in time series.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="E">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Observation obtained through an estimation methodology (e.g. to produce back-casts) or based on the use of a limited amount of data or ad hoc sampling and through additional calculations (e.g. to produce a value at an early stage of the production stage while not all data are available). It may also be used in case of experimental data (e.g. in the context of a pilot ahead of a full scale production process) or in case of data of (anticipated/assessed) low quality. If needed, additional (uncoded) information can be provided through (free text) "comments" at the observation level or at a higher level.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="F">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Value deemed to assess the magnitude which a quantity will assume at some future point of time (as distinct from "estimated value" which attempts to assess the magnitude of an already existent quantity).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="G">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Data collected on the basis of definitions or (alternative) collection methods under development. Data not of guaranteed quality as normally expected from provider.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="I">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Observation imputed by international organisations to replace or fill gaps in national data series, in line with the recommendations of the United Nations Committee for the Coordination of Statistical Activities (CCSA).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="O">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This code is to be used when no breakdown is made between the reasons why data are missing. Data can be missing due to many reasons: data cannot exist, data exist but are not collected (e.g. because they are below a certain threshold or subject to a derogation clause), data are unreliable, etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="M">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used to denote empty cells resulting from the impossibility to collect a statistical value (e.g. a particular education level or type of institution may be not applicable to a given country's education system).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="P">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">An observation is characterised as "provisional" when the source agency - while it bases its calculations on its standard production methodology - considers that the data, almost certainly, are expected to be revised.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="S">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Special circumstances (e.g. strike) affecting the observation or causing a missing value.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="L">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used, for example, when some data are not reported/disseminated because they are below a certain threshold.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="H">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used in some daily data flows.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Q">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used, for example, when data are suppressed due to statistical confidentiality considerations.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="J">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Clause in an agreement (e.g. legal act, gentlemen's agreement) stating that some provisions in the agreement are not to be implemented by designated parties; these derogations may affect the observation or cause a missing value. In general, derogations are limited in time.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="N">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Used to indicate a value which is not a "real" zero (e.g. a result of 0.0004 rounded to zero).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="U">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">This indicates existing observations, but for which the user should also be aware of the low quality assigned.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="V">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Observation as received from the respondent without further evaluation of data quality.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="UNIT_MEASURE_CL_UNIT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="_T">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="_X">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="_Z">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ADF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ADP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="AED">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="AFA">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="AFN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ALL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="AMD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ANG">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="AOA">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="AON">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="AOR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ARS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ATS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="AUD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="AWG">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="AZM">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="AZN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BAM">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BBD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BDT">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BEF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BEL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BGL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BGN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BHD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BIF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BMD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BND">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BOB">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BRL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BSD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BTN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BWP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BYB">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BYR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="BZD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CAD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CDF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CE">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CHE">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CHF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CHW">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CLF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CLP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CNY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="COP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="COU">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CRC">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CSD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CUP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CVE">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CYP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="CZK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="DEM">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="DJF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="DKK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="DOP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="DY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="DZD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="E0">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="E1">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="E2">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="E3">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="E4">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="E5">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="E6">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="E7">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="E8">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ECS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EEK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EGP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ERN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ESP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ETB">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_ACTIVITY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_B1G">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_B1GQ">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_B1GQ_L">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_B1GQ_LA">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_B2">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_B4">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_B5">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_F5">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_I6">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_I7">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_I8">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_POP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="EUR_R_U2">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="FIM">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="FJD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="FKP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="FRF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="FT">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="FT_R_ACTIVITY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GBP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GEL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GGP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GHC">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GHS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GIP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GMD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GNF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GRD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GTQ">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GWP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="GYD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H1">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H10">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H11">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H2">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H3">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H36">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H37">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H4">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H5">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H6">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H7">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H8">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="H9">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="HKD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="HKQ">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="HNL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="HR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="HRK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="HTG">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="HUF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="HW">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="HW_R_ACTIVITY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="IDR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="IEP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ILS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="IMP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="INR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="IQD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="IRR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ISK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ITL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="IX">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="JB">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="JB_R_ACTIVITY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="JEP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="JMD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="JOD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="JPY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="KES">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="KG">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="KGS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="KHR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="KL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="KMF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="KPW">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="KRW">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="KWD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="KYD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="KZT">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="LAK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="LBP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="LKR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="LRD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="LSL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="LT">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="LTL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="LUF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="LVL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="LYD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MAD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MDL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MGA">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MGF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MH">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MKD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MMK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MNT">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MOP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MQ">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MRO">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MTL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MUR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MVR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MWK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MXN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MXP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MXV">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MYR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MZM">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="MZN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="NAD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="NGN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="NIO">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="NLG">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="NOK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="NPR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="NZD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="OMR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="OZ">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PA">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PAB">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PC">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_B2">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_B4">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_B4_POP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_B5">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_B5_EMP_HW">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_B5_EMP_PS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_B5_POP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_I6">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_I7">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_I7_EMP_HW">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_I7_EMP_PS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_I8">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_I8_EMP_HW">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_I8_EMP_PS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_POP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PE_R_U2">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PEN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PGK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PHP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PKR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PLN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PLZ">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PO">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PS_R_ACTIVITY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PT">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PTE">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_B1G">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_B1G_S11">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_B1G_S12">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_B1GQ">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_B2G_S11">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_B2G_S12">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_B6G_S1M">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_B6N_S1M">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_F_S1M">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_OTE">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_P31_S1M_D">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_P41_D">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_P51G">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_POP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PU_R_POP_PU_6O">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="PYG">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="QAR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="RO">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ROL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="RON">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="RSD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="RT">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="RUB">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="RUR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="RWF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SAR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SBD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SCR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SDD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SDG">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SDP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SEK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SGD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SHP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SIT">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SKK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SLL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SOS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SPL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SRD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SRG">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SSP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="STD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SVC">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SYP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="SZL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="THB">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TJR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TJS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TMM">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TMT">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TND">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TOP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TPE">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TRL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TRY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TTD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TVD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TWD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="TZS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="UAH">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="UGX">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="USD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="USD_R_CA">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="USD_R_GS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="USD_R_POP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="UT">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="UYI">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="UYU">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="UZS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="VEB">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="VEF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="VND">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="VUV">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="WST">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="X1">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="X2">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="X3">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="X4">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="X5">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="X6">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="X7">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XAF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XAG">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XAU">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XBA">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XBB">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XBC">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XBD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XCD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDB">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B1G">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B1G_CY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B1G_S11">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B1G_S12">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B1GQ">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B1GQ_CY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B1GQ_L">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B1GQ_LA">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B1N">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B1N_CY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B2G_S11">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B2G_S12">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B6G_CY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B6G_POP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B6G_S1M">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B6GA_CY">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B6GA_POP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_B6N_S1M">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_EMP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_EMP_HW">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_EMP_PS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_F">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_F_S1M">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_F5">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_F5_L">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_F51_L">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_FD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_FI">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_GD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_GF10">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_I7">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_I8">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_OTE">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_P31_S1M_D">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_P41_D">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_P51G">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_POP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_SAL_HW">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDC_R_SAL_PS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDM">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDO">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XDR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XEU">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XFO">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XFU">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XGO">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XNC">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XOF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XPC">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XPD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XPF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XPT">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XSU">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XTS">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XUA">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XXCF">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XXCFA">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XXCFE">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XXEXA">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XXEXE">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XXPP">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="XXX">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="YER">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="YR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="YUM">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ZAR">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ZMK">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ZWD">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ZWL">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ZWN">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="ZWR">
+        <xs:annotation/>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PROVINSI_CL_PROVINSI">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="_T">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="01">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="02">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="03">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="04">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="05">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="06">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="07">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="08">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="09">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="10">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="11">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="12">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="13">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="14">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="15">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="16">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="17">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="18">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="19">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="20">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="21">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="22">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="23">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="24">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="25">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="26">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="27">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="28">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="29">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="30">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="31">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="32">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="33">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="34">
+        <xs:annotation/>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FREQ_CL_FREQ">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="A">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">To be used for data collected or disseminated every year.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Q">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">To be used for data collected or disseminated every quarter.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="H">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">To be used for data collected or disseminated every hour.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DECIMALS_CL_DECIMALS">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="0">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="1">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="10">
+        <xs:annotation/>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SITC_CL_SITC">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="_T">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="00">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="01">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="02">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="03">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="04">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="05">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="06">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="07">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="08">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="09">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="11">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="12">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="21">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="22">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="23">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="24">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="25">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="26">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="27">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="28">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="29">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="32">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="33">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="34">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="35">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="41">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="42">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="43">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="51">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="52">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="53">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="54">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="55">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="56">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="57">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="58">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="59">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="61">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="62">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="63">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="64">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="65">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="66">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="67">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="68">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="69">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="71">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="72">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="73">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="74">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="75">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="76">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="77">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="78">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="79">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="81">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="82">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="83">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="84">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="85">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="87">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="88">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="89">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="91">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="92">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="93">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="96">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="97">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="98">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="99">
+        <xs:annotation/>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KPPBC_CL_KPPBC">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="100000">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100100">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100131">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100132">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100133">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100134">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100135">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100136">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100137">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100200">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100211">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100231">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100233">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100234">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100235">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100236">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100237">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100239">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100240">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100300">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100333">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100334">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100335">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100336">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="100337">
+        <xs:annotation/>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="UNIT_MULT_CL_UNIT_MULT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="0">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="1">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation/>
+      </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation/>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TITLE">
+		<xs:restriction base="xs:string">
+		</xs:restriction>
+	</xs:simpleType>
+  <xs:element name="DataSet" type="DataSetType"/>
+  <xs:complexType name="DataSetType">
+    <xs:complexContent>
+      <xs:restriction base="dsd:TimeSeriesDataSetType">
+        <xs:sequence>
+          <xs:element ref="common:Annotations" minOccurs="0"/>
+          <xs:element name="DataProvider" type="common:DataProviderReferenceType" form="unqualified" minOccurs="0"/>
+          <xs:element name="Group" type="GroupType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:choice minOccurs="0">
+            <xs:element name="Series" type="SeriesType" form="unqualified" maxOccurs="unbounded"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GroupType" abstract="true">
+    <xs:complexContent>
+      <xs:restriction base="dsd:GroupType">
+        <xs:sequence>
+          <xs:element ref="common:Annotations" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="GroupType.ID" use="optional"/>
+        <xs:anyAttribute namespace="##local"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="GroupType.ID">
+    <xs:restriction base="common:IDType">
+      <xs:enumeration value="GK_EXIM"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GK_EXIM">
+    <xs:complexContent>
+      <xs:restriction base="GroupType">
+        <xs:sequence>
+          <xs:element ref="common:Annotations" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="FREQ" type="FREQ_CL_FREQ" use="required"/>
+        <xs:attribute name="KPPBC" type="KPPBC_CL_KPPBC" use="required"/>
+        <xs:attribute name="SITC" type="SITC_CL_SITC" use="required"/>
+        <xs:attribute name="ISIC" type="ISIC_CL_ISIC" use="required"/>
+        <xs:attribute name="PROVINSI" type="PROVINSI_CL_PROVINSI" use="required"/>
+        <xs:attribute name="UNIT_MEASURE" type="UNIT_MEASURE_CL_UNIT" use="required"/>
+        <xs:attribute name="type" type="GroupType.ID" use="optional" fixed="GK_EXIM"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Series" type="SeriesType"/>
+  <xs:complexType name="SeriesType">
+    <xs:complexContent>
+      <xs:restriction base="dsd:TimeSeriesType">
+        <xs:sequence>
+          <xs:element ref="common:Annotations" minOccurs="0"/>
+          <xs:element name="Obs" type="ObsType" form="unqualified" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="FREQ" type="FREQ_CL_FREQ" use="optional"/>
+        <xs:attribute name="KPPBC" type="KPPBC_CL_KPPBC" use="optional"/>
+        <xs:attribute name="SITC" type="SITC_CL_SITC" use="optional"/>
+        <xs:attribute name="ISIC" type="ISIC_CL_ISIC" use="optional"/>
+        <xs:attribute name="PROVINSI" type="PROVINSI_CL_PROVINSI" use="optional"/>
+        <xs:attribute name="UNIT_MEASURE" type="UNIT_MEASURE_CL_UNIT" use="optional"/>
+        <xs:attribute name="TITLE" type="xs:string" use="optional"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Obs" type="ObsType"/>
+  <xs:complexType name="ObsType">
+    <xs:complexContent>
+      <xs:restriction base="dsd:TimeSeriesObsType">
+        <xs:sequence>
+          <xs:element ref="common:Annotations" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="OBS_VALUE" type="xs:string" use="optional"/>
+        <xs:attribute name="UNIT_MULT" type="UNIT_MULT_CL_UNIT_MULT" use="optional"/>
+        <xs:attribute name="TIME_FORMAT" type="TIME_FORMAT_CL_TIME_FORMAT" use="optional"/>
+        <xs:attribute name="DECIMALS" type="DECIMALS_CL_DECIMALS" use="optional"/>
+        <xs:attribute name="OBS_STATUS" type="OBS_STATUS_CL_OBS_STATUS" use="optional"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

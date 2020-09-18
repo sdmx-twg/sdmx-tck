@@ -32,7 +32,7 @@ describe('Tests if reference partial testing works with different xml inputs', f
                     found = false;
                     j=0; 
                     while(j<requestedStructureType.length && !found){
-                        let requestedArtefact = requestedStructureType[j].getRandomChildOfSpecificStructureType(SDMX_STRUCTURE_TYPE.fromRestResource(schemaTestsResources[i]))
+                        let requestedArtefact = requestedStructureType[j].getRandomRefOfSpecificStructureType(SDMX_STRUCTURE_TYPE.fromRestResource(schemaTestsResources[i]))
                         console.log(requestedArtefact)
                         if(Object.keys(requestedArtefact).length > 0){
                             console.log("Enter object full")

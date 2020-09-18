@@ -10429,7 +10429,7 @@
 						<Ref agencyID="ECB.DISS" class="Dataflow" id="SEC_PUB" package="datastructure" version="1.0"/>
 					</str:Dataflow>
 				</str:ConstraintAttachment>
-				<str:DataKeySet isIncluded="true">
+				<str:DataKeySet isIncluded="false">
 					<str:Key>
 						<com:KeyValue id="FREQ">
 							<com:Value>M</com:Value>
@@ -10460,7 +10460,7 @@
 						</com:KeyValue>
 					</str:Key>
 					<str:Key>
-						<com:KeyValue id="FREQ" include = "false">
+						<com:KeyValue id="FREQ">
 							<com:Value>M</com:Value>
 						</com:KeyValue>
 						<com:KeyValue id="REF_AREA">

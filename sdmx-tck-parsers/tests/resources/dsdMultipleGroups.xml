@@ -646,7 +646,7 @@
                   </structure:Attribute>
                </structure:AttributeList>
                <structure:MeasureList>
-                  <structure:PrimaryMeasure>
+                  <structure:PrimaryMeasure id="OBS_VALUE">
                      <structure:ConceptIdentity>
                         <URN>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS(1.0).OBS_VALUE</URN>
                      </structure:ConceptIdentity>

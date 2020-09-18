@@ -1,0 +1,371 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IREF068882</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2020-08-28T09:28:03Z</mes:Prepared>
+		<mes:Sender id="SDMX"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:DataStructures>
+			<str:DataStructure agencyID="UNSD" id="IMTS" isExternalReference="false" isFinal="true" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=UNSD:IMTS(1.2)" version="1.2">
+				<com:Name xml:lang="en">International Merchandise Trade Statistics</com:Name>
+				<str:DataStructureComponents>
+					<str:DimensionList id="DimensionDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=UNSD:IMTS(1.2).DimensionDescriptor">
+						<str:Dimension id="FREQ" position="1" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).FREQ">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="FREQ" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="SDMX" class="Codelist" id="CL_FREQ" package="codelist" version="2.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="REF_AREA" position="2" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).REF_AREA">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="REF_AREA" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_AREA" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="TRADE_FLOW" position="3" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).TRADE_FLOW">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="TRADE_FLOW" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_TRADE_FLOW" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="COMMODITY_1" position="4" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).COMMODITY_1">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COMMODITY_1" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_COMMODITY" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="COMMODITY_1_CONF" position="5" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).COMMODITY_1_CONF">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COMMODITY_1_CONF" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_COMMODITY" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="COMMODITY_2" position="6" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).COMMODITY_2">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COMMODITY_2" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_COMMODITY" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="COMMODITY_2_CONF" position="7" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).COMMODITY_2_CONF">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COMMODITY_2_CONF" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_COMMODITY" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="COMMODITY_CUSTOM_BREAKDOWN" position="8" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).COMMODITY_CUSTOM_BREAKDOWN">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COMMODITY_CUSTOM_BREAKDOWN" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat endValue="999999" interval="1" isSequence="true" maxLength="6" startValue="0" textType="BigInteger"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="COUNTERPART_AREA_1" position="9" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).COUNTERPART_AREA_1">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COUNTERPART_AREA_1" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_AREA" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="COUNTERPART_AREA_1_CONF" position="10" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).COUNTERPART_AREA_1_CONF">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COUNTERPART_AREA_1_CONF" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_AREA" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="COUNTERPART_AREA_2" position="11" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).COUNTERPART_AREA_2">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COUNTERPART_AREA_2" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_AREA" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="COUNTERPART_AREA_2_CONF" position="12" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).COUNTERPART_AREA_2_CONF">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COUNTERPART_AREA_2_CONF" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_AREA" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="TRANSPORT_MODE_BORDER" position="13" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).TRANSPORT_MODE_BORDER">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="TRANSPORT_MODE_BORDER" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_TRANSPORT_MODE" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="TRANSPORT_MODE_BORDER_CONF" position="14" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).TRANSPORT_MODE_BORDER_CONF">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="TRANSPORT_MODE_BORDER_CONF" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_TRANSPORT_MODE" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="CUSTOMS_PROC" position="15" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).CUSTOMS_PROC">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="CUSTOMS_PROC" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_CUSTOMS_PROC" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="ACTIVITY" position="16" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).ACTIVITY">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="ACTIVITY" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_ACTIVITY" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="TRANSFORMATION" position="17" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=UNSD:IMTS(1.2).TRANSFORMATION">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="TRANSFORMATION" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ESTAT" class="Codelist" id="CL_TRANSFORMATION" package="codelist" version="1.2"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:MeasureDimension id="MEASURE" position="18" urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDimension=UNSD:IMTS(1.2).MEASURE">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="MEASURE" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="ConceptScheme" id="CS_MEASURE" package="conceptscheme" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:MeasureDimension>
+						<str:TimeDimension id="TIME_PERIOD" position="19" urn="urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=UNSD:IMTS(1.2).TIME_PERIOD">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="TIME_PERIOD" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="ObservationalTimePeriod"/>
+							</str:LocalRepresentation>
+						</str:TimeDimension>
+					</str:DimensionList>
+					<str:AttributeList id="AttributeDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=UNSD:IMTS(1.2).AttributeDescriptor">
+						<str:Attribute assignmentStatus="Mandatory" id="UNIT_MULT" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=UNSD:IMTS(1.2).UNIT_MULT">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="UNIT_MULT" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="SDMX" class="Codelist" id="CL_UNIT_MULT" package="codelist" version="1.1"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="UNIT_MEASURE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=UNSD:IMTS(1.2).UNIT_MEASURE">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="UNIT_MEASURE" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_UNIT_MEASURE" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="COMMENT_OBS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=UNSD:IMTS(1.2).COMMENT_OBS">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COMMENT" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="TRADE_SYSTEM" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=UNSD:IMTS(1.2).TRADE_SYSTEM">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="TRADE_SYSTEM" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_TRADE_SYSTEM" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="COMMODITY_CUSTOM_CODE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=UNSD:IMTS(1.2).COMMODITY_CUSTOM_CODE">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COMMODITY_CUSTOM_CODE" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="COMMODITY_CUSTOM_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="COMMODITY_CUSTOM_DESC" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=UNSD:IMTS(1.2).COMMODITY_CUSTOM_DESC">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COMMODITY_CUSTOM_DESC" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="COMMODITY_CUSTOM_BREAKDOWN"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="COUNTERPART_AREA_1_TYPE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=UNSD:IMTS(1.2).COUNTERPART_AREA_1_TYPE">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COUNTERPART_AREA_1_TYPE" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_PARTNER_TYPE" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA_1"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="COUNTERPART_AREA_2_TYPE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=UNSD:IMTS(1.2).COUNTERPART_AREA_2_TYPE">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COUNTERPART_AREA_2_TYPE" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="UNSD" class="Codelist" id="CL_PARTNER_TYPE" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA_2"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="COUNTERPART_AREA_1_ANNOTATION" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=UNSD:IMTS(1.2).COUNTERPART_AREA_1_ANNOTATION">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COUNTERPART_AREA_1_ANNOTATION" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA_1"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="COUNTERPART_AREA_2_ANNOTATION" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=UNSD:IMTS(1.2).COUNTERPART_AREA_2_ANNOTATION">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="COUNTERPART_AREA_2_ANNOTATION" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="COUNTERPART_AREA_2"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="OBS_STATUS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=UNSD:IMTS(1.2).OBS_STATUS">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="OBS_STATUS" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="SDMX" class="Codelist" id="CL_OBS_STATUS" package="codelist" version="2.1"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+					</str:AttributeList>
+					<str:MeasureList id="MeasureDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=UNSD:IMTS(1.2).MeasureDescriptor">
+						<str:PrimaryMeasure id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=UNSD:IMTS(1.2).OBS_VALUE">
+							<str:ConceptIdentity>
+								<Ref agencyID="UNSD" class="Concept" id="OBS_VALUE" maintainableParentID="CS_IMTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+						</str:PrimaryMeasure>
+					</str:MeasureList>
+				</str:DataStructureComponents>
+			</str:DataStructure>
+		</str:DataStructures>
+	</mes:Structures>
+</mes:Structure>

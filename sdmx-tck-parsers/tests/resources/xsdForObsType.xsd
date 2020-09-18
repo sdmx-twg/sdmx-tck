@@ -38,7 +38,7 @@
 	
 	<xs:complexType name="ObsType" abstract="true">
 		<xs:complexContent>
-			<xs:restriction base="dsd:TimeSeriesObsType">
+			<xs:restriction base="dsd:ObsType">
 				<xs:sequence>
 					<xs:element ref="common:Annotations" minOccurs="0"/>
 				</xs:sequence>
@@ -47,6 +47,11 @@
 				<xs:attribute name="UNIT_MEASURE" type="ESTAT.CL_UNIT.1.0" use="optional"/>
 				<xs:attribute name="UNIT_MULT" type="sdmx:SDMX.CL_UNIT_MULT.1.0" use="optional"/>
 				<xs:attribute name="type" type="ESTAT.DEMO_MEASURES.1.0" use="optional"/>
+
+				<xs:attribute name="DECIMALS" type="ESTAT.CL_UNIT.1.0" use="optional"/>
+				<xs:attribute name="TIME_PERIOD" type="common:TimePeriodType" use="prohibited"/>
+				<xs:attribute name="DEMO" type="ESTAT.CL_COUNTRY.1.0" use="required"/>
+
 				<xs:attribute name="REPORTING_YEAR_START_DAY" type="xs:gMonthDay" use="prohibited"/>
 			</xs:restriction>
 		</xs:complexContent>
@@ -474,5 +479,13 @@
          </xs:enumeration>
       </xs:restriction>
    </xs:simpleType>
-   
+
+    <xs:simpleType name="sdmx:SDMX.CL_UNIT_MULT.1.0">
+      <xs:restriction base="common:IDType">
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="sdmx:SDMX.CL_OBS_STATUS.1.0">
+      <xs:restriction base="common:IDType">
+      </xs:restriction>
+   </xs:simpleType>
 </xs:schema>
