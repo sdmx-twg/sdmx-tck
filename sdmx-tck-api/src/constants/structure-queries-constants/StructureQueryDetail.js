@@ -1,4 +1,4 @@
-const API_VERSIONS = require('../constants/ApiVersions.js').API_VERSIONS;
+const API_VERSIONS = require('../ApiVersions.js').API_VERSIONS;
 
 const STRUCTURE_QUERY_DETAIL = {
     FULL: "full",

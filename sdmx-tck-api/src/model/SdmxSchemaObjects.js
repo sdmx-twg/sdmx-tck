@@ -1,5 +1,5 @@
 var SdmxObjects = require('./SdmxObjects.js')
-const XSD_COMPONENTS_TYPES = require('../constants/SdmxXSDComponentsTypes.js').XSD_COMPONENTS_TYPES
+const XSD_COMPONENTS_TYPES = require('../constants/schema-queries-constants/SdmxXSDComponentsTypes.js').XSD_COMPONENTS_TYPES
 
 
 class SdmxSchemaObjects extends SdmxObjects{

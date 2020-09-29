@@ -1,5 +1,5 @@
 var StructureReference = require("./StructureReference.js");
-var StructureDetail = require('../constants/StructureDetail.js').StructureDetail;
+var StructureDetail = require('../constants/structure-queries-constants/StructureDetail.js').StructureDetail;
 
 class MaintainableObject {
     constructor(structureType, props, children, detail) {

@@ -6,7 +6,7 @@ var SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRU
 var getResources = require('../constants/StructuresRestResources.js').getResources
 const TEST_INDEX = require('../constants/TestIndex.js').TEST_INDEX
 const STRUCTURES_REST_RESOURCE = require('../constants/StructuresRestResources').STRUCTURES_REST_RESOURCE
-const DSD_COMPONENTS_NAMES = require("../constants/DSDComponents.js").DSD_COMPONENTS_NAMES
+const DSD_COMPONENTS_NAMES = require("../constants/structure-queries-constants/DSDComponents.js").DSD_COMPONENTS_NAMES
 
 class SdmxStructureObjects extends SdmxObjects{
     constructor(sdmxObjects){

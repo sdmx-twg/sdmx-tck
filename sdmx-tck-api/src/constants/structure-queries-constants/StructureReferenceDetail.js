@@ -1,5 +1,5 @@
-const SDMX_STRUCTURE_TYPE = require("./SdmxStructureType.js").SDMX_STRUCTURE_TYPE;
-var isDefined = require('../utils/Utils.js').isDefined;
+const SDMX_STRUCTURE_TYPE = require("../SdmxStructureType.js").SDMX_STRUCTURE_TYPE;
+var isDefined = require('../../utils/Utils.js').isDefined;
 
 const STRUCTURE_REFERENCE_DETAIL = {
     NONE: "none",

@@ -1,7 +1,7 @@
 var isDefined = require('../utils/Utils').isDefined;
 var DataStructureComponentObject = require('./DataStructureComponentObject');
 var SdmxSchemaObjects = require('./SdmxSchemaObjects.js')
-const XSD_DATA_TYPE  = require('../constants/XSDRepresentationDataType').XSD_DATA_TYPE;
+const XSD_DATA_TYPE  = require('../constants/schema-queries-constants/XSDRepresentationDataType').XSD_DATA_TYPE;
 
 class XSDComplexType {
     constructor(props,compositors,attributes,anyAttributes) {
