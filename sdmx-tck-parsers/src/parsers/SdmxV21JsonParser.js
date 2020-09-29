@@ -1,5 +1,5 @@
-var SdmxV21StructuresParser = require('./SdmxV21StructuresParser.js');
-var SdmxV21SchemasParser = require('./SdmxV21SchemasParser.js')
+var SdmxV21StructuresParser = require('./structure-queries-parsers/SdmxV21StructuresParser.js');
+var SdmxV21SchemasParser = require('./schema-queries-parsers/SdmxV21SchemasParser.js')
 
 class SdmxV21JsonParser {
     static parse(result){
