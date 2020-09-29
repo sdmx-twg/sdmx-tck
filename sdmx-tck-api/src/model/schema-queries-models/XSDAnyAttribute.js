@@ -1,5 +1,3 @@
-var isDefined = require('../utils/Utils').isDefined;
-
 class XSDAnyAttribute {
     constructor(props) {
        this.namespace = props.$.namespace;

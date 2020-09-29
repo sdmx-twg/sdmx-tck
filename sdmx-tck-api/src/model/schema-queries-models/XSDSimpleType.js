@@ -1,5 +1,3 @@
-var isDefined = require('../utils/Utils').isDefined;
-
 class XSDSimpleType {
     constructor(props,schemaFacets,enumerations) {
        this.name = props.$.name;

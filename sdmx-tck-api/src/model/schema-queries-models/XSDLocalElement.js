@@ -1,5 +1,3 @@
-var isDefined = require('../utils/Utils').isDefined;
-
 class XSDLocalElement {
     constructor(props) {
        this.name = props.$.name;

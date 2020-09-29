@@ -1,4 +1,4 @@
-var isDefined = require('../utils/Utils.js').isDefined;
+var isDefined = require('../../utils/Utils.js').isDefined;
 
 class StructureReference {
     constructor(structureType, agencyId, id, version, ids) {

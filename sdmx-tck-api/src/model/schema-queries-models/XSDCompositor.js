@@ -1,5 +1,3 @@
-var isDefined = require('../utils/Utils').isDefined;
-
 class XSDCompositor {
     constructor(props,type,elements,compositors) {
        this.minOccurs = (props.$)?props.$.minOccurs:undefined;

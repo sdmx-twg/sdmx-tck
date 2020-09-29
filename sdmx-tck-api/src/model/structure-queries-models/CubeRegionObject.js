@@ -1,4 +1,4 @@
-var isDefined = require('../utils/Utils').isDefined;
+var isDefined = require('../../utils/Utils').isDefined;
 
 class CubeRegionObject {
     constructor(props,keyValue) {

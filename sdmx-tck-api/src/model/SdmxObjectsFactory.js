@@ -1,5 +1,5 @@
-var SdmxStructureObjects = require('./SdmxStructureObjects.js')
-var SdmxSchemaObjects = require('./SdmxSchemaObjects.js')
+var SdmxStructureObjects = require('./structure-queries-models/SdmxStructureObjects.js')
+var SdmxSchemaObjects = require('./schema-queries-models/SdmxSchemaObjects.js')
 class SdmxObjectsFactory {
 
     static getWorkspace(sdmxObjects,sdmxJsonObject){

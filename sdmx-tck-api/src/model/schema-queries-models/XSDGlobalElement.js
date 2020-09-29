@@ -1,5 +1,3 @@
-var isDefined = require('../utils/Utils').isDefined;
-
 class XSDGlobalElement {
     constructor(props) {
        this.name = props.$.name;

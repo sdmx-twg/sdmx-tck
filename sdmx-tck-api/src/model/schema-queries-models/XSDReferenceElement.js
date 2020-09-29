@@ -1,5 +1,3 @@
-var isDefined = require('../utils/Utils').isDefined;
-
 class XSDReferenceElement {
     constructor(props) {
        this.ref = props.$.ref;

@@ -1,5 +1,5 @@
 var MaintainableObject = require('./MaintainableObject.js');
-const SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
+const SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
 
 class ConstraintKeyValueObject {
     constructor(props,origin,includeType, values) {

@@ -1,5 +1,3 @@
-var isDefined = require('../utils/Utils').isDefined;
-
 class XSDFacet {
     constructor(props,type) {
        this.type = type;

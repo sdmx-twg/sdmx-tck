@@ -1,10 +1,10 @@
 var MaintainableObject = require('./MaintainableObject.js');
-const SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
+const SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
 var CubeRegionObject = require('./CubeRegionObject.js')
 var DataKeySetObject = require('./DataKeySetObject.js');
 var ConstraintKeyValueObject = require('./ConstraintKeyValueObject.js')
 var StructureReference = require('./StructureReference.js')
-var Utils = require('../utils/Utils.js')
+var Utils = require('../../utils/Utils.js')
 
 
 class ContentConstraintObject extends MaintainableObject {

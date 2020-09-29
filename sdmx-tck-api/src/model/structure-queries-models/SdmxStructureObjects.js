@@ -1,13 +1,12 @@
-var SdmxObjects = require('./SdmxObjects.js');
+var SdmxObjects = require('../SdmxObjects.js');
 const DataflowObject = require('./DataflowObject.js');
 const StructureReference = require('./StructureReference.js');
-var isDefined = require('../utils/Utils.js').isDefined;
-var SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
-var getResources = require('../constants/StructuresRestResources.js').getResources
-const TEST_INDEX = require('../constants/TestIndex.js').TEST_INDEX
-const STRUCTURES_REST_RESOURCE = require('../constants/StructuresRestResources').STRUCTURES_REST_RESOURCE
-const DSD_COMPONENTS_NAMES = require("../constants/structure-queries-constants/DSDComponents.js").DSD_COMPONENTS_NAMES
-
+var isDefined = require('../../utils/Utils.js').isDefined;
+var SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
+var getResources = require('../../constants/StructuresRestResources.js').getResources
+const TEST_INDEX = require('../../constants/TestIndex.js').TEST_INDEX
+const STRUCTURES_REST_RESOURCE = require('../../constants/StructuresRestResources').STRUCTURES_REST_RESOURCE
+const DSD_COMPONENTS_NAMES = require("../../constants/structure-queries-constants/DSDComponents.js").DSD_COMPONENTS_NAMES
 class SdmxStructureObjects extends SdmxObjects{
     constructor(sdmxObjects){
         super(sdmxObjects)

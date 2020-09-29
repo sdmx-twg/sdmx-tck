@@ -1,8 +1,8 @@
 var MaintainableObject = require('./MaintainableObject.js');
-var SDMX_STRUCTURE_TYPE = require('../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
-var StructureReference = require('../model/StructureReference.js');
-const DSD_COMPONENTS_NAMES = require('../constants/structure-queries-constants/DSDComponents.js').DSD_COMPONENTS_NAMES;
-const COMPONENTS_REPRESENTATION_NAMES = require('../constants/structure-queries-constants/ComponentsRepresentationNames.js').COMPONENTS_REPRESENTATION_NAMES;
+var SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
+var StructureReference = require('./StructureReference.js');
+const DSD_COMPONENTS_NAMES = require('../../constants/structure-queries-constants/DSDComponents.js').DSD_COMPONENTS_NAMES;
+const COMPONENTS_REPRESENTATION_NAMES = require('../../constants/structure-queries-constants/ComponentsRepresentationNames.js').COMPONENTS_REPRESENTATION_NAMES;
 
 
 class DataStructureObject extends MaintainableObject {
