@@ -1,7 +1,7 @@
 // CONSTANTS
 const ApiVersions = require('./constants/ApiVersions.js');
 const ApiConstants = require('./constants/ApiConstants.js');
-const DataQueryDetail = require('./constants/DataQueryDetail.js');
+const DataQueryDetail = require('./constants/data-queries-constants/DataQueryDetail.js');
 const ItemSchemeTypes = require('./constants/structure-queries-constants/ItemSchemeTypes.js');
 const SdmxStructureType = require('./constants/SdmxStructureType.js');
 const DSDComponents = require('./constants/structure-queries-constants/DSDComponents.js')
