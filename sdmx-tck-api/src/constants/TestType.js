@@ -1,4 +1,6 @@
 const TEST_TYPE = {
+
+    //STRUCTURE TEST TYPES
     STRUCTURE_IDENTIFICATION_PARAMETERS: "Structure Identification Parameters",
     STRUCTURE_REFERENCE_PARAMETER: "Structure Reference Parameter Tests",
     STRUCTURE_DETAIL_PARAMETER: "Structure Detail Parameter Tests",
@@ -6,13 +8,15 @@ const TEST_TYPE = {
     STRUCTURE_TARGET_CATEGORY: "Structure Target Category",
     STRUCTURE_REFERENCE_PARTIAL:"Structure Reference Partial",
 
+    //SCHEMA TEST TYPES
     PREPARE_SCHEMA_TESTS:"Prepare Schema Tests",
-
     SCHEMA_IDENTIFICATION_PARAMETERS_WITH_CONSTRAINTS:"Schema Identification Parameters With Constraints",
     SCHEMA_FURTHER_DESCRIBING_PARAMETERS_WITH_CONSTRAINTS:"Schema Further Describing Parameters With Constraints",
-
     SCHEMA_IDENTIFICATION_PARAMETERS_WITH_NO_CONSTRAINTS:"Schema Identification Parameters With No Constraints",
-    SCHEMA_FURTHER_DESCRIBING_PARAMETERS_WITH_NO_CONSTRAINTS:"Schema Further Describing Parameters With No Constraints"
+    SCHEMA_FURTHER_DESCRIBING_PARAMETERS_WITH_NO_CONSTRAINTS:"Schema Further Describing Parameters With No Constraints",
+
+    //DATA TEST TYPES
+    DATA_IDENTIFICATION_PARAMETERS:"Data Identification Parameters"
 };
 
 module.exports.TEST_TYPE = Object.freeze(TEST_TYPE);

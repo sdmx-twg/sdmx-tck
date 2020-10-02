@@ -10,6 +10,7 @@ var StructureFurtherDescribingResultsParamTestsBuilder = require("../builders/St
 var StructureRepresentationSupportTestsBuilder = require("../builders/StructureRepresentationSupportTestsBuilder.js");
 var SchemaIdentificationParametersTestBuilder = require("../builders/SchemaIdentificationParametersTestBuilder.js");
 var SchemaFurtherDescribingResultsParamTestsBuilder = require("../builders/SchemaFurtherDescribingResultsParamTestsBuilder.js")
+var DataIdentificationParametersTestBuilder = require("../builders/DataIdentificationParametersTestBuilder.js")
 class TestsModelBuilder {
     /**
      * Method that creates the model (object) in which the data of the app will be stored.
@@ -92,7 +93,12 @@ class TestsModelBuilder {
             
             return allTests;
         }else if (index === TEST_INDEX.Data) {
-            return [];
+            let dataTest1 = [];
+            let allTests = [];
+           
+            dataTest1 = dataTest1.concat(DataIdentificationParametersTestBuilder.getDataIdentificationParametersTests(index,x,apiVersion))
+            allTests=allTests.concat(dataTest1)
+            return allTests;
         }else if (index === TEST_INDEX.Metadata) {
             return [];
         }

@@ -1,7 +1,6 @@
 // CONSTANTS
 const ApiVersions = require('./constants/ApiVersions.js');
 const ApiConstants = require('./constants/ApiConstants.js');
-const DataQueryDetail = require('./constants/data-queries-constants/DataQueryDetail.js');
 const ItemSchemeTypes = require('./constants/structure-queries-constants/ItemSchemeTypes.js');
 const SdmxStructureType = require('./constants/SdmxStructureType.js');
 const DSDComponents = require('./constants/structure-queries-constants/DSDComponents.js')
@@ -28,6 +27,8 @@ const SchemaComplexTypeConstants = require('./constants/schema-queries-constants
 const SchemaElementConstants = require('./constants/schema-queries-constants/SchemaElementConstants.js')
 const SchemaSimpleTypeConstants = require('./constants/schema-queries-constants/SchemaSimpleTypeConstants.js')
 const SchemaOccurenciesConstants = require('./constants/schema-queries-constants/SchemaOccurenciesConstants.js')
+const DataQueryDetail = require('./constants/data-queries-constants/DataQueryDetail.js');
+const DataIdentificationParameters = require('./constants/data-queries-constants/DataIdentificationParameters.js')
 // ERRORS
 var TckError = require('./errors/TckError.js');
 var SemanticError = require('./errors/SemanticError.js');
@@ -109,6 +110,7 @@ module.exports = {
         SCHEMA_SIMPLE_TYPE_NAMES : SchemaSimpleTypeConstants.SCHEMA_SIMPLE_TYPE_NAMES,
         SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE : SchemaSimpleTypeConstants.SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE,
         OCCURENCIES_VALUES:SchemaOccurenciesConstants.OCCURENCIES_VALUES,
+        DATA_IDENTIFICATION_PARAMETERES:DataIdentificationParameters.DATA_IDENTIFICATION_PARAMETERS
     },
     errors: {
         TckError: TckError,
