@@ -17,7 +17,7 @@ class DataIdentificationParametersTestBuilder {
             //XSD DESCRIBING RESULTS TESTS (USING DSDs,DFs,PRAs FROM CONSTRAINT)
             x.numOfTests = x.numOfTests + 1;
             testObjParams = {
-                testId: "/data/" + test.url,
+                testId: "/data" + test.url,
                 index: index,
                 apiVersion: apiVersion,
                 resource: STRUCTURES_REST_RESOURCE.dataflow,
