@@ -11,6 +11,8 @@ const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
 const MetadataReferences = require('sdmx-rest').metadata.MetadataReferences
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 var XSDTestsDataBuilder = require('./src/builders/XSDTestsDataBuilder.js')
+var DataQueriesDataBuilder = require('./src/builders/DataQueriesDataBuilder.js')
+
 
 const server = app.listen(5000, () => {
     console.log("Server is listening on port: 5000");
@@ -58,6 +60,16 @@ app.post("/tck-api/configure-schema-tests", async(req, res) => {
     //PRA DATA
     configData.randomData.provisionagreement =  await XSDTestsDataBuilder.buildXSDDataWithoutConstraint(STRUCTURES_REST_RESOURCE.provisionagreement,endpoint,apiVersion)
 
+    res.send(JSON.stringify(configData))
+});
+
+app.post("/tck-api/configure-data-tests", async(req, res) => {
+
+    let payload = req.body;
+    let endpoint = payload.endpoint;
+    let apiVersion = payload.apiVersion;
+    
+    let configData =  await DataQueriesDataBuilder.buildDataQueriesData(endpoint,apiVersion)
     res.send(JSON.stringify(configData))
 });
 

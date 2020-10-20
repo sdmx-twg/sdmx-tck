@@ -228,6 +228,28 @@ class SdmxStructureObjects extends SdmxObjects{
 		}
 	return null;
 	}
+
+	getDataForDataQueries(){
+
+		let dataForDataQueries = {};
+
+		let arrayOfPras = this.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)
+		for(let i in arrayOfPras){
+
+			let refDf = arrayOfPras[i].getChildren().find(ref=> (ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATAFLOW.key)
+			&& ref.getAgencyId() && ref.getId() && ref.getVersion());
+
+			let refProvider = arrayOfPras[i].getChildren().find(ref=> (ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key)
+			&& ref.getAgencyId() && ref.getId() && ref.getVersion());
+
+			if(refProvider && refDf){
+				dataForDataQueries.dataflowRef = refDf
+				dataForDataQueries.refProvider = refProvider
+				return dataForDataQueries;
+			}
+		}
+		return;
+	}
 }
 
 module.exports = SdmxStructureObjects;

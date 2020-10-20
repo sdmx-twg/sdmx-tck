@@ -39,6 +39,9 @@ export function dataFromParent(test){
 export function XSDTestsData(schemaTestsData,testIndex){
     return {type: ACTION_NAMES.CONFIG_SCHEMA_TESTS, testIndex:testIndex, schemaTestsData:schemaTestsData}
 }
+export function DataQueriesData(dataQueriesData,testIndex){
+    return {type: ACTION_NAMES.CONFIG_DATA_TESTS, testIndex:testIndex, dataQueriesData:dataQueriesData}
+}
 
 export function fetchTests(endpoint, apiVersion, testIndices) {
     let body = { endpoint, apiVersion, testIndices };
@@ -88,6 +91,24 @@ async function configureSchemaTests(endpoint,apiVersion) {
 
 };
 
+async function configureDataTests(endpoint,apiVersion) {
+    try{
+       let body = { endpoint,apiVersion };
+       const response = await fetch('/tck-api/configure-data-tests', {
+           method: 'POST',
+          
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify(body)
+       });
+       return await response.json();
+    }catch(err){
+            return {error:err.toString()};
+    }
+
+};
+
 export function prepareTests(endpoint, apiVersion, testIndices) {
     return function (dispatch) {
         return fetchTests(endpoint, apiVersion, testIndices)
@@ -114,17 +135,22 @@ export function exportReport(tests) {
     });
 };
 
-async function getDataForSchemaTests(endpoint,tests){
+async function getPrerequisiteDataForTests(endpoint,tests){
     if(TEST_INDEX.Schema === tests.id){
         let apiVersion = (tests.subTests && Array.isArray(tests.subTests) && tests.subTests.length>0)?tests.subTests[0].apiVersion:undefined;
         let schemaTestsData = await configureSchemaTests(endpoint,apiVersion);
         store.dispatch(XSDTestsData(schemaTestsData,tests.id));  
-                                                                           }
+    }
+    if(TEST_INDEX.Data === tests.id){
+        let apiVersion = (tests.subTests && Array.isArray(tests.subTests) && tests.subTests.length>0)?tests.subTests[0].apiVersion:undefined;
+        let dataQueriesData = await configureDataTests(endpoint,apiVersion);
+        store.dispatch(DataQueriesData(dataQueriesData,tests.id))
+    }
 }
 
 async function runTests(endpoint, tests) {
     for (let i = 0; i < tests.length; i++) {
-        await getDataForSchemaTests(endpoint,tests[i]);
+        await getPrerequisiteDataForTests(endpoint,tests[i]);
         for (let j = 0; j < tests[i].subTests.length; j++) {
             await runTest(endpoint, tests[i].subTests[j]);
         }

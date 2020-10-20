@@ -1,3 +1,5 @@
+import { TEST_INDEX } from 'sdmx-tck-api/src/constants/TestIndex';
+
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const SCHEMA_IDENTIFICATION_PARAMETERS = require('sdmx-tck-api').constants.SCHEMA_IDENTIFICATION_PARAMETERS
@@ -170,12 +172,30 @@ export function passConstraintDataToSchemaTests(schemaTests,schemaTestsData){
 		}
 	}
 }
-export const configSchemaTests = (prevStore,action) =>{
+export function passDataToDataQueries(dataTests,dataQueriesData){
+	
+	if (dataTests.subTests && Array.isArray(dataTests.subTests)) {
+		for (let i = 0; i < dataTests.subTests.length; i++) {
+			dataTests.subTests[i].identifiers.structureType = dataQueriesData.dataflowRef.structureType
+			dataTests.subTests[i].identifiers.agency = dataQueriesData.dataflowRef.agencyId
+			dataTests.subTests[i].identifiers.id = dataQueriesData.dataflowRef.id
+			dataTests.subTests[i].identifiers.version = dataQueriesData.dataflowRef.version
+
+			dataTests.subTests[i].providerInfo = dataQueriesData.refProvider
+			if (dataTests.subTests[i].subTests && Array.isArray(dataTests.subTests[i].subTests)) {
+				passConstraintDataToSchemaTests(dataTests.subTests[i],dataQueriesData)
+			}
+		}
+	}
+}
+export const configTests = (prevStore,action) =>{
 	var testsArray = [...prevStore];
 
 	for (let i = 0; i < testsArray.length; i++) {
-		if (testsArray[i].id === action.testIndex) {
+		if (testsArray[i].id === TEST_INDEX.Schema) {
 			passConstraintDataToSchemaTests(testsArray[i],action.schemaTestsData);
+		}else if ((testsArray[i].id === TEST_INDEX.Data)){
+			passDataToDataQueries(testsArray[i],action.dataQueriesData);
 		}
 	}
 	return testsArray;
