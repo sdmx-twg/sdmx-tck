@@ -90,7 +90,7 @@ function DATA_IDENTIFICATION_PARAMETERS_TESTS(){
     let testsArray = [];
 
     DATA_IDENTIFICATION_PARAMETERS.getValues().forEach(parameter => {
-        testsArray.push({ index: "Schema", url: parameter.url, reqTemplate: parameter.template })
+        testsArray.push({ index: "Data", url: parameter.url, reqTemplate: parameter.template })
     });
 
     return testsArray;
