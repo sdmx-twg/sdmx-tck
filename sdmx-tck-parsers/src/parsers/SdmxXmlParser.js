@@ -41,7 +41,7 @@ class SdmxXmlParser {
         });
     };
 
-    getIMObjects(xmlMessage) {
+        getIMObjects(xmlMessage) {
         return new Promise((resolve, reject) => {
             var parserOptions = {
                 explicitArray: true,
@@ -57,6 +57,7 @@ class SdmxXmlParser {
                 if (err !== null) {
                     reject("An error occurred during the SDMX-ML parsing. " + err);
                 }
+
                 var sdmxObjects = SdmxV21JsonParser.parse(result);
                 resolve(SdmxObjectsFactory.getWorkspace(sdmxObjects, result));
             });

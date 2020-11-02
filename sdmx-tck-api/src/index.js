@@ -29,6 +29,7 @@ const SchemaSimpleTypeConstants = require('./constants/schema-queries-constants/
 const SchemaOccurenciesConstants = require('./constants/schema-queries-constants/SchemaOccurenciesConstants.js')
 const DataQueryDetail = require('./constants/data-queries-constants/DataQueryDetail.js');
 const DataIdentificationParameters = require('./constants/data-queries-constants/DataIdentificationParameters.js')
+const DataComponentsTypes = require('./constants/data-queries-constants/DataComponentsTypes.js')
 // ERRORS
 var TckError = require('./errors/TckError.js');
 var SemanticError = require('./errors/SemanticError.js');
@@ -62,6 +63,8 @@ var XSDAnyAttribute = require('./model/schema-queries-models/XSDAnyAttribute.js'
 var XSDCompositor = require('./model/schema-queries-models/XSDCompositor.js')
 var DataStructureAttributeObject = require('./model/structure-queries-models/DataStructureAttributeObject.js')
 var DataStructureAttributeRelationshipObject = require('./model/structure-queries-models/DataStructureAttributeRelationshipObject.js')
+var SeriesObject = require('./model/data-queries-models/SeriesObject.js')
+var ObservationObject = require('./model/data-queries-models/ObservationObject.js')
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
@@ -110,7 +113,8 @@ module.exports = {
         SCHEMA_SIMPLE_TYPE_NAMES : SchemaSimpleTypeConstants.SCHEMA_SIMPLE_TYPE_NAMES,
         SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE : SchemaSimpleTypeConstants.SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE,
         OCCURENCIES_VALUES:SchemaOccurenciesConstants.OCCURENCIES_VALUES,
-        DATA_IDENTIFICATION_PARAMETERES:DataIdentificationParameters.DATA_IDENTIFICATION_PARAMETERS
+        DATA_IDENTIFICATION_PARAMETERES:DataIdentificationParameters.DATA_IDENTIFICATION_PARAMETERS,
+        DATA_COMPONENTS_TYPES:DataComponentsTypes.DATA_COMPONENTS_TYPES
     },
     errors: {
         TckError: TckError,
@@ -144,7 +148,9 @@ module.exports = {
         XSDReferenceElement:XSDReferenceElement,
         XSDAttribute:XSDAttribute,
         XSDAnyAttribute:XSDAnyAttribute,
-        XSDCompositor:XSDCompositor
+        XSDCompositor:XSDCompositor,
+        SeriesObject:SeriesObject,
+        ObservationObject:ObservationObject
 
     },
     utils: {
