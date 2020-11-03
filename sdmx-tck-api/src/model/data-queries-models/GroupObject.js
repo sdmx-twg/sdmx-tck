@@ -1,4 +1,4 @@
-class ObservationObject {
+class GroupObject {
 
     constructor(attributes){
         this.attributes = attributes;       
@@ -11,4 +11,4 @@ class ObservationObject {
     }
 }
 
-module.exports = ObservationObject;
+module.exports = GroupObject;
