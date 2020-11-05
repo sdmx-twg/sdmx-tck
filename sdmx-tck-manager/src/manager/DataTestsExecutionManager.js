@@ -45,12 +45,6 @@ class DataTestsExecutionManager {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
 
-            //   //XSD VALIDATION
-            //   let xsdString = await httpResponse.text();
-            //   await new SdmxXmlParser().schemaValidation(xsdString);
-            //   console.log("Test: " + toRun.testId + " Response (XSD) validated.");
-  
-             
             //// WORKSPACE CREATION ////
             let response =await httpResponse.text() 
             //console.log(response)
