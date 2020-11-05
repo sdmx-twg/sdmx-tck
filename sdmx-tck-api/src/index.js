@@ -66,7 +66,7 @@ var DataStructureAttributeRelationshipObject = require('./model/structure-querie
 var SeriesObject = require('./model/data-queries-models/SeriesObject.js')
 var ObservationObject = require('./model/data-queries-models/ObservationObject.js')
 var GroupObject = require('./model/data-queries-models/GroupObject.js')
-
+var SdmxDataObjects = require('./model/data-queries-models/SdmxDataObjects.js')
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
@@ -153,7 +153,8 @@ module.exports = {
         XSDCompositor:XSDCompositor,
         SeriesObject:SeriesObject,
         ObservationObject:ObservationObject,
-        GroupObject:GroupObject
+        GroupObject:GroupObject,
+        SdmxDataObjects:SdmxDataObjects
 
     },
     utils: {
