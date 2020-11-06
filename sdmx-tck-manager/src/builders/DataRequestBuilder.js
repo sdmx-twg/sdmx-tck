@@ -3,10 +3,16 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 
 class DataRequestBuilder {
 
-    static prepareRequest(endpoint, apiVersion, template, flow, key, provider, detail,history) {
+    static prepareRequest(endpoint, apiVersion, template, testIdentifiers ,key, provider, detail,history) {
         return new Promise((resolve, reject) => {
             try {
                 var service = sdmx_rest.getService({ url: endpoint, api: apiVersion });
+                
+                let flow = "";
+                if(template.agency && template.version){flow = (testIdentifiers.id)}
+                else if (template.version){ flow = (testIdentifiers.agency.concat(","+testIdentifiers.id))}
+                else if (!template.agency && !template.id &&!template.version){flow = (testIdentifiers.agency.concat(","+testIdentifiers.id.concat(","+testIdentifiers.version)))}
+                
                 // Inititalize request from parameters
                 var request = {
                     flow:flow,

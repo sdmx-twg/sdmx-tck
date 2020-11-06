@@ -38,14 +38,27 @@ class DataSemanticChecker{
         let identifiers = query.flow.split(',');
         let requestedAgencyId = identifiers[0]
         let requestedId = identifiers[1]
-        let requestedVersion = identifiers[2]
+        let requestedVersion = (identifiers[2] === "latest" || !identifiers[2]) ? null:identifiers[2]
 
-        if(Utils.isDefined(requestedAgencyId) && Utils.isDefined(requestedId) && Utils.isDefined(requestedVersion)){
-            let structureId = workspace.getStructureId();
+        let reformedQuery = {agency:requestedAgencyId,
+                        id:requestedId,
+                        version:requestedVersion}
+
+        let structureId = workspace.getStructureId();
+        if(Utils.isSpecificAgency(reformedQuery) && Utils.isSpecificItem(reformedQuery) && Utils.isSpecificVersion(reformedQuery)){
             if(structureId.getAgencyId()!==requestedAgencyId || structureId.getId()!==requestedId || structureId.getVersion()!==requestedVersion){
                 return {status:FAILURE_CODE, error:"Error in Identification"}
             }
+        }else if (Utils.isSpecificAgency(reformedQuery) && Utils.isSpecificItem(reformedQuery) && !Utils.isSpecificVersion(reformedQuery)){
+             if(structureId.getAgencyId()!==requestedAgencyId || structureId.getId()!==requestedId){
+                return {status:FAILURE_CODE, error:"Error in Identification"}
+            }
+        }else if (!Utils.isSpecificAgency(reformedQuery) && Utils.isSpecificItem(reformedQuery) && !Utils.isSpecificVersion(reformedQuery)){
+            if(structureId.getAgencyId()!==requestedAgencyId){
+               return {status:FAILURE_CODE, error:"Error in Identification"}
+           }
         }
+
         return {status:SUCCESS_CODE}
     }
 }
