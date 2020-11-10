@@ -21,7 +21,7 @@ class DataTestsExecutionManager {
             if(toRun.identifiers.structureType === "" && toRun.identifiers.agency === "" && toRun.identifiers.id === "" && toRun.identifiers.version === ""){
                 throw new TckError("Identifiers Missing because there are no "+SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key+" referencing a DF as well as a "+SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key+" .")
             }
-            let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,toRun.identifiers,undefined,undefined,undefined,undefined);
+            let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,toRun.identifiers,undefined,toRun.providerInfo,undefined,undefined);
 
             console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
             

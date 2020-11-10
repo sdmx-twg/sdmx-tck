@@ -10,7 +10,7 @@ class DataIdentificationParametersTestBuilder {
         let dataIdentificationParamTests = [];
         let testObjParams = {};
 
-        var dataIdentificationParamTestsArray = DATA_IDENTIFICATION_PARAMETERS_TESTS();
+        var dataIdentificationParamTestsArray = DATA_IDENTIFICATION_PARAMETERS_TESTS(apiVersion);
         for (let i=0;i<dataIdentificationParamTestsArray.length;i++){
             let test = dataIdentificationParamTestsArray[i];
             

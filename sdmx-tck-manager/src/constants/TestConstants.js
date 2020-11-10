@@ -1,6 +1,7 @@
 const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 var STRUCTURE_QUERY_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_QUERY_DETAIL;
 var getStructureQueryDetail = require('sdmx-tck-api').constants.getStructureQueryDetail;
+var getDataIdentificationParameters = require('sdmx-tck-api').constants.getDataIdentificationParameters;
 var SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 var STRUCTURE_IDENTIFICATION_PARAMETERS = require('sdmx-tck-api').constants.STRUCTURE_IDENTIFICATION_PARAMETERS;
@@ -86,10 +87,10 @@ function SCHEMA_FURTHER_DESCRIBING_PARAMETERS_TESTS() {
 };
 
 /*-----------------------------------------DATA-----------------------------------------*/
-function DATA_IDENTIFICATION_PARAMETERS_TESTS(){
+function DATA_IDENTIFICATION_PARAMETERS_TESTS(apiVersion){
     let testsArray = [];
 
-    DATA_IDENTIFICATION_PARAMETERS.getValues().forEach(parameter => {
+    getDataIdentificationParameters(apiVersion).forEach(parameter => {
         testsArray.push({ index: "Data", url: parameter.url, reqTemplate: parameter.template })
     });
 

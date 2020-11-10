@@ -116,6 +116,7 @@ module.exports = {
         SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE : SchemaSimpleTypeConstants.SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE,
         OCCURENCIES_VALUES:SchemaOccurenciesConstants.OCCURENCIES_VALUES,
         DATA_IDENTIFICATION_PARAMETERES:DataIdentificationParameters.DATA_IDENTIFICATION_PARAMETERS,
+        getDataIdentificationParameters:DataIdentificationParameters.getDataIdentificationParameters,
         DATA_COMPONENTS_TYPES:DataComponentsTypes.DATA_COMPONENTS_TYPES
     },
     errors: {
