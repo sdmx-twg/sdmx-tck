@@ -85,7 +85,6 @@ module.exports = {
         STRUCTURE_IDENTIFICATION_PARAMETERS:StructureIdentificationParameters.STRUCTURE_IDENTIFICATION_PARAMETERS,
         STRUCTURE_QUERY_REPRESENTATIONS:StructureQueryRepresentation.STRUCTURE_QUERY_REPRESENTATIONS,
         STRUCTURE_QUERY_DETAIL: StructureQueryDetail.STRUCTURE_QUERY_DETAIL,
-        getStructureQueryDetail: StructureQueryDetail.getStructureQueryDetail,
         STRUCTURE_REFERENCE_DETAIL: StructureReferenceDetail.STRUCTURE_REFERENCE_DETAIL,
         STRUCTURES_REST_RESOURCE: StructuresRestResources.STRUCTURES_REST_RESOURCE,
         getResources: StructuresRestResources.getResources,
@@ -116,7 +115,6 @@ module.exports = {
         SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE : SchemaSimpleTypeConstants.SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE,
         OCCURENCIES_VALUES:SchemaOccurenciesConstants.OCCURENCIES_VALUES,
         DATA_IDENTIFICATION_PARAMETERES:DataIdentificationParameters.DATA_IDENTIFICATION_PARAMETERS,
-        getDataIdentificationParameters:DataIdentificationParameters.getDataIdentificationParameters,
         DATA_COMPONENTS_TYPES:DataComponentsTypes.DATA_COMPONENTS_TYPES
     },
     errors: {
