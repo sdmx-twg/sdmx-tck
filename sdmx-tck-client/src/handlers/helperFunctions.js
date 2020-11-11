@@ -183,7 +183,7 @@ export function passDataToDataQueries(dataTests,dataQueriesData){
 
 			dataTests.subTests[i].providerInfo = dataQueriesData.refProvider
 			if (dataTests.subTests[i].subTests && Array.isArray(dataTests.subTests[i].subTests)) {
-				passConstraintDataToSchemaTests(dataTests.subTests[i],dataQueriesData)
+				passDataToDataQueries(dataTests.subTests[i],dataQueriesData)
 			}
 		}
 	}
