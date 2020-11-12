@@ -14,7 +14,6 @@ class DataIdentificationParametersTestBuilder {
         for (let i=0;i<dataIdentificationParamTestsArray.length;i++){
             let test = dataIdentificationParamTestsArray[i];
             
-            //XSD DESCRIBING RESULTS TESTS (USING DSDs,DFs,PRAs FROM CONSTRAINT)
             x.numOfTests = x.numOfTests + 1;
             testObjParams = {
                 testId: "/data" + test.url,
