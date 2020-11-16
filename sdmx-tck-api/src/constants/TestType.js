@@ -16,7 +16,8 @@ const TEST_TYPE = {
     SCHEMA_FURTHER_DESCRIBING_PARAMETERS_WITH_NO_CONSTRAINTS:"Schema Further Describing Parameters With No Constraints",
 
     //DATA TEST TYPES
-    DATA_IDENTIFICATION_PARAMETERS:"Data Identification Parameters"
+    DATA_IDENTIFICATION_PARAMETERS:"Data Identification Parameters",
+    DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS:"Data Extended Resource Identification Parameters"
 };
 
 module.exports.TEST_TYPE = Object.freeze(TEST_TYPE);

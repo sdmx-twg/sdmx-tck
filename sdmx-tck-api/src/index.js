@@ -29,6 +29,7 @@ const SchemaSimpleTypeConstants = require('./constants/schema-queries-constants/
 const SchemaOccurenciesConstants = require('./constants/schema-queries-constants/SchemaOccurenciesConstants.js')
 const DataQueryDetail = require('./constants/data-queries-constants/DataQueryDetail.js');
 const DataIdentificationParameters = require('./constants/data-queries-constants/DataIdentificationParameters.js')
+const DataExtendedResourceIdentification = require('./constants/data-queries-constants/DataExtendedResourceIdentification.js')
 const DataComponentsTypes = require('./constants/data-queries-constants/DataComponentsTypes.js')
 // ERRORS
 var TckError = require('./errors/TckError.js');
@@ -115,7 +116,8 @@ module.exports = {
         SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE : SchemaSimpleTypeConstants.SCHEMA_SIMPLE_TYPE_RESTRICTION_BASE,
         OCCURENCIES_VALUES:SchemaOccurenciesConstants.OCCURENCIES_VALUES,
         DATA_IDENTIFICATION_PARAMETERES:DataIdentificationParameters.DATA_IDENTIFICATION_PARAMETERS,
-        DATA_COMPONENTS_TYPES:DataComponentsTypes.DATA_COMPONENTS_TYPES
+        DATA_COMPONENTS_TYPES:DataComponentsTypes.DATA_COMPONENTS_TYPES,
+        DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS:DataExtendedResourceIdentification.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS
     },
     errors: {
         TckError: TckError,

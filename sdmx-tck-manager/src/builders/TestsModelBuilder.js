@@ -3,6 +3,7 @@ const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 var getResources = require('sdmx-tck-api').constants.getResources;
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
+const DATA_QUERY_DETAIL = require("sdmx-tck-api").constants.DATA_QUERY_DETAIL;
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 var StructureIdentificationParametersTestsBuilder = require("../builders/StructureIdentificationParametersTestsBuilder.js");
 var StructureExtendedResourceIdentParamTestsBuilder = require("../builders/StructureExtendedResourceIdentParamTestsBuilder.js");
@@ -11,6 +12,7 @@ var StructureRepresentationSupportTestsBuilder = require("../builders/StructureR
 var SchemaIdentificationParametersTestBuilder = require("../builders/SchemaIdentificationParametersTestBuilder.js");
 var SchemaFurtherDescribingResultsParamTestsBuilder = require("../builders/SchemaFurtherDescribingResultsParamTestsBuilder.js")
 var DataIdentificationParametersTestBuilder = require("../builders/DataIdentificationParametersTestBuilder.js")
+var DataExtedndedResourceIdentificationTestBuilder = require('../builders/DataExtedndedResourceIdentificationTestBuilder.js')
 class TestsModelBuilder {
     /**
      * Method that creates the model (object) in which the data of the app will be stored.
@@ -94,10 +96,24 @@ class TestsModelBuilder {
             return allTests;
         }else if (index === TEST_INDEX.Data) {
             let dataTest1 = [];
+            let dataTest2 = [];
             let allTests = [];
            
-            dataTest1 = dataTest1.concat(DataIdentificationParametersTestBuilder.getDataIdentificationParametersTests(index,x,apiVersion))
-            allTests=allTests.concat(dataTest1)
+            dataTest1 = DataIdentificationParametersTestBuilder.getDataIdentificationParametersTests(index,x,apiVersion)
+
+            x.numOfTests = x.numOfTests + 1;
+            let testObjParams = {
+                testId: "/data/agency,id,version/all",
+                index: index,
+                apiVersion: apiVersion,
+                resource: STRUCTURES_REST_RESOURCE.dataflow,
+                reqTemplate: {detail:DATA_QUERY_DETAIL.SERIES_KEYS_ONLY,representation:"application/vnd.sdmx.structurespecificdata+xml;version=2.1"},
+                identifiers: {structureType: "", agency: "", id: "", version: "" },
+                testType: TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS,
+                subTests: DataExtedndedResourceIdentificationTestBuilder.getDataExtendedResourceIdentificationParametersTests(index,x,apiVersion)
+            }
+            allTests = allTests.concat(dataTest1.concat(TestObjectBuilder.getTestObject(testObjParams)))
+            
             return allTests;
         }else if (index === TEST_INDEX.Metadata) {
             return [];

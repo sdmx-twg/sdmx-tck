@@ -13,6 +13,8 @@ class DataSemanticChecker{
                 let validation = {};
                 if (test.testType === TEST_TYPE.DATA_IDENTIFICATION_PARAMETERS) {
                     validation = DataSemanticChecker.checkIdentification(query, workspace)
+                }else if(test.testType === TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS){
+                    validation = DataSemanticChecker.checkExtedndedResourceIdentification(query, workspace)
                 }
                 // } else if (test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARAMETER) {
                 //     validation = StructuresSemanticChecker.checkReferences(query, workspace);
@@ -60,6 +62,18 @@ class DataSemanticChecker{
         }
 
         return {status:SUCCESS_CODE}
+    }
+
+    static checkExtedndedResourceIdentification(query,workspace){
+        if(!query){
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if(!workspace || !workspace instanceof SdmxDataObjects){
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        return {status:SUCCESS_CODE}
+
     }
 }
 
