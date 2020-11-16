@@ -31,7 +31,8 @@ class StructureIdentificationParametersTestsBuilder{
                     resource: currentRestResource,
                     reqTemplate: STRUCTURE_ITEM_QUERIES.AGENCY_ID_VERSION_ITEM.template,
                     testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                    needsItem:true
+                    needsItem:true,
+                    requireRandomSdmxObject :true
                 }
                 itemReq.push(TestObjectBuilder.getTestObject(testObjParams))
                 x.numOfTests = x.numOfTests + 1;
@@ -44,7 +45,8 @@ class StructureIdentificationParametersTestsBuilder{
                         resource: currentRestResource,
                         reqTemplate: STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.template,
                         testType: TEST_TYPE.STRUCTURE_TARGET_CATEGORY,
-                        needsItem:true
+                        needsItem:true,
+                        requireRandomSdmxObject :true
                     }
                     itemReq.push(TestObjectBuilder.getTestObject(testObjParams))
                     x.numOfTests = x.numOfTests + 1;
@@ -56,7 +58,8 @@ class StructureIdentificationParametersTestsBuilder{
                     resource: currentRestResource,
                     reqTemplate: test.reqTemplate,
                     testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                    subTests: itemReq
+                    subTests: itemReq,
+                    requireRandomSdmxObject : true
                 }
                 structureIdentificationParametersTests.push(TestObjectBuilder.getTestObject(testObjParams))
                 itemReq = [];
@@ -70,7 +73,8 @@ class StructureIdentificationParametersTestsBuilder{
                     resource: currentRestResource,
                     reqTemplate: STRUCTURE_ITEM_QUERIES.TARGET_CATEGORY.template,
                     testType: TEST_TYPE.STRUCTURE_TARGET_CATEGORY,
-                    needsItem:true
+                    needsItem:true,
+                    requireRandomSdmxObject : true
                 }
                 itemReq.push(TestObjectBuilder.getTestObject(testObjParams))
                 x.numOfTests = x.numOfTests + 1;
@@ -81,7 +85,8 @@ class StructureIdentificationParametersTestsBuilder{
                     resource: currentRestResource,
                     reqTemplate: test.reqTemplate,
                     testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
-                    subTests: itemReq
+                    subTests: itemReq,
+                    requireRandomSdmxObject : true
                 }
                 structureIdentificationParametersTests.push(TestObjectBuilder.getTestObject(testObjParams))
 
@@ -94,7 +99,8 @@ class StructureIdentificationParametersTestsBuilder{
                     apiVersion: apiVersion,
                     resource: currentRestResource,
                     reqTemplate: test.reqTemplate,
-                    testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
+                    testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS,
+                    requireRandomSdmxObject : true
                 }
                 structureIdentificationParametersTests.push(TestObjectBuilder.getTestObject(testObjParams))
             }

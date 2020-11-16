@@ -28,6 +28,7 @@ class StructureRepresentationSupportTestsBuilder{
                             apiVersion: apiVersion,
                             resource: currentRestResource,
                             reqTemplate: test.reqTemplate,
+                            requireRandomSdmxObject : true,
                             testType: TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION
                         }
                         structureRepresentationSupportTestsBuilder.push(TestObjectBuilder.getTestObject(testObjParams))

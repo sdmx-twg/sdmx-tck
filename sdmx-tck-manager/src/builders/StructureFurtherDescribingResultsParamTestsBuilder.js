@@ -33,6 +33,7 @@ class StructureFurtherDescribingResultsParamTestsBuilder{
                                         apiVersion: apiVersion,
                                         resource: currentRestResource,
                                         reqTemplate: test.reqTemplate,
+                                        requireRandomSdmxObject : true,
                                         testType: TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL
                                     }
 
@@ -46,6 +47,7 @@ class StructureFurtherDescribingResultsParamTestsBuilder{
                                     apiVersion: apiVersion,
                                     resource: currentRestResource,
                                     reqTemplate: test.reqTemplate,
+                                    requireRandomSdmxObject : true,
                                     testType: TEST_TYPE.STRUCTURE_DETAIL_PARAMETER
                                 }
                                 furtherDescribingResultsParamTests.push(TestObjectBuilder.getTestObject(testObjParams))

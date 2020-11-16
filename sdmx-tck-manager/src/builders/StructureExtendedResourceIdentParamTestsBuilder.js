@@ -26,6 +26,7 @@ class StructureExtendedResourceIdentParamTestsBuilder{
                             apiVersion: apiVersion,
                             resource: currentRestResource,
                             reqTemplate: test.reqTemplate,
+                            requireRandomSdmxObject : true,
                             testType: TEST_TYPE.STRUCTURE_REFERENCE_PARAMETER
                         }
                         structureExtendedIdentificationParametersTests.push(TestObjectBuilder.getTestObject(testObjParams))
