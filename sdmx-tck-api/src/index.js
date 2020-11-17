@@ -68,6 +68,7 @@ var SeriesObject = require('./model/data-queries-models/SeriesObject.js')
 var ObservationObject = require('./model/data-queries-models/ObservationObject.js')
 var GroupObject = require('./model/data-queries-models/GroupObject.js')
 var SdmxDataObjects = require('./model/data-queries-models/SdmxDataObjects.js')
+var DatasetObject = require('./model/data-queries-models/DatasetObject.js')
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
@@ -155,7 +156,8 @@ module.exports = {
         SeriesObject:SeriesObject,
         ObservationObject:ObservationObject,
         GroupObject:GroupObject,
-        SdmxDataObjects:SdmxDataObjects
+        SdmxDataObjects:SdmxDataObjects,
+        DatasetObject:DatasetObject
 
     },
     utils: {
