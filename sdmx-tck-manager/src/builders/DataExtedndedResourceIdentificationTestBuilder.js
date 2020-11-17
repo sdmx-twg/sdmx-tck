@@ -22,6 +22,7 @@ class DataExtedndedResourceIdentificationTestBuilder {
                 resource: STRUCTURES_REST_RESOURCE.dataflow,
                 reqTemplate: test.reqTemplate,
                 identifiers: { structureType: "", agency: "", id: "", version: "" },
+                requireRandomKey:true,
                 testType: TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS,
             }
             dataExtendedResourceIdentificationParamTests.push(TestObjectBuilder.getTestObject(testObjParams));

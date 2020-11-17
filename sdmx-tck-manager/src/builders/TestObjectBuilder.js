@@ -12,7 +12,7 @@ class TestObjectBuilder{
             run: false,
             apiVersion: (testParams.hasOwnProperty("apiVersion")) ? testParams.apiVersion : "",
             resource: (testParams.hasOwnProperty("resource")) ? testParams.resource : "",
-            requireRandomSdmxObject: true,
+            //requireRandomSdmxObject: true,
             reqTemplate: (testParams.hasOwnProperty("reqTemplate")) ? testParams.reqTemplate : {},
             identifiers: (testParams.hasOwnProperty("identifiers")) ? testParams.identifiers : { structureType: "", agency: "", id: "", version: "" },
             state: TEST_STATE.WAITING,
@@ -24,7 +24,12 @@ class TestObjectBuilder{
             testObj.items = [];
             testObj.requireItems = true;
         }
-
+        if(testParams.hasOwnProperty('requireRandomSdmxObject') && testParams.requireRandomSdmxObject === true){
+            testObj.requireRandomSdmxObject = true;
+        }
+        if(testParams.hasOwnProperty('requireRandomKey') && testParams.requireRandomKey === true){
+            testObj.requireRandomKey = true;
+        }
 
         return testObj;
     }
