@@ -12,12 +12,12 @@ class SdmxDataObjects extends SdmxObjects{
         return this.getSdmxObjects().get(DATA_COMPONENTS_TYPES.STRUCTURE_ID);
     }
     getDatasets(){
-        return this.getSdmxObjects().get(DATA_COMPONENTS_TYPES.DATASET);
+        return this.getSdmxObjects().get(DATA_COMPONENTS_TYPES.DATASETS);
     }
     getRandomKey(){
         let allSeries = [];
         this.getDatasets().forEach(dataset => {
-            allSeries.concat(dataset.getSeries())
+            allSeries = allSeries.concat(dataset.getSeries())
         })
         let randomIndex = Math.floor(Math.random() * allSeries.length);
         return allSeries[randomIndex].getAttributes()
