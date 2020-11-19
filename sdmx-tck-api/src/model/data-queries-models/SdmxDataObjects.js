@@ -14,13 +14,17 @@ class SdmxDataObjects extends SdmxObjects{
     getDatasets(){
         return this.getSdmxObjects().get(DATA_COMPONENTS_TYPES.DATASETS);
     }
-    getRandomKey(){
+    getAllSeries(){
         let allSeries = [];
         this.getDatasets().forEach(dataset => {
             allSeries = allSeries.concat(dataset.getSeries())
         })
-        let randomIndex = Math.floor(Math.random() * allSeries.length);
-        return allSeries[randomIndex].getAttributes()
+        return allSeries
+    }
+    getRandomKey(){
+        let series = this.getAllSeries();
+        let randomIndex = Math.floor(Math.random() * series.length);
+        return series[randomIndex].getAttributes()
     }
 }
 

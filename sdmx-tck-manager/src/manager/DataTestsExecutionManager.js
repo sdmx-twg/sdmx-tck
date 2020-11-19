@@ -6,10 +6,10 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 var DataRequestBuilder = require('../builders/DataRequestBuilder.js');
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
-var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
-var ContentConstraintTypeValidator = require('../checker/ContentConstraintTypeValidator.js')
+var DataRequestPropsBuilder = require('../builders/DataRequestPropsBuilder.js')
 const sdmx_requestor = require('sdmx-rest');
-const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator')
+const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator');
+const { DATA_QUERY_KEY } = require('sdmx-tck-api/src/constants/data-queries-constants/DataQueryKey');
 class DataTestsExecutionManager {
     static async executeTest(toRun, apiVersion, endpoint) {
         let testResult = toRun;
@@ -21,7 +21,18 @@ class DataTestsExecutionManager {
             if(toRun.identifiers.structureType === "" && toRun.identifiers.agency === "" && toRun.identifiers.id === "" && toRun.identifiers.version === ""){
                 throw new TckError("Identifiers Missing because there are no "+SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key+" referencing a DF as well as a "+SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key+" .")
             }
-            let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,toRun.identifiers,undefined,toRun.providerInfo,undefined,undefined);
+
+            if(toRun.reqTemplate.key === DATA_QUERY_KEY.PARTIAL_KEY || toRun.reqTemplate.key === DATA_QUERY_KEY.MANY_KEYS){
+                if(Object.keys(toRun.randomKey).length < 2){
+                    throw new TckError("There are no enough dimensions to perform this test.")
+                }
+            }
+           
+            let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,
+                                                            DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate),
+                                                            DataRequestPropsBuilder.getKey(toRun.randomKey,toRun.reqTemplate),
+                                                            DataRequestPropsBuilder.getProvider(toRun.providerInfo,toRun.reqTemplate),
+                                                            toRun.reqTemplate.detail,undefined);
 
             console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
             
@@ -51,6 +62,7 @@ class DataTestsExecutionManager {
             testResult.workspace = workspace;
             console.log("Test: " + toRun.testId + " SDMX workspace created.");
               
+
               
             // WORKSPACE VALIDATION
             let workspaceValidation = await SemanticCheckerFactory.getChecker(toRun).checkWorkspace(toRun, preparedRequest, workspace);
@@ -58,6 +70,12 @@ class DataTestsExecutionManager {
             if (workspaceValidation.status === FAILURE_CODE) {
                 throw new TckError("Workspace validation failed: Cause: " + workspaceValidation.error);
             }
+
+            //RANDOM KEY TO GIVE TO CHILDREN
+            if(toRun.testType === TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS && !toRun.requireRandomKey){
+                testResult.randomKey = workspace.getRandomKey();
+            }
+            
         } catch (err) {
             testResult.failReason = err.toString();
         } finally {

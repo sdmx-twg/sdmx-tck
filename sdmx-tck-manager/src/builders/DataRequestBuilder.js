@@ -1,21 +1,14 @@
 const sdmx_rest = require('sdmx-rest');
+const DATA_QUERY_KEY = require('sdmx-tck-api').constants.DATA_QUERY_KEY;
 var TckError = require('sdmx-tck-api').errors.TckError;
 
 class DataRequestBuilder {
 
-    static prepareRequest(endpoint, apiVersion, template, testIdentifiers ,key, providerRef, detail,history) {
+    static prepareRequest(endpoint, apiVersion, template, flow ,key, provider, detail,history) {
         return new Promise((resolve, reject) => {
             try {
                 var service = sdmx_rest.getService({ url: endpoint, api: apiVersion });
                 
-                let flow = "";
-                if(template.agency && template.version){flow = (testIdentifiers.id)}
-                else if (template.version){ flow = (testIdentifiers.agency.concat(","+testIdentifiers.id))}
-                else if (!template.agency && !template.id &&!template.version){flow = (testIdentifiers.agency.concat(","+testIdentifiers.id.concat(","+testIdentifiers.version)))}
-
-                let provider = (template.providerId && template.providerAgency) ? providerRef.agencyId+","+providerRef.identifiableIds[0]:(template.providerId && !template.providerAgency)?providerRef.identifiableIds[0]:undefined
-                let detail = (template.detail) ? template.detail:undefined
-                // Inititalize request from parameters
                 var request = {
                     flow:flow,
                     key: key,

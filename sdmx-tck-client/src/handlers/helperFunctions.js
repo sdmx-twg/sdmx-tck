@@ -111,6 +111,9 @@ const searchChildTestsToPassIdentifiers = (test, runTest) => {
 					}
 					
 				}
+				if(test.subTests[i].requireRandomKey === true){
+					test.subTests[i].randomKey = runTest.randomKey;
+				}
 			}
 		}
 	} else if (test.subTests && Array.isArray(test.subTests)) {
