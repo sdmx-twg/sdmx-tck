@@ -20,6 +20,21 @@ class SeriesObject {
         return this.observations;
     }
 
+    complyWithRequestedKey(reqKey){
+        reqKey = reqKey.split(".")
+        let attributeValues = Object.values(this.getAttributes());
+        for(let i in reqKey){
+            if(reqKey[i]!==""){
+                if(reqKey[i].indexOf("+")!== -1){
+                    let keysWithOr = reqKey[i].split("+")
+                    if(!keysWithOr.some(key => key === attributeValues[i])){return false}
+                }else{
+                    if(reqKey[i] !== attributeValues[i]){return false}
+                }
+            }             
+        }
+        return true;
+    }
     hasAttribute(attribute){
         let attributeValues = Object.values(this.getAttributes());
         return attributeValues.some(attr=> attr === attribute)

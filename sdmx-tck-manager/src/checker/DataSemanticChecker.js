@@ -91,23 +91,10 @@ class DataSemanticChecker{
             throw new Error("Missing mandatory parameter 'workspace'")
         }
 
-        let keyArray = key.split(".")
-        keyArray = keyArray.filter(elem => {
-            return elem && elem!==""
-        })
         //TODO:IF THERE ARE MANY DATASETS WE HAVE TO SEARCH FOR EVERY ONE OF THEM?
         let series = workspace.getAllSeries();
         let result = series.filter(serieObj => {
-            for(let i in keyArray){
-                if(keyArray[i].indexOf("+") !== -1){
-                    let keysWithOr = keyArray[i].split("+")
-                    for(let j in keysWithOr){
-                        if(!serieObj.hasOneOfTheAttributes(keysWithOr)){return true}
-                    } 
-                }else{
-                    if(!serieObj.hasAttribute(keyArray[i])){return true}
-                }
-            }
+            return !serieObj.complyWithRequestedKey(key)
         })
         if(result.length > 0){return {status:FAILURE_CODE, error:"Error in Extenden Resource Identification: There are series that do not comply with the requested key." + JSON.stringify(result)} }
         return {status:SUCCESS_CODE}
