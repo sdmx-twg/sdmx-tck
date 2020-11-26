@@ -35,12 +35,18 @@ class DataRequestPropsBuilder {
         }
     }
 
-    static getProvider(providerRef,template){
-        if(template.providerId && template.providerAgency) {
-            return providerRef.agencyId+","+providerRef.identifiableIds[0]
-        }else if(template.providerId && !template.providerAgency){
-            return providerRef.identifiableIds[0]
+    static getProvider(providerRefs,template){
+        
+        if(providerRefs.length === 1){
+            if(template.provider && template.provider.providerAgency &&  template.provider.providerId) {
+                return providerRefs[0].agencyId+","+providerRefs[0].identifiableIds[0]
+            }else if(template.provider && !template.provider.providerAgency &&  template.provider.providerId){
+                return providerRefs[0].identifiableIds[0]
+            }
+        }else if(providerRefs.length ===2){
+            return providerRefs[0].identifiableIds[0]+","+providerRefs[1].identifiableIds[0]
         }
+        
         return;
 
 

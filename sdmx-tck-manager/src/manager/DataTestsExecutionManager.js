@@ -7,16 +7,22 @@ var DataRequestBuilder = require('../builders/DataRequestBuilder.js');
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
 var DataRequestPropsBuilder = require('../builders/DataRequestPropsBuilder.js')
+var HelperManager = require('../manager/HelperManager.js')
+var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 const sdmx_requestor = require('sdmx-rest');
 const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator');
 const { DATA_QUERY_KEY } = require('sdmx-tck-api/src/constants/data-queries-constants/DataQueryKey');
+const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
+const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
+
+
 class DataTestsExecutionManager {
     static async executeTest(toRun, apiVersion, endpoint) {
         let testResult = toRun;
         try {
             testResult.startTime = new Date();
             console.log("Test: " + toRun.testId + " started on " + testResult.startTime);
-
+            
             //IF NO IDENTIFIERS WERE FOUND IN TESTS THEN ERROR IS THROWN
             if(toRun.identifiers.structureType === "" && toRun.identifiers.agency === "" && toRun.identifiers.id === "" && toRun.identifiers.version === ""){
                 throw new TckError("Identifiers Missing because there are no "+SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key+" referencing a DF as well as a "+SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key+" .")
@@ -27,11 +33,35 @@ class DataTestsExecutionManager {
                     throw new TckError("There are no enough dimensions to perform this test.")
                 }
             }
+            let providerRefs = [];
+            if(toRun.reqTemplate.provider){
+                let helpTestParams = {
+                    testId: "/"+toRun.resource+"/agency/id/version?references="+STRUCTURE_REFERENCE_DETAIL.PARENTS,
+                    index: TEST_INDEX.Structure,
+                    apiVersion: apiVersion,
+                    resource: toRun.resource,
+                    reqTemplate: {references:STRUCTURE_REFERENCE_DETAIL.PARENTS},
+                    identifiers: {structureType:SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource),agency:toRun.identifiers.agency,id:toRun.identifiers.id,version:toRun.identifiers.version},
+                    testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
+                }
+                toRun.structureWorkspace = await HelperManager.getWorkspace(TestObjectBuilder.getTestObject(helpTestParams),apiVersion,endpoint);
+            
+                let provAggreements = toRun.structureWorkspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)
+                
+                if(toRun.reqTemplate.provider.num !== provAggreements.length){
+                    throw new TckError("This "+SDMX_STRUCTURE_TYPE.DATAFLOW.key+" does not have enough providers");
+                }
+                
+                provAggreements.forEach(pra =>{
+                    providerRefs.push(pra.getChildren().find(ref=> (ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key)))
+                })
+            }
+           
            
             let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,
                                                             DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getKey(toRun.randomKey,toRun.reqTemplate),
-                                                            DataRequestPropsBuilder.getProvider(toRun.providerInfo,toRun.reqTemplate),
+                                                            DataRequestPropsBuilder.getProvider(providerRefs,toRun.reqTemplate),
                                                             toRun.reqTemplate.detail,undefined);
 
             console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
