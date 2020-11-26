@@ -11,7 +11,7 @@ describe('Tests DataQuery parsing', function () {
        
         let xmlMessage = fs.readFileSync('./tests/resources/dataXMLtest.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
-            console.log(sdmxObjects)
+            console.log(sdmxObjects.validateSeriesAgainstKey(""))
         }).catch(function (err) {
             console.log(err);
         });
