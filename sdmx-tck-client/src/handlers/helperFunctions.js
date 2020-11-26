@@ -184,7 +184,6 @@ export function passDataToDataQueries(dataTests,dataQueriesData){
 			dataTests.subTests[i].identifiers.id = dataQueriesData.dataflowRef.id
 			dataTests.subTests[i].identifiers.version = dataQueriesData.dataflowRef.version
 
-			dataTests.subTests[i].providerInfo = dataQueriesData.refProvider
 			if (dataTests.subTests[i].subTests && Array.isArray(dataTests.subTests[i].subTests)) {
 				passDataToDataQueries(dataTests.subTests[i],dataQueriesData)
 			}

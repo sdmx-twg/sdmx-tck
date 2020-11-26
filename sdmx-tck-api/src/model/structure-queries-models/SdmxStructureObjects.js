@@ -238,13 +238,8 @@ class SdmxStructureObjects extends SdmxObjects{
 
 			let refDf = arrayOfPras[i].getChildren().find(ref=> (ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATAFLOW.key)
 			&& ref.getAgencyId() && ref.getId() && ref.getVersion());
-
-			let refProvider = arrayOfPras[i].getChildren().find(ref=> (ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key)
-			&& ref.getAgencyId() && ref.getId() && ref.getVersion());
-
-			if(refProvider && refDf){
+			if(refDf){
 				dataForDataQueries.dataflowRef = refDf
-				dataForDataQueries.refProvider = refProvider
 				return dataForDataQueries;
 			}
 		}
