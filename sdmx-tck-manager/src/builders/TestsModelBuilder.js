@@ -12,7 +12,8 @@ var StructureRepresentationSupportTestsBuilder = require("../builders/StructureR
 var SchemaIdentificationParametersTestBuilder = require("../builders/SchemaIdentificationParametersTestBuilder.js");
 var SchemaFurtherDescribingResultsParamTestsBuilder = require("../builders/SchemaFurtherDescribingResultsParamTestsBuilder.js")
 var DataIdentificationParametersTestBuilder = require("../builders/DataIdentificationParametersTestBuilder.js")
-var DataExtedndedResourceIdentificationTestBuilder = require('../builders/DataExtedndedResourceIdentificationTestBuilder.js')
+var DataExtedndedResourceIdentificationTestBuilder = require('../builders/DataExtedndedResourceIdentificationTestBuilder.js');
+const DataFurtherDescribingResultsTestBuilder = require('./DataFurtherDescribingResultsTestBuilder.js');
 class TestsModelBuilder {
     /**
      * Method that creates the model (object) in which the data of the app will be stored.
@@ -97,6 +98,7 @@ class TestsModelBuilder {
         }else if (index === TEST_INDEX.Data) {
             let dataTest1 = [];
             let dataTest2 = [];
+            let dataTest3 = [];
             let allTests = [];
            
             dataTest1 = DataIdentificationParametersTestBuilder.getDataIdentificationParametersTests(index,x,apiVersion)
@@ -112,7 +114,10 @@ class TestsModelBuilder {
                 testType: TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS,
                 subTests: DataExtedndedResourceIdentificationTestBuilder.getDataExtendedResourceIdentificationParametersTests(index,x,apiVersion)
             }
-            allTests = allTests.concat(dataTest1.concat(TestObjectBuilder.getTestObject(testObjParams)))
+            dataTest2 = dataTest2.concat(TestObjectBuilder.getTestObject(testObjParams));
+
+            dataTest3 = DataFurtherDescribingResultsTestBuilder.getDataFurtherDescribingTests(index,x,apiVersion)
+            allTests = allTests.concat(dataTest1.concat(dataTest2.concat(dataTest3)))
             
             return allTests;
         }else if (index === TEST_INDEX.Metadata) {

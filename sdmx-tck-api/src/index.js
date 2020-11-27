@@ -32,6 +32,7 @@ const DataIdentificationParameters = require('./constants/data-queries-constants
 const DataExtendedResourceIdentification = require('./constants/data-queries-constants/DataExtendedResourceIdentification.js')
 const DataComponentsTypes = require('./constants/data-queries-constants/DataComponentsTypes.js')
 const DataQueryKey = require('./constants/data-queries-constants/DataQueryKey.js')
+const DataFurtherDescribingResults = require('./constants/data-queries-constants/DataFurtherDescribingResults.js')
 // ERRORS
 var TckError = require('./errors/TckError.js');
 var SemanticError = require('./errors/SemanticError.js');
@@ -120,7 +121,8 @@ module.exports = {
         DATA_IDENTIFICATION_PARAMETERES:DataIdentificationParameters.DATA_IDENTIFICATION_PARAMETERS,
         DATA_COMPONENTS_TYPES:DataComponentsTypes.DATA_COMPONENTS_TYPES,
         DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS:DataExtendedResourceIdentification.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS,
-        DATA_QUERY_KEY:DataQueryKey.DATA_QUERY_KEY
+        DATA_QUERY_KEY:DataQueryKey.DATA_QUERY_KEY,
+        DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS:DataFurtherDescribingResults.DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS
     },
     errors: {
         TckError: TckError,

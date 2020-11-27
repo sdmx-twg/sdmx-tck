@@ -17,7 +17,8 @@ const TEST_TYPE = {
 
     //DATA TEST TYPES
     DATA_IDENTIFICATION_PARAMETERS:"Data Identification Parameters",
-    DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS:"Data Extended Resource Identification Parameters"
+    DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS:"Data Extended Resource Identification Parameters",
+    DATA_FURTHER_DESCRIBING_PARAMETERS:"Data Extended Resource Identification Parameters"
 };
 
 module.exports.TEST_TYPE = Object.freeze(TEST_TYPE);
