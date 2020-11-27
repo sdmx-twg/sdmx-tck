@@ -4,7 +4,7 @@ const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_RE
 
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 
-class DataExtedndedResourceIdentificationTestBuilder {
+class DataExtendedResourceIdentificationTestBuilder {
     
     static getDataExtendedResourceIdentificationParametersTests(index,x,apiVersion){
         let dataExtendedResourceIdentificationParamTests = [];
@@ -31,4 +31,4 @@ class DataExtedndedResourceIdentificationTestBuilder {
     }
 }
 
-module.exports = DataExtedndedResourceIdentificationTestBuilder;
+module.exports = DataExtendedResourceIdentificationTestBuilder;

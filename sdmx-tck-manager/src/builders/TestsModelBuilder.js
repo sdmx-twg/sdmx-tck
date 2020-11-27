@@ -12,7 +12,7 @@ var StructureRepresentationSupportTestsBuilder = require("../builders/StructureR
 var SchemaIdentificationParametersTestBuilder = require("../builders/SchemaIdentificationParametersTestBuilder.js");
 var SchemaFurtherDescribingResultsParamTestsBuilder = require("../builders/SchemaFurtherDescribingResultsParamTestsBuilder.js")
 var DataIdentificationParametersTestBuilder = require("../builders/DataIdentificationParametersTestBuilder.js")
-var DataExtedndedResourceIdentificationTestBuilder = require('../builders/DataExtedndedResourceIdentificationTestBuilder.js');
+var DataExtendedResourceIdentificationTestBuilder = require('../builders/DataExtendedResourceIdentificationTestBuilder.js');
 const DataFurtherDescribingResultsTestBuilder = require('./DataFurtherDescribingResultsTestBuilder.js');
 class TestsModelBuilder {
     /**
@@ -112,7 +112,7 @@ class TestsModelBuilder {
                 reqTemplate: {detail:DATA_QUERY_DETAIL.SERIES_KEYS_ONLY,representation:"application/vnd.sdmx.structurespecificdata+xml;version=2.1"},
                 identifiers: {structureType: "", agency: "", id: "", version: "" },
                 testType: TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS,
-                subTests: DataExtedndedResourceIdentificationTestBuilder.getDataExtendedResourceIdentificationParametersTests(index,x,apiVersion)
+                subTests: DataExtendedResourceIdentificationTestBuilder.getDataExtendedResourceIdentificationParametersTests(index,x,apiVersion)
             }
             dataTest2 = dataTest2.concat(TestObjectBuilder.getTestObject(testObjParams));
 
