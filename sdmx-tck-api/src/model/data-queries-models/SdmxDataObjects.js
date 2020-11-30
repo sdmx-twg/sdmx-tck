@@ -21,6 +21,13 @@ class SdmxDataObjects extends SdmxObjects{
         })
         return allSeries
     }
+    getAllGroups(){
+        let allGroups = [];
+        this.getDatasets().forEach(dataset => {
+            allGroups = allGroups.concat(dataset.getGroups())
+        })
+        return allGroups
+    }
     getRandomKey(){
         let series = this.getAllSeries();
         let randomIndex = Math.floor(Math.random() * series.length);

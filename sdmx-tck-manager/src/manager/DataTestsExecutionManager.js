@@ -36,11 +36,11 @@ class DataTestsExecutionManager {
             let providerRefs = [];
             if(toRun.reqTemplate.provider){
                 let helpTestParams = {
-                    testId: "/"+toRun.resource+"/agency/id/version?references="+STRUCTURE_REFERENCE_DETAIL.PARENTS,
+                    testId: "/"+toRun.resource+"/agency/id/version?references="+STRUCTURE_REFERENCE_DETAIL.ALL,
                     index: TEST_INDEX.Structure,
                     apiVersion: apiVersion,
                     resource: toRun.resource,
-                    reqTemplate: {references:STRUCTURE_REFERENCE_DETAIL.PARENTS},
+                    reqTemplate: {references:STRUCTURE_REFERENCE_DETAIL.ALL},
                     identifiers: {structureType:SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource),agency:toRun.identifiers.agency,id:toRun.identifiers.id,version:toRun.identifiers.version},
                     testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
                 }

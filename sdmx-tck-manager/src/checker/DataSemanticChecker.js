@@ -9,6 +9,8 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
 var HelperManager = require('../manager/HelperManager.js');
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
+const { DATA_QUERY_DETAIL } = require('sdmx-tck-api/src/constants/data-queries-constants/DataQueryDetail');
+const DataStructureGroupObject = require('sdmx-tck-api/src/model/structure-queries-models/DataStructureGroupObject');
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
@@ -23,6 +25,8 @@ class DataSemanticChecker{
                     validation = DataSemanticChecker.checkResourceIdentification(test,query,workspace)
                 }else if(test.testType === TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS){
                     validation = DataSemanticChecker.checkExtendedResourceIdentification(test,query, workspace)
+                }else if(test.testType === TEST_TYPE.DATA_FURTHER_DESCRIBING_PARAMETERS){
+                    validation = DataSemanticChecker.checkFurtherDescribingResults(test,query, workspace)
                 }
                 // } else if (test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARAMETER) {
                 //     validation = StructuresSemanticChecker.checkReferences(query, workspace);
@@ -37,7 +41,7 @@ class DataSemanticChecker{
             }
         });
     }
-
+    
     static async checkResourceIdentification(test,query,workspace){
         if(!query){
             throw new Error("Missing mandatory parameter 'query'")
@@ -198,6 +202,66 @@ class DataSemanticChecker{
         if(result.length > 0){return {status:FAILURE_CODE, error:"Error in Extenden Resource Identification: There are series that do not comply with the requested key." + JSON.stringify(result)} }
         return {status:SUCCESS_CODE}
 
+    }
+
+    static checkFurtherDescribingResults(test,query,workspace){
+
+        let dfObj = test.structureWorkspace.getSdmxObject(
+            new StructureReference(test.identifiers.structureType,
+                                    test.identifiers.agency,
+                                    test.identifiers.id,
+                                    test.identifiers.version)
+        )
+        let dsdObj = test.structureWorkspace.getSdmxObject(dfObj.getChildren().find(child => child.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key));
+        if (query.detail === DATA_QUERY_DETAIL.FULL){
+            return {status:SUCCESS_CODE}
+        }else if (query.detail === DATA_QUERY_DETAIL.DATA_ONLY){
+            let allSeries = workspace.getAllSeries();
+            if(workspace.getAllGroups().length > 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. Groups are not allowed when detail = dataonly"} 
+            }
+            let inValidSeries = allSeries.filter(s => {
+                return Object.getOwnPropertyNames(s.getAttributes()).some(attr=> !dsdObj.getComponents().find(comp=>(comp.getType()==="DIMENSION") && (comp.getId() == attr)))
+            })
+            if(inValidSeries.length > 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. Series are not allowed to have attributes other than dsd dimensions."}
+            }
+            return {status:SUCCESS_CODE}
+        }else if (query.detail === DATA_QUERY_DETAIL.NO_DATA){
+            let allSeries = workspace.getAllSeries();
+            if(workspace.getDatasets().find(dataset=>dataset.getObservations().length>0)
+                || allSeries.find(s=>s.getObservations().length>0)){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check.Observations are not allowed when detail = nodata"}
+            }
+            if(workspace.getAllGroups().length > 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. Groups are not allowed when detail = nodata"} 
+            }
+           
+            let inValidSeries = allSeries.filter(s => {
+                return Object.getOwnPropertyNames(s.getAttributes()).some(attr=> !dsdObj.getComponents().find(comp=>comp.id == attr))
+            })
+            if(inValidSeries.length > 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. Series are not allowed to have attributes other than dsd dimensions or dsd attributes"}
+            }
+            return {status:SUCCESS_CODE}
+        }else if (query.detail === DATA_QUERY_DETAIL.SERIES_KEYS_ONLY){
+            let allSeries = workspace.getAllSeries();
+            
+            if(workspace.getDatasets().find(dataset=>dataset.getObservations().length>0)
+                || allSeries.find(s=>s.getObservations().length>0)){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check.Observations are not allowed when detail = serieskeysonly"}
+            }
+            if(workspace.getAllGroups().length > 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. Groups are not allowed when detail = serieskeysonly"} 
+            }
+            let inValidSeries = allSeries.filter(s => {
+                return Object.getOwnPropertyNames(s.getAttributes()).some(attr=> !dsdObj.getComponents().find(comp=>(comp.getType()==="DIMENSION") && (comp.getId() == attr)))
+            })
+            if(inValidSeries.length > 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. Series are not allowed to have attributes other than dsd dimensions."}
+            }
+            return {status:SUCCESS_CODE}
+        }
     }
 }
 
