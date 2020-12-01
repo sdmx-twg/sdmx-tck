@@ -106,3 +106,29 @@ describe('Tests DataQuery semantic validation in Extended Resource Identificatio
         });
     });
 });
+
+describe('Tests DataQuery semantic validation in Further Describing Results Test', function () {
+    it('It should print semantic validation result', async () => {
+        
+        let query = {detail:"serieskeysonly"} 
+        let test = {identifiers:
+            { structureType: 'DATAFLOW',
+              agency: 'ECB',
+              id: 'EXR',
+              version: '1.0' }}
+        let xmlMessage = fs.readFileSync('./tests/resources/DFXmlForDataFurtherDescribingResults.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
+           test.structureWorkspace = structureWorkspace;
+        }).catch(function (err) {
+            console.log(err);
+        });
+
+        xmlMessage = fs.readFileSync('./tests/resources/DataXMLSeriesKeysOnly.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
+            let result = DataSemanticChecker.checkFurtherDescribingResults(test,query,sdmxObjects)
+            console.log(result)
+        }).catch(function (err) {
+            console.log(err);
+        });
+    });
+});
