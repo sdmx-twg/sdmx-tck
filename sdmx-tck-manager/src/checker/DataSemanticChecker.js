@@ -205,18 +205,33 @@ class DataSemanticChecker{
     }
 
     static checkFurtherDescribingResults(test,query,workspace){
+        if(!test){
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if(!query){
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if(!workspace || !workspace instanceof SdmxDataObjects){
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
 
-        let dfObj = test.structureWorkspace.getSdmxObject(
-            new StructureReference(test.identifiers.structureType,
-                                    test.identifiers.agency,
-                                    test.identifiers.id,
-                                    test.identifiers.version)
-        )
+        let dfObj = test.structureWorkspace.getSdmxObject(new StructureReference(test.identifiers.structureType,
+                                                                                    test.identifiers.agency,
+                                                                                    test.identifiers.id,
+                                                                                    test.identifiers.version))
         let dsdObj = test.structureWorkspace.getSdmxObject(dfObj.getChildren().find(child => child.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key));
+        let allSeries = workspace.getAllSeries();
+        
         if (query.detail === DATA_QUERY_DETAIL.FULL){
             return {status:SUCCESS_CODE}
         }else if (query.detail === DATA_QUERY_DETAIL.DATA_ONLY){
-            let allSeries = workspace.getAllSeries();
+            
+            if(allSeries.length === 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. No series found when detail = dataonly"}
+            }
+            if(workspace.getAllObservations().length === 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. No observations found when detail = dataonly"}
+            }
             if(workspace.getAllGroups().length > 0){
                 return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. Groups are not allowed when detail = dataonly"} 
             }
@@ -228,15 +243,12 @@ class DataSemanticChecker{
             }
             return {status:SUCCESS_CODE}
         }else if (query.detail === DATA_QUERY_DETAIL.NO_DATA){
-            let allSeries = workspace.getAllSeries();
-            if(workspace.getDatasets().find(dataset=>dataset.getObservations().length>0)
-                || allSeries.find(s=>s.getObservations().length>0)){
-                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check.Observations are not allowed when detail = nodata"}
+            if(workspace.getAllObservations().length > 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. No observations found when detail = nodata"}
             }
-            if(workspace.getAllGroups().length > 0){
-                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. Groups are not allowed when detail = nodata"} 
+            if(allSeries.length === 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. No series found when detail = nodata"}
             }
-           
             let inValidSeries = allSeries.filter(s => {
                 return Object.getOwnPropertyNames(s.getAttributes()).some(attr=> !dsdObj.getComponents().find(comp=>comp.id == attr))
             })
@@ -244,15 +256,15 @@ class DataSemanticChecker{
                 return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. Series are not allowed to have attributes other than dsd dimensions or dsd attributes"}
             }
             return {status:SUCCESS_CODE}
-        }else if (query.detail === DATA_QUERY_DETAIL.SERIES_KEYS_ONLY){
-            let allSeries = workspace.getAllSeries();
-            
-            if(workspace.getDatasets().find(dataset=>dataset.getObservations().length>0)
-                || allSeries.find(s=>s.getObservations().length>0)){
-                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check.Observations are not allowed when detail = serieskeysonly"}
+        }else if (query.detail === DATA_QUERY_DETAIL.SERIES_KEYS_ONLY){            
+            if(workspace.getAllObservations().length > 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. No observations found when detail = serieskeysonly"}
             }
             if(workspace.getAllGroups().length > 0){
                 return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. Groups are not allowed when detail = serieskeysonly"} 
+            }
+            if(allSeries.length === 0){
+                return {status:FAILURE_CODE, error:"Error in Further Describing Results semantic check. No series found when detail = serieskeysonly"}
             }
             let inValidSeries = allSeries.filter(s => {
                 return Object.getOwnPropertyNames(s.getAttributes()).some(attr=> !dsdObj.getComponents().find(comp=>(comp.getType()==="DIMENSION") && (comp.getId() == attr)))

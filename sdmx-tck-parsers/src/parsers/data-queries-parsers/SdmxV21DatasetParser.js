@@ -7,7 +7,6 @@ var DatasetObject = require('sdmx-tck-api').model.DatasetObject;
 
 class SdmxV21DatasetParser {
     static getDataset(dataset){
-        //console.log(Object.keys(dataset.$))
         let datasetId;
         let seriesArray = [];
         let groupsArray = [];

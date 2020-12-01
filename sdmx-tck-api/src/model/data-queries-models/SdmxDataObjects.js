@@ -14,6 +14,18 @@ class SdmxDataObjects extends SdmxObjects{
     getDatasets(){
         return this.getSdmxObjects().get(DATA_COMPONENTS_TYPES.DATASETS);
     }
+    getAllObservations(){
+        let allObservations = [];
+        this.getDatasets().forEach(dataset => {
+            allObservations = allObservations.concat(dataset.getObservations());
+        })
+
+        this.getAllSeries().forEach(s=> {
+            allObservations=allObservations.concat(s.getObservations());
+        })
+        return allObservations;
+
+    }
     getAllSeries(){
         let allSeries = [];
         this.getDatasets().forEach(dataset => {
