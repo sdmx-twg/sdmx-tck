@@ -9,9 +9,9 @@ const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYP
 describe('Tests DataQuery parsing', function () {
     it('It should print dataQuery XML workspce', async () => {
        
-        let xmlMessage = fs.readFileSync('./tests/resources/dataXMLtest.xml','utf8')
+        let xmlMessage = fs.readFileSync('./tests/resources/dataXMLDataOnly.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
-            console.log(sdmxObjects.validateSeriesAgainstKey(""))
+            console.log(sdmxObjects.sdmxObjects.get("DATASETS")[0].observations)
         }).catch(function (err) {
             console.log(err);
         });

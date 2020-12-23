@@ -109,14 +109,49 @@ describe('Tests DataQuery semantic validation in Extended Resource Identificatio
 
 describe('Tests DataQuery semantic validation in Further Describing Results Test', function () {
     it('It should print semantic validation result', async () => {
-        
-        let query = {detail:"serieskeysonly"} 
-        let test = {identifiers:
+        //START_PERIOD-END_PERIOD
+        let query = {end:"2017",start:"2003"}
+        let test = {}
+        let xmlMessage = fs.readFileSync('./tests/resources/DataXML.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
+            
+            let result = DataSemanticChecker.checkFurtherDescribingResults(test,query,structureWorkspace)
+            console.log("PERIODS TESTS")
+            console.log(result)
+        }).catch(function (err) {
+            console.log(err);
+        });
+
+        //FIRST_N_OBSERVATIONS/LAST_N_OBSERVATIONS
+        query = {lastNObs:3,start:"2009",end:"2010-Q4"}
+        test = {}
+
+        xmlMessage = fs.readFileSync('./tests/resources/DataXMLDataOnly.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
+            
+            test.indicativeSeries = structureWorkspace.sdmxObjects.get("DATASETS")[0].series[0]
+        }).catch(function (err) {
+            console.log(err);
+        });
+
+        xmlMessage = fs.readFileSync('./tests/resources/DataXMLNObservations.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
+            
+            let result = DataSemanticChecker.checkFurtherDescribingResults(test,query,structureWorkspace)
+            console.log("OBSERVATIONS NUM TESTS")
+            console.log(result)
+        }).catch(function (err) {
+            console.log(err);
+        });
+
+        //DETAIL TESTS
+        query = {detail:"serieskeysonly"} 
+        test = {identifiers:
             { structureType: 'DATAFLOW',
               agency: 'ECB',
               id: 'EXR',
               version: '1.0' }}
-        let xmlMessage = fs.readFileSync('./tests/resources/DFXmlForDataFurtherDescribingResults.xml','utf8')
+        xmlMessage = fs.readFileSync('./tests/resources/DFXmlForDataFurtherDescribingResults.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
            test.structureWorkspace = structureWorkspace;
         }).catch(function (err) {
@@ -126,6 +161,7 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
         xmlMessage = fs.readFileSync('./tests/resources/DataXMLSeriesKeysOnly.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
             let result = DataSemanticChecker.checkFurtherDescribingResults(test,query,sdmxObjects)
+            console.log("DETAIL TESTS")
             console.log(result)
         }).catch(function (err) {
             console.log(err);
