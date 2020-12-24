@@ -74,6 +74,7 @@ var DatasetObject = require('./model/data-queries-models/DatasetObject.js')
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
+var DateTransformations = require('./utils/DateTransformations.js')
 
 module.exports = {
     constants: {
@@ -166,6 +167,7 @@ module.exports = {
     },
     utils: {
         Utils,
+        DateTransformations:DateTransformations,
         UrnUtil: UrnUtil
     }
 };

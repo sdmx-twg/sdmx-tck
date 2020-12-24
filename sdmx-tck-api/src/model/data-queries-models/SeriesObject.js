@@ -1,4 +1,5 @@
 const { model } = require("../..");
+const TckError = require("../../errors/TckError");
 
 class SeriesObject {
 
@@ -48,6 +49,35 @@ class SeriesObject {
             }
             return false;
         })
+    }
+
+    equals(seriesObject){
+        if(!seriesObject instanceof SeriesObject){return false}
+        let equalsKeys = Object.keys(this.getAttributes()).every(key=>{
+            return Object.keys(seriesObject.getAttributes()).indexOf(key) !== -1;
+        })
+        let equalsValues = Object.values(this.getAttributes()).every(value=>{
+            return Object.values(seriesObject.getAttributes()).indexOf(value) !== -1;
+        })
+
+        if(!equalsKeys||!equalsValues){return false;}
+        return true;
+
+    }
+
+    getObservationsBetweenPeriod(startPeriod,endPeriod){
+        if(!startPeriod && !endPeriod){return this.getObservations()}
+        let observationsBetweenPeriod = this.getObservations().filter(obs=>{
+            if(startPeriod && !endPeriod){
+                return obs.isAfterDate(startPeriod)
+            }else if(!startPeriod && endPeriod){
+                return obs.isBeforeDate(endPeriod)
+            }else if (startPeriod && endPeriod){
+                return obs.isAfterDate(startPeriod) && obs.isBeforeDate(endPeriod)
+            }
+            
+        })
+        return observationsBetweenPeriod
     }
     
 }

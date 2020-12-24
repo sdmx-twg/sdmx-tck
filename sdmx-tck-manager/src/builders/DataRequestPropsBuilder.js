@@ -36,7 +36,7 @@ class DataRequestPropsBuilder {
     }
 
     static getProvider(providerRefs,template){
-        
+        if(!template.provider){return;}
         if(providerRefs.length === 1){
             if(template.provider && template.provider.providerAgency &&  template.provider.providerId) {
                 return providerRefs[0].agencyId+","+providerRefs[0].identifiableIds[0]
@@ -48,8 +48,58 @@ class DataRequestPropsBuilder {
         }
         
         return;
+    }
 
+    static getStartPeriod(indicativeSeries,template){
+        if(!template.startPeriod){return;}
+        let observations = indicativeSeries.getObservations()
+        if(observations.length ===1 || observations.length ===2 || observations.length ===3){
+            return observations[0].getAttributes().TIME_PERIOD;
+        }else{
+            return observations[1].getAttributes().TIME_PERIOD
+        }
+    }
 
+    static getEndPeriod(indicativeSeries,template){
+        if(!template.endPeriod){return;}
+        let observations = indicativeSeries.getObservations()
+        if(observations.length ===1){
+            return observations[0].getAttributes().TIME_PERIOD;
+        }else if(observations.length === 2 || observations.length === 3){
+            return observations[observations.length-1].getAttributes().TIME_PERIOD
+        }else{
+            return observations[observations.length-2].getAttributes().TIME_PERIOD
+        }
+    }
+
+    static getNumberOfObs(indicativeSeries,template){
+        let observations = indicativeSeries.getObservations()
+        if(observations.length ===1 || observations.length ===2 ){
+            return observations.length;
+        }else if(observations.length ===3){
+            return observations.length-1;
+        }else{
+            return 3;
+        }
+    }
+
+    static getNumOfFirstNObservations(indicativeSeries,template){
+        if(!template.firstNObservations){return;}
+        return this.getNumberOfObs(indicativeSeries,template)
+    }
+
+    static getNumOfLastNObservations(indicativeSeries,template){
+        if(!template.lastNObservations){return;}
+        if(template.startPeriod && template.endPeriod && template.lastNObservations){
+            indicativeSeries.setObservations(indicativeSeries.getObservationsBetweenPeriod(this.getStartPeriod(indicativeSeries,template),this.getEndPeriod(indicativeSeries,template)))
+        }
+        return this.getNumberOfObs(indicativeSeries,template)
+    }
+    static getUpdateAfterDate(indicativeSeries,template){
+        if(!template.updateAfter){return;}
+        let observations = indicativeSeries.getObservations();
+        let randomIndex = Math.floor(Math.random() * observations.length);
+        return observations[randomIndex].getAttributes().TIME_PERIOD;
     }
 }
 

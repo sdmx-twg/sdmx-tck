@@ -23,7 +23,7 @@ class DataFurtherDescribingResultsTestBuilder {
                 resource: STRUCTURES_REST_RESOURCE.dataflow,
                 reqTemplate: test.reqTemplate,
                 identifiers: { structureType: "", agency: "", id: "", version: "" },
-                testType: TEST_TYPE.DATA_FURTHER_DESCRIBING_PARAMETERS,
+                testType: TEST_TYPE.DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS,
             }
             dataFurtherDescribingResultsTests.push(TestObjectBuilder.getTestObject(testObjParams));
         };

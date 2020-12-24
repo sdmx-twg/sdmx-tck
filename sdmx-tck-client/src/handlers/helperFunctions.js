@@ -179,14 +179,24 @@ export function passDataToDataQueries(dataTests,dataQueriesData){
 	
 	if (dataTests.subTests && Array.isArray(dataTests.subTests)) {
 		for (let i = 0; i < dataTests.subTests.length; i++) {
-			dataTests.subTests[i].identifiers.structureType = dataQueriesData.dataflowRef.structureType
-			dataTests.subTests[i].identifiers.agency = dataQueriesData.dataflowRef.agencyId
-			dataTests.subTests[i].identifiers.id = dataQueriesData.dataflowRef.id
-			dataTests.subTests[i].identifiers.version = dataQueriesData.dataflowRef.version
+			if(dataQueriesData.refDf && dataQueriesData.indicativeSeries){
+				dataTests.subTests[i].identifiers.structureType = dataQueriesData.refDf.structureType
+				dataTests.subTests[i].identifiers.agency = dataQueriesData.refDf.agencyId
+				dataTests.subTests[i].identifiers.id = dataQueriesData.refDf.id
+				dataTests.subTests[i].identifiers.version = dataQueriesData.refDf.version
 
-			if (dataTests.subTests[i].subTests && Array.isArray(dataTests.subTests[i].subTests)) {
-				passDataToDataQueries(dataTests.subTests[i],dataQueriesData)
+				if(dataTests.subTests[i].reqTemplate.startPeriod 
+					|| dataTests.subTests[i].reqTemplate.endPeriod
+					|| dataTests.subTests[i].reqTemplate.firstNObservations
+					|| dataTests.subTests[i].reqTemplate.lastNObservations){
+
+						dataTests.subTests[i].indicativeSeries = dataQueriesData.indicativeSeries;
+				}
+				if (dataTests.subTests[i].subTests && Array.isArray(dataTests.subTests[i].subTests)) {
+					passDataToDataQueries(dataTests.subTests[i],dataQueriesData)
+				}
 			}
+			
 		}
 	}
 }

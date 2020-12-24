@@ -1,7 +1,10 @@
-const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
+const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE
 var SdmxXmlParser = require('sdmx-tck-parsers').parsers.SdmxXmlParser;
 var TckError = require('sdmx-tck-api').errors.TckError;
 var StructureRequestBuilder = require('../builders/StructureRequestBuilder.js');
+var DataRequestPropsBuilder = require('../builders/DataRequestPropsBuilder.js');
+var DataRequestBuilder = require('../builders/DataRequestBuilder.js');
+
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 const sdmx_requestor = require('sdmx-rest');
 const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator')
@@ -10,8 +13,9 @@ const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator')
 class HelperManager {
     static getWorkspace(toRun, apiVersion, endpoint) {
             return new Promise((resolve, reject) => {
-                StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
-                    toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
+                this.getPreparedRequest(toRun,apiVersion,endpoint)
+                // StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
+                //     toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
                     .then((preparedRequest) => {
                         toRun.preparedRequest = preparedRequest;
                         let url = new UrlGenerator().getUrl(preparedRequest.request, preparedRequest.service, true)
@@ -31,11 +35,23 @@ class HelperManager {
                         toRun.workspace = workspace.toJSON();
                         resolve(workspace)
                     }).catch((err) => {
+                        console.log(err)
                         reject(err);
                     });
             });
         
     };
+
+    static  getPreparedRequest(toRun,apiVersion,endpoint){
+        if(toRun.index === "Structure"){
+            return  StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
+                toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
+        }else if(toRun.index === "Data"){
+           return   DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,
+                DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate),
+                DataRequestPropsBuilder.getKey(toRun.randomKey,toRun.reqTemplate))
+        }
+    }
 };
 
 module.exports = HelperManager;

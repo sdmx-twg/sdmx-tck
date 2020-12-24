@@ -30,6 +30,9 @@ class TestObjectBuilder{
         if(testParams.hasOwnProperty('requireRandomKey') && testParams.requireRandomKey === true){
             testObj.requireRandomKey = true;
         }
+        if(testParams.hasOwnProperty('randomKey') && testParams.randomKey){
+            testObj.randomKey = testParams.randomKey;
+        }
 
         return testObj;
     }

@@ -4,7 +4,8 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 
 class DataRequestBuilder {
 
-    static prepareRequest(endpoint, apiVersion, template, flow ,key, provider, detail,history) {
+    static prepareRequest(endpoint, apiVersion, template, flow ,key, provider, detail,firstNObservations,lastNObservations,startPeriod,endPeriod,updateAfter,history) {
+
         return new Promise((resolve, reject) => {
             try {
                 var service = sdmx_rest.getService({ url: endpoint, api: apiVersion });
@@ -14,6 +15,11 @@ class DataRequestBuilder {
                     key: key,
                     provider: provider,
                     detail: detail,
+                    firstNObs:firstNObservations,
+                    lastNObs:lastNObservations,
+                    start:startPeriod,
+                    end:endPeriod,
+                    updateAfter:updateAfter,
                     history: history
                 };
                 // // Copy the values from the template to the final request

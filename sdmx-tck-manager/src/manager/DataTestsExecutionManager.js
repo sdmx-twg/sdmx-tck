@@ -12,8 +12,13 @@ var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 const sdmx_requestor = require('sdmx-rest');
 const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator');
 const { DATA_QUERY_KEY } = require('sdmx-tck-api/src/constants/data-queries-constants/DataQueryKey');
+const { SeriesKeyType } = require('sdmx-rest/lib/utils/sdmx-patterns');
+const SeriesObject = require('sdmx-tck-api').model.SeriesObject;
+const ObservationObject = require('sdmx-tck-api').model.ObservationObject;
 const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
+const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
+var StructureReference = require('sdmx-tck-api').model.StructureReference;
 
 
 class DataTestsExecutionManager {
@@ -34,7 +39,7 @@ class DataTestsExecutionManager {
                 }
             }
             let providerRefs = [];
-            if(toRun.reqTemplate.provider){
+            //if(toRun.reqTemplate.provider){
                 let helpTestParams = {
                     testId: "/"+toRun.resource+"/agency/id/version?references="+STRUCTURE_REFERENCE_DETAIL.ALL,
                     index: TEST_INDEX.Structure,
@@ -47,22 +52,48 @@ class DataTestsExecutionManager {
                 toRun.structureWorkspace = await HelperManager.getWorkspace(TestObjectBuilder.getTestObject(helpTestParams),apiVersion,endpoint);
             
                 let provAggreements = toRun.structureWorkspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)
-                
-                if(toRun.reqTemplate.provider.num !== provAggreements.length){
-                    throw new TckError("This "+SDMX_STRUCTURE_TYPE.DATAFLOW.key+" does not have enough providers");
-                }
-                
+                // if(toRun.reqTemplate.provider.num !== provAggreements.length){
+                //     throw new TckError("This "+SDMX_STRUCTURE_TYPE.DATAFLOW.key+" does not have enough providers");
+                // }
                 provAggreements.forEach(pra =>{
                     providerRefs.push(pra.getChildren().find(ref=> (ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key)))
                 })
+
+                let dfObj = toRun.structureWorkspace.getSdmxObject(new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource),toRun.identifiers.agency,toRun.identifiers.id,toRun.identifiers.version));
+                if(dfObj){
+                    let dsdRef = dfObj.getChildren().find(ref => ref.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key)
+                    if(dsdRef){
+                        toRun.dsdObj = toRun.structureWorkspace.getSdmxObject(dsdRef)
+                    }
+                }
+            //}
+            
+            
+            if(toRun.indicativeSeries){
+                let seriesObsArray=[];
+                toRun.indicativeSeries.observations.forEach(obs=>{
+                    seriesObsArray.push(new ObservationObject(obs.attributes))
+                })
+                toRun.indicativeSeries = new SeriesObject(toRun.indicativeSeries.attributes,seriesObsArray)
+                
+                
             }
-           
+            //console.log(toRun.indicativeSeries)
            
             let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,
                                                             DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getKey(toRun.randomKey,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getProvider(providerRefs,toRun.reqTemplate),
-                                                            toRun.reqTemplate.detail,undefined);
+                                                            toRun.reqTemplate.detail,
+                                                            DataRequestPropsBuilder.getNumOfFirstNObservations(toRun.indicativeSeries,toRun.reqTemplate),
+                                                            DataRequestPropsBuilder.getNumOfLastNObservations(toRun.indicativeSeries,toRun.reqTemplate),
+                                                            DataRequestPropsBuilder.getStartPeriod(toRun.indicativeSeries,toRun.reqTemplate),
+                                                            DataRequestPropsBuilder.getEndPeriod(toRun.indicativeSeries,toRun.reqTemplate),
+                                                            DataRequestPropsBuilder.getUpdateAfterDate(toRun.indicativeSeries,toRun.reqTemplate),
+                                                            toRun.reqTemplate.updateAfter);
+
+            
+            //console.log(toRun.indicativeSeries)
 
             console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
             
@@ -91,9 +122,8 @@ class DataTestsExecutionManager {
             let workspace = await new SdmxXmlParser().getIMObjects(response);
             testResult.workspace = workspace;
             console.log("Test: " + toRun.testId + " SDMX workspace created.");
-              
+      
 
-              
             // WORKSPACE VALIDATION
             let workspaceValidation = await SemanticCheckerFactory.getChecker(toRun).checkWorkspace(toRun, preparedRequest, workspace);
             testResult.workspaceValidation = workspaceValidation;
@@ -103,10 +133,11 @@ class DataTestsExecutionManager {
 
             //RANDOM KEY TO GIVE TO CHILDREN
             if(toRun.testType === TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS && !toRun.requireRandomKey){
-                testResult.randomKey = workspace.getRandomKey();
+                testResult.randomKey = workspace.getRandomKey(toRun.dsdObj);
             }
             
         } catch (err) {
+            console.log(err)
             testResult.failReason = err.toString();
         } finally {
             testResult.endTime = new Date();

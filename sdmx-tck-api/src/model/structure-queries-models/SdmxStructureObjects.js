@@ -1,12 +1,11 @@
 var SdmxObjects = require('../SdmxObjects.js');
 const DataflowObject = require('./DataflowObject.js');
-const StructureReference = require('./StructureReference.js');
 var isDefined = require('../../utils/Utils.js').isDefined;
 var SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
 var getResources = require('../../constants/StructuresRestResources.js').getResources
 const TEST_INDEX = require('../../constants/TestIndex.js').TEST_INDEX
 const STRUCTURES_REST_RESOURCE = require('../../constants/StructuresRestResources').STRUCTURES_REST_RESOURCE
-const DSD_COMPONENTS_NAMES = require("../../constants/structure-queries-constants/DSDComponents.js").DSD_COMPONENTS_NAMES
+
 class SdmxStructureObjects extends SdmxObjects{
     constructor(sdmxObjects){
         super(sdmxObjects)
@@ -229,22 +228,19 @@ class SdmxStructureObjects extends SdmxObjects{
 	return null;
 	}
 
-	getDataForDataQueries(){
+	// getDataForDataQueries(){
+	// 	let arrayOfPras = this.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)
+	// 	for(let i in arrayOfPras){
 
-		let dataForDataQueries = {};
+	// 		let refDf = arrayOfPras[i].getChildren().find(ref=> (ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATAFLOW.key)
+	// 		&& ref.getAgencyId() && ref.getId() && ref.getVersion());
 
-		let arrayOfPras = this.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)
-		for(let i in arrayOfPras){
-
-			let refDf = arrayOfPras[i].getChildren().find(ref=> (ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATAFLOW.key)
-			&& ref.getAgencyId() && ref.getId() && ref.getVersion());
-			if(refDf){
-				dataForDataQueries.dataflowRef = refDf
-				return dataForDataQueries;
-			}
-		}
-		return;
-	}
+	// 		if(refDf){
+	// 			return refDf
+	// 		}
+	// 	}
+	// 	return ;
+	// }
 }
 
 module.exports = SdmxStructureObjects;

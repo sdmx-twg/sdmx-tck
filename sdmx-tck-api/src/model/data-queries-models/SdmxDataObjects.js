@@ -1,4 +1,5 @@
-var SdmxObjects = require('../SdmxObjects.js')
+var SdmxObjects = require('../SdmxObjects.js');
+const DataStructureObject = require('../structure-queries-models/DataStructureObject.js');
 const DATA_COMPONENTS_TYPES = require('../../constants/data-queries-constants/DataComponentsTypes').DATA_COMPONENTS_TYPES
 
 class SdmxDataObjects extends SdmxObjects{
@@ -40,10 +41,20 @@ class SdmxDataObjects extends SdmxObjects{
         })
         return allGroups
     }
-    getRandomKey(){
+    getRandomKey(dsdObj){
+        if(!dsdObj || !dsdObj instanceof DataStructureObject){return;}
         let series = this.getAllSeries();
         let randomIndex = Math.floor(Math.random() * series.length);
-        return series[randomIndex].getAttributes()
+
+        let randomKey = {};
+        let dsdDimensions = dsdObj.getComponents().filter(comp => comp.getType()==="DIMENSION")
+        let seriesAtrributes = series[randomIndex].getAttributes();
+        dsdDimensions.forEach(dimension => {
+            if(seriesAtrributes.hasOwnProperty(dimension.getId())){
+                randomKey[dimension.getId()] = seriesAtrributes[dimension.getId()]
+            }
+        })
+        return randomKey;
     }
 }
 
