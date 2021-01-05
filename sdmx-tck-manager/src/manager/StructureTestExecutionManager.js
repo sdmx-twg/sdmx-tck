@@ -32,47 +32,52 @@ class StructureTestExecutionManager {
             let httpResponse = await sdmx_requestor.request2(url, preparedRequest.headers);
             //let httpResponse = await sdmx_requestor.request2(preparedRequest.request, preparedRequest.service, preparedRequest.headers);
             console.log("Test: " + toRun.testId + " HTTP response received.");
-
+            
             //// HTTP RESPONSE VALIDATION ////
             let httpResponseValidation = null;
-            if (toRun.testType === TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION) {
-                httpResponseValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
-            } else {
-                httpResponseValidation = await ResponseValidator.validateHttpResponse(preparedRequest.request, httpResponse);
-            }
+            httpResponseValidation = await ResponseValidator.validateHttpResponse(preparedRequest.request, httpResponse);
             testResult.httpResponseValidation = httpResponseValidation;
             console.log("Test: " + toRun.testId + " HTTP response validated. " + JSON.stringify(httpResponseValidation));
             if (httpResponseValidation.status === FAILURE_CODE) {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
+ 
+            //REPRESENTATION VALIDATION 
+            if (toRun.testType === TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION) {
+                let representationValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
+                testResult.representationValidation = representationValidation;
+                if (representationValidation.status === FAILURE_CODE) {
+                    throw new TckError("Representation validation failed. Cause: " + representationValidation.error);
+                }
+                return testResult
+            }
+           
 
             //// WORKSPACE VALIDATION ////
-            if (toRun.testType !== TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION) {
-                let workspace = await new SdmxXmlParser().getIMObjects(await httpResponse.text());
-                testResult.workspace = workspace;
-                console.log("Test: " + toRun.testId + " SDMX workspace created.");
-            
-                // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
-                var randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
-                if (toRun.resource === "structure") {
-                    randomStructure = workspace.getRandomSdmxObject();
-                }
-                testResult.randomStructure = {
-                    structureType: randomStructure.getStructureType(),
-                    agencyId: randomStructure.getAgencyId(),
-                    id: randomStructure.getId(),
-                    version: randomStructure.getVersion(),
-                };
-                if (randomStructure instanceof ItemSchemeObject) {
-                    testResult.randomItems = randomStructure.getItemsCombination();
-                }
+            let workspace = await new SdmxXmlParser().getIMObjects(await httpResponse.text());
+            testResult.workspace = workspace;
+            console.log("Test: " + toRun.testId + " SDMX workspace created.");
+        
+            // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
+            var randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
+            if (toRun.resource === "structure") {
+                randomStructure = workspace.getRandomSdmxObject();
+            }
+            testResult.randomStructure = {
+                structureType: randomStructure.getStructureType(),
+                agencyId: randomStructure.getAgencyId(),
+                id: randomStructure.getId(),
+                version: randomStructure.getVersion(),
+            };
+            if (randomStructure instanceof ItemSchemeObject) {
+                testResult.randomItems = randomStructure.getItemsCombination();
+            }
 
-                // WORKSPACE VALIDATION
-                let workspaceValidation = await SemanticCheckerFactory.getChecker(toRun).checkWorkspace(toRun, preparedRequest, workspace);
-                testResult.workspaceValidation = workspaceValidation;
-                if (workspaceValidation.status === FAILURE_CODE) {
-                    throw new TckError("Workspace validation failed: Cause: " + workspaceValidation.error);
-                }
+            // WORKSPACE VALIDATION
+            let workspaceValidation = await SemanticCheckerFactory.getChecker(toRun).checkWorkspace(toRun, preparedRequest, workspace);
+            testResult.workspaceValidation = workspaceValidation;
+            if (workspaceValidation.status === FAILURE_CODE) {
+                throw new TckError("Workspace validation failed: Cause: " + workspaceValidation.error);
             }
         } catch (err) {
             testResult.failReason = err.toString();
