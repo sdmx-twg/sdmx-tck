@@ -34,6 +34,7 @@ class DataRequestBuilder {
                 }
                 
                 let preparedRequest = { request: sdmx_rest.getDataQuery(request), service: service, headers: headers };
+                //console.log(preparedRequest)
                 resolve(preparedRequest);
             } catch (err) {
                 reject(new TckError(err));

@@ -78,8 +78,7 @@ class DataTestsExecutionManager {
                 
                 
             }
-            //console.log(toRun.indicativeSeries)
-           
+
             let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,
                                                             DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getKey(toRun.randomKey,toRun.reqTemplate),
@@ -93,8 +92,6 @@ class DataTestsExecutionManager {
                                                             toRun.reqTemplate.updateAfter);
 
             
-            //console.log(toRun.indicativeSeries)
-
             console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
             
             //Alternative way to pass the url generated as string in order to configure the skipDefaults parameter.
@@ -105,20 +102,25 @@ class DataTestsExecutionManager {
 
             //// HTTP RESPONSE VALIDATION ////
             let httpResponseValidation = null;
-            if (toRun.testType === TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION) {
-                httpResponseValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
-            } else {
-                httpResponseValidation = await ResponseValidator.validateHttpResponse(preparedRequest.request, httpResponse);
-            }
+            httpResponseValidation = await ResponseValidator.validateHttpResponse(preparedRequest.request, httpResponse);
             testResult.httpResponseValidation = httpResponseValidation;
             console.log("Test: " + toRun.testId + " HTTP response validated. " + JSON.stringify(httpResponseValidation));
             if (httpResponseValidation.status === FAILURE_CODE) {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
 
+            //REPRESENTATION VALIDATION 
+            if (toRun.testType === TEST_TYPE.DATA_REPRESENTATION_SUPPORT_PARAMETERS) {
+                let representationValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
+                testResult.representationValidation = representationValidation;
+                if (representationValidation.status === FAILURE_CODE) {
+                    throw new TckError("Representation validation failed. Cause: " + representationValidation.error);
+                }
+                return testResult
+            }
+
             //// WORKSPACE CREATION ////
             let response =await httpResponse.text() 
-            //console.log(response)
             let workspace = await new SdmxXmlParser().getIMObjects(response);
             testResult.workspace = workspace;
             console.log("Test: " + toRun.testId + " SDMX workspace created.");

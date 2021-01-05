@@ -3,6 +3,7 @@ const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_COD
 var TckError = require('sdmx-tck-api').errors.TckError;
 const sdmx_requestor = require('sdmx-rest');
 var isDefined = require('sdmx-tck-api').utils.Utils.isDefined;
+const DATA_QUERY_REPRESENTATIONS = require('sdmx-tck-api').constants.DATA_QUERY_REPRESENTATIONS;
 
 const STRUCTURE_QUERY_REPRESENTATIONS = require('sdmx-tck-api').constants.STRUCTURE_QUERY_REPRESENTATIONS;
 
@@ -40,10 +41,22 @@ class HttpResponseValidator {
                     sdmx_requestor.checkMediaType(STRUCTURE_QUERY_REPRESENTATIONS.WEIGHTED_SDMX_ML_21, response);
                 } else if (requestedRepresentation === STRUCTURE_QUERY_REPRESENTATIONS.WEIGHTED_SDMX_JSON_100) {
                     sdmx_requestor.checkMediaType(STRUCTURE_QUERY_REPRESENTATIONS.WEIGHTED_SDMX_JSON_100, response);
+                } else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.GENERIC){
+                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.GENERIC, response);
+                }else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC){
+                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC, response);
+                }else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.GENERIC_TIME_SERIES){
+                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.GENERIC_TIME_SERIES, response);
+                }else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC_TIME_SERIES){
+                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC_TIME_SERIES, response);
+                }else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.JSON_1_0_0){
+                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.JSON_1_0_0, response);
+                }else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.CSV_1_0_0){
+                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.CSV_1_0_0, response);
                 }
-                resolve({ status: SUCCESS_CODE, url: response.url, httpStatus: response.status });
+                resolve({ status: SUCCESS_CODE});
             } catch (err) {
-                resolve({ status: FAILURE_CODE, url: response.url, httpStatus: response.status, error: err.toString() });
+                resolve({ status: FAILURE_CODE, error: err.toString() });
             }
         });
     };

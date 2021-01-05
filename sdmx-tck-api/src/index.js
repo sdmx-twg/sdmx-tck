@@ -33,6 +33,8 @@ const DataExtendedResourceIdentification = require('./constants/data-queries-con
 const DataComponentsTypes = require('./constants/data-queries-constants/DataComponentsTypes.js')
 const DataQueryKey = require('./constants/data-queries-constants/DataQueryKey.js')
 const DataFurtherDescribingResults = require('./constants/data-queries-constants/DataFurtherDescribingResults.js')
+const DataRepresentationSupport = require('./constants/data-queries-constants/DataRepresentationSupport.js')
+const DataQueryRepresentations = require('./constants/data-queries-constants/DataQueryRepresentations.js')
 // ERRORS
 var TckError = require('./errors/TckError.js');
 var SemanticError = require('./errors/SemanticError.js');
@@ -123,7 +125,9 @@ module.exports = {
         DATA_COMPONENTS_TYPES:DataComponentsTypes.DATA_COMPONENTS_TYPES,
         DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS:DataExtendedResourceIdentification.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS,
         DATA_QUERY_KEY:DataQueryKey.DATA_QUERY_KEY,
-        DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS:DataFurtherDescribingResults.DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS
+        DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS:DataFurtherDescribingResults.DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS,
+        DATA_RESPRESENTATION_SUPPORT:DataRepresentationSupport.DATA_RESPRESENTATION_SUPPORT,
+        DATA_QUERY_REPRESENTATIONS:DataQueryRepresentations.DATA_QUERY_REPRESENTATIONS
     },
     errors: {
         TckError: TckError,

@@ -276,6 +276,9 @@ function updateTestStatus(testsArray, test, action) {
 		test.identifiers = action.test.identifiers;
 		test.httpResponseValidation = action.test.httpResponseValidation;
 		test.workspaceValidation = action.test.workspaceValidation;
+		if(action.test.representationValidation){
+			test.representationValidation = action.test.representationValidation
+		}
 		
 		if (action.state === TEST_STATE.FAILED) {
 			test.failReason = action.test.failReason;

@@ -13,6 +13,7 @@ var SchemaIdentificationParametersTestBuilder = require("../builders/SchemaIdent
 var SchemaFurtherDescribingResultsParamTestsBuilder = require("../builders/SchemaFurtherDescribingResultsParamTestsBuilder.js")
 var DataIdentificationParametersTestBuilder = require("../builders/DataIdentificationParametersTestBuilder.js")
 var DataExtendedResourceIdentificationTestBuilder = require('../builders/DataExtendedResourceIdentificationTestBuilder.js');
+var DataRepresentationSupportTestBuilder = require('../builders/DataRepresentationSupportTestBuilder.js')
 const DataFurtherDescribingResultsTestBuilder = require('./DataFurtherDescribingResultsTestBuilder.js');
 class TestsModelBuilder {
     /**
@@ -99,6 +100,7 @@ class TestsModelBuilder {
             let dataTest1 = [];
             let dataTest2 = [];
             let dataTest3 = [];
+            let dataTest4 = [];
             let allTests = [];
            
             // dataTest1 = DataIdentificationParametersTestBuilder.getDataIdentificationParametersTests(index,x,apiVersion)
@@ -116,8 +118,10 @@ class TestsModelBuilder {
             // }
             // dataTest2 = dataTest2.concat(TestObjectBuilder.getTestObject(testObjParams));
 
-            dataTest3 = DataFurtherDescribingResultsTestBuilder.getDataFurtherDescribingTests(index,x,apiVersion)
-            allTests = allTests.concat(dataTest1.concat(dataTest2.concat(dataTest3)))
+            //dataTest3 = DataFurtherDescribingResultsTestBuilder.getDataFurtherDescribingTests(index,x,apiVersion)
+
+            dataTest4 = DataRepresentationSupportTestBuilder.getDataRepresentationSupportTests(index,x,apiVersion)
+            allTests = allTests.concat(dataTest1.concat(dataTest2.concat(dataTest3.concat(dataTest4))))
             
             return allTests;
         }else if (index === TEST_INDEX.Metadata) {
