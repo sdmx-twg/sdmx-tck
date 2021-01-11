@@ -19,6 +19,9 @@ class DataRequestPropsBuilder {
     static getKey(fullKey,template){
         if(!fullKey){return;}
         let fullKeyValues = Object.values(fullKey)
+        if(template.mode === "exact" || template.mode ==="available"){
+            return fullKeyValues.join(".")
+        }
         if(template.key === DATA_QUERY_KEY.FULL_KEY){
             return fullKeyValues.join(".")
         }

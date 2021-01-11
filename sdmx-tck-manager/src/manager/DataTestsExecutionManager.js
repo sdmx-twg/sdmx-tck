@@ -89,7 +89,8 @@ class DataTestsExecutionManager {
                                                             DataRequestPropsBuilder.getStartPeriod(toRun.indicativeSeries,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getEndPeriod(toRun.indicativeSeries,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getUpdateAfterDate(toRun.indicativeSeries,toRun.reqTemplate),
-                                                            toRun.reqTemplate.updateAfter);
+                                                            toRun.reqTemplate.updateAfter,
+                                                            toRun.testType);
 
             
             console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));

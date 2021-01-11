@@ -19,7 +19,8 @@ const TEST_TYPE = {
     DATA_IDENTIFICATION_PARAMETERS:"Data Identification Parameters",
     DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS:"Data Extended Resource Identification Parameters",
     DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS:"Data Further Describing Results Parameters",
-    DATA_REPRESENTATION_SUPPORT_PARAMETERS:"Data Representation Support Parameters"
+    DATA_REPRESENTATION_SUPPORT_PARAMETERS:"Data Representation Support Parameters",
+    DATA_AVAILABILITY:"Data Availability"
 };
 
 module.exports.TEST_TYPE = Object.freeze(TEST_TYPE);

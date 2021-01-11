@@ -1,10 +1,10 @@
 const sdmx_rest = require('sdmx-rest');
 const DATA_QUERY_KEY = require('sdmx-tck-api').constants.DATA_QUERY_KEY;
 var TckError = require('sdmx-tck-api').errors.TckError;
-
+const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE
 class DataRequestBuilder {
 
-    static prepareRequest(endpoint, apiVersion, template, flow ,key, provider, detail,firstNObservations,lastNObservations,startPeriod,endPeriod,updateAfter,history) {
+    static prepareRequest(endpoint, apiVersion, template, flow ,key, provider, detail,firstNObservations,lastNObservations,startPeriod,endPeriod,updateAfter,history,testType) {
 
         return new Promise((resolve, reject) => {
             try {
@@ -22,6 +22,10 @@ class DataRequestBuilder {
                     updateAfter:updateAfter,
                     history: history
                 };
+
+                if(template.mode){
+                    request.mode = template.mode
+                }
                 // // Copy the values from the template to the final request
                 // for (var k in template) {
                 //     if (template[k] !== null && template[k] !== null) {
@@ -32,9 +36,9 @@ class DataRequestBuilder {
                 if (template.representation) {
                     headers = { headers: { accept: template.representation } }
                 }
-                
-                let preparedRequest = { request: sdmx_rest.getDataQuery(request), service: service, headers: headers };
-                //console.log(preparedRequest)
+                let preparedRequest = (testType !== TEST_TYPE.DATA_AVAILABILITY)?
+                    { request: sdmx_rest.getDataQuery(request), service: service, headers: headers }:
+                    { request: sdmx_rest.getAvailabilityQuery(request), service: service, headers: headers };
                 resolve(preparedRequest);
             } catch (err) {
                 reject(new TckError(err));
