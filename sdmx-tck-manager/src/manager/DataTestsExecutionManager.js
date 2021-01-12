@@ -33,8 +33,12 @@ class DataTestsExecutionManager {
                 throw new TckError("Identifiers Missing because there are no "+SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key+" referencing a DF as well as a "+SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key+" .")
             }
 
+            //THESE TESTS REQUIRE AT LEAST 2 DIMENSIONS IN EVERY SERIES AND A PAIR OF RANDOM KEYS TO PERFORM THE 'DIM1.DIM2.DIM31+DIM32.DIMn' TEST
             if(toRun.reqTemplate.key === DATA_QUERY_KEY.PARTIAL_KEY || toRun.reqTemplate.key === DATA_QUERY_KEY.MANY_KEYS){
-                if(Object.keys(toRun.randomKey).length < 2){
+                if(toRun.reqTemplate.key === DATA_QUERY_KEY.MANY_KEYS && toRun.randomKeys.length<2){
+                    throw new TckError("There are no enough different keys to perform the 'OR' statement of this test.")
+                }
+                if(Object.keys(toRun.randomKeys[0]).length < 2){
                     throw new TckError("There are no enough dimensions to perform this test.")
                 }
             }
@@ -81,7 +85,7 @@ class DataTestsExecutionManager {
 
             let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,
                                                             DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate),
-                                                            DataRequestPropsBuilder.getKey(toRun.randomKey,toRun.reqTemplate),
+                                                            DataRequestPropsBuilder.getKey(toRun.randomKeys,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getProvider(providerRefs,toRun.reqTemplate),
                                                             toRun.reqTemplate.detail,
                                                             DataRequestPropsBuilder.getNumOfFirstNObservations(toRun.indicativeSeries,toRun.reqTemplate),
@@ -136,7 +140,7 @@ class DataTestsExecutionManager {
 
             //RANDOM KEY TO GIVE TO CHILDREN
             if(toRun.testType === TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS && !toRun.requireRandomKey){
-                testResult.randomKey = workspace.getRandomKey(toRun.dsdObj);
+                testResult.randomKeys = workspace.getRandomKeysPair(toRun.dsdObj);
             }
             
         } catch (err) {

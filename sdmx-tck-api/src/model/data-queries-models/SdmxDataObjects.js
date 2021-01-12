@@ -41,20 +41,27 @@ class SdmxDataObjects extends SdmxObjects{
         })
         return allGroups
     }
-    getRandomKey(dsdObj){
+    getRandomKeysPair(dsdObj){
         if(!dsdObj || !dsdObj instanceof DataStructureObject){return;}
+
         let series = this.getAllSeries();
-        let randomIndex = Math.floor(Math.random() * series.length);
+        if(series.length === 0){return}
 
         let randomKey = {};
+        let randomKeyArr = []
         let dsdDimensions = dsdObj.getComponents().filter(comp => comp.getType()==="DIMENSION")
-        let seriesAtrributes = series[randomIndex].getAttributes();
-        dsdDimensions.forEach(dimension => {
-            if(seriesAtrributes.hasOwnProperty(dimension.getId())){
-                randomKey[dimension.getId()] = seriesAtrributes[dimension.getId()]
-            }
-        })
-        return randomKey;
+        for(let i in series){
+            randomKey = {}
+            let seriesAtrributes = series[i].getAttributes();
+            dsdDimensions.forEach(dimension => {
+                if(seriesAtrributes.hasOwnProperty(dimension.getId())){
+                    randomKey[dimension.getId()] = seriesAtrributes[dimension.getId()]
+                }
+            })
+            randomKeyArr.push(randomKey)
+            if(randomKeyArr.length === 2){break;}
+        }
+        return randomKeyArr;
     }
 }
 

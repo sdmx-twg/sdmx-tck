@@ -16,9 +16,9 @@ class DataRequestPropsBuilder {
         return;
     }
 
-    static getKey(fullKey,template){
-        if(!fullKey){return;}
-        let fullKeyValues = Object.values(fullKey)
+    static getKey(randomKeys,template){
+        if(!randomKeys){return;}
+        let fullKeyValues = Object.values(randomKeys[0])
         if(template.mode === "exact" || template.mode ==="available"){
             return fullKeyValues.join(".")
         }
@@ -32,9 +32,14 @@ class DataRequestPropsBuilder {
             return fullKeyValuesJoined.replace(fullKeyValues[2],"");
 
         }else if(template.key === DATA_QUERY_KEY.MANY_KEYS){
-            let fullKeyValuesJoined= fullKeyValues.join(".")
-            if(fullKeyValues.length === 2){return fullKeyValuesJoined.replace(fullKeyValues[0]+"."+fullKeyValues[1],fullKeyValues[0]+"+"+fullKeyValues[1])}
-            else{return fullKeyValuesJoined.replace(fullKeyValues[1]+"."+fullKeyValues[2],fullKeyValues[1]+"+"+fullKeyValues[2])}
+            let assistiveFullKeyValues = Object.values(randomKeys[1])
+            for(let i in fullKeyValues){
+                if(fullKeyValues[i]!== assistiveFullKeyValues[i]){
+                    fullKeyValues[i] = fullKeyValues[i].concat("+"+assistiveFullKeyValues[i])
+                    break;
+                }
+            }
+            return fullKeyValues.join(".")
         }
     }
 
