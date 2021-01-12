@@ -93,6 +93,63 @@ SDMX_STRUCTURE_TYPE.fromRestResource = function (restResource) {
             return null;
     }
 };
+SDMX_STRUCTURE_TYPE.matchXMLTagToMaintainable = function(tag){
+    switch(tag){
+        case "Structure":
+            return this.DSD.key;
+        case "StructureUsage":
+            return this.DATAFLOW.key;
+        case "Enumeration":
+            return this.CODE_LIST.key;
+        case "ConceptIdentity":
+            return this.CONCEPT_SCHEME.key
+        case "ConceptRole":
+            return this.CONCEPT_SCHEME.key
+        default:
+            return null;
+    }
+} 
+
+SDMX_STRUCTURE_TYPE.matchPathToMaintainable = function(path){
+    switch(path){
+        case "DataStructureComponents/DimensionList/Dimension/ConceptIdentity/Ref":
+            return this.CONCEPT_SCHEME.key
+        case "DataStructureComponents/DimensionList/Dimension/ConceptRole/Ref":
+            return this.CONCEPT_SCHEME.key
+        case "DataStructureComponents/DimensionList/Dimension/LocalRepresentation/Enumeration/Ref":
+            return this.CODE_LIST.key;
+        case "DataStructureComponents/MeasureList/PrimaryMeasure/ConceptIdentity/Ref":
+            return this.CONCEPT_SCHEME.key
+        case "DataStructureComponents/MeasureList/PrimaryMeasure/LocalRepresentation/Enumeration/Ref":
+            return this.CODE_LIST.key;
+        case "DataStructureComponents/AttributeList/Attribute/ConceptIdentity/Ref":
+            return this.CONCEPT_SCHEME.key
+        case "DataStructureComponents/AttributeList/Attribute/ConceptRole/Ref":
+            return this.CONCEPT_SCHEME.key
+        case "DataStructureComponents/AttributeList/Attribute/LocalRepresentation/Enumeration/Ref":
+            return this.CODE_LIST.key;
+        case "MetadataStructureComponents/ReportStructure/MetadataAttribute/ConceptIdentity/Ref":
+            return this.CONCEPT_SCHEME.key
+        case "MetadataStructureComponents/ReportStructure/MetadataAttribute/LocalRepresentation/Enumeration/Ref":
+            return this.CODE_LIST.key;
+        case "Concept/CoreRepresentation/Enumeration/Ref":
+            return this.CODE_LIST.key;
+        case "HierarchicalCode/CodeID/Ref":
+            return this.CODE_LIST.key;
+        case "IncludedCodelist/Ref":
+            return this.CODE_LIST.key;
+        case "Target/Ref":
+            return this.CATEGORY_SCHEME.key;
+        case "Structure/Ref":
+            return this.DSD.key;
+        case "CodelistMap/Source/Ref":
+            return this.CODE_LIST.key;
+        case "CodelistMap/Target/Ref":
+            return this.CODE_LIST.key;
+        default:
+            return null;
+    }
+} 
 
 SDMX_STRUCTURE_TYPE.getMaintainableStructureTypeByClass = function (urnClass) {
     if (urnClass == null) {
