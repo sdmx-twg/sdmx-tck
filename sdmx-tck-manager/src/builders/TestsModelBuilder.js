@@ -105,26 +105,38 @@ class TestsModelBuilder {
             let dataTest6 = [];
             let allTests = [];
            
-            // dataTest1 = DataIdentificationParametersTestBuilder.getDataIdentificationParametersTests(index,x,apiVersion)
+            dataTest1 = DataIdentificationParametersTestBuilder.getDataIdentificationParametersTests(index,x,apiVersion)
 
-            // x.numOfTests = x.numOfTests + 1;
-            // let testObjParams = {
-            //     testId: "/data/agency,id,version/all",
-            //     index: index,
-            //     apiVersion: apiVersion,
-            //     resource: STRUCTURES_REST_RESOURCE.dataflow,
-            //     reqTemplate: {detail:DATA_QUERY_DETAIL.SERIES_KEYS_ONLY,representation:"application/vnd.sdmx.structurespecificdata+xml;version=2.1"},
-            //     identifiers: {structureType: "", agency: "", id: "", version: "" },
-            //     testType: TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS,
-            //     subTests: DataExtendedResourceIdentificationTestBuilder.getDataExtendedResourceIdentificationParametersTests(index,x,apiVersion)
-            // }
-            // dataTest2 = dataTest2.concat(TestObjectBuilder.getTestObject(testObjParams));
+            x.numOfTests = x.numOfTests + 1;
+            let testObjParams = {
+                testId: "/data/agency,id,version/all",
+                index: index,
+                apiVersion: apiVersion,
+                resource: STRUCTURES_REST_RESOURCE.dataflow,
+                reqTemplate: {detail:DATA_QUERY_DETAIL.SERIES_KEYS_ONLY,representation:"application/vnd.sdmx.structurespecificdata+xml;version=2.1"},
+                identifiers: {structureType: "", agency: "", id: "", version: "" },
+                testType: TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS,
+                subTests: DataExtendedResourceIdentificationTestBuilder.getDataExtendedResourceIdentificationParametersTests(index,x,apiVersion)
+            }
+            dataTest2 = dataTest2.concat(TestObjectBuilder.getTestObject(testObjParams));
 
-            // dataTest3 = DataFurtherDescribingResultsTestBuilder.getDataFurtherDescribingTests(index,x,apiVersion)
+            dataTest3 = DataFurtherDescribingResultsTestBuilder.getDataFurtherDescribingTests(index,x,apiVersion)
 
-            //dataTest4 = DataRepresentationSupportTestBuilder.getDataRepresentationSupportTests(index,x,apiVersion)
+            dataTest4 = DataRepresentationSupportTestBuilder.getDataRepresentationSupportTests(index,x,apiVersion)
 
-            dataTest6 = DataAvailabilityTestBuilder.getDataAvailabilityTests(index,x,apiVersion)
+            x.numOfTests = x.numOfTests + 1;
+            testObjParams = {
+                testId: "availableconstraint/agency,dataflowId,version/all",
+                index: index,
+                apiVersion: apiVersion,
+                resource: STRUCTURES_REST_RESOURCE.dataflow,
+                reqTemplate: {},
+                identifiers: {structureType: "", agency: "", id: "", version: "" },
+                testType: TEST_TYPE.DATA_AVAILABILITY ,
+                subTests: DataAvailabilityTestBuilder.getDataAvailabilityTests(index,x,apiVersion)
+            }
+            dataTest6 = dataTest6.concat(TestObjectBuilder.getTestObject(testObjParams))
+
             allTests = allTests.concat(dataTest1.concat(dataTest2.concat(dataTest3.concat(dataTest4.concat(dataTest6)))))
             
             return allTests;
