@@ -51,6 +51,7 @@ var ItemObject = require('./model/structure-queries-models/ItemObject.js')
 var ComponentRepresentationObject = require('./model/structure-queries-models/ComponentRepresentationObject.js')
 var DataflowObject = require('./model/structure-queries-models/DataflowObject.js');
 var ContentConstraintObject = require('./model/structure-queries-models/ContentConstraintObject.js');
+var ConstraintReferencePeriod = require('./model/structure-queries-models/ConstraintReferencePeriod.js')
 var SdmxObjects = require('./model/SdmxObjects.js');
 var SdmxObjectsFactory = require('./model/SdmxObjectsFactory.js')
 var SdmxStructureObjects = require('./model/structure-queries-models/SdmxStructureObjects.js')
@@ -77,7 +78,8 @@ var DatasetObject = require('./model/data-queries-models/DatasetObject.js')
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
-var DateTransformations = require('./utils/DateTransformations.js')
+var DateTransformations = require('./utils/DateTransformations.js');
+var DatesHandling = require('./utils/DatesHandling.js');
 
 module.exports = {
     constants: {
@@ -154,6 +156,7 @@ module.exports = {
         SdmxSchemaObjects:SdmxSchemaObjects,
         CubeRegionObject: CubeRegionObject,
         ConstraintKeyValueObject:ConstraintKeyValueObject,
+        ConstraintReferencePeriod:ConstraintReferencePeriod,
         DataKeySetObject:DataKeySetObject,
         XSDGlobalElement:XSDGlobalElement,
         XSDSimpleType:XSDSimpleType,
@@ -174,6 +177,7 @@ module.exports = {
     utils: {
         Utils,
         DateTransformations:DateTransformations,
+        DatesHandling:DatesHandling,
         UrnUtil: UrnUtil
     }
 };
