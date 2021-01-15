@@ -8,12 +8,13 @@ var Utils = require('../../utils/Utils.js')
 
 
 class ContentConstraintObject extends MaintainableObject {
-    constructor(props, children, detail, cubeRegions, dataKeySets, referencePeriod) {
+    constructor(props, children, detail, cubeRegions, dataKeySets, referencePeriod,annotations) {
         super(SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key, props, children, detail);
         this.setType(props.$.type);
         this.setCubeRegions(cubeRegions);
         this.setDataKeySets(dataKeySets);
         this.setReferencePeriod(referencePeriod);
+        this.setAnnotations(annotations)
     };
     setDataKeySets(dataKeySets){
         this.dataKeySets = dataKeySets;
@@ -39,6 +40,12 @@ class ContentConstraintObject extends MaintainableObject {
     }
     getReferencePeriod(){
         return this.referencePeriod;
+    }
+    setAnnotations(annotations){
+        this.annotations = annotations;
+    }
+    getAnnotations(){
+        return this.annotations
     }
 
     getMatchingKeyValueDataInDSD(dsdObj){

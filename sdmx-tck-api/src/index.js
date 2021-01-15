@@ -52,6 +52,7 @@ var ComponentRepresentationObject = require('./model/structure-queries-models/Co
 var DataflowObject = require('./model/structure-queries-models/DataflowObject.js');
 var ContentConstraintObject = require('./model/structure-queries-models/ContentConstraintObject.js');
 var ConstraintReferencePeriod = require('./model/structure-queries-models/ConstraintReferencePeriod.js')
+var ConstraintAnnotationObject = require('./model/structure-queries-models/ConstraintAnnotationObject.js')
 var SdmxObjects = require('./model/SdmxObjects.js');
 var SdmxObjectsFactory = require('./model/SdmxObjectsFactory.js')
 var SdmxStructureObjects = require('./model/structure-queries-models/SdmxStructureObjects.js')
@@ -157,6 +158,7 @@ module.exports = {
         CubeRegionObject: CubeRegionObject,
         ConstraintKeyValueObject:ConstraintKeyValueObject,
         ConstraintReferencePeriod:ConstraintReferencePeriod,
+        ConstraintAnnotationObject:ConstraintAnnotationObject,
         DataKeySetObject:DataKeySetObject,
         XSDGlobalElement:XSDGlobalElement,
         XSDSimpleType:XSDSimpleType,

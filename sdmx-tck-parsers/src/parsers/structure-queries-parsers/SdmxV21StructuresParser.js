@@ -14,6 +14,7 @@ var SdmxV21JsonDataKeySetParser = require('./SdmxV21JsonDataKeySetParser.js')
 var SdmxV21JsonDsdComponentParser= require('./SdmxV21JsonDsdComponentParser.js')
 var SdmxV21DsdGroupParsers = require('./SdmxV21DsdGroupParsers.js') 
 var SdmxV21JsonReferencePeriodParser = require('./SdmxV21JsonReferencePeriodParser.js')
+var SdmxV21JsonAnnotationParser = require('./SdmxV21JsonAnnotationParser.js')
 class SdmxV21StructuresParser {
     static parseStructures(sdmxJsonObjects) {
        
@@ -142,7 +143,8 @@ class SdmxV21StructuresParser {
                         SdmxV21JsonForStubsParser.getDetail(structureType, constraints[c]),
                         SdmxV21JsonCubeRegionParser.getCubeRegions(constraints[c]),
                         SdmxV21JsonDataKeySetParser.getDataKeySets(constraints[c]),
-                        SdmxV21JsonReferencePeriodParser.getReferencePeriod(constraints[c])));
+                        SdmxV21JsonReferencePeriodParser.getReferencePeriod(constraints[c]),
+                        SdmxV21JsonAnnotationParser.getAnnotations(constraints[c])));
             }
         }
     };

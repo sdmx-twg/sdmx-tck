@@ -5,6 +5,8 @@ var SdmxV21StructureReferencesParser = require('./parsers/structure-queries-pars
 var SdmxV21JsonCubeRegionParser = require('./parsers/structure-queries-parsers/SdmxV21JsonCubeRegionParser.js');
 var SdmxV21JsonDataKeySetParser = require('./parsers/structure-queries-parsers/SdmxV21JsonDataKeySetParser.js');
 var SdmxV21ConstraintKeyValueParser = require('./parsers/structure-queries-parsers/SdmxV21ConstraintKeyValueParser.js');
+var SdmxV21JsonReferencePeriodParser = require('./parsers/structure-queries-parsers/SdmxV21JsonReferencePeriodParser.js')
+var SdmxV21JsonAnnotationParser = require('./parsers/structure-queries-parsers/SdmxV21JsonAnnotationParser.js')
 var SdmxXmlParser = require('./parsers/SdmxXmlParser.js');
 var SdmxV21JsonDsdComponentParser = require('./parsers/structure-queries-parsers/SdmxV21JsonDsdComponentParser.js')
 var SdmxV21StructuresParser = require('./parsers/structure-queries-parsers/SdmxV21StructuresParser.js')
@@ -19,6 +21,7 @@ var SdmxV21JsonComponentRepresentationParser = require('./parsers/structure-quer
 var SdmxV21DsdGroupParsers = require('./parsers/structure-queries-parsers/SdmxV21DsdGroupParsers.js')
 var SdmxV21DatasetParser = require('./parsers/data-queries-parsers/SdmxV21DatasetParser.js')
 var SdmxV21DatasetComponentsAttributesParser = require('./parsers/data-queries-parsers/SdmxV21DatasetComponentsAttributesParser.js')
+
 module.exports = {
     parsers: {
         SdmxV21JsonForStubsParser: SdmxV21JsonForStubsParser,
@@ -35,6 +38,8 @@ module.exports = {
         SdmxV21JsonCubeRegionParser: SdmxV21JsonCubeRegionParser,
         SdmxV21JsonDataKeySetParser:SdmxV21JsonDataKeySetParser,
         SdmxV21ConstraintKeyValueParser:SdmxV21ConstraintKeyValueParser,
+        SdmxV21JsonReferencePeriodParser:SdmxV21JsonReferencePeriodParser,
+        SdmxV21JsonAnnotationParser:SdmxV21JsonAnnotationParser,
         SdmxV21JsonDsdComponentParser: SdmxV21JsonDsdComponentParser,
         SdmxV21DsdGroupParsers:SdmxV21DsdGroupParsers,
         SdmxV21JsonDsdAttributeRelationshipParser:SdmxV21JsonDsdAttributeRelationshipParser,
