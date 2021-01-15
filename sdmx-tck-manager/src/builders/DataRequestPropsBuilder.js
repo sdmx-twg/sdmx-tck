@@ -60,6 +60,7 @@ class DataRequestPropsBuilder {
 
     static getStartPeriod(indicativeSeries,template){
         if(!template.startPeriod){return;}
+        if(typeof template.startPeriod === "string"){return template.startPeriod}
         let observations = indicativeSeries.getObservations()
         if(observations.length ===1 || observations.length ===2 || observations.length ===3){
             return observations[0].getAttributes().TIME_PERIOD;
@@ -70,6 +71,7 @@ class DataRequestPropsBuilder {
 
     static getEndPeriod(indicativeSeries,template){
         if(!template.endPeriod){return;}
+        if(typeof template.endPeriod === "string"){return template.endPeriod}
         let observations = indicativeSeries.getObservations()
         if(observations.length ===1){
             return observations[0].getAttributes().TIME_PERIOD;

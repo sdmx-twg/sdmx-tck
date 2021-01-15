@@ -138,10 +138,16 @@ class DataTestsExecutionManager {
                 throw new TckError("Workspace validation failed: Cause: " + workspaceValidation.error);
             }
 
-            //RANDOM KEY TO GIVE TO CHILDREN
+            //RANDOM KEY TO GIVE TO CHILDREN (DATA ECTENDED RESOURCES TESTS)
             if(toRun.testType === TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS && !toRun.requireRandomKey){
                 testResult.randomKeys = workspace.getRandomKeysPair(toRun.dsdObj);
             }
+
+            //RANDOM KEY TO GIVE TO CHILDREN (DATA AVAILABILITY TESTS)
+            if(toRun.testType === TEST_TYPE.DATA_AVAILABILITY && !toRun.requireRandomKey){
+                testResult.randomKeys = workspace.getRandomKeysPairFromAvailableConstraint();
+            }
+            
             
         } catch (err) {
             console.log(err)

@@ -228,6 +228,34 @@ class SdmxStructureObjects extends SdmxObjects{
 	return null;
 	}
 
+	getRandomKeysPairFromAvailableConstraint(){
+		let randomKey1 = {}
+		let randomKey2 = {}
+		let randomKeysArr = []
+		let constraint = this.getSdmxObjectsList().find(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
+		if(!constraint){return;}
+
+		let cubeRegions = constraint.getCubeRegions()
+		if(cubeRegions.length === 0){return;}
+		
+		let keyValues = cubeRegions[0].getKeyValues();
+		if(keyValues.length === 0){return;}
+
+		keyValues.forEach(keyValue => {
+			if(keyValue.getValues().length === 1){
+				randomKey1[keyValue.getId()] = keyValue.getValues()[0]
+				randomKey2[keyValue.getId()] = keyValue.getValues()[0]
+			}else if(keyValue.getValues().length>1){
+				randomKey1[keyValue.getId()] = keyValue.getValues()[0]
+				randomKey2[keyValue.getId()] = keyValue.getValues()[1]
+			}
+		})
+		randomKeysArr.push(randomKey1)
+		randomKeysArr.push(randomKey2)
+		return randomKeysArr;
+
+
+	}
 	// getDataForDataQueries(){
 	// 	let arrayOfPras = this.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)
 	// 	for(let i in arrayOfPras){

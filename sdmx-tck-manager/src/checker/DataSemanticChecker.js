@@ -5,6 +5,7 @@ var SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
 var FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 var Utils = require('sdmx-tck-api').utils.Utils;
 var SdmxDataObjects = require('sdmx-tck-api').model.SdmxDataObjects;
+var SdmxStructureObjects = require('sdmx-tck-api').model.SdmxStructureObjects;
 var TckError = require('sdmx-tck-api').errors.TckError;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
 var HelperManager = require('../manager/HelperManager.js');
@@ -27,6 +28,8 @@ class DataSemanticChecker {
                     validation = DataSemanticChecker.checkExtendedResourceIdentification(test, query, workspace)
                 } else if (test.testType === TEST_TYPE.DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS) {
                     validation = DataSemanticChecker.checkFurtherDescribingResults(test, query, workspace)
+                } else if (test.testType === TEST_TYPE.DATA_AVAILABILITY){
+                    validation = DataSemanticChecker.checkDataAvailability(test, query, workspace)
                 }
                 // } else if (test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARAMETER) {
                 //     validation = StructuresSemanticChecker.checkReferences(query, workspace);
@@ -324,9 +327,6 @@ class DataSemanticChecker {
             let requestedStartingDate = query.start
 
             let result = workspace.getAllObservations().every(obs => {
-                if(obs.isAfterDate(requestedStartingDate) == false){
-                    console.log(obs)
-                }
                 return obs.isAfterDate(requestedStartingDate)
             });
             if (result) {
@@ -407,6 +407,106 @@ class DataSemanticChecker {
 
 
 
+    }
+
+    static checkDataAvailability(test, query, workspace){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        let constraint = workspace.getSdmxObjectsList().find(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
+		if(!constraint){throw new Error("No constraint returned.")}
+
+        //Check parent test for data availability
+        if(Object.keys(test.reqTemplate).length === 0){
+            let cubeRegions = constraint.getCubeRegions()
+            if(cubeRegions.length === 0){throw new Error("The constraint does not have any cube regions.")}
+            
+            let keyValues = cubeRegions[0].getKeyValues();
+            if(keyValues.length === 0){throw new Error("The cube region does not any keyValues.")}
+        }
+
+        if (test.reqTemplate.mode){
+            return this._checkSimpleKeys(test, query, workspace,constraint)
+        }
+        if (query.start || query.end){
+            return this._temporalCoverage(test, query, workspace,constraint)
+        }
+        return { status: SUCCESS_CODE }
+    }
+
+   static _checkSimpleKeys(test,query,workspace,constraint){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        let cubeRegions = constraint.getCubeRegions()
+        if(cubeRegions.length > 2){throw new Error("The constraint should have one Cube Region.")}
+        let result;
+        if(test.reqTemplate.mode ==="exact"){
+            result = cubeRegions.some(cubeRegion => {
+                let keyValues = cubeRegion.getKeyValues();
+                for(let i in keyValues){
+                    let requestedKey = query.key.split(".")[i]
+                    if(requestedKey.indexOf("+") === -1){
+                        return keyValues.getValues().some(val=>val!== requestedKey)
+                    }else{
+                        return keyValues.getValues().some(val=>(val!== requestedKey.split("+")[0]) && (val!== requestedKey.split("+")[1]))
+                    }
+                }
+            })
+        }
+        
+        if(result){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. KeyValues were found that do not comply with the requested key. "}
+        }
+
+        return { status: SUCCESS_CODE }
+       
+
+    }
+
+    static _temporalCoverage(test,query,workspace,constraint){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        let constraintRefPeriod = constraint.getReferencePeriod()
+        if(query.start && !query.end){
+            let result = constraintRefPeriod.isAfterDate(query.start)
+            if(!result){
+                return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. StartTime of ReferencePeriod does not comply with the requested one" }
+            }
+        }else if (!query.start && query.end){
+            let result = constraintRefPeriod.isBeforeDate(query.end)
+            if(!result){
+                return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. EndTime of ReferencePeriod does not comply with the requested one" }
+            }
+        }else if(query.start && query.end){
+            let result =  constraintRefPeriod.isAfterDate(query.start) && constraintRefPeriod.isBeforeDate(query.end)
+            if(!result){
+                return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. ReferencePeriod times do not comply with the requested startPeriod or EndPeriod." }
+            }
+        }
+        return { status: SUCCESS_CODE }
     }
 }
 
