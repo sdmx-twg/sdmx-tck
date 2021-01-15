@@ -4,6 +4,7 @@ var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST
 var getResources = require('sdmx-tck-api').constants.getResources;
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
 const DATA_QUERY_DETAIL = require("sdmx-tck-api").constants.DATA_QUERY_DETAIL;
+const API_VERSIONS = require('sdmx-tck-api').constants.API_VERSIONS
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 var StructureIdentificationParametersTestsBuilder = require("../builders/StructureIdentificationParametersTestsBuilder.js");
 var StructureExtendedResourceIdentParamTestsBuilder = require("../builders/StructureExtendedResourceIdentParamTestsBuilder.js");
@@ -123,19 +124,20 @@ class TestsModelBuilder {
             dataTest3 = DataFurtherDescribingResultsTestBuilder.getDataFurtherDescribingTests(index,x,apiVersion)
 
             dataTest4 = DataRepresentationSupportTestBuilder.getDataRepresentationSupportTests(index,x,apiVersion)
-
-            x.numOfTests = x.numOfTests + 1;
-            testObjParams = {
-                testId: "availableconstraint/agency,dataflowId,version/all",
-                index: index,
-                apiVersion: apiVersion,
-                resource: STRUCTURES_REST_RESOURCE.dataflow,
-                reqTemplate: {},
-                identifiers: {structureType: "", agency: "", id: "", version: "" },
-                testType: TEST_TYPE.DATA_AVAILABILITY ,
-                subTests: DataAvailabilityTestBuilder.getDataAvailabilityTests(index,x,apiVersion)
+            if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]) {
+                x.numOfTests = x.numOfTests + 1;
+                let testObjParams = {
+                    testId: "/availableconstraint/agency,dataflowId,version/all",
+                    index: index,
+                    apiVersion: apiVersion,
+                    resource: STRUCTURES_REST_RESOURCE.dataflow,
+                    reqTemplate: {},
+                    identifiers: {structureType: "", agency: "", id: "", version: "" },
+                    testType: TEST_TYPE.DATA_AVAILABILITY ,
+                    subTests: DataAvailabilityTestBuilder.getDataAvailabilityTests(index,x,apiVersion)
+                }
+                dataTest6 = dataTest6.concat(TestObjectBuilder.getTestObject(testObjParams))
             }
-            dataTest6 = dataTest6.concat(TestObjectBuilder.getTestObject(testObjParams))
 
             allTests = allTests.concat(dataTest1.concat(dataTest2.concat(dataTest3.concat(dataTest4.concat(dataTest6)))))
             
