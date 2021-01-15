@@ -36,3 +36,19 @@ describe('Tests Data Availability Temporal coverage tests', function () {
     });
 });
 
+describe('Tests Data Availability Metric test', function () {
+    it('It should print semantic validation result', async () => {
+                
+        xmlMessage = fs.readFileSync('./tests/resources/DataAvailabilityAll.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
+            let test = {reqTemplate:{}}
+            let query={metrics:true}
+            //let contentconstraint = sdmxObjects.sdmxObjects.get("CONTENT_CONSTRAINT")
+            let result = DataSemanticChecker.checkDataAvailability(test,query,sdmxObjects)
+            console.log(result)
+        }).catch(function (err) {
+            console.log(err);
+        });
+    });
+});
+
