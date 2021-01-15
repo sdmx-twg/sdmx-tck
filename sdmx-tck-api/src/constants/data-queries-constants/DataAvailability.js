@@ -6,6 +6,8 @@ const DATA_AVAILABILITY = {
     TEMPORAL_COVERAGE_1:{ url: "/agency,dataflowId,version/all?startPeriod=2010-01", template: {startPeriod:"2010-01"}},
     TEMPORAL_COVERAGE_2:{ url: "/agency,dataflowId,version/all?endPeriod=2020-01", template: {endPeriod:"2020-01"}},
     TEMPORAL_COVERAGE_3:{ url: "/agency,dataflowId,version/all?startPeriod=2010-01&endPeriod=2020-01", template: {startPeriod:"2010-01",endPeriod:"2020-01"}},
+    METRICS:{ url: "/agency,dataflowId,version/all", template: {metrics:true}},
+
     getDataAvailabilityParameters(apiVersion) {
         var dataAvailabilityTests = [];
         if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]) {
@@ -14,6 +16,7 @@ const DATA_AVAILABILITY = {
             dataAvailabilityTests.push(DATA_AVAILABILITY.TEMPORAL_COVERAGE_1)
             dataAvailabilityTests.push(DATA_AVAILABILITY.TEMPORAL_COVERAGE_2)
             dataAvailabilityTests.push(DATA_AVAILABILITY.TEMPORAL_COVERAGE_3)
+            dataAvailabilityTests.push(DATA_AVAILABILITY.METRICS)
         }
         return dataAvailabilityTests;
     }

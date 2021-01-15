@@ -436,7 +436,10 @@ class DataSemanticChecker {
             return this._checkSimpleKeys(test, query, workspace,constraint)
         }
         if (query.start || query.end){
-            return this._temporalCoverage(test, query, workspace,constraint)
+            return this._checkTemporalCoverage(test, query, workspace,constraint)
+        }
+        if (query.metrics){
+            return this._checkMetrics(test,query,workspace,constraint)
         }
         return { status: SUCCESS_CODE }
     }
@@ -478,7 +481,7 @@ class DataSemanticChecker {
 
     }
 
-    static _temporalCoverage(test,query,workspace,constraint){
+    static _checkTemporalCoverage(test,query,workspace,constraint){
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
         }
@@ -505,6 +508,31 @@ class DataSemanticChecker {
             if(!result){
                 return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. ReferencePeriod times do not comply with the requested startPeriod or EndPeriod." }
             }
+        }
+        return { status: SUCCESS_CODE }
+    }
+
+    static _checkMetrics(test,query,workspace,constraint){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        let constraintAnnotations = constraint.getAnnotations();
+        let result=true;
+        if(constraintAnnotations){
+            result = constraintAnnotations.every(annotation=>{
+                return (annotation.getId()==='series_count' || annotation.getId()==='obs_count') &&  annotation.getType() === 'sdmx_metrics'
+                && Number.isInteger(parseInt(annotation.getTitle())) && parseInt(annotation.getTitle())>0
+            })
+        }
+        if(!result){
+            return { status: FAILURE_CODE, error: "Error in Data Availability Metric semantic check. Wrong Annotation." }
         }
         return { status: SUCCESS_CODE }
     }
