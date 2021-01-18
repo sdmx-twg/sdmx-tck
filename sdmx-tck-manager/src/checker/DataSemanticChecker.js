@@ -493,20 +493,22 @@ class DataSemanticChecker {
         }
 
         let constraintRefPeriod = constraint.getReferencePeriod()
-        if(query.start && !query.end){
-            let result = constraintRefPeriod.isAfterDate(query.start)
-            if(!result){
-                return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. StartTime of ReferencePeriod does not comply with the requested one" }
-            }
-        }else if (!query.start && query.end){
-            let result = constraintRefPeriod.isBeforeDate(query.end)
-            if(!result){
-                return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. EndTime of ReferencePeriod does not comply with the requested one" }
-            }
-        }else if(query.start && query.end){
-            let result =  constraintRefPeriod.isAfterDate(query.start) && constraintRefPeriod.isBeforeDate(query.end)
-            if(!result){
-                return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. ReferencePeriod times do not comply with the requested startPeriod or EndPeriod." }
+        if(constraintRefPeriod){
+            if(query.start && !query.end){
+                let result = constraintRefPeriod.isAfterDate(query.start)
+                if(!result){
+                    return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. StartTime of ReferencePeriod does not comply with the requested one" }
+                }
+            }else if (!query.start && query.end){
+                let result = constraintRefPeriod.isBeforeDate(query.end)
+                if(!result){
+                    return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. EndTime of ReferencePeriod does not comply with the requested one" }
+                }
+            }else if(query.start && query.end){
+                let result =  constraintRefPeriod.isAfterDate(query.start) && constraintRefPeriod.isBeforeDate(query.end)
+                if(!result){
+                    return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. ReferencePeriod times do not comply with the requested startPeriod or EndPeriod." }
+                }
             }
         }
         return { status: SUCCESS_CODE }
