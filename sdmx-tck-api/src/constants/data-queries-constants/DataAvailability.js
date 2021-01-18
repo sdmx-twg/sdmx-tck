@@ -6,7 +6,7 @@ const DATA_AVAILABILITY = {
     TEMPORAL_COVERAGE_1:{ url: "/agency,dataflowId,version/all?startPeriod=2010-01", template: {startPeriod:"2010-01"}},
     TEMPORAL_COVERAGE_2:{ url: "/agency,dataflowId,version/all?endPeriod=2020-01", template: {endPeriod:"2020-01"}},
     TEMPORAL_COVERAGE_3:{ url: "/agency,dataflowId,version/all?startPeriod=2010-01&endPeriod=2020-01", template: {startPeriod:"2010-01",endPeriod:"2020-01"}},
-    METRICS:{ url: "/agency,dataflowId,version/all", template: {metrics:true}},
+    METRICS:{ url: "/agency,dataflowId,version/all (metrics)", template: {metrics:true}},
 
     getDataAvailabilityParameters(apiVersion) {
         var dataAvailabilityTests = [];
