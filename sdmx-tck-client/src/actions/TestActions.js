@@ -158,11 +158,15 @@ async function runTests(endpoint, tests) {
 };
 
 export async function runTest(endpoint, test) {
-    /*Reference partial testing requires a Content Constraint of "allowed" type.
+    /*
+    1) Reference partial testing requires a Content Constraint of "allowed" type.
     In the case that the identifiers given to this test by its parent do not lead
     in an allowed type, the workspace of the parent has to be kept in order to repick
-    a content constraint artefact of allowed type.*/
-    if(test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL){
+    a content constraint artefact of allowed type.
+    
+    2. Data queries with mode='available' (Data Availability) need parent workspace in order to be validated*/
+    if(test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL || 
+        (test.testType === TEST_TYPE.DATA_AVAILABILITY && test.reqTemplate.mode === "available")){
         store.dispatch(dataFromParent(test));
     }
     if(test.state!==TEST_STATE.COMPLETED && test.state!==TEST_STATE.FAILED && test.state!==TEST_STATE.UNABLE_TO_RUN ){

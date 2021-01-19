@@ -34,6 +34,15 @@ class ConstraintKeyValueObject {
     getValues(){
         return this.values
     }
+
+    equals(otherKeyValue){
+        if(!otherKeyValue || !otherKeyValue instanceof ConstraintKeyValueObject){return false;}
+        let valuesEqual = this.values.every(val => otherKeyValue.getValues().indexOf(val)!==-1)
+        return  this.getId() === otherKeyValue.getId() && 
+                this.getOrigin() === otherKeyValue.getOrigin() &&
+                this.getIncludeType() === otherKeyValue.getIncludeType() &&
+                valuesEqual
+    }
     
 };
 

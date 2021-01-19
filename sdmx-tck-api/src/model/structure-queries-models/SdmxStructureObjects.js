@@ -256,6 +256,14 @@ class SdmxStructureObjects extends SdmxObjects{
 
 
 	}
+	static fromJson(sdmxObjectsJson){
+		if(!sdmxObjectsJson){throw new Error("Invalid parameter 'sdmxObjectsJson' ")}
+		let parentWorkspaceMap = new Map();
+		for(const prop in sdmxObjectsJson.sdmxObjects){
+			parentWorkspaceMap.set(prop,sdmxObjectsJson.sdmxObjects[prop])
+		}            
+		return new SdmxStructureObjects(parentWorkspaceMap);
+	}
 	// getDataForDataQueries(){
 	// 	let arrayOfPras = this.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)
 	// 	for(let i in arrayOfPras){

@@ -3,7 +3,9 @@ const SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX
 var CubeRegionObject = require('./CubeRegionObject.js')
 var DataKeySetObject = require('./DataKeySetObject.js');
 var ConstraintKeyValueObject = require('./ConstraintKeyValueObject.js')
+var ConstraintReferencePeriod = require('./ConstraintReferencePeriod.js')
 var StructureReference = require('./StructureReference.js')
+var ConstraintAnnotationObject = require('./ConstraintAnnotationObject.js')
 var Utils = require('../../utils/Utils.js')
 
 
@@ -206,7 +208,18 @@ class ContentConstraintObject extends MaintainableObject {
             dataKeySetsArr.push(new DataKeySetObject({$:{includeType:dataKeySet.includeType}},keys))
         })
 
-        return new ContentConstraintObject (props,childrenArr,detail,cubeRegionsArr,dataKeySetsArr)
+        let referencePeriod = (jsObj.referencePeriod)?jsObj.referencePeriod:undefined
+        if(referencePeriod){
+            referencePeriod = new ConstraintReferencePeriod(referencePeriod.startTime,referencePeriod.endTime)
+        }
+
+        let annotations = (jsObj.annotations)?jsObj.annotations:[]
+        let annotationsArr = []
+        annotations.forEach(annotation =>{
+            annotationsArr.push(new ConstraintAnnotationObject(annotation.id,annotation.type,annotation.title))
+        });
+
+        return new ContentConstraintObject (props,childrenArr,detail,cubeRegionsArr,dataKeySetsArr,referencePeriod,annotationsArr)
 
     }
 };

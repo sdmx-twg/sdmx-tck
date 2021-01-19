@@ -15,6 +15,8 @@ const DataStructureGroupObject = require('sdmx-tck-api/src/model/structure-queri
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
+var ContentConstraintObject = require('sdmx-tck-api').model.ContentConstraintObject;
+
 class DataSemanticChecker {
 
     static checkWorkspace(test, preparedRequest, workspace) {
@@ -429,7 +431,7 @@ class DataSemanticChecker {
             if(cubeRegions.length === 0){throw new Error("The constraint does not have any cube regions.")}
             
             let keyValues = cubeRegions[0].getKeyValues();
-            if(keyValues.length === 0){throw new Error("The cube region does not any keyValues.")}
+            if(keyValues.length === 0){throw new Error("The cube region does not have any keyValues.")}
         }
 
         if (test.reqTemplate.mode){
@@ -458,22 +460,44 @@ class DataSemanticChecker {
         let cubeRegions = constraint.getCubeRegions()
         if(cubeRegions.length > 2){throw new Error("The constraint should have one Cube Region.")}
         let result;
+
         if(test.reqTemplate.mode ==="exact"){
             result = cubeRegions.some(cubeRegion => {
                 let keyValues = cubeRegion.getKeyValues();
-                for(let i in keyValues){
-                    let requestedKey = query.key.split(".")[i]
-                    if(requestedKey.indexOf("+") === -1){
-                        return keyValues.getValues().some(val=>val!== requestedKey)
-                    }else{
-                        return keyValues.getValues().some(val=>(val!== requestedKey.split("+")[0]) && (val!== requestedKey.split("+")[1]))
+                return keyValues.some(keyValue=>{
+                    let index = Object.keys(test.randomKeys[0]).indexOf(keyValue.getId())
+                    if(index!==-1){
+                        let requestedKey = query.key.split(".")[index]
+                        if(requestedKey.indexOf("+") === -1){
+                            return keyValue.getValues().some(val=>val!== requestedKey)
+                        }else{
+                            return keyValue.getValues().some(val=>(val!== requestedKey.split("+")[0]) && (val!== requestedKey.split("+")[1]))
+                        }
                     }
-                }
+                })
+            })
+        }else if (test.reqTemplate.mode === "available"){
+            let parentWorkspace = SdmxStructureObjects.fromJson(test.parentWorkspace)
+            
+            let parentConstraint = parentWorkspace.getSdmxObjectsList().find(obj => obj.structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
+            if(!parentConstraint){throw new Error("No constraint returned.")}
+
+            parentConstraint = ContentConstraintObject.fromJSON(parentConstraint)
+            
+            //Check parent workspace to have the basic properties.
+            let parentCubeRegions = parentConstraint.getCubeRegions()
+            if(parentCubeRegions.length === 0){throw new Error("The constraint does not have any cube regions.")}
+            
+            let parentKeyValues = parentCubeRegions[0].getKeyValues();
+            if(parentKeyValues.length === 0){throw new Error("The cube region does not have any keyValues.")}
+
+            result =  parentCubeRegions.some(parentCube =>{
+                return parentCube.equals(cubeRegions[0]) === false
             })
         }
         
         if(result){
-            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. KeyValues were found that do not comply with the requested key. "}
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Invalid response for single key query."}
         }
 
         return { status: SUCCESS_CODE }
