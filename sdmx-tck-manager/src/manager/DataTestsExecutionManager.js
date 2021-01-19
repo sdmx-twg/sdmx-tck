@@ -86,6 +86,7 @@ class DataTestsExecutionManager {
             let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,
                                                             DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getKey(toRun.randomKeys,toRun.reqTemplate),
+                                                            DataRequestPropsBuilder.getComponent(toRun.randomKeys,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getProvider(providerRefs,toRun.reqTemplate),
                                                             toRun.reqTemplate.detail,
                                                             DataRequestPropsBuilder.getNumOfFirstNObservations(toRun.indicativeSeries,toRun.reqTemplate),

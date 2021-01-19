@@ -443,6 +443,9 @@ class DataSemanticChecker {
         if (query.metrics){
             return this._checkMetrics(test,query,workspace,constraint)
         }
+        if (test.reqTemplate.component){
+            return this._checkSingleDimension(test,query,workspace,constraint)
+        }
         return { status: SUCCESS_CODE }
     }
 
@@ -480,16 +483,16 @@ class DataSemanticChecker {
             let parentWorkspace = SdmxStructureObjects.fromJson(test.parentWorkspace)
             
             let parentConstraint = parentWorkspace.getSdmxObjectsList().find(obj => obj.structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
-            if(!parentConstraint){throw new Error("No constraint returned.")}
+            if(!parentConstraint){throw new Error("No parent constraint to perform validation.")}
 
             parentConstraint = ContentConstraintObject.fromJSON(parentConstraint)
             
             //Check parent workspace to have the basic properties.
             let parentCubeRegions = parentConstraint.getCubeRegions()
-            if(parentCubeRegions.length === 0){throw new Error("The constraint does not have any cube regions.")}
+            if(parentCubeRegions.length === 0){throw new Error("The parent constraint does not have any cube regions.")}
             
             let parentKeyValues = parentCubeRegions[0].getKeyValues();
-            if(parentKeyValues.length === 0){throw new Error("The cube region does not have any keyValues.")}
+            if(parentKeyValues.length === 0){throw new Error("The cube region of parent constraint does not have any keyValues.")}
 
             result =  parentCubeRegions.some(parentCube =>{
                 return parentCube.equals(cubeRegions[0]) === false
@@ -561,6 +564,55 @@ class DataSemanticChecker {
             return { status: FAILURE_CODE, error: "Error in Data Availability Metric semantic check. Wrong Annotation." }
         }
         return { status: SUCCESS_CODE }
+    }
+
+    static _checkSingleDimension(test,query,workspace,constraint){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        let cubeRegions = constraint.getCubeRegions();
+        if(cubeRegions.length !== 1){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The response contains "+cubeRegions.length+" cubeRegions instead of 1."}
+        }
+        if(cubeRegions[0].getKeyValues().length > 1){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The response contains "+cubeRegions[0].getKeyValues().length+" keyValues instead of 1."}
+        }
+
+        let foundKeyValue = cubeRegions[0].getKeyValues().find(keyVal=>keyVal.getId() === query.component)
+        if(!foundKeyValue){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. KeyValue found, does not have the dimension id requested."}
+        }
+
+        let parentWorkspace = SdmxStructureObjects.fromJson(test.parentWorkspace)
+            
+        let parentConstraint = parentWorkspace.getSdmxObjectsList().find(obj => obj.structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
+        if(!parentConstraint){throw new Error("No parent constraint to perform validation.")}
+
+        parentConstraint = ContentConstraintObject.fromJSON(parentConstraint)
+        
+        //Check parent workspace to have the basic properties.
+        let parentCubeRegions = parentConstraint.getCubeRegions()
+        if(parentCubeRegions.length === 0){throw new Error("The parent constraint does not have any cube regions.")}
+        
+        let parentKeyValues = parentCubeRegions[0].getKeyValues();
+        if(parentKeyValues.length === 0){throw new Error("The cube region of parent constraint does not have any keyValues.")}
+
+        let parentKeyValue =  parentKeyValues.find(pKeyVal => pKeyVal.getId() === query.component);
+
+        if(!parentKeyValue.equals(foundKeyValue)){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. KeyValue found, does not have the correct values."}
+        }
+
+        return { status: SUCCESS_CODE }
+        
+
     }
 }
 

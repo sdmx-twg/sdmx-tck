@@ -164,9 +164,10 @@ export async function runTest(endpoint, test) {
     in an allowed type, the workspace of the parent has to be kept in order to repick
     a content constraint artefact of allowed type.
     
-    2. Data queries with mode='available' (Data Availability) need parent workspace in order to be validated*/
+    2. Data queries with mode='available' or them that validate the single dimension query
+       (Data Availability) need parent workspace in order to be validated*/
     if(test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL || 
-        (test.testType === TEST_TYPE.DATA_AVAILABILITY && test.reqTemplate.mode === "available")){
+        (test.testType === TEST_TYPE.DATA_AVAILABILITY && (test.reqTemplate.mode === "available" || test.reqTemplate.component))){
         store.dispatch(dataFromParent(test));
     }
     if(test.state!==TEST_STATE.COMPLETED && test.state!==TEST_STATE.FAILED && test.state!==TEST_STATE.UNABLE_TO_RUN ){

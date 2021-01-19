@@ -4,7 +4,7 @@ var TckError = require('sdmx-tck-api').errors.TckError;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE
 class DataRequestBuilder {
 
-    static prepareRequest(endpoint, apiVersion, template, flow ,key, provider, detail,firstNObservations,lastNObservations,startPeriod,endPeriod,updateAfter,history,testType) {
+    static prepareRequest(endpoint, apiVersion, template, flow ,key, component,provider, detail,firstNObservations,lastNObservations,startPeriod,endPeriod,updateAfter,history,testType) {
 
         return new Promise((resolve, reject) => {
             try {
@@ -25,6 +25,9 @@ class DataRequestBuilder {
 
                 if(template.mode){
                     request.mode = template.mode
+                }
+                if(template.component){
+                    request.component = component
                 }
                 // // Copy the values from the template to the final request
                 // for (var k in template) {

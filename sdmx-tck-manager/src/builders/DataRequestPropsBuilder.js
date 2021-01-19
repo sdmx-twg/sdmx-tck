@@ -15,7 +15,14 @@ class DataRequestPropsBuilder {
         }
         return;
     }
-
+    static getComponent(randomKeys,template){
+        if(!randomKeys){return;}
+        if(template.component){
+            let randIndex = Math.floor(Math.random() * Object.keys(randomKeys[0]).length)
+            return Object.keys(randomKeys[0])[randIndex]
+        }
+        return;
+    }
     static getKey(randomKeys,template){
         if(!randomKeys){return;}
         let fullKeyValues = Object.values(randomKeys[0])
@@ -41,6 +48,7 @@ class DataRequestPropsBuilder {
             }
             return fullKeyValues.join(".")
         }
+        return;
     }
 
     static getProvider(providerRefs,template){
