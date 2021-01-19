@@ -52,14 +52,36 @@ describe('Tests Data Availability single key (available) test', function () {
         
         parentXmlMessage = fs.readFileSync('./tests/resources/DataAvailabilityAll.xml','utf8')
         let parentObjects = await new SdmxXmlParser().getIMObjects(parentXmlMessage)
-        //parentObjects.sdmxObjects.get('CONTENT_CONSTRAINT') = Object.create(parentObjects.sdmxObjects.get('CONTENT_CONSTRAINT'))
-        console.log(JSON.parse(JSON.stringify(parentObjects)))
+
+        
         xmlMessage = fs.readFileSync('./tests/resources/DataAvailabilitySimpleKeyAvailable.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
             let test = {reqTemplate:{mode:"available"},parentWorkspace:JSON.parse(JSON.stringify(parentObjects))}
             
             let query={}
             //let contentconstraint = sdmxObjects.sdmxObjects.get("CONTENT_CONSTRAINT")
+            let result = DataSemanticChecker.checkDataAvailability(test,query,sdmxObjects)
+            console.log(result)
+        }).catch(function (err) {
+            console.log(err);
+        });
+    });
+});
+
+//SINGLE DIMENSION TEST
+describe('Tests Data Availability single dimension test', function () {
+    it('It should print semantic validation result', async () => {
+        
+        parentXmlMessage = fs.readFileSync('./tests/resources/DataAvailabilityAll.xml','utf8')
+        let parentObjects = await new SdmxXmlParser().getIMObjects(parentXmlMessage)
+
+
+        xmlMessage = fs.readFileSync('./tests/resources/DataAvailabilitySingleDimension.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
+            let test = {reqTemplate:{component:true},parentWorkspace:JSON.parse(JSON.stringify(parentObjects))}
+            
+            let query={component:"EXR_TYPE"}
+
             let result = DataSemanticChecker.checkDataAvailability(test,query,sdmxObjects)
             console.log(result)
         }).catch(function (err) {
