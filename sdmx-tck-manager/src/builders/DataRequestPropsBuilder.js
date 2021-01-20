@@ -26,9 +26,7 @@ class DataRequestPropsBuilder {
     static getKey(randomKeys,template){
         if(!randomKeys){return;}
         let fullKeyValues = Object.values(randomKeys[0])
-        if(template.mode === "exact" || template.mode ==="available"){
-            return fullKeyValues.join(".")
-        }
+        
         if(template.key === DATA_QUERY_KEY.FULL_KEY){
             return fullKeyValues.join(".")
         }
