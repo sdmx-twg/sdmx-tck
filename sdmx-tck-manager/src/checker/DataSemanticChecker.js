@@ -1,5 +1,5 @@
 const { DATA_QUERY_KEY } = require('sdmx-tck-api/src/constants/data-queries-constants/DataQueryKey');
-const { SDMX_STRUCTURE_TYPE } = require('sdmx-tck-api/src/constants/SdmxStructureType');
+const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const STRUCTURE_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 var SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
 var FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
@@ -16,6 +16,7 @@ const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 var ContentConstraintObject = require('sdmx-tck-api').model.ContentConstraintObject;
+const DSD_COMPONENTS_NAMES = require('sdmx-tck-api').constants.DSD_COMPONENTS_NAMES
 
 class DataSemanticChecker {
 
@@ -422,8 +423,9 @@ class DataSemanticChecker {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
 
-        let constraint = workspace.getSdmxObjectsList().find(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
-		if(!constraint){throw new Error("No constraint returned.")}
+        let constraintsArr = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
+        if(constraintsArr.length !== 1){throw new Error("Wrong number of constraints returned.")}
+        let constraint = constraintsArr[0];
 
         //Check parent test for data availability
         if(Object.keys(test.reqTemplate).length === 0){
@@ -445,6 +447,9 @@ class DataSemanticChecker {
         }
         if (test.reqTemplate.component){
             return this._checkSingleDimension(test,query,workspace,constraint)
+        }
+        if (test.reqTemplate.references){
+            return this._checkReferences(test,query,workspace,constraint)
         }
         return { status: SUCCESS_CODE }
     }
@@ -567,6 +572,7 @@ class DataSemanticChecker {
     }
 
     static _checkSingleDimension(test,query,workspace,constraint){
+        
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
         }
@@ -613,6 +619,220 @@ class DataSemanticChecker {
         return { status: SUCCESS_CODE }
         
 
+    }
+    static _checkReferences(test,query,workspace,constraint){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        if(query.references === STRUCTURE_REST_RESOURCE.datastructure){
+            return this._checkReferencedDSD(test,query,workspace)
+        }else if(query.references === STRUCTURE_REST_RESOURCE.dataflow){
+            return this._checkReferencedDF(test,query,workspace)
+        }else if(query.references === STRUCTURE_REST_RESOURCE.codelist){
+            return this._checkReferencedCodelists(test,query,workspace,constraint)
+        }else if(query.references === STRUCTURE_REST_RESOURCE.conceptscheme){
+            return this._checkReferencedConceptSchemes(test,query,workspace)
+        }else if(query.references === STRUCTURE_REST_RESOURCE.dataproviderscheme){
+            return this._checkReferencedProviderScheme(test,query,workspace)
+        }else {
+            return this._checkAllReferences(test,query,workspace,constraint)
+        }
+    }
+
+    static _checkReferencedDSD(test,query,workspace){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        let dsdArr = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key)
+        if(dsdArr.length !== 1){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Wrong number of datastructures returned."}}
+        let dsdObj = dsdArr[0];
+
+        if(dsdObj.getStructureType()!==test.dsdObj.getStructureType()
+            || dsdObj.getAgencyId()!==test.dsdObj.getAgencyId()
+            || dsdObj.getId()!==test.dsdObj.getId()
+            || dsdObj.getVersion()!==test.dsdObj.getVersion()){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The response does not contain the correct DSD"}
+
+        }
+        
+        return { status: SUCCESS_CODE }
+    }
+
+    static _checkReferencedDF(test,query,workspace){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        let dfArr = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.DATAFLOW.key)
+        if(dfArr.length !== 1){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Wrong number of dataflows returned."}}
+        let dfObj = dfArr[0];
+
+        if(dfObj.getStructureType()!== SDMX_STRUCTURE_TYPE.DATAFLOW.key
+            || dfObj.getAgencyId()!== query.flow.split(",")[0]
+            || dfObj.getId()!== query.flow.split(",")[1]
+            || dfObj.getVersion()!== query.flow.split(",")[2]){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The response does not contain the correct DF"}
+
+        }
+        
+        return { status: SUCCESS_CODE }
+    }
+
+    static _checkReferencedCodelists(test,query,workspace,constraint){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        let cubeRegions = constraint.getCubeRegions();
+        if(cubeRegions.length !== 1){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The response contains "+cubeRegions.length+" cubeRegions instead of 1."}
+        }
+        let cubeRegion = cubeRegions[0];
+
+        let result = cubeRegion.getKeyValues().every(keyVal => {
+            let dimension = test.dsdObj.getComponents().find(comp => comp.getId() === keyVal.getId() && comp.getType() === DSD_COMPONENTS_NAMES.DIMENSION);
+            if(!dimension){return false;}
+
+            let codelistRef = dimension.getReferences().find(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.CODE_LIST.key)
+            if(!codelistRef){return false;}
+
+            let codelistInResponse = workspace.getSdmxObject(codelistRef)
+            return keyVal.getValues().every(val=>{
+                return codelistInResponse.getItems().some(item=> item.getId() === val)
+            })
+           
+
+        })
+        if(!result){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. There are semantically invalid codelists in response."}
+        }
+        
+        return { status: SUCCESS_CODE }
+    }
+
+    static _checkReferencedConceptSchemes(test,query,workspace){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        let conceptSchemesArr = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
+        if(conceptSchemesArr.length === 0){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. No concept schemes returned."}}
+
+        let dimensions = test.dsdObj.getComponents().filter(comp => {
+            return comp.getType() ===  DSD_COMPONENTS_NAMES.DIMENSION && comp.getReferences().some(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
+                   
+        });
+        let result = dimensions.every(dim => {
+            let conceptScheme = dim.getReferences().find(comp=>comp.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
+            return conceptSchemesArr.some(cs=>cs.getId() === conceptScheme.getId())
+        })
+        if(!result){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. There are semantically invalid concept schemes in response."}
+        }
+        
+        return { status: SUCCESS_CODE }
+    }
+
+    static _checkReferencedProviderScheme(test,query,workspace){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        let dataProviderSchemesArr = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key)
+        if(dataProviderSchemesArr.length !== 1){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Wrong number of provider schemes returned."}}
+
+        let dataProviderScheme = dataProviderSchemesArr[0];
+
+        let result=false;
+        if(query.references === "all"){
+             result = test.providerRefs.every(pRef => {
+                return dataProviderScheme.getItems().some(item => item.getId() === pRef.identifiableIds[0])
+            }) 
+        }else if(query.references === STRUCTURE_REST_RESOURCE.dataproviderscheme){
+             result = dataProviderScheme.getItems().length === 1 && dataProviderScheme.getItems()[0].getId() === query.provider
+        }
+
+        if(!result){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Wrong provider id in response."}
+        } 
+        return { status: SUCCESS_CODE }
+    }
+    
+    static _checkAllReferences(test,query,workspace,constraint){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxStructureObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+
+        let validateRefDSD = this._checkReferencedDSD(test,query,workspace)
+        if(validateRefDSD.status === FAILURE_CODE){
+            return validateRefDSD;
+        }
+
+        let validateRefDF = this._checkReferencedDF(test,query,workspace)
+        if(validateRefDF.status === FAILURE_CODE){
+            return validateRefDF;
+        }
+
+        let validateRefCodelist = this._checkReferencedCodelists(test,query,workspace,constraint)
+        if(validateRefCodelist.status === FAILURE_CODE){
+            return validateRefCodelist;
+        }
+
+        let validateRefConceptScheme = this._checkReferencedConceptSchemes(test,query,workspace)
+        if(validateRefConceptScheme.status === FAILURE_CODE){
+            return validateRefConceptScheme;
+        }
+
+        let validateRefProviderScheme = this._checkReferencedProviderScheme(test,query,workspace)
+        if(validateRefProviderScheme.status === FAILURE_CODE){
+            return validateRefProviderScheme;
+        }
+
+        return { status: SUCCESS_CODE }
     }
 }
 

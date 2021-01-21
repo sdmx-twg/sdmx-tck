@@ -29,6 +29,9 @@ class DataRequestBuilder {
                 if(template.component){
                     request.component = component
                 }
+                if(template.references){
+                    request.references = template.references
+                }
                 // // Copy the values from the template to the final request
                 // for (var k in template) {
                 //     if (template[k] !== null && template[k] !== null) {

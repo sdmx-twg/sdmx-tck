@@ -43,34 +43,32 @@ class DataTestsExecutionManager {
                 }
             }
             let providerRefs = [];
-            //if(toRun.reqTemplate.provider){
-                let helpTestParams = {
-                    testId: "/"+toRun.resource+"/agency/id/version?references="+STRUCTURE_REFERENCE_DETAIL.ALL,
-                    index: TEST_INDEX.Structure,
-                    apiVersion: apiVersion,
-                    resource: toRun.resource,
-                    reqTemplate: {references:STRUCTURE_REFERENCE_DETAIL.ALL},
-                    identifiers: {structureType:SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource),agency:toRun.identifiers.agency,id:toRun.identifiers.id,version:toRun.identifiers.version},
-                    testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
-                }
-                toRun.structureWorkspace = await HelperManager.getWorkspace(TestObjectBuilder.getTestObject(helpTestParams),apiVersion,endpoint);
+            let helpTestParams = {
+                testId: "/"+toRun.resource+"/agency/id/version?references="+STRUCTURE_REFERENCE_DETAIL.ALL,
+                index: TEST_INDEX.Structure,
+                apiVersion: apiVersion,
+                resource: toRun.resource,
+                reqTemplate: {references:STRUCTURE_REFERENCE_DETAIL.ALL},
+                identifiers: {structureType:SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource),agency:toRun.identifiers.agency,id:toRun.identifiers.id,version:toRun.identifiers.version},
+                testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
+            }
+            toRun.structureWorkspace = await HelperManager.getWorkspace(TestObjectBuilder.getTestObject(helpTestParams),apiVersion,endpoint);
+        
+            let provAggreements = toRun.structureWorkspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)
             
-                let provAggreements = toRun.structureWorkspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)
-                // if(toRun.reqTemplate.provider.num !== provAggreements.length){
-                //     throw new TckError("This "+SDMX_STRUCTURE_TYPE.DATAFLOW.key+" does not have enough providers");
-                // }
-                provAggreements.forEach(pra =>{
-                    providerRefs.push(pra.getChildren().find(ref=> (ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key)))
-                })
+            provAggreements.forEach(pra =>{
+                providerRefs.push(pra.getChildren().find(ref=> (ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key)))
+            })
 
-                let dfObj = toRun.structureWorkspace.getSdmxObject(new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource),toRun.identifiers.agency,toRun.identifiers.id,toRun.identifiers.version));
-                if(dfObj){
-                    let dsdRef = dfObj.getChildren().find(ref => ref.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key)
-                    if(dsdRef){
-                        toRun.dsdObj = toRun.structureWorkspace.getSdmxObject(dsdRef)
-                    }
+            toRun.providerRefs = providerRefs;
+            
+            let dfObj = toRun.structureWorkspace.getSdmxObject(new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource),toRun.identifiers.agency,toRun.identifiers.id,toRun.identifiers.version));
+            if(dfObj){
+                let dsdRef = dfObj.getChildren().find(ref => ref.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key)
+                if(dsdRef){
+                    toRun.dsdObj = toRun.structureWorkspace.getSdmxObject(dsdRef)
                 }
-            //}
+            }
             
             
             if(toRun.indicativeSeries){
