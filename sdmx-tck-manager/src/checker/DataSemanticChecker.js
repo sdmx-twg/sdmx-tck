@@ -34,13 +34,6 @@ class DataSemanticChecker {
                 } else if (test.testType === TEST_TYPE.DATA_AVAILABILITY){
                     validation = DataSemanticChecker.checkDataAvailability(test, query, workspace)
                 }
-                // } else if (test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARAMETER) {
-                //     validation = StructuresSemanticChecker.checkReferences(query, workspace);
-                // } else if (test.testType === TEST_TYPE.STRUCTURE_DETAIL_PARAMETER) {
-                //     validation = StructuresSemanticChecker.checkDetails(query, workspace);
-                // } else if(test.testType === TEST_TYPE.STRUCTURE_TARGET_CATEGORY){
-                //     validation = StructuresSemanticChecker.checkTargetCategory(query, workspace);
-                // }
                 resolve(validation);
             } catch (err) {
                 console.log(err)
@@ -426,7 +419,16 @@ class DataSemanticChecker {
         let constraintsArr = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
         if(constraintsArr.length !== 1){throw new Error("Wrong number of constraints returned.")}
         let constraint = constraintsArr[0];
-
+        
+        let isConstraintRefValid  = constraint.getChildren().some(ref=>{
+           return ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATAFLOW.key
+            && ref.getAgencyId() === query.flow.split(",")[0]
+            && ref.getId() === query.flow.split(",")[1]
+            && ref.getVersion() === query.flow.split(",")[2]
+        })
+        if(!isConstraintRefValid){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Constraint does not reference requested DF."}
+        }
         //Check parent test for data availability
         if(Object.keys(test.reqTemplate).length === 0){
             let cubeRegions = constraint.getCubeRegions()
@@ -464,7 +466,9 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxStructureObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
-
+        if (!constraint || !constraint instanceof ContentConstraintObject) {
+            throw new Error("Missing mandatory parameter 'constraint'")
+        }
         let cubeRegions = constraint.getCubeRegions()
         if(cubeRegions.length > 2){throw new Error("The constraint should have one Cube Region.")}
         let result;
@@ -523,7 +527,9 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxStructureObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
-
+        if (!constraint || !constraint instanceof ContentConstraintObject) {
+            throw new Error("Missing mandatory parameter 'constraint'")
+        }
         let constraintRefPeriod = constraint.getReferencePeriod()
         if(constraintRefPeriod){
             if(query.start && !query.end){
@@ -582,7 +588,9 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxStructureObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
-
+        if (!constraint || !constraint instanceof ContentConstraintObject) {
+            throw new Error("Missing mandatory parameter 'constraint'")
+        }
         let cubeRegions = constraint.getCubeRegions();
         if(cubeRegions.length !== 1){
             return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The response contains "+cubeRegions.length+" cubeRegions instead of 1."}
@@ -630,7 +638,9 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxStructureObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
-
+        if (!constraint || !constraint instanceof ContentConstraintObject) {
+            throw new Error("Missing mandatory parameter 'constraint'")
+        }
         if(query.references === STRUCTURE_REST_RESOURCE.datastructure){
             return this._checkReferencedDSD(test,query,workspace)
         }else if(query.references === STRUCTURE_REST_RESOURCE.dataflow){
@@ -708,6 +718,12 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxStructureObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
+        if (!constraint || !constraint instanceof ContentConstraintObject) {
+            throw new Error("Missing mandatory parameter 'constraint'")
+        }
+
+        let codelistsArr = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.CODE_LIST.key)
+        if(codelistsArr.length === 0){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. No codelists returned."}}
 
         let cubeRegions = constraint.getCubeRegions();
         if(cubeRegions.length !== 1){
@@ -717,17 +733,17 @@ class DataSemanticChecker {
 
         let result = cubeRegion.getKeyValues().every(keyVal => {
             let dimension = test.dsdObj.getComponents().find(comp => comp.getId() === keyVal.getId() && comp.getType() === DSD_COMPONENTS_NAMES.DIMENSION);
-            if(!dimension){return false;}
+            if(!dimension){throw new Error("Error in Data Availability semantic check. Could not locate codelist for dimension with id: "+keyVal.getId()+".")}
 
             let codelistRef = dimension.getReferences().find(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.CODE_LIST.key)
-            if(!codelistRef){return false;}
+            if(!codelistRef){throw new Error("Error in Data Availability semantic check. Could not locate codelist for dimension with id: "+keyVal.getId()+".")}
 
             let codelistInResponse = workspace.getSdmxObject(codelistRef)
+            if(!codelistInResponse){throw new Error("Error in Data Availability semantic check. Could not locate codelist for dimension with id: "+keyVal.getId()+".")}
+            
             return keyVal.getValues().every(val=>{
                 return codelistInResponse.getItems().some(item=> item.getId() === val)
             })
-           
-
         })
         if(!result){
             return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. There are semantically invalid codelists in response."}
@@ -752,11 +768,14 @@ class DataSemanticChecker {
 
         let dimensions = test.dsdObj.getComponents().filter(comp => {
             return comp.getType() ===  DSD_COMPONENTS_NAMES.DIMENSION && comp.getReferences().some(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
-                   
         });
+        if(dimensions.length === 0){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Unable to locate concepts in DSD dimensions."}}
+
         let result = dimensions.every(dim => {
             let conceptScheme = dim.getReferences().find(comp=>comp.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
-            return conceptSchemesArr.some(cs=>cs.getId() === conceptScheme.getId())
+            return conceptSchemesArr.some(cs=>{
+                return cs.getItems().some(item=>item.getId() === conceptScheme.getIdentifiableIds()[0])
+            });
         })
         if(!result){
             return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. There are semantically invalid concept schemes in response."}
@@ -806,7 +825,9 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxStructureObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
-
+        if (!constraint || !constraint instanceof ContentConstraintObject) {
+            throw new Error("Missing mandatory parameter 'constraint'")
+        }
         let validateRefDSD = this._checkReferencedDSD(test,query,workspace)
         if(validateRefDSD.status === FAILURE_CODE){
             return validateRefDSD;
