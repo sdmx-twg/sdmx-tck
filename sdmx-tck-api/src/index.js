@@ -37,6 +37,7 @@ const DataRepresentationSupport = require('./constants/data-queries-constants/Da
 const DataQueryRepresentations = require('./constants/data-queries-constants/DataQueryRepresentations.js')
 const DataOtherFeatures = require('./constants/data-queries-constants/DataOtherFeatures.js')
 const DataAvailability = require('./constants/data-queries-constants/DataAvailability.js')
+const DataQueryMode = require('./constants/data-queries-constants/DataQueryMode.js')
 // ERRORS
 var TckError = require('./errors/TckError.js');
 var SemanticError = require('./errors/SemanticError.js');
@@ -134,7 +135,8 @@ module.exports = {
         DATA_RESPRESENTATION_SUPPORT:DataRepresentationSupport.DATA_RESPRESENTATION_SUPPORT,
         DATA_QUERY_REPRESENTATIONS:DataQueryRepresentations.DATA_QUERY_REPRESENTATIONS,
         DATA_OTHER_FEATURES:DataOtherFeatures.DATA_OTHER_FEATURES,
-        DATA_AVAILABILITY:DataAvailability.DATA_AVAILABILITY
+        DATA_AVAILABILITY:DataAvailability.DATA_AVAILABILITY,
+        DATA_QUERY_MODE:DataQueryMode.DATA_QUERY_MODE
     },
     errors: {
         TckError: TckError,

@@ -1,17 +1,18 @@
 const API_VERSIONS = require('../ApiVersions.js').API_VERSIONS;
 const DATA_QUERY_KEY = require("./DataQueryKey.js").DATA_QUERY_KEY;
 const STRUCTURES_REST_RESOURCE = require('../StructuresRestResources.js').STRUCTURES_REST_RESOURCE
+const DATA_QUERY_MODE = require('./DataQueryMode.js').DATA_QUERY_MODE
 
 const DATA_AVAILABILITY = {
-    EXACT_SIMPLE_KEY:{ url: "/agency,dataflowId,version/A.B.C?mode=exact",template: {mode:"exact",key:DATA_QUERY_KEY.FULL_KEY}},
-    AVAILABLE_SIMPLE_KEY:{ url: "/agency,dataflowId,version/A.B.C?mode=available", template: {mode:"available",key:DATA_QUERY_KEY.FULL_KEY}},
+    EXACT_SIMPLE_KEY:{ url: "/agency,dataflowId,version/A.B.C?mode=exact",template: {mode:DATA_QUERY_MODE.EXACT,key:DATA_QUERY_KEY.FULL_KEY}},
+    AVAILABLE_SIMPLE_KEY:{ url: "/agency,dataflowId,version/A.B.C?mode=available", template: {mode:DATA_QUERY_MODE.AVAILABLE,key:DATA_QUERY_KEY.FULL_KEY}},
     TEMPORAL_COVERAGE_1:{ url: "/agency,dataflowId,version/all?startPeriod=2010-01", template: {startPeriod:"2010-01"}},
     TEMPORAL_COVERAGE_2:{ url: "/agency,dataflowId,version/all?endPeriod=2020-01", template: {endPeriod:"2020-01"}},
     TEMPORAL_COVERAGE_3:{ url: "/agency,dataflowId,version/all?startPeriod=2010-01&endPeriod=2020-01", template: {startPeriod:"2010-01",endPeriod:"2020-01"}},
     METRICS:{ url: "/agency,dataflowId,version/all (metrics)", template: {metrics:true}},
     SINGLE_DIMENSION:{ url: "/agency,dataflowId,version/all/all/DIM1", template: {component:true}},
-    EXACT_COMPLEX_KEY:{ url: "/agency,dataflowId,version/A1+A2.B.C?mode=exact",template: {mode:"exact",key:DATA_QUERY_KEY.MANY_KEYS}},
-    AVAILABLE_COMPLEX_KEY:{ url: "/agency,dataflowId,version/A1+A2.B.C?mode=available", template: {mode:"available",key:DATA_QUERY_KEY.MANY_KEYS}},
+    EXACT_COMPLEX_KEY:{ url: "/agency,dataflowId,version/A1+A2.B.C?mode=exact",template: {mode:DATA_QUERY_MODE.EXACT,key:DATA_QUERY_KEY.MANY_KEYS}},
+    AVAILABLE_COMPLEX_KEY:{ url: "/agency,dataflowId,version/A1+A2.B.C?mode=available", template: {mode:DATA_QUERY_MODE.AVAILABLE,key:DATA_QUERY_KEY.MANY_KEYS}},
     REF_ALL:{ url: "/agency,dataflowId,version/all?references=all", template: {references:"all"}},
     REF_DSD:{ url: "/agency,dataflowId,version/all?references=datastructure", template: {references:STRUCTURES_REST_RESOURCE.datastructure}},
     REF_DF:{ url: "/agency,dataflowId,version/all?references=dataflow", template: {references:STRUCTURES_REST_RESOURCE.dataflow}},

@@ -4,7 +4,7 @@ import { TEST_INDEX } from 'sdmx-tck-api/src/constants/TestIndex';
 
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-
+const DATA_QUERY_MODE = require('sdmx-tck-api').constants.DATA_QUERY_MODE
 
 export function initialiseTestsModel(tests) {
     return { type: 'INITIALISE_TESTS_MODEL', tests: tests };
@@ -167,7 +167,7 @@ export async function runTest(endpoint, test) {
     2. Data queries with mode='available' or them that validate the single dimension query
        (Data Availability) need parent workspace in order to be validated*/
     if(test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARTIAL || 
-        (test.testType === TEST_TYPE.DATA_AVAILABILITY && (test.reqTemplate.mode === "available" || test.reqTemplate.component))){
+        (test.testType === TEST_TYPE.DATA_AVAILABILITY && (test.reqTemplate.mode === DATA_QUERY_MODE.AVAILABLE || test.reqTemplate.component))){
         store.dispatch(dataFromParent(test));
     }
     if(test.state!==TEST_STATE.COMPLETED && test.state!==TEST_STATE.FAILED && test.state!==TEST_STATE.UNABLE_TO_RUN ){

@@ -17,6 +17,7 @@ const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_R
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 var ContentConstraintObject = require('sdmx-tck-api').model.ContentConstraintObject;
 const DSD_COMPONENTS_NAMES = require('sdmx-tck-api').constants.DSD_COMPONENTS_NAMES
+const DATA_QUERY_MODE = require('sdmx-tck-api').constants.DATA_QUERY_MODE
 
 class DataSemanticChecker {
 
@@ -473,7 +474,7 @@ class DataSemanticChecker {
         if(cubeRegions.length > 2){throw new Error("The constraint should have one Cube Region.")}
         let result;
 
-        if(test.reqTemplate.mode ==="exact"){
+        if(test.reqTemplate.mode === DATA_QUERY_MODE.EXACT){
             result = cubeRegions.some(cubeRegion => {
                 let keyValues = cubeRegion.getKeyValues();
                 return keyValues.some(keyValue=>{
@@ -488,7 +489,7 @@ class DataSemanticChecker {
                     }
                 })
             })
-        }else if (test.reqTemplate.mode === "available"){
+        }else if (test.reqTemplate.mode === DATA_QUERY_MODE.AVAILABLE){
             let parentWorkspace = SdmxStructureObjects.fromJson(test.parentWorkspace)
             
             let parentConstraint = parentWorkspace.getSdmxObjectsList().find(obj => obj.structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
