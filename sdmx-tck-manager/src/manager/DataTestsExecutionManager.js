@@ -113,6 +113,19 @@ class DataTestsExecutionManager {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
 
+            //OTHER FEATURES VALIDATION
+            if(toRun.testType === TEST_TYPE.DATA_OTHER_FEATURES){
+                if(toRun.reqTemplate.accept_encoding){
+                    ResponseValidator.checkCompression(httpResponse);
+                }
+                if(toRun.reqTemplate.accept_language){
+                    ResponseValidator.checkLanguage(httpResponse);
+                }
+                if(toRun.reqTemplate.if_modified_since){
+                    ResponseValidator.checkCaching(httpResponse);
+                }
+                return testResult;
+            }
             //REPRESENTATION VALIDATION 
             if (toRun.testType === TEST_TYPE.DATA_REPRESENTATION_SUPPORT_PARAMETERS) {
                 let representationValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);

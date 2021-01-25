@@ -17,6 +17,8 @@ var DataExtendedResourceIdentificationTestBuilder = require('../builders/DataExt
 var DataRepresentationSupportTestBuilder = require('../builders/DataRepresentationSupportTestBuilder.js')
 var DataFurtherDescribingResultsTestBuilder = require('./DataFurtherDescribingResultsTestBuilder.js');
 var DataAvailabilityTestBuilder = require('./DataAvailabilityTestBuilder.js')
+var DataOtherFeatureTestBuilder = require('./DataOtherFeatureTestBuilder.js')
+
 class TestsModelBuilder {
     /**
      * Method that creates the model (object) in which the data of the app will be stored.
@@ -103,6 +105,7 @@ class TestsModelBuilder {
             let dataTest2 = [];
             let dataTest3 = [];
             let dataTest4 = [];
+            let dataTest5 = [];
             let dataTest6 = [];
             let allTests = [];
            
@@ -124,6 +127,8 @@ class TestsModelBuilder {
             dataTest3 = DataFurtherDescribingResultsTestBuilder.getDataFurtherDescribingTests(index,x,apiVersion)
 
             dataTest4 = DataRepresentationSupportTestBuilder.getDataRepresentationSupportTests(index,x,apiVersion)
+            dataTest5 = DataOtherFeatureTestBuilder.getDataOtherFeatureTests(index,x,apiVersion)
+
             if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]) {
                 x.numOfTests = x.numOfTests + 1;
                 let testObjParams = {
@@ -139,7 +144,7 @@ class TestsModelBuilder {
                 dataTest6 = dataTest6.concat(TestObjectBuilder.getTestObject(testObjParams))
             }
 
-            allTests = allTests.concat(dataTest1.concat(dataTest2.concat(dataTest3.concat(dataTest4.concat(dataTest6)))))
+            allTests = allTests.concat(dataTest1.concat(dataTest2.concat(dataTest3.concat(dataTest4.concat(dataTest5.concat(dataTest6))))))
             
             return allTests;
         }else if (index === TEST_INDEX.Metadata) {

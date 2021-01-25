@@ -26,7 +26,7 @@ class HttpResponseValidator {
             }
         });
     };
-
+   
     static validateRepresentation(requestedRepresentation, response) {
         return new Promise((resolve, reject) => {
             try {
@@ -69,6 +69,23 @@ class HttpResponseValidator {
             throw new TckError("Response status was not 406 but " + response.status + " instead");
         }
     }
+
+    static checkCompression(response){
+        let contentEncoding = response.headers.get('content-encoding')
+        if(contentEncoding!=="gzip"){
+            throw new TckError("Response 'Content-Encoding' header was not 'gzip'.");
+        }
+    }
+
+    static checkLanguage(response){
+       //TODO:DETERMINE THE VALIDATION
+    }
+
+    static checkCaching(response){
+        if(response.status !== 304){
+            throw new TckError("Response status should have been 304 but it is "+response.status+" instead.");
+        }
+     }
 };
 
 module.exports = HttpResponseValidator;

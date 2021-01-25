@@ -11,6 +11,7 @@ const DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS = require('sdmx-tck-api')
 const DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS = require('sdmx-tck-api').constants.DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS;
 const DATA_RESPRESENTATION_SUPPORT = require('sdmx-tck-api').constants.DATA_RESPRESENTATION_SUPPORT
 const DATA_AVAILABILITY = require('sdmx-tck-api').constants.DATA_AVAILABILITY
+const DATA_OTHER_FEATURES = require('sdmx-tck-api').constants.DATA_OTHER_FEATURES
 /*-----------------------------------------STRUCTURES-----------------------------------------*/
 
 function STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT() {
@@ -130,6 +131,16 @@ function DATA_REPRESENTATION_SUPPORT_TESTS(apiVersion){
     return testsArray;
 }
 
+function DATA_OTHER_FEATURES_TESTS(){
+    let testsArray = [];
+
+    DATA_OTHER_FEATURES.getValues().forEach(parameter => {
+        testsArray.push({ index: "Data", url: parameter.url, reqTemplate: parameter.template })
+    });
+
+    return testsArray;
+}
+
 function DATA_AVAILABILITY_TESTS(apiVersion){
     let testsArray = [];
 
@@ -150,5 +161,6 @@ module.exports = {
     DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS_TESTS:DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS_TESTS,
     DATA_FURTHER_DESCRIBING_RESULTS_TESTS:DATA_FURTHER_DESCRIBING_RESULTS_TESTS,
     DATA_REPRESENTATION_SUPPORT_TESTS:DATA_REPRESENTATION_SUPPORT_TESTS,
+    DATA_OTHER_FEATURES_TESTS:DATA_OTHER_FEATURES_TESTS,
     DATA_AVAILABILITY_TESTS:DATA_AVAILABILITY_TESTS
 };

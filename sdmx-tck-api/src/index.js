@@ -35,6 +35,7 @@ const DataQueryKey = require('./constants/data-queries-constants/DataQueryKey.js
 const DataFurtherDescribingResults = require('./constants/data-queries-constants/DataFurtherDescribingResults.js')
 const DataRepresentationSupport = require('./constants/data-queries-constants/DataRepresentationSupport.js')
 const DataQueryRepresentations = require('./constants/data-queries-constants/DataQueryRepresentations.js')
+const DataOtherFeatures = require('./constants/data-queries-constants/DataOtherFeatures.js')
 const DataAvailability = require('./constants/data-queries-constants/DataAvailability.js')
 // ERRORS
 var TckError = require('./errors/TckError.js');
@@ -132,6 +133,7 @@ module.exports = {
         DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS:DataFurtherDescribingResults.DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS,
         DATA_RESPRESENTATION_SUPPORT:DataRepresentationSupport.DATA_RESPRESENTATION_SUPPORT,
         DATA_QUERY_REPRESENTATIONS:DataQueryRepresentations.DATA_QUERY_REPRESENTATIONS,
+        DATA_OTHER_FEATURES:DataOtherFeatures.DATA_OTHER_FEATURES,
         DATA_AVAILABILITY:DataAvailability.DATA_AVAILABILITY
     },
     errors: {

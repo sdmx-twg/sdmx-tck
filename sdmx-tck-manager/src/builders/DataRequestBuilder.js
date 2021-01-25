@@ -42,9 +42,31 @@ class DataRequestBuilder {
                 if (template.representation) {
                     headers = { headers: { accept: template.representation } }
                 }
+                if (template.accept_encoding) {
+                    if(Object.keys(headers).length === 0){
+                        headers = { headers: { "Accept-Encoding": template.accept_encoding } }
+                    }else{
+                        headers.headers["Accept-Encoding"] = template.accept_encoding 
+                    }
+                }
+                if (template.accept_language) {
+                    if(Object.keys(headers).length === 0){
+                        headers = { headers: { "Accept-Language": template.accept_language } }
+                    }else{
+                        headers.headers["Accept-Language"] = template.accept_language 
+                    }
+                }
+                if (template.if_modified_since) {
+                    if(Object.keys(headers).length === 0){
+                        headers = { headers: { "If-Modified-Since": template.if_modified_since } }
+                    }else{
+                        headers.headers["If-Modified-Since"] = template.if_modified_since 
+                    }
+                }
                 let preparedRequest = (testType !== TEST_TYPE.DATA_AVAILABILITY)?
                     { request: sdmx_rest.getDataQuery(request), service: service, headers: headers }:
                     { request: sdmx_rest.getAvailabilityQuery(request), service: service, headers: headers };
+                    console.log(headers)
                 resolve(preparedRequest);
             } catch (err) {
                 reject(new TckError(err));

@@ -20,6 +20,7 @@ const TEST_TYPE = {
     DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS:"Data Extended Resource Identification Parameters",
     DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS:"Data Further Describing Results Parameters",
     DATA_REPRESENTATION_SUPPORT_PARAMETERS:"Data Representation Support Parameters",
+    DATA_OTHER_FEATURES:"Data Other Features",
     DATA_AVAILABILITY:"Data Availability"
 };
 
