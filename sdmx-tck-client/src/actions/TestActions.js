@@ -177,7 +177,8 @@ export async function runTest(endpoint, test) {
             store.dispatch(updateTestState(test, TEST_STATE.FAILED));
         }else{
             if(testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1
-                && testResults.workspaceValidation && testResults.workspaceValidation.status === 1){
+                && ((testResults.workspaceValidation && testResults.workspaceValidation.status === 1) 
+                || (testResults.httpResponseHeadersValidation && testResults.httpResponseHeadersValidation.status === 1))){
                         //Actions if a test was successful
                     store.dispatch(updateTestState(testResults, TEST_STATE.COMPLETED));
                     store.dispatch(updateComplianceNumber(testResults.index));

@@ -113,25 +113,17 @@ class DataTestsExecutionManager {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
 
-            //OTHER FEATURES VALIDATION
-            if(toRun.testType === TEST_TYPE.DATA_OTHER_FEATURES){
-                if(toRun.reqTemplate.accept_encoding){
-                    ResponseValidator.checkCompression(httpResponse);
+            //REPRESENTATION VALIDATION - OTHER FEATURES VALIDATION
+            if (toRun.testType === TEST_TYPE.DATA_REPRESENTATION_SUPPORT_PARAMETERS || toRun.testType === TEST_TYPE.DATA_OTHER_FEATURES) {
+                let httpResponseHeadersValidation;
+                if(toRun.testType === TEST_TYPE.DATA_REPRESENTATION_SUPPORT_PARAMETERS){
+                    httpResponseHeadersValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
+                }else{
+                    httpResponseHeadersValidation = ResponseValidator.validateOtherHeaders(toRun.reqTemplate, httpResponse);
                 }
-                if(toRun.reqTemplate.accept_language){
-                    ResponseValidator.checkLanguage(httpResponse);
-                }
-                if(toRun.reqTemplate.if_modified_since){
-                    ResponseValidator.checkCaching(httpResponse);
-                }
-                return testResult;
-            }
-            //REPRESENTATION VALIDATION 
-            if (toRun.testType === TEST_TYPE.DATA_REPRESENTATION_SUPPORT_PARAMETERS) {
-                let representationValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
-                testResult.representationValidation = representationValidation;
-                if (representationValidation.status === FAILURE_CODE) {
-                    throw new TckError("Representation validation failed. Cause: " + representationValidation.error);
+                testResult.httpResponseHeadersValidation = httpResponseHeadersValidation;
+                if (httpResponseHeadersValidation.status === FAILURE_CODE) {
+                    throw new TckError("Response headers validation failed. Cause: " + httpResponseHeadersValidation.error);
                 }
                 return testResult
             }
@@ -150,7 +142,7 @@ class DataTestsExecutionManager {
                 throw new TckError("Workspace validation failed: Cause: " + workspaceValidation.error);
             }
 
-            //RANDOM KEY TO GIVE TO CHILDREN (DATA ECTENDED RESOURCES TESTS)
+            //RANDOM KEY TO GIVE TO CHILDREN (DATA EXTENDED RESOURCES TESTS)
             if(toRun.testType === TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS && !toRun.requireRandomKey){
                 testResult.randomKeys = workspace.getRandomKeysPair(toRun.dsdObj);
             }

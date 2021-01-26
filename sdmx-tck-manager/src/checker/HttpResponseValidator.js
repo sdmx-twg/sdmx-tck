@@ -26,6 +26,8 @@ class HttpResponseValidator {
             }
         });
     };
+
+    
    
     static validateRepresentation(requestedRepresentation, response) {
         return new Promise((resolve, reject) => {
@@ -70,6 +72,23 @@ class HttpResponseValidator {
         }
     }
 
+    static validateOtherHeaders(template,response){
+        try{
+            if(template.accept_encoding){
+                this.checkCompression(response);
+            }
+            if(template.accept_language){
+                this.checkLanguage(response);
+            }
+            if(template.if_modified_since){
+                this.checkCaching(response);
+            }
+           return { status: SUCCESS_CODE};
+        }catch(err){
+           return { status: FAILURE_CODE, error: err.toString() };
+        }
+       
+    }
     static checkCompression(response){
         let contentEncoding = response.headers.get('content-encoding')
         if(contentEncoding!=="gzip"){

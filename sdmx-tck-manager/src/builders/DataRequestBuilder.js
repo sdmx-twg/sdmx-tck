@@ -66,7 +66,6 @@ class DataRequestBuilder {
                 let preparedRequest = (testType !== TEST_TYPE.DATA_AVAILABILITY)?
                     { request: sdmx_rest.getDataQuery(request), service: service, headers: headers }:
                     { request: sdmx_rest.getAvailabilityQuery(request), service: service, headers: headers };
-                    console.log(headers)
                 resolve(preparedRequest);
             } catch (err) {
                 reject(new TckError(err));
