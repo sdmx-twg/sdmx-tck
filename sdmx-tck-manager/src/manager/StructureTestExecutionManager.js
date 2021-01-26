@@ -44,10 +44,10 @@ class StructureTestExecutionManager {
  
             //REPRESENTATION VALIDATION 
             if (toRun.testType === TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION) {
-                let representationValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
-                testResult.representationValidation = representationValidation;
-                if (representationValidation.status === FAILURE_CODE) {
-                    throw new TckError("Representation validation failed. Cause: " + representationValidation.error);
+                let httpResponseHeadersValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
+                testResult.httpResponseHeadersValidation = httpResponseHeadersValidation;
+                if (httpResponseHeadersValidation.status === FAILURE_CODE) {
+                    throw new TckError("Representation validation failed. Cause: " + httpResponseHeadersValidation.error);
                 }
                 return testResult
             }
