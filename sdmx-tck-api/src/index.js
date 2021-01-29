@@ -73,6 +73,7 @@ var XSDAnyAttribute = require('./model/schema-queries-models/XSDAnyAttribute.js'
 var XSDCompositor = require('./model/schema-queries-models/XSDCompositor.js')
 var DataStructureAttributeObject = require('./model/structure-queries-models/DataStructureAttributeObject.js')
 var DataStructureAttributeRelationshipObject = require('./model/structure-queries-models/DataStructureAttributeRelationshipObject.js')
+var HeaderStructureObject = require('./model/data-queries-models/HeaderStructureObject.js')
 var SeriesObject = require('./model/data-queries-models/SeriesObject.js')
 var ObservationObject = require('./model/data-queries-models/ObservationObject.js')
 var GroupObject = require('./model/data-queries-models/GroupObject.js')
@@ -173,6 +174,7 @@ module.exports = {
         XSDAttribute:XSDAttribute,
         XSDAnyAttribute:XSDAnyAttribute,
         XSDCompositor:XSDCompositor,
+        HeaderStructureObject:HeaderStructureObject,
         SeriesObject:SeriesObject,
         ObservationObject:ObservationObject,
         GroupObject:GroupObject,

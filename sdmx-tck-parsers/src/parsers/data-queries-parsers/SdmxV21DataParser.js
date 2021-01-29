@@ -24,11 +24,9 @@ class SdmxV21DataParser{
 
         if(s.Header){
             let header = s.Header[0];
-            let dataComponentType = DATA_COMPONENTS_TYPES.STRUCTURE_REFS
-            dataComponents.set(dataComponentType,SdmxV21DataHeaderParser.getStructureRefs(header));
 
-            dataComponentType = DATA_COMPONENTS_TYPES.STRUCTURE_ID
-            dataComponents.set(dataComponentType,SdmxV21DataHeaderParser.getStructureId(header));
+            let dataComponentType = DATA_COMPONENTS_TYPES.STRUCTURE_DATA
+            dataComponents.set(dataComponentType,SdmxV21DataHeaderParser.getStructureData(header));
         }
     }
     static parseDatasets(dataComponents,s){

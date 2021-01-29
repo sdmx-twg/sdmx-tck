@@ -27,13 +27,13 @@ class DataSemanticChecker {
             try {
                 let validation = {};
                 if (test.testType === TEST_TYPE.DATA_IDENTIFICATION_PARAMETERS) {
-                    validation = DataSemanticChecker.checkResourceIdentification(test, query, workspace)
+                    validation = DataSemanticChecker._checkResourceIdentification(test, query, workspace)
                 } else if (test.testType === TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS) {
-                    validation = DataSemanticChecker.checkExtendedResourceIdentification(test, query, workspace)
+                    validation = DataSemanticChecker._checkExtendedResourceIdentification(test, query, workspace)
                 } else if (test.testType === TEST_TYPE.DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS) {
-                    validation = DataSemanticChecker.checkFurtherDescribingResults(test, query, workspace)
+                    validation = DataSemanticChecker._checkFurtherDescribingResults(test, query, workspace)
                 } else if (test.testType === TEST_TYPE.DATA_AVAILABILITY){
-                    validation = DataSemanticChecker.checkDataAvailability(test, query, workspace)
+                    validation = DataSemanticChecker._checkDataAvailability(test, query, workspace)
                 }
                 resolve(validation);
             } catch (err) {
@@ -43,7 +43,7 @@ class DataSemanticChecker {
         });
     }
 
-    static async checkResourceIdentification(test, query, workspace) {
+    static _checkResourceIdentification(test, query, workspace) {
         if (!query) {
             throw new Error("Missing mandatory parameter 'query'")
         }
@@ -61,118 +61,7 @@ class DataSemanticChecker {
 
     }
 
-    static async _checkProviderIdentification(test, query, workspace) {
-        try {
-            if (!query) {
-                throw new Error("Missing mandatory parameter 'query'")
-            }
-            if (!test) {
-                throw new Error("Missing mandatory parameter 'test'")
-            }
-            if (!workspace || !workspace instanceof SdmxDataObjects) {
-                throw new Error("Missing mandatory parameter 'workspace'")
-            }
-
-            if (workspace.getStructureRefs().find(ref => ref.getStructureType() !== SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key)) {
-                return { status: FAILURE_CODE, error: "Error in Identification:All structure references must be " + SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key }
-            }
-
-            let praRefs = workspace.getStructureRefs();
-            for (let i in praRefs) {
-                if (!test.structureWorkspace.exists(praRefs[i])) {
-                    return { status: FAILURE_CODE, error: "Error in Identification: " + praRefs[i] + " is not related to requested DF" }
-                }
-
-                let praObj = test.structureWorkspace.getSdmxObject(praRefs[i]);
-
-                if (query.provider.indexOf("+") !== -1) {
-                    if (!praObj.getChildren().find(child => child.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key
-                        && child.getIdentifiableIds().indexOf(query.provider.split("+")[i]) !== -1)) {
-                        return { status: FAILURE_CODE, error: "Error in Identification: " + praRefs[i] + " is not related to requested DF" }
-                    }
-                } else if (query.provider.indexOf(",") !== -1) {
-                    if (!praObj.getChildren().find(child =>
-                        child.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key
-                        && child.getIdentifiableIds().indexOf(query.provider.split(",")[1]) !== -1
-                        && child.getAgencyId() === query.provider.split(",")[0])) {
-                        return { status: FAILURE_CODE, error: "Error in Identification: The Maintainable of " + praRefs[i] + " does not contain the requested providerId." }
-                    }
-                } else {
-                    if (!praObj.getChildren().find(child => child.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key
-                        && child.getIdentifiableIds().indexOf(query.provider) !== -1)) {
-                        return { status: FAILURE_CODE, error: "Error in Identification: " + praRefs[i] + " is not related to requested DF" }
-                    }
-                }
-            }
-            return { status: SUCCESS_CODE }
-
-
-
-
-
-
-
-
-            //    new StructureReference(test.identifiers.structureType,test.identifiers.agencyId,test.identifiers.id,test.identifiers.version)))
-            // let helpTestParams = {
-            //     testId: "/"+STRUCTURE_REST_RESOURCE.provisionagreement+"/agency/id/version?references="+STRUCTURE_REFERENCE_DETAIL.CHILDREN,
-            //     index: TEST_INDEX.Structure,
-            //     apiVersion: test.apiVersion,
-            //     resource: STRUCTURE_REST_RESOURCE.provisionagreement,
-            //     reqTemplate: {references:STRUCTURE_REFERENCE_DETAIL.CHILDREN},
-            //     identifiers: {structureType:praRef.getStructureType(),agency:praRef.getAgencyId(),id:praRef.getId(),version:praRef.getVersion()},
-            //     testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
-            // }
-            // //TODO:DO THIS IN EVERY HELPING TEST
-            // if(!praRef.getAgencyId()){helpTestParams.reqTemplate.agency="all"}
-            // let helperWorkspace = await HelperManager.getWorkspace(TestObjectBuilder.getTestObject(helpTestParams),test.apiVersion,url);
-            // console.log(test)
-
-
-        } catch (e) {
-            console.log(e)
-        }
-
-
-    }
-
-    static _checkIdentification(query, workspace) {
-        if (!query) {
-            throw new Error("Missing mandatory parameter 'query'")
-        }
-        if (!workspace || !workspace instanceof SdmxDataObjects) {
-            throw new Error("Missing mandatory parameter 'workspace'")
-        }
-        let identifiers = query.flow.split(',');
-        let requestedAgencyId = identifiers[0]
-        let requestedId = identifiers[1]
-        let requestedVersion = (identifiers[2] === "latest" || !identifiers[2]) ? null : identifiers[2]
-
-        let reformedQuery = {
-            agency: requestedAgencyId,
-            id: requestedId,
-            version: requestedVersion
-        }
-
-        let structureId = workspace.getStructureId();
-        if (Utils.isSpecificAgency(reformedQuery) && Utils.isSpecificItem(reformedQuery) && Utils.isSpecificVersion(reformedQuery)) {
-            if (structureId.getAgencyId() !== requestedAgencyId || structureId.getId() !== requestedId || structureId.getVersion() !== requestedVersion) {
-                return { status: FAILURE_CODE, error: "Error in Identification" }
-            }
-        } else if (Utils.isSpecificAgency(reformedQuery) && Utils.isSpecificItem(reformedQuery) && !Utils.isSpecificVersion(reformedQuery)) {
-            if (structureId.getAgencyId() !== requestedAgencyId || structureId.getId() !== requestedId) {
-                return { status: FAILURE_CODE, error: "Error in Identification" }
-            }
-        } else if (!Utils.isSpecificAgency(reformedQuery) && Utils.isSpecificItem(reformedQuery) && !Utils.isSpecificVersion(reformedQuery)) {
-            if (structureId.getAgencyId() !== requestedAgencyId) {
-                return { status: FAILURE_CODE, error: "Error in Identification" }
-            }
-        }
-
-        return { status: SUCCESS_CODE }
-    }
-
-    static checkExtendedResourceIdentification(test, query, workspace) {
+    static _checkProviderIdentification(test, query, workspace) {
         if (!query) {
             throw new Error("Missing mandatory parameter 'query'")
         }
@@ -182,10 +71,108 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxDataObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
-        if (test.reqTemplate.key === DATA_QUERY_KEY.PARTIAL_KEY || test.reqTemplate.key === DATA_QUERY_KEY.MANY_KEYS) {
-            return this._validateSeriesAgainstKey(query.key, workspace)
+
+        let headerRefs = workspace.getAllHeaderRefs()
+        let praRefs = headerRefs.filter(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key);
+        for (let i in praRefs) {
+            if (!test.structureWorkspace.exists(praRefs[i])) {
+                return { status: FAILURE_CODE, error: "Error in Identification: " + praRefs[i] + " is not related to requested DF" }
+            }
+
+            let praObj = test.structureWorkspace.getSdmxObject(praRefs[i]);
+            
+            if (query.provider.indexOf("+") !== -1) {
+                if (!praObj.getChildren().find(child => child.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key
+                    && child.getIdentifiableIds().some(id=> id === query.provider.split("+")[0] || query.provider.split("+")[1]) )) {
+                        return { status: FAILURE_CODE, error: "Error in Identification: The Maintainable of " + praRefs[i] + " does not contain any of the requested providerIds."}
+                }
+            } else if (query.provider.indexOf(",") !== -1) {
+                if (!praObj.getChildren().find(child =>
+                    child.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key
+                    && child.getIdentifiableIds().indexOf(query.provider.split(",")[1]) !== -1
+                    && child.getAgencyId() === query.provider.split(",")[0])) {
+                    return { status: FAILURE_CODE, error: "Error in Identification: The Maintainable of " + praRefs[i] + " does not contain the requested providerId." }
+                }
+            } else {
+                if (!praObj.getChildren().find(child => child.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key
+                    && child.getIdentifiableIds().indexOf(query.provider) !== -1)) {
+                    return { status: FAILURE_CODE, error: "Error in Identification: The Maintainable of " + praRefs[i] + " does not contain the requested providerId."}
+                }
+            }
         }
         return { status: SUCCESS_CODE }
+    } 
+
+    static _checkIdentification(query, workspace) {0
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxDataObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+        let identifiers = query.flow.split(',');
+        let requestedAgencyId; 
+        let requestedId ;
+        let requestedVersion ;
+
+        if(identifiers.length === 1){
+            requestedAgencyId="all"
+            requestedId = identifiers[0]
+            requestedVersion="latest"
+        }else{
+            requestedAgencyId = (identifiers[0] === "all" || !identifiers[0]) ? "all" : identifiers[0] 
+            requestedId = identifiers[1]
+            requestedVersion = (identifiers[2] === "latest" || !identifiers[2]) ? "latest" : identifiers[2]    
+        }
+       
+        let reformedQuery = {
+            agency: requestedAgencyId,
+            id: requestedId,
+            version: requestedVersion
+        }
+        
+        let structureData = workspace.getHeaderStructureData()
+        if (Utils.isSpecificAgency(reformedQuery) && Utils.isSpecificId(reformedQuery) && Utils.isSpecificVersion(reformedQuery)) {
+            
+            if(structureData.length !== 1){
+                return { status: FAILURE_CODE, error: "Error in Identification: Expected 1 structure in xml header, but there are "+structureData.length+"." }
+            }
+            let structureId = structureData[0].getIdentification()
+            if(requestedVersion !== "latest"){
+                if (structureId.getAgencyId() !== requestedAgencyId || structureId.getId() !== requestedId || structureId.getVersion() !== requestedVersion) {
+                    return { status: FAILURE_CODE, error: "Error in Identification" }
+                }
+            }else{
+                if (structureId.getAgencyId() !== requestedAgencyId || structureId.getId() !== requestedId) {
+                    return { status: FAILURE_CODE, error: "Error in Identification" }
+                }
+            }
+        }else{
+            for(let i in structureData){
+                if (structureData[i].getIdentification().getId() !== requestedId) {
+                    return { status: FAILURE_CODE, error: "Error in Identification" }
+                }
+            }
+           
+        } 
+        return { status: SUCCESS_CODE }
+    }
+
+    static _checkExtendedResourceIdentification(test, query, workspace) {
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!workspace || !workspace instanceof SdmxDataObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+        return this._validateSeriesAgainstKey(query.key, workspace)
+        // if (test.reqTemplate.key === DATA_QUERY_KEY.PARTIAL_KEY || test.reqTemplate.key === DATA_QUERY_KEY.MANY_KEYS) {
+        //     return this._validateSeriesAgainstKey(query.key, workspace)
+        // }
+        // return { status: SUCCESS_CODE }
 
     }
 
@@ -202,13 +189,12 @@ class DataSemanticChecker {
         let result = series.filter(serieObj => {
             return !serieObj.complyWithRequestedKey(key)
         })
-        if (result.length > 0) { return { status: FAILURE_CODE, error: "Error in Extenden Resource Identification: There are series that do not comply with the requested key." + JSON.stringify(result) } }
+        if (result.length > 0) { return { status: FAILURE_CODE, error: "Error in Data Extended Resource Identification: There are series that do not comply with the requested key." + JSON.stringify(result) } }
         return { status: SUCCESS_CODE }
 
     }
 
-    static checkFurtherDescribingResults(test, query, workspace) {
-        console.log("ENTER CHECK")
+    static _checkFurtherDescribingResults(test, query, workspace) {
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
         }
@@ -226,19 +212,19 @@ class DataSemanticChecker {
 
         /*Check if the observations under validation are between the specified time period */
         if (query.start || query.end) {
-            let result = this.checkPeriods(test, query, workspace);
+            let result = this._checkPeriods(test, query, workspace);
             if(result.status === FAILURE_CODE){return result}
         }
 
         /*Check if the observations under validation are the first or last N of an indicative series*/
         if (query.firstNObs || query.lastNObs) {
-            let result = this.checkObservations(test, query, workspace);
+            let result = this._checkObservations(test, query, workspace);
             if(result.status === FAILURE_CODE){return result}
         }
 
         /*Check if the xml is of the requested detail*/
         if (query.detail) {
-            let result = this.checkDetail(test, query, workspace);
+            let result = this._checkDetail(test, query, workspace);
             if(result.status === FAILURE_CODE){return result}
         }
 
@@ -246,7 +232,7 @@ class DataSemanticChecker {
 
 
     }
-    static checkDetail(test, query, workspace) {
+    static _checkDetail(test, query, workspace) {
         let dfObj = test.structureWorkspace.getSdmxObject(new StructureReference(test.identifiers.structureType,
             test.identifiers.agency,
             test.identifiers.id,
@@ -308,7 +294,7 @@ class DataSemanticChecker {
             return { status: SUCCESS_CODE }
         }
     }
-    static checkPeriods(test, query, workspace) {
+    static _checkPeriods(test, query, workspace) {
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
         }
@@ -356,7 +342,7 @@ class DataSemanticChecker {
         }
     }
 
-    static checkObservations(test, query, workspace) {
+    static _checkObservations(test, query, workspace) {
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
         }
@@ -406,7 +392,7 @@ class DataSemanticChecker {
 
     }
 
-    static checkDataAvailability(test, query, workspace){
+    static _checkDataAvailability(test, query, workspace){
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
         }

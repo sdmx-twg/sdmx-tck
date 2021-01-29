@@ -16,6 +16,7 @@
 <message:ReportingEnd>2020-01-10T00:00:00</message:ReportingEnd>
 </message:Header>
 <message:DataSet ss:dataScope="DataStructure" xsi:type="ns1:DataSetType" ss:structureRef="ECB_EXR_1_0">
+
 <Series FREQ="A" CURRENCY="ARS" CURRENCY_DENOM="EUR" EXR_TYPE="SP00" EXR_SUFFIX="A" TIME_FORMAT="P1Y" COLLECTION="A" DECIMALS="5" SOURCE_AGENCY="4F0" TITLE="Argentine peso/Euro" TITLE_COMPL="Indicative exchange rate, Argentine peso/Euro, 2:15 pm (C.E.T.)" UNIT="ARS" UNIT_MULT="0"/>
 <Series FREQ="A" CURRENCY="ARS" CURRENCY_DENOM="EUR" EXR_TYPE="SP00" EXR_SUFFIX="E" TIME_FORMAT="P1Y" COLLECTION="E" DECIMALS="5" SOURCE_AGENCY="4F0" TITLE="Argentine peso/Euro" TITLE_COMPL="Indicative exchange rate, Argentine peso/Euro, 2:15 pm (C.E.T.)" UNIT="ARS" UNIT_MULT="0"/>
 <Series FREQ="A" CURRENCY="AUD" CURRENCY_DENOM="EUR" EXR_TYPE="SP00" EXR_SUFFIX="A" TIME_FORMAT="P1Y" COLLECTION="A" DECIMALS="4" SOURCE_AGENCY="4F0" TITLE="Australian dollar/Euro" TITLE_COMPL="ECB reference exchange rate, Australian dollar/Euro, 2:15 pm (C.E.T.)" UNIT="AUD" UNIT_MULT="0"/>

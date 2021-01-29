@@ -6,11 +6,15 @@ class SdmxDataObjects extends SdmxObjects{
     constructor(sdmxObjects){
         super(sdmxObjects)
     }
-    getStructureRefs(){
-        return this.getSdmxObjects().get(DATA_COMPONENTS_TYPES.STRUCTURE_REFS);
+    
+    getHeaderStructureData(){
+        return this.getSdmxObjects().get(DATA_COMPONENTS_TYPES.STRUCTURE_DATA);
     }
-    getStructureId(){
-        return this.getSdmxObjects().get(DATA_COMPONENTS_TYPES.STRUCTURE_ID);
+    getAllHeaderRefs(){
+        let structureData = this.getSdmxObjects().get(DATA_COMPONENTS_TYPES.STRUCTURE_DATA);
+        let headerRefs = [];
+        structureData.forEach(sd => headerRefs = headerRefs.concat(sd.getReferences()));
+        return headerRefs;
     }
     getDatasets(){
         return this.getSdmxObjects().get(DATA_COMPONENTS_TYPES.DATASETS);
