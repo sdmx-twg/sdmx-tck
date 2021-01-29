@@ -459,39 +459,34 @@ class DataSemanticChecker {
         let cubeRegions = constraint.getCubeRegions()
         if(cubeRegions.length > 2){throw new Error("The constraint should have one Cube Region.")}
         let result;
-
+        
         if(test.reqTemplate.mode === DATA_QUERY_MODE.EXACT){
-            result = cubeRegions.some(cubeRegion => {
-                let keyValues = cubeRegion.getKeyValues();
-                return keyValues.some(keyValue=>{
-                    let index = Object.keys(test.randomKeys[0]).indexOf(keyValue.getId())
-                    if(index!==-1){
-                        let requestedKey = query.key.split(".")[index]
-                        if(requestedKey.indexOf("+") === -1){
-                            return keyValue.getValues().some(val=>val!== requestedKey)
-                        }else{
-                            return keyValue.getValues().some(val=>(val!== requestedKey.split("+")[0]) && (val!== requestedKey.split("+")[1]))
-                        }
+            if(cubeRegions.length === 0){return { status: SUCCESS_CODE }}
+
+            result =  cubeRegions[0].getKeyValues().some(keyValue=>{
+                let index = Object.keys(test.randomKeys[0]).indexOf(keyValue.getId())
+                if(index!==-1){
+                    let requestedKey = query.key.split(".")[index]
+                    if(requestedKey.indexOf("+") === -1){
+                        return !(keyValue.hasOnlyNValues(1) && keyValue.hasValue(requestedKey))
+                    }else{
+                        return !keyValue.hasOnlyNValues(2) || !(keyValue.hasValue(requestedKey.split("+")[0]) && keyValue.hasValue(requestedKey.split("+")[1]))
                     }
-                })
+                }
             })
         }else if (test.reqTemplate.mode === DATA_QUERY_MODE.AVAILABLE){
-            let parentWorkspace = SdmxStructureObjects.fromJson(test.parentWorkspace)
+            if(cubeRegions.length === 0){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. No Cube Region returned."}}
             
-            let parentConstraint = parentWorkspace.getSdmxObjectsList().find(obj => obj.structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
-            if(!parentConstraint){throw new Error("No parent constraint to perform validation.")}
-
-            parentConstraint = ContentConstraintObject.fromJSON(parentConstraint)
-            
-            //Check parent workspace to have the basic properties.
-            let parentCubeRegions = parentConstraint.getCubeRegions()
-            if(parentCubeRegions.length === 0){throw new Error("The parent constraint does not have any cube regions.")}
-            
-            let parentKeyValues = parentCubeRegions[0].getKeyValues();
-            if(parentKeyValues.length === 0){throw new Error("The cube region of parent constraint does not have any keyValues.")}
-
-            result =  parentCubeRegions.some(parentCube =>{
-                return parentCube.equals(cubeRegions[0]) === false
+            result = cubeRegions[0].getKeyValues().every(keyValue=>{
+                let index = Object.keys(test.randomKeys[0]).indexOf(keyValue.getId())
+                if(index!==-1){
+                    let requestedKey = query.key.split(".")[index]
+                    if(requestedKey.indexOf("+") === -1){
+                        return !keyValue.hasValue(requestedKey);
+                    }else{
+                        return !(keyValue.getValues().indexOf(requestedKey.split("+")[0]) || keyValue.getValues().indexOf(requestedKey.split("+")[1]))
+                    }
+                }
             })
         }
         

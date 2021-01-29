@@ -43,6 +43,16 @@ class ConstraintKeyValueObject {
                 this.getIncludeType() === otherKeyValue.getIncludeType() &&
                 valuesEqual
     }
+
+    hasOnlyNValues(numOfValues){
+        if(typeof(numOfValues) != "number" || !Number.isInteger(numOfValues)){return false;}
+        return this.values.length === numOfValues
+    }
+
+    hasValue(value){
+        if(typeof(value) !== "string"){return false;}
+        return this.values.indexOf(value) !== -1
+    }
     
 };
 
