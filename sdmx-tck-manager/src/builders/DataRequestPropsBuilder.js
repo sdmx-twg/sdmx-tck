@@ -1,5 +1,5 @@
 const DATA_QUERY_KEY = require('sdmx-tck-api').constants.DATA_QUERY_KEY;
-
+const DIMENSION_AT_OBSERVATION_CONSTANTS = require('sdmx-tck-api').constants.DIMENSION_AT_OBSERVATION_CONSTANTS;
 class DataRequestPropsBuilder {
     
     static getFlow(testIdentifiers,template){
@@ -116,6 +116,14 @@ class DataRequestPropsBuilder {
         let observations = indicativeSeries.getObservations();
         let randomIndex = Math.floor(Math.random() * observations.length);
         return observations[randomIndex].getAttributes().TIME_PERIOD;
+    }
+
+    static getObsDimension(dsdObj,template){
+        if(!template.dimensionAtObservation || template.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.NOT_PROVIDED){return;}
+        if(template.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.DIMENSION){
+            return dsdObj.getRandomDimension().getId()
+        }
+        return template.dimensionAtObservation;
     }
 }
 

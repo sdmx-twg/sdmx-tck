@@ -18,6 +18,9 @@ const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 var ContentConstraintObject = require('sdmx-tck-api').model.ContentConstraintObject;
 const DSD_COMPONENTS_NAMES = require('sdmx-tck-api').constants.DSD_COMPONENTS_NAMES
 const DATA_QUERY_MODE = require('sdmx-tck-api').constants.DATA_QUERY_MODE
+const DIMENSION_AT_OBSERVATION_CONSTANTS = require('sdmx-tck-api').constants.DIMENSION_AT_OBSERVATION_CONSTANTS;
+const ATTRIBUTE_ASSIGNMENT_STATUS = require('sdmx-tck-api').constants.ATTRIBUTE_ASSIGNMENT_STATUS;
+const ATTRIBUTE_RELATIONSHIP_NAMES = require('sdmx-tck-api').constants.ATTRIBUTE_RELATIONSHIP_NAMES;
 
 class DataSemanticChecker {
 
@@ -227,10 +230,188 @@ class DataSemanticChecker {
             let result = this._checkDetail(test, query, workspace);
             if(result.status === FAILURE_CODE){return result}
         }
+        if(query.obsDimension){
+            let result =  this._checkDimensionAtObservation(test,query,workspace)
+            if(result.status === FAILURE_CODE){return result;}
+        }
 
         return { status: SUCCESS_CODE }
+    }
+    static _checkDimensionAtObservation(test,query,workspace){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!query) {
+            throw new Error("Missing mandatory parameter 'query'")
+        }
+        if (!workspace || !workspace instanceof SdmxDataObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+        
+        let attributesValidPositioning = this._validateAttributesPositioning(workspace,test);
+        if(attributesValidPositioning.status === FAILURE_CODE){return attributesValidPositioning;}
+       
+        if(test.reqTemplate.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD){
+            return this._validateDimAtObsTimePeriod(workspace)
+        }else if(test.reqTemplate.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.DIMENSION){
+            return this._validateDimAtObsDimension(workspace,query.obsDimension)
+        }else if(test.reqTemplate.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.ALLDIMENSIONS){
+             return this._validateDimAtObsAllDimensions(workspace,test)
+        }else if(test.reqTemplate.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.NOT_PROVIDED){
+             return this._validateDimAtObsNotProvided(workspace,test);
+        }
+    }
+    static _validateAttributesPositioning(workspace,test){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!workspace || !workspace instanceof SdmxDataObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+        let mandatoryAttributes = test.dsdObj.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.ATTRIBUTE 
+                                                                        && component.getAssignementStatus()===ATTRIBUTE_ASSIGNMENT_STATUS.MANDATORY);
+        for(let i in mandatoryAttributes){
+            let attr = mandatoryAttributes[i];
+            let relationships = attr.getAttributeRelationship();
+            //IF ATTRIBUTE HAS NO RELATIONSHIP
+            if(relationships.length === 0 || (relationships.length>0 && relationships.every(rel=>rel.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.NONE))){
+                if(workspace.getDatasets().length === 0){
+                    throw new Error("No Datasets returned")
+                }
+                if(workspace.getDatasets().some(dts => Object.keys(dts.getAttributes()).indexOf(attr.getId())===-1)){
+                    return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Attribute "+attr.getId()+" should have been in Datasets as it references none." }
+                }
+            }else{
+                //IF ATTRIBUTE HAS ONE RELATIONSHIP TO PRIMARY MEASURE
+                if(relationships.every(rel=>rel.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.PRIMARY_MEASURE)){
+                    if(workspace.getAllObservations().length === 0){
+                        throw new Error("No Observations returned")
+                    }
+                    if(workspace.getAllObservations().some(obs => Object.keys(obs.getAttributes()).indexOf(attr.getId()) === -1)){
+                        return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Attribute "+attr.getId()+" should have been in Observations as it references a primary measure." }
+                    }
+                //IF ATTRIBUTE HAS ONE RELATIONSHIP TO DIMENSION(S)
+                }else if (relationships.every(rel=>rel.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.DIMENSION)){
+                    let groupsReferencingDimensions = test.dsdObj.getGroups().filter(group=>{
+                        return group.getDimensionReferences().every(dimensionId=>{
+                            return relationships.some(rel=>rel.getId() === dimensionId)
+                        })
+                    })
+                    if(groupsReferencingDimensions.length > 0){
+                        let groupsWithSpecificId  = workspace.getAllGroups().filter(group=>{
+                            return groupsReferencingDimensions.some(dsdGroups => dsdGroups.getId() === group.getId())
+                        });
+                        if(groupsWithSpecificId.length === 0){
+                            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Attribute "+attr.getId()+" references relationship with dimensions in group but ther is no such group in workspace." }
+                        }
+                        
+                        if(groupsWithSpecificId.some(group=>Object.keys(group.getAttributes()).indexOf(attr.getId())===-1)){
+                            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Attribute "+attr.getId()+" is not an attribute of all the groups that has a relationship with." }
+                        }
+                    }else{
+                        let dimensionInObsLevel = relationships.some(rel=>{
+                            let observations= workspace.getAllObservations();
+                            return observations.every(obs=>Object.keys(obs.getAttributes()).indexOf(rel.getId())!==-1)
+                        })
+                        if(dimensionInObsLevel){
+                            if(workspace.getAllObservations().some(obs => Object.keys(obs.getAttributes()).indexOf(attr.getId())===-1)){
+                                return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Attribute "+attr.getId()+" should have been in Observations as it references at least one dimension in that level." }
+                            }
+                        }else{
+                            if(workspace.getAllSeries().some(obs => Object.keys(obs.getAttributes()).indexOf(attr.getId())===-1)){
+                                return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Attribute "+attr.getId()+" should have been in Series as it references dimensions in series level." }
+                            }
+                        }
+                    
+                    }
+                //IF ATTRIBUTE HAS ONE RELATIONSHIP TO GROUP(S)
+                }else if(relationships.every(rel=>rel.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.ATTACHMENT_GROUP) || relationships.every(rel=>rel.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.GROUP)){
+                    for(let i in relationships){
+                        let groupsToCheck = workspace.getAllGroups().filter(group => group.getId() === relationships[i].getId())
+                        if(groupsToCheck.length === 0){
+                            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Attribute "+attr.getId()+" references relationship with group(s) but there are no such groups in workspace." }
+                        }
+                        if(groupsToCheck.some(group=>Object.keys(group.getAttributes()).indexOf(attr.getId())===-1)){
+                            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Attribute "+attr.getId()+" is not an attribute of all the groups that has a relationship with." }
+                        }
+                    }
+                }
+            }
+        }
+            return { status: SUCCESS_CODE }       
+    }
+    static _validateDimAtObsTimePeriod(workspace){
+        if (!workspace || !workspace instanceof SdmxDataObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+        let datasets = workspace.getDatasets();
+        let isTimeSeriesViewCheck = datasets.every(dataset=>dataset.timeSeriesViewOfData()); 
+        if(!isTimeSeriesViewCheck){
+            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. No time series view of data returned." }
+        }
+        let observations = workspace.getAllObservations();
+        let result = observations.every(obs => Object.keys(obs.getAttributes()).indexOf("TIME_PERIOD") !== -1)
+        if(!result){return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There is at least one observation without TIME_PERIOD attribute." }}
+        
+        return { status: SUCCESS_CODE } 
+    }
+    static _validateDimAtObsDimension(workspace,dimensionId){
+        if (!workspace || !workspace instanceof SdmxDataObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+        if(!dimensionId){
+            throw new Error("Missing mandatory parameter 'dimensionId'")
+        }
 
-
+        let series = workspace.getAllSeries();
+        let result = series.every(s => Object.keys(s.getAttributes()).indexOf("TIME_PERIOD") !== -1 )
+        if(!result){
+            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are series that do not contain TIME_PERIOD attribute." }
+        }
+        let observations = workspace.getAllObservations()
+        result = observations.every(obs => Object.keys(obs.getAttributes()).indexOf(dimensionId) !== -1)
+        if(!result){
+            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There is at least one observation without TIME_PERIOD attribute." }
+        }
+        return { status: SUCCESS_CODE } 
+    }
+    static _validateDimAtObsAllDimensions(workspace,test){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!workspace || !workspace instanceof SdmxDataObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+        let datasets = workspace.getDatasets();
+        let isFlatViewCheck = datasets.every(dataset=>dataset.flatViewOfData()); 
+        if(!isFlatViewCheck){
+            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. No flat view of data returned." }
+        }
+        let result = datasets.every(dataset => {
+            let dimensions = test.dsdObj.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION);
+            return dimensions.every(dim => {
+                return dataset.getObservations().every(obs=> Object.keys(obs.getAttributes()).indexOf(dim.getId()) !== -1)
+            })
+        })    
+        if(!result){
+            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observation that do not contain all dimensions." }
+        }
+        return { status: SUCCESS_CODE }
+    }
+    static _validateDimAtObsNotProvided(workspace,test){
+        if (!test) {
+            throw new Error("Missing mandatory parameter 'test'")
+        }
+        if (!workspace || !workspace instanceof SdmxDataObjects) {
+            throw new Error("Missing mandatory parameter 'workspace'")
+        }
+        if(test.dsdObj.hasTimeDimension()){
+            return this._validateDimAtObsTimePeriod(workspace)
+        }else if(test.dsdObj.hasMeasureDimension()){
+            let measureDim = test.dsdObj.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION);
+            return this._validateDimAtObsDimension(workspace,measureDim.getId())
+        }
+        return this._validateDimAtObsAllDimensions(workspace,test)
     }
     static _checkDetail(test, query, workspace) {
         let dfObj = test.structureWorkspace.getSdmxObject(new StructureReference(test.identifiers.structureType,

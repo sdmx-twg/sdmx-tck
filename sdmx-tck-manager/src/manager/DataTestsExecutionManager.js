@@ -86,6 +86,7 @@ class DataTestsExecutionManager {
                                                             DataRequestPropsBuilder.getKey(toRun.randomKeys,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getComponent(toRun.randomKeys,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getProvider(providerRefs,toRun.reqTemplate),
+                                                            DataRequestPropsBuilder.getObsDimension(toRun.dsdObj,toRun.reqTemplate),
                                                             toRun.reqTemplate.detail,
                                                             DataRequestPropsBuilder.getNumOfFirstNObservations(toRun.indicativeSeries,toRun.reqTemplate),
                                                             DataRequestPropsBuilder.getNumOfLastNObservations(toRun.indicativeSeries,toRun.reqTemplate),

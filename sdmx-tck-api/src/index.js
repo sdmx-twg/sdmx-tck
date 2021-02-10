@@ -20,7 +20,7 @@ const TestType = require('./constants/TestType.js');
 const SchemaFacetsMapping = require('./constants/schema-queries-constants/SchemaFacetsMapping.js');
 const SdmxXSDComponentsTypes = require('./constants/schema-queries-constants/SdmxXSDComponentsTypes.js')
 const XSDRepresentationDataType = require('./constants/schema-queries-constants/XSDRepresentationDataType.js')
-const DimensionAtObservationConstants = require('./constants/structure-queries-constants/DimensionAtObservationConstants.js');
+const DimensionAtObservationConstants = require('./constants/DimensionAtObservationConstants.js');
 const DSDAttributeConstants = require('./constants/structure-queries-constants/DSDAttributeConstants.js')
 const SchemaAttributeConstants = require('./constants/schema-queries-constants/SchemaAttributeConstants.js')
 const SchemaComplexTypeConstants = require('./constants/schema-queries-constants/SchemaComplexTypeConstants.js')
@@ -112,6 +112,7 @@ module.exports = {
         XSD_DATA_TYPE:XSDRepresentationDataType.XSD_DATA_TYPE,
         DIMENSION_AT_OBSERVATION_CONSTANTS:DimensionAtObservationConstants.DIMENSION_AT_OBSERVATION_CONSTANTS,
         ATTRIBUTE_RELATIONSHIP_NAMES:DSDAttributeConstants.ATTRIBUTE_RELATIONSHIP_NAMES,
+        ATTRIBUTE_ASSIGNMENT_STATUS:DSDAttributeConstants.ATTRIBUTE_ASSIGNMENT_STATUS,
         RELATIONSHIP_REF_ID:DSDAttributeConstants.RELATIONSHIP_REF_ID,
         ATTRIBUTE_NAMES:DSDAttributeConstants.ATTRIBUTE_NAMES,
         SCHEMA_ATTRIBUTE_USAGE_VALUES:SchemaAttributeConstants.SCHEMA_ATTRIBUTE_USAGE_VALUES,

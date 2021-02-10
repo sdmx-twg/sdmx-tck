@@ -124,6 +124,9 @@ class DataStructureObject extends MaintainableObject {
     hasMeasureDimension(){
         return this.getComponents().some(comp=>comp.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION)
     }
+    hasTimeDimension(){
+        return this.getComponents().some(comp=>comp.getType() === DSD_COMPONENTS_NAMES.TIME_DIMENSION)
+    }
 };
 
 module.exports = DataStructureObject;

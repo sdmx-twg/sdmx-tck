@@ -1,5 +1,6 @@
 const DATA_QUERY_DETAIL = require("./DataQueryDetail.js").DATA_QUERY_DETAIL;
 const DATA_QUERY_REPRESENTATIONS = require('./DataQueryRepresentations.js').DATA_QUERY_REPRESENTATIONS
+const DIMENSION_AT_OBSERVATION_CONSTANTS = require('../DimensionAtObservationConstants.js').DIMENSION_AT_OBSERVATION_CONSTANTS;
 
 const DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS = {
     START_PERIOD:{ url: "/agency,id,version/all?startPeriod=YYYYDDMM", template: {startPeriod:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}  },
@@ -14,7 +15,10 @@ const DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS = {
     DATA_ONLY_DETAIL:{url:"/agency,id,version/all?detail=dataonly",template: {detail:DATA_QUERY_DETAIL.DATA_ONLY,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
     SERIES_KEYS_ONLY_DETAIL:{url:"/agency,id,version/all?detail=serieskeysonly",template: {detail:DATA_QUERY_DETAIL.SERIES_KEYS_ONLY,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
     NO_DATA_DETAIL:{url:"/agency,id,version/all?detail=nodata",template: {detail:DATA_QUERY_DETAIL.NO_DATA,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
- 
+    DIM_OBS_TIME_PERIOD:{url:"/agency,id,version/all?dimensionAtObservation=TIME_PERIOD",template: {dimensionAtObservation:DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
+    DIM_OBS_DIM:{url:"/agency,id,version/all?dimensionAtObservation=DIM",template: {dimensionAtObservation:DIMENSION_AT_OBSERVATION_CONSTANTS.DIMENSION,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
+    DIM_OBS_ALLDIMENSIONS:{url:"/agency,id,version/all?dimensionAtObservation=AllDimensions",template: {dimensionAtObservation:DIMENSION_AT_OBSERVATION_CONSTANTS.ALLDIMENSIONS,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
+    DIM_OBS_NOT_PROVIDED:{url:"/agency,id,version/all (DIMENSION AT OBSEVATION NOT PROVIDED)",template: {dimensionAtObservation:DIMENSION_AT_OBSERVATION_CONSTANTS.NOT_PROVIDED,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
     getValues() {
         let references = Object.values(this).filter((value) => {
             return typeof value !== 'function';

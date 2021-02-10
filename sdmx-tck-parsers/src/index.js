@@ -21,7 +21,7 @@ var SdmxV21JsonComponentRepresentationParser = require('./parsers/structure-quer
 var SdmxV21DsdGroupParsers = require('./parsers/structure-queries-parsers/SdmxV21DsdGroupParsers.js')
 var SdmxV21DatasetParser = require('./parsers/data-queries-parsers/SdmxV21DatasetParser.js')
 var SdmxV21DatasetComponentsAttributesParser = require('./parsers/data-queries-parsers/SdmxV21DatasetComponentsAttributesParser.js')
-
+var SdmxV21DataGroup = require('./parsers/data-queries-parsers/SdmxV21DataGroup.js')
 module.exports = {
     parsers: {
         SdmxV21JsonForStubsParser: SdmxV21JsonForStubsParser,
@@ -46,6 +46,7 @@ module.exports = {
         SdmxV21JsonComponentRepresentationParser:SdmxV21JsonComponentRepresentationParser,
         SdmxV21DatasetParser:SdmxV21DatasetParser,
         SdmxV21DatasetComponentsAttributesParser:SdmxV21DatasetComponentsAttributesParser,
+        SdmxV21DataGroup:SdmxV21DataGroup,
         SdmxXmlParser: SdmxXmlParser
     }
 };

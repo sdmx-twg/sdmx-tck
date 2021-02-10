@@ -1,7 +1,8 @@
 class DatasetObject {
 
-    constructor(id,series,groups,observations){
+    constructor(id,attributes,series,groups,observations){
         this.id = id;
+        this.attributes=attributes;
         this.series = series;
         this.groups = groups;
         this.observations = observations;     
@@ -12,6 +13,12 @@ class DatasetObject {
     }
     getId(){
         return this.id;
+    }
+    setAttributes(attributes){
+        this.attributes = attributes;
+    }
+    getAttributes(){
+        return this.attributes;
     }
     setSeries(series){
         this.series = series;
@@ -30,6 +37,12 @@ class DatasetObject {
     }
     getObservations(){
         return this.observations;
+    }
+    timeSeriesViewOfData(){
+        return this.getSeries().length > 0 && this.getSeries().every(s=>s.getObservations().length>0) && this.getObservations.length === 0;
+    }
+    flatViewOfData(){
+        return this.getSeries().length === 0  && this.getObservations().length > 0;
     }
 }
 

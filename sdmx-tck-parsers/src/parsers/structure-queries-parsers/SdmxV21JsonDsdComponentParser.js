@@ -45,6 +45,7 @@ class SdmxV21JsonDsdComponentParser {
         }
         for(let i in attributes){
             let id = (attributes[i] && attributes[i].$ && attributes[i].$.id) ? attributes[i].$.id : jsonPath.query(attributes[i].ConceptIdentity[0],'$..Ref')[0][0].$.id
+            let assignmentStatus = (attributes[i] && attributes[i].$ && attributes[i].$.assignmentStatus)?(attributes[i] && attributes[i].$ && attributes[i].$.assignmentStatus):undefined
             //Push in an array the attribute id and the artefact references of the attribute
             datastructureComponents.push(
                 new DataStructureAttributeObject(
@@ -52,7 +53,8 @@ class SdmxV21JsonDsdComponentParser {
                     DSD_COMPONENTS_NAMES.ATTRIBUTE,
                     SdmxV21StructureReferencesParser.getReferences(attributes[i]),
                     SdmxV21JsonComponentRepresentationParser.getRepresentation(attributes[i]),
-                    SdmxV21JsonDsdAttributeRelationshipParser.getAttributeRelationship(attributes[i])))
+                    SdmxV21JsonDsdAttributeRelationshipParser.getAttributeRelationship(attributes[i]),
+                    assignmentStatus))
 
         }
         for(let i in primaryMeasure){

@@ -1,7 +1,14 @@
 class GroupObject {
 
-    constructor(attributes){
+    constructor(id,attributes){
+        this.id=id;
         this.attributes = attributes;       
+    }
+    setId(id){
+        this.id = id;
+    }
+    getId(){
+        return this.id;
     }
     setAttributes(attributes){
         this.attributes = attributes;
