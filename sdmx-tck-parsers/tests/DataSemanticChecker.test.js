@@ -112,5 +112,24 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
         }).catch(function (err) {
             console.log(err);
         });
+
+        //DIMENSION AT OBSERVATION TESTS
+        query = {dimensionAtObservation:"TIME_PERIOD"} 
+        test = {reqTemplate:{dimensionAtObservation:"TIME_PERIOD"}}
+        xmlMessage = fs.readFileSync('./tests/resources/ECB_ECB_TRED1_1.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
+           test.dsdObj = structureWorkspace.sdmxObjects.get("DSD")[0];
+        }).catch(function (err) {
+            console.log(err);
+        });
+
+        xmlMessage = fs.readFileSync('./tests/resources/ECB_TRD_1_Data.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
+            let result = DataSemanticChecker._checkFurtherDescribingResults(test,query,sdmxObjects)
+            console.log("DIMENSION AT OBSERVATION TESTS")
+            console.log(result)
+        }).catch(function (err) {
+            console.log(err);
+        });
     });
 });
