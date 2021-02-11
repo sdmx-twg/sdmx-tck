@@ -230,6 +230,7 @@ class DataSemanticChecker {
             let result = this._checkDetail(test, query, workspace);
             if(result.status === FAILURE_CODE){return result}
         }
+        /*Check the dimension at observation in response*/
         if(query.obsDimension){
             let result =  this._checkDimensionAtObservation(test,query,workspace)
             if(result.status === FAILURE_CODE){return result;}
@@ -345,11 +346,17 @@ class DataSemanticChecker {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
         let datasets = workspace.getDatasets();
+        if(datasets.length === 0){
+            throw new Error("No Datasets returned.")
+        }
         let isTimeSeriesViewCheck = datasets.every(dataset=>dataset.timeSeriesViewOfData()); 
         if(!isTimeSeriesViewCheck){
             return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. No time series view of data returned." }
         }
         let observations = workspace.getAllObservations();
+        if(observations.length === 0){
+            throw new Error("No Observations returned.")
+        }
         let result = observations.every(obs => Object.keys(obs.getAttributes()).indexOf("TIME_PERIOD") !== -1)
         if(!result){return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There is at least one observation without TIME_PERIOD attribute." }}
         
@@ -364,11 +371,17 @@ class DataSemanticChecker {
         }
 
         let series = workspace.getAllSeries();
+        if(series.length === 0){
+            throw new Error("No Series returned.")
+        }
         let result = series.every(s => Object.keys(s.getAttributes()).indexOf("TIME_PERIOD") !== -1 )
         if(!result){
             return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are series that do not contain TIME_PERIOD attribute." }
         }
         let observations = workspace.getAllObservations()
+        if(observations.length === 0){
+            throw new Error("No Observations returned.")
+        }
         result = observations.every(obs => Object.keys(obs.getAttributes()).indexOf(dimensionId) !== -1)
         if(!result){
             return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There is at least one observation without TIME_PERIOD attribute." }
@@ -383,6 +396,9 @@ class DataSemanticChecker {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
         let datasets = workspace.getDatasets();
+        if(datasets.length === 0){
+            throw new Error("No Datasets returned.")
+        }
         let isFlatViewCheck = datasets.every(dataset=>dataset.flatViewOfData()); 
         if(!isFlatViewCheck){
             return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. No flat view of data returned." }
