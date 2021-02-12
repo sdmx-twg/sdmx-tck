@@ -1,5 +1,7 @@
 const { model } = require("../..");
 const TckError = require("../../errors/TckError");
+const ObservationObject = require('../data-queries-models/ObservationObject.js');
+
 
 class SeriesObject {
 
@@ -78,6 +80,18 @@ class SeriesObject {
             
         })
         return observationsBetweenPeriod
+    }
+
+    static fromJson(seriesJson){
+        if(!seriesJson || !seriesJson.attributes || !seriesJson.observations){
+            throw new Error("Cannot create Series object.")
+        }
+        let seriesObsArray = [];
+        seriesJson.observations.forEach(obs =>{
+            seriesObsArray.push(ObservationObject.fromJson(obs))
+        })
+        
+        return new SeriesObject(seriesJson.attributes,seriesObsArray)
     }
     
 }

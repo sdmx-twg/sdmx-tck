@@ -33,6 +33,15 @@ class ObservationObject {
     isBeforeDate(date){
         return DatesHandling.isBeforeDate(this.getAttributes().TIME_PERIOD,date)
     }
+
+    static fromJson(obsJson){
+
+        if(!obsJson || !obsJson.attributes){
+            throw new Error("Cannot create Observations object.")
+        }
+        return new ObservationObject(obsJson.attributes);
+
+    }
 }
 
 module.exports = ObservationObject;

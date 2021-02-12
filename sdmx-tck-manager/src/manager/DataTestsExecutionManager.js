@@ -72,13 +72,7 @@ class DataTestsExecutionManager {
             
             
             if(toRun.indicativeSeries){
-                let seriesObsArray=[];
-                toRun.indicativeSeries.observations.forEach(obs=>{
-                    seriesObsArray.push(new ObservationObject(obs.attributes))
-                })
-                toRun.indicativeSeries = new SeriesObject(toRun.indicativeSeries.attributes,seriesObsArray)
-                
-                
+                toRun.indicativeSeries = SeriesObject.fromJson(toRun.indicativeSeries)
             }
 
             let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,
