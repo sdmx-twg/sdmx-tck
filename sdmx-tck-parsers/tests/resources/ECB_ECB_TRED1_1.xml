@@ -148,11 +148,6 @@
 								<str:TextFormat maxLength="3" minLength="3" textType="String"/>
 							</str:LocalRepresentation>
 							<str:AttributeRelationship>
-								<str:PrimaryMeasure>
-									<Ref id="OBS_VALUE"/>
-								</str:PrimaryMeasure>
-							</str:AttributeRelationship>
-							<!-- <str:AttributeRelationship>
 								<str:Dimension>
 									<Ref id="FREQ"/>
 								</str:Dimension>
@@ -177,9 +172,9 @@
 								<str:Dimension>
 									<Ref id="TRD_SUFFIX"/>
 								</str:Dimension>
-							</str:AttributeRelationship> -->
+							</str:AttributeRelationship>
 						</str:Attribute>
-						 <!--<str:Attribute assignmentStatus="Mandatory" id="OBS_STATUS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_TRD1(1.0).OBS_STATUS">
+						 <str:Attribute assignmentStatus="Mandatory" id="OBS_STATUS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_TRD1(1.0).OBS_STATUS">
 							<str:ConceptIdentity>
 								<Ref agencyID="ECB" class="Concept" id="OBS_STATUS" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
 							</str:ConceptIdentity>
@@ -805,7 +800,7 @@
 									<Ref id="TRD_SUFFIX"/>
 								</str:Dimension>
 							</str:AttributeRelationship>
-						</str:Attribute> -->
+						</str:Attribute>
 					</str:AttributeList>
 					<str:MeasureList id="MeasureDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=ECB:ECB_TRD1(1.0).MeasureDescriptor">
 						<str:PrimaryMeasure id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=ECB:ECB_TRD1(1.0).OBS_VALUE">
