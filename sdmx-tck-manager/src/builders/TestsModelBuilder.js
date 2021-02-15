@@ -6,18 +6,18 @@ const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
 const DATA_QUERY_DETAIL = require("sdmx-tck-api").constants.DATA_QUERY_DETAIL;
 const API_VERSIONS = require('sdmx-tck-api').constants.API_VERSIONS
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
-var StructureIdentificationParametersTestsBuilder = require("../builders/StructureIdentificationParametersTestsBuilder.js");
-var StructureExtendedResourceIdentParamTestsBuilder = require("../builders/StructureExtendedResourceIdentParamTestsBuilder.js");
-var StructureFurtherDescribingResultsParamTestsBuilder = require("../builders/StructureFurtherDescribingResultsParamTestsBuilder.js");
-var StructureRepresentationSupportTestsBuilder = require("../builders/StructureRepresentationSupportTestsBuilder.js");
-var SchemaIdentificationParametersTestBuilder = require("../builders/SchemaIdentificationParametersTestBuilder.js");
-var SchemaFurtherDescribingResultsParamTestsBuilder = require("../builders/SchemaFurtherDescribingResultsParamTestsBuilder.js")
-var DataIdentificationParametersTestBuilder = require("../builders/DataIdentificationParametersTestBuilder.js")
-var DataExtendedResourceIdentificationTestBuilder = require('../builders/DataExtendedResourceIdentificationTestBuilder.js');
-var DataRepresentationSupportTestBuilder = require('../builders/DataRepresentationSupportTestBuilder.js')
-var DataFurtherDescribingResultsTestBuilder = require('./DataFurtherDescribingResultsTestBuilder.js');
-var DataAvailabilityTestBuilder = require('./DataAvailabilityTestBuilder.js')
-var DataOtherFeatureTestBuilder = require('./DataOtherFeatureTestBuilder.js')
+var StructureIdentificationParametersTestsBuilder = require("../builders/structure-queries-builders/StructureIdentificationParametersTestsBuilder.js");
+var StructureExtendedResourceIdentParamTestsBuilder = require("../builders/structure-queries-builders/StructureExtendedResourceIdentParamTestsBuilder.js");
+var StructureFurtherDescribingResultsParamTestsBuilder = require("../builders/structure-queries-builders/StructureFurtherDescribingResultsParamTestsBuilder.js");
+var StructureRepresentationSupportTestsBuilder = require("../builders/structure-queries-builders/StructureRepresentationSupportTestsBuilder.js");
+var SchemaIdentificationParametersTestBuilder = require("../builders/schema-queries-builders/SchemaIdentificationParametersTestBuilder.js");
+var SchemaFurtherDescribingResultsParamTestsBuilder = require("../builders/schema-queries-builders/SchemaFurtherDescribingResultsParamTestsBuilder.js")
+var DataIdentificationParametersTestBuilder = require("../builders/data-queries-builders/DataIdentificationParametersTestBuilder.js")
+var DataExtendedResourceIdentificationTestBuilder = require('../builders/data-queries-builders/DataExtendedResourceIdentificationTestBuilder.js');
+var DataRepresentationSupportTestBuilder = require('../builders/data-queries-builders/DataRepresentationSupportTestBuilder.js')
+var DataFurtherDescribingResultsTestBuilder = require('./data-queries-builders/DataFurtherDescribingResultsTestBuilder.js');
+var DataAvailabilityTestBuilder = require('./data-queries-builders/DataAvailabilityTestBuilder.js')
+var DataOtherFeatureTestBuilder = require('./data-queries-builders/DataOtherFeatureTestBuilder.js')
 
 class TestsModelBuilder {
     /**

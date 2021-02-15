@@ -1,8 +1,8 @@
-const DATA_OTHER_FEATURES_TESTS = require('../constants/TestConstants.js').DATA_OTHER_FEATURES_TESTS;
+const DATA_OTHER_FEATURES_TESTS = require('../../constants/TestConstants.js').DATA_OTHER_FEATURES_TESTS;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 
-var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
+var TestObjectBuilder = require("../TestObjectBuilder.js");
 
 class DataOtherFeatureTestBuilder {
     

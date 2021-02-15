@@ -1,5 +1,3 @@
-const { model } = require("../..");
-const TckError = require("../../errors/TckError");
 const ObservationObject = require('../data-queries-models/ObservationObject.js');
 
 

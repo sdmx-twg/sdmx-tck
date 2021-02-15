@@ -4,8 +4,8 @@ const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const ITEM_SCHEME_TYPES = require('sdmx-tck-api').constants.ITEM_SCHEME_TYPES;
 const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
-var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
-var STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT = require('../constants/TestConstants.js').STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT;
+var TestObjectBuilder = require("../TestObjectBuilder.js");
+var STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT = require('../../constants/TestConstants.js').STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT;
 var STRUCTURE_IDENTIFICATION_PARAMETERS = require('sdmx-tck-api').constants.STRUCTURE_IDENTIFICATION_PARAMETERS;
 var STRUCTURE_ITEM_QUERIES = require('sdmx-tck-api').constants.STRUCTURE_ITEM_QUERIES;
 

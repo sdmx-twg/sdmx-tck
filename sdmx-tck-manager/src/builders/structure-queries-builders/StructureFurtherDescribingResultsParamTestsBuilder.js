@@ -3,8 +3,8 @@ const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
-var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
-var STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS = require('../constants/TestConstants.js').STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS;
+var TestObjectBuilder = require("../TestObjectBuilder.js");
+var STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS = require('../../constants/TestConstants.js').STRUCTURES_PARAMETERS_FOR_FURTHER_DESCRIBING_THE_RESULTS;
 
 class StructureFurtherDescribingResultsParamTestsBuilder{
 

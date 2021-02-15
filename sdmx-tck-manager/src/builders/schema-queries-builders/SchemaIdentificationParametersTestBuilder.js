@@ -1,6 +1,6 @@
-const SCHEMA_IDENTIFICATION_PARAMETERS_TESTS = require('../constants/TestConstants.js').SCHEMA_IDENTIFICATION_PARAMETERS_TESTS;
+const SCHEMA_IDENTIFICATION_PARAMETERS_TESTS = require('../../constants/TestConstants.js').SCHEMA_IDENTIFICATION_PARAMETERS_TESTS;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
+var TestObjectBuilder = require("../TestObjectBuilder.js");
 
 class SchemaIdentificationParametersTestBuilder {
     

@@ -1,9 +1,9 @@
-const DATA_IDENTIFICATION_PARAMETERS_TESTS = require('../constants/TestConstants.js').DATA_IDENTIFICATION_PARAMETERS_TESTS;
-const DATA_FURTHER_DESCRIBING_RESULTS_TESTS = require('../constants/TestConstants').DATA_FURTHER_DESCRIBING_RESULTS_TESTS;
+const DATA_IDENTIFICATION_PARAMETERS_TESTS = require('../../constants/TestConstants.js').DATA_IDENTIFICATION_PARAMETERS_TESTS;
+const DATA_FURTHER_DESCRIBING_RESULTS_TESTS = require('../../constants/TestConstants').DATA_FURTHER_DESCRIBING_RESULTS_TESTS;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 
-var TestObjectBuilder = require("./TestObjectBuilder.js");
+var TestObjectBuilder = require("../TestObjectBuilder.js");
 
 class DataFurtherDescribingResultsTestBuilder {
     

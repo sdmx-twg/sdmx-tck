@@ -1,24 +1,21 @@
 const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
-var SdmxXmlParser = require('sdmx-tck-parsers').parsers.SdmxXmlParser;
-var TckError = require('sdmx-tck-api').errors.TckError;
-var DataRequestBuilder = require('../builders/DataRequestBuilder.js');
-var ResponseValidator = require('../checker/HttpResponseValidator.js');
-var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
-var DataRequestPropsBuilder = require('../builders/DataRequestPropsBuilder.js')
-var HelperManager = require('../manager/HelperManager.js')
-var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 const sdmx_requestor = require('sdmx-rest');
 const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator');
 const { DATA_QUERY_KEY } = require('sdmx-tck-api/src/constants/data-queries-constants/DataQueryKey');
-const { SeriesKeyType } = require('sdmx-rest/lib/utils/sdmx-patterns');
 const SeriesObject = require('sdmx-tck-api').model.SeriesObject;
-const ObservationObject = require('sdmx-tck-api').model.ObservationObject;
 const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
-const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
+var SdmxXmlParser = require('sdmx-tck-parsers').parsers.SdmxXmlParser;
+var TckError = require('sdmx-tck-api').errors.TckError;
+var DataRequestBuilder = require('../builders/data-queries-builders/DataRequestBuilder.js');
+var ResponseValidator = require('../checker/HttpResponseValidator.js');
+var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
+var DataRequestPropsBuilder = require('../builders/data-queries-builders/DataRequestPropsBuilder.js')
+var HelperManager = require('../manager/HelperManager.js')
+var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
 
 
 class DataTestsExecutionManager {
@@ -108,7 +105,7 @@ class DataTestsExecutionManager {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
 
-            //REPRESENTATION VALIDATION - OTHER FEATURES VALIDATION
+            //REPRESENTATION VALIDATION - OTHER FEATURES (HEADERS) VALIDATION
             if (toRun.testType === TEST_TYPE.DATA_REPRESENTATION_SUPPORT_PARAMETERS || toRun.testType === TEST_TYPE.DATA_OTHER_FEATURES) {
                 let httpResponseHeadersValidation;
                 if(toRun.testType === TEST_TYPE.DATA_REPRESENTATION_SUPPORT_PARAMETERS){

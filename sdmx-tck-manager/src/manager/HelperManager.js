@@ -1,9 +1,9 @@
 const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE
 var SdmxXmlParser = require('sdmx-tck-parsers').parsers.SdmxXmlParser;
 var TckError = require('sdmx-tck-api').errors.TckError;
-var StructureRequestBuilder = require('../builders/StructureRequestBuilder.js');
-var DataRequestPropsBuilder = require('../builders/DataRequestPropsBuilder.js');
-var DataRequestBuilder = require('../builders/DataRequestBuilder.js');
+var StructureRequestBuilder = require('../builders/structure-queries-builders/StructureRequestBuilder.js');
+var DataRequestPropsBuilder = require('../builders/data-queries-builders/DataRequestPropsBuilder.js');
+var DataRequestBuilder = require('../builders/data-queries-builders/DataRequestBuilder.js');
 
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
 const sdmx_requestor = require('sdmx-rest');

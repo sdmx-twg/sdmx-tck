@@ -10,8 +10,8 @@ var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
 const MetadataReferences = require('sdmx-rest').metadata.MetadataReferences
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-var XSDTestsDataBuilder = require('./src/builders/XSDTestsDataBuilder.js')
-var DataQueriesDataBuilder = require('./src/builders/DataQueriesDataBuilder.js')
+var XSDTestsDataBuilder = require('./src/builders/schema-queries-builders/XSDTestsDataBuilder.js')
+var DataQueriesDataBuilder = require('./src/builders/data-queries-builders/DataQueriesDataBuilder.js')
 
 
 const server = app.listen(5000, () => {

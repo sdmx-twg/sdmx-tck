@@ -1,8 +1,8 @@
 
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
-var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
-var STRUCTURES_REPRESENTATIONS_SUPPORT = require('../constants/TestConstants.js').STRUCTURES_REPRESENTATIONS_SUPPORT;
+var TestObjectBuilder = require("../TestObjectBuilder.js");
+var STRUCTURES_REPRESENTATIONS_SUPPORT = require('../../constants/TestConstants.js').STRUCTURES_REPRESENTATIONS_SUPPORT;
 
 
 class StructureRepresentationSupportTestsBuilder{
