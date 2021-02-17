@@ -42,7 +42,7 @@ describe('Tests DataQuery semantic validation in Resource Provider Identificatio
 
 describe('Tests DataQuery semantic validation in Extended Resource Identification Test', function () {
     it('It should print semantic validation result', async () => {        
-        let test = {}
+        let test = {reqTemplate:{ket:DATA_QUERY_KEY.PARTIAL_KEY}}
         let query = {key: 'ARS..A.SP00.A'}
         let xmlMessage = fs.readFileSync('./tests/resources/dataExtendedIdentificationTest.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
