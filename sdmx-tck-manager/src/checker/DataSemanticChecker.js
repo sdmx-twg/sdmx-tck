@@ -551,7 +551,6 @@ class DataSemanticChecker {
         let seriesObjToCheck = workspace.getAllSeries().find(s => {
             return s.equals(test.indicativeSeries)
         })
-
         let allObsOfIndicativeSerie = test.indicativeSeries.getObservations();
         if (query.start || query.end) {
             allObsOfIndicativeSerie = test.indicativeSeries.getObservationsBetweenPeriod(query.start, query.end)
@@ -559,26 +558,28 @@ class DataSemanticChecker {
 
 
         if (query.firstNObs) {
-            if (seriesObjToCheck.getObservations().length !== query.firstNObs) {
+            if (seriesObjToCheck.getObservations().length > query.firstNObs) {
                 return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Found " + seriesObjToCheck.getObservations().length + " instead of " + query.firstNObs + "." }
             }
-            for (let i = 0; i < query.firstNObs; i++) {
-                if (!allObsOfIndicativeSerie[i].equals(seriesObjToCheck.getObservations()[i])) {
-                    return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Observations found are not the first " + query.firstNObs + "." }
+            //covers the case where the number of observations are fewer than the requested N first observations
+            let obsLimit = (allObsOfIndicativeSerie.length < query.firstNObs)?allObsOfIndicativeSerie.length:query.firstNObs
+
+            for (let i = 0; i < obsLimit; i++) {
+                if(!seriesObjToCheck.getObservations().some(obs=> obs.equals(allObsOfIndicativeSerie[i]))){
+                     return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Observations found are not the first " + query.firstNObs + "." }
                 }
             }
         }
         if (query.lastNObs) {
-            if (seriesObjToCheck.getObservations().length !== query.lastNObs) {
+            if (seriesObjToCheck.getObservations().length > query.lastNObs) {
                 return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Found " + seriesObjToCheck.getObservations().length + " instead of " + query.lastNObs + "." }
             }
-            let objIndex=query.lastNObs-1;
-            for (let i = allObsOfIndicativeSerie.length - 1; i >= allObsOfIndicativeSerie.length - query.lastNObs; i--) {
-                if (!allObsOfIndicativeSerie[i].equals(seriesObjToCheck.getObservations()[objIndex])) {
+            //covers the case where the number of observations are fewer than the requested N last observations
+            let obsLimit = (allObsOfIndicativeSerie.length < query.lastNObs)?allObsOfIndicativeSerie.length:allObsOfIndicativeSerie.length - query.lastNObs
+            for (let i = allObsOfIndicativeSerie.length - 1; i >= obsLimit; i--) {
+                if(!seriesObjToCheck.getObservations().some(obs=> obs.equals(allObsOfIndicativeSerie[i]))){
                     return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Observations found are not the last " + query.lastNObs + "." }
                 }
-                objIndex--;
-
             }
         }
 
