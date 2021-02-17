@@ -171,11 +171,10 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxDataObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
-        return this._validateSeriesAgainstKey(query.key, workspace)
-        // if (test.reqTemplate.key === DATA_QUERY_KEY.PARTIAL_KEY || test.reqTemplate.key === DATA_QUERY_KEY.MANY_KEYS) {
-        //     return this._validateSeriesAgainstKey(query.key, workspace)
-        // }
-        // return { status: SUCCESS_CODE }
+        if (test.reqTemplate.key === DATA_QUERY_KEY.FULL_KEY || test.reqTemplate.key === DATA_QUERY_KEY.PARTIAL_KEY || test.reqTemplate.key === DATA_QUERY_KEY.MANY_KEYS) {
+            return this._validateSeriesAgainstKey(query.key, workspace)
+        }
+        return { status: SUCCESS_CODE }
 
     }
 
@@ -640,7 +639,7 @@ class DataSemanticChecker {
         return { status: SUCCESS_CODE }
     }
 
-   static _checkSimpleKeys(test,query,workspace,constraint){
+    static _checkSimpleKeys(test,query,workspace,constraint){
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
         }
