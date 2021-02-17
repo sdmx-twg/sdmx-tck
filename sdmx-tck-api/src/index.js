@@ -50,6 +50,7 @@ var DataStructureObject = require('./model/structure-queries-models/DataStructur
 var DataStructureGroupObject = require('./model/structure-queries-models/DataStructureGroupObject.js')
 var DataStructureComponentObject = require('./model/structure-queries-models/DataStructureComponentObject.js');
 var ItemObject = require('./model/structure-queries-models/ItemObject.js')
+var CodeObject = require('./model/structure-queries-models/CodeObject.js')
 var ComponentRepresentationObject = require('./model/structure-queries-models/ComponentRepresentationObject.js')
 var DataflowObject = require('./model/structure-queries-models/DataflowObject.js');
 var ContentConstraintObject = require('./model/structure-queries-models/ContentConstraintObject.js');
@@ -152,6 +153,7 @@ module.exports = {
         DataStructureGroupObject:DataStructureGroupObject,
         DataStructureComponentObject:DataStructureComponentObject,
         ItemObject:ItemObject,
+        CodeObject:CodeObject,
         ComponentRepresentationObject:ComponentRepresentationObject,
         DataStructureAttributeRelationshipObject:DataStructureAttributeRelationshipObject,
         DataStructureAttributeObject:DataStructureAttributeObject,

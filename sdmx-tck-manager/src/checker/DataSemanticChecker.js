@@ -921,7 +921,7 @@ class DataSemanticChecker {
             if(!codelistInResponse){throw new Error("Error in Data Availability semantic check. Could not locate codelist for dimension with id: "+keyVal.getId()+".")}
             
             return keyVal.getValues().every(val=>{
-                return codelistInResponse.getItems().some(item=> item.getId() === val)
+                return codelistInResponse.getItems().some(item=> item.getId() === val || item.getParentCode() === val)
             })
         })
         if(!result){
