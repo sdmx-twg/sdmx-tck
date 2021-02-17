@@ -1,7 +1,7 @@
 var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
 const fs = require('fs');
 const DataSemanticChecker = require('../../sdmx-tck-manager/src/checker/DataSemanticChecker.js');
-var DataRequestPropsBuilder = require('../../sdmx-tck-manager/src/builders/DataRequestPropsBuilder.js')
+var DataRequestPropsBuilder = require('../../sdmx-tck-manager/src/builders/data-queries-builders/DataRequestPropsBuilder.js')
 var UrnUtil = require('sdmx-tck-api').utils.UrnUtil
 const DATA_QUERY_KEY = require('sdmx-tck-api').constants.DATA_QUERY_KEY;
 
