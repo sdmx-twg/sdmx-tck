@@ -4,8 +4,7 @@ const SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX
 class DataflowObject extends MaintainableObject {
     constructor(props, children, detail) {
         super(SDMX_STRUCTURE_TYPE.DATAFLOW.key, props, children, detail);
-
-        this.setDsdRef(props.$.dsdRef);
+        this.setDsdRef(this.children.find(ref => ref.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key));
     };
     setDsdRef(dsdRef) {
         this.dsdRef = dsdRef;
