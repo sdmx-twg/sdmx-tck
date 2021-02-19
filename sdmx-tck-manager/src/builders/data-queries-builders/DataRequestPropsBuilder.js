@@ -1,10 +1,17 @@
 const DATA_QUERY_KEY = require('sdmx-tck-api').constants.DATA_QUERY_KEY;
 const DIMENSION_AT_OBSERVATION_CONSTANTS = require('sdmx-tck-api').constants.DIMENSION_AT_OBSERVATION_CONSTANTS;
-const SeriesObject = require('sdmx-tck-api').model.SeriesObject;
-const ObservationObject = require('sdmx-tck-api').model.ObservationObject;
+var SeriesObject = require('sdmx-tck-api').model.SeriesObject;
+var ObservationObject = require('sdmx-tck-api').model.ObservationObject;
+var DataStructureObject = require('sdmx-tck-api').model.DataStructureObject;
 class DataRequestPropsBuilder {
     
     static getFlow(testIdentifiers,template){
+        if(!testIdentifiers || typeof testIdentifiers !== 'object'){
+            throw new Error ("Missing mandatory parameter 'testIndentifiers'")
+        }
+        if(!template || typeof template !== 'object'){
+            throw new Error ("Missing mandatory parameter 'template'")
+        }
 
         if(template.agency && template.version){
             return (testIdentifiers.id)
@@ -18,6 +25,9 @@ class DataRequestPropsBuilder {
         return;
     }
     static getComponent(randomKeys,template){
+        if(!template || typeof template !== 'object'){
+            throw new Error ("Missing mandatory parameter 'template'")
+        }
         if(!template.component){return;}
         if(!randomKeys || !randomKeys[0]){
             throw new Error ("Unable to get Dimension.")
@@ -26,6 +36,9 @@ class DataRequestPropsBuilder {
         return Object.keys(randomKeys[0])[randIndex]
     }
     static getKey(randomKeys,template){
+        if(!template || typeof template !== 'object'){
+            throw new Error ("Missing mandatory parameter 'template'")
+        }
         if(!template.key || (template.key !== DATA_QUERY_KEY.FULL_KEY && template.key !== DATA_QUERY_KEY.PARTIAL_KEY && template.key !== DATA_QUERY_KEY.MANY_KEYS)){return;}
         if(!randomKeys || !randomKeys[0]){
             throw new Error ("Unable to get Key.")
@@ -57,8 +70,11 @@ class DataRequestPropsBuilder {
     }
 
     static getProvider(providerRefs,template){
+        if(!template || typeof template !== 'object'){
+            throw new Error ("Missing mandatory parameter 'template'")
+        }
         if(!template.provider){return;}
-        if(providerRefs.length === 0){
+        if(!providerRefs || providerRefs.length === 0){
             throw new Error("Unable to find Providers")
         }
         if(providerRefs.length === 1){
@@ -75,6 +91,9 @@ class DataRequestPropsBuilder {
     }
 
     static getStartPeriod(indicativeSeries,template){
+        if(!template || typeof template !== 'object'){
+            throw new Error ("Missing mandatory parameter 'template'")
+        }
         if(!template.startPeriod){return;}
         if(typeof template.startPeriod === "string"){return template.startPeriod}
 
@@ -92,6 +111,9 @@ class DataRequestPropsBuilder {
     }
 
     static getEndPeriod(indicativeSeries,template){
+        if(!template || typeof template !== 'object'){
+            throw new Error ("Missing mandatory parameter 'template'")
+        }
         if(!template.endPeriod){return;}
         if(typeof template.endPeriod === "string"){return template.endPeriod}
         if(!indicativeSeries instanceof SeriesObject || indicativeSeries.getObservations().length === 0
@@ -126,11 +148,17 @@ class DataRequestPropsBuilder {
     }
 
     static getNumOfFirstNObservations(indicativeSeries,template){
+        if(!template || typeof template !== 'object'){
+            throw new Error ("Missing mandatory parameter 'template'")
+        }
         if(!template.firstNObservations){return;}
         return this.getNumberOfObs(indicativeSeries)
     }
 
     static getNumOfLastNObservations(indicativeSeries,template){
+        if(!template || typeof template !== 'object'){
+            throw new Error ("Missing mandatory parameter 'template'")
+        }
         if(!template.lastNObservations){return;}
         if(!indicativeSeries instanceof SeriesObject){
             throw new Error ("Unable to get a number of observations.")
@@ -141,6 +169,9 @@ class DataRequestPropsBuilder {
         return this.getNumberOfObs(indicativeSeries)
     }
     static getUpdateAfterDate(indicativeSeries,template){
+        if(!template || typeof template !== 'object'){
+            throw new Error ("Missing mandatory parameter 'template'")
+        }
         if(!template.updateAfter){return;}
         if(!indicativeSeries instanceof SeriesObject || indicativeSeries.getObservations().length === 0
             || indicativeSeries.getObservations().some(obs=>!obs instanceof ObservationObject)){
@@ -152,8 +183,14 @@ class DataRequestPropsBuilder {
     }
 
     static getObsDimension(dsdObj,template){
+        if(!template || typeof template !== 'object'){
+            throw new Error ("Missing mandatory parameter 'template'")
+        }
         if(!template.dimensionAtObservation || template.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.NOT_PROVIDED){return;}
         if(template.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.DIMENSION){
+            if(!dsdObj || !dsdObj instanceof DataStructureObject){
+                throw new Error ("Unable to get a dimension.")
+            }
             return dsdObj.getRandomDimension().getId()
         }
         return template.dimensionAtObservation;
