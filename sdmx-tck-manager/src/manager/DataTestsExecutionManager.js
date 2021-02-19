@@ -61,12 +61,11 @@ class DataTestsExecutionManager {
             
             let dfObj = toRun.structureWorkspace.getSdmxObject(new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource),toRun.identifiers.agency,toRun.identifiers.id,toRun.identifiers.version));
             if(dfObj){
-                let dsdRef = dfObj.getChildren().find(ref => ref.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key)
+                let dsdRef = dfObj.getDsdRef()
                 if(dsdRef){
                     toRun.dsdObj = toRun.structureWorkspace.getSdmxObject(dsdRef)
                 }
             }
-            
             
             if(toRun.indicativeSeries){
                 toRun.indicativeSeries = SeriesObject.fromJson(toRun.indicativeSeries)
