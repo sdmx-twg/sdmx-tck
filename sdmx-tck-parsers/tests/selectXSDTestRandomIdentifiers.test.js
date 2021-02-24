@@ -1,18 +1,14 @@
 var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
 const fs = require('fs');
+const StructureReference = require('sdmx-tck-api/src/model/structure-queries-models/StructureReference');
 
 
 describe('Tests the correct selection of maintainables to perform the random xsd tests', function () {
-    it('It should print a parsed mainatainable', async () => {
-       
+    it('It should assert that the result is a PRA reference', async () => {
         let xmlMessage = fs.readFileSync('./tests/resources/globalRegistry_AllPrasWithDescendants.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
-            //console.log(sdmxObjects.sdmxObjects.get("complexTypes")[0].compositors)
-            //console.log(sdmxObjects.sdmxObjects.get("complexTypes")[0].compositors[0].compositors[0].elements)
-        console.log(sdmxObjects.getNonConstraintDataForXSDTests("provisionagreement"))
-        //console.log(sdmxObjects)
-        }).catch(function (err) {
-            console.log(err);
-        });
+        console.assert(sdmxObjects.getNonConstraintDataForXSDTests("provisionagreement") instanceof StructureReference)
+        console.assert(sdmxObjects.getNonConstraintDataForXSDTests("provisionagreement").getStructureType() === "PROVISION_AGREEMENT")
+        })
     });
 });

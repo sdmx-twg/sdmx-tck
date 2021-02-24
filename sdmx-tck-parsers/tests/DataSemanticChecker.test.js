@@ -1,73 +1,63 @@
 var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
 const fs = require('fs');
 const DataSemanticChecker = require('../../sdmx-tck-manager/src/checker/DataSemanticChecker.js');
-var DataRequestPropsBuilder = require('../../sdmx-tck-manager/src/builders/data-queries-builders/DataRequestPropsBuilder.js')
-var UrnUtil = require('sdmx-tck-api').utils.UrnUtil
 const DATA_QUERY_KEY = require('sdmx-tck-api').constants.DATA_QUERY_KEY;
+var SdmxStructureObjects = require('sdmx-tck-api').model.SdmxStructureObjects; 
+var SeriesObject = require('sdmx-tck-api').model.SeriesObject;
+var DataStructureObject = require('sdmx-tck-api').model.DataStructureObject;
 
 describe('Tests DataQuery semantic validation in Resource Identification Test', function () {
-    it('It should print semantic validation result', async () => {
+    it('It should assert semantic validation result', async () => {
         let test = {} 
         let query = {provider:"all",flow:"EXR"}
         xmlMessage = fs.readFileSync('./tests/resources/dataIdentification.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
             let result = DataSemanticChecker._checkResourceIdentification(test,query,sdmxObjects);
-            console.log(result)
-        }).catch(function (err) {
-            console.log(err);
-        });
+            console.assert(result.status === 1)
+        })
     });
 });
 describe('Tests DataQuery semantic validation in Resource Provider Identification Test', function () {
-    it('It should print semantic validation result', async () => {
+    it('It should assert semantic validation result', async () => {
         
         let test = {} 
         let query = {provider:"ECB+ECB1"}
         let xmlMessage = fs.readFileSync('./tests/resources/DFXmlForDataIdentification.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
-           test.structureWorkspace = structureWorkspace;
-        }).catch(function (err) {
-            console.log(err);
-        });
+            test.structureWorkspace = structureWorkspace;
+            console.assert(test.structureWorkspace instanceof SdmxStructureObjects)
+        })
 
         xmlMessage = fs.readFileSync('./tests/resources/dataIdentification.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
             let result = DataSemanticChecker._checkResourceIdentification(test,query,sdmxObjects)
-            console.log(result)
-        }).catch(function (err) {
-            console.log(err);
-        });
+            console.assert(result.status === 1)
+        })
     });
 });
 
 describe('Tests DataQuery semantic validation in Extended Resource Identification Test', function () {
-    it('It should print semantic validation result', async () => {        
+    it('It should assert semantic validation result', async () => {        
         let test = {reqTemplate:{ket:DATA_QUERY_KEY.PARTIAL_KEY}}
         let query = {key: 'ARS..A.SP00.A'}
         let xmlMessage = fs.readFileSync('./tests/resources/dataExtendedIdentificationTest.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
            let result =  DataSemanticChecker._checkExtendedResourceIdentification(test,query,sdmxObjects);
-           console.log(result)
-        }).catch(function (err) {
-            console.log(err);
-        });
+           console.assert(result.status === 1)
+        })
     });
 });
 
 describe('Tests DataQuery semantic validation in Further Describing Results Test', function () {
-    it('It should print semantic validation result', async () => {
+    it('It should assert semantic validation result', async () => {
         //START_PERIOD-END_PERIOD
         let query = {end:"2017-Q3",start:"2003"}
         let test = {}
         let xmlMessage = fs.readFileSync('./tests/resources/DataXML.xml','utf8')
-        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
-            
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {            
             let result = DataSemanticChecker._checkFurtherDescribingResults(test,query,structureWorkspace)
-            console.log("PERIODS TESTS")
-            console.log(result)
-        }).catch(function (err) {
-            console.log(err);
-        });
+            console.assert(result.status === 1)
+        })
 
         //FIRST_N_OBSERVATIONS/LAST_N_OBSERVATIONS
         query = {lastNObs:3,start:"2009",end:"2010-10"}
@@ -77,19 +67,15 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
             
             test.indicativeSeries = structureWorkspace.sdmxObjects.get("DATASETS")[0].series[0]
-        }).catch(function (err) {
-            console.log(err);
-        });
+            console.assert(test.indicativeSeries instanceof SeriesObject)
+        })
 
         xmlMessage = fs.readFileSync('./tests/resources/DataXMLNObservations.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
             
             let result = DataSemanticChecker._checkFurtherDescribingResults(test,query,structureWorkspace)
-            console.log("OBSERVATIONS NUM TESTS")
-            console.log(result)
-        }).catch(function (err) {
-            console.log(err);
-        });
+            console.assert(result.status === 1)
+        })
 
         //DETAIL TESTS
         query = {detail:"nodata"} 
@@ -101,18 +87,14 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
         xmlMessage = fs.readFileSync('./tests/resources/DFXmlForDataFurtherDescribingResults.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
            test.structureWorkspace = structureWorkspace;
-        }).catch(function (err) {
-            console.log(err);
-        });
+           console.assert(test.structureWorkspace instanceof SdmxStructureObjects)
+        })
 
         xmlMessage = fs.readFileSync('./tests/resources/DataXMLNoData.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
             let result = DataSemanticChecker._checkFurtherDescribingResults(test,query,sdmxObjects)
-            console.log("DETAIL TESTS")
-            console.log(result)
-        }).catch(function (err) {
-            console.log(err);
-        });
+            console.assert(result.status === 1)
+        })
 
         //DIMENSION AT OBSERVATION TESTS
         query = {obsDimension:"TIME_PERIOD"} 
@@ -120,18 +102,14 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
         xmlMessage = fs.readFileSync('./tests/resources/ECB_ECB_TRED1_1.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
            test.dsdObj = structureWorkspace.sdmxObjects.get("DSD")[0];
-        }).catch(function (err) {
-            console.log(err);
-        });
+           console.assert(test.dsdObj instanceof DataStructureObject)
+        })
 
         xmlMessage = fs.readFileSync('./tests/resources/ECB_TRD_1_Data.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
             let result = DataSemanticChecker._checkFurtherDescribingResults(test,query,sdmxObjects)
-            console.log("DIMENSION AT OBSERVATION TESTS")
-            console.log(result)
-        }).catch(function (err) {
-            console.log(err);
-        });
+            console.assert(result.status === 0)
+        })
     });
 
    
@@ -140,24 +118,21 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
  //DATA AVAILABILITY TESTS
     //PARENT TEST 'ALL'
     describe('Tests Data Availability parent test', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
                     
             xmlMessage = fs.readFileSync('./tests/resources/DataAvailabilityAll.xml','utf8')
             await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
                 let test = {reqTemplate:{}}
                 let query={flow:"ECB,EXR,1.0"}
-                //let contentconstraint = sdmxObjects.sdmxObjects.get("CONTENT_CONSTRAINT")
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
         });
     });
     
     //SINGLE KEY TEST 'mode=exact'
     describe('Tests Data Availability single key (exact) test', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
                     
             xmlMessage = fs.readFileSync('./tests/resources/DataAvailabilitySimpleKeyExact.xml','utf8')
             await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
@@ -172,18 +147,15 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 FREQ: 'H',
                 EXR_TYPE: 'SP00' } ] }
                 let query={key:"RON.E.RON.D.NRU1",flow:"ECB,EXR,1.0"}
-                //let contentconstraint = sdmxObjects.sdmxObjects.get("CONTENT_CONSTRAINT")
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
         });
     });
     
     //SINGLE KEY TEST 'mode=available'
     describe('Tests Data Availability single key (available) test', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
             
             xmlMessage = fs.readFileSync('./tests/resources/DataAvailabilitySimpleKeyAvailable.xml','utf8')
             await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
@@ -198,18 +170,15 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 FREQ: 'H',
                 EXR_TYPE: 'SP00' } ] }
                 let query={key:"RON.E.RON.D.NRU1",flow:"ECB,EXR,1.0"}
-                //let contentconstraint = sdmxObjects.sdmxObjects.get("CONTENT_CONSTRAINT")
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
         });
     });
     
     //SINGLE DIMENSION TEST
     describe('Tests Data Availability single dimension test', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
             
             parentXmlMessage = fs.readFileSync('./tests/resources/DataAvailabilityAll.xml','utf8')
             let parentObjects = await new SdmxXmlParser().getIMObjects(parentXmlMessage)
@@ -222,48 +191,43 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 let query={component:"EXR_TYPE",flow:"ECB,EXR,1.0"}
     
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
+           
         });
     });
     
     describe('Tests Data Availability Temporal coverage tests', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
                     
             xmlMessage = fs.readFileSync('./tests/resources/DataAvailabilityAll.xml','utf8')
             await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
                 let test = {reqTemplate:{}}
                 let query={start:"2010-01",end:"2020-01",flow:"ECB,EXR,1.0"}
-                //let contentconstraint = sdmxObjects.sdmxObjects.get("CONTENT_CONSTRAINT")
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
+            
         });
     });
     
     describe('Tests Data Availability Metric test', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
                     
             xmlMessage = fs.readFileSync('./tests/resources/DataAvailabilityAll.xml','utf8')
             await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
                 let test = {reqTemplate:{}}
                 let query={metrics:true,flow:"ECB,EXR,1.0"}
-                //let contentconstraint = sdmxObjects.sdmxObjects.get("CONTENT_CONSTRAINT")
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
+
         });
     });
     
     //COMPLEX KEY TEST 'mode=exact'
     describe('Tests Data Availability complex key (exact) test', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
                     
             xmlMessage = fs.readFileSync('./tests/resources/DataAvailabilityComplexKeyExact.xml','utf8')
             await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
@@ -278,18 +242,16 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 FREQ: 'H',
                 EXR_TYPE: 'SP00' } ] }
                 let query={key:"RON+EGP.E.RON.D.NRU1",flow:"ECB,EXR,1.0"}
-                //let contentconstraint = sdmxObjects.sdmxObjects.get("CONTENT_CONSTRAINT")
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
+
         });
     });
     
     //SINGLE KEY TEST 'mode=available'
     describe('Tests Data Availability complex key (available) test', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
                     
             xmlMessage = fs.readFileSync('./tests/resources/DataAvailabilitySimpleKeyAvailable.xml','utf8')
             await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
@@ -304,19 +266,16 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 FREQ: 'H',
                 EXR_TYPE: 'SP00' } ] }
             let query={key:"RON+EGP.E.RON.D.NRU1",flow:"ECB,EXR,1.0"}
-                //let contentconstraint = sdmxObjects.sdmxObjects.get("CONTENT_CONSTRAINT")
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
         });
     });
     
     
     //DATA AVAILABILITY REFERENCES DSD TEST
     describe('Tests Data Availability referencing DSD', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
     
             dsdXml = fs.readFileSync('./tests/resources/ECB+ECB_EXR1+1.0.xml','utf8')
             let dsdWorkspace = await new SdmxXmlParser().getIMObjects(dsdXml)
@@ -327,16 +286,14 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 let test = {dsdObj:dsdObj,reqTemplate:{references:"datastructure"}}
                 let query={references:"datastructure",flow:"ECB,EXR,1.0"}
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
         });
     });
     
     //DATA AVAILABILITY REFERENCES DF TEST
     describe('Tests Data Availability referencing DF', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
     
             dsdXml = fs.readFileSync('./tests/resources/ECB+ECB_EXR1+1.0.xml','utf8')
             let dsdWorkspace = await new SdmxXmlParser().getIMObjects(dsdXml)
@@ -347,16 +304,14 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 let test = {dsdObj:dsdObj,reqTemplate:{references:"dataflow"}}
                 let query={references:"dataflow",flow:"ECB,EXR,1.0"}
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
         });
     });
     
     //DATA AVAILABILITY REFERENCES CODELIST TEST
     describe('Tests Data Availability referencing CODELIST', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
     
             dsdXml = fs.readFileSync('./tests/resources/ECB+ECB_EXR1+1.0.xml','utf8')
             let dsdWorkspace = await new SdmxXmlParser().getIMObjects(dsdXml)
@@ -367,16 +322,14 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 let test = {dsdObj:dsdObj,reqTemplate:{references:"codelist"}}
                 let query={references:"codelist",flow:"ECB,EXR,1.0"}
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
         });
     });
     
     //DATA AVAILABILITY REFERENCES CONCEPT SCHEME TEST
     describe('Tests Data Availability referencing CONCEPT SCHEMES', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
     
             dsdXml = fs.readFileSync('./tests/resources/ECB+ECB_EXR1+1.0.xml','utf8')
             let dsdWorkspace = await new SdmxXmlParser().getIMObjects(dsdXml)
@@ -387,16 +340,14 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 let test = {dsdObj:dsdObj,reqTemplate:{references:"conceptscheme"}}
                 let query={references:"conceptscheme",flow:"ECB,EXR,1.0"}
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
         });
     });
     
     //DATA AVAILABILITY REFERENCES PROVIDER SCHEME TEST
     describe('Tests Data Availability referencing PROVIDER SCHEMES', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
     
             dsdXml = fs.readFileSync('./tests/resources/ECB+ECB_EXR1+1.0.xml','utf8')
             let dsdWorkspace = await new SdmxXmlParser().getIMObjects(dsdXml)
@@ -407,16 +358,14 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 let test = {dsdObj:dsdObj,reqTemplate:{references:"dataproviderscheme"}}
                 let query={references:"dataproviderscheme",flow:"ECB,EXR,1.0",provider:"ECB"}
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
         });
     });
     
     //DATA AVAILABILITY REFERENCES ALL TEST
     describe('Tests Data Availability referencing PROVIDER SCHEMES', function () {
-        it('It should print semantic validation result', async () => {
+        it('It should assert semantic validation result', async () => {
     
             dsdXml = fs.readFileSync('./tests/resources/ECB+ECB_EXR1+1.0.xml','utf8')
             let dsdWorkspace = await new SdmxXmlParser().getIMObjects(dsdXml)
@@ -427,9 +376,7 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 let test = {dsdObj:dsdObj,reqTemplate:{references:"all"},providerRefs:providersArr}
                 let query={references:"all",flow:"ECB,EXR,1.0"}
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
-                console.log(result)
-            }).catch(function (err) {
-                console.log(err);
-            });
+                console.assert(result.status === 1)
+            })
         });
     });

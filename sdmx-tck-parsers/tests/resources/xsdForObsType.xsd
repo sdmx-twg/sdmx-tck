@@ -56,6 +56,60 @@
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="COUNTRY">
+		<xs:complexContent>
+			<xs:restriction base="ObsType">
+				<xs:sequence>
+					<xs:element ref="common:Annotations" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="type" type="e" use="optional" fixed="COUNTRY"/>
+				<xs:attribute name="OBS_VALUE" use="optional">
+					<xs:simpleType name="g">
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="0"/>
+						</xs:restriction>					
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="SEX">
+		<xs:complexContent>
+			<xs:restriction base="ObsType">
+				<xs:sequence>
+					<xs:element ref="common:Annotations" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="type" type="e" use="optional" fixed="SEX"/>
+				<xs:attribute name="OBS_VALUE" use="optional">
+					<xs:simpleType name="g">
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="0"/>
+						</xs:restriction>					
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="DEMO">
+		<xs:complexContent>
+			<xs:restriction base="ObsType">
+				<xs:sequence>
+					<xs:element ref="common:Annotations" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="type" type="e" use="optional" fixed="DEMO"/>
+				<xs:attribute name="OBS_VALUE" use="optional">
+					<xs:simpleType name="g">
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="0"/>
+						</xs:restriction>					
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	
 	
 	<xs:complexType name="PJANT">
 		<xs:complexContent>
@@ -480,11 +534,35 @@
       </xs:restriction>
    </xs:simpleType>
 
+	 <xs:simpleType name="e">
+      <xs:restriction base="common:IDType">
+         <xs:enumeration value="COUNTRY">
+            <xs:annotation>
+               <xs:documentation xml:lang="en">Greece</xs:documentation>
+            </xs:annotation>
+         </xs:enumeration>
+         <xs:enumeration value="SEX">
+            <xs:annotation>
+               <xs:documentation xml:lang="en">Luxembourt</xs:documentation>
+            </xs:annotation>
+         </xs:enumeration>
+         <xs:enumeration value="DEMO">
+            <xs:annotation>
+               <xs:documentation xml:lang="en">United Kingdom</xs:documentation>
+            </xs:annotation>
+         </xs:enumeration>
+      </xs:restriction>
+   </xs:simpleType>
+
     <xs:simpleType name="sdmx:SDMX.CL_UNIT_MULT.1.0">
       <xs:restriction base="common:IDType">
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="sdmx:SDMX.CL_OBS_STATUS.1.0">
+      <xs:restriction base="common:IDType">
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="ESTAT.CL_COUNTRY.1.0">
       <xs:restriction base="common:IDType">
       </xs:restriction>
    </xs:simpleType>

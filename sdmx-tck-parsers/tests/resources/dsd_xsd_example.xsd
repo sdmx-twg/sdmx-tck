@@ -11149,6 +11149,8 @@
 					<xs:element form="unqualified" maxOccurs="unbounded" minOccurs="0" name="Obs" type="ObsType"/>
 				</xs:sequence>
 				<xs:attribute name="FREQ" type="CL_FREQ" use="required"/>
+				<xs:attribute name="DATA_COMP" type="CL_FREQ" use="required"/>
+				<xs:attribute name="TITLE" type="CL_FREQ" use="required"/>
 				<xs:attribute name="REF_AREA" type="CL_REF_AREA" use="required"/>
 				<xs:attribute name="IND_TYPE" type="CL_IND_TYPE" use="required"/>
 				<xs:attribute name="IDX_TYPE" type="CL_IDX_TYPE" use="required"/>
@@ -11179,6 +11181,7 @@
 				<xs:attribute name="AP_END" type="xsd:gYear" use="optional"/>
 				<xs:attribute name="AP_SHARE" type="xs:double" use="optional"/>
 				<xs:attribute name="REPORTING_YEAR_START_DAY" type="xs:gMonthDay" use="prohibited"/>
+				<xs:attribute name="TIME_PERIOD" type="xs:gMonthDay" use="required"/>
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
