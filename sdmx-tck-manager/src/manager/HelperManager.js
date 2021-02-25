@@ -48,8 +48,7 @@ class HelperManager {
                 toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
         }else if(toRun.index === "Data"){
            return   DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,
-                DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate),
-                DataRequestPropsBuilder.getKey(toRun.randomKey,toRun.reqTemplate))
+                DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate))
         }
     }
 };

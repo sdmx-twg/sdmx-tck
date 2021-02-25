@@ -121,6 +121,10 @@ class DataStructureObject extends MaintainableObject {
             return comp.getReferences().some(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.CODE_LIST.key)
         })
     }
+    getDimensions(){
+       return  this.getComponents().filter(
+            component => (component.getType() === DSD_COMPONENTS_NAMES.DIMENSION));
+    }
     hasMeasureDimension(){
         return this.getComponents().some(comp=>comp.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION)
     }
