@@ -56,7 +56,6 @@ class DataRequestPropsBuilder {
         })
         
         let fullKeyValues = Object.values(sortedRandomKeys[0])
-        
         if(template.key === DATA_QUERY_KEY.FULL_KEY){
             return fullKeyValues.join(".")
         }
@@ -91,12 +90,12 @@ class DataRequestPropsBuilder {
         }
         if(providerRefs.length === 1){
             if(template.provider && template.provider.providerAgency &&  template.provider.providerId) {
-                return providerRefs[0].agencyId+","+providerRefs[0].identifiableIds[0]
+                return providerRefs[0].getAgencyId()+","+providerRefs[0].getIdentifiableIds()[0]
             }else if(template.provider && !template.provider.providerAgency &&  template.provider.providerId){
-                return providerRefs[0].identifiableIds[0]
+                return providerRefs[0].getIdentifiableIds()[0]
             }
         }else if(providerRefs.length ===2){
-            return providerRefs[0].identifiableIds[0]+","+providerRefs[1].identifiableIds[0]
+            return providerRefs[0].getIdentifiableIds()[0]+","+providerRefs[1].getIdentifiableIds()[0]
         }
         
         return;
@@ -175,10 +174,11 @@ class DataRequestPropsBuilder {
         if(!indicativeSeries instanceof SeriesObject){
             throw new Error ("Unable to get a number of observations.")
         }
+        let copyOfIndicativeSeries = indicativeSeries;
         if(template.startPeriod && template.endPeriod && template.lastNObservations){
-            indicativeSeries.setObservations(indicativeSeries.getObservationsBetweenPeriod(this.getStartPeriod(indicativeSeries,template),this.getEndPeriod(indicativeSeries,template)))
+            copyOfIndicativeSeries.setObservations(indicativeSeries.getObservationsBetweenPeriod(this.getStartPeriod(indicativeSeries,template),this.getEndPeriod(indicativeSeries,template)))
         }
-        return this.getNumberOfObs(indicativeSeries)
+        return this.getNumberOfObs(copyOfIndicativeSeries)
     }
     static getUpdateAfterDate(indicativeSeries,template){
         if(!template || typeof template !== 'object'){
