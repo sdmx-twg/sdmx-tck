@@ -4,7 +4,6 @@ const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYP
 var SdmxV21JsonComponentRepresentationParser = require('./SdmxV21JsonComponentRepresentationParser.js')
 var SdmxV21StructureReferencesParser = require('./SdmxV21StructureReferencesParser.js')
 var ItemObject = require('sdmx-tck-api').model.ItemObject;
-var CodeObject = require('sdmx-tck-api').model.CodeObject;
 
 class SdmxV21JsonItemsParser {
     static getItems(structureType, sdmxJsonObject) {
@@ -46,20 +45,12 @@ class SdmxV21JsonItemsParser {
                 //              representation: SdmxV21JsonComponentRepresentationParser.getRepresentation(itemsJson[i]),
                 //              urn: itemsJson[i].$.urn });
 
-                if(jsonKey === "Code"){
-                    items.push(new CodeObject(itemsJson[i].$.id , 
-                        SdmxV21StructureReferencesParser.getReferences(itemsJson[i]), 
-                        SdmxV21JsonComponentRepresentationParser.getRepresentation(itemsJson[i]),
-                        itemsJson[i].$.urn,
-                        this._getItemsParent(itemsJson[i])))
-                }else{
-                    items.push(new ItemObject(itemsJson[i].$.id , 
-                        SdmxV21StructureReferencesParser.getReferences(itemsJson[i]), 
-                        SdmxV21JsonComponentRepresentationParser.getRepresentation(itemsJson[i]),
-                        itemsJson[i].$.urn))
-                }
-               
-
+                items.push(new ItemObject(itemsJson[i].$.id , 
+                    SdmxV21StructureReferencesParser.getReferences(itemsJson[i]), 
+                    SdmxV21JsonComponentRepresentationParser.getRepresentation(itemsJson[i]),
+                    this._getItemsParent(itemsJson[i]),
+                    itemsJson[i].$.urn))
+                
                 if (itemsJson[i][jsonKey]) {
                     SdmxV21JsonItemsParser._getItems(itemsJson[i], jsonKey, items);
                 }

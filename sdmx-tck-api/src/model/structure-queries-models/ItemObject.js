@@ -1,8 +1,9 @@
 class ItemObject {
-    constructor(id,references,representation,urn){
+    constructor(id,references,representation,parentCode,urn){
         this.id  = id;
         this.references = references;
         this.representation = representation;
+        this.parentCode = parentCode;
         this.urn = urn
     }
 
@@ -29,6 +30,12 @@ class ItemObject {
     }
     getRepresentation(){
         return this.representation;
+    }
+    setParentCode(parentCode){
+        this.parentCode = parentCode
+    }
+    getParentCode(){
+        return this.parentCode;
     }
 }
 
