@@ -3,6 +3,7 @@ var SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX_S
 var StructureReference = require('./StructureReference.js');
 const DSD_COMPONENTS_NAMES = require('../../constants/structure-queries-constants/DSDComponents.js').DSD_COMPONENTS_NAMES;
 const COMPONENTS_REPRESENTATION_NAMES = require('../../constants/structure-queries-constants/ComponentsRepresentationNames.js').COMPONENTS_REPRESENTATION_NAMES;
+const ATTRIBUTE_ASSIGNMENT_STATUS = require('../../constants/structure-queries-constants/DSDAttributeConstants.js').ATTRIBUTE_ASSIGNMENT_STATUS;
 
 
 class DataStructureObject extends MaintainableObject {
@@ -29,9 +30,7 @@ class DataStructureObject extends MaintainableObject {
     //Return a reference from the codelist referenced by the chosen component.
     //If the codeList is not found it returns an empty obj
     getReferencedCodelistInComponent(componentId){
-        let codedComponents = this.getComponents().filter(
-            component => (component.getType() === DSD_COMPONENTS_NAMES.DIMENSION || component.getType() === DSD_COMPONENTS_NAMES.ATTRIBUTE));
-
+        let codedComponents = this.getDimensionsAndAttributes();
         if(codedComponents && Array.isArray(codedComponents)){
             for (let i=0;i<codedComponents.length;i++){
                 if(codedComponents[i].getId() && codedComponents[i].getId() === componentId){
@@ -57,9 +56,7 @@ class DataStructureObject extends MaintainableObject {
     
     //Check whether a KeyValue exists as a coded component in the provided dsd
     componentExistsAndItsCodedInDSD(componentId){
-        let codedComponents = this.getComponents().filter(
-            component => (component.getType() === DSD_COMPONENTS_NAMES.DIMENSION || component.getType() === DSD_COMPONENTS_NAMES.ATTRIBUTE));
-
+        let codedComponents = this.getDimensionsAndAttributes()
         if(codedComponents && Array.isArray(codedComponents)){
             for (let i=0;i<codedComponents.length;i++){
                 if(codedComponents[i].getId() && codedComponents[i].getId() === componentId){
@@ -80,7 +77,7 @@ class DataStructureObject extends MaintainableObject {
 
     getConceptObjectOfMeasureDimension(workspace){
         //get measure dimension
-        let measureDimension = this.getComponents().find(component => component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION);
+        let measureDimension = this.getMeasureDimension()
         if(!measureDimension){
             return null;
         }
@@ -97,7 +94,7 @@ class DataStructureObject extends MaintainableObject {
     }
 
     getRandomDimension(){
-        let dimensions = this.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION);
+        let dimensions = this.getDimensions()
         if(dimensions.length === 0){
             return null;
         }
@@ -125,8 +122,31 @@ class DataStructureObject extends MaintainableObject {
        return  this.getComponents().filter(
             component => (component.getType() === DSD_COMPONENTS_NAMES.DIMENSION));
     }
+    getAttributes(){
+        return  this.getComponents().filter(
+            component => (component.getType() === DSD_COMPONENTS_NAMES.ATTRIBUTE));
+    }
+    getMandatoryAttributes(){
+        return this.getAttributes().filter(component=>(component.getAssignementStatus()===ATTRIBUTE_ASSIGNMENT_STATUS.MANDATORY))
+    }
+    getDimensionsAndAttributes(){
+        return  this.getComponents().filter(
+            component => (component.getType() === DSD_COMPONENTS_NAMES.DIMENSION || component.getType() === DSD_COMPONENTS_NAMES.ATTRIBUTE));
+    }
+    getTimeDimension(){
+        return this.getComponents().find(
+            component => (component.getType() === DSD_COMPONENTS_NAMES.TIME_DIMENSION));
+    }
+    getMeasureDimension(){
+        return this.getComponents().find(
+            component => (component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION));
+    }
+    getPrimaryMeasure(){
+        return this.getComponents().find(
+            component => (component.getType() === DSD_COMPONENTS_NAMES.PRIMARY_MEASURE)); 
+    }
     hasMeasureDimension(){
-        return this.getComponents().some(comp=>comp.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION)
+        return this.getComponents().some(comp=>comp.getType() === DSD_COMPONENTS_NAMES.PRIMARY_MEASURE)
     }
     hasTimeDimension(){
         return this.getComponents().some(comp=>comp.getType() === DSD_COMPONENTS_NAMES.TIME_DIMENSION)

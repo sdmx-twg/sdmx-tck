@@ -72,7 +72,7 @@ class SchemasSemanticChecker {
         //CALCULATE DIMENSION AT OBSERVATION
         let dimensionAtObservation = (query.obsDimension)? query.obsDimension : DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD;
         if(query.explicit){
-            let measureDimension = dsdObject.getComponents().find(component => component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION);
+            let measureDimension = dsdObject.getMeasureDimension();
             if(measureDimension){
                 dimensionAtObservation = measureDimension.getId()
             }
@@ -103,9 +103,9 @@ class SchemasSemanticChecker {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
         //DEFAULT RULES CHECK FOR DIMENSIONS
-        let timeDimension = dsdObject.getComponents().find(component => component.getType() === DSD_COMPONENTS_NAMES.TIME_DIMENSION);
-        let measureDimension = dsdObject.getComponents().find(component => component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION);
-    
+        let timeDimension  = dsdObject.getTimeDimension();
+        let  measureDimension = dsdObject.getMeasureDimension();
+
         //GET THE CORRECT COMPLEX TYPE
         let complexType = sdmxObjects.getXSDComplexTypeByName(COMPLEX_TYPES_NAMES.OBS_TYPE);
         if(!complexType){throw new Error("Missing complexType "+COMPLEX_TYPES_NAMES.OBS_TYPE+"."); }
@@ -119,7 +119,8 @@ class SchemasSemanticChecker {
                 return { status: FAILURE_CODE, error: "Error in default rules validation: Measure Dimension is defined in dsd but it is not in ObsType complex type"}
             }
         }else{
-            let dimensions = dsdObject.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION)
+            
+            let dimensions = dsdObject.getDimensions();
             for(let i in dimensions){
                 if(!complexType.hasAttribute(dimensions[i].getId())){
                     return { status: FAILURE_CODE, error: "Error in default rules validation: Dimension "+dimensions[i].getId()+" is not in ObsType complex type"}
@@ -130,7 +131,7 @@ class SchemasSemanticChecker {
 
         //FLAT (ALLDIMENSIONS) CHECK
         if(dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.ALLDIMENSIONS){
-            let dimensions = dsdObject.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION)
+            let dimensions = dsdObject.getDimensions()
             for(let i in dimensions){
                 if(!complexType.hasAttribute(dimensions[i].getId())){
                     return { status: FAILURE_CODE, error: "Error in default rules validation: Dimension "+dimensions[i].getId()+" is not in ObsType complex type"}
@@ -568,7 +569,7 @@ class SchemasSemanticChecker {
         }
 
         let missingAttributes = []
-        let requestedDimensions = dsdObject.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION && component.getId() !== dimensionAtObservation )
+        let requestedDimensions = dsdObject.getDimensions().filter(component => component.getId() !== dimensionAtObservation )
         for(let i in requestedDimensions){
             if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED)){
                 missingAttributes.push(requestedDimensions[i].getId())
@@ -755,7 +756,7 @@ class SchemasSemanticChecker {
 
             //CHECK IF THERE ARE ATTRIBUTES FOR EACH DIMENSION IN DSD EXCEPT OBSERVATION LEVEL DIMENSION
             let missingAttributes = []
-            let requestedDimensions = dsdObject.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION && dsdGroups[c].getDimensionReferences().indexOf(component.getId())!==-1 )
+            let requestedDimensions = dsdObject.getDimensions().filter(component =>  dsdGroups[c].getDimensionReferences().indexOf(component.getId())!==-1 )
 
             for(let i in requestedDimensions){
                 if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED)){
@@ -880,10 +881,10 @@ class SchemasSemanticChecker {
 
         //IF THE DIMENSION AT THE OBSERVATION IS NOT TIME PERIOD THEN CHECK ITS ATTRIBUTE EXISTANCE
         if(dimensionAtObservation!==DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD){
-            let requestedDimensions = dsdObject.getComponents().filter(component => component.getId() === dimensionAtObservation )
-            for(let i in requestedDimensions){
-                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED)){
-                    missingAttributes.push(requestedDimensions[i].getId())
+            let requestedComponent = dsdObject.getComponents().find(component => component.getId() === dimensionAtObservation )
+            if(requestedComponent){
+                if(!complexType.hasStructComponentAsAttribute(requestedComponent.getId(),requestedComponent,sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED)){
+                    missingAttributes.push(requestedComponent.getId())
                 }
             }
             if(missingAttributes.length > 0){
@@ -892,10 +893,10 @@ class SchemasSemanticChecker {
         }
         //CHECK FOR PRIMARY MEASURE ATTRIBUTE
         missingAttributes = []
-        let requestedDimensions = dsdObject.getComponents().filter(component => component.getType()===DSD_COMPONENTS_NAMES.PRIMARY_MEASURE)
-        for(let i in requestedDimensions){
-            if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
-                missingAttributes.push(requestedDimensions[i].getId())
+        let primaryMeasure = dsdObject.getPrimaryMeasure()
+        if(primaryMeasure){
+            if(!complexType.hasStructComponentAsAttribute(primaryMeasure.getId(),primaryMeasure,sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+                missingAttributes.push(primaryMeasure.getId())
             }
         }
         if(missingAttributes.length > 0){
@@ -964,7 +965,7 @@ class SchemasSemanticChecker {
             return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: Unable to find measure dimension or concept scheme inside for measure dimension."} 
         }
         let conceptItems = conceptSchemeObj.getItems()
-        let primaryMeasure = dsdObject.getComponents().find(component => component.getType() === DSD_COMPONENTS_NAMES.PRIMARY_MEASURE);
+        let primaryMeasure = dsdObject.getPrimaryMeasure();
         for(let i in conceptItems){
             let complexType = sdmxObjects.getXSDComplexTypeByName(conceptItems[i].id);
             if(!complexType){throw new Error("Missing complexType '" +conceptItems[i].id+ "'."); }

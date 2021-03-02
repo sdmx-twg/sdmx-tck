@@ -268,8 +268,8 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxDataObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
-        let mandatoryAttributes = test.dsdObj.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.ATTRIBUTE 
-                                                                        && component.getAssignementStatus()===ATTRIBUTE_ASSIGNMENT_STATUS.MANDATORY);
+        let mandatoryAttributes = test.dsdObj.getMandatoryAttributes();
+
         for(let i in mandatoryAttributes){
             let attr = mandatoryAttributes[i];
             let relationships = attr.getAttributeRelationship();
@@ -403,7 +403,7 @@ class DataSemanticChecker {
             return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. No flat view of data returned." }
         }
         let result = datasets.every(dataset => {
-            let dimensions = test.dsdObj.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.DIMENSION);
+            let dimensions = test.dsdObj.getDimensions();
             return dimensions.every(dim => {
                 return dataset.getObservations().every(obs=> Object.keys(obs.getAttributes()).indexOf(dim.getId()) !== -1)
             })
@@ -423,7 +423,7 @@ class DataSemanticChecker {
         if(test.dsdObj.hasTimeDimension()){
             return this._validateDimAtObsTimePeriod(workspace)
         }else if(test.dsdObj.hasMeasureDimension()){
-            let measureDim = test.dsdObj.getComponents().filter(component => component.getType() === DSD_COMPONENTS_NAMES.MEASURE_DIMENSION);
+            let measureDim = test.dsdObj.getMeasureDimension();
             return this._validateDimAtObsDimension(workspace,measureDim.getId())
         }
         return this._validateDimAtObsAllDimensions(workspace,test)
@@ -911,7 +911,7 @@ class DataSemanticChecker {
         let cubeRegion = cubeRegions[0];
 
         let result = cubeRegion.getKeyValues().every(keyVal => {
-            let dimension = test.dsdObj.getComponents().find(comp => comp.getId() === keyVal.getId() && comp.getType() === DSD_COMPONENTS_NAMES.DIMENSION);
+            let dimension = test.dsdObj.getDimension().find(comp => comp.getId() === keyVal.getId());
             if(!dimension){throw new Error("Error in Data Availability semantic check. Could not locate codelist for dimension with id: "+keyVal.getId()+".")}
 
             let codelistRef = dimension.getReferences().find(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.CODE_LIST.key)
@@ -945,9 +945,9 @@ class DataSemanticChecker {
         let conceptSchemesArr = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
         if(conceptSchemesArr.length === 0){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. No concept schemes returned."}}
 
-        let dimensions = test.dsdObj.getComponents().filter(comp => {
-            return comp.getType() ===  DSD_COMPONENTS_NAMES.DIMENSION && comp.getReferences().some(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
-        });
+        let dimensions = test.dsdObj.getDimensions().filter(comp => {
+            return comp.getReferences().some(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
+        })
         if(dimensions.length === 0){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Unable to locate concepts in DSD dimensions."}}
 
         let result = dimensions.every(dim => {
