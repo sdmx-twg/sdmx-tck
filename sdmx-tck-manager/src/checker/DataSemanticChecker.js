@@ -911,7 +911,7 @@ class DataSemanticChecker {
         let cubeRegion = cubeRegions[0];
 
         let result = cubeRegion.getKeyValues().every(keyVal => {
-            let dimension = test.dsdObj.getDimension().find(comp => comp.getId() === keyVal.getId());
+            let dimension = test.dsdObj.getDimensions().find(comp => comp.getId() === keyVal.getId());
             if(!dimension){throw new Error("Error in Data Availability semantic check. Could not locate codelist for dimension with id: "+keyVal.getId()+".")}
 
             let codelistRef = dimension.getReferences().find(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.CODE_LIST.key)
@@ -919,10 +919,17 @@ class DataSemanticChecker {
 
             let codelistInResponse = workspace.getSdmxObject(codelistRef)
             if(!codelistInResponse){throw new Error("Error in Data Availability semantic check. Could not locate codelist for dimension with id: "+keyVal.getId()+".")}
-            
-            return keyVal.getValues().every(val=>{
-                return codelistInResponse.getItems().some(item=> item.getId() === val || item.getParentCode() === val)
-            })
+
+            //check if all keyValue values are present in codelist
+            if(!keyVal.getValues().every(value=> codelistInResponse.getItems().some(item=>item.getId()=== value))){
+                return false;
+            }
+            let visitedCodes = []
+            let invalidCodes = []
+
+            //check if codelist contains only the values of keyValue and their parents(if any)
+            let invalidCodesArr  = this._validateCodelistCodes(codelistInResponse.getItems(),keyVal,visitedCodes,invalidCodes,codelistInResponse.getItems().find(item=>item.getId() === keyVal.getValues()[0]))
+            return invalidCodesArr.length === 0
         })
         if(!result){
             return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. There are semantically invalid codelists in response."}
@@ -930,7 +937,39 @@ class DataSemanticChecker {
         
         return { status: SUCCESS_CODE }
     }
+    static _validateCodelistCodes(allCodes,keyValue,visitedCodes,invalidCodes,specificCode){
+     
+        //If codelist contains a code that is not in keyValue nor is the parent of another code then it is considered invalid.
+        if(!keyValue.hasValue(specificCode.getId()) && !allCodes.some(code=>code.getParentCode() === specificCode.getId())){
+            invalidCodes.push(specificCode.getId())
+        }
 
+        visitedCodes.push(specificCode.getId())
+        
+        if(specificCode.getParentCode() && visitedCodes.indexOf(specificCode.getParentCode()) ===-1 && invalidCodes.indexOf(specificCode.getParentCode()) ===-1){
+            //get the code 
+            let newCode = allCodes.find(code=>code.getId() === specificCode.getParentCode())
+            //mark the code as visited and move on to its parent code recursively
+            if(newCode){
+                return this._validateCodelistCodes(allCodes,keyValue,visitedCodes,invalidCodes,newCode)
+            }
+        }
+        
+        if(allCodes.find(item=>item.getId() === keyValue.getValues().find(value=>visitedCodes.indexOf(value) ===-1 && invalidCodes.indexOf(value) ===-1))){
+            let newCode =  allCodes.find(item=>item.getId() === keyValue.getValues().find(value=>visitedCodes.indexOf(value) ===-1 && invalidCodes.indexOf(value) ===-1))
+            return this._validateCodelistCodes(allCodes,keyValue,visitedCodes,invalidCodes,newCode)
+        }
+        //get one by one the codes not checked yet
+        let uncheckedCode  = allCodes.find(code=>visitedCodes.indexOf(code.getId())===-1 && invalidCodes.indexOf(code.getId())===-1)
+        //mark the code as visited and move on to its parent code recursively
+        if(uncheckedCode){
+            return this._validateCodelistCodes(allCodes,keyValue,visitedCodes,invalidCodes,uncheckedCode)
+        }
+        //when all the codes are visited we have finished the validation process
+        if(allCodes.every(code=>visitedCodes.indexOf(code.getId())!==-1)){
+            return invalidCodes;
+        }
+    }
     static _checkReferencedConceptSchemes(test,query,workspace){
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
