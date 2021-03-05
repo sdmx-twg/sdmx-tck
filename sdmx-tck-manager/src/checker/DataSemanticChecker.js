@@ -106,7 +106,7 @@ class DataSemanticChecker {
         return { status: SUCCESS_CODE }
     } 
 
-    static _checkIdentification(query, workspace) {0
+    static _checkIdentification(query, workspace) {
         if (!query) {
             throw new Error("Missing mandatory parameter 'query'")
         }
@@ -143,17 +143,17 @@ class DataSemanticChecker {
             let structureId = structureData[0].getIdentification()
             if(requestedVersion !== "latest"){
                 if (structureId.getAgencyId() !== requestedAgencyId || structureId.getId() !== requestedId || structureId.getVersion() !== requestedVersion) {
-                    return { status: FAILURE_CODE, error: "Error in Identification" }
+                    return { status: FAILURE_CODE, error: "Error in Identification: Requested data for DATAFLOW "+JSON.stringify(reformedQuery)+" but got dataset for "+structureId }
                 }
             }else{
                 if (structureId.getAgencyId() !== requestedAgencyId || structureId.getId() !== requestedId) {
-                    return { status: FAILURE_CODE, error: "Error in Identification" }
+                    return { status: FAILURE_CODE, error: "Error in Identification: Requested data for DATAFLOW "+JSON.stringify(reformedQuery)+" but got dataset for "+structureId }
                 }
             }
         }else{
             for(let i in structureData){
                 if (structureData[i].getIdentification().getId() !== requestedId) {
-                    return { status: FAILURE_CODE, error: "Error in Identification" }
+                    return { status: FAILURE_CODE, error: "Error in Identification: Requested data for DATAFLOW with id: "+requestedId+" but got dataset for id: "+structureData[i].getIdentification().getId() }
                 }
             }
            
@@ -356,8 +356,8 @@ class DataSemanticChecker {
         if(observations.length === 0){
             throw new Error("No Observations returned.")
         }
-        let result = observations.every(obs => Object.keys(obs.getAttributes()).indexOf("TIME_PERIOD") !== -1)
-        if(!result){return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There is at least one observation without TIME_PERIOD attribute." }}
+        let result = observations.filter(obs => Object.keys(obs.getAttributes()).indexOf("TIME_PERIOD") === -1)
+        if(result.length > 0){return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations :"+JSON.stringify(result)+" without TIME_PERIOD attribute." }}
         
         return { status: SUCCESS_CODE } 
     }
@@ -373,17 +373,19 @@ class DataSemanticChecker {
         if(series.length === 0){
             throw new Error("No Series returned.")
         }
-        let result = series.every(s => Object.keys(s.getAttributes()).indexOf("TIME_PERIOD") !== -1 )
-        if(!result){
-            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are series that do not contain TIME_PERIOD attribute." }
+        let result = series.filter(s => Object.keys(s.getAttributes()).indexOf("TIME_PERIOD") === -1 )
+        if(result.length > 0){
+            let invalidSeriesAttributes = []
+            result.forEach(s=>invalidSeriesAttributes.push(s.getAttributes()))
+            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are series:"+JSON.stringify(invalidSeriesAttributes)+" that do not contain TIME_PERIOD attribute." }
         }
         let observations = workspace.getAllObservations()
         if(observations.length === 0){
             throw new Error("No Observations returned.")
         }
-        result = observations.every(obs => Object.keys(obs.getAttributes()).indexOf(dimensionId) !== -1)
-        if(!result){
-            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There is at least one observation without TIME_PERIOD attribute." }
+        result = observations.filter(obs => Object.keys(obs.getAttributes()).indexOf(dimensionId) === -1)
+        if(result.length > 0){
+            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations: "+JSON.stringify(result)+" without TIME_PERIOD attribute." }
         }
         return { status: SUCCESS_CODE } 
     }
@@ -402,14 +404,12 @@ class DataSemanticChecker {
         if(!isFlatViewCheck){
             return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. No flat view of data returned." }
         }
-        let result = datasets.every(dataset => {
-            let dimensions = test.dsdObj.getDimensions();
-            return dimensions.every(dim => {
-                return dataset.getObservations().every(obs=> Object.keys(obs.getAttributes()).indexOf(dim.getId()) !== -1)
-            })
-        })    
-        if(!result){
-            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observation that do not contain all dimensions." }
+
+        let result = workspace.getAllObservations().filter(obs => {
+            return test.dsdObj.getDimensions().some(dim => Object.keys(obs.getAttributes()).indexOf(dim.getId()) === -1) 
+        })   
+        if(result.length>0){
+            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations: "+JSON.stringify(result)+" that do not contain all dimensions." }
         }
         return { status: SUCCESS_CODE }
     }
@@ -505,37 +505,34 @@ class DataSemanticChecker {
 
             let requestedStartingDate = query.start
 
-            let result = workspace.getAllObservations().every(obs => {
-                return obs.isAfterDate(requestedStartingDate)
+            let result = workspace.getAllObservations().filter(obs => {
+                return !obs.isAfterDate(requestedStartingDate)
             });
-            if (result) {
-                return { status: SUCCESS_CODE }
+            if (result.length > 0) {
+                return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations: "+JSON.stringify(result)+" before the start period set." }
             }
-            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations before the start period set." }
-
         } else if (!query.start && query.end) {
             let requestedEndingDate = query.end
 
-            let result = workspace.getAllObservations().every(obs => {
-                return obs.isBeforeDate(requestedEndingDate)
+            let result = workspace.getAllObservations().filter(obs => {
+                return !obs.isBeforeDate(requestedEndingDate)
             });
-            if (result) {
-                return { status: SUCCESS_CODE }
+            if (result.length > 0) {
+                return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations: "+JSON.stringify(result)+" after the end period set." }
             }
-            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations after the end period set." }
         } else if (query.start && query.end) {
             let requestedStartingDate = query.start
             let requestedEndingDate = query.end
 
-            let result = workspace.getAllObservations().every(obs => {
-                return obs.isBeforeDate(requestedEndingDate) && obs.isAfterDate(requestedStartingDate)
+            let result = workspace.getAllObservations().filter(obs => {
+                return !(obs.isBeforeDate(requestedEndingDate) && obs.isAfterDate(requestedStartingDate))
             });
-            if (result) {
-                return { status: SUCCESS_CODE }
+            if (result.length>0) {
+                return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations: "+JSON.stringify(result)+" that are not between the starting and ending period." }
             }
-            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations that are not between the starting and ending period." }
-
         }
+        return { status: SUCCESS_CODE }
+
     }
 
     static _checkObservations(test, query, workspace) {
@@ -714,17 +711,17 @@ class DataSemanticChecker {
             if(query.start && !query.end){
                 let result = constraintRefPeriod.isAfterDate(query.start)
                 if(!result){
-                    return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. StartTime of ReferencePeriod does not comply with the requested one" }
+                    return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. StartTime of ReferencePeriod attribute of the constraint does not comply with the requested one" }
                 }
             }else if (!query.start && query.end){
                 let result = constraintRefPeriod.isBeforeDate(query.end)
                 if(!result){
-                    return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. EndTime of ReferencePeriod does not comply with the requested one" }
+                    return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. EndTime of ReferencePeriod attribute of the constraint does not comply with the requested one" }
                 }
             }else if(query.start && query.end){
                 let result =  constraintRefPeriod.isAfterDate(query.start) && constraintRefPeriod.isBeforeDate(query.end)
                 if(!result){
-                    return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. ReferencePeriod times do not comply with the requested startPeriod or EndPeriod." }
+                    return { status: FAILURE_CODE, error: "Error in Data Availability Temporal Coverage semantic check. ReferencePeriod attribute of the constraint does not comply with the requested StartPeriod or EndPeriod." }
                 }
             }
         }
@@ -827,7 +824,7 @@ class DataSemanticChecker {
         }else if(query.references === STRUCTURE_REST_RESOURCE.codelist){
             return this._checkReferencedCodelists(test,query,workspace,constraint)
         }else if(query.references === STRUCTURE_REST_RESOURCE.conceptscheme){
-            return this._checkReferencedConceptSchemes(test,query,workspace)
+            return this._checkReferencedConceptSchemes(test,query,workspace,constraint)
         }else if(query.references === STRUCTURE_REST_RESOURCE.dataproviderscheme){
             return this._checkReferencedProviderScheme(test,query,workspace)
         }else {
@@ -910,6 +907,7 @@ class DataSemanticChecker {
         }
         let cubeRegion = cubeRegions[0];
 
+        let invalidCodelists = []
         let result = cubeRegion.getKeyValues().every(keyVal => {
             let dimension = test.dsdObj.getDimensions().find(comp => comp.getId() === keyVal.getId());
             if(!dimension){throw new Error("Error in Data Availability semantic check. Could not locate codelist for dimension with id: "+keyVal.getId()+".")}
@@ -929,10 +927,11 @@ class DataSemanticChecker {
 
             //check if codelist contains only the values of keyValue and their parents(if any)
             let invalidCodesArr  = this._validateCodelistCodes(codelistInResponse.getItems(),keyVal,visitedCodes,invalidCodes,codelistInResponse.getItems().find(item=>item.getId() === keyVal.getValues()[0]))
+            if(invalidCodesArr.length > 0){invalidCodelists.push(codelistRef)}
             return invalidCodesArr.length === 0
         })
         if(!result){
-            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. There are semantically invalid codelists in response."}
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. There are semantically invalid codelists in response "+JSON.stringify(invalidCodelists)+"."}
         }
         
         return { status: SUCCESS_CODE }
@@ -970,7 +969,7 @@ class DataSemanticChecker {
             return invalidCodes;
         }
     }
-    static _checkReferencedConceptSchemes(test,query,workspace){
+    static _checkReferencedConceptSchemes(test,query,workspace,constraint){
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
         }
@@ -980,23 +979,30 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxStructureObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
+        if (!constraint || !constraint instanceof ContentConstraintObject) {
+            throw new Error("Missing mandatory parameter 'constraint'")
+        }
 
         let conceptSchemesArr = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
         if(conceptSchemesArr.length === 0){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. No concept schemes returned."}}
 
-        let dimensions = test.dsdObj.getDimensions().filter(comp => {
-            return comp.getReferences().some(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
-        })
-        if(dimensions.length === 0){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Unable to locate concepts in DSD dimensions."}}
 
-        let result = dimensions.every(dim => {
-            let conceptScheme = dim.getReferences().find(comp=>comp.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
-            return conceptSchemesArr.some(cs=>{
-                return cs.getItems().some(item=>item.getId() === conceptScheme.getIdentifiableIds()[0])
-            });
+        let cubeRegions = constraint.getCubeRegions();
+        if(cubeRegions.length !== 1){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The response contains "+cubeRegions.length+" cubeRegions instead of 1."}
+        }
+        let cubeRegion = cubeRegions[0];
+
+        let result = conceptSchemesArr.filter(cs=>{
+            return cubeRegion.getKeyValues().some(keyVal => {
+                return cs.getItems().some(item=>item.getId() === keyVal.getId()) === false;
+            })
         })
-        if(!result){
-            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. There are semantically invalid concept schemes in response."}
+
+        if(result.length > 0){
+            let invalidaConceptSchemes = [];
+            result.forEach(cs=>invalidaConceptSchemes.push(cs.asReference()))
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. There are semantically invalid concept schemes in response"+JSON.stringify(invalidaConceptSchemes)+"."}
         }
         
         return { status: SUCCESS_CODE }
@@ -1061,7 +1067,7 @@ class DataSemanticChecker {
             return validateRefCodelist;
         }
 
-        let validateRefConceptScheme = this._checkReferencedConceptSchemes(test,query,workspace)
+        let validateRefConceptScheme = this._checkReferencedConceptSchemes(test,query,workspace,constraint)
         if(validateRefConceptScheme.status === FAILURE_CODE){
             return validateRefConceptScheme;
         }
