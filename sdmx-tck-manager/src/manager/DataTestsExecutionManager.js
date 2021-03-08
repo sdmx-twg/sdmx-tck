@@ -27,7 +27,7 @@ class DataTestsExecutionManager {
             
             //IF NO IDENTIFIERS WERE FOUND IN TESTS THEN ERROR IS THROWN
             if(toRun.identifiers.structureType === "" && toRun.identifiers.agency === "" && toRun.identifiers.id === "" && toRun.identifiers.version === ""){
-                throw new TckError("Identifiers Missing because there are no "+SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key+" referencing a DF as well as a "+SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key+" .")
+                throw new TckError("Unable to execute tests because DF identifiers are missing.")
             }
 
             //THESE TESTS REQUIRE AT LEAST 2 DIMENSIONS IN EVERY SERIES AND A PAIR OF RANDOM KEYS TO PERFORM THE 'DIM1.DIM2.DIM31+DIM32.DIMn' TEST
@@ -145,7 +145,6 @@ class DataTestsExecutionManager {
             
             
         } catch (err) {
-            console.log(err)
             testResult.failReason = err.toString();
         } finally {
             testResult.endTime = new Date();

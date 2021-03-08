@@ -35,7 +35,6 @@ class HelperManager {
                         toRun.workspace = workspace.toJSON();
                         resolve(workspace)
                     }).catch((err) => {
-                        console.log(err)
                         reject(err);
                     });
             });
