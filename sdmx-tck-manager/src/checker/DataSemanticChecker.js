@@ -57,10 +57,15 @@ class DataSemanticChecker {
             throw new Error("Missing mandatory parameter 'test'")
         }
 
-        if (query.provider === "all") {
-            return this._checkIdentification(query, workspace)
+        let identificationValidation = this._checkIdentification(query, workspace)
+        if(identificationValidation.status === FAILURE_CODE){return identificationValidation}
+        
+        if (query.provider !== "all") {
+            return this._checkProviderIdentification(test, query, workspace)
         }
-        return this._checkProviderIdentification(test, query, workspace)
+        return identificationValidation;
+        
+       
 
     }
 
