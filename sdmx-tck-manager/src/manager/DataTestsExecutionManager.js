@@ -140,7 +140,7 @@ class DataTestsExecutionManager {
 
             //RANDOM KEY TO GIVE TO CHILDREN (DATA AVAILABILITY TESTS)
             if(toRun.testType === TEST_TYPE.DATA_AVAILABILITY && !toRun.requireRandomKey){
-                testResult.randomKeys = workspace.getRandomKeysPairFromAvailableConstraint();
+                testResult.randomKeys = workspace.getRandomKeysPairFromAvailableConstraint(toRun.dsdObj);
             }
             
             

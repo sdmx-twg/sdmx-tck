@@ -672,7 +672,7 @@ class DataSemanticChecker {
                     if(requestedKey.indexOf("+") === -1){
                         return !(keyValue.hasOnlyNValues(1) && keyValue.hasValue(requestedKey))
                     }else{
-                        return !keyValue.hasOnlyNValues(2) || !(keyValue.hasValue(requestedKey.split("+")[0]) && keyValue.hasValue(requestedKey.split("+")[1]))
+                        return !(keyValue.hasOnlyNValues(2) && (keyValue.hasValue(requestedKey.split("+")[0]) && keyValue.hasValue(requestedKey.split("+")[1])))
                     }
                 }
             })
@@ -686,7 +686,7 @@ class DataSemanticChecker {
                     if(requestedKey.indexOf("+") === -1){
                         return !keyValue.hasValue(requestedKey);
                     }else{
-                        return !(keyValue.getValues().indexOf(requestedKey.split("+")[0]) || keyValue.getValues().indexOf(requestedKey.split("+")[1]))
+                        return !(keyValue.hasValue(requestedKey.split("+")[0]) || keyValue.hasValue(requestedKey.split("+")[1]))
                     }
                 }
             })

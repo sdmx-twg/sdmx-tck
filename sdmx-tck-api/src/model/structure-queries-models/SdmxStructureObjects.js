@@ -228,7 +228,7 @@ class SdmxStructureObjects extends SdmxObjects{
 	return null;
 	}
 
-	getRandomKeysPairFromAvailableConstraint(){
+	getRandomKeysPairFromAvailableConstraint(dsdObj){
 		let randomKey1 = {}
 		let randomKey2 = {}
 		let randomKeysArr = []
@@ -250,8 +250,8 @@ class SdmxStructureObjects extends SdmxObjects{
 				randomKey2[keyValue.getId()] = keyValue.getValues()[1]
 			}
 		})
-		randomKeysArr.push(randomKey1)
-		randomKeysArr.push(randomKey2)
+		randomKeysArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey1))
+		randomKeysArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey2))
 		return randomKeysArr;
 
 

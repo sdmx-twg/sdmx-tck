@@ -42,20 +42,9 @@ class DataRequestPropsBuilder {
         if(!template.key || (template.key !== DATA_QUERY_KEY.FULL_KEY && template.key !== DATA_QUERY_KEY.PARTIAL_KEY && template.key !== DATA_QUERY_KEY.MANY_KEYS)){return;}
         if(!randomKeys || !randomKeys[0] || !dsdObj || !dsdObj instanceof DataStructureObject){
             throw new Error ("Unable to get Key.")
-        }
-
-        //RANDOM KEYS FROM SERIES MAY NOT BE SORTED ACCORDING TO THE CORRESPONDING DSD - SO HERE ARE SORTED
-        let sortedRandomKeys = []
-        let dimensions = dsdObj.getDimensions();
-        randomKeys.forEach(randomKey=>{
-            let sortedKeys = {}
-            dimensions.forEach(dimension => {
-                sortedKeys[dimension.getId()] = randomKey[dimension.getId()]
-            });
-            sortedRandomKeys.push(sortedKeys)
-        })
+        }       
         
-        let fullKeyValues = Object.values(sortedRandomKeys[0])
+        let fullKeyValues = Object.values(randomKeys[0])
         if(template.key === DATA_QUERY_KEY.FULL_KEY){
             return fullKeyValues.join(".")
         }
@@ -66,10 +55,10 @@ class DataRequestPropsBuilder {
             return fullKeyValuesJoined.replace(fullKeyValues[2],"");
 
         }else if(template.key === DATA_QUERY_KEY.MANY_KEYS){
-            if(!sortedRandomKeys[1]){
+            if(!randomKeys[1]){
                 throw new Error ("Unable to get Keys.")
             }
-            let assistiveFullKeyValues = Object.values(sortedRandomKeys[1])
+            let assistiveFullKeyValues = Object.values(randomKeys[1])
             for(let i in fullKeyValues){
                 if(fullKeyValues[i]!== assistiveFullKeyValues[i]){
                     fullKeyValues[i] = fullKeyValues[i].concat("+"+assistiveFullKeyValues[i])

@@ -62,7 +62,8 @@ class SdmxDataObjects extends SdmxObjects{
                     randomKey[dimension.getId()] = seriesAtrributes[dimension.getId()]
                 }
             })
-            randomKeyArr.push(randomKey)
+            
+            randomKeyArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey))
             if(randomKeyArr.length === 2){break;}
         }
         return randomKeyArr;

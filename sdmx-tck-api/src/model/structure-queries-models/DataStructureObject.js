@@ -151,6 +151,21 @@ class DataStructureObject extends MaintainableObject {
     hasTimeDimension(){
         return this.getComponents().some(comp=>comp.getType() === DSD_COMPONENTS_NAMES.TIME_DIMENSION)
     }
+
+    sortRandomKeyAccordingToDimensions(randomKeys){
+        if(!randomKeys || typeof randomKeys !== 'object'){
+            throw new Error("Missing mandatory parameter 'randomKey'")
+        }
+        if(!Object.keys(randomKeys).every(key => this.getDimensions().some(dim => dim.getId() === key))){
+            throw new Error("Unable to sort randomKey because it does not contain all DSD dimensions.")
+        }
+        let dimensions = this.getDimensions();
+        let sortedKeys = {}
+        dimensions.forEach(dimension => {
+            sortedKeys[dimension.getId()] = randomKeys[dimension.getId()]
+        });
+        return sortedKeys;
+    }
 };
 
 module.exports = DataStructureObject;
