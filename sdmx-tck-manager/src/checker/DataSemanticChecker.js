@@ -82,6 +82,9 @@ class DataSemanticChecker {
 
         let headerRefs = workspace.getAllHeaderRefs()
         let praRefs = headerRefs.filter(ref=>ref.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key);
+        if(praRefs.length === 0){
+            return { status: FAILURE_CODE, error: "Error in Identification: No PRA references in response."}
+        }
         for (let i in praRefs) {
             if (!test.structureWorkspace.exists(praRefs[i])) {
                 return { status: FAILURE_CODE, error: "Error in Identification: " + praRefs[i] + " is not related to requested DF" }

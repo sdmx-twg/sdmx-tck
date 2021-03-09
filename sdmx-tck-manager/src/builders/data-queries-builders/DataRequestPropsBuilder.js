@@ -88,13 +88,16 @@ class DataRequestPropsBuilder {
         if(!providerRefs || providerRefs.length === 0){
             throw new Error("Unable to find Providers")
         }
-        if(providerRefs.length === 1){
+        if(template.provider.num === 1){
             if(template.provider && template.provider.providerAgency &&  template.provider.providerId) {
                 return providerRefs[0].getAgencyId()+","+providerRefs[0].getIdentifiableIds()[0]
             }else if(template.provider && !template.provider.providerAgency &&  template.provider.providerId){
                 return providerRefs[0].getIdentifiableIds()[0]
             }
-        }else if(providerRefs.length ===2){
+        }else if(template.provider.num === 2){
+            if(providerRefs.length < 2){
+                throw new Error("Unable to get 2 provider ids")
+            }
             return providerRefs[0].getIdentifiableIds()[0]+","+providerRefs[1].getIdentifiableIds()[0]
         }
         
