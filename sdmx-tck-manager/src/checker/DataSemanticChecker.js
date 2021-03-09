@@ -310,7 +310,7 @@ class DataSemanticChecker {
                             return groupsReferencingDimensions.some(dsdGroups => dsdGroups.getId() === group.getId())
                         });
                         if(groupsWithSpecificId.length === 0){
-                            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Attribute "+attr.getId()+" references relationship with dimensions in group but ther is no such group in workspace." }
+                            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Attribute "+attr.getId()+" references relationship with dimensions in group but there is no such group in workspace." }
                         }
                         
                         if(groupsWithSpecificId.some(group=>Object.keys(group.getAttributes()).indexOf(attr.getId())===-1)){
