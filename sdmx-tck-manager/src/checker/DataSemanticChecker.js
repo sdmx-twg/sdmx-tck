@@ -145,8 +145,8 @@ class DataSemanticChecker {
         let structureData = workspace.getHeaderStructureData()
         if (Utils.isSpecificAgency(reformedQuery) && Utils.isSpecificId(reformedQuery) && Utils.isSpecificVersion(reformedQuery)) {
             
-            if(structureData.length !== 1){
-                return { status: FAILURE_CODE, error: "Error in Identification: Expected 1 structure in xml header, but there are "+structureData.length+"." }
+            if(workspace.getDatasets().length !== 1){
+                return { status: FAILURE_CODE, error: "Error in Identification: Expected 1 dataset in response, but there are "+workspace.getDatasets().length+"." }
             }
             let structureId = structureData[0].getIdentification()
             if(requestedVersion !== "latest"){
