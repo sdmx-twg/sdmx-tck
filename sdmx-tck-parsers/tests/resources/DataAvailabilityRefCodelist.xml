@@ -9,7 +9,7 @@
 	</mes:Header>
 	<mes:Structures>
 		<str:Codelists>
-			<str:Codelist agencyID="ECB" id="CL_CURRENCY" isExternalReference="false" isFinal="false" isPartial="true" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_CURRENCY(1.0)" version="1.0">
+			<!-- <str:Codelist agencyID="ECB" id="CL_CURRENCY" isExternalReference="false" isFinal="false" isPartial="true" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_CURRENCY(1.0)" version="1.0">
 				<com:Name xml:lang="en">Currency code list</com:Name>
 				<str:Code id="ARS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0).ARS">
 					<com:Name xml:lang="en">Argentine peso</com:Name>
@@ -281,12 +281,10 @@
 				<str:Code id="SP00" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_EXR_TYPE(1.0).SP00">
 					<com:Name xml:lang="en">Spot</com:Name>
 				</str:Code>
-			</str:Codelist>
+			</str:Codelist> -->
 			<str:Codelist agencyID="ECB" id="CL_FREQ" isExternalReference="false" isFinal="false" isPartial="true" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_FREQ(1.0)" version="1.0">
 				<com:Name xml:lang="en">Frequency code list</com:Name>
-				<str:Code id="A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).A">
-					<com:Name xml:lang="en">Annual</com:Name>
-				</str:Code>
+				
 				<str:Code id="D" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).D">
 					<com:Name xml:lang="en">Daily</com:Name>
 				</str:Code>
@@ -296,9 +294,39 @@
 				<str:Code id="M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).M">
 					<com:Name xml:lang="en">Monthly</com:Name>
 				</str:Code>
+				<str:Code id="A1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).Q">
+					<structure:Parent>
+                 		<Ref id="A2"/>
+               	    </structure:Parent>
+				</str:Code>
+				<str:Code id="A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).A">
+					<structure:Parent>
+                 		<Ref id="A1"/>
+               	    </structure:Parent>
+					<com:Name xml:lang="en">Annual</com:Name>
+				</str:Code>
 				<str:Code id="Q" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).Q">
 					<com:Name xml:lang="en">Quarterly</com:Name>
 				</str:Code>
+				
+				<str:Code id="A2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).Q">
+					<structure:Parent>
+                 		<Ref id="A3"/>
+               	    </structure:Parent>
+				</str:Code>
+				<str:Code id="A3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).Q">
+					<structure:Parent>
+                 		<Ref id="A5"/>
+               	    </structure:Parent>
+				</str:Code>
+				<str:Code id="A4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).Q">
+				</str:Code>
+				<str:Code id="A5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).Q">
+					<structure:Parent>
+                 		<Ref id="A4"/>
+               	    </structure:Parent>
+				</str:Code>
+		
 			</str:Codelist>
 		</str:Codelists>
 		<str:Constraints>
@@ -316,7 +344,7 @@
 					</str:Dataflow>
 				</str:ConstraintAttachment>
 				<str:CubeRegion include="true">
-					<com:KeyValue id="CURRENCY">
+					<!-- <com:KeyValue id="CURRENCY">
 						<com:Value>RON</com:Value>
 						<com:Value>EGP</com:Value>
 						<com:Value>BGN</com:Value>
@@ -442,7 +470,7 @@
 						<com:Value>IEP</com:Value>
 						<com:Value>ATS</com:Value>
 						<com:Value>CZK</com:Value>
-					</com:KeyValue>
+					</com:KeyValue> -->
 					<com:KeyValue id="FREQ">
 						<com:Value>D</com:Value>
 						<com:Value>H</com:Value>
@@ -450,7 +478,7 @@
 						<com:Value>M</com:Value>
 						<com:Value>Q</com:Value>
 					</com:KeyValue>
-					<com:KeyValue id="EXR_TYPE">
+					<!-- <com:KeyValue id="EXR_TYPE">
 						<com:Value>NRU1</com:Value>
 						<com:Value>SP00</com:Value>
 						<com:Value>NN00</com:Value>
@@ -463,7 +491,7 @@
 						<com:Value>ERP0</com:Value>
 						<com:Value>ERC0</com:Value>
 						<com:Value>NRD0</com:Value>
-					</com:KeyValue>
+					</com:KeyValue> -->
 				</str:CubeRegion>
 			</str:ContentConstraint>
 		</str:Constraints>

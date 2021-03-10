@@ -21,7 +21,7 @@ describe('Tests DataQuery semantic validation in Resource Provider Identificatio
     it('It should assert semantic validation result', async () => {
         
         let test = {} 
-        let query = {provider:"ECB+ECB1"}
+        let query = {flow:"ECB,EXR,1.0",provider:"ECB+ECB1"}
         let xmlMessage = fs.readFileSync('./tests/resources/DFXmlForDataIdentification.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
             test.structureWorkspace = structureWorkspace;
@@ -244,8 +244,7 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
                 let query={key:"RON+EGP.E.RON.D.NRU1",flow:"ECB,EXR,1.0"}
                 let result = DataSemanticChecker._checkDataAvailability(test,query,sdmxObjects)
                 console.assert(result.status === 1)
-            })
-
+            })            
         });
     });
     
@@ -364,7 +363,7 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
     });
     
     //DATA AVAILABILITY REFERENCES ALL TEST
-    describe('Tests Data Availability referencing PROVIDER SCHEMES', function () {
+    describe('Tests Data Availability referencing ALL', function () {
         it('It should assert semantic validation result', async () => {
     
             dsdXml = fs.readFileSync('./tests/resources/ECB+ECB_EXR1+1.0.xml','utf8')
