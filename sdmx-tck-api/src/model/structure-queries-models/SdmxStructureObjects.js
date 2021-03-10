@@ -242,16 +242,24 @@ class SdmxStructureObjects extends SdmxObjects{
 		if(keyValues.length === 0){return;}
 
 		keyValues.forEach(keyValue => {
+			randomKey1[keyValue.getId()] = keyValue.getValues()[0]
 			if(keyValue.getValues().length === 1){
-				randomKey1[keyValue.getId()] = keyValue.getValues()[0]
 				randomKey2[keyValue.getId()] = keyValue.getValues()[0]
 			}else if(keyValue.getValues().length>1){
-				randomKey1[keyValue.getId()] = keyValue.getValues()[0]
 				randomKey2[keyValue.getId()] = keyValue.getValues()[1]
 			}
 		})
+		//We need a pair of randomKeys for the queries that need many keys (ex. A.B1+B2.C).
+		//If all the keyvalues have only 1 value, randomKey1 & randomKey2 will be exaclty the same
+		//so the key will be A.B1+B1.C which is meaningless.
+		let areRandomKeysEqual = keyValues.every(keyValue => keyValue.getValues().length === 1)
+
 		randomKeysArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey1))
-		randomKeysArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey2))
+		
+		if(!areRandomKeysEqual){
+			randomKeysArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey2))
+		}
+		
 		return randomKeysArr;
 
 
