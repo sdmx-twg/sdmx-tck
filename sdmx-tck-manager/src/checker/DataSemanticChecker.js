@@ -459,7 +459,7 @@ class DataSemanticChecker {
                 return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Groups are not allowed when detail = dataonly" }
             }
             let inValidSeries = allSeries.filter(s => {
-                return Object.getOwnPropertyNames(s.getAttributes()).some(attr => !dsdObj.getComponents().find(comp => (comp.getType() === "DIMENSION") && (comp.getId() == attr)))
+                return Object.getOwnPropertyNames(s.getAttributes()).some(attribute => dsdObj.getAttributes().some(attr => attr.getId() === attribute))
             })
             if (inValidSeries.length > 0) {
                 return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Series are not allowed to have attributes other than dsd dimensions." }
@@ -473,7 +473,7 @@ class DataSemanticChecker {
                 return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. No series found when detail = nodata" }
             }
             let inValidSeries = allSeries.filter(s => {
-                return Object.getOwnPropertyNames(s.getAttributes()).some(attr => !dsdObj.getComponents().find(comp => comp.id == attr))
+                return Object.getOwnPropertyNames(s.getAttributes()).some(attr => !dsdObj.getComponents().find(comp => comp.getId() == attr))
             })
             if (inValidSeries.length > 0) {
                 return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Series are not allowed to have attributes other than dsd dimensions or dsd attributes" }
@@ -490,7 +490,7 @@ class DataSemanticChecker {
                 return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. No series found when detail = serieskeysonly" }
             }
             let inValidSeries = allSeries.filter(s => {
-                return Object.getOwnPropertyNames(s.getAttributes()).some(attr => !dsdObj.getComponents().find(comp => (comp.getType() === "DIMENSION") && (comp.getId() == attr)))
+                return Object.getOwnPropertyNames(s.getAttributes()).some(attr => !dsdObj.getDimensions().some(dim => dim.getId() === attr))
             })
             if (inValidSeries.length > 0) {
                 return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. Series are not allowed to have attributes other than dsd dimensions." }
