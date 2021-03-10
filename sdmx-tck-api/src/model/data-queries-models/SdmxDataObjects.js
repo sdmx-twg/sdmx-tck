@@ -53,7 +53,7 @@ class SdmxDataObjects extends SdmxObjects{
 
         let randomKey = {};
         let randomKeyArr = []
-        let dsdDimensions = dsdObj.getComponents().filter(comp => comp.getType()==="DIMENSION")
+        let dsdDimensions = dsdObj.getDimensions();
         for(let i in series){
             randomKey = {}
             let seriesAtrributes = series[i].getAttributes();
