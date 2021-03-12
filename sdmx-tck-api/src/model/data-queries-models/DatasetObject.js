@@ -42,7 +42,7 @@ class DatasetObject {
         return this.getSeries().length > 0 && this.getSeries().every(s=>s.getObservations().length>0) && this.getObservations.length === 0;
     }
     flatViewOfData(){
-        return this.getSeries().length === 0  && this.getObservations().length > 0;
+        return this.getSeries().length === 0  && this.getObservations().length > 0 && this.getGroups().length === 0;
     }
 }
 
