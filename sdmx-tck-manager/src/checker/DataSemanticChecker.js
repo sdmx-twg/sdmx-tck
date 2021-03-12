@@ -756,7 +756,7 @@ class DataSemanticChecker {
             })
         }
         if(!result){
-            return { status: FAILURE_CODE, error: "Error in Data Availability Metric semantic check. Wrong Annotation." }
+            return { status: FAILURE_CODE, error: "Error in Data Availability Metric semantic check. Invalid Annotation." }
         }
         return { status: SUCCESS_CODE }
     }
@@ -783,11 +783,13 @@ class DataSemanticChecker {
             return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The response contains "+cubeRegions[0].getKeyValues().length+" keyValues instead of 1."}
         }
 
+        //Check if there is only one keyValue in response
         let foundKeyValue = cubeRegions[0].getKeyValues().find(keyVal=>keyVal.getId() === query.component)
         if(!foundKeyValue){
             return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. KeyValue found, does not have the dimension id requested."}
         }
 
+        
         let parentWorkspace = SdmxStructureObjects.fromJson(test.parentWorkspace)
             
         let parentConstraint = parentWorkspace.getSdmxObjectsList().find(obj => obj.structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
@@ -804,6 +806,7 @@ class DataSemanticChecker {
 
         let parentKeyValue =  parentKeyValues.find(pKeyVal => pKeyVal.getId() === query.component);
 
+        //Check if the keyValue found contains the proper values from the parent workspace (the one containing all the keyValues)
         if(!parentKeyValue.equals(foundKeyValue)){
             return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. KeyValue found, does not have the correct values."}
         }
@@ -826,21 +829,21 @@ class DataSemanticChecker {
             throw new Error("Missing mandatory parameter 'constraint'")
         }
         if(query.references === STRUCTURE_REST_RESOURCE.datastructure){
-            return this._checkReferencedDSD(test,query,workspace)
+            return this._checkReferencedDSD(test,query,workspace,constraint)
         }else if(query.references === STRUCTURE_REST_RESOURCE.dataflow){
-            return this._checkReferencedDF(test,query,workspace)
+            return this._checkReferencedDF(test,query,workspace,constraint)
         }else if(query.references === STRUCTURE_REST_RESOURCE.codelist){
             return this._checkReferencedCodelists(test,query,workspace,constraint)
         }else if(query.references === STRUCTURE_REST_RESOURCE.conceptscheme){
             return this._checkReferencedConceptSchemes(test,query,workspace,constraint)
         }else if(query.references === STRUCTURE_REST_RESOURCE.dataproviderscheme){
             return this._checkReferencedProviderScheme(test,query,workspace)
-        }else {
+        }else if(query.references === "all"){
             return this._checkAllReferences(test,query,workspace,constraint)
         }
     }
 
-    static _checkReferencedDSD(test,query,workspace){
+    static _checkReferencedDSD(test,query,workspace,constraint){
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
         }
@@ -850,23 +853,33 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxStructureObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
+        if (!constraint || !constraint instanceof ContentConstraintObject) {
+            throw new Error("Missing mandatory parameter 'constraint'")
+        }
+
+        //check if the requested DF is referenced in constraint
+        let refDfOfConstraint = constraint.getChildren().find(child => child.getStructureType() === SDMX_STRUCTURE_TYPE.DATAFLOW.key)
+        if(refDfOfConstraint.getStructureType()!== SDMX_STRUCTURE_TYPE.DATAFLOW.key
+            || refDfOfConstraint.getAgencyId()!== query.flow.split(",")[0]
+            || refDfOfConstraint.getId()!== query.flow.split(",")[1]
+            || refDfOfConstraint.getVersion()!== query.flow.split(",")[2]){
+                return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The constraint references wrong DF."}
+        }
 
         let dsdArr = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key)
-        if(dsdArr.length !== 1){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Wrong number of datastructures returned."}}
+        if(dsdArr.length !== 1){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Wrong number of datastructures returned. There were "+dsdArr.length+" DSDs in response."}}
         let dsdObj = dsdArr[0];
 
-        if(dsdObj.getStructureType()!==test.dsdObj.getStructureType()
-            || dsdObj.getAgencyId()!==test.dsdObj.getAgencyId()
-            || dsdObj.getId()!==test.dsdObj.getId()
-            || dsdObj.getVersion()!==test.dsdObj.getVersion()){
+        //check if the the DSD in response is the the same as the one referenced by the DF in the constraint.
+        if(!dsdObj.asReference().equals(test.dsdObj.asReference())){
             return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The response does not contain the correct DSD"}
-
         }
+        
         
         return { status: SUCCESS_CODE }
     }
 
-    static _checkReferencedDF(test,query,workspace){
+    static _checkReferencedDF(test,query,workspace,constraint){
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
         }
@@ -876,19 +889,24 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxStructureObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
+        if (!constraint || !constraint instanceof ContentConstraintObject) {
+            throw new Error("Missing mandatory parameter 'constraint'")
+        }
+        //check if the requested DF is referenced in constraint
+        let refDfOfConstraint = constraint.getChildren().find(child => child.getStructureType() === SDMX_STRUCTURE_TYPE.DATAFLOW.key)
+        if(refDfOfConstraint.getStructureType()!== SDMX_STRUCTURE_TYPE.DATAFLOW.key
+            || refDfOfConstraint.getAgencyId()!== query.flow.split(",")[0]
+            || refDfOfConstraint.getId()!== query.flow.split(",")[1]
+            || refDfOfConstraint.getVersion()!== query.flow.split(",")[2]){
+                return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The constraint references wrong DF."}
+        }
 
         let dfArr = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.DATAFLOW.key)
-        if(dfArr.length !== 1){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Wrong number of dataflows returned."}}
+        if(dfArr.length !== 1){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. Wrong number of datastructures returned. There were "+dfArr.length+" DFs in response."}}
         let dfObj = dfArr[0];
-
-        if(dfObj.getStructureType()!== SDMX_STRUCTURE_TYPE.DATAFLOW.key
-            || dfObj.getAgencyId()!== query.flow.split(",")[0]
-            || dfObj.getId()!== query.flow.split(",")[1]
-            || dfObj.getVersion()!== query.flow.split(",")[2]){
-            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The response does not contain the correct DF"}
-
+        if(!dfObj.asReference().equals(refDfOfConstraint)){
+            return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. The DF in response is not the one references by the constraint."}
         }
-        
         return { status: SUCCESS_CODE }
     }
 
@@ -1033,6 +1051,8 @@ class DataSemanticChecker {
         let dataProviderScheme = dataProviderSchemesArr[0];
 
         let result=false;
+        
+        //this serves the references="all" query
         if(query.references === "all"){
              result = test.providerRefs.every(pRef => {
                 return dataProviderScheme.getItems().some(item => item.getId() === pRef.identifiableIds[0])
@@ -1060,12 +1080,12 @@ class DataSemanticChecker {
         if (!constraint || !constraint instanceof ContentConstraintObject) {
             throw new Error("Missing mandatory parameter 'constraint'")
         }
-        let validateRefDSD = this._checkReferencedDSD(test,query,workspace)
+        let validateRefDSD = this._checkReferencedDSD(test,query,workspace,constraint)
         if(validateRefDSD.status === FAILURE_CODE){
             return validateRefDSD;
         }
 
-        let validateRefDF = this._checkReferencedDF(test,query,workspace)
+        let validateRefDF = this._checkReferencedDF(test,query,workspace,constraint)
         if(validateRefDF.status === FAILURE_CODE){
             return validateRefDF;
         }
