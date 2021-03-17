@@ -775,7 +775,6 @@ class SchemasSemanticChecker {
                         }
                 }
 
-            //TODO:CHECK IF THE LOGIC IS CORRECT (FOR ATTACHMENT GROUP AND DIMENSIONS)
             missingAttributes = []
             let attributes = dsdObject.getComponents().filter(component => component instanceof DataStructureAttributeObject)
             let requestedAttributes = attributes.filter(function(attribute){
@@ -999,7 +998,6 @@ class SchemasSemanticChecker {
             if(!complexType.hasAttribute(SCHEMA_ATTRIBUTE_NAMES.TYPE,expectedAttrType,expectedUsage,conceptItems[i].getId())){
                 return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name type."}
             }
-            //TODO: MUST BE CHECKED
             if((conceptItems[i].representation) && conceptItems[i].representation.getType() ===  COMPONENTS_REPRESENTATION_NAMES.TEXT_FORMAT){
                 if(primaryMeasure && JSON.stringify(primaryMeasure.getRepresentation()) !== JSON.stringify(conceptItems[i].representation)){
                     if(!complexType.hasAttribute(primaryMeasure.getId(),XSD_DATA_TYPE.getMapping(conceptItems[i].getRepresentation().getTextType()),SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){

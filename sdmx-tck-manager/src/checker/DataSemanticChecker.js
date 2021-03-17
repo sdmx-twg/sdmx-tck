@@ -193,7 +193,6 @@ class DataSemanticChecker {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
 
-        //TODO:IF THERE ARE MANY DATASETS WE HAVE TO SEARCH FOR EVERY ONE OF THEM?
         let series = workspace.getAllSeries();
         let result = series.filter(serieObj => {
             return !serieObj.complyWithRequestedKey(key)
