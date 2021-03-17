@@ -96,19 +96,34 @@ describe('Tests DataQuery semantic validation in Further Describing Results Test
             console.assert(result.status === 1)
         })
 
-        //DIMENSION AT OBSERVATION TESTS
+        //DIMENSION AT OBSERVATION TESTS WITH TIME PERIOD
         query = {obsDimension:"TIME_PERIOD"} 
         test = {reqTemplate:{dimensionAtObservation:"TIME_PERIOD"}}
-        xmlMessage = fs.readFileSync('./tests/resources/ECB_ECB_TRED1_1.xml','utf8')
-        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
-           test.dsdObj = structureWorkspace.sdmxObjects.get("DSD")[0];
-           console.assert(test.dsdObj instanceof DataStructureObject)
-        })
 
         xmlMessage = fs.readFileSync('./tests/resources/ECB_TRD_1_Data.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
             let result = DataSemanticChecker._checkFurtherDescribingResults(test,query,sdmxObjects)
-            console.assert(result.status === 0)
+            console.assert(result.status === 1)
+        })
+
+        //DIMENSION AT OBSERVATION TESTS WITH DIM
+        query = {obsDimension:"FREQ"} 
+        test = {reqTemplate:{dimensionAtObservation:"Dimension"}}
+
+        xmlMessage = fs.readFileSync('./tests/resources/DataDimenstionAtObservationDimension.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
+            let result = DataSemanticChecker._checkFurtherDescribingResults(test,query,sdmxObjects)
+            console.assert(result.status === 1)
+        })
+
+        //DIMENSION AT OBSERVATION TESTS WITH ALL DIMENSIONS
+        query = {obsDimension:"AllDimensions"} 
+        test = {reqTemplate:{dimensionAtObservation:"AllDimensions"}}
+    
+        xmlMessage = fs.readFileSync('./tests/resources/DataDimensionAtObservationAllDimensions.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
+            let result = DataSemanticChecker._checkFurtherDescribingResults(test,query,sdmxObjects)
+            console.assert(result.status === 1)
         })
     });
 
