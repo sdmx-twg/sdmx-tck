@@ -1,6 +1,6 @@
 {
   "name": "sdmx-tck-parsers",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "SDMX TCK PARSERS",
   "main": "src/index.js",
   "scripts": {
