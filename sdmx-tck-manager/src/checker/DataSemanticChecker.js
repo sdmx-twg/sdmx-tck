@@ -40,7 +40,6 @@ class DataSemanticChecker {
                 }
                 resolve(validation);
             } catch (err) {
-                console.log(err)
                 reject(new TckError(err));
             }
         });
@@ -256,19 +255,20 @@ class DataSemanticChecker {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
         
-        let attributesValidPositioning = this._validateAttributesPositioning(workspace,test);
-        if(attributesValidPositioning.status === FAILURE_CODE){return attributesValidPositioning;}
+        // let attributesValidPositioning = this._validateAttributesPositioning(workspace,test);
+        // if(attributesValidPositioning.status === FAILURE_CODE){return attributesValidPositioning;}
        
         if(test.reqTemplate.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD){
             return this._validateDimAtObsTimePeriod(workspace)
         }else if(test.reqTemplate.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.DIMENSION){
             return this._validateDimAtObsDimension(workspace,query.obsDimension)
         }else if(test.reqTemplate.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.ALLDIMENSIONS){
-             return this._validateDimAtObsAllDimensions(workspace,test)
+             return this._validateDimAtObsAllDimensions(workspace)
         }else if(test.reqTemplate.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.NOT_PROVIDED){
              return this._validateDimAtObsNotProvided(workspace,test);
         }
     }
+    //TODO: Currently not in use.
     static _validateAttributesPositioning(workspace,test){
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
@@ -352,6 +352,7 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxDataObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
+
         let datasets = workspace.getDatasets();
         if(datasets.length === 0){
             throw new Error("No Datasets returned.")
@@ -364,16 +365,18 @@ class DataSemanticChecker {
         if(observations.length === 0){
             throw new Error("No Observations returned.")
         }
+
+        //TIME_PERIOD must be as observation level
         let result = observations.filter(obs => Object.keys(obs.getAttributes()).indexOf("TIME_PERIOD") === -1)
         if(result.length > 0){return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations :"+JSON.stringify(result)+" without TIME_PERIOD attribute." }}
         
         return { status: SUCCESS_CODE } 
     }
-    static _validateDimAtObsDimension(workspace,dimensionId){
+    static _validateDimAtObsDimension(workspace,dimensionAtObservationId){
         if (!workspace || !workspace instanceof SdmxDataObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
-        if(!dimensionId){
+        if(!dimensionAtObservationId){
             throw new Error("Missing mandatory parameter 'dimensionId'")
         }
 
@@ -381,6 +384,7 @@ class DataSemanticChecker {
         if(series.length === 0){
             throw new Error("No Series returned.")
         }
+        // TIME_PERIOD should be in series level
         let result = series.filter(s => Object.keys(s.getAttributes()).indexOf("TIME_PERIOD") === -1 )
         if(result.length > 0){
             let invalidSeriesAttributes = []
@@ -391,16 +395,15 @@ class DataSemanticChecker {
         if(observations.length === 0){
             throw new Error("No Observations returned.")
         }
-        result = observations.filter(obs => Object.keys(obs.getAttributes()).indexOf(dimensionId) === -1)
+       
+        //dimension at observation should be at observations level
+        result = observations.filter(obs => Object.keys(obs.getAttributes()).indexOf(dimensionAtObservationId) === -1)
         if(result.length > 0){
             return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations: "+JSON.stringify(result)+" without TIME_PERIOD attribute." }
         }
         return { status: SUCCESS_CODE } 
     }
-    static _validateDimAtObsAllDimensions(workspace,test){
-        if (!test) {
-            throw new Error("Missing mandatory parameter 'test'")
-        }
+    static _validateDimAtObsAllDimensions(workspace){
         if (!workspace || !workspace instanceof SdmxDataObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
@@ -413,9 +416,6 @@ class DataSemanticChecker {
             return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. No flat view of data returned." }
         }
 
-        let result = workspace.getAllObservations().filter(obs => {
-            return test.dsdObj.getDimensions().some(dim => Object.keys(obs.getAttributes()).indexOf(dim.getId()) === -1) 
-        })   
         if(result.length>0){
             return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations: "+JSON.stringify(result)+" that do not contain all dimensions." }
         }
