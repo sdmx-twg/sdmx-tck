@@ -111,10 +111,10 @@ function DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS_TESTS(){
     return testsArray;
 }
 
-function DATA_FURTHER_DESCRIBING_RESULTS_TESTS(){
+function DATA_FURTHER_DESCRIBING_RESULTS_TESTS(apiVersion){
     let testsArray = [];
 
-    DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.getValues().forEach(parameter => {
+    DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.getDataFurtherDescribingParameters(apiVersion).forEach(parameter => {
         testsArray.push({ index: "Data", url: parameter.url, reqTemplate: parameter.template })
     });
 

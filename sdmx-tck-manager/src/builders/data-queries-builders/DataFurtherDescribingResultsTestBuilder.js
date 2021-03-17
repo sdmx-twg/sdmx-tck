@@ -11,7 +11,7 @@ class DataFurtherDescribingResultsTestBuilder {
         let dataFurtherDescribingResultsTests = [];
         let testObjParams = {};
 
-        var dataFurtherDescribingResultsTestsArray = DATA_FURTHER_DESCRIBING_RESULTS_TESTS();
+        var dataFurtherDescribingResultsTestsArray = DATA_FURTHER_DESCRIBING_RESULTS_TESTS(apiVersion);
         for (let i=0;i<dataFurtherDescribingResultsTestsArray.length;i++){
             let test = dataFurtherDescribingResultsTestsArray[i];
             
