@@ -253,9 +253,6 @@ class DataSemanticChecker {
         if (!workspace || !workspace instanceof SdmxDataObjects) {
             throw new Error("Missing mandatory parameter 'workspace'")
         }
-        
-        // let attributesValidPositioning = this._validateAttributesPositioning(workspace,test);
-        // if(attributesValidPositioning.status === FAILURE_CODE){return attributesValidPositioning;}
        
         if(test.reqTemplate.dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD){
             return this._validateDimAtObsTimePeriod(workspace)
@@ -267,7 +264,7 @@ class DataSemanticChecker {
              return this._validateDimAtObsNotProvided(workspace,test);
         }
     }
-    //TODO: Currently not in use.
+    //TODO: Currently not in use. It was used as a validation in dimensionAtObservation tests
     static _validateAttributesPositioning(workspace,test){
         if (!test) {
             throw new Error("Missing mandatory parameter 'test'")
@@ -658,7 +655,9 @@ class DataSemanticChecker {
         let result;
         
         if(test.reqTemplate.mode === DATA_QUERY_MODE.EXACT){
-            if(cubeRegions.length === 0){return { status: SUCCESS_CODE }}
+            if(cubeRegions.length === 0 || cubeRegions.every(cubeRegion => cubeRegion.getKeyValues().length === 0)){
+                return { status: SUCCESS_CODE }
+            }
 
             result =  cubeRegions[0].getKeyValues().some(keyValue=>{
                 let index = Object.keys(test.randomKeys[0]).indexOf(keyValue.getId())
@@ -672,7 +671,9 @@ class DataSemanticChecker {
                 }
             })
         }else if (test.reqTemplate.mode === DATA_QUERY_MODE.AVAILABLE){
-            if(cubeRegions.length === 0){return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. No Cube Region returned."}}
+            if(cubeRegions.length === 0 || cubeRegions.every(cubeRegion => cubeRegion.getKeyValues().length === 0)){
+                return { status: FAILURE_CODE, error: "Error in Data Availability semantic check. No or empty Cube Region returned."}
+            }
             
             result = cubeRegions[0].getKeyValues().every(keyValue=>{
                 let index = Object.keys(test.randomKeys[0]).indexOf(keyValue.getId())
