@@ -399,7 +399,7 @@ class DataSemanticChecker {
         //dimension at observation should be at observations level
         result = observations.filter(obs => Object.keys(obs.getAttributes()).indexOf(dimensionAtObservationId) === -1)
         if(result.length > 0){
-            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations: "+JSON.stringify(result)+" without TIME_PERIOD attribute." }
+            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations: "+JSON.stringify(result)+" without "+dimensionAtObservationId+" attribute." }
         }
         return { status: SUCCESS_CODE } 
     }
