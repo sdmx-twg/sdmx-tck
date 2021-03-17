@@ -415,10 +415,6 @@ class DataSemanticChecker {
         if(!isFlatViewCheck){
             return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. No flat view of data returned." }
         }
-
-        if(result.length>0){
-            return { status: FAILURE_CODE, error: "Error in Further Describing Results semantic check. There are observations: "+JSON.stringify(result)+" that do not contain all dimensions." }
-        }
         return { status: SUCCESS_CODE }
     }
     static _validateDimAtObsNotProvided(workspace,test){
