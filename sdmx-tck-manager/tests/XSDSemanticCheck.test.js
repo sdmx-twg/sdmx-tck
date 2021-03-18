@@ -1,6 +1,5 @@
-var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
+var SdmxXmlParser = require('../../sdmx-tck-parsers/src/parsers/SdmxXmlParser.js');
 const fs = require('fs');
-var StructureReference = require('sdmx-tck-api').model.StructureReference;
 var SchemasSemanticChecker = require('../../sdmx-tck-manager/src/checker/SchemasSemanticChecker.js')
 
 var StructureDetail = require('sdmx-tck-api').constants.StructureDetail;

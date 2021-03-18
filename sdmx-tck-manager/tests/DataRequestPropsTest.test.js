@@ -1,7 +1,7 @@
 var DataRequestPropsBuilder = require('../../sdmx-tck-manager/src/builders/data-queries-builders/DataRequestPropsBuilder.js')
 const DATA_QUERY_KEY = require('sdmx-tck-api').constants.DATA_QUERY_KEY;
 const fs = require('fs');
-var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
+var SdmxXmlParser = require('../../sdmx-tck-parsers/src/parsers/SdmxXmlParser.js');
 var DataStructureObject = require('sdmx-tck-api').model.DataStructureObject;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
 var SeriesObject = require('sdmx-tck-api').model.SeriesObject;
@@ -40,8 +40,8 @@ describe('Tests Key of Data requests from randomKey', function () {
     it('It should assert the key', async () => {
         let dsdObj;
         let template = {key:DATA_QUERY_KEY.FULL_KEY}
-        let randomKeys = [{REF_AREA:"B",ADJUSTMENT:"C",FREQ:"A",TRD_FLOW:"D",TRD_PRODUCT:"E",STS_INSTITUTION:"G",TRD_SUFFIX:"H",COUNT_AREA:"F"},
-        {REF_AREA:"B",ADJUSTMENT:"C",FREQ:"A",TRD_FLOW:"D",TRD_PRODUCT:"E",STS_INSTITUTION:"G",TRD_SUFFIX:"H",COUNT_AREA:"F"}]
+        let randomKeys = [{FREQ:"A",REF_AREA:"B",ADJUSTMENT:"C",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"},
+        {FREQ:"A",REF_AREA:"B",ADJUSTMENT:"C",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"}]
 
         xmlMessage = fs.readFileSync('./tests/resources/ECB_ECB_TRED1_1.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
@@ -55,8 +55,8 @@ describe('Tests Key of Data requests from randomKey', function () {
     it('It should assert the key', async () => {
         let dsdObj;
         let template = {key:DATA_QUERY_KEY.PARTIAL_KEY}
-        let randomKeys = [{REF_AREA:"B",ADJUSTMENT:"C",FREQ:"A",TRD_FLOW:"D",TRD_PRODUCT:"E",STS_INSTITUTION:"G",TRD_SUFFIX:"H",COUNT_AREA:"F"},
-                        {REF_AREA:"B",ADJUSTMENT:"C",FREQ:"A",TRD_FLOW:"D",TRD_PRODUCT:"E",STS_INSTITUTION:"G",TRD_SUFFIX:"H",COUNT_AREA:"F"}]
+        let randomKeys = [{FREQ:"A",REF_AREA:"B",ADJUSTMENT:"C",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"},
+        {FREQ:"A",REF_AREA:"B",ADJUSTMENT:"C",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"}]
 
         xmlMessage = fs.readFileSync('./tests/resources/ECB_ECB_TRED1_1.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
@@ -70,8 +70,8 @@ describe('Tests Key of Data requests from randomKey', function () {
     it('It should assert the key', async () => {
         let dsdObj;
         let template = {key:DATA_QUERY_KEY.MANY_KEYS}
-        let randomKeys = [{REF_AREA:"B",ADJUSTMENT:"C",FREQ:"A",TRD_FLOW:"D",TRD_PRODUCT:"E",STS_INSTITUTION:"G",TRD_SUFFIX:"H",COUNT_AREA:"F"},
-                    {REF_AREA:"B",ADJUSTMENT:"I",FREQ:"A",TRD_FLOW:"D",TRD_PRODUCT:"E",STS_INSTITUTION:"G",TRD_SUFFIX:"H",COUNT_AREA:"F"}]
+        let randomKeys = [{FREQ:"A",REF_AREA:"B",ADJUSTMENT:"C",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"},
+        {FREQ:"A",REF_AREA:"B",ADJUSTMENT:"I",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"}]
 
         xmlMessage = fs.readFileSync('./tests/resources/ECB_ECB_TRED1_1.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
@@ -88,14 +88,14 @@ describe('Tests Key of Data requests from randomKey', function () {
 describe('Tests provider data of Data requests', function () {
     it('It should assert the provider id', async () => {
         let providerRefs = [new StructureReference('DATA_PROVIDER_SCHEME','ECB','DATA_PROVIDERS','1.0',['ECB'])]
-        let template = {provider:{providerId:true}}
+        let template = {provider:{num:1,providerId:true}}
         let provider = DataRequestPropsBuilder.getProvider(providerRefs,template)
         console.assert(provider === "ECB")
     });
 
     it('It should assert the provider agency,id', async () => {
         let providerRefs = [new StructureReference('DATA_PROVIDER_SCHEME','ECB','DATA_PROVIDERS','1.0',['ECB'])]
-        let template = {provider:{providerAgency:true,providerId:true}}
+        let template = {provider:{num:1,providerAgency:true,providerId:true}}
         let provider = DataRequestPropsBuilder.getProvider(providerRefs,template)
         console.assert(provider === "ECB,ECB")
     });
@@ -103,7 +103,7 @@ describe('Tests provider data of Data requests', function () {
     it('It should assert the provider ids combination', async () => {
         let providerRefs = [new StructureReference('DATA_PROVIDER_SCHEME','ECB','DATA_PROVIDERS','1.0',['ECB']),
                             new StructureReference('DATA_PROVIDER_SCHEME','ECB','DATA_PROVIDERS','1.0',['ECB1'])]
-        let template = {provider:true}
+        let template = {provider:{num:2}}
         let provider = DataRequestPropsBuilder.getProvider(providerRefs,template)
         console.assert(provider === "ECB,ECB1")
     });

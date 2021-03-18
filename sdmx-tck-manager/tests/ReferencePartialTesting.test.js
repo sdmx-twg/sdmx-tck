@@ -1,7 +1,6 @@
 
-var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
-const StructuresSemanticChecker = require('../../sdmx-tck-manager/src/checker/StructuresSemanticChecker.js');
-const ContentConstraintReferencePartialChecker = require('../../sdmx-tck-manager/src/checker/ContentConstraintReferencePartialChecker.js');
+var SdmxXmlParser = require('../../sdmx-tck-parsers/src/parsers/SdmxXmlParser.js');
+const ContentConstraintReferencePartialChecker = require('../src/checker/ContentConstraintReferencePartialChecker.js');
 
 const fs = require('fs');
 describe('Tests if DataKeySet obj gets the DataKeySet', function () {

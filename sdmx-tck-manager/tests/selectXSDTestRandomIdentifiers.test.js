@@ -1,4 +1,4 @@
-var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
+var SdmxXmlParser = require('../../sdmx-tck-parsers/src/parsers/SdmxXmlParser.js');
 const fs = require('fs');
 const StructureReference = require('sdmx-tck-api/src/model/structure-queries-models/StructureReference');
 

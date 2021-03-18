@@ -4,12 +4,14 @@
   "description": "SDMX TCK MANAGER",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js & (cd ../sdmx-tck-client && npm start)"
+    "dev": "nodemon server.js & (cd ../sdmx-tck-client && npm start)",
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "mocha": "^8.3.2",
     "save": "^2.4.0",
     "sdmx-rest": "^2.15.2",
     "sdmx-tck-api": "file:../sdmx-tck-api",

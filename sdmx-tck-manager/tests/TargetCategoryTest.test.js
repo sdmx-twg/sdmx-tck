@@ -1,4 +1,4 @@
-var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
+var SdmxXmlParser = require('../../sdmx-tck-parsers/src/parsers/SdmxXmlParser.js');
 const StructuresSemanticChecker = require('../../sdmx-tck-manager/src/checker/StructuresSemanticChecker.js');
 
 const fs = require('fs');

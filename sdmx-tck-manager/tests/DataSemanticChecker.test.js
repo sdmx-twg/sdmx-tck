@@ -1,10 +1,9 @@
-var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
+var SdmxXmlParser = require('../../sdmx-tck-parsers/src/parsers/SdmxXmlParser.js');
 const fs = require('fs');
 const DataSemanticChecker = require('../../sdmx-tck-manager/src/checker/DataSemanticChecker.js');
 const DATA_QUERY_KEY = require('sdmx-tck-api').constants.DATA_QUERY_KEY;
 var SdmxStructureObjects = require('sdmx-tck-api').model.SdmxStructureObjects; 
 var SeriesObject = require('sdmx-tck-api').model.SeriesObject;
-var DataStructureObject = require('sdmx-tck-api').model.DataStructureObject;
 
 describe('Tests DataQuery semantic validation in Resource Identification Test', function () {
     it('It should assert semantic validation result', async () => {

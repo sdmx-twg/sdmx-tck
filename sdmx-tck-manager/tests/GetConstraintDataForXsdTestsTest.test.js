@@ -1,4 +1,4 @@
-var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
+var SdmxXmlParser = require('../../sdmx-tck-parsers/src/parsers/SdmxXmlParser.js');
 
 const fs = require('fs');
 describe('Tests constraint data retrieval', function () {

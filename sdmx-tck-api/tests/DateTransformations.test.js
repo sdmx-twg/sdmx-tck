@@ -1,4 +1,4 @@
-var DateTransformations = require('sdmx-tck-api').utils.DateTransformations;
+var DateTransformations = require('../src/utils/DateTransformations.js');
 
 
 describe('Tests Date Transformations', function () {

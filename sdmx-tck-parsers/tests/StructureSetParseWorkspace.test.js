@@ -1,6 +1,4 @@
 var SdmxXmlParser = require('../src/parsers/SdmxXmlParser.js');
-const StructuresSemanticChecker = require('../../sdmx-tck-manager/src/checker/StructuresSemanticChecker.js');
-
 const fs = require('fs');
 const MaintainableObject = require('sdmx-tck-api/src/model/structure-queries-models/MaintainableObject');
 const SdmxStructureObjects = require('sdmx-tck-api/src/model/structure-queries-models/SdmxStructureObjects');
