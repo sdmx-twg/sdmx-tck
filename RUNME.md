@@ -23,5 +23,5 @@ Outcome:
 
 
 Command for testing an individual js file:
-    1. Navigate to the parsers directory : cd sdmx-tck-parsers
-    2. Use the following command: npm test -t tests/file_name.test.js (ex: npm test -t tests/SdmxXmlParserTest.test.js)
+    1. Navigate to a directory that has a 'test' folder (ex. : cd sdmx-tck-parsers)
+    2. Use the following command: npm test -t tests/file_name.test.js (ex: npm test -t tests/SdmxObjects.test.js)
