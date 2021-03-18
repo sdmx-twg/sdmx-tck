@@ -200,13 +200,22 @@ export function passDataToDataQueries(dataTests,dataQueriesData){
 		}
 	}
 }
-export const configTests = (prevStore,action) =>{
+export const configSchemaTests = (prevStore,action) =>{
 	var testsArray = [...prevStore];
 
 	for (let i = 0; i < testsArray.length; i++) {
 		if (testsArray[i].id === TEST_INDEX.Schema) {
 			passConstraintDataToSchemaTests(testsArray[i],action.schemaTestsData);
-		}else if ((testsArray[i].id === TEST_INDEX.Data)){
+		}
+	}
+	return testsArray;
+}
+
+export const configDataTests = (prevStore,action) =>{
+	var testsArray = [...prevStore];
+
+	for (let i = 0; i < testsArray.length; i++) {
+		if (testsArray[i].id === TEST_INDEX.Data){
 			passDataToDataQueries(testsArray[i],action.dataQueriesData);
 		}
 	}
