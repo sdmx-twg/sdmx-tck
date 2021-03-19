@@ -226,10 +226,10 @@ describe('Tests first/last N Observations of Data requests from indicativeSeries
     });
 });
 
-describe('Tests updateAfter date of Data requests from indicativeSeries', function () {
-    it('It should assert the updateAfter Date', async () => {
+describe('Tests updatedAfter date of Data requests from indicativeSeries', function () {
+    it('It should assert the updatedAfter Date', async () => {
         let allSeries;
-        let template = {updateAfter:true}
+        let template = {updatedAfter:true}
       
         xmlMessage = fs.readFileSync('./tests/resources/DataXMLDataOnly.xml','utf8')
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
