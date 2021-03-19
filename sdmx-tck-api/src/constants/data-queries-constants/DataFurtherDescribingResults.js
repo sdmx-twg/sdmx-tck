@@ -8,7 +8,7 @@ const DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS = {
     END_PERIOD:{ url: "/agency,id,version/all?endPeriod=YYYYDDMM",template: {endPeriod:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}},
     START_END_PERIOD:{ url: "/agency,id,version/all?startPeriod=YYYYDDMM&endPeriod=YYYYDDMM", template: {startPeriod:true,endPeriod:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}  },
     LAST_N_OBSERVATIONS_START_END_PERIOD:{ url: "/agency,id,version/all?lastNObservations=X&startPeriod=YYYYDDMM&endPeriod=YYYYDDMM",template: {startPeriod:true,endPeriod:true,lastNObservations:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}},
-    UPDATE_AFTER:{url:"/agency,id,version/all?updateAfter=YYYYDDMM", template: {updateAter:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
+    UPDATED_AFTER:{url:"/agency,id,version/all?updatedAfter=YYYYDDMM", template: {updatedAfter:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
     FIRST_N_OBSERVATIONS:{ url:"/agency,id,version/all?firstNObservations=X", template: {firstNObservations:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}  },
     LAST_N_OBSERVATIONS:{ url: "/agency,id,version/all?lastNObservations=X",template: {lastNObservations:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}},
     INCLUDE_HISTORY:{ url: "/agency,id,version/all?includeHistory=true",template: {includeHistory:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}},
@@ -27,10 +27,9 @@ const DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS = {
             availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.END_PERIOD);
             availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.START_END_PERIOD);
             availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.LAST_N_OBSERVATIONS_START_END_PERIOD)
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.UPDATE_AFTER)
+            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.UPDATED_AFTER)
             availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.FIRST_N_OBSERVATIONS);
             availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.LAST_N_OBSERVATIONS);
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.INCLUDE_HISTORY);
             availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.FULL_DETAIL)
             availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.DATA_ONLY_DETAIL)
             availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.SERIES_KEYS_ONLY_DETAIL)
@@ -40,6 +39,10 @@ const DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS = {
             availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.DIM_OBS_ALLDIMENSIONS)
             if (API_VERSIONS[apiVersion] < API_VERSIONS["v1.1.0"]) {
                 availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.DIM_OBS_NOT_PROVIDED)
+                
+            }
+            if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.1.0"]) {
+                availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.INCLUDE_HISTORY);
                 
             }
             return availableTests;

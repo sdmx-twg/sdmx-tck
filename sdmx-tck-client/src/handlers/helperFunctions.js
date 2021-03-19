@@ -188,7 +188,8 @@ export function passDataToDataQueries(dataTests,dataQueriesData){
 				if(dataTests.subTests[i].reqTemplate.startPeriod 
 					|| dataTests.subTests[i].reqTemplate.endPeriod
 					|| dataTests.subTests[i].reqTemplate.firstNObservations
-					|| dataTests.subTests[i].reqTemplate.lastNObservations){
+					|| dataTests.subTests[i].reqTemplate.lastNObservations
+					|| dataTests.subTests[i].reqTemplate.updatedAfter){
 
 						dataTests.subTests[i].indicativeSeries = dataQueriesData.indicativeSeries;
 				}

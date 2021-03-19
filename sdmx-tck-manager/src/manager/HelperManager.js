@@ -14,8 +14,6 @@ class HelperManager {
     static getWorkspace(toRun, apiVersion, endpoint) {
             return new Promise((resolve, reject) => {
                 this.getPreparedRequest(toRun,apiVersion,endpoint)
-                // StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
-                //     toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
                     .then((preparedRequest) => {
                         toRun.preparedRequest = preparedRequest;
                         let url = new UrlGenerator().getUrl(preparedRequest.request, preparedRequest.service, true)
@@ -46,8 +44,7 @@ class HelperManager {
             return  StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
                 toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
         }else if(toRun.index === "Data"){
-           return   DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,
-                DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate))
+            return   DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun)
         }
     }
 };

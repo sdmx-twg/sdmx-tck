@@ -71,22 +71,7 @@ class DataTestsExecutionManager {
                 toRun.indicativeSeries = SeriesObject.fromJson(toRun.indicativeSeries)
             }
 
-            let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun.reqTemplate,
-                                                            DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate),
-                                                            DataRequestPropsBuilder.getKey(toRun.randomKeys,toRun.dsdObj,toRun.reqTemplate),
-                                                            DataRequestPropsBuilder.getComponent(toRun.randomKeys,toRun.reqTemplate),
-                                                            DataRequestPropsBuilder.getProvider(providerRefs,toRun.reqTemplate),
-                                                            DataRequestPropsBuilder.getObsDimension(toRun.dsdObj,toRun.reqTemplate),
-                                                            toRun.reqTemplate.detail,
-                                                            DataRequestPropsBuilder.getNumOfFirstNObservations(toRun.indicativeSeries,toRun.reqTemplate),
-                                                            DataRequestPropsBuilder.getNumOfLastNObservations(toRun.indicativeSeries,toRun.reqTemplate),
-                                                            DataRequestPropsBuilder.getStartPeriod(toRun.indicativeSeries,toRun.reqTemplate),
-                                                            DataRequestPropsBuilder.getEndPeriod(toRun.indicativeSeries,toRun.reqTemplate),
-                                                            DataRequestPropsBuilder.getUpdateAfterDate(toRun.indicativeSeries,toRun.reqTemplate),
-                                                            toRun.reqTemplate.updateAfter,
-                                                            toRun.testType);
-
-            
+            let preparedRequest = await DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun)
             console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
             
             //Alternative way to pass the url generated as string in order to configure the skipDefaults parameter.

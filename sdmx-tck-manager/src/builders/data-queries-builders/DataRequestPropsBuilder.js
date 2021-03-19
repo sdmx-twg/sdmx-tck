@@ -176,7 +176,7 @@ class DataRequestPropsBuilder {
         if(!template || typeof template !== 'object'){
             throw new Error ("Missing mandatory parameter 'template'")
         }
-        if(!template.updateAfter){return;}
+        if(!template.updatedAfter){return;}
         if(!indicativeSeries instanceof SeriesObject || indicativeSeries.getObservations().length === 0
             || indicativeSeries.getObservations().some(obs=>!obs instanceof ObservationObject)){
             throw new Error ("Unable to get a date.")

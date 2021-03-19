@@ -214,7 +214,7 @@ class DataSemanticChecker {
         }
 
         //TODO: Change it if a way to check this case, is determined.
-        if (query.updateAfter || query.history){
+        if (query.updatedAfter || query.history){
             return {status: SUCCESS_CODE};
         }
 
