@@ -1,6 +1,6 @@
 {
   "name": "sdmx-tck-reporter",
-  "version": "1.2.0",
+  "version": "1.0.0",
   "description": "SDMX TCK REPORTER",
   "main": "index.js",
   "scripts": {
