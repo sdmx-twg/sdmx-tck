@@ -1,9 +1,11 @@
 Prerequisites:
     1. Having installed Node v14.16.0
-    2. With Node installation Node Package Manager is also installed.
+    2. With Node installation Node Package Manager (npm) is also installed.
     3. In order to verify that you have Node & nmp run the following commands in terminal:
         > node -v
         > npm -v
+    4. Navigate inside every module's folder (ex. cd sdmx-tck-manager) and run the following command in order to install all necessary packages:
+        > npm install  
 
 To start:
     1. Navigate to the directory of TCK.
