@@ -1,6 +1,6 @@
 {
   "name": "sdmx-tck-api",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "SDMX TCK API",
   "main": "src/index.js",
   "scripts": {
