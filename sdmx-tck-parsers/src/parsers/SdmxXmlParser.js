@@ -4,8 +4,6 @@ const validator = require('@authenio/xsd-schema-validator');
 var SdmxObjectsFactory = require('sdmx-tck-api').model.SdmxObjectsFactory;
 var SdmxV21JsonParser = require('./SdmxV21JsonParser.js');
 
-const {validateXMLWithXSD} = require("validate-with-xmllint");
-
 class SdmxXmlParser {
 
     //Validates the an XSD string against the XMLSchema files
