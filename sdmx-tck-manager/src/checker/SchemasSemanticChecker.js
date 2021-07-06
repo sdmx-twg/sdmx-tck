@@ -872,8 +872,16 @@ class SchemasSemanticChecker {
         }
 
         if(dimensionAtObservation!==DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD){
-            if(!complexType.getAttributes().find(attr => attr.getType()===SCHEMA_ATTRIBUTE_TYPES.COMMON_TIME_PERIOD_TYPE && attr.getName()===SCHEMA_ATTRIBUTE_NAMES.TIME_PERIOD && attr.getUse()===SCHEMA_ATTRIBUTE_USAGE_VALUES.PROHIBITED)){
-                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No prohibited attribute with name 'TIME_PERIOD' and type 'common:TimePeriodType' found. "}
+            let timeDimension = dsdObject.getTimeDimension();
+            let timeDimensionLocalRepresentation = timeDimension.getRepresentation();
+            let expectedAttrType = XSD_DATA_TYPE.OBSERVATIONAL_TIME_PERIOD;
+            if(timeDimensionLocalRepresentation){
+                if(timeDimensionLocalRepresentation.getTextType()){
+                    expectedAttrType = XSD_DATA_TYPE.getMapping(timeDimensionLocalRepresentation.getTextType())
+                }
+            }
+            if(!complexType.getAttributes().find(attr => attr.getType()===expectedAttrType && attr.getName()===SCHEMA_ATTRIBUTE_NAMES.TIME_PERIOD && attr.getUse()===SCHEMA_ATTRIBUTE_USAGE_VALUES.PROHIBITED)){
+                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No attribute with name 'TIME_PERIOD', type '"+expectedAttrType+"' and a usage of prohobited found. "}
             }
         }
         let missingAttributes=[];
