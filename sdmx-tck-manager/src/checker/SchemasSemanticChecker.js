@@ -877,11 +877,14 @@ class SchemasSemanticChecker {
             let expectedAttrType = XSD_DATA_TYPE.OBSERVATIONAL_TIME_PERIOD;
             if(timeDimensionLocalRepresentation){
                 if(timeDimensionLocalRepresentation.getTextType()){
-                    expectedAttrType = XSD_DATA_TYPE.getMapping(timeDimensionLocalRepresentation.getTextType())
+                    expectedAttrType = XSD_DATA_TYPE.isTimeDataType(timeDimensionLocalRepresentation.getTextType())
+                    if(!expectedAttrType){
+                        return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: DSD TimeDimension does not contain a valid Local Representation."}
+                    }
                 }
             }
             if(!complexType.getAttributes().find(attr => attr.getType()===expectedAttrType && attr.getName()===SCHEMA_ATTRIBUTE_NAMES.TIME_PERIOD && attr.getUse()===SCHEMA_ATTRIBUTE_USAGE_VALUES.PROHIBITED)){
-                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No attribute with name 'TIME_PERIOD', type '"+expectedAttrType+"' and a usage of prohobited found. "}
+                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No attribute with name 'TIME_PERIOD', type '"+expectedAttrType+"' and a usage of prohibited found. "}
             }
         }
         let missingAttributes=[];

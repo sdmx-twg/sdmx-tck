@@ -122,6 +122,46 @@ const XSD_DATA_TYPE = {
             default:
                 return null
         }
+    },
+    isTimeDataType(sdmxDataType){
+        switch(sdmxDataType){
+            case "ObservationalTimePeriod":
+                return XSD_DATA_TYPE.OBSERVATIONAL_TIME_PERIOD    
+            case "StandardTimePeriod":
+                return XSD_DATA_TYPE.STANDARD_TIME_PERIOD
+            case "BasicTimePeriod":
+                return XSD_DATA_TYPE.BASIC_TIME_PERIOD
+            case "GregorianTimePeriod":
+                return XSD_DATA_TYPE.GREGORIAN_TIME_PERIOD
+            case "GregorianYear":
+                return XSD_DATA_TYPE.GREGORIAN_YEAR
+            case "GregorianYearMonth":
+                return XSD_DATA_TYPE.GREGORIAN_YEAR_MONTH
+            case "GregorianDay":
+                return XSD_DATA_TYPE.GREGORIAN_DAY
+            case "ReportingTimePeriod":
+                return XSD_DATA_TYPE.REPORTING_TIME_PERIOD
+            case "ReportingYear":
+                return XSD_DATA_TYPE.REPORTING_YEAR
+            case "ReportingSemester":
+                return XSD_DATA_TYPE.REPORTING_SEMESTER
+            case "ReportingTrimester":
+                return XSD_DATA_TYPE.REPORTING_TRIMESTER
+            case "ReportingQuarter":
+                return XSD_DATA_TYPE.REPORTING_QUARTER
+            case "ReportingMonth":
+                return XSD_DATA_TYPE.REPORTING_MONTH    
+            case "ReportingWeek":
+                return XSD_DATA_TYPE.REPORTING_WEEK
+            case "ReportingDay":
+                return XSD_DATA_TYPE.REPORTING_DAY
+            case "DateTime":
+                return XSD_DATA_TYPE.DATE_TIME
+            case "TimeRange":
+                return XSD_DATA_TYPE.TIME_RANGE
+            default:
+                return null;
+        }
     }
 
 }
