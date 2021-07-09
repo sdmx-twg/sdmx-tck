@@ -383,15 +383,15 @@ class SchemasSemanticChecker {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
         //CHECK DATASETTYPE
-        let dataSetTypeValidation = SchemasSemanticChecker.checkXSDDataSetType(dsdObject,sdmxObjects,dimensionAtObservation)
+        let dataSetTypeValidation = SchemasSemanticChecker.checkXSDDataSetType(test,dsdObject,sdmxObjects,dimensionAtObservation)
         if(dataSetTypeValidation.status === FAILURE_CODE){return dataSetTypeValidation}
         
         //CHECK SERIESTYPE
-        let seriesTypeValidation = SchemasSemanticChecker.checkXSDSeriesType(dsdObject,sdmxObjects,dimensionAtObservation)
+        let seriesTypeValidation = SchemasSemanticChecker.checkXSDSeriesType(test,dsdObject,sdmxObjects,dimensionAtObservation)
         if(seriesTypeValidation.status === FAILURE_CODE){return seriesTypeValidation}
 
         //CHECK GROUPTYPE
-        let groupTypeValidation = SchemasSemanticChecker.checkXSDGroupType(dsdObject,sdmxObjects,dimensionAtObservation)
+        let groupTypeValidation = SchemasSemanticChecker.checkXSDGroupType(test,dsdObject,sdmxObjects,dimensionAtObservation)
         if(groupTypeValidation.status === FAILURE_CODE){return groupTypeValidation}
 
         //CHECK OBSTYPE
@@ -400,7 +400,7 @@ class SchemasSemanticChecker {
 
           
     }
-    static checkXSDDataSetType(dsdObject,sdmxObjects,dimensionAtObservation){
+    static checkXSDDataSetType(test,dsdObject,sdmxObjects,dimensionAtObservation){
         if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
             throw new Error("Missing mandatory parameter 'dsdObject'.");
         }
@@ -409,6 +409,9 @@ class SchemasSemanticChecker {
         }
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
+        if (!Utils.isDefined(test)) {
+            throw new Error("Missing mandatory parameter 'test'.");
         }
         //CHECK DataSetType
        
@@ -512,7 +515,7 @@ class SchemasSemanticChecker {
             return attrRelationships.filter(relationship=>relationship.getRelationshipType()===ATTRIBUTE_RELATIONSHIP_NAMES.NONE).length>0 === true
         })
         for(let i in attributesDeclaringNoneRelationship){
-            if(!complexType.hasStructComponentAsAttribute(attributesDeclaringNoneRelationship[i].getId(),attributesDeclaringNoneRelationship[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+            if(!complexType.hasStructComponentAsAttribute(attributesDeclaringNoneRelationship[i].getId(),attributesDeclaringNoneRelationship[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,test.structureWorkspace)){
                 missingAttributes.push(attributesDeclaringNoneRelationship[i].getId())
             }
         }
@@ -523,7 +526,7 @@ class SchemasSemanticChecker {
         return { status: SUCCESS_CODE };
     
     }
-    static checkXSDSeriesType(dsdObject,sdmxObjects,dimensionAtObservation){
+    static checkXSDSeriesType(test,dsdObject,sdmxObjects,dimensionAtObservation){
         if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
             throw new Error("Missing mandatory parameter 'dsdObject'.");
         }
@@ -532,6 +535,9 @@ class SchemasSemanticChecker {
         }
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
+        if (!Utils.isDefined(test)) {
+            throw new Error("Missing mandatory parameter 'test'.");
         }
         //GET THE CORRECT COMPLEX TYPE
         let complexType = sdmxObjects.getXSDComplexTypeByName(COMPLEX_TYPES_NAMES.SERIES_TYPE);
@@ -571,7 +577,7 @@ class SchemasSemanticChecker {
         let missingAttributes = []
         let requestedDimensions = dsdObject.getDimensions().filter(component => component.getId() !== dimensionAtObservation )
         for(let i in requestedDimensions){
-            if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED)){
+            if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED,test.structureWorkspace)){
                 missingAttributes.push(requestedDimensions[i].getId())
             }
         }
@@ -600,7 +606,7 @@ class SchemasSemanticChecker {
         
 
         for(let i in requestedAttributes){
-            if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+            if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,test.structureWorkspace)){
                 missingAttributes.push(requestedAttributes[i].getId())
             }
         }
@@ -620,7 +626,7 @@ class SchemasSemanticChecker {
                 return expression1 || expression2 
             })
             for(let i in requestedAttributes){
-                if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+                if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,test.structureWorkspace)){
                     missingAttributes.push(requestedAttributes[i].getId())
                 }
             }
@@ -632,7 +638,7 @@ class SchemasSemanticChecker {
 
         return { status: SUCCESS_CODE };
     }
-    static checkXSDGroupType(dsdObject,sdmxObjects,dimensionAtObservation){
+    static checkXSDGroupType(test,dsdObject,sdmxObjects,dimensionAtObservation){
         if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
             throw new Error("Missing mandatory parameter 'dsdObject'.");
         }
@@ -642,13 +648,16 @@ class SchemasSemanticChecker {
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
+        if (!Utils.isDefined(test)) {
+            throw new Error("Missing mandatory parameter 'test'.");
+        }
         if(dsdObject.getGroups().length>1){
             let abstractGroupTypeValidation =  SchemasSemanticChecker.checkXSDAbstractGroupType(dsdObject,sdmxObjects,dimensionAtObservation)
             if(abstractGroupTypeValidation.status === FAILURE_CODE){return abstractGroupTypeValidation}
             let simpleTypeGroupIDValidation = SchemasSemanticChecker.checkSimpleTypeGroupID(dsdObject,sdmxObjects)
             if(simpleTypeGroupIDValidation.status === FAILURE_CODE){return simpleTypeGroupIDValidation}
         }
-        return SchemasSemanticChecker.checkSpecificXSDGroupType(dsdObject,sdmxObjects,dimensionAtObservation)
+        return SchemasSemanticChecker.checkSpecificXSDGroupType(test,dsdObject,sdmxObjects,dimensionAtObservation)
        
        
     }
@@ -720,12 +729,15 @@ class SchemasSemanticChecker {
         }
         return { status: SUCCESS_CODE };
     }
-    static checkSpecificXSDGroupType(dsdObject,sdmxObjects){
+    static checkSpecificXSDGroupType(test,dsdObject,sdmxObjects){
         if (!Utils.isDefined(dsdObject) || !(dsdObject instanceof DataStructureObject)) {
             throw new Error("Missing mandatory parameter 'dsdObject'.");
         }
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxSchemaObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
+        }
+        if (!Utils.isDefined(test)) {
+            throw new Error("Missing mandatory parameter 'test'.");
         }
         let dsdGroups = dsdObject.getGroups()
         //let expectedRestrictionBase = (dsdGroups.length > 1)?COMPLEX_TYPES_RESTRICTION_BASE.GROUP_TYPE:COMPLEX_TYPES_RESTRICTION_BASE.DSD_GROUP_TYPE
@@ -759,7 +771,7 @@ class SchemasSemanticChecker {
             let requestedDimensions = dsdObject.getDimensions().filter(component =>  dsdGroups[c].getDimensionReferences().indexOf(component.getId())!==-1 )
 
             for(let i in requestedDimensions){
-                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED)){
+                if(!complexType.hasStructComponentAsAttribute(requestedDimensions[i].getId(),requestedDimensions[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED,test.structureWorkspace)){
                     missingAttributes.push(requestedDimensions[i].getId())
                 }
             }
@@ -785,7 +797,7 @@ class SchemasSemanticChecker {
                 return expression1 || expression2 
             })
             for(let i in requestedAttributes){
-                if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+                if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,test.structureWorkspace)){
                     missingAttributes.push(requestedAttributes[i].getId())
                 }
             }
@@ -893,7 +905,7 @@ class SchemasSemanticChecker {
         if(dimensionAtObservation!==DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD){
             let requestedComponent = dsdObject.getComponents().find(component => component.getId() === dimensionAtObservation )
             if(requestedComponent){
-                if(!complexType.hasStructComponentAsAttribute(requestedComponent.getId(),requestedComponent,sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED)){
+                if(!complexType.hasStructComponentAsAttribute(requestedComponent.getId(),requestedComponent,sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED,test.structureWorkspace)){
                     missingAttributes.push(requestedComponent.getId())
                 }
             }
@@ -905,7 +917,7 @@ class SchemasSemanticChecker {
         missingAttributes = []
         let primaryMeasure = dsdObject.getPrimaryMeasure()
         if(primaryMeasure){
-            if(!complexType.hasStructComponentAsAttribute(primaryMeasure.getId(),primaryMeasure,sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+            if(!complexType.hasStructComponentAsAttribute(primaryMeasure.getId(),primaryMeasure,sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,test.structureWorkspace)){
                 missingAttributes.push(primaryMeasure.getId())
             }
         }
@@ -924,7 +936,7 @@ class SchemasSemanticChecker {
             return expression1 || expression2 
         })
         for(let i in requestedAttributes){
-            if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+            if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,test.structureWorkspace)){
                 missingAttributes.push(requestedAttributes[i].getId())
             }
         }
@@ -1017,7 +1029,7 @@ class SchemasSemanticChecker {
                 }
             }else{
                 if(primaryMeasure && !primaryMeasure.getReferences().some(ref=>JSON.stringify(ref) === JSON.stringify(conceptItems[i].references))){
-                    if(!complexType.hasStructComponentAsAttribute(primaryMeasure.getId(),conceptItems[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+                    if(!complexType.hasStructComponentAsAttribute(primaryMeasure.getId(),conceptItems[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,test.structureWorkspace)){
                         return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name "+primaryMeasure.getId()+" ."}
                     }
                 }

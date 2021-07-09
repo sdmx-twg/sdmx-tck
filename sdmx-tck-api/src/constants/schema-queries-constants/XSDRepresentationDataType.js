@@ -39,6 +39,13 @@ const XSD_DATA_TYPE = {
     TIME:"xs:time",
     DURATION:"xs:duration",
 
+    isXSDDataType(xsdDataType){
+        let typeFound = Object.values(this).find((value) => {
+            return value === xsdDataType
+        });
+        return typeFound;
+    },
+    
     getMapping(sdmxDataType){
         switch (sdmxDataType){
             case "String":
