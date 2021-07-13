@@ -1,9 +1,10 @@
 class XSDAttribute {
-    constructor(props,type) {
+    constructor(props,type,simpleType) {
        this.name = props.$.name;
        this.type = type;
        this.use = props.$.use;
        this.fixed = props.$.fixed;
+       this.simpleType = simpleType;
     };
     
     setName(name){
@@ -29,6 +30,12 @@ class XSDAttribute {
     }
     getFixed(){
         return this.fixed;
+    }
+    setSimpleType(simpleType){
+        this.simpleType = simpleType;
+    }
+    getSimpleType(){
+        return this.simpleType;
     }
 };
 

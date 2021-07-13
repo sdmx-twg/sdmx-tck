@@ -1,6 +1,6 @@
 class XSDSimpleType {
     constructor(props,schemaFacets,enumerations) {
-       this.name = props.$.name;
+       this.name = (props.$ && props.$.name)?props.$.name:undefined;
        this.restrictionBase =  props.restriction[0].$.base;
        this.schemaFacets = schemaFacets;
        this.enumerations = enumerations;
