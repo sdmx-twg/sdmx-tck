@@ -99,7 +99,7 @@ class XSDComplexType {
         let selectedAttribute = this.getAttributes().find(function(attr){
             let nameExpression = attr.getName() === attrName;
             let typeExpression = that.hasComplexTypeAttrValidType(attr,componentObj,sdmxObjects,structureWorkspace)
-            let usageExpression = attr.getUse()===usage
+            let usageExpression = attr.getUse() === usage
             return nameExpression && typeExpression && usageExpression
         })
         if(!selectedAttribute){
@@ -132,6 +132,8 @@ class XSDComplexType {
             return (attr.getType() === XSD_DATA_TYPE.getMapping(componentObj.getRepresentation().getTextType()))
         }else if (!sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (concept.getRepresentation())){
             return (attr.getType() === XSD_DATA_TYPE.getMapping(concept.getRepresentation().getTextType()))
+        }else if(!sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (attr.getSimpleType())){
+            return (attr.getType() === attr.getSimpleType().getName() || attr.getType() === attr.getSimpleType().getRestrictionBase())
         }else if (sdmxObjects.getXSDSimpleTypeByName(attr.getType())){
             return (attr.getType() === sdmxObjects.getXSDSimpleTypeByName(attr.getType()).getName())
         }else{

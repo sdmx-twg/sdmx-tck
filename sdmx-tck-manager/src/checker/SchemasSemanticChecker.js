@@ -1012,7 +1012,7 @@ class SchemasSemanticChecker {
             })
             let reqSimpleType = sdmxObjects.getXSDSimpleTypesWithEnumsCriteria(conceptSchemeIds);
             if(!reqSimpleType){
-                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No simple type found representing measure dimension."} 
+                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No simple type found for the representation of the measure concept."} 
             }
 
             let expectedAttrType = reqSimpleType.getName()
@@ -1021,19 +1021,39 @@ class SchemasSemanticChecker {
             if(!complexType.hasAttribute(SCHEMA_ATTRIBUTE_NAMES.TYPE,expectedAttrType,expectedUsage,conceptItems[i].getId())){
                 return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name type."}
             }
-            if((conceptItems[i].representation) && conceptItems[i].representation.getType() ===  COMPONENTS_REPRESENTATION_NAMES.TEXT_FORMAT){
-                if(primaryMeasure && JSON.stringify(primaryMeasure.getRepresentation()) !== JSON.stringify(conceptItems[i].representation)){
-                    if(!complexType.hasAttribute(primaryMeasure.getId(),XSD_DATA_TYPE.getMapping(conceptItems[i].getRepresentation().getTextType()),SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
-                        return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name "+primaryMeasure.getId()+", type "+conceptItems[i].representation.textType+" and usage optional."}
-                    }
+
+            
+            let prMeasureRep = primaryMeasure.getRepresentation()
+            let conceptRep = conceptItems[i].getRepresentation() 
+
+         
+            if(prMeasureRep && conceptRep && prMeasureRep.equals(conceptRep)){
+                if(!complexType.hasAttribute(primaryMeasure.getId(),XSD_DATA_TYPE.getMapping(primaryMeasure.getRepresentation().getTextType()),SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+                    return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name "+primaryMeasure.getId()+" . Expected an attribute with name: "+primaryMeasure.getId()+" type: "+XSD_DATA_TYPE.getMapping(primaryMeasure.getRepresentation().getTextType())+" and usage: "+SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL}
                 }
             }else{
-                if(primaryMeasure && !primaryMeasure.getReferences().some(ref=>JSON.stringify(ref) === JSON.stringify(conceptItems[i].references))){
-                    if(!complexType.hasStructComponentAsAttribute(primaryMeasure.getId(),conceptItems[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,test.structureWorkspace)){
-                        return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name "+primaryMeasure.getId()+" ."}
+                if(conceptRep){
+                    if(!complexType.hasAttribute(primaryMeasure.getId(),XSD_DATA_TYPE.getMapping(conceptRep.getTextType()),SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+                        return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name "+primaryMeasure.getId()+" . Expected an attribute with name: "+primaryMeasure.getId()+" type: "+XSD_DATA_TYPE.getMapping(conceptRep.getTextType())+" and usage: "+SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL}
+                    }
+                }else{
+                    let prMeasureAttr = complexType.getAttributeByName(primaryMeasure.getId())
+                    let prMeasureAttrType;
+                    if(prMeasureAttr.getSimpleType()){
+                        prMeasureAttrType = prMeasureAttr.getSimpleType().getRestrictionBase()
+                    }else{
+                        prMeasureAttrType = (sdmxObjects.getXSDSimpleTypeByName(prMeasureAttr.getType())) ? sdmxObjects.getXSDSimpleTypeByName(prMeasureAttr.getType()).getName():null
+                    }
+                    if(!prMeasureAttrType){
+                        return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name "+primaryMeasure.getId()+" . The type should be from a simple type."}
+                    }
+                    if(!complexType.hasAttribute(primaryMeasure.getId(),prMeasureAttrType,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL)){
+                        return { status: FAILURE_CODE, error: "Error in complex type '" + conceptItems[i].id+ "' validation: No valid attribute found with name "+primaryMeasure.getId()+" . Expected an attribute with name: "+primaryMeasure.getId()+" type: "+prMeasureAttrType+" and usage: "+SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL}
                     }
                 }
             }
+
+        
         }
         return {status:SUCCESS_CODE}
     }

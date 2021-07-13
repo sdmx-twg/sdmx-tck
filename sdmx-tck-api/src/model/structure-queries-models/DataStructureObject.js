@@ -81,15 +81,20 @@ class DataStructureObject extends MaintainableObject {
         if(!measureDimension){
             return null;
         }
-
-        //get concept scheme from measure dimension
-        let conceptSchemeRef = measureDimension.getReferences().find(ref => ref.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
-        if(!conceptSchemeRef){
+       
+        //get concept scheme with measures from measure dimension
+        let refs = measureDimension.getReferences().filter(ref => ref.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
+        
+        //enumeration is the last element in a dsd component according to its schema.So we get the last concept scheme
+        let conceptSchemeRefForMeasures;
+        if(refs.length>0){
+            conceptSchemeRefForMeasures = refs[refs.length -1]
+        }
+        if(!conceptSchemeRefForMeasures){
             return null;
         }
         
-        let conceptSchemeObj = workspace.getSdmxObject(conceptSchemeRef) 
-        
+        let conceptSchemeObj = workspace.getSdmxObject(conceptSchemeRefForMeasures) 
         return conceptSchemeObj;
     }
 

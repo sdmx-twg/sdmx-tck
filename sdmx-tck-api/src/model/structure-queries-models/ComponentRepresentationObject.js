@@ -58,5 +58,18 @@ class ComponentRepresentationObject {
     getTextType(){
         return this.textType;
     }
+
+    equals(repObj){
+        let isEqual = this.getDecimals() === repObj.getDecimals()
+            && this.getMaxLength() === repObj.getMaxLength()
+            && this.getMaxValue() === repObj.getMaxValue()
+            && this.getMinLength() === repObj.getMinLength()
+            && this.getMinValue() === repObj.getMinValue()
+            && this.getPattern() === repObj.getPattern()
+            && this.getTextType() === repObj.getTextType()
+            && this.getType() === repObj.getType()
+
+        return isEqual;
+    }
 }
 module.exports = ComponentRepresentationObject
