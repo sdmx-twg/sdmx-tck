@@ -891,6 +891,7 @@ class SchemasSemanticChecker {
             let timeDimension = dsdObject.getTimeDimension();
             let timeDimensionLocalRepresentation = timeDimension.getRepresentation();
             let expectedAttrType = XSD_DATA_TYPE.OBSERVATIONAL_TIME_PERIOD;
+            let expectedUsage = (dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.ALLDIMENSIONS) ? SCHEMA_ATTRIBUTE_USAGE_VALUES.REQUIRED : SCHEMA_ATTRIBUTE_USAGE_VALUES.PROHIBITED 
             if(timeDimensionLocalRepresentation){
                 if(timeDimensionLocalRepresentation.getTextType()){
                     expectedAttrType = XSD_DATA_TYPE.isTimeDataType(timeDimensionLocalRepresentation.getTextType())
@@ -899,8 +900,8 @@ class SchemasSemanticChecker {
                     }
                 }
             }
-            if(!complexType.getAttributes().find(attr => attr.getType()===expectedAttrType && attr.getName()===SCHEMA_ATTRIBUTE_NAMES.TIME_PERIOD && attr.getUse()===SCHEMA_ATTRIBUTE_USAGE_VALUES.PROHIBITED)){
-                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: No attribute with name 'TIME_PERIOD', type '"+expectedAttrType+"' and a usage of prohibited found. "}
+            if(!complexType.getAttributes().find(attr => (attr.getType()===expectedAttrType || sdmxObjects.getXSDSimpleTypeByName(attr.getType())) && attr.getName()===SCHEMA_ATTRIBUTE_NAMES.TIME_PERIOD && attr.getUse()===expectedUsage)){
+                return { status: FAILURE_CODE, error: "Error in ObsType complex type validation: Attribute 'TIME_PERIOD' does not exist or it does not have valid name,type or usage."}
             }
         }
         let missingAttributes=[];
