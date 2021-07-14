@@ -150,8 +150,8 @@ class SchemasSemanticChecker {
         })
         for(let i in attributesDeclaringSingleDimensionRelationship){
             let dimensionId = attributesDeclaringSingleDimensionRelationship[i].getAttributeRelationship()[0].getId()
-            let complexTypeContainingDimension = sdmxObjects.getComplexTypeThatContainsAttribute(dimensionId)
-            if(!complexTypeContainingDimension || !complexTypeContainingDimension.hasAttribute(attributesDeclaringSingleDimensionRelationship[i].getId())){
+            let complexTypesContainingDimension = sdmxObjects.getComplexTypesThatContainAttribute(dimensionId)
+            if(!complexTypesContainingDimension || !complexTypesContainingDimension.every(complexType=>complexType.hasAttribute(attributesDeclaringSingleDimensionRelationship[i].getId()))){
                 return { status: FAILURE_CODE, error: "Error in default rules validation: Attribute: "+attributesDeclaringSingleDimensionRelationship[i].getId()+" does not follow dimension: "+dimensionId+"."};
             }
         }
@@ -170,13 +170,16 @@ class SchemasSemanticChecker {
             complexTypesContainingDimensions=[]
             for(let j in attributesDeclaringMultipleDimensionsRelationship[i].getAttributeRelationship()){
                 let dimensionId = attributesDeclaringMultipleDimensionsRelationship[i].getAttributeRelationship()[j].getId()
-                let complexTypeContainingAttribute = sdmxObjects.getComplexTypeThatContainsAttribute(dimensionId);
-                if(complexTypeContainingAttribute && !complexTypesContainingDimensions.find(complexType => complexType.getName() === complexTypeContainingAttribute.getName())){
-                    complexTypesContainingDimensions.push(complexTypeContainingAttribute)
+                let complexTypesContainingAttribute = sdmxObjects.getComplexTypesThatContainAttribute(dimensionId);
+                if(complexTypesContainingAttribute){
+                    complexTypesContainingAttribute.forEach(function(ct){
+                        if(!complexTypesContainingDimensions.find(complexType => complexType.getName() === ct.getName())){
+                            complexTypesContainingDimensions= complexTypesContainingDimensions.concat(ct)
+                        }
+                    })
                 }
-                
             }
-
+           
             if(complexTypesContainingDimensions.some(complexType => complexType.getName()===COMPLEX_TYPES_NAMES.OBS_TYPE)){
                 let obsTypeComplexType = complexTypesContainingDimensions.find(complexType => complexType.getName()===COMPLEX_TYPES_NAMES.OBS_TYPE)
                 if(!obsTypeComplexType.hasAttribute(attributesDeclaringMultipleDimensionsRelationship[i].getId())){
@@ -600,10 +603,11 @@ class SchemasSemanticChecker {
         let requestedAttributes = attributes.filter(function(attribute){
             let attrRelationships = attribute.getAttributeRelationship()
             let expression1 = attrRelationships.some(relationship => relationship.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.ATTACHMENT_GROUP || relationship.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.GROUP);
-            let expression2 = attrRelationships.filter(relationship=>relationship.getRelationshipType()=== ATTRIBUTE_RELATIONSHIP_NAMES.DIMENSION && relationship.getId() !== dimensionAtObservation).length>0 === true
-            return expression1 === false && expression2 === true
+            let expression2 = attrRelationships.some(relationship=>relationship.getRelationshipType()=== ATTRIBUTE_RELATIONSHIP_NAMES.DIMENSION && relationship.getId() === dimensionAtObservation)
+            let expression3 = attrRelationships.some(relationship=>relationship.getRelationshipType()=== ATTRIBUTE_RELATIONSHIP_NAMES.DIMENSION)
+
+            return expression1 === false && expression2 === false && expression3 === true
         })
-        
 
         for(let i in requestedAttributes){
             if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,test.structureWorkspace)){
@@ -615,27 +619,27 @@ class SchemasSemanticChecker {
         }
 
         //CHECK FOR ATTRIBUTES WITH DIMENSION RELATIONSHIPS ΤΗΑΤ ARE REFERENCED IN GROUPS
-        let dsdGroups = dsdObject.getGroups()
-        for(let c in dsdGroups){
-            missingAttributes = []
-            requestedAttributes = attributes.filter(function(attribute){
-                let attrRelationships = attribute.getAttributeRelationship()
-                let expression1 = attrRelationships.filter(relationship => (relationship.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.GROUP || relationship.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.ATTACHMENT_GROUP) && dsdGroups[c].getId()===relationship.getId()).length>0;
-                let expression2 = dsdGroups[c].getDimensionReferences().length === attrRelationships.length && 
-                    attrRelationships.filter(relationship=>relationship.getRelationshipType()===ATTRIBUTE_RELATIONSHIP_NAMES.DIMENSION && dsdGroups[c].getDimensionReferences().indexOf(relationship.getId())!==-1).length === attrRelationships.length
-                return expression1 || expression2 
-            })
-            for(let i in requestedAttributes){
-                if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,test.structureWorkspace)){
-                    missingAttributes.push(requestedAttributes[i].getId())
+        if(dimensionAtObservation === DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD){
+            let dsdGroups = dsdObject.getGroups()
+            for(let c in dsdGroups){
+                missingAttributes = []
+                requestedAttributes = attributes.filter(function(attribute){
+                    let attrRelationships = attribute.getAttributeRelationship()
+                    let expression1 = attrRelationships.filter(relationship => (relationship.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.GROUP || relationship.getRelationshipType() === ATTRIBUTE_RELATIONSHIP_NAMES.ATTACHMENT_GROUP) && dsdGroups[c].getId()===relationship.getId()).length>0;
+                    let expression2 = dsdGroups[c].getDimensionReferences().length === attrRelationships.length && 
+                        attrRelationships.filter(relationship=>relationship.getRelationshipType()===ATTRIBUTE_RELATIONSHIP_NAMES.DIMENSION && dsdGroups[c].getDimensionReferences().indexOf(relationship.getId())!==-1).length === attrRelationships.length
+                    return expression1 || expression2 
+                })
+                for(let i in requestedAttributes){
+                    if(!complexType.hasStructComponentAsAttribute(requestedAttributes[i].getId(),requestedAttributes[i],sdmxObjects,SCHEMA_ATTRIBUTE_USAGE_VALUES.OPTIONAL,test.structureWorkspace)){
+                        missingAttributes.push(requestedAttributes[i].getId())
+                    }
+                }
+                if(missingAttributes.length > 0){
+                    return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following attributes are missing or they do not have correct type or usage values."+JSON.stringify(missingAttributes)}
                 }
             }
-            if(missingAttributes.length > 0){
-                return { status: FAILURE_CODE, error: "Error in SeriesType complex type validation: The following attributes are missing or they do not have correct type or usage values."+JSON.stringify(missingAttributes)}
-            }
         }
-        
-
         return { status: SUCCESS_CODE };
     }
     static checkXSDGroupType(test,dsdObject,sdmxObjects,dimensionAtObservation){
