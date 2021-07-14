@@ -119,8 +119,13 @@ class XSDComplexType {
             throw new Error("Missing schema workspace object.")
         }
         let conceptSchemeRef = componentObj.getReferences().find(ref=> ref.getStructureType()=== SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key)
-        let conceptSchemeObj = structureWorkspace.getSdmxObject(conceptSchemeRef)
-        let concept = conceptSchemeObj.getItems().find(item=>item.getId() === componentObj.getId())
+        let conceptSchemeObj;
+        let concept;
+        if(conceptSchemeRef){
+             conceptSchemeObj = structureWorkspace.getSdmxObject(conceptSchemeRef)
+             concept = conceptSchemeObj.getItems().find(item=>item.getId() === componentObj.getId())
+        }
+        
 
         /*
         The representation of a component is determined by the following precedence:
@@ -130,7 +135,7 @@ class XSDComplexType {
         */
         if(!sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (componentObj.getRepresentation())){
             return (attr.getType() === XSD_DATA_TYPE.getMapping(componentObj.getRepresentation().getTextType()))
-        }else if (!sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (concept.getRepresentation())){
+        }else if (!sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && concept && (concept.getRepresentation())){
             return (attr.getType() === XSD_DATA_TYPE.getMapping(concept.getRepresentation().getTextType()))
         }else if(!sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (attr.getSimpleType())){
             return (attr.getType() === attr.getSimpleType().getName() || attr.getType() === attr.getSimpleType().getRestrictionBase())
@@ -139,19 +144,6 @@ class XSDComplexType {
         }else{
             return attr.getType()  === XSD_DATA_TYPE.STRING
         }
-
-        // if(sdmxObjects.getXSDSimpleTypeByName(attr.getType())){
-        //     return (attr.getType() === sdmxObjects.getXSDSimpleTypeByName(attr.getType()).getName())
-        // }else if(!sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (componentObj.getRepresentation())){
-        //     return (attr.getType() === XSD_DATA_TYPE.getMapping(componentObj.getRepresentation().getTextType()))
-        // }else{
-        //    return XSD_DATA_TYPE.isXSDDataType(attr.getType())
-        // }
-
-        //console.log(XSD_DATA_TYPE.isXSDDataType(attr.getType()))
-        //console.log((attr.getType() === XSD_DATA_TYPE.isXSDDataType(attr.getType())))
-        // let typeExpression = (sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && attr.getType() === sdmxObjects.getXSDSimpleTypeByName(attr.getType()).getName() 
-        // || !sdmxObjects.getXSDSimpleTypeByName(attr.getType()) && (componentObj.getRepresentation()) && attr.getType() === XSD_DATA_TYPE.getMapping(componentObj.getRepresentation().getTextType()))
         
     }
     
