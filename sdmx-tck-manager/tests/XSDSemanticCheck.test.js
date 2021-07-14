@@ -29,7 +29,7 @@ describe('XSD Simple Types validation test', function () {
         });
 
 
-        let constraint = fs.readFileSync('./tests/resources/contentconstraint_OECD_FDI_1.0.xml','utf8')
+        let constraint = fs.readFileSync('./tests/resources/contentconstraint_WB_GCI_1.0.xml','utf8')
         let constraintWorkspace;
         await new SdmxXmlParser().getIMObjects(constraint).then(function (sdmxObjects) {
             // console inside of getIMObjects
@@ -38,10 +38,11 @@ describe('XSD Simple Types validation test', function () {
             console.log(err);
         });
 
-        let query = {explicit:true,version:"latest"}
+        let query = {explicit:false,version:"1.0",obsDimension:"AllDimensions"}
         let constraintObj = constraintWorkspace.toJSON().sdmxObjects.CONTENT_CONSTRAINT[0];
-        let test = {structureWorkspace:structWrkspce,constraintParent:constraintObj}
-        let validation  = SchemasSemanticChecker.checkXSDSimpleTypesWithEnums(test,query,artefact,xsdWorkspace)
+        let test = {structureWorkspace:structWrkspce,dsdObject:artefact,constraintParent:constraintObj}
+        
+        let validation = SchemasSemanticChecker.checkXSDComponents(test,query,xsdWorkspace)
         console.assert(validation.status === 1)
     });
 });
@@ -50,15 +51,20 @@ describe('XSD with Multiple Groups test', function () {
        
         let xmlMessage = fs.readFileSync('./tests/resources/dsdMultipleGroups.xml','utf8')
         let artefact;
+        let structWrkspce;
         await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
             artefact = sdmxObjects.sdmxObjects.get("DSD")[0]
+            structWrkspce = sdmxObjects
+
         })
         let xsdMessage = fs.readFileSync('./tests/resources/XSDMultipleGroups.xsd','utf8')
         let xsdWorkspace;
         await new SdmxXmlParser().getIMObjects(xsdMessage).then(function (sdmxObjects) {
             xsdWorkspace = sdmxObjects;
         })
-        let validation  = SchemasSemanticChecker.checkSpecificXSDGroupType(artefact,xsdWorkspace)
+        let test = {structureWorkspace:structWrkspce,dsdObject:artefact}
+
+        let validation  = SchemasSemanticChecker.checkSpecificXSDGroupType(test,artefact,xsdWorkspace)
         console.assert(validation.status === 1)
     });
 });
