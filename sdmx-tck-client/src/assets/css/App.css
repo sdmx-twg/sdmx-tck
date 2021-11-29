@@ -161,7 +161,7 @@ body {
   font-family: sans-serif;
   padding-right: 10px;
 }
-button.runButton {
+button.runButton, button.reportButton{
   margin-top: 3%;
   width: 150px;
   padding: 10px 10px;

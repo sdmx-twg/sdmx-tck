@@ -124,8 +124,9 @@ export function prepareTests(endpoint, apiVersion, testIndices) {
     };
 };
 
-export function exportReport(tests) {
-    let body = { tests };
+export async function exportReport(apiVersion,endpoint,tests) {
+
+    let body = { apiVersion,endpoint,tests };
     return fetch('/tck-api/export-report', {
         method: 'POST',
         headers: {
