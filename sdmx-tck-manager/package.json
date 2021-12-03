@@ -16,7 +16,8 @@
     "save": "2.4.0",
     "sdmx-rest": "2.15.2",
     "sdmx-tck-api": "file:../sdmx-tck-api",
-    "sdmx-tck-parsers": "file:../sdmx-tck-parsers"
+    "sdmx-tck-parsers": "file:../sdmx-tck-parsers",
+    "sdmx-tck-reporter": "file:../sdmx-tck-reporter"
   },
   "devDependencies": {
     "nodemon": "2.0.1"

@@ -12,7 +12,9 @@ const MetadataReferences = require('sdmx-rest').metadata.MetadataReferences
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 var XSDTestsDataBuilder = require('./src/builders/schema-queries-builders/XSDTestsDataBuilder.js')
 var DataQueriesDataBuilder = require('./src/builders/data-queries-builders/DataQueriesDataBuilder.js')
-
+var SdmxReporter = require('sdmx-tck-reporter').reporter.SdmxReporter
+var TestInfo = require('../sdmx-tck-reporter/src/TestInfo.js')
+var Report = require('../sdmx-tck-reporter/src/Report.js')
 
 const server = app.listen(5000, () => {
     console.log("Server is listening on port: 5000");
@@ -91,27 +93,32 @@ app.post("/tck-api/execute-test", (req, res) => {
             });
 });
 
-app.post("/tck-api/export-report", (req, res) => {
+app.post("/tck-api/export-report", async (req, res) => {
     let payload = req.body;
     let tests = payload.tests;
+    let swVersion  = payload.swVersion;
+    let apiVersion = payload.apiVersion;
+    let wsInfo = payload.wsInfo;
     
     res.set('Content-Disposition', 'attachment; filename="SDMX-TCK-report.csv"');
     res.set('Content-Type', 'application/csv');
 
-    res.write("Index" + "\t" + "Test Name" + "\t" + "Test Type" + "\t" + "State" + "\t" + "Start Time" + "\t" + "End Time" + "\t" + "URL" + "\t" + "Errors" + "\r\n");
-    for (var t in tests) {
-        let test = tests[t];
-        writeTest(test, res);
-        for (var s in test.subTests) {
-            let subTest = test.subTests[s];
-            writeTest(subTest, res);
-        }
-    }
-
-    function writeTest(test, res) {
-        let url = (test.httpResponseValidation && test.httpResponseValidation.url) ? test.httpResponseValidation.url : "";
-        let line = test.index + "\t" + test.testId + "\t" + test.testType + "\t" + test.state + "\t" + test.startTime + "\t" + test.endTime + "\t" + url + "\t" + test.failReason;
-        res.write(line + "\r\n");
-    }
-    res.end();
+    SdmxReporter.init(wsInfo,apiVersion,swVersion)
+    let flatTests = Report.flatenTestObject(tests)
+    flatTests.forEach(t => SdmxReporter.record(TestInfo.fromJSON(t)));
+    // for (var t in tests) {
+    //     let test = tests[t];
+    //     SdmxReporter.record(TestInfo.fromJSON(test));
+    //     for (var s in test.subTests) {
+    //         let subTest = test.subTests[s];
+    //         SdmxReporter.record(TestInfo.fromJSON(subTest));
+    //         for (var ss in subTest.subTests) {
+	//             let subTest1 = subTest.subTests[ss];
+	//             SdmxReporter.record(TestInfo.fromJSON(subTest1));
+    //     	}
+    //     }
+    // }
+    
+    //Publish - send csv data to client to download 
+    res.send(JSON.stringify(SdmxReporter.publishReport('csv')))
 });

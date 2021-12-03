@@ -5,6 +5,7 @@ import { TEST_INDEX } from 'sdmx-tck-api/src/constants/TestIndex';
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const DATA_QUERY_MODE = require('sdmx-tck-api').constants.DATA_QUERY_MODE
+const TCK_VERSION = require('sdmx-tck-api').constants.TCK_VERSION;
 
 export function initialiseTestsModel(tests) {
     return { type: 'INITIALISE_TESTS_MODEL', tests: tests };
@@ -124,16 +125,26 @@ export function prepareTests(endpoint, apiVersion, testIndices) {
     };
 };
 
-export async function exportReport(apiVersion,endpoint,tests) {
+export async function exportReport(apiVersion,wsInfo,tests) {
+    try{
+        let swVersion = TCK_VERSION;
+        let body = { swVersion,apiVersion,wsInfo,tests };
+        const response =  await fetch('/tck-api/export-report', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+        var blob = new Blob([await response.json()]);
+        var link = document.createElement('a')
+        link.href = window.URL.createObjectURL(blob);
+        link.download = "SDMX-TCK-Report.csv"
+        link.click();
+    }catch{
 
-    let body = { apiVersion,endpoint,tests };
-    return fetch('/tck-api/export-report', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-    });
+    }
+    
 };
 
 async function getPrerequisiteDataForTests(endpoint,tests){
