@@ -321,3 +321,36 @@ function updateChildTestsStatus(testsArray, parentTest) {
 		}
 	}
 };
+
+
+export function getTestsDataForReport(testsArray) {
+	let flatTestArray = []
+	for (let i = 0; i < testsArray.length; i++) {
+		flatTestArray.push(getReportTestData(testsArray[i]))
+		getSubTests(testsArray[i], flatTestArray);
+	}
+	return flatTestArray;
+};
+
+function getSubTests(test,flatTestArray){
+	if(test.subTests){
+		for (var j in test.subTests) {
+			flatTestArray.push(getReportTestData(test.subTests[j]))
+			getSubTests(test.subTests[j],flatTestArray);
+		}
+	}
+	
+}
+
+function getReportTestData(test){
+	return {
+		index:test.index,
+		name:test.testId,
+		type:test.testType,
+		state:test.state,
+		startTime:test.startTime,
+		endTime:test.endTime,
+		url:(test.httpResponseValidation && test.httpResponseValidation.url) ? test.httpResponseValidation.url : "",
+		error:test.failReason
+	}
+}

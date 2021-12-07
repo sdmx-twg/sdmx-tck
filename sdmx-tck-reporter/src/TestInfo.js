@@ -61,9 +61,7 @@ class TestInfo {
     }
 
     static fromJSON(testJSON){
-        let url = (testJSON.httpResponseValidation && testJSON.httpResponseValidation.url) ? testJSON.httpResponseValidation.url : "";
-        return new TestInfo(testJSON.index,testJSON.testId,testJSON.testType,
-            testJSON.state,testJSON.startTime,testJSON.endTime,url,testJSON.failReason)
+        return Object.assign(new TestInfo, testJSON)
     }
 
 

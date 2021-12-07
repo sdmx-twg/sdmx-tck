@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { extractScore } from "../handlers/helperFunctions";
 import { extractSelectedTests } from "../handlers/helperFunctions";
 import { exportReport } from '../actions/TestActions'
+import { getTestsDataForReport } from "../handlers/helperFunctions";
 
 class ExportReportButton extends React.Component {
     /*
@@ -13,7 +14,8 @@ class ExportReportButton extends React.Component {
         var endpoint = document.getElementById("ws-url").value;
         var apiVersion = document.getElementById("selectVersion").value;
 
-        exportReport(endpoint, apiVersion,this.props.testsArray);
+        let testsForReport = getTestsDataForReport(this.props.testsArray)
+        exportReport(endpoint, apiVersion,testsForReport);
     };
 
     /* Render the Run Test Button */

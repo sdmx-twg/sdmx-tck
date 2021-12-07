@@ -103,21 +103,11 @@ app.post("/tck-api/export-report", async (req, res) => {
     res.set('Content-Disposition', 'attachment; filename="SDMX-TCK-report.csv"');
     res.set('Content-Type', 'application/csv');
 
+    //Init Reporter
     SdmxReporter.init(wsInfo,apiVersion,swVersion)
-    let flatTests = Report.flatenTestObject(tests)
-    flatTests.forEach(t => SdmxReporter.record(TestInfo.fromJSON(t)));
-    // for (var t in tests) {
-    //     let test = tests[t];
-    //     SdmxReporter.record(TestInfo.fromJSON(test));
-    //     for (var s in test.subTests) {
-    //         let subTest = test.subTests[s];
-    //         SdmxReporter.record(TestInfo.fromJSON(subTest));
-    //         for (var ss in subTest.subTests) {
-	//             let subTest1 = subTest.subTests[ss];
-	//             SdmxReporter.record(TestInfo.fromJSON(subTest1));
-    //     	}
-    //     }
-    // }
+    
+    //Record tests
+    tests.forEach(t => SdmxReporter.record(TestInfo.fromJSON(t)));
     
     //Publish - send csv data to client to download 
     res.send(JSON.stringify(SdmxReporter.publishReport('csv')))
