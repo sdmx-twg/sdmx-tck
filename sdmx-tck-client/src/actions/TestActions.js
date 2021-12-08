@@ -125,10 +125,10 @@ export function prepareTests(endpoint, apiVersion, testIndices) {
     };
 };
 
-export async function exportReport(apiVersion,wsInfo,tests) {
+export async function exportReport(apiVersion,wsInfo,format,tests) {
     try{
         let swVersion = TCK_VERSION;
-        let body = { swVersion,apiVersion,wsInfo,tests };
+        let body = { swVersion,apiVersion,wsInfo,format,tests };
         const response =  await fetch('/tck-api/export-report', {
             method: 'POST',
             headers: {

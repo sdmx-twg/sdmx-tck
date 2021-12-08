@@ -6,7 +6,7 @@ import RunButton from "./components/RunButton";
 import AppTitle from "./components/AppTitle";
 import TestsToRun from "./components/TestsToRun";
 import ScoreContainer from './components/ScoreContainer';
-import ExportReportButton from './components/ExportReportButton';
+import ExportReport from './components/ExportReport'
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
 
       <div id="buttons">
         <RunButton />
-        <ExportReportButton />
+        <ExportReport />
       </div>
 
       <ScoreContainer />

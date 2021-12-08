@@ -1,6 +1,7 @@
 // CONSTANTS
 const ApiVersions = require('./constants/ApiVersions.js');
-const TckVersion = require('./constants/TCKVersion.js')
+const TckVersion = require('./constants/TCKVersion.js');
+const ExportFormats = require('./constants/ExportFormats.js')
 const ApiConstants = require('./constants/ApiConstants.js');
 const ItemSchemeTypes = require('./constants/structure-queries-constants/ItemSchemeTypes.js');
 const SdmxStructureType = require('./constants/SdmxStructureType.js');
@@ -89,6 +90,7 @@ var DatesHandling = require('./utils/DatesHandling.js');
 module.exports = {
     constants: {
         TCK_VERSION:TckVersion.TCK_VERSION,
+        EXPORT_FORMATS:ExportFormats.EXPORT_FORMATS,
         API_VERSIONS: ApiVersions.API_VERSIONS,
         API_CONSTANTS: ApiConstants.API_CONSTANTS,
         DATA_QUERY_DETAIL: DataQueryDetail.DATA_QUERY_DETAIL,
