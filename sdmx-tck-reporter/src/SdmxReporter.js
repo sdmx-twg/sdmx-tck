@@ -1,6 +1,7 @@
 const Report = require("./Report");
 const TestInfo = require("./TestInfo");
 var Utils = require('sdmx-tck-api').utils.Utils;
+const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 
 
 class SdmxReporter {
@@ -31,16 +32,28 @@ class SdmxReporter {
         if(!Utils.isDefined(format)){
             throw new Error("Missing Mandatory parameter 'format' ");
         }
-        if(format != 'csv'){
+        if(!EXPORT_FORMATS.isValidFormat(format)){
             throw new Error("Unsupported format ");
         }
         let report;
-        report = this._createCsvReport();
+        if(format === EXPORT_FORMATS.CSV){
+            report = this._createCsvReport();
+        }else if(format === EXPORT_FORMATS.EXCEL){
+            report = this._createExcelReport();
+        }else if(format === EXPORT_FORMATS.XML){
+            report = this._createXMLReport();
+        }
+        
         
         return report;
         
     }
+    static _createXMLReport(){
 
+    }
+    static _createExcelReport(){
+
+    }
     static _createCsvReport(){
         let lines="";
 

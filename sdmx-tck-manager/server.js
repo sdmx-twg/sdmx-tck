@@ -99,7 +99,8 @@ app.post("/tck-api/export-report", async (req, res) => {
     let swVersion  = payload.swVersion;
     let apiVersion = payload.apiVersion;
     let wsInfo = payload.wsInfo;
-    
+    let format =  payload.format;
+
     res.set('Content-Disposition', 'attachment; filename="SDMX-TCK-report.csv"');
     res.set('Content-Type', 'application/csv');
 
@@ -110,5 +111,5 @@ app.post("/tck-api/export-report", async (req, res) => {
     tests.forEach(t => SdmxReporter.record(TestInfo.fromJSON(t)));
     
     //Publish - send csv data to client to download 
-    res.send(JSON.stringify(SdmxReporter.publishReport('csv')))
+    res.send(JSON.stringify(SdmxReporter.publishReport(format)))
 });
