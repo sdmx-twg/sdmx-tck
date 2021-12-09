@@ -15,6 +15,7 @@ var DataQueriesDataBuilder = require('./src/builders/data-queries-builders/DataQ
 var SdmxReporter = require('sdmx-tck-reporter').reporter.SdmxReporter
 var TestInfo = require('../sdmx-tck-reporter/src/TestInfo.js')
 var Report = require('../sdmx-tck-reporter/src/Report.js')
+const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 
 const server = app.listen(5000, () => {
     console.log("Server is listening on port: 5000");
@@ -101,8 +102,19 @@ app.post("/tck-api/export-report", async (req, res) => {
     let wsInfo = payload.wsInfo;
     let format =  payload.format;
 
-    res.set('Content-Disposition', 'attachment; filename="SDMX-TCK-report.csv"');
-    res.set('Content-Type', 'application/csv');
+    let contenType ="";
+    let filename = ""
+
+    if(EXPORT_FORMATS.CSV === format){
+        filename = "SDMX-TCK-Report.csv"
+        contenType = 'application/csv'
+    }else if(EXPORT_FORMATS.EXCEL === format){
+
+        filename = "SDMX-TCK-Report.xlsx"
+        contenType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    }
+    res.set('Content-Disposition', 'attachment; filename='+filename);
+    res.set('Content-Type', contenType);
 
     //Init Reporter
     SdmxReporter.init(wsInfo,apiVersion,swVersion)
@@ -110,6 +122,7 @@ app.post("/tck-api/export-report", async (req, res) => {
     //Record tests
     tests.forEach(t => SdmxReporter.record(TestInfo.fromJSON(t)));
     
-    //Publish - send csv data to client to download 
-    res.send(JSON.stringify(SdmxReporter.publishReport(format)))
+    //Write buffer to res
+    res.write(await SdmxReporter.publishReport(format))
+    res.end()
 });

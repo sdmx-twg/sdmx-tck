@@ -6,6 +6,7 @@ const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const DATA_QUERY_MODE = require('sdmx-tck-api').constants.DATA_QUERY_MODE
 const TCK_VERSION = require('sdmx-tck-api').constants.TCK_VERSION;
+const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 
 export function initialiseTestsModel(tests) {
     return { type: 'INITIALISE_TESTS_MODEL', tests: tests };
@@ -125,7 +126,7 @@ export function prepareTests(endpoint, apiVersion, testIndices) {
     };
 };
 
-export async function exportReport(apiVersion,wsInfo,format,tests) {
+export async function exportReport(wsInfo,apiVersion,format,tests) {
     try{
         let swVersion = TCK_VERSION;
         let body = { swVersion,apiVersion,wsInfo,format,tests };
@@ -136,10 +137,10 @@ export async function exportReport(apiVersion,wsInfo,format,tests) {
             },
             body: JSON.stringify(body)
         });
-        var blob = new Blob([await response.json()]);
+        var blob = new Blob([await response.arrayBuffer()],{type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64"});
         var link = document.createElement('a')
         link.href = window.URL.createObjectURL(blob);
-        link.download = "SDMX-TCK-Report.csv"
+        link.download = "SDMX-TCK-Report.xlsx"
         link.click();
     }catch{
 

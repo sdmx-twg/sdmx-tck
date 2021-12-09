@@ -2,7 +2,7 @@ const Report = require("./Report");
 const TestInfo = require("./TestInfo");
 var Utils = require('sdmx-tck-api').utils.Utils;
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
-
+const excelJS = require("exceljs");
 
 class SdmxReporter {
 
@@ -28,7 +28,7 @@ class SdmxReporter {
     }
 
     //Publish a report
-    static publishReport(format){
+    static async  publishReport(format){
         if(!Utils.isDefined(format)){
             throw new Error("Missing Mandatory parameter 'format' ");
         }
@@ -39,7 +39,7 @@ class SdmxReporter {
         if(format === EXPORT_FORMATS.CSV){
             report = this._createCsvReport();
         }else if(format === EXPORT_FORMATS.EXCEL){
-            report = this._createExcelReport();
+            report = await this._createExcelReport();
         }else if(format === EXPORT_FORMATS.XML){
             report = this._createXMLReport();
         }
@@ -51,9 +51,53 @@ class SdmxReporter {
     static _createXMLReport(){
 
     }
-    static _createExcelReport(){
+    static async _createExcelReport(){
 
+        // Create workbook and 2 sheet one for report data and one for report metadata
+        const workbook = new excelJS.Workbook();   
+        const worksheet = workbook.addWorksheet("SDMX-TCK-Report"); 
+        const infoWorksheet = workbook.addWorksheet("Information"); 
+
+        //Data sheet columns
+        worksheet.columns = [    
+            { header: "Index", key: "index", width: 20 }, 
+            { header: "Test Name", key: "name", width: 100 },
+            { header: "Test Type", key: "type", width: 50 },
+            { header: "Test State", key: "state", width: 10 },
+            { header: "Start Time", key: "startTime", width: 25 },
+            { header: "End Time", key: "endTime", width: 25 },
+            { header: "URL", key: "url", width: 100 },
+            { header: "Error", key: "error", width: 100 },
+        ];
+
+        //Data sheet actual data
+        this.reportObj.getReportData().forEach((test) => {
+              worksheet.addRow(test);
+        });
+
+        //Metadata sheet columns
+        infoWorksheet.columns = [    
+            { header: "Software Version", key: "swVersion", width: 50 }, 
+            { header: "Api Version", key: "apiVersion", width: 50 },
+            { header: "Service Tested", key: "endpoint", width: 80 },
+            
+        ];
+        //Metadata sheet data
+        infoWorksheet.addRow(this.reportObj)
+
+        console.log(this.reportObj.getEndpoint())
+        console.log(this.reportObj.getApiVersion())
+        console.log(this.reportObj.getSwVersion())
+
+        // Making first line in excel bold
+        worksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
+        infoWorksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
+
+        //return buffer with workbook data
+        return await workbook.xlsx.writeBuffer();
+  
     }
+
     static _createCsvReport(){
         let lines="";
 
