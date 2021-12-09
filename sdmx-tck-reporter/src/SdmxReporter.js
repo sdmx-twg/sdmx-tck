@@ -85,10 +85,6 @@ class SdmxReporter {
         //Metadata sheet data
         infoWorksheet.addRow(this.reportObj)
 
-        console.log(this.reportObj.getEndpoint())
-        console.log(this.reportObj.getApiVersion())
-        console.log(this.reportObj.getSwVersion())
-
         // Making first line in excel bold
         worksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
         infoWorksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
