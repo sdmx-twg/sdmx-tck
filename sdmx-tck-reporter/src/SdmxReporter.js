@@ -89,6 +89,33 @@ class SdmxReporter {
         worksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
         infoWorksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
 
+        //Fill color the header of metadata
+        infoWorksheet.getRow(1).eachCell(function(cell){
+            cell.fill = {
+                type: 'pattern',
+                pattern:'solid',
+                fgColor:{argb:'00a4c9'},
+              };
+        });
+
+        //Fill color the header of report data
+        worksheet.getRow(1).eachCell(function(cell){
+            cell.fill = {
+                type: 'pattern',
+                pattern:'solid',
+                fgColor:{argb:'00a4c9'},
+              };
+        });
+
+        //font color the status cells
+        worksheet.eachRow(function(row){
+            if(row.getCell(4).value === "Failed"){
+                row.getCell(4).font = {color: {argb: "F0131A"}};
+            }else if(row.getCell(4).value === "Completed"){
+                row.getCell(4).font = {color: {argb: "4CA426"}};
+            }
+        });
+        
         //return buffer with workbook data
         return await workbook.xlsx.writeBuffer();
   
