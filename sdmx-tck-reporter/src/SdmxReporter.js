@@ -2,6 +2,7 @@ const Report = require("./Report");
 const TestInfo = require("./TestInfo");
 var Utils = require('sdmx-tck-api').utils.Utils;
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
+const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const excelJS = require("exceljs");
 
 class SdmxReporter {
@@ -109,13 +110,15 @@ class SdmxReporter {
 
         //font color the status cells
         worksheet.eachRow(function(row){
-            if(row.getCell(4).value === "Failed"){
+            if(row.getCell(4).value === TEST_STATE.FAILED){
                 row.getCell(4).font = {color: {argb: "F0131A"}};
-            }else if(row.getCell(4).value === "Completed"){
+            }else if(row.getCell(4).value === TEST_STATE.COMPLETED){
                 row.getCell(4).font = {color: {argb: "4CA426"}};
+            }else if(row.getCell(4).value === TEST_STATE.UNABLE_TO_RUN){
+                row.getCell(4).font = {color: {argb: "F09013"}};
             }
         });
-        
+
         //return buffer with workbook data
         return await workbook.xlsx.writeBuffer();
   
