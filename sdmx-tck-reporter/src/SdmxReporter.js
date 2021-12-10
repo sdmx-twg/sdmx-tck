@@ -4,6 +4,7 @@ var Utils = require('sdmx-tck-api').utils.Utils;
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const excelJS = require("exceljs");
+var js2xmlparser = require("js2xmlparser");
 
 class SdmxReporter {
 
@@ -50,8 +51,21 @@ class SdmxReporter {
         
     }
     static _createXMLReport(){
+        let jsonObj = {
+            Info:{
+                SoftwareVersion:this.reportObj.getSwVersion(),
+                ApiVersion:this.reportObj.getApiVersion(),
+                ServiceTested:this.reportObj.getEndpoint()
+            },
 
+            Tests:{
+                Test:this.reportObj.getReportData()
+            }
+        }
+
+        return js2xmlparser.parse("Report", jsonObj).toString();
     }
+
     static async _createExcelReport(){
 
         // Create workbook and 2 sheet one for report data and one for report metadata

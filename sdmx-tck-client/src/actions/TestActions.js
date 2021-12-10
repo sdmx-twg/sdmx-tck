@@ -7,6 +7,7 @@ const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const DATA_QUERY_MODE = require('sdmx-tck-api').constants.DATA_QUERY_MODE
 const TCK_VERSION = require('sdmx-tck-api').constants.TCK_VERSION;
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
+var Utils = require('sdmx-tck-api').utils.Utils;
 
 export function initialiseTestsModel(tests) {
     return { type: 'INITIALISE_TESTS_MODEL', tests: tests };
@@ -137,16 +138,43 @@ export async function exportReport(wsInfo,apiVersion,format,tests) {
             },
             body: JSON.stringify(body)
         });
-        var blob = new Blob([await response.arrayBuffer()],{type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64"});
-        var link = document.createElement('a')
-        link.href = window.URL.createObjectURL(blob);
-        link.download = "SDMX-TCK-Report.xlsx"
-        link.click();
-    }catch{
-
+        await _downloadReport(format,response)
+      
+    }catch(err){
+        return {error:err.toString()};
     }
     
 };
+
+async function _downloadReport(format,response){
+    if(!Utils.isDefined(format)){
+        throw new Error("Missing Mandatory parameter 'format' ");
+    }
+    if(!Utils.isDefined(response)){
+        throw new Error("Missing Mandatory parameter 'response' ");
+    }
+    if(!EXPORT_FORMATS.isValidFormat(format)){
+        throw new Error("Unsupported format ");
+    }
+    let data;
+    let dataType;
+    let fileName;
+    if(format === EXPORT_FORMATS.EXCEL){
+        data = await response.arrayBuffer();
+        dataType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64"
+        fileName = "SDMX-TCK-Report.xlsx"
+    }else if(format === EXPORT_FORMATS.XML){
+        data = await response.text();
+        dataType = "text/xml";
+        fileName = "SDMX-TCK-Report.xml"
+    }
+    var blob = new Blob([data],{type:dataType });
+    var link = document.createElement('a')
+    link.href = window.URL.createObjectURL(blob);
+    link.download = fileName
+    link.click();
+}
+
 
 async function getPrerequisiteDataForTests(endpoint,tests){
     if(TEST_INDEX.Schema === tests.id){

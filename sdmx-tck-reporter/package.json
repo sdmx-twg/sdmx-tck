@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "exceljs": "^4.3.0",
+    "js2xmlparser": "^4.0.2",
     "sdmx-tck-api": "file:../sdmx-tck-api"
   },
   "author": "",

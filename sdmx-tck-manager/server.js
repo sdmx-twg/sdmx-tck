@@ -105,9 +105,9 @@ app.post("/tck-api/export-report", async (req, res) => {
     let contenType ="";
     let filename = ""
 
-    if(EXPORT_FORMATS.CSV === format){
-        filename = "SDMX-TCK-Report.csv"
-        contenType = 'application/csv'
+    if(EXPORT_FORMATS.XML === format){
+        filename = "SDMX-TCK-Report.xml"
+        contenType = 'application/xml'
     }else if(EXPORT_FORMATS.EXCEL === format){
 
         filename = "SDMX-TCK-Report.xlsx"
