@@ -67,6 +67,7 @@ class SdmxReporter {
             { header: "Test State", key: "state", width: 10 },
             { header: "Start Time", key: "startTime", width: 25 },
             { header: "End Time", key: "endTime", width: 25 },
+            { header: "Duration (sec)", key: "duration", width: 20 },
             { header: "URL", key: "url", width: 100 },
             { header: "Error", key: "error", width: 100 },
         ];

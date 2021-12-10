@@ -350,6 +350,7 @@ function getReportTestData(test){
 		state:test.state,
 		startTime:test.startTime,
 		endTime:test.endTime,
+		duration:(test.startTime && test.endTime) ? ((Date.parse((test.endTime).toString()) - Date.parse((test.startTime).toString()))/1000).toFixed(2) : '',
 		url:(test.httpResponseValidation && test.httpResponseValidation.url) ? test.httpResponseValidation.url : "",
 		error:test.failReason
 	}

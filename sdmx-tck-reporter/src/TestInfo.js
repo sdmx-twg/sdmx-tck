@@ -1,12 +1,13 @@
 class TestInfo {
 
-    constructor(index,name,type,state,startTime,endTime,url,error){
+    constructor(index,name,type,state,startTime,endTime,duration,url,error){
         this.index = index;
         this.name = name;
         this.type = type;
         this.state = state;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.duration = duration;
         this.url = url;
         this.error = error;
     }
@@ -46,6 +47,12 @@ class TestInfo {
     }
     getEndTime(){
         return this.endTime;
+    }
+    setDuration(duration){
+        this.duration = duration
+    }
+    getDuration(){
+        return this.duration;
     }
     setURL(url){
         this.url = url
