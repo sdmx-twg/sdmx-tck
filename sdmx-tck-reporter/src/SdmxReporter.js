@@ -9,13 +9,17 @@ var js2xmlparser = require("js2xmlparser");
 class SdmxReporter {
 
     //Initiation of reporting module
-    static init(endpoint,apiVersion,swVersion,tests){
+    static init(endpoint,apiVersion,swVersion,scores){
         
         this.reportObj = new Report();
         
         this.reportObj.setEndpoint(endpoint)
         this.reportObj.setApiVersion(apiVersion)
         this.reportObj.setSwVersion(swVersion)
+        this.reportObj.setCompliance(scores.complianceScore);
+        this.reportObj.setCoverage(scores.coverageScore)
+        this.reportObj.setNumberOfTests(scores.numOfTests)
+
 
     }
 
@@ -52,12 +56,16 @@ class SdmxReporter {
     }
     static _createXMLReport(){
         let jsonObj = {
-            Info:{
+            Information:{
                 SoftwareVersion:this.reportObj.getSwVersion(),
                 ApiVersion:this.reportObj.getApiVersion(),
                 ServiceTested:this.reportObj.getEndpoint()
             },
-
+            Results:{
+                NumberOfTests:this.reportObj.getNumberOfTests(),
+                Compliance:this.reportObj.getCompliance(),
+                Coverage:this.reportObj.getCoverage()
+            },
             Tests:{
                 Test:this.reportObj.getReportData()
             }
@@ -72,6 +80,7 @@ class SdmxReporter {
         const workbook = new excelJS.Workbook();   
         const worksheet = workbook.addWorksheet("SDMX-TCK-Report"); 
         const infoWorksheet = workbook.addWorksheet("Information"); 
+        const resultsWorksheet = workbook.addWorksheet("Results")
 
         //Data sheet columns
         worksheet.columns = [    
@@ -101,9 +110,26 @@ class SdmxReporter {
         //Metadata sheet data
         infoWorksheet.addRow(this.reportObj)
 
+        //Results sheet columns
+        resultsWorksheet.columns = [
+            { header: "Number Of Tests", key: "numberOfTests", width: 50 }, 
+            { header: "Compliance (%)", key: "compliance", width: 50 },
+            { header: "Coverage (%)", key: "coverage", width: 50 },
+        ]
+
+        //Results sheet data
+        resultsWorksheet.addRow(this.reportObj)
+
+        //Coverage and Compliance transform %
+        resultsWorksheet.getRow(2).getCell(2).value = parseFloat(resultsWorksheet.getRow(2).getCell(2) * 100).toFixed(2)
+        resultsWorksheet.getRow(2).getCell(3).value = parseFloat(resultsWorksheet.getRow(2).getCell(3) * 100).toFixed(2)
+
+
+
         // Making first line in excel bold
         worksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
         infoWorksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
+        resultsWorksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
 
         //Fill color the header of metadata
         infoWorksheet.getRow(1).eachCell(function(cell){
@@ -121,6 +147,15 @@ class SdmxReporter {
                 pattern:'solid',
                 fgColor:{argb:'00a4c9'},
               };
+        });
+
+        //Fill color the header of report data
+        resultsWorksheet.getRow(1).eachCell(function(cell){
+        cell.fill = {
+            type: 'pattern',
+            pattern:'solid',
+            fgColor:{argb:'00a4c9'},
+            };
         });
 
         //font color the status cells
@@ -146,6 +181,11 @@ class SdmxReporter {
                     SoftwareVersion:this.reportObj.getSwVersion(),
                     ApiVersion:this.reportObj.getApiVersion(),
                     ServiceTested:this.reportObj.getEndpoint()
+                },
+                Results:{
+                    NumberOfTests:this.reportObj.getNumberOfTests(),
+                    Compliance:this.reportObj.getCompliance(),
+                    Coverage:this.reportObj.getCoverage()
                 },
     
                 Tests:this.reportObj.getReportData()

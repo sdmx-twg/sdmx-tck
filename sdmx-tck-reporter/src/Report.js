@@ -7,6 +7,9 @@ class Report {
         this.swVersion;
         this.apiVersion;
         this.endpoint;
+        this.numberOfTests;
+        this.compliance;
+        this.coverage;
         this.reportData = [];
     }
 
@@ -31,6 +34,27 @@ class Report {
     }
     getEndpoint(){
         return this.endpoint
+    }
+
+    setNumberOfTests(numberOftests){
+        this.numberOfTests = numberOftests
+    }
+    getNumberOfTests(){
+        return this.numberOfTests;
+    }
+
+    setCompliance(compliance){
+        this.compliance = compliance
+    }
+    getCompliance(){
+        return this.compliance
+    }
+
+    setCoverage(coverage){
+        this.coverage = coverage
+    }
+    getCoverage(){
+        return this.coverage
     }
 
     addReportData(reportData){

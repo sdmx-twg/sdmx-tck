@@ -43,7 +43,7 @@ class ExportReport extends React.Component {
         var format = document.getElementById("selectFormat").value;
         
         let testsForReport = getTestsDataForReport(this.props.testsArray)
-        exportReport(endpoint, apiVersion,format,testsForReport);
+        exportReport(endpoint, apiVersion,format,testsForReport,this.props.scores);
 
         this.handleCloseDialog()
     };
@@ -94,7 +94,8 @@ const mapStateToProps = (state) => {
     var selectedTestsArray = extractSelectedTests(testsArray);
     return {
         finished: (scores.numOfRunTests === scores.numOfTests) && (scores.numOfRunTests > 0),
-        testsArray:selectedTestsArray
+        testsArray:selectedTestsArray,
+        scores:scores
     }
 };
 

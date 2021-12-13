@@ -101,6 +101,7 @@ app.post("/tck-api/export-report", async (req, res) => {
     let apiVersion = payload.apiVersion;
     let wsInfo = payload.wsInfo;
     let format =  payload.format;
+    let scores = payload.scores;
 
     let contenType ="";
     let filename = ""
@@ -119,7 +120,7 @@ app.post("/tck-api/export-report", async (req, res) => {
     res.set('Content-Type', contenType);
 
     //Init Reporter
-    SdmxReporter.init(wsInfo,apiVersion,swVersion)
+    SdmxReporter.init(wsInfo,apiVersion,swVersion,scores)
     
     //Record tests
     tests.forEach(t => SdmxReporter.record(TestInfo.fromJSON(t)));
