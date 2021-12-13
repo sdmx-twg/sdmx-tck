@@ -35,11 +35,11 @@ class SdmxReporter {
             throw new Error("Missing Mandatory parameter 'format' ");
         }
         if(!EXPORT_FORMATS.isValidFormat(format)){
-            throw new Error("Unsupported format ");
+            throw new Error("Unsupported format for TCK report ");
         }
         let report;
-        if(format === EXPORT_FORMATS.CSV){
-            report = this._createCsvReport();
+        if(format === EXPORT_FORMATS.JSON){
+            report = this._createJSONReport();
         }else if(format === EXPORT_FORMATS.EXCEL){
             report = await this._createExcelReport();
         }else if(format === EXPORT_FORMATS.XML){
@@ -139,21 +139,21 @@ class SdmxReporter {
   
     }
 
-    static _createCsvReport(){
-        let lines="";
+    static _createJSONReport(){
+        let jsonObj = {
+            Report:{
+                Information:{
+                    SoftwareVersion:this.reportObj.getSwVersion(),
+                    ApiVersion:this.reportObj.getApiVersion(),
+                    ServiceTested:this.reportObj.getEndpoint()
+                },
+    
+                Tests:this.reportObj.getReportData()
+            }
 
-        let reportInfoHeader = "TCK Version;Service Tested;Api Version";
-        let reportInfoData = this.reportObj.getSwVersion() +";"+this.reportObj.getEndpoint()+";"+this.reportObj.getApiVersion();
-        
-        lines = reportInfoHeader +"\r\n"+ reportInfoData +"\r\n\r\n"
+        }
 
-        let header = "Index;Test Name;Test Type;State;Start Time;End Time;URL;Errors";
-        lines = lines +header + "\r\n";
-        this.reportObj.getReportData().forEach(test => {
-            let line = test.getIndex() + ";" + test.getName() + ";" + test.getType() + ";" + test.getState() + ";" + test.getStartTime() + ";" + test.getEndTime() + ";" + test.getURL() + ";" + test.getError();
-            lines = lines + line +"\r\n";
-        })
-        return lines;
+        return JSON.stringify(jsonObj)
     }
 }
 module.exports = SdmxReporter;

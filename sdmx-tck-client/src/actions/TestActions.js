@@ -156,23 +156,63 @@ async function _downloadReport(format,response){
     if(!EXPORT_FORMATS.isValidFormat(format)){
         throw new Error("Unsupported format ");
     }
-    let data;
-    let dataType;
-    let fileName;
+
     if(format === EXPORT_FORMATS.EXCEL){
-        data = await response.arrayBuffer();
-        dataType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64"
-        fileName = "SDMX-TCK-Report.xlsx"
+        await _downloadExcelReport(response)
     }else if(format === EXPORT_FORMATS.XML){
-        data = await response.text();
-        dataType = "text/xml";
-        fileName = "SDMX-TCK-Report.xml"
+       await _downloadXMLReport(response)
+    }else if (format === EXPORT_FORMATS.JSON){
+       await _downloadJSONReport(response)
     }
+}
+
+async function _downloadJSONReport(response){
+    if(!Utils.isDefined(response)){
+        throw new Error("Missing Mandatory parameter 'response' ");
+    }
+
+    let data = await response.text();
+    let dataType = "text/json";
+    let fileName = "SDMX-TCK-Report.json"
+
     var blob = new Blob([data],{type:dataType });
     var link = document.createElement('a')
     link.href = window.URL.createObjectURL(blob);
     link.download = fileName
     link.click();
+}
+async function _downloadXMLReport(response){
+    if(!Utils.isDefined(response)){
+        throw new Error("Missing Mandatory parameter 'response' ");
+    }
+
+    let data = await response.text();
+    let dataType = "text/xml";
+    let fileName = "SDMX-TCK-Report.xml"
+
+    var blob = new Blob([data],{type:dataType });
+    var link = document.createElement('a')
+    link.href = window.URL.createObjectURL(blob);
+    link.download = fileName
+    link.click();
+
+}
+
+async function _downloadExcelReport(response){
+    if(!Utils.isDefined(response)){
+        throw new Error("Missing Mandatory parameter 'response' ");
+    }
+
+    let data = await response.arrayBuffer();
+    let dataType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64"
+    let fileName = "SDMX-TCK-Report.xlsx"
+
+    var blob = new Blob([data],{type:dataType });
+    var link = document.createElement('a')
+    link.href = window.URL.createObjectURL(blob);
+    link.download = fileName
+    link.click();
+
 }
 
 

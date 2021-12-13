@@ -109,9 +109,11 @@ app.post("/tck-api/export-report", async (req, res) => {
         filename = "SDMX-TCK-Report.xml"
         contenType = 'application/xml'
     }else if(EXPORT_FORMATS.EXCEL === format){
-
         filename = "SDMX-TCK-Report.xlsx"
         contenType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    }else if(EXPORT_FORMATS.JSON === format){
+        filename = "SDMX-TCK-Report.json"
+        contenType = 'application/json'
     }
     res.set('Content-Disposition', 'attachment; filename='+filename);
     res.set('Content-Type', contenType);

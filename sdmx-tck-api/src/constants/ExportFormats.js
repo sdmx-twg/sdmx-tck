@@ -3,7 +3,7 @@ var Utils = require('../utils/Utils.js');
 const EXPORT_FORMATS = {
     EXCEL:"EXCEL",
     XML:"XML",
-    CSV:"CSV",
+    JSON:"JSON",
 
     getValues() {
         let formats = Object.values(this).filter((value) => {
