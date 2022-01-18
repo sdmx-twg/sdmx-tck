@@ -59,7 +59,8 @@ class SdmxReporter {
             Information:{
                 SoftwareVersion:this.reportObj.getSwVersion(),
                 ApiVersion:this.reportObj.getApiVersion(),
-                ServiceTested:this.reportObj.getEndpoint()
+                ServiceTested:this.reportObj.getEndpoint(),
+                ReportCreationDate:new Date().toString()
             },
             Results:{
                 NumberOfTests:this.reportObj.getNumberOfTests(),
@@ -77,10 +78,12 @@ class SdmxReporter {
     static async _createExcelReport(){
 
         // Create workbook and 2 sheet one for report data and one for report metadata
-        const workbook = new excelJS.Workbook();   
+        const workbook = new excelJS.Workbook(); 
+        const infoWorksheet = workbook.addWorksheet("Information");   
         const worksheet = workbook.addWorksheet("SDMX-TCK-Report"); 
-        const infoWorksheet = workbook.addWorksheet("Information"); 
-        const resultsWorksheet = workbook.addWorksheet("Results")
+        const generalInfoRowIndex = 1;
+        const tckResultsRowIndex = 7;
+        //const resultsWorksheet = workbook.addWorksheet("Results")
 
         //Data sheet columns
         worksheet.columns = [    
@@ -100,44 +103,40 @@ class SdmxReporter {
               worksheet.addRow(test);
         });
 
-        //Metadata sheet columns
-        infoWorksheet.columns = [    
-            { header: "Software Version", key: "swVersion", width: 50 }, 
-            { header: "Api Version", key: "apiVersion", width: 50 },
-            { header: "Service Tested", key: "endpoint", width: 80 },
-            
+        var generalInfoRows = [
+            ["General Information"],
+            ["Software Information",this.reportObj.getSwVersion()],
+            ["Api Version",this.reportObj.getApiVersion()],
+            ["ServiceTested",this.reportObj.getEndpoint()],
+            ["Report Creation Date",new Date().toString()],
         ];
-        //Metadata sheet data
-        infoWorksheet.addRow(this.reportObj)
-
-        //Results sheet columns
-        resultsWorksheet.columns = [
-            { header: "Number Of Tests", key: "numberOfTests", width: 50 }, 
-            { header: "Compliance (%)", key: "compliance", width: 50 },
-            { header: "Coverage (%)", key: "coverage", width: 50 },
-        ]
-
-        //Results sheet data
-        resultsWorksheet.addRow(this.reportObj)
-
-        //Coverage and Compliance transform %
-        resultsWorksheet.getRow(2).getCell(2).value = parseFloat(resultsWorksheet.getRow(2).getCell(2) * 100).toFixed(2)
-        resultsWorksheet.getRow(2).getCell(3).value = parseFloat(resultsWorksheet.getRow(2).getCell(3) * 100).toFixed(2)
+        // insert new rows and return them as array of row objects
+        infoWorksheet.insertRows(generalInfoRowIndex, generalInfoRows);
 
 
+        var resultsRows = [
+            ["TCK Results"],
+            ["Number Of Tests",this.reportObj.getNumberOfTests()],
+            ["Compliance (%)", parseFloat(this.reportObj.getCompliance())],
+            ["Coverage (%)",parseFloat(this.reportObj.getCoverage())],
+        ];
+        // insert new rows and return them as array of row objects
+        infoWorksheet.insertRows(tckResultsRowIndex, resultsRows);
 
-        // Making first line in excel bold
+
+        // Making first line in report excel bold
         worksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
-        infoWorksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
-        resultsWorksheet.getRow(1).eachCell((cell) => {  cell.font = { bold: true };});
 
-        //Fill color the header of metadata
-        infoWorksheet.getRow(1).eachCell(function(cell){
-            cell.fill = {
-                type: 'pattern',
-                pattern:'solid',
-                fgColor:{argb:'00a4c9'},
-              };
+        //Style information sheet
+        infoWorksheet.getColumn(1).width = 30;
+        infoWorksheet.getColumn(2).width = 70;
+        infoWorksheet.eachRow(function(row, rowNumber){
+            if(rowNumber === generalInfoRowIndex || rowNumber === tckResultsRowIndex){
+                row.eachCell((cell) => {  cell.font = { bold: true }; cell.fill = {type:'pattern',pattern:"solid",fgColor:{argb:'00a4c9'}}});
+            }else{
+                row.getCell(1).font = {bold:true};
+                row.getCell(1).fill = {type:'pattern',pattern:"solid",fgColor:{argb:'cfd7f8'}}
+            }
         });
 
         //Fill color the header of report data
@@ -149,14 +148,6 @@ class SdmxReporter {
               };
         });
 
-        //Fill color the header of report data
-        resultsWorksheet.getRow(1).eachCell(function(cell){
-        cell.fill = {
-            type: 'pattern',
-            pattern:'solid',
-            fgColor:{argb:'00a4c9'},
-            };
-        });
 
         //font color the status cells
         worksheet.eachRow(function(row){
@@ -180,7 +171,8 @@ class SdmxReporter {
                 Information:{
                     SoftwareVersion:this.reportObj.getSwVersion(),
                     ApiVersion:this.reportObj.getApiVersion(),
-                    ServiceTested:this.reportObj.getEndpoint()
+                    ServiceTested:this.reportObj.getEndpoint(),
+                    ReportCreationDate:new Date().toString()
                 },
                 Results:{
                     NumberOfTests:this.reportObj.getNumberOfTests(),
