@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 
@@ -68,9 +69,12 @@ class ExportReport extends React.Component {
                     aria-labelledby="scroll-dialog-title"
                     aria-describedby="scroll-dialog-description"
                     fullWidth={true}>
+                    <DialogTitle id="exportDialogTitle">
+                        {"Report Export"}
+                    </DialogTitle>
                     <DialogContent>
                         <div className='tck-select-wrapper api-version'>
-                            <label htmlFor="selectFormat">Report Format</label>
+                            <label htmlFor="selectFormat">Select Output Format:</label>
                             <select id="selectFormat">
                                 {formats}
                             </select>
