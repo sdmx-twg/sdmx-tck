@@ -204,7 +204,7 @@ async function _downloadExcelReport(response){
     }
 
     let data = await response.arrayBuffer();
-    let dataType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64"
+    let dataType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     let fileName = "SDMX-TCK-Report.xlsx"
 
     var blob = new Blob([data],{type:dataType });

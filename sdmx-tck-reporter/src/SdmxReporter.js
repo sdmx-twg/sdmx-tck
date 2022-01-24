@@ -4,6 +4,7 @@ var Utils = require('sdmx-tck-api').utils.Utils;
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const excelJS = require("exceljs");
+const ReporterUtils = require('./ReporterUtils.js')
 var js2xmlparser = require("js2xmlparser");
 
 class SdmxReporter {
@@ -83,8 +84,10 @@ class SdmxReporter {
         const worksheet = workbook.addWorksheet("SDMX-TCK-Report"); 
         const generalInfoRowIndex = 1;
         const tckResultsRowIndex = 7;
-        //const resultsWorksheet = workbook.addWorksheet("Results")
 
+        //Clone tests data
+        let tests = [...this.reportObj.getReportData()];
+        
         //Data sheet columns
         worksheet.columns = [    
             { header: "Index", key: "index", width: 20 }, 
@@ -98,9 +101,13 @@ class SdmxReporter {
             { header: "Error", key: "error", width: 100 },
         ];
 
+        
+
         //Data sheet actual data
-        this.reportObj.getReportData().forEach((test) => {
-              worksheet.addRow(test);
+        tests.forEach((test) => {
+            //Limit error cell length
+            test.setError(ReporterUtils._limitCellContent(test.getError()));
+            worksheet.addRow(test);
         });
 
         var generalInfoRows = [
@@ -161,7 +168,7 @@ class SdmxReporter {
         });
 
         //return buffer with workbook data
-        return await workbook.xlsx.writeBuffer();
+        return await workbook.xlsx.writeBuffer({});
   
     }
 
