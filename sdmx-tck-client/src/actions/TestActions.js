@@ -1,6 +1,7 @@
 import { store } from '../store/AppStore';
 import ACTION_NAMES from '../constants/ActionsNames';
 import { TEST_INDEX } from 'sdmx-tck-api/src/constants/TestIndex';
+import TckError from 'sdmx-tck-api/src/errors/TckError';
 
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
@@ -138,6 +139,10 @@ export async function exportReport(wsInfo,apiVersion,format,tests,scores) {
             },
             body: JSON.stringify(body)
         });
+
+        if(response.status >= 400){
+            throw new TckError("Error while exporting TCK Report.")
+        }
         await _downloadReport(format,response)
       
     }catch(err){

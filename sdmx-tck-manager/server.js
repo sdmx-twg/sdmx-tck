@@ -95,37 +95,43 @@ app.post("/tck-api/execute-test", (req, res) => {
 });
 
 app.post("/tck-api/export-report", async (req, res) => {
-    let payload = req.body;
-    let tests = payload.tests;
-    let swVersion  = payload.swVersion;
-    let apiVersion = payload.apiVersion;
-    let wsInfo = payload.wsInfo;
-    let format =  payload.format;
-    let scores = payload.scores;
+    try{
+        let payload = req.body;
+        let tests = payload.tests;
+        let swVersion  = payload.swVersion;
+        let apiVersion = payload.apiVersion;
+        let wsInfo = payload.wsInfo;
+        let format =  payload.format;
+        let scores = payload.scores;
 
-    let contenType ="";
-    let filename = ""
+        let contenType ="";
+        let filename = ""
 
-    if(EXPORT_FORMATS.XML === format){
-        filename = "SDMX-TCK-Report.xml"
-        contenType = 'application/xml'
-    }else if(EXPORT_FORMATS.EXCEL === format){
-        filename = "SDMX-TCK-Report.xlsx"
-        contenType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    }else if(EXPORT_FORMATS.JSON === format){
-        filename = "SDMX-TCK-Report.json"
-        contenType = 'application/json'
+        if(EXPORT_FORMATS.XML === format){
+            filename = "SDMX-TCK-Report.xml"
+            contenType = 'application/xml'
+        }else if(EXPORT_FORMATS.EXCEL === format){
+            filename = "SDMX-TCK-Report.xlsx"
+            contenType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        }else if(EXPORT_FORMATS.JSON === format){
+            filename = "SDMX-TCK-Report.json"
+            contenType = 'application/json'
+        }
+        res.set('Content-Disposition', 'attachment; filename='+filename);
+        res.set('Content-Type', contenType);
+
+        
+        //Init Reporter
+        SdmxReporter.init(wsInfo,apiVersion,swVersion,scores)
+        
+        //Record tests
+        tests.forEach(t => SdmxReporter.record(TestInfo.fromJSON(t)));
+        
+        //Write buffer to res
+        res.write(await SdmxReporter.publishReport(format))
+        res.end()
+    }catch(error){
+        res.status(500).send(error);
     }
-    res.set('Content-Disposition', 'attachment; filename='+filename);
-    res.set('Content-Type', contenType);
-
-    //Init Reporter
-    SdmxReporter.init(wsInfo,apiVersion,swVersion,scores)
-    
-    //Record tests
-    tests.forEach(t => SdmxReporter.record(TestInfo.fromJSON(t)));
-    
-    //Write buffer to res
-    res.write(await SdmxReporter.publishReport(format))
-    res.end()
+ 
 });

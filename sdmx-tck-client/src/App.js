@@ -7,11 +7,12 @@ import AppTitle from "./components/AppTitle";
 import TestsToRun from "./components/TestsToRun";
 import ScoreContainer from './components/ScoreContainer';
 import ExportReport from './components/ExportReport'
-
+import { ToastContainer } from 'react-toastify';
 function App() {
   return (
     <div id="appContent">
       <AppTitle />
+      <ToastContainer />
       <ServiceUrl />
       <VersionBar />
       <IndexSelect />

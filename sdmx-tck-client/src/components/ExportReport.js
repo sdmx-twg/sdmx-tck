@@ -9,6 +9,8 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 
@@ -36,7 +38,7 @@ class ExportReport extends React.Component {
     /*
      * Function that initiates the reporting 
      */
-    handleExport = () => {
+    handleExport = async () => {
        
         /* Get the selected version value from app GUI */
         var endpoint = document.getElementById("ws-url").value;
@@ -44,8 +46,18 @@ class ExportReport extends React.Component {
         var format = document.getElementById("selectFormat").value;
         
         let testsForReport = getTestsDataForReport(this.props.testsArray)
-        exportReport(endpoint, apiVersion,format,testsForReport,this.props.scores);
-
+        let result = await exportReport(endpoint, apiVersion,format,testsForReport,this.props.scores);
+        if(result && result.error){
+            toast.error(result.error, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
         this.handleCloseDialog()
     };
      
