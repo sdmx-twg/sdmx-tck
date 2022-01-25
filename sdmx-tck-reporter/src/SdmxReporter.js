@@ -182,7 +182,7 @@ class SdmxReporter {
                     ReportCreationDate:new Date().toString()
                 },
                 Results:{
-                    NumberOfTests:this.reportObj.getNumberOfTests(),
+                    NumberOfTests:this.reportObj.getNumberOfTests().toString(),
                     Compliance:this.reportObj.getCompliance(),
                     Coverage:this.reportObj.getCoverage()
                 },
