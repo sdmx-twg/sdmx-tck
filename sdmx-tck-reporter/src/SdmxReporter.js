@@ -85,9 +85,6 @@ class SdmxReporter {
         const generalInfoRowIndex = 1;
         const tckResultsRowIndex = 7;
 
-        //Clone tests data
-        let tests = [...this.reportObj.getReportData()];
-        
         //Data sheet columns
         worksheet.columns = [    
             { header: "Index", key: "index", width: 20 }, 
@@ -98,13 +95,13 @@ class SdmxReporter {
             { header: "End Time", key: "endTime", width: 25 },
             { header: "Duration (sec)", key: "duration", width: 20 },
             { header: "URL", key: "url", width: 100 },
-            { header: "Error", key: "error", width: 100 },
+            { header: "Error", key: "error", width: 200 },
         ];
 
         
 
         //Data sheet actual data
-        tests.forEach((test) => {
+        this.reportObj.getReportData().forEach((test) => {
             //Limit error cell length
             test.setError(ReporterUtils._limitCellContent(test.getError()));
             worksheet.addRow(test);
@@ -124,8 +121,8 @@ class SdmxReporter {
         var resultsRows = [
             ["TCK Results"],
             ["Number Of Tests",this.reportObj.getNumberOfTests()],
-            ["Compliance (%)", parseFloat(this.reportObj.getCompliance())],
-            ["Coverage (%)",parseFloat(this.reportObj.getCoverage())],
+            ["Compliance (%)", parseFloat(this.reportObj.getCompliance())*100],
+            ["Coverage (%)",parseFloat(this.reportObj.getCoverage())*100],
         ];
         // insert new rows and return them as array of row objects
         infoWorksheet.insertRows(tckResultsRowIndex, resultsRows);
