@@ -1,0 +1,3995 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IREF974179</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2021-02-22T12:36:50Z</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:OrganisationSchemes>
+			<str:AgencyScheme agencyID="SDMX" id="AGENCIES" isExternalReference="false" isFinal="false" isPartial="true" urn="urn:sdmx:org.sdmx.infomodel.base.AgencyScheme=SDMX:AGENCIES(1.0)" version="1.0">
+				<com:Name xml:lang="en">SDMX Agency Scheme</com:Name>
+				<str:Agency id="SDMX" urn="urn:sdmx:org.sdmx.infomodel.base.Agency=SDMX">
+					<com:Name xml:lang="en">SDMX</com:Name>
+					<com:Description xml:lang="en">SDMX is an initiative to foster standards for the exchange of statistical information. It is sponsored by the Bank for International Settlements (BIS), the European Central Bank (ECB), the Statistical Office of the European Union (Eurostat), the International Monetary Fund (IMF), the Organization for Economic Co-Operation and Development (OECD), the United Nations (UN) and the World Bank.</com:Description>
+					<str:Contact>
+						<com:Name xml:lang="en">SDMX Secretariat</com:Name>
+						<str:Department xml:lang="en">SDMX Secretariat</str:Department>
+						<str:Role xml:lang="en">Single entry point for external inquiries</str:Role>
+						<str:URI>http://sdmx.org</str:URI>
+						<str:Email>secretariat@sdmx.org</str:Email>
+					</str:Contact>
+				</str:Agency>
+				<str:Agency id="WB" urn="urn:sdmx:org.sdmx.infomodel.base.Agency=WB">
+					<com:Name xml:lang="en">World Bank</com:Name>
+					<str:Contact>
+						<com:Name xml:lang="en">Demo Contact</com:Name>
+						<str:Department xml:lang="en">IT</str:Department>
+						<str:Role xml:lang="en">IT Officer</str:Role>
+						<str:Telephone>+00 111 222 333</str:Telephone>
+						<str:Email>demo@democontact.com</str:Email>
+					</str:Contact>
+				</str:Agency>
+			</str:AgencyScheme>
+			<str:DataProviderScheme agencyID="WB" id="DATA_PROVIDERS" isExternalReference="false" isFinal="false" isPartial="true" urn="urn:sdmx:org.sdmx.infomodel.base.DataProviderScheme=WB:DATA_PROVIDERS(1.0)" version="1.0">
+				<com:Name xml:lang="en">DATA_PROVIDERS</com:Name>
+				<str:DataProvider id="GHA" urn="urn:sdmx:org.sdmx.infomodel.base.DataProvider=WB:DATA_PROVIDERS(1.0).GHA">
+					<com:Name xml:lang="en">Ghana</com:Name>
+				</str:DataProvider>
+			</str:DataProviderScheme>
+		</str:OrganisationSchemes>
+		<str:Dataflows>
+			<str:Dataflow agencyID="WB" id="GCI" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=WB:GCI(1.0)" version="1.0">
+				<com:Name xml:lang="en">Global Competitiveness Index</com:Name>
+				<com:Description xml:lang="en">Global Competitiveness Index</com:Description>
+				<str:Structure>
+					<Ref agencyID="WB" class="DataStructure" id="GCI" package="datastructure" version="1.0"/>
+				</str:Structure>
+			</str:Dataflow>
+		</str:Dataflows>
+		<str:Codelists>
+			<str:Codelist agencyID="SDMX" id="CL_FREQ" isExternalReference="false" isFinal="true" isPartial="true" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_FREQ(2.0)" version="2.0">
+				<com:Name xml:lang="en">Frequency</com:Name>
+				<com:Description xml:lang="en">This code list provides a set of values indicating the &quot;frequency&quot; of the data (e.g. weekly, monthly, quarterly). The concept “frequency” may refer to various stages in the production process, e.g. data collection or data dissemination. For example, a time series could be disseminated at annual frequency but the underlying data are compiled monthly. The code list is applicable for all different uses of &quot;frequency&quot;. This code list was formally adopted on 4 December 2013. More information about and supporting material for this code list and SDMX code lists in general (e.g. list of generic codes for expressing general concepts like &quot;Total&quot;, &quot;Unknown&quot;, etc.; syntaxes for the creation of further codes; general guidelines for the creation of SDMX code lists) can be found at this address: https://sdmx.org/?page_id=4345.</com:Description>
+				<str:Code id="A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=SDMX:CL_FREQ(2.0).A">
+					<com:Name xml:lang="en">Annual</com:Name>
+					<com:Description xml:lang="en">To be used for data collected or disseminated every year.</com:Description>
+				</str:Code>
+			</str:Codelist>
+			<str:Codelist agencyID="WB" id="CL_WB_CGI_AREA" isExternalReference="false" isFinal="false" isPartial="true" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=WB:CL_WB_CGI_AREA(1.0)" version="1.0">
+				<com:Name xml:lang="en">Global Competitiveness Index Area</com:Name>
+				<com:Description xml:lang="en">ISO 3-ch Country Code</com:Description>
+				<str:Code id="GHA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_CGI_AREA(1.0).GHA">
+					<com:Name xml:lang="en">Ghana</com:Name>
+				</str:Code>
+			</str:Codelist>
+			<str:Codelist agencyID="WB" id="CL_WB_GCI_INDICATOR" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=WB:CL_WB_GCI_INDICATOR(1.0)" version="1.0">
+				<com:Name xml:lang="en">Global Competitiveness Indicator</com:Name>
+				<com:Description xml:lang="en">Global Competitiveness Indicator</com:Description>
+				<str:Code id="GCI_C_12" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_C_12">
+					<com:Name xml:lang="en">12th pillar Innovation</com:Name>
+				</str:Code>
+				<str:Code id="GCI_A_01" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_A_01">
+					<com:Name xml:lang="en">1st pillar Institutions</com:Name>
+				</str:Code>
+				<str:Code id="GCI_A_02" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_A_02">
+					<com:Name xml:lang="en">2nd pillar Infrastructure</com:Name>
+				</str:Code>
+				<str:Code id="GCI_A_03" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_A_03">
+					<com:Name xml:lang="en">3rd pillar Macroeconomic environment</com:Name>
+				</str:Code>
+				<str:Code id="GCI_A_04" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_A_04">
+					<com:Name xml:lang="en">4th pillar Health and primary education</com:Name>
+				</str:Code>
+				<str:Code id="GCI_B_05" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_B_05">
+					<com:Name xml:lang="en">5th pillar Higher education and training</com:Name>
+				</str:Code>
+				<str:Code id="GCI_B_09" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_B_09">
+					<com:Name xml:lang="en">9th pillar Technological readiness</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ331" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ331">
+					<com:Name xml:lang="en">Affordability of financial services</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ046" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ046">
+					<com:Name xml:lang="en">Agricultural policy costs</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ332" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ332">
+					<com:Name xml:lang="en">Financial services meeting business needs</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ067" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ067">
+					<com:Name xml:lang="en">Availability of latest technologies</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ133" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ133">
+					<com:Name xml:lang="en">Availability of scientists and engineers</com:Name>
+				</str:Code>
+				<str:Code id="AIRSEATKM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).AIRSEATKM">
+					<com:Name xml:lang="en">Available airline seat</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ050" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ050">
+					<com:Name xml:lang="en">Burden of customs procedures</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ048" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ048">
+					<com:Name xml:lang="en">Burden of government regulation</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ034" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ034">
+					<com:Name xml:lang="en">Business costs of crime and violence</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ033" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ033">
+					<com:Name xml:lang="en">Business costs of terrorism</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ170" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ170">
+					<com:Name xml:lang="en">Business impact of HIV AIDS</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ168" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ168">
+					<com:Name xml:lang="en">Business impact of malaria</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ095" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ095">
+					<com:Name xml:lang="en">Business impact of rules on FDI</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ169" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ169">
+					<com:Name xml:lang="en">Business impact of tuberculosis</com:Name>
+				</str:Code>
+				<str:Code id="GCI_C_11" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_C_11">
+					<com:Name xml:lang="en">Business Sophistication</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ100" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ100">
+					<com:Name xml:lang="en">Buyer sophistication</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ119" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ119">
+					<com:Name xml:lang="en">Capacity for innovation</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ118" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ118">
+					<com:Name xml:lang="en">Company spending on Research &amp; Development</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ123" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ123">
+					<com:Name xml:lang="en">Control of international distribution</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ135" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ135">
+					<com:Name xml:lang="en">Cooperation in labor-employer relations</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ400" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ400">
+					<com:Name xml:lang="en">Country capacity to attract talent</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ399" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ399">
+					<com:Name xml:lang="en">Country capacity to retain talent</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ122" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ122">
+					<com:Name xml:lang="en">Degree of customer orientation</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ146" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ146">
+					<com:Name xml:lang="en">Diversion of public funds</com:Name>
+				</str:Code>
+				<str:Code id="DOMMKTIDX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).DOMMKTIDX">
+					<com:Name xml:lang="en">Domestic market size index</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ088" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ088">
+					<com:Name xml:lang="en">Ease of access to loans</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ104" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ104">
+					<com:Name xml:lang="en">Effectiveness of antimonopoly policy</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ398" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ398">
+					<com:Name xml:lang="en">Effect of taxation on incentives to invest</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ397" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ397">
+					<com:Name xml:lang="en">Effect of taxation on incentives to work</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ127" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ127">
+					<com:Name xml:lang="en">Efficacy of corporate boards</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ039" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ039">
+					<com:Name xml:lang="en">Efficiency of legal framework in challenging regs</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ040" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ040">
+					<com:Name xml:lang="en">Efficiency of legal framework in settling disputes</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ153" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ153">
+					<com:Name xml:lang="en">Ethical behavior of firms</com:Name>
+				</str:Code>
+				<str:Code id="EXPGDP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EXPGDP">
+					<com:Name xml:lang="en">Exports as a percentage of GDP</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ105" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ105">
+					<com:Name xml:lang="en">Extent of market dominance</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ121" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ121">
+					<com:Name xml:lang="en">Extent of marketing</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ139" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ139">
+					<com:Name xml:lang="en">Extent of staff training</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ042" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ042">
+					<com:Name xml:lang="en">Favoritism in decisions of government officials</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ070" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ070">
+					<com:Name xml:lang="en">FDI and technology transfer</com:Name>
+				</str:Code>
+				<str:Code id="GCI_B_08" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_B_08">
+					<com:Name xml:lang="en">Financial Market Development</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ091" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ091">
+					<com:Name xml:lang="en">Financing through local equity market</com:Name>
+				</str:Code>
+				<str:Code id="BBSUBPC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).BBSUBPC">
+					<com:Name xml:lang="en">Fixed broadband Internet subscriptions</com:Name>
+				</str:Code>
+				<str:Code id="FIXEDTELPC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).FIXEDTELPC">
+					<com:Name xml:lang="en">Fixed telephone lines</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ136" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ136">
+					<com:Name xml:lang="en">Flexibility of wage determination</com:Name>
+				</str:Code>
+				<str:Code id="FGNMKTIDX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).FGNMKTIDX">
+					<com:Name xml:lang="en">Foreign market size index</com:Name>
+				</str:Code>
+				<str:Code id="SHRGDPWL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).SHRGDPWL">
+					<com:Name xml:lang="en">GDP (PPP) as % of world total</com:Name>
+				</str:Code>
+				<str:Code id="GCI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI">
+					<com:Name xml:lang="en">Global Competitiveness Index</com:Name>
+				</str:Code>
+				<str:Code id="GCI_B_06" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_B_06">
+					<com:Name xml:lang="en">Goods Market Efficiency</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ074" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ074">
+					<com:Name xml:lang="en">Government procurement of advanced tech products</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ134" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ134">
+					<com:Name xml:lang="en">Hiring and firing practices</com:Name>
+				</str:Code>
+				<str:Code id="HIVPREV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).HIVPREV">
+					<com:Name xml:lang="en">HIV prevalence % adult pop</com:Name>
+				</str:Code>
+				<str:Code id="IMPGDP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).IMPGDP">
+					<com:Name xml:lang="en">Imports as a percentage of GDP</com:Name>
+				</str:Code>
+				<str:Code id="NETUSERPCT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).NETUSERPCT">
+					<com:Name xml:lang="en">Individuals using Internet %</com:Name>
+				</str:Code>
+				<str:Code id="INFANTMORTPC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).INFANTMORTPC">
+					<com:Name xml:lang="en">Infant mortality deaths</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ052" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ052">
+					<com:Name xml:lang="en">Intellectual property protection</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ099" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ099">
+					<com:Name xml:lang="en">Intensity of local competition</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ084" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ084">
+					<com:Name xml:lang="en">Internet access in schools</com:Name>
+				</str:Code>
+				<str:Code id="INTBDWIDUSER" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).INTBDWIDUSER">
+					<com:Name xml:lang="en">Internet bandwidth</com:Name>
+				</str:Code>
+				<str:Code id="BRIBEIDX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).BRIBEIDX">
+					<com:Name xml:lang="en">Irregular payments and bribes</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ144" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ144">
+					<com:Name xml:lang="en">Judicial independence (WEF)</com:Name>
+				</str:Code>
+				<str:Code id="GCI_B_07" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_B_07">
+					<com:Name xml:lang="en">Labor Market Efficiency</com:Name>
+				</str:Code>
+				<str:Code id="LEGRGHTIDX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).LEGRGHTIDX">
+					<com:Name xml:lang="en">Legal rights index, 0-10 (best)</com:Name>
+				</str:Code>
+				<str:Code id="LIFEEXPECT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).LIFEEXPECT">
+					<com:Name xml:lang="en">Life expectancy</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ102" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ102">
+					<com:Name xml:lang="en">Local supplier quality</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ101" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ101">
+					<com:Name xml:lang="en">Local supplier quantity</com:Name>
+				</str:Code>
+				<str:Code id="MALARIAPC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).MALARIAPC">
+					<com:Name xml:lang="en">Malaria cases/100,000 pop.</com:Name>
+				</str:Code>
+				<str:Code id="GCI_B_10_01" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).GCI_B_10_01">
+					<com:Name xml:lang="en">Market size</com:Name>
+				</str:Code>
+				<str:Code id="MOBBBSUBPC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).MOBBBSUBPC">
+					<com:Name xml:lang="en">Mobile broadband subscriptions</com:Name>
+				</str:Code>
+				<str:Code id="MOBSUBPC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).MOBSUBPC">
+					<com:Name xml:lang="en">Mobile telephone subscriptions</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ114" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ114">
+					<com:Name xml:lang="en">Nature of competitive advantage</com:Name>
+				</str:Code>
+				<str:Code id="STARTBUSDAYS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).STARTBUSDAYS">
+					<com:Name xml:lang="en">No days to start a business</com:Name>
+				</str:Code>
+				<str:Code id="STARTBUSPROC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).STARTBUSPROC">
+					<com:Name xml:lang="en">No procedures to start a business</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ035" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ035">
+					<com:Name xml:lang="en">Organized crime</com:Name>
+				</str:Code>
+				<str:Code id="pctpatentapplpc" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).pctpatentapplpc">
+					<com:Name xml:lang="en">Patent Cooperation Treaty patents applications</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ137" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ137">
+					<com:Name xml:lang="en">Pay and productivity</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ094" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ094">
+					<com:Name xml:lang="en">Prevalence of foreign ownership</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ096" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ096">
+					<com:Name xml:lang="en">Prevalence of trade barriers</com:Name>
+				</str:Code>
+				<str:Code id="ENROL1NET" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).ENROL1NET">
+					<com:Name xml:lang="en">Primary education enrollment net %</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ120" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ120">
+					<com:Name xml:lang="en">Production process sophistication</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ051" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ051">
+					<com:Name xml:lang="en">Property rights (WEF)</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ098" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ098">
+					<com:Name xml:lang="en">Protection of minority shareholders interests</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ041" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ041">
+					<com:Name xml:lang="en">Public trust in politicians</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ061" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ061">
+					<com:Name xml:lang="en">Quality of air transport infrastructure</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ064" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ064">
+					<com:Name xml:lang="en">Quality of electricity supply</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ131" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ131">
+					<com:Name xml:lang="en">Quality of management schools</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ130" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ130">
+					<com:Name xml:lang="en">Quality of math and science education</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ056" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ056">
+					<com:Name xml:lang="en">Quality of overall infrastructure</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ353" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ353">
+					<com:Name xml:lang="en">Quality of port infrastructure</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ129" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ129">
+					<com:Name xml:lang="en">Quality of primary education</com:Name>
+				</str:Code>
+				<str:Code id="EOSQrailroad" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQrailroad">
+					<com:Name xml:lang="en">Quality of railroad infrastructure</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ057" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ057">
+					<com:Name xml:lang="en">Quality of roads</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ071" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ071">
+					<com:Name xml:lang="en">Quality of scientific research institutions</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ128" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ128">
+					<com:Name xml:lang="en">Quality of the education system</com:Name>
+				</str:Code>
+				<str:Code id="REDUNCOST" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).REDUNCOST">
+					<com:Name xml:lang="en">Redundancy costs, weeks of salary</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ092" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ092">
+					<com:Name xml:lang="en">Regulation of securities exchanges</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ055" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ055">
+					<com:Name xml:lang="en">Reliability of police services</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ126" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ126">
+					<com:Name xml:lang="en">Reliance on professional management</com:Name>
+				</str:Code>
+				<str:Code id="ENROL2GR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).ENROL2GR">
+					<com:Name xml:lang="en">Secondary education enrollment gross %</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ087" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ087">
+					<com:Name xml:lang="en">Soundness of banks</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ109" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ109">
+					<com:Name xml:lang="en">State of cluster development</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ097" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ097">
+					<com:Name xml:lang="en">Strength of auditing and reporting standards</com:Name>
+				</str:Code>
+				<str:Code id="INVESTPROIDX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).INVESTPROIDX">
+					<com:Name xml:lang="en">Strength of investor protection</com:Name>
+				</str:Code>
+				<str:Code id="ENROL3GR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).ENROL3GR">
+					<com:Name xml:lang="en">Tertiary education enrollment gross %</com:Name>
+				</str:Code>
+				<str:Code id="CORPTAXRATE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).CORPTAXRATE">
+					<com:Name xml:lang="en">Total tax rate % profits</com:Name>
+				</str:Code>
+				<str:Code id="TFDUTY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).TFDUTY">
+					<com:Name xml:lang="en">Trade tariffs % duty</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ049" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ049">
+					<com:Name xml:lang="en">Transparency of government policymaking</com:Name>
+				</str:Code>
+				<str:Code id="TBPC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).TBPC">
+					<com:Name xml:lang="en">Tuberculosis cases/100,000 pop.</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ072" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ072">
+					<com:Name xml:lang="en">University-industry collaboration in Research &amp; Development</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ115" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ115">
+					<com:Name xml:lang="en">Value chain breadth</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ089" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ089">
+					<com:Name xml:lang="en">Venture capital availability</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ043" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ043">
+					<com:Name xml:lang="en">Efficiency of government spending</com:Name>
+				</str:Code>
+				<str:Code id="EOSQ124" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).EOSQ124">
+					<com:Name xml:lang="en">Willingness to delegate authority</com:Name>
+				</str:Code>
+				<str:Code id="FEMLABOR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_INDICATOR(1.0).FEMLABOR">
+					<com:Name xml:lang="en">Women in labor force, ratio to men</com:Name>
+				</str:Code>
+			</str:Codelist>
+			<str:Codelist agencyID="WB" id="CL_WB_GCI_SUBINDICATOR" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=WB:CL_WB_GCI_SUBINDICATOR(1.0)" version="1.0">
+				<com:Name xml:lang="en">Global Competitiveness Index Subindicator</com:Name>
+				<com:Description xml:lang="en">Global Competitiveness Index Subindicator</com:Description>
+				<str:Code id="ZERO_TEN_BEST" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_SUBINDICATOR(1.0).ZERO_TEN_BEST">
+					<com:Name xml:lang="en">0-10 Best</com:Name>
+				</str:Code>
+				<str:Code id="HUNDRED_POP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_SUBINDICATOR(1.0).HUNDRED_POP">
+					<com:Name xml:lang="en">100 pop</com:Name>
+				</str:Code>
+				<str:Code id="THOUSAND_LIVE_BIRTHS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_SUBINDICATOR(1.0).THOUSAND_LIVE_BIRTHS">
+					<com:Name xml:lang="en">1000 live births</com:Name>
+				</str:Code>
+				<str:Code id="ONE_SEVEN_BEST" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_SUBINDICATOR(1.0).ONE_SEVEN_BEST">
+					<com:Name xml:lang="en">1-7 Best</com:Name>
+				</str:Code>
+				<str:Code id="INDEX_ONE_SEVEN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_SUBINDICATOR(1.0).INDEX_ONE_SEVEN">
+					<com:Name xml:lang="en">Index 1-7 (best)</com:Name>
+				</str:Code>
+				<str:Code id="KBS_PER_USER" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_SUBINDICATOR(1.0).KBS_PER_USER">
+					<com:Name xml:lang="en">kbs per user</com:Name>
+				</str:Code>
+				<str:Code id="KM_WEEK_MILLIONS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_SUBINDICATOR(1.0).KM_WEEK_MILLIONS">
+					<com:Name xml:lang="en">km week millions</com:Name>
+				</str:Code>
+				<str:Code id="MILLION_POP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_SUBINDICATOR(1.0).MILLION_POP">
+					<com:Name xml:lang="en">million pop</com:Name>
+				</str:Code>
+				<str:Code id="RANK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_SUBINDICATOR(1.0).RANK">
+					<com:Name xml:lang="en">Rank</com:Name>
+				</str:Code>
+				<str:Code id="VALUE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=WB:CL_WB_GCI_SUBINDICATOR(1.0).VALUE">
+					<com:Name xml:lang="en">Value</com:Name>
+				</str:Code>
+			</str:Codelist>
+		</str:Codelists>
+		<str:Concepts>
+			<str:ConceptScheme agencyID="SDMX" id="CROSS_DOMAIN_CONCEPTS" isExternalReference="false" isFinal="true" isPartial="true" structureURL="https://registry.sdmx.org/FusionRegistry/ws/rest/conceptscheme/SDMX/CROSS_DOMAIN_CONCEPTS/1.0" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.ConceptScheme=SDMX:CROSS_DOMAIN_CONCEPTS(1.0)" version="1.0">
+				<com:Name xml:lang="en">SDMX Cross Domain Concept Scheme</com:Name>
+				<com:Description xml:lang="en">Cross-domain concepts in the SDMX framework describe concepts relevant to many, if not all, statistical domains. SDMX recommends using these concepts whenever feasible in SDMX structures and messages to promote re-usability and exchange of statistical information and their related metadata between organizations. Whenever used, these concepts should conform to the specified names, roles, and representations defined in the SDMX Content-Oriented Guidelines.</com:Description>
+				<str:Concept id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS(1.0).OBS_VALUE">
+					<com:Annotations>
+						<com:Annotation>
+							<com:AnnotationType>CONTEXT</com:AnnotationType>
+							<com:AnnotationText xml:lang="en">The &quot;observation value&quot; is the field which holds the data.</com:AnnotationText>
+						</com:Annotation>
+					</com:Annotations>
+					<com:Name xml:lang="en">Observation</com:Name>
+					<com:Description xml:lang="en">The value of a particular variable at a particular period.</com:Description>
+				</str:Concept>
+				<str:Concept id="TIME_PERIOD" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS(1.0).TIME_PERIOD">
+					<com:Annotations>
+						<com:Annotation>
+							<com:AnnotationType>CONTEXT</com:AnnotationType>
+							<com:AnnotationText xml:lang="en">The measurement represented by each observation corresponds to a specific point in time (e.g. a single day) or a period (e.g. a month, a fiscal year, or a calendar year). This is used as a time stamp and is of particular importance for time series data. In cases where the actual time period of the data differs from the target reference period, “time period” refers to the actual period.</com:AnnotationText>
+						</com:Annotation>
+					</com:Annotations>
+					<com:Name xml:lang="en">Time period</com:Name>
+					<com:Description xml:lang="en">The period of time or point in time to which the measured observation refers.</com:Description>
+				</str:Concept>
+			</str:ConceptScheme>
+			<str:ConceptScheme agencyID="WB" id="WB_GCI" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.ConceptScheme=WB:WB_GCI(1.0)" version="1.0">
+				<com:Name xml:lang="en">Global Competitiveness Index</com:Name>
+				<com:Description xml:lang="en">Global Competitiveness Index</com:Description>
+				<str:Concept id="REF_AREA" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=WB:WB_GCI(1.0).REF_AREA">
+					<com:Name xml:lang="en">Reference Area</com:Name>
+					<str:CoreRepresentation>
+						<str:Enumeration>
+							<Ref agencyID="WB" class="Codelist" id="CL_WB_CGI_AREA" package="codelist" version="1.0"/>
+						</str:Enumeration>
+						<str:EnumerationFormat/>
+					</str:CoreRepresentation>
+				</str:Concept>
+				<str:Concept id="INDICATOR" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=WB:WB_GCI(1.0).INDICATOR">
+					<com:Name xml:lang="en">Indicator</com:Name>
+					<str:CoreRepresentation>
+						<str:Enumeration>
+							<Ref agencyID="WB" class="Codelist" id="CL_WB_GCI_INDICATOR" package="codelist" version="1.0"/>
+						</str:Enumeration>
+					</str:CoreRepresentation>
+				</str:Concept>
+				<str:Concept id="SUB_INDICATOR" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=WB:WB_GCI(1.0).SUB_INDICATOR">
+					<com:Name xml:lang="en">Sub Indicator</com:Name>
+					<str:CoreRepresentation>
+						<str:Enumeration>
+							<Ref agencyID="WB" class="Codelist" id="CL_WB_GCI_SUBINDICATOR" package="codelist" version="1.0"/>
+						</str:Enumeration>
+					</str:CoreRepresentation>
+				</str:Concept>
+				<str:Concept id="FREQ" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=WB:WB_GCI(1.0).FREQ">
+					<com:Name xml:lang="en">Frequency</com:Name>
+					<str:CoreRepresentation>
+						<str:Enumeration>
+							<Ref agencyID="SDMX" class="Codelist" id="CL_FREQ" package="codelist" version="2.0"/>
+						</str:Enumeration>
+					</str:CoreRepresentation>
+				</str:Concept>
+			</str:ConceptScheme>
+		</str:Concepts>
+		<str:DataStructures>
+			<str:DataStructure agencyID="WB" id="GCI" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=WB:GCI(1.0)" version="1.0">
+				<com:Name xml:lang="en">Global Competitivness Index</com:Name>
+				<com:Description xml:lang="en">Global Competitivness Index</com:Description>
+				<str:DataStructureComponents>
+					<str:DimensionList id="DimensionDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=WB:GCI(1.0).DimensionDescriptor">
+						<str:Dimension id="REF_AREA" position="1" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=WB:GCI(1.0).REF_AREA">
+							<str:ConceptIdentity>
+								<Ref agencyID="WB" class="Concept" id="REF_AREA" maintainableParentID="WB_GCI" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="WB" class="Codelist" id="CL_WB_CGI_AREA" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="INDICATOR" position="2" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=WB:GCI(1.0).INDICATOR">
+							<str:ConceptIdentity>
+								<Ref agencyID="WB" class="Concept" id="INDICATOR" maintainableParentID="WB_GCI" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="WB" class="Codelist" id="CL_WB_GCI_INDICATOR" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="SUB_INDICATOR" position="3" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=WB:GCI(1.0).SUB_INDICATOR">
+							<str:ConceptIdentity>
+								<Ref agencyID="WB" class="Concept" id="SUB_INDICATOR" maintainableParentID="WB_GCI" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="WB" class="Codelist" id="CL_WB_GCI_SUBINDICATOR" package="codelist" version="1.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="FREQ" position="4" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=WB:GCI(1.0).FREQ">
+							<str:ConceptIdentity>
+								<Ref agencyID="WB" class="Concept" id="FREQ" maintainableParentID="WB_GCI" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="SDMX" class="Codelist" id="CL_FREQ" package="codelist" version="2.0"/>
+								</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:TimeDimension id="TIME_PERIOD" position="5" urn="urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=WB:GCI(1.0).TIME_PERIOD">
+							<str:ConceptIdentity>
+								<Ref agencyID="SDMX" class="Concept" id="TIME_PERIOD" maintainableParentID="CROSS_DOMAIN_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="ObservationalTimePeriod"/>
+							</str:LocalRepresentation>
+						</str:TimeDimension>
+					</str:DimensionList>
+					<str:MeasureList id="MeasureDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=WB:GCI(1.0).MeasureDescriptor">
+						<str:PrimaryMeasure id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=WB:GCI(1.0).OBS_VALUE">
+							<str:ConceptIdentity>
+								<Ref agencyID="SDMX" class="Concept" id="OBS_VALUE" maintainableParentID="CROSS_DOMAIN_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+						</str:PrimaryMeasure>
+					</str:MeasureList>
+				</str:DataStructureComponents>
+			</str:DataStructure>
+		</str:DataStructures>
+		<str:Constraints>
+			<str:ContentConstraint agencyID="WB" id="GCI_GHA" isExternalReference="false" isFinal="false" type="Allowed" urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=WB:GCI_GHA(1.0)" version="1.0">
+				<com:Name xml:lang="en">Constraining Global Competative Index, Ghana</com:Name>
+				<com:Description xml:lang="en">Constraint built from dataset constraining the Provision Agreement Global Competative Index, Ghana (ProvisionAgreement=WB:GCI_GHA(1.0))</com:Description>
+				<str:ConstraintAttachment>
+					<str:ProvisionAgreement>
+						<Ref agencyID="WB" class="ProvisionAgreement" id="GCI_GHA" package="registry" version="1.0"/>
+					</str:ProvisionAgreement>
+				</str:ConstraintAttachment>
+				<str:DataKeySet isIncluded="true">
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_C_12</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_C_12</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_A_01</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_A_01</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_A_02</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_A_02</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_A_03</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_A_03</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_A_04</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_A_04</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_05</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_05</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_09</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_09</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ331</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ331</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ046</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ046</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ332</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ332</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ067</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ067</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ133</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ133</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>AIRSEATKM</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>KM_WEEK_MILLIONS</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>AIRSEATKM</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ050</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ050</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ048</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ048</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ034</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ034</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ033</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ033</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ170</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ170</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ168</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ168</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ095</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ095</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ169</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ169</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_C_11</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_C_11</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ100</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ100</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ119</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ119</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ118</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ118</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ123</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ123</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ135</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ135</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ400</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ400</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ399</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ399</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ122</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ122</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ146</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ146</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>DOMMKTIDX</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>DOMMKTIDX</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ088</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ088</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ104</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ104</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ398</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ398</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ397</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ397</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ127</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ127</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ043</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ043</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ039</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ039</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ040</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ040</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ153</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ153</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EXPGDP</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EXPGDP</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ105</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ105</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ121</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ121</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ139</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ139</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ042</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ042</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ070</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ070</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_08</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_08</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ091</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ091</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>BBSUBPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>HUNDRED_POP</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>BBSUBPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>FIXEDTELPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>HUNDRED_POP</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>FIXEDTELPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ136</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ136</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>FGNMKTIDX</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>FGNMKTIDX</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>SHRGDPWL</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>SHRGDPWL</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_06</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_06</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ074</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ074</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ134</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ134</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>HIVPREV</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>HIVPREV</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>IMPGDP</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>IMPGDP</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>NETUSERPCT</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>NETUSERPCT</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>INFANTMORTPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>THOUSAND_LIVE_BIRTHS</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>INFANTMORTPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ052</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ052</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ099</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ099</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ084</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ084</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>INTBDWIDUSER</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>KBS_PER_USER</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>INTBDWIDUSER</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>BRIBEIDX</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>BRIBEIDX</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ144</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ144</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_07</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_07</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>LEGRGHTIDX</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>LEGRGHTIDX</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>LIFEEXPECT</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>LIFEEXPECT</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ102</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ102</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ101</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ101</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>MALARIAPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>MALARIAPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_10_01</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>GCI_B_10_01</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>MOBBBSUBPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>HUNDRED_POP</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>MOBBBSUBPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>MOBSUBPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>HUNDRED_POP</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>MOBSUBPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ114</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ114</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>STARTBUSDAYS</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>STARTBUSDAYS</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>STARTBUSPROC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>STARTBUSPROC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ035</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ035</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>pctpatentapplpc</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>MILLION_POP</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>pctpatentapplpc</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ137</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ137</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ094</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ094</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ096</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ096</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>ENROL1NET</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>ENROL1NET</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ120</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ120</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ051</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ051</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ098</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ098</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ041</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ041</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ061</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ061</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ064</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ064</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ131</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ131</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ130</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ130</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ056</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ056</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ353</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ353</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ129</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ129</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQrailroad</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQrailroad</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ057</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ057</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ071</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ071</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ128</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ128</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>REDUNCOST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>REDUNCOST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ092</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ092</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ055</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ055</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ126</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ126</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>ENROL2GR</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>ENROL2GR</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ087</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ087</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ109</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ109</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ097</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ097</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>INVESTPROIDX</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ZERO_TEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>INVESTPROIDX</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>ENROL3GR</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>ENROL3GR</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>CORPTAXRATE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>CORPTAXRATE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>TFDUTY</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>TFDUTY</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ049</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ049</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>TBPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>TBPC</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ072</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ072</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ115</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ115</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ089</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>INDEX_ONE_SEVEN</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ089</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ043</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>ONE_SEVEN_BEST</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ124</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>EOSQ124</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>FEMLABOR</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>RANK</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+					<str:Key>
+						<com:KeyValue id="REF_AREA">
+							<com:Value>GHA</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="INDICATOR">
+							<com:Value>FEMLABOR</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="SUB_INDICATOR">
+							<com:Value>VALUE</com:Value>
+						</com:KeyValue>
+						<com:KeyValue id="FREQ">
+							<com:Value>A</com:Value>
+						</com:KeyValue>
+					</str:Key>
+				</str:DataKeySet>
+			</str:ContentConstraint>
+		</str:Constraints>
+		<str:ProvisionAgreements>
+			<str:ProvisionAgreement agencyID="WB" id="GCI_GHA" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=WB:GCI_GHA(1.0)" version="1.0">
+				<com:Name xml:lang="en">Global Competative Index, Ghana</com:Name>
+				<str:StructureUsage>
+					<Ref agencyID="WB" class="Dataflow" id="GCI" package="datastructure" version="1.0"/>
+				</str:StructureUsage>
+				<str:DataProvider>
+					<Ref agencyID="WB" class="DataProvider" id="GHA" maintainableParentID="DATA_PROVIDERS" maintainableParentVersion="1.0" package="base"/>
+				</str:DataProvider>
+			</str:ProvisionAgreement>
+		</str:ProvisionAgreements>
+	</mes:Structures>
+</mes:Structure>

@@ -1,0 +1,16 @@
+{
+  "name": "sdmx-tck-reporter",
+  "version": "2.0.0",
+  "description": "SDMX TCK REPORTER",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "exceljs": "4.3.0",
+    "js2xmlparser": "4.0.2",
+    "sdmx-tck-api": "file:../sdmx-tck-api"
+  },
+  "author": "",
+  "license": "ISC"
+}
