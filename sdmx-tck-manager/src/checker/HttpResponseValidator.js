@@ -22,7 +22,12 @@ class HttpResponseValidator {
                 // TODO + additional checks
                 resolve({ status: SUCCESS_CODE, url: httpResponse.url, httpStatus: httpResponse.status });
             } catch (err) {
-                resolve({ status: FAILURE_CODE, url: httpResponse.url, httpStatus: httpResponse.status, error: err.toString() });
+                let tckStatus = FAILURE_CODE;
+                let code = httpResponse != null ? httpResponse.status : void 0;
+                if (code === 404 || code === 501) {
+                    tckStatus = SUCCESS_CODE;
+                }
+                resolve({ status: tckStatus, url: httpResponse.url, httpStatus: httpResponse.status, error: err.toString() });
             }
         });
     };
