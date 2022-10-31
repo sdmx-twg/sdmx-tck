@@ -36,6 +36,8 @@ const TestDetails = ({ test }) => {
                                     (test.workspaceValidation && test.workspaceValidation.sourceOfWorkspace) ? test.workspaceValidation.sourceOfWorkspace : (test.httpResponseValidation && test.httpResponseValidation.url) ? test.httpResponseValidation.url : ""}>
                                    {(test.workspaceValidation && test.workspaceValidation.sourceOfWorkspace) ? test.workspaceValidation.sourceOfWorkspace : (test.httpResponseValidation && test.httpResponseValidation.url) ? test.httpResponseValidation.url : ""}</a></td></tr>
                                 <tr><td>State</td><td>{test.state}</td></tr>
+                                <tr><td>Compliant</td><td>{test.isCompliant ? 'Yes' : 'No'}</td></tr>
+                                <tr><td>Covered</td><td>{test.isCovered ? 'Yes' : 'No'}</td></tr>
                                 <tr><td>Duration</td><td>{(test.startTime && test.endTime) ? ((Date.parse((test.endTime).toString()) - Date.parse((test.startTime).toString()))/1000).toFixed(2) + " seconds" : ''}</td></tr>
                                 <tr><td>Errors</td><td>{test.failReason ? test.failReason.toString() : ""}</td></tr>
                             </tbody>

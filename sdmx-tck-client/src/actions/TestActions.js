@@ -5,7 +5,7 @@ import TckError from 'sdmx-tck-api/src/errors/TckError';
 
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-const DATA_QUERY_MODE = require('sdmx-tck-api').constants.DATA_QUERY_MODE
+const DATA_QUERY_MODE = require('sdmx-tck-api').constants.DATA_QUERY_MODE;
 const TCK_VERSION = require('sdmx-tck-api').constants.TCK_VERSION;
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 var Utils = require('sdmx-tck-api').utils.Utils;
@@ -34,8 +34,8 @@ export function updateChildrenTests(test) {
     return { type: ACTION_NAMES.PASS_IDENTIFIERS_TO_CHILDREN_TESTS, test: test };
 };
 
-export function updateTestState(test, state) {
-    return { type: ACTION_NAMES.UPDATE_TEST_STATE, test: test, state: state };
+export function updateTestState(test, state, isCompliant, isCovered) {
+    return { type: ACTION_NAMES.UPDATE_TEST_STATE, test: test, state: state, isCompliant: isCompliant, isCovered: isCovered };
 }
 export function dataFromParent(test){
     return { type: ACTION_NAMES.GET_DATA_FROM_PARENT, test: test };
@@ -260,22 +260,24 @@ export async function runTest(endpoint, test) {
         let testResults = await requestTestRun(endpoint, test);
         if(Object.keys(testResults).length === 1 && testResults.hasOwnProperty("error")){
             test.failReason  = testResults.error;
-            store.dispatch(updateTestState(test, TEST_STATE.FAILED));
+            store.dispatch(updateTestState(test, TEST_STATE.FAILED, false, false));
         }else{
             if(testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1
                 && ((testResults.workspaceValidation && testResults.workspaceValidation.status === 1) 
                 || (testResults.httpResponseHeadersValidation && testResults.httpResponseHeadersValidation.status === 1))){
                         //Actions if a test was successful
-                    store.dispatch(updateTestState(testResults, TEST_STATE.COMPLETED));
+                    store.dispatch(updateTestState(testResults, TEST_STATE.COMPLETED, true, true));
                     store.dispatch(updateComplianceNumber(testResults.index));
                     store.dispatch(updateCoverageNumber(testResults.index));
                     store.dispatch(updateChildrenTests(testResults));
             }else{ 
-                        //Actions if a test failed
-                    store.dispatch(updateTestState(testResults, TEST_STATE.FAILED));
+                    //Actions if a test failed
+                    let isCompliant = false;
                     if (testResults.httpResponseValidation && testResults.httpResponseValidation.status === 1) {
-                        store.dispatch(updateComplianceNumber(testResults.index));
+                        isCompliant = true;
+                        store.dispatch(updateComplianceNumber(testResults.index));                        
                     };
+                    store.dispatch(updateTestState(testResults, TEST_STATE.FAILED, isCompliant, false));
             }
         }
     } 
@@ -285,7 +287,7 @@ export async function runTest(endpoint, test) {
             /* In order to mark as failed Item Queries if the items to request are unknown */
             if (test.subTests[j].requireItems === true && (!test.subTests[j].items || test.subTests[j].items.length === 0)) {
                 test.subTests[j].failReason = "Unable to run, due to missing items";
-                store.dispatch(updateTestState(test.subTests[j], TEST_STATE.UNABLE_TO_RUN));
+                store.dispatch(updateTestState(test.subTests[j], TEST_STATE.UNABLE_TO_RUN, false, false));
                 store.dispatch(updateTestsNumber(test.subTests[j].index));
             }else {
                 await runTest(endpoint, test.subTests[j]);

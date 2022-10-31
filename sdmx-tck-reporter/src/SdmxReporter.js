@@ -91,6 +91,8 @@ class SdmxReporter {
             { header: "Test Name", key: "name", width: 100 },
             { header: "Test Type", key: "type", width: 50 },
             { header: "Test State", key: "state", width: 10 },
+            { header: "Compliant", key: "isCompliant", width: 10 },
+            { header: "Covered", key: "isCovered", width: 10 },
             { header: "Start Time", key: "startTime", width: 25 },
             { header: "End Time", key: "endTime", width: 25 },
             { header: "Duration (sec)", key: "duration", width: 20 },
