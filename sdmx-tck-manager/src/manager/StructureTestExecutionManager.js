@@ -1,4 +1,5 @@
 const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
+const SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 var SdmxXmlParser = require('sdmx-tck-parsers').parsers.SdmxXmlParser;
@@ -38,7 +39,8 @@ class StructureTestExecutionManager {
             httpResponseValidation = await ResponseValidator.validateHttpResponse(preparedRequest.request, httpResponse);
             testResult.httpResponseValidation = httpResponseValidation;
             console.log("Test: " + toRun.testId + " HTTP response validated. " + JSON.stringify(httpResponseValidation));
-            if (httpResponseValidation.status === FAILURE_CODE) {
+            if (httpResponseValidation.status === FAILURE_CODE 
+                || (httpResponseValidation.status === SUCCESS_CODE && (httpResponseValidation.httpStatus === 404 || httpResponseValidation.httpStatus === 501))) {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
  
