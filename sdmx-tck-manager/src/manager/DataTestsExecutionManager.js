@@ -1,4 +1,5 @@
 const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
+const SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const sdmx_requestor = require('sdmx-rest');
@@ -32,11 +33,14 @@ class DataTestsExecutionManager {
 
             //THESE TESTS REQUIRE AT LEAST 2 DIMENSIONS IN EVERY SERIES AND A PAIR OF RANDOM KEYS TO PERFORM THE 'DIM1.DIM2.DIM31+DIM32.DIMn' TEST
             if(toRun.reqTemplate.key === DATA_QUERY_KEY.PARTIAL_KEY || toRun.reqTemplate.key === DATA_QUERY_KEY.MANY_KEYS){
-                if(toRun.reqTemplate.key === DATA_QUERY_KEY.MANY_KEYS && toRun.randomKeys.length<2){
-                    throw new TckError("There are no enough different keys to perform the 'OR' statement of this test.")
+                if (!toRun.randomKeys) {
+                    throw new TckError("Unable to execute test, no keys found.")
                 }
-                if(Object.keys(toRun.randomKeys[0]).length < 2){
-                    throw new TckError("There are no enough dimensions to perform this test.")
+                if(toRun.reqTemplate.key === DATA_QUERY_KEY.MANY_KEYS && toRun.randomKeys.length<2){
+                    throw new TckError("There are not enough different keys to perform the 'OR' statement of this test.")
+                }
+                if(toRun.randomKeys[0] && Object.keys(toRun.randomKeys[0]).length < 2){
+                    throw new TckError("There are not enough dimensions to perform this test.")
                 }
             }
             let providerRefs = [];
@@ -85,7 +89,8 @@ class DataTestsExecutionManager {
             httpResponseValidation = await ResponseValidator.validateHttpResponse(preparedRequest.request, httpResponse);
             testResult.httpResponseValidation = httpResponseValidation;
             console.log("Test: " + toRun.testId + " HTTP response validated. " + JSON.stringify(httpResponseValidation));
-            if (httpResponseValidation.status === FAILURE_CODE) {
+            if (httpResponseValidation.status === FAILURE_CODE 
+                || (httpResponseValidation.status === SUCCESS_CODE && (httpResponseValidation.httpStatus === 404 || httpResponseValidation.httpStatus === 501))) {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
 

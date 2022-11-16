@@ -60,7 +60,13 @@ class DateTransformations {
         return this._fromMillisecsToDate(semiannualStart,semiannualEnd)
     }
     static fromStringToUtcDate(dateString){
-        let splitDate = dateString.split("-");
+        // let splitDate = dateString.split("-");
+        // Handle the timestamp case only to construct a valid date part, ignore the time part
+        let fullTimestamp = dateString.split('T');
+        if (fullTimestamp[1]) {
+            let splitTime = fullTimestamp[1].split(':');
+        }
+        let splitDate = fullTimestamp[0].split("-");
 
         if(splitDate[0] && !splitDate[1] && !splitDate[2]){
             return Date.UTC(parseInt(splitDate[0]))

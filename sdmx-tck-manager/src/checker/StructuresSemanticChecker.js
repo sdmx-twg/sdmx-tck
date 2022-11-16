@@ -167,7 +167,10 @@ class StructuresSemanticChecker {
             });
             
             if (!structureRef.equals(structure.asReference()) && !isReference) {
-                extraStructures.push(structure.asReference());
+                // Exclude Agency Scheme from this check because it can be considered as valid referenced artefact.
+                if (structure.getStructureType() !== SDMX_STRUCTURE_TYPE.AGENCY_SCHEME.key) {
+                    extraStructures.push(structure.asReference());
+                }
             } else if (!structureRef.equals(structure.asReference()) && isReference) {
                 if (STRUCTURE_REFERENCE_DETAIL.isSpecificSdmxStructure(query.references) &&
                     structure.getStructureType() !== STRUCTURE_REFERENCE_DETAIL.getSdmxStructureType(query.references)) {
