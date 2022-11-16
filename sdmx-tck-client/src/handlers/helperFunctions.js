@@ -18,7 +18,7 @@ export const extractScore = (testsArray) => {
 	}
 	let complianceScore = parseFloat(Number(numOfCompliantResponses) / Number(numOfTests)).toFixed(2)
 	let coverageScore = parseFloat(Number(numOfFullResponses) / Number(numOfTests)).toFixed(2);
-
+	
 	let scores = { complianceScore: complianceScore, coverageScore: coverageScore, numOfTests: numOfTests, numOfRunTests: numOfRunTests };
 
 	return scores;
@@ -280,6 +280,8 @@ function updateTestStatus(testsArray, test, action) {
 	if (action.test.testId === test.testId) {
 		//Saving state and duration, in order to be saved to the store.
 		test.state = action.state;
+		test.isCompliant = action.isCompliant;
+		test.isCovered = action.isCovered;
 		test.startTime = action.test.startTime;
 		test.endTime = action.test.endTime;
 		test.workspace = action.test.workspace;
@@ -348,6 +350,8 @@ function getReportTestData(test){
 		name:test.testId,
 		type:test.testType,
 		state:test.state,
+		isCompliant:test.isCompliant ? 'Yes' : 'No',
+		isCovered:test.isCovered ? 'Yes' : 'No',
 		startTime:test.startTime,
 		endTime:test.endTime,
 		duration:(test.startTime && test.endTime) ? ((Date.parse((test.endTime).toString()) - Date.parse((test.startTime).toString()))/1000).toFixed(2) : '',

@@ -1,10 +1,12 @@
 class TestInfo {
 
-    constructor(index,name,type,state,startTime,endTime,duration,url,error){
+    constructor(index,name,type,state,isCompliant,isCovered,startTime,endTime,duration,url,error){
         this.index = index;
         this.name = name;
         this.type = type;
         this.state = state;
+        this.isCompliant = isCompliant;
+        this.isCovered = isCovered;
         this.startTime = startTime;
         this.endTime = endTime;
         this.duration = duration;
@@ -35,6 +37,18 @@ class TestInfo {
     }
     getState(){
         return this.state;
+    }
+    setIsCompliant(isCompliant){
+        this.isCompliant = isCompliant;
+    }
+    getIsCompliant(){
+        return this.isCompliant;
+    }
+    setIsCovered(isCovered){
+        this.isCovered = isCovered;
+    }
+    getIsCovered(){
+        return this.isCovered;
     }
     setStartTime(startTime){
         this.startTime = startTime

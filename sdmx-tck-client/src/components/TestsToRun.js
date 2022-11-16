@@ -10,7 +10,7 @@ class TestsToRun extends React.Component {
 
   renderTest = (test, rows) => {
     var cells = [];
-    /*Decide the className of the status column accordin to the status that it is representing
+    /*Decide the className of the status column according to the status that it is representing
 
     1. Waiting to Start -> black color (default)
     2. Success -> green color
@@ -38,6 +38,8 @@ class TestsToRun extends React.Component {
     cells.push(<td key={test.testId}>{test.testId}</td>);
     cells.push(<td key={"testType" + test.testId}>{test.testType}</td>);
     cells.push(<td className={nameOfClass} key={"state" + test.testId} >{test.state}</td>);
+    cells.push(<td key={"isCompliant" + test.testId}>{test.isCompliant ? 'Yes' : 'No'}</td>);
+    cells.push(<td key={"isCovered" + test.testId}>{test.isCovered ? 'Yes' : 'No'}</td>);
     cells.push(<td key={"duration" + test.testId} >{(test.startTime && test.endTime) ? ((Date.parse((test.endTime).toString()) - Date.parse((test.startTime).toString()))/1000).toFixed(2) : ''}</td>);
     cells.push(<td key={"structure" + test.testId}> {structureInfo}</td>);
     cells.push(<td key={"more" + test}><TestDetails test={test} /></td>);
@@ -68,13 +70,15 @@ class TestsToRun extends React.Component {
         <table id="testsTable">
           <tbody>
             <tr>
-              <th colSpan='7'><b>Tests Ready To Run</b></th>
+              <th colSpan='9'><b>Tests Ready To Run</b></th>
             </tr>
             <tr>
               <th>Index</th>
               <th>Test Name</th>
               <th>Test Type</th>
               <th>State</th>
+              <th>Compliant</th>
+              <th>Covered</th>
               <th>Duration (sec)</th>
               <th>Structure</th>
               <th></th>
