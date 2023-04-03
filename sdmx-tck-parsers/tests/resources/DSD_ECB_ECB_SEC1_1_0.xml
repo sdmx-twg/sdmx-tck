@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IREF790825</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2020-09-14T10:24:43Z</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:DataStructures>
+			<str:DataStructure agencyID="ECB" id="ECB_SEC1" isExternalReference="false" isFinal="false" uri="https://www.ecb.europa.eu/vocabulary/stats/sec/1" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ECB:ECB_SEC1(1.0)" version="1.0">
+				<com:Name xml:lang="en">Securities</com:Name>
+				<str:DataStructureComponents>
+					<str:DimensionList id="DimensionDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=ECB:ECB_SEC1(1.0).DimensionDescriptor">
+						<str:Dimension id="FREQ" position="1" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_SEC1(1.0).FREQ">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="FREQ" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_FREQ" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="REF_AREA" position="2" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_SEC1(1.0).REF_AREA">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="REF_AREA" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_AREA_EE" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="2" minLength="2" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="SEC_ISSUING_SECTOR" position="3" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_SEC1(1.0).SEC_ISSUING_SECTOR">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="SEC_ISSUING_SECTOR" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_ESA95_SECTOR" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="4" minLength="4" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="SEC_ITEM" position="4" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_SEC1(1.0).SEC_ITEM">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="SEC_ITEM" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_ESA95_ACCOUNT" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="6" minLength="6" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="SEC_VALUATION" position="5" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_SEC1(1.0).SEC_VALUATION">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="SEC_VALUATION" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_MUFA_VALUATION" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="DATA_TYPE_SEC" position="6" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_SEC1(1.0).DATA_TYPE_SEC">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="DATA_TYPE_SEC" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_DATA_TYPE_SEC" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="CURRENCY_TRANS" position="7" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_SEC1(1.0).CURRENCY_TRANS">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="CURRENCY_TRANS" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_CURRENCY" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="3" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="SERIES_DENOM" position="8" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_SEC1(1.0).SERIES_DENOM">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="SERIES_DENOM" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_SERIES_DENOM" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="SEC_SUFFIX" position="9" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_SEC1(1.0).SEC_SUFFIX">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="SEC_SUFFIX" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_SEC_SUFFIX" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:TimeDimension id="TIME_PERIOD" position="10" urn="urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=ECB:ECB_SEC1(1.0).TIME_PERIOD">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="TIME_PERIOD" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="ObservationalTimePeriod"/>
+							</str:LocalRepresentation>
+						</str:TimeDimension>
+					</str:DimensionList>
+					<str:Group id="Group" urn="urn:sdmx:org.sdmx.infomodel.datastructure.GroupDimensionDescriptor=ECB:ECB_SEC1(1.0).Group">
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="REF_AREA"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="SEC_ISSUING_SECTOR"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="SEC_ITEM"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="SEC_VALUATION"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="DATA_TYPE_SEC"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="CURRENCY_TRANS"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="SERIES_DENOM"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="SEC_SUFFIX"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+					</str:Group>
+					
+					<str:MeasureList id="MeasureDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=ECB:ECB_SEC1(1.0).MeasureDescriptor">
+						<str:PrimaryMeasure id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=ECB:ECB_SEC1(1.0).OBS_VALUE">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="OBS_VALUE" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="15" textType="String"/>
+							</str:LocalRepresentation>
+						</str:PrimaryMeasure>
+					</str:MeasureList>
+				</str:DataStructureComponents>
+			</str:DataStructure>
+		</str:DataStructures>
+	</mes:Structures>
+</mes:Structure>

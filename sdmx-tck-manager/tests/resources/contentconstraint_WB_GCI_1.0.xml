@@ -1,0 +1,26 @@
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IREF535100</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2021-07-14T09:05:16Z</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:Constraints>
+			<str:ContentConstraint agencyID="WB" id="GCI" isExternalReference="false" isFinal="false" type="Allowed" urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=WB:GCI(1.0)" version="1.0">
+				<com:Name xml:lang="en">Global Competative Index</com:Name>
+				<str:ConstraintAttachment>
+					<str:Dataflow>
+						<Ref agencyID="WB" class="Dataflow" id="GCI" package="datastructure" version="1.0"/>
+					</str:Dataflow>
+				</str:ConstraintAttachment>
+				<str:CubeRegion include="true">
+					<com:KeyValue id="FREQ">
+						<com:Value>A</com:Value>
+					</com:KeyValue>
+				</str:CubeRegion>
+			</str:ContentConstraint>
+		</str:Constraints>
+	</mes:Structures>
+</mes:Structure>

@@ -1,2 +1,4 @@
-node_modules/
-mochawesome-report/
+/**/node_modules
+/**/.vscode
+.idea
+package-lock.json

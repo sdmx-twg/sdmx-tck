@@ -1,0 +1,904 @@
+<xs:schema xmlns:dsd="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/structurespecific" xmlns="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=WB:GCI(1.0):ObsLevelDim:AllDimensions" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:compact="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structurespecific" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/structurespecific" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=WB:GCI(1.0):ObsLevelDim:AllDimensions" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" schemaLocation="https://registry.sdmx.org/schemas/v2_1/SDMXCommon.xsd"/>
+<xs:import namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/structurespecific" schemaLocation="https://registry.sdmx.org/schemas/v2_1/SDMXDataStructureSpecific.xsd"/>
+<xs:simpleType name="CL_FREQ">
+<xs:restriction base="xs:string">
+<xs:enumeration value="A">
+<xs:annotation>
+<xs:documentation xml:lang="en">To be used for data collected or disseminated every year.</xs:documentation>
+</xs:annotation>
+</xs:enumeration>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="CL_INDICATOR">
+<xs:restriction base="xs:string">
+<xs:enumeration value="GCI_C_12">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI_A_01">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI_A_02">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI_A_03">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI_A_04">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI_B_05">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI_B_09">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ331">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ046">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ332">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ067">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ133">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="AIRSEATKM">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ050">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ048">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ034">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ033">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ170">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ168">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ095">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ169">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI_C_11">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ100">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ119">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ118">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ123">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ135">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ400">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ399">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ122">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ146">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="DOMMKTIDX">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ088">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ104">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ398">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ397">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ127">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ039">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ040">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ153">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EXPGDP">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ105">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ121">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ139">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ042">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ070">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI_B_08">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ091">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BBSUBPC">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="FIXEDTELPC">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ136">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="FGNMKTIDX">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SHRGDPWL">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI_B_06">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ074">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ134">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="HIVPREV">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="IMPGDP">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="NETUSERPCT">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="INFANTMORTPC">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ052">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ099">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ084">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="INTBDWIDUSER">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BRIBEIDX">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ144">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI_B_07">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="LEGRGHTIDX">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="LIFEEXPECT">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ102">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ101">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MALARIAPC">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GCI_B_10_01">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MOBBBSUBPC">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MOBSUBPC">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ114">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="STARTBUSDAYS">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="STARTBUSPROC">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ035">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="pctpatentapplpc">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ137">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ094">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ096">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ENROL1NET">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ120">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ051">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ098">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ041">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ061">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ064">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ131">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ130">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ056">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ353">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ129">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQrailroad">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ057">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ071">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ128">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="REDUNCOST">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ092">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ055">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ126">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ENROL2GR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ087">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ109">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ097">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="INVESTPROIDX">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ENROL3GR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="CORPTAXRATE">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="TFDUTY">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ049">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="TBPC">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ072">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ115">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ089">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ043">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EOSQ124">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="FEMLABOR">
+<xs:annotation/>
+</xs:enumeration>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="CL_REF_AREA">
+<xs:restriction base="xs:string">
+<xs:enumeration value="AGO">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ALB">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ARE">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ARG">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ARM">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="AUS">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="AUT">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="AZE">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BDI">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BEL">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BEN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BFA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BGD">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BGR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BHR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BIH">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BLZ">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BOL">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BRA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BRB">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BRN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BTN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="BWA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="CAN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="CHE">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="CHL">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="CHN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="CIV">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="CMR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="COD">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="COL">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="CPV">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="CRI">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="CYP">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="CZE">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="DEU">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="DNK">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="DOM">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="DZA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ECU">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EGY">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ESP">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="EST">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ETH">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="FIN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="FRA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GAB">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GBR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GEO">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GHA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GIN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GMB">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GRC">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GTM">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="GUY">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="HKG">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="HND">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="HRV">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="HTI">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="HUN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="IDN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="IND">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="IRL">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="IRN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ISL">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ISR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ITA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="JAM">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="JOR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="JPN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="KAZ">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="KEN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="KGZ">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="KHM">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="KOR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="KWT">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="LAO">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="LBN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="LBR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="LBY">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="LKA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="LSO">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="LTU">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="LUX">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="LVA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MAR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MDA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MDG">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MEX">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MKD">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MLI">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MLT">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MMR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MNE">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MNG">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MOZ">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MRT">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MUS">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MWI">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MYS">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="NAM">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="NGA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="NIC">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="NLD">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="NOR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="NPL">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="NZL">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="OMN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="PAK">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="PAN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="PER">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="PHL">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="POL">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="PRI">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="PRT">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="PRY">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="QAT">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ROU">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="RUS">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="RWA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SAU">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SEN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SGP">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SLE">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SLV">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SRB">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SUR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SVK">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SVN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SWE">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SWZ">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SYC">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="SYR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="TCD">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="THA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="TJK">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="TLS">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="TTO">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="TUN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="TUR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="TZA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="UGA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="UKR">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="URY">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="USA">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="VEN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="VNM">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="YEM">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ZAF">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ZMB">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ZWE">
+<xs:annotation/>
+</xs:enumeration>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="CL_SUB_INDICATOR">
+<xs:restriction base="xs:string">
+<xs:enumeration value="ZERO_TEN_BEST">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="HUNDRED_POP">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="THOUSAND_LIVE_BIRTHS">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="ONE_SEVEN_BEST">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="INDEX_ONE_SEVEN">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="KBS_PER_USER">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="KM_WEEK_MILLIONS">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="MILLION_POP">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="RANK">
+<xs:annotation/>
+</xs:enumeration>
+<xs:enumeration value="VALUE">
+<xs:annotation/>
+</xs:enumeration>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="TIME_PERIOD">
+<xs:restriction base="common:ObservationalTimePeriodType"/>
+</xs:simpleType>
+<xs:element name="DataSet" type="DataSetType"/>
+<xs:complexType name="DataSetType">
+<xs:complexContent>
+<xs:restriction base="dsd:DataSetType">
+<xs:sequence>
+<xs:element ref="common:Annotations" minOccurs="0"/>
+<xs:element name="DataProvider" type="common:DataProviderReferenceType" form="unqualified" minOccurs="0"/>
+<xs:choice minOccurs="0">
+<xs:element name="Obs" type="ObsType" form="unqualified" maxOccurs="unbounded"/>
+</xs:choice>
+</xs:sequence>
+<xs:attribute name="REPORTING_YEAR_START_DAY" type="xs:gMonthDay" use="prohibited"/>
+</xs:restriction>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ObsType">
+<xs:complexContent>
+<xs:restriction base="dsd:ObsType">
+<xs:sequence>
+<xs:element ref="common:Annotations" minOccurs="0"/>
+</xs:sequence>
+<xs:attribute name="REF_AREA" type="CL_REF_AREA" use="required"/>
+<xs:attribute name="INDICATOR" type="CL_INDICATOR" use="required"/>
+<xs:attribute name="SUB_INDICATOR" type="CL_SUB_INDICATOR" use="required"/>
+<xs:attribute name="FREQ" type="CL_FREQ" use="required"/>
+<xs:attribute name="OBS_VALUE" type="xs:string" use="optional"/>
+<xs:attribute name="REPORTING_YEAR_START_DAY" type="xs:gMonthDay" use="prohibited"/>
+<xs:attribute name="TIME_PERIOD" type="common:ObservationalTimePeriodType" use="required"/>
+<xs:attribute name="type" type="common:IDType" use="prohibited"/>
+
+</xs:restriction>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>

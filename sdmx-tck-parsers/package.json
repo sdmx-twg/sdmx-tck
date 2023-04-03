@@ -1,0 +1,21 @@
+{
+  "name": "sdmx-tck-parsers",
+  "version": "3.0.2",
+  "description": "SDMX TCK PARSERS",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@authenio/xsd-schema-validator": "0.7.1",
+    "jsonpath": "1.0.2",
+    "mocha": "8.3.2",
+    "sdmx-tck-api": "file:../sdmx-tck-api",
+    "xml2js": "0.4.22"
+  },
+  "devDependencies": {
+    "fs": "0.0.1-security"
+  }
+}

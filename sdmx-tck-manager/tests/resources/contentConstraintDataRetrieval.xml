@@ -1,0 +1,194 @@
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IREF370620</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2020-07-20T09:24:29Z</mes:Prepared>
+		<mes:Sender id="SDMX"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:Constraints>
+			<str:ContentConstraint agencyID="ESTAT" id="CR_NASEC_T0622_A" isExternalReference="false" isFinal="false" type="Allowed" urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=ESTAT:CR_NASEC_T0622_A(1.7)" version="1.7">
+				<com:Name xml:lang="en">CR_NASEC_T0622_A</com:Name>
+				<str:ConstraintAttachment>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NASEC_T0622_A" package="datastructure" version="1.11"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NASEC_T0622_A" package="datastructure" version="1.10"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NASEC_T0622_A" package="datastructure" version="1.7"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NASEC_T0622_A" package="datastructure" version="1.6"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NASEC_T0622_A" package="datastructure" version="1.9.1"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NASEC_T0622_A" package="datastructure" version="1.9"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NASEC_T0622_A" package="datastructure" version="1.8"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NASEC_T0622_A" package="datastructure" version="1.3"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NASEC_T0622_A" package="datastructure" version="1.2"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NASEC_T0622_A" package="datastructure" version="1.5"/>
+					</str:Dataflow>
+					<str:Dataflow>
+						<Ref agencyID="ESTAT" class="Dataflow" id="NASEC_T0622_A" package="datastructure" version="1.4"/>
+					</str:Dataflow>
+				</str:ConstraintAttachment>
+				<str:CubeRegion include="true">
+					<com:KeyValue id="ADJUSTMENT">
+						<com:Value>N</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="CONSOLIDATION">
+						<com:Value>N</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="COUNTERPART_AREA">
+						<com:Value>B0</com:Value>
+						<com:Value>D0</com:Value>
+						<com:Value>U2</com:Value>
+						<com:Value>W0</com:Value>
+						<com:Value>W1</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="COUNTERPART_SECTOR">
+						<com:Value>S1</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="CURRENCY_DENOM">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="CUST_BREAKDOWN">
+						<com:Value>_T</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="EXPENDITURE">
+						<com:Value>_Z</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="INSTR_ASSET">
+						<com:Value>F61</com:Value>
+						<com:Value>F6</com:Value>
+						<com:Value>F522</com:Value>
+						<com:Value>F521</com:Value>
+						<com:Value>F52</com:Value>
+						<com:Value>F519</com:Value>
+						<com:Value>F512</com:Value>
+						<com:Value>F511</com:Value>
+						<com:Value>F51</com:Value>
+						<com:Value>F5</com:Value>
+						<com:Value>F4</com:Value>
+						<com:Value>F3</com:Value>
+						<com:Value>F29</com:Value>
+						<com:Value>F22</com:Value>
+						<com:Value>F21</com:Value>
+						<com:Value>F12</com:Value>
+						<com:Value>F11</com:Value>
+						<com:Value>F1</com:Value>
+						<com:Value>F</com:Value>
+						<com:Value>F89</com:Value>
+						<com:Value>F81</com:Value>
+						<com:Value>F8</com:Value>
+						<com:Value>F72</com:Value>
+						<com:Value>F71</com:Value>
+						<com:Value>F7</com:Value>
+						<com:Value>F6M</com:Value>
+						<com:Value>F66</com:Value>
+						<com:Value>F65</com:Value>
+						<com:Value>F64</com:Value>
+						<com:Value>F63</com:Value>
+						<com:Value>F62</com:Value>
+						<com:Value>F2</com:Value>
+						<com:Value>F221</com:Value>
+						<com:Value>F229</com:Value>
+						<com:Value>F711</com:Value>
+						<com:Value>F712</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="MATURITY">
+						<com:Value>S</com:Value>
+						<com:Value>L</com:Value>
+						<com:Value>T</com:Value>
+						<com:Value>_Z</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="PRICES">
+						<com:Value>V</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="REF_SECTOR">
+						<com:Value>S1</com:Value>
+						<com:Value>S11</com:Value>
+						<com:Value>S11001</com:Value>
+						<com:Value>S12</com:Value>
+						<com:Value>S121</com:Value>
+						<com:Value>S122</com:Value>
+						<com:Value>S123</com:Value>
+						<com:Value>S124</com:Value>
+						<com:Value>S125</com:Value>
+						<com:Value>S12K</com:Value>
+						<com:Value>S12O</com:Value>
+						<com:Value>S12T</com:Value>
+						<com:Value>S12001</com:Value>
+						<com:Value>S126</com:Value>
+						<com:Value>S127</com:Value>
+						<com:Value>S128</com:Value>
+						<com:Value>S129</com:Value>
+						<com:Value>S12Q</com:Value>
+						<com:Value>S13</com:Value>
+						<com:Value>S1311</com:Value>
+						<com:Value>S1312</com:Value>
+						<com:Value>S1313</com:Value>
+						<com:Value>S1314</com:Value>
+						<com:Value>S1M</com:Value>
+						<com:Value>S14</com:Value>
+						<com:Value>S15</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="STO">
+						<com:Value>K7</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="TRANSFORMATION">
+						<com:Value>N</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="UNIT_MEASURE">
+						<com:Value>XDC</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="VALUATION">
+						<com:Value>S</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="ACCOUNTING_ENTRY">
+						<com:Value>A</com:Value>
+						<com:Value>L</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="FREQ">
+						<com:Value>A</com:Value>
+					</com:KeyValue>
+					<com:Attribute id="TABLE_IDENTIFIER">
+						<com:Value>T0622</com:Value>
+					</com:Attribute>
+					<com:Attribute id="TIME_FORMAT">
+						<com:Value>P1Y</com:Value>
+					</com:Attribute>
+				</str:CubeRegion>
+			</str:ContentConstraint>
+			<str:ContentConstraint agencyID="OECD" id="CR_FDI" isExternalReference="false" isFinal="false" type="Allowed" urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=OECD:CR_FDI(1.0)" version="1.0">
+				<com:Name xml:lang="en">foreign direct investment</com:Name>
+				<str:ConstraintAttachment>
+					<str:DataStructure>
+						<Ref agencyID="OECD" class="DataStructure" id="FDI" package="datastructure" version="1.7"/>
+					</str:DataStructure>
+				</str:ConstraintAttachment>
+				<str:CubeRegion include="false">
+					<com:KeyValue id="REF_SECTOR">
+						<com:Value>S1SP</com:Value>
+						<com:Value>S12SP</com:Value>
+						<com:Value>S1SSP</com:Value>
+						<com:Value>S1273</com:Value>
+					</com:KeyValue>
+				</str:CubeRegion>
+			</str:ContentConstraint>
+		</str:Constraints>
+	</mes:Structures>
+</mes:Structure>
