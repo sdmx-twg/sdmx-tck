@@ -1,0 +1,15 @@
+{
+  "name": "sdmx-tck-api",
+  "version": "4.0.0",
+  "description": "SDMX TCK API",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "mocha": "8.3.2"
+  }
+}

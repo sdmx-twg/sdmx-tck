@@ -1,0 +1,431 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IDREF147194</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2020-06-11T15:33:53</mes:Prepared>
+		<mes:Sender id="ECB"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:DataStructures>
+			<str:DataStructure agencyID="ECB" id="ECB_AME1" isExternalReference="false" isFinal="false" uri="https://www.ecb.europa.eu/vocabulary/stats/ame/1" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ECB:ECB_AME1(1.0)" version="1.0">
+				<com:Name xml:lang="en">AMECO</com:Name>
+				<str:DataStructureComponents>
+					<str:DimensionList id="DimensionDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=ECB:ECB_AME1(1.0).DimensionDescriptor">
+						<str:Dimension id="FREQ" position="1" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_AME1(1.0).FREQ">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="FREQ" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_FREQ" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="AME_REF_AREA" position="2" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_AME1(1.0).AME_REF_AREA">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="AME_REF_AREA" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_AME_AREA_EE" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="4" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="AME_TRANSFORMATION" position="3" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_AME1(1.0).AME_TRANSFORMATION">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="AME_TRANSFORMATION" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_AME_TRANSFORM" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="AME_AGG_METHOD" position="4" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_AME1(1.0).AME_AGG_METHOD">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="AME_AGG_METHOD" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_AME_AGG_METHOD" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="AME_UNIT" position="5" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_AME1(1.0).AME_UNIT">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="AME_UNIT" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_AME_UNIT" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="3" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="AME_REFERENCE" position="6" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_AME1(1.0).AME_REFERENCE">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="AME_REFERENCE" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_AME_REFERENCE" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="3" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="AME_ITEM" position="7" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_AME1(1.0).AME_ITEM">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="AME_ITEM" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_AME_ITEM" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="10" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:TimeDimension id="TIME_PERIOD" position="8" urn="urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=ECB:ECB_AME1(1.0).TIME_PERIOD">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="TIME_PERIOD" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="ObservationalTimePeriod"/>
+							</str:LocalRepresentation>
+						</str:TimeDimension>
+					</str:DimensionList>
+					<str:Group id="Group" urn="urn:sdmx:org.sdmx.infomodel.datastructure.GroupDimensionDescriptor=ECB:ECB_AME1(1.0).Group">
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="AME_REF_AREA"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="AME_TRANSFORMATION"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="AME_AGG_METHOD"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="AME_UNIT"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="AME_REFERENCE"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="AME_ITEM"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+					</str:Group>
+					<str:AttributeList id="AttributeDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=ECB:ECB_AME1(1.0).AttributeDescriptor">
+						<str:Attribute assignmentStatus="Mandatory" id="TIME_FORMAT" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_AME1(1.0).TIME_FORMAT">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="TIME_FORMAT" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="3" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_TRANSFORMATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_AGG_METHOD"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_UNIT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REFERENCE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="OBS_STATUS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_AME1(1.0).OBS_STATUS">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="OBS_STATUS" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_OBS_STATUS" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="OBS_CONF" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_AME1(1.0).OBS_CONF">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="OBS_CONF" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_OBS_CONF" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="OBS_PRE_BREAK" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_AME1(1.0).OBS_PRE_BREAK">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="OBS_PRE_BREAK" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="15" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="PUBL_ECB" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_AME1(1.0).PUBL_ECB">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="PUBL_ECB" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="1050" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_TRANSFORMATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_AGG_METHOD"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_UNIT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REFERENCE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="PUBL_MU" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_AME1(1.0).PUBL_MU">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="PUBL_MU" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="1050" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_TRANSFORMATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_AGG_METHOD"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_UNIT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REFERENCE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="PUBL_PUBLIC" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_AME1(1.0).PUBL_PUBLIC">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="PUBL_PUBLIC" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="1050" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_TRANSFORMATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_AGG_METHOD"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_UNIT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REFERENCE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="COMPILATION" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_AME1(1.0).COMPILATION">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="COMPILATION" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="1050" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="AME_REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_TRANSFORMATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_AGG_METHOD"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_UNIT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REFERENCE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="EXT_TITLE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_AME1(1.0).EXT_TITLE">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="EXT_TITLE" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="350" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="AME_REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_TRANSFORMATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_AGG_METHOD"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_UNIT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REFERENCE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="EXT_UNIT" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_AME1(1.0).EXT_UNIT">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="EXT_UNIT" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="70" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="AME_REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_TRANSFORMATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_AGG_METHOD"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_UNIT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REFERENCE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="TITLE_COMPL" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_AME1(1.0).TITLE_COMPL">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="TITLE_COMPL" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="1050" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="AME_REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_TRANSFORMATION"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_AGG_METHOD"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_UNIT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_REFERENCE"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="AME_ITEM"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+					</str:AttributeList>
+					<str:MeasureList id="MeasureDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=ECB:ECB_AME1(1.0).MeasureDescriptor">
+						<str:PrimaryMeasure id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=ECB:ECB_AME1(1.0).OBS_VALUE">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="OBS_VALUE" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="15" textType="String"/>
+							</str:LocalRepresentation>
+						</str:PrimaryMeasure>
+					</str:MeasureList>
+				</str:DataStructureComponents>
+			</str:DataStructure>
+		</str:DataStructures>
+	</mes:Structures>
+</mes:Structure>
