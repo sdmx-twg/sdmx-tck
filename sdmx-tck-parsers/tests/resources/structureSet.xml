@@ -1,0 +1,16 @@
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+<mes:Header>
+    <mes:ID>IDREF1b6017ad-0035-4f4f-a284-c3a202cecb43</mes:ID>
+    <mes:Test>false</mes:Test>
+    <mes:Prepared>2020-02-14T10:00:11Z</mes:Prepared>
+    <mes:Sender id="SDMX"/>
+    <mes:Receiver id="not_supplied"/>
+</mes:Header>
+<mes:Structures>
+    <str:StructureSets>
+        <str:StructureSet urn="urn:sdmx:org.sdmx.infomodel.mapping.StructureSet=SDMX:test(1.0)" structureURL="https://registry.sdmx.org/ws/public/sdmxapi/rest/structureset/SDMX/test/1.0" isExternalReference="true" agencyID="SDMX" id="test" isFinal="false" version="1.0">
+            <com:Name xml:lang="en">test</com:Name>
+        </str:StructureSet>
+    </str:StructureSets>
+</mes:Structures>
+</mes:Structure>

@@ -1,2 +1,2 @@
-node_modules/
-mochawesome-report/
+/**/node_modules
+/**/.vscode

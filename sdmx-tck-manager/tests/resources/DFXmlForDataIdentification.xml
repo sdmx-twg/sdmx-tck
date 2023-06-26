@@ -1,0 +1,42 @@
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IREF089387</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2020-11-25T12:55:30Z</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:Dataflows>
+			<str:Dataflow agencyID="ECB" id="EXR" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)" version="1.0">
+				<com:Name xml:lang="en">ECB Exchange Rates</com:Name>
+				<com:Description xml:lang="en">ECB Exchange Rates - example of a 'non-country-specific' data source</com:Description>
+				<str:Structure>
+					<Ref agencyID="ECB" class="DataStructure" id="ECB_EXR1" package="datastructure" version="1.0"/>
+				</str:Structure>
+			</str:Dataflow>
+		</str:Dataflows>
+		<str:ProvisionAgreements>
+			<str:ProvisionAgreement agencyID="ECB" id="EXR" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ECB:EXR(1.0)" version="1.0">
+				<com:Name xml:lang="en">European Central Bank Exchange Rates</com:Name>
+				<com:Description xml:lang="en">ECB European Exchange Rates - example provision agreement demonstrating integrating a non-country-specific data source into the system</com:Description>
+				<str:StructureUsage>
+					<Ref agencyID="ECB" class="Dataflow" id="EXR" package="datastructure" version="1.0"/>
+				</str:StructureUsage>
+				<str:DataProvider>
+					<Ref agencyID="ECB" class="DataProvider" id="ECB" maintainableParentID="DATA_PROVIDERS" maintainableParentVersion="1.0" package="base"/>
+				</str:DataProvider>
+			</str:ProvisionAgreement>
+			<str:ProvisionAgreement agencyID="ECB1" id="EXR1" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ECB:EXR(1.0)" version="1.0">
+				<com:Name xml:lang="en">European Central Bank Exchange Rates</com:Name>
+				<com:Description xml:lang="en">ECB European Exchange Rates - example provision agreement demonstrating integrating a non-country-specific data source into the system</com:Description>
+				<str:StructureUsage>
+					<Ref agencyID="ECB1" class="Dataflow" id="EXR1" package="datastructure" version="1.0"/>
+				</str:StructureUsage>
+				<str:DataProvider>
+					<Ref agencyID="ECB" class="DataProvider" id="ECB1" maintainableParentID="DATA_PROVIDERS" maintainableParentVersion="1.0" package="base"/>
+				</str:DataProvider>
+			</str:ProvisionAgreement>
+		</str:ProvisionAgreements>
+	</mes:Structures>
+</mes:Structure>
