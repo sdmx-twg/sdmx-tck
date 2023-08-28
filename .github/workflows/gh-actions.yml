@@ -1,0 +1,27 @@
+name: node.js CI for SDMX TCK
+run-name: Build SDMX TCK
+on:
+  push:
+    branches: [workflow_test]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+        working-directory: sdmx-tck-api
+      - run: npm install
+        working-directory: sdmx-tck-parsers
+      - run: npm install
+        working-directory: sdmx-tck-manager
+      - run: npm install
+        working-directory: sdmx-tck-client
+      - run: npm install
+        working-directory: sdmx-tck-reporter
