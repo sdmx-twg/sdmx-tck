@@ -17,11 +17,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
         working-directory: sdmx-tck-api
-      - run: npm install
-        working-directory: sdmx-tck-parsers
-      - run: npm install
-        working-directory: sdmx-tck-manager
-      - run: npm install
-        working-directory: sdmx-tck-client
-      - run: npm install
-        working-directory: sdmx-tck-reporter
+      - run: npm publish
+#      - run: npm install
+#        working-directory: sdmx-tck-parsers
+#      - run: npm install
+#        working-directory: sdmx-tck-manager
+#      - run: npm install
+#        working-directory: sdmx-tck-client
+#      - run: npm install
+#        working-directory: sdmx-tck-reporter
