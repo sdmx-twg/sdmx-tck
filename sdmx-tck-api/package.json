@@ -11,5 +11,9 @@
   "devDependencies": {},
   "dependencies": {
     "mocha": "8.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdmx-twg/sdmx-tck.git"
   }
 }

@@ -19,6 +19,8 @@ jobs:
         working-directory: sdmx-tck-api
       - run: npm publish
         working-directory: sdmx-tck-api
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #      - run: npm install
 #        working-directory: sdmx-tck-parsers
 #      - run: npm install
