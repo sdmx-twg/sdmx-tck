@@ -1,4 +1,4 @@
-FROM timbru31/java-node
+FROM timbru31/java-node:11-jdk-hydrogen
 
 WORKDIR /usr/src/app
 RUN mkdir sdmx-tck-api
