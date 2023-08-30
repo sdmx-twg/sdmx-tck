@@ -12,8 +12,9 @@ WORKDIR /usr/src/app/sdmx-tck-api
 RUN npm install
 
 RUN java -version
-RUN alternatives --display java
-RUN alternatives --display javac
+RUN which java
+RUN env |grep JAVA
+RUN which javac
 RUN javac -version
 
 WORKDIR /usr/src/app/sdmx-tck-parsers
