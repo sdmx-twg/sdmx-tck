@@ -11,17 +11,11 @@ COPY sdmx-tck-api/package*.json .
 WORKDIR /usr/src/app/sdmx-tck-api
 RUN npm install
 
-RUN java -version
-RUN which java
-RUN env |grep JAVA
-RUN which javac
-RUN javac -version
-
 WORKDIR /usr/src/app/sdmx-tck-parsers
 COPY sdmx-tck-parsers/package*.json .
 RUN npm install
 
-WORKDIR /usr/src/app/sdmx-tck-namager
+WORKDIR /usr/src/app/sdmx-tck-manager
 COPY sdmx-tck-manager/package*.json .
 RUN npm install
 
@@ -37,7 +31,7 @@ WORKDIR /usr/src/app
 ADD sdmx-tck-client/public ./sdmx-tck-client/public
 ADD sdmx-tck-manager/schemas ./sdmx-tck-manager/schemas
 
-WORKDIR /usr/src/app/sdmx-tck-namager
+WORKDIR /usr/src/app/sdmx-tck-manager
 RUN ["npm", "run", "start-server"]
 WORKDIR /usr/src/app/sdmx-tck-client
 CMD ["npm", "start"]
