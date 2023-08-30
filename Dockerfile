@@ -1,4 +1,4 @@
-FROM zazukoians/node-java
+FROM node:18
 
 WORKDIR /usr/src/app
 RUN mkdir sdmx-tck-api
@@ -12,6 +12,8 @@ WORKDIR /usr/src/app/sdmx-tck-api
 RUN npm install
 
 RUN java -version
+RUN alternatives --display java
+RUN alternatives --display javac
 RUN javac -version
 
 WORKDIR /usr/src/app/sdmx-tck-parsers
