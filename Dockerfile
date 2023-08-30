@@ -30,6 +30,7 @@ RUN npm install
 WORKDIR /usr/src/app
 ADD sdmx-tck-client/public ./sdmx-tck-client/public
 ADD sdmx-tck-manager/schemas ./sdmx-tck-manager/schemas
+COPY sdmx-tck-manager/index.js ./sdmx-tck-manager/
 
 WORKDIR /usr/src/app/sdmx-tck-manager
 RUN ["npm", "run", "start-server"]
