@@ -11,6 +11,7 @@ COPY sdmx-tck-api/package*.json .
 WORKDIR /usr/src/app/sdmx-tck-api
 RUN npm install
 
+RUN java -version
 RUN javac -version
 
 WORKDIR /usr/src/app/sdmx-tck-parsers
