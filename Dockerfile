@@ -7,7 +7,7 @@ RUN mkdir sdmx-tck-manager
 RUN mkdir sdmx-tck-client
 RUN mkdir sdmx-tck-reporter
 
-COPY sdmx-tck-api/package*.json ./sdmx-tck-api
+COPY sdmx-tck-api/package*.json .
 WORKDIR /usr/src/app/sdmx-tck-api
 RUN npm install
 
