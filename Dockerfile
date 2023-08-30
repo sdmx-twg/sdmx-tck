@@ -1,4 +1,4 @@
-FROM timbru31/java-node
+FROM zazukoians/node-java
 
 WORKDIR /usr/src/app
 RUN mkdir sdmx-tck-api
