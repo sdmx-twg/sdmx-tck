@@ -8,20 +8,23 @@ RUN mkdir sdmx-tck-client
 RUN mkdir sdmx-tck-reporter
 
 COPY sdmx-tck-api/package*.json ./sdmx-tck-api
-COPY sdmx-tck-parsers/package*.json ./sdmx-tck-parsers
-COPY sdmx-tck-manager/package*.json ./sdmx-tck-manager
-COPY sdmx-tck-client/package*.json ./sdmx-tck-client
-COPY sdmx-tck-reporter/package*.json ./sdmx-tck-reporter
-
 WORKDIR /usr/src/app/sdmx-tck-api
 RUN npm install
+
 WORKDIR /usr/src/app/sdmx-tck-parsers
+COPY sdmx-tck-parsers/package*.json .
 RUN npm install
+
 WORKDIR /usr/src/app/sdmx-tck-namager
+COPY sdmx-tck-manager/package*.json .
 RUN npm install
+
 WORKDIR /usr/src/app/sdmx-tck-client
+COPY sdmx-tck-client/package*.json .
 RUN npm install
+
 WORKDIR /usr/src/app/sdmx-tck-reporter
+COPY sdmx-tck-reporter/package*.json .
 RUN npm install
 
 WORKDIR /usr/src/app
