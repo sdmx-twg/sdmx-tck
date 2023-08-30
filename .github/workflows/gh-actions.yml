@@ -31,9 +31,9 @@ jobs:
       - run: npm install
         working-directory: sdmx-tck-reporter
   build-and-push-image:
-    runs-on: ubuntu-latest
+    runs-on: timbru31/java-node
     needs: build
-    
+
     permissions:
       contents: read
       packages: write
