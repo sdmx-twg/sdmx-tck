@@ -2,24 +2,30 @@ FROM timbru31/java-node:11-jdk-hydrogen
 
 WORKDIR /usr/src/app
 
-ADD sdmx-tck-api .
+RUN mkdir sdmx-tck-api
+RUN mkdir sdmx-tck-parsers
+RUN mkdir sdmx-tck-manager
+RUN mkdir sdmx-tck-client
+RUN mkdir sdmx-tck-reporter
+
 WORKDIR /usr/src/app/sdmx-tck-api
+ADD sdmx-tck-api/* .
 RUN npm install
 
-ADD sdmx-tck-parsers .
 WORKDIR /usr/src/app/sdmx-tck-parsers
+ADD sdmx-tck-parsers/* .
 RUN npm install
 
-ADD sdmx-tck-manager .
 WORKDIR /usr/src/app/sdmx-tck-manager
+ADD sdmx-tck-manager/* .
 RUN npm install
 
-ADD sdmx-tck-client .
 WORKDIR /usr/src/app/sdmx-tck-client
+ADD sdmx-tck-client/* .
 RUN npm install
 
-ADD sdmx-tck-reporter .
 WORKDIR /usr/src/app/sdmx-tck-reporter
+ADD sdmx-tck-reporter/* .
 RUN npm install
 
 EXPOSE 5000
