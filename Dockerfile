@@ -2,11 +2,11 @@ FROM timbru31/java-node:11-jdk-16
 
 WORKDIR /usr/src/app
 
-ADD sdmx-tck-api .
-ADD sdmx-tck-parsers .
-ADD sdmx-tck-manager .
-ADD sdmx-tck-client .
-ADD sdmx-tck-reporter .
+ADD sdmx-tck-api ./
+ADD sdmx-tck-parsers ./
+ADD sdmx-tck-manager ./
+ADD sdmx-tck-client ./
+ADD sdmx-tck-reporter ./
 
 WORKDIR /usr/src/app/sdmx-tck-api
 RUN npm install
