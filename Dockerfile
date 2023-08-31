@@ -2,30 +2,25 @@ FROM timbru31/java-node:11-jdk-16
 
 WORKDIR /usr/src/app
 
-RUN mkdir sdmx-tck-api
-RUN mkdir sdmx-tck-parsers
-RUN mkdir sdmx-tck-manager
-RUN mkdir sdmx-tck-client
-RUN mkdir sdmx-tck-reporter
+ADD sdmx-tck-api .
+ADD sdmx-tck-parsers .
+ADD sdmx-tck-manager .
+ADD sdmx-tck-client .
+ADD sdmx-tck-reporter .
 
 WORKDIR /usr/src/app/sdmx-tck-api
-ADD sdmx-tck-api/* .
 RUN npm install
 
 WORKDIR /usr/src/app/sdmx-tck-parsers
-ADD sdmx-tck-parsers/* .
 RUN npm install
 
 WORKDIR /usr/src/app/sdmx-tck-manager
-ADD sdmx-tck-manager/* .
 RUN npm install
 
 WORKDIR /usr/src/app/sdmx-tck-client
-ADD sdmx-tck-client/* .
 RUN npm install
 
 WORKDIR /usr/src/app/sdmx-tck-reporter
-ADD sdmx-tck-reporter/* .
 RUN npm install
 
 EXPOSE 5000
