@@ -1,4 +1,4 @@
-FROM timbru31/java-node:11-jdk-hydrogen
+FROM timbru31/java-node:11-jdk-16
 
 WORKDIR /usr/src/app
 
