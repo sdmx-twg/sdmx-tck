@@ -22,6 +22,9 @@ ADD sdmx-tck-reporter .
 WORKDIR /usr/src/app/sdmx-tck-reporter
 RUN npm install
 
+EXPOSE 5000
+EXPOSE 3000
+
 WORKDIR /usr/src/app/sdmx-tck-manager
 CMD ["npm", "run", "dev"]
 #WORKDIR /usr/src/app/sdmx-tck-client
