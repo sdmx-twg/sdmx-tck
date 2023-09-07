@@ -1,0 +1,22 @@
+<message:StructureSpecificData xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:footer="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message/footer" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:ns1="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD" xmlns:ss="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/structurespecific" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD https://demo.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest/schema/dataflow/ECB/EXR/1.0?format=sdmx-2.1">
+	<message:Header>
+		<message:ID>IREF051674</message:ID>
+		<message:Test>false</message:Test>
+		<message:Prepared>2020-11-25T11:52:41Z</message:Prepared>
+		<message:Sender id="Unknown"/>
+		<message:Receiver id="ANONYMOUS"/>
+		<message:Structure dimensionAtObservation="TIME_PERIOD" namespace="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD" structureID="ECB_EXR_1_0">
+			<common:ProvisionAgreement>
+				<Ref agencyID="ECB" id="EXR" version="1.0"/>
+			</common:ProvisionAgreement>
+		</message:Structure>
+		<message:DataSetAction>Information</message:DataSetAction>
+		<message:Extracted>2020-11-25T11:52:41</message:Extracted>
+		<message:ReportingBegin>1980-01-01T00:00:00</message:ReportingBegin>
+		<message:ReportingEnd>2020-01-10T00:00:00</message:ReportingEnd>
+	</message:Header>
+	<message:DataSet ss:dataScope="DataStructure" ss:structureRef="ECB_EXR_1_0" xsi:type="ns1:DataSetType">
+		<Series CURRENCY="ARS" CURRENCY_DENOM="EUR" EXR_SUFFIX="A" EXR_TYPE="SP00" FREQ="A"/>
+		<Series CURRENCY="ARS" CURRENCY_DENOM="EUR1" EXR_SUFFIX="A" EXR_TYPE="SP00" FREQ="A"/>		
+	</message:DataSet>
+</message:StructureSpecificData>

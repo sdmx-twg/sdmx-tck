@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IREF077532</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2021-01-22T09:29:17Z</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:Dataflows>
+			<str:Dataflow agencyID="ECB" id="EXR" isExternalReference="false" isFinal="false" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)" version="1.0">
+				<com:Name xml:lang="en">ECB Exchange Rates</com:Name>
+				<com:Description xml:lang="en">ECB Exchange Rates - example of a 'non-country-specific' data source</com:Description>
+				<str:Structure>
+					<Ref agencyID="ECB" class="DataStructure" id="ECB_EXR1" package="datastructure" version="1.0"/>
+				</str:Structure>
+			</str:Dataflow>
+		</str:Dataflows>
+		<str:Constraints>
+			<str:ContentConstraint agencyID="ECB" id="d42a2cbb-e729-472e-b715-79ac5d01e8c4" isExternalReference="false" isFinal="false" type="Actual" urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=ECB:d42a2cbb-e729-472e-b715-79ac5d01e8c4(1.0)" version="1.0">
+				<com:Annotations>
+					<com:Annotation id="series_count">
+						<com:AnnotationTitle>3633</com:AnnotationTitle>
+						<com:AnnotationType>sdmx_metrics</com:AnnotationType>
+					</com:Annotation>
+				</com:Annotations>
+				<com:Name xml:lang="en">ECB Exchange Rates</com:Name>
+				<str:ConstraintAttachment>
+					<str:Dataflow>
+						<Ref agencyID="ECB" class="Dataflow" id="EXR" package="datastructure" version="1.0"/>
+					</str:Dataflow>
+				</str:ConstraintAttachment>
+				<str:CubeRegion include="true">
+					<com:KeyValue id="CURRENCY">
+						<com:Value>RON</com:Value>
+						<com:Value>EGP</com:Value>
+						<com:Value>BGN</com:Value>
+						<com:Value>HUF</com:Value>
+						<com:Value>NZD</com:Value>
+						<com:Value>E7</com:Value>
+						<com:Value>TWD</com:Value>
+						<com:Value>RUB</com:Value>
+						<com:Value>H11</com:Value>
+						<com:Value>AUD</com:Value>
+						<com:Value>CAD</com:Value>
+						<com:Value>PHP</com:Value>
+						<com:Value>LVL</com:Value>
+						<com:Value>GRD</com:Value>
+						<com:Value>H10</com:Value>
+						<com:Value>MTL</com:Value>
+						<com:Value>MXN</com:Value>
+						<com:Value>CNY</com:Value>
+						<com:Value>INR</com:Value>
+						<com:Value>JPY</com:Value>
+						<com:Value>HKD</com:Value>
+						<com:Value>SKK</com:Value>
+						<com:Value>ILS</com:Value>
+						<com:Value>BRL</com:Value>
+						<com:Value>IDR</com:Value>
+						<com:Value>H37</com:Value>
+						<com:Value>H8</com:Value>
+						<com:Value>USD</com:Value>
+						<com:Value>CYP</com:Value>
+						<com:Value>NOK</com:Value>
+						<com:Value>H42</com:Value>
+						<com:Value>DZD</com:Value>
+						<com:Value>H7</com:Value>
+						<com:Value>SEK</com:Value>
+						<com:Value>HRK</com:Value>
+						<com:Value>MAD</com:Value>
+						<com:Value>CHF</com:Value>
+						<com:Value>PLN</com:Value>
+						<com:Value>THB</com:Value>
+						<com:Value>KRW</com:Value>
+						<com:Value>TRY</com:Value>
+						<com:Value>ARS</com:Value>
+						<com:Value>E0</com:Value>
+						<com:Value>SIT</com:Value>
+						<com:Value>GBP</com:Value>
+						<com:Value>SGD</com:Value>
+						<com:Value>LTL</com:Value>
+						<com:Value>ISK</com:Value>
+						<com:Value>MYR</com:Value>
+						<com:Value>ZAR</com:Value>
+						<com:Value>DKK</com:Value>
+						<com:Value>E8</com:Value>
+						<com:Value>E5</com:Value>
+						<com:Value>EEK</com:Value>
+						<com:Value>EUR</com:Value>
+						<com:Value>CZK</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="EXR_SUFFIX">
+						<com:Value>E</com:Value>
+						<com:Value>A</com:Value>
+						<com:Value>S</com:Value>
+						<com:Value>T</com:Value>
+						<com:Value>R</com:Value>
+						<com:Value>P</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="CURRENCY_DENOM">
+						<com:Value>RON</com:Value>
+						<com:Value>HUF</com:Value>
+						<com:Value>BGN</com:Value>
+						<com:Value>NZD</com:Value>
+						<com:Value>TWD</com:Value>
+						<com:Value>ESP</com:Value>
+						<com:Value>RUB</com:Value>
+						<com:Value>AUD</com:Value>
+						<com:Value>CAD</com:Value>
+						<com:Value>PHP</com:Value>
+						<com:Value>GRD</com:Value>
+						<com:Value>LVL</com:Value>
+						<com:Value>MTL</com:Value>
+						<com:Value>MXN</com:Value>
+						<com:Value>CNY</com:Value>
+						<com:Value>INR</com:Value>
+						<com:Value>JPY</com:Value>
+						<com:Value>VEF</com:Value>
+						<com:Value>HKD</com:Value>
+						<com:Value>SKK</com:Value>
+						<com:Value>ILS</com:Value>
+						<com:Value>BRL</com:Value>
+						<com:Value>IDR</com:Value>
+						<com:Value>ITL</com:Value>
+						<com:Value>PTE</com:Value>
+						<com:Value>USD</com:Value>
+						<com:Value>DEM</com:Value>
+						<com:Value>CYP</com:Value>
+						<com:Value>NOK</com:Value>
+						<com:Value>HRK</com:Value>
+						<com:Value>THB</com:Value>
+						<com:Value>SEK</com:Value>
+						<com:Value>DZD</com:Value>
+						<com:Value>MAD</com:Value>
+						<com:Value>CHF</com:Value>
+						<com:Value>PLN</com:Value>
+						<com:Value>FRF</com:Value>
+						<com:Value>NLG</com:Value>
+						<com:Value>BEF</com:Value>
+						<com:Value>LUF</com:Value>
+						<com:Value>XAU</com:Value>
+						<com:Value>ARS</com:Value>
+						<com:Value>KRW</com:Value>
+						<com:Value>TRY</com:Value>
+						<com:Value>SIT</com:Value>
+						<com:Value>GBP</com:Value>
+						<com:Value>SGD</com:Value>
+						<com:Value>LTL</com:Value>
+						<com:Value>ISK</com:Value>
+						<com:Value>MYR</com:Value>
+						<com:Value>ZAR</com:Value>
+						<com:Value>DKK</com:Value>
+						<com:Value>CLP</com:Value>
+						<com:Value>EEK</com:Value>
+						<com:Value>EUR</com:Value>
+						<com:Value>FIM</com:Value>
+						<com:Value>IEP</com:Value>
+						<com:Value>ATS</com:Value>
+						<com:Value>CZK</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="FREQ">
+						<com:Value>D</com:Value>
+						<com:Value>H</com:Value>
+						<com:Value>A</com:Value>
+						<com:Value>M</com:Value>
+						<com:Value>Q</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="EXR_TYPE">
+						<com:Value>NRU1</com:Value>
+						<com:Value>SP00</com:Value>
+						<com:Value>NN00</com:Value>
+						<com:Value>NRP0</com:Value>
+						<com:Value>ERD0</com:Value>
+						<com:Value>ERU1</com:Value>
+						<com:Value>NRC0</com:Value>
+						<com:Value>ERU0</com:Value>
+						<com:Value>EN00</com:Value>
+						<com:Value>ERP0</com:Value>
+						<com:Value>ERC0</com:Value>
+						<com:Value>NRD0</com:Value>
+					</com:KeyValue>
+				</str:CubeRegion>
+			</str:ContentConstraint>
+		</str:Constraints>
+	</mes:Structures>
+</mes:Structure>
