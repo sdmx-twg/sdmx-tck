@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--nsiws v5.7.0-->
+<mes:Structure xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+    <mes:Header>
+        <mes:ID>IDREF326</mes:ID>
+        <mes:Test>false</mes:Test>
+        <mes:Prepared>2021-02-16T16:28:02.910Z</mes:Prepared>
+        <mes:Sender id="Unknown"/>
+        <mes:Receiver id="Unknown"/>
+    </mes:Header>
+    <mes:Structures>
+        <str:Codelists>
+            <str:Codelist id="CL1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=BI:CL1(1.0.0)" agencyID="BI" version="1.0.0" isFinal="true">
+                <com:Name xml:lang="en">codelist1</com:Name>
+                <str:Code id="SL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=BI:CL1(1.0.0).SL">
+                    <com:Name xml:lang="en">SL</com:Name>
+                    <structure:Parent>
+                        <Ref id="CR00"/>
+                    </structure:Parent>
+                </str:Code>
+            </str:Codelist>
+           
+        </str:Codelists>
+    </mes:Structures>
+</mes:Structure>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IREF226816</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2021-01-14T11:11:29Z</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:Constraints>
+			<str:ContentConstraint agencyID="ECB" id="5a6f4954-fdaa-4f33-84d9-6a800606b227" isExternalReference="false" isFinal="false" type="Actual" urn="urn:sdmx:org.sdmx.infomodel.registry.ContentConstraint=ECB:5a6f4954-fdaa-4f33-84d9-6a800606b227(1.0)" version="1.0">
+				<com:Annotations>
+					<com:Annotation id="series_count">
+						<com:AnnotationTitle>3633</com:AnnotationTitle>
+						<com:AnnotationType>sdmx_metrics</com:AnnotationType>
+					</com:Annotation>
+				</com:Annotations>
+				<com:Name xml:lang="en">ECB Exchange Rates</com:Name>
+				<str:ConstraintAttachment>
+					<str:Dataflow>
+						<Ref agencyID="ECB" class="Dataflow" id="EXR" package="datastructure" version="1.0"/>
+					</str:Dataflow>
+				</str:ConstraintAttachment>
+				<str:CubeRegion include="true">
+					<com:KeyValue id="CURRENCY">
+						<com:Value>RON</com:Value>
+                        <com:Value>EGP</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="EXR_SUFFIX">
+						<com:Value>E</com:Value>
+					</com:KeyValue>
+					<com:KeyValue id="CURRENCY_DENOM">
+						<com:Value>RON</com:Value>
+						
+					</com:KeyValue>
+					<com:KeyValue id="FREQ">
+						<com:Value>D</com:Value>
+
+					</com:KeyValue>
+					<com:KeyValue id="EXR_TYPE">
+						<com:Value>NRU1</com:Value>
+
+					</com:KeyValue>
+				</str:CubeRegion>
+
+                <str:ReferencePeriod startTime="2010-01-01" endTime="2019-12-31"/>
+			</str:ContentConstraint>
+		</str:Constraints>
+	</mes:Structures>
+</mes:Structure>
