@@ -15,7 +15,7 @@ class StructureExtendedResourceIdentParamTestsBuilder{
                     currentRestResource !== STRUCTURES_REST_RESOURCE.actualconstraint &&
                     currentRestResource !== STRUCTURES_REST_RESOURCE.structure) {
 
-                    let referencesTests = STRUCTURE_REFERENCE_PARAMETER_TESTS(currentRestResource,requestMode);
+                    let referencesTests = STRUCTURE_REFERENCE_PARAMETER_TESTS(apiVersion,currentRestResource,requestMode);
                     for (let i in referencesTests) {
                         let test = referencesTests[i];
                         x.numOfTests = x.numOfTests + 1;

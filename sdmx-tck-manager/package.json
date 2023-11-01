@@ -1,6 +1,6 @@
 {
   "name": "sdmx-tck-manager",
-  "version": "3.3.0",
+  "version": "4.3.0",
   "description": "SDMX TCK MANAGER",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "express": "4.17.1",
     "mocha": "8.3.2",
     "save": "2.4.0",
-    "sdmx-rest": "2.15.2",
+    "sdmx-rest": "2.20.0",
     "sdmx-tck-api": "file:../sdmx-tck-api",
     "sdmx-tck-parsers": "file:../sdmx-tck-parsers",
     "sdmx-tck-reporter": "file:../sdmx-tck-reporter"

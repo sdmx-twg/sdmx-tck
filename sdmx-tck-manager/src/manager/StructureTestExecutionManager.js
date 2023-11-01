@@ -46,7 +46,7 @@ class StructureTestExecutionManager {
  
             //REPRESENTATION VALIDATION 
             if (toRun.testType === TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION) {
-                let httpResponseHeadersValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
+                let httpResponseHeadersValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse, apiVersion);
                 testResult.httpResponseHeadersValidation = httpResponseHeadersValidation;
                 if (httpResponseHeadersValidation.status === FAILURE_CODE) {
                     throw new TckError("Representation validation failed. Cause: " + httpResponseHeadersValidation.error);
@@ -56,7 +56,7 @@ class StructureTestExecutionManager {
            
 
             //// WORKSPACE VALIDATION ////
-            let workspace = await new SdmxXmlParser().getIMObjects(await httpResponse.text());
+            let workspace = await new SdmxXmlParser().getIMObjects(await httpResponse.text(), apiVersion);
             testResult.workspace = workspace;
             console.log("Test: " + toRun.testId + " SDMX workspace created.");
         
@@ -65,6 +65,7 @@ class StructureTestExecutionManager {
             if (toRun.resource === "structure") {
                 randomStructure = workspace.getRandomSdmxObject();
             }
+
             testResult.randomStructure = {
                 structureType: randomStructure.getStructureType(),
                 agencyId: randomStructure.getAgencyId(),

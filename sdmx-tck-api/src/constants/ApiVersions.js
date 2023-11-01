@@ -6,6 +6,7 @@ const API_VERSIONS = {
     "v1.2.0": "5",
     "v1.3.0": "6",
     "v1.4.0": "7",
+    "v2.0.0": "8"
 }
 
 module.exports.API_VERSIONS = Object.freeze(API_VERSIONS);

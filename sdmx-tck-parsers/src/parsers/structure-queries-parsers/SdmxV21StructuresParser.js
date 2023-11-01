@@ -138,7 +138,7 @@ class SdmxV21StructuresParser {
                 }
                 //console.log(constraints[c].DataKeySet[0].Key[0].KeyValue[0].Value)
                 structures.get(structureType).push(
-                    new ContentConstraintObject(constraints[c],
+                    new ContentConstraintObject(structureType, constraints[c],
                         SdmxV21StructureReferencesParser.getReferences(constraints[c]),
                         SdmxV21JsonForStubsParser.getDetail(structureType, constraints[c]),
                         SdmxV21JsonCubeRegionParser.getCubeRegions(constraints[c]),

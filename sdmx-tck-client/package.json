@@ -1,6 +1,6 @@
 {
   "name": "sdmx-tck-client",
-  "version": "3.3.0",
+  "version": "4.1.0",
   "description": "SDMX TCK CLIENT",
   "main": "src/index.js",
   "license": "ISC",
@@ -18,8 +18,8 @@
     "sdmx-tck-api": "file:../sdmx-tck-api"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env REACT_APP_PROXY_HOST=http://localhost:5002 react-scripts start",
+    "build": "cross-env REACT_APP_API_URL=http://SERVER_HOST:5002 react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "react-scripts": "3.4.0"
   }
 }

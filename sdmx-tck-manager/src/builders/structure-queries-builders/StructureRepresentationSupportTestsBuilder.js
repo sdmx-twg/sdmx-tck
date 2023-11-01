@@ -17,7 +17,7 @@ class StructureRepresentationSupportTestsBuilder{
             currentRestResource !== STRUCTURES_REST_RESOURCE.structure) {
 
                 if (currentRestResource === STRUCTURES_REST_RESOURCE.codelist) {
-                    let representationTests = STRUCTURES_REPRESENTATIONS_SUPPORT();
+                    let representationTests = STRUCTURES_REPRESENTATIONS_SUPPORT(apiVersion);
                     for (let i in representationTests) {
                         let test = representationTests[i];
                         x.numOfTests = x.numOfTests + 1;

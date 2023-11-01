@@ -3,8 +3,6 @@ const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_COD
 var TckError = require('sdmx-tck-api').errors.TckError;
 const sdmx_requestor = require('sdmx-rest');
 var isDefined = require('sdmx-tck-api').utils.Utils.isDefined;
-const DATA_QUERY_REPRESENTATIONS = require('sdmx-tck-api').constants.DATA_QUERY_REPRESENTATIONS;
-
 const STRUCTURE_QUERY_REPRESENTATIONS = require('sdmx-tck-api').constants.STRUCTURE_QUERY_REPRESENTATIONS;
 
 
@@ -32,34 +30,15 @@ class HttpResponseValidator {
         });
     };
 
-    
-   
-    static validateRepresentation(requestedRepresentation, response) {
+    static validateRepresentation(requestedRepresentation, response, apiVersion) {
         return new Promise((resolve, reject) => {
             try {
-                if (requestedRepresentation === STRUCTURE_QUERY_REPRESENTATIONS.SDMX_ML_21
-                    || requestedRepresentation === STRUCTURE_QUERY_REPRESENTATIONS.SDMX_JSON_100) {
-                    sdmx_requestor.checkMediaType(requestedRepresentation, response);
-                } else if (requestedRepresentation === STRUCTURE_QUERY_REPRESENTATIONS.INVALID_TYPE) {
-                    HttpResponseValidator.checkEmptyRepresentationTestResponse(response)
+                if (requestedRepresentation === STRUCTURE_QUERY_REPRESENTATIONS.INVALID_TYPE) {
+                    HttpResponseValidator.checkEmptyRepresentationTestResponse(response);
                 } else if (requestedRepresentation === STRUCTURE_QUERY_REPRESENTATIONS.EMPTY) {
-                    sdmx_requestor.checkMediaType(STRUCTURE_QUERY_REPRESENTATIONS.SDMX_ML_21, response);
-                } else if (requestedRepresentation === STRUCTURE_QUERY_REPRESENTATIONS.WEIGHTED_SDMX_ML_21) {
-                    sdmx_requestor.checkMediaType(STRUCTURE_QUERY_REPRESENTATIONS.WEIGHTED_SDMX_ML_21, response);
-                } else if (requestedRepresentation === STRUCTURE_QUERY_REPRESENTATIONS.WEIGHTED_SDMX_JSON_100) {
-                    sdmx_requestor.checkMediaType(STRUCTURE_QUERY_REPRESENTATIONS.WEIGHTED_SDMX_JSON_100, response);
-                } else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.GENERIC){
-                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.GENERIC, response);
-                }else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC){
-                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC, response);
-                }else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.GENERIC_TIME_SERIES){
-                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.GENERIC_TIME_SERIES, response);
-                }else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC_TIME_SERIES){
-                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC_TIME_SERIES, response);
-                }else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.JSON_1_0_0){
-                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.JSON_1_0_0, response);
-                }else if(requestedRepresentation === DATA_QUERY_REPRESENTATIONS.CSV_1_0_0){
-                    sdmx_requestor.checkMediaType(DATA_QUERY_REPRESENTATIONS.CSV_1_0_0, response);
+                    sdmx_requestor.checkMediaType(STRUCTURE_QUERY_REPRESENTATIONS.getDefaultRepresentation(apiVersion), response);
+                } else {
+                    sdmx_requestor.checkMediaType(requestedRepresentation, response);
                 }
                 resolve({ status: SUCCESS_CODE});
             } catch (err) {

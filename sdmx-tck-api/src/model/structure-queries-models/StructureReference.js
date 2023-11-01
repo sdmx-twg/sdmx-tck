@@ -1,7 +1,15 @@
 var isDefined = require('../../utils/Utils.js').isDefined;
+const SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
 
 class StructureReference {
     constructor(structureType, agencyId, id, version, ids) {
+        // version of these organisation schemes is fixed in 2.1 and it is missing in 3.0
+        if (!isDefined(version) && isDefined(structureType) && 
+            (structureType === SDMX_STRUCTURE_TYPE.AGENCY_SCHEME.key || 
+            structureType === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key || 
+            structureType === SDMX_STRUCTURE_TYPE.DATA_CONSUMER_SCHEME.key) ) {
+            version = '1.0';
+        }
         if (!isDefined(structureType) ||
             !isDefined(agencyId) ||
             !isDefined(id) ||

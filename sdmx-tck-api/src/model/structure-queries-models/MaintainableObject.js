@@ -26,6 +26,9 @@ class MaintainableObject {
     getVersion() {
         return this.version;
     };
+    setVersion(val) {
+        this.version = val;
+    };
     getDetail() {
         return this.detail;
     };

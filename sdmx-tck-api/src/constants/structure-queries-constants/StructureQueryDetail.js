@@ -7,6 +7,7 @@ const STRUCTURE_QUERY_DETAIL = {
     REFERENCE_PARTIAL: "referencepartial",
     ALL_COMPLETE_STUBS: "allcompletestubs",
     REFERENCE_COMPLETE_STUBS: "referencecompletestubs",
+    RAW: "raw",
 
     getStructureQueryDetail(apiVersion) {
         var availableDetailValues = [];
@@ -18,6 +19,9 @@ const STRUCTURE_QUERY_DETAIL = {
             availableDetailValues.push(STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL)
             availableDetailValues.push(STRUCTURE_QUERY_DETAIL.ALL_COMPLETE_STUBS)
             availableDetailValues.push(STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS)
+        }
+        if (API_VERSIONS[apiVersion] >= API_VERSIONS["v2.0.0"]) {
+            availableDetailValues.push(STRUCTURE_QUERY_DETAIL.RAW);
         }
         return availableDetailValues;
     }
