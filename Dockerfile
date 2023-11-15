@@ -27,6 +27,4 @@ EXPOSE 5000
 EXPOSE 3000
 
 WORKDIR /usr/src/app/sdmx-tck-manager
-CMD ["npm", "run", "start-server"]
-#WORKDIR /usr/src/app/sdmx-tck-client
-#CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
