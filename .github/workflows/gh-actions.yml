@@ -47,8 +47,8 @@ jobs:
       - name: Extract Tag Name
         id: extract_tag
         run: |
-          - echo ${{ github.ref_name }}
-          - echo "::set-output name=TAG_NAME::$(echo ${{ github.ref }} | awk -F'/' '{print $3}')"
+          echo ${{ github.ref_name }}
+          echo "::set-output name=TAG_NAME::$(echo ${{ github.ref }} | awk -F'/' '{print $3}')"
 
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
