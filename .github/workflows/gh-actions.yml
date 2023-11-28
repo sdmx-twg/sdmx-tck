@@ -41,6 +41,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+            
+      - name: Extract Tag Name
+        id: extract_tag
+        run: echo "::set-output name=TAG_NAME::$(echo ${{ github.ref }} | awk -F'/' '{print $3}')"
 
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
@@ -60,5 +66,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: "${{ github.ref }}-${{ steps.meta.outputs.tags }}"
+          tags: "${{ steps.meta.outputs.tags }}-${{ steps.extract_tag.outputs.TAG_NAME }}"
           labels: ${{ steps.meta.outputs.labels }}
