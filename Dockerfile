@@ -2,7 +2,7 @@
 FROM node:16.20.2
 
 RUN apt-get update
-RUN apt-get install openjdk-11-jre-headless -y
+RUN apt-get install openjdk-11-jdk -y
 
 WORKDIR /usr/src/app
 
