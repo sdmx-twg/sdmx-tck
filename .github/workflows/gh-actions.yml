@@ -1,9 +1,6 @@
 name: node.js CI for SDMX TCK
 run-name: Build SDMX TCK
-on:
-  workflow_dispatch:
-#  push:
-#    tags: '*'
+on: workflow_dispatch
 
 env:
   REGISTRY: ghcr.io
