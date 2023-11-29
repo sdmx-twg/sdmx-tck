@@ -1,4 +1,8 @@
-FROM timbru31/java-node:11-jdk-16
+#FROM timbru31/java-node:11-jdk-16
+FROM node:16.20.2
+
+RUN apt-get update
+RUN apt install openjdk-11-jre-headless
 
 WORKDIR /usr/src/app
 
