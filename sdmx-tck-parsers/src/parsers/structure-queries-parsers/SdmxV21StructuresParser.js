@@ -232,9 +232,10 @@ class SdmxV21StructuresParser {
                     structures.set(structureType, []);
                 }
                 structures.get(structureType).push(
-                    new MaintainableObject(structureType, hierarchicalCodelist,
+                    new ItemSchemeObject(structureType, hierarchicalCodelist,
                         SdmxV21StructureReferencesParser.getReferences(hierarchicalCodelist),
-                        SdmxV21JsonForStubsParser.getDetail(structureType, hierarchicalCodelist)
+                        SdmxV21JsonForStubsParser.getDetail(structureType, hierarchicalCodelist),
+                        SdmxV21JsonItemsParser.getItems(structureType, hierarchicalCodelist)
                     )
                 );
             }
