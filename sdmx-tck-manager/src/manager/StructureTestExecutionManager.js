@@ -61,10 +61,10 @@ class StructureTestExecutionManager {
             console.log("Test: " + toRun.testId + " SDMX workspace created.");
         
             // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
-            var randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
-            if (toRun.resource === "structure") {
-                randomStructure = workspace.getRandomSdmxObject();
-            }
+            let randomStructure = (toRun.resource === "structure")
+                ? workspace.getRandomSdmxObject()
+                : workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
+
             testResult.randomStructure = {
                 structureType: randomStructure.getStructureType(),
                 agencyId: randomStructure.getAgencyId(),
