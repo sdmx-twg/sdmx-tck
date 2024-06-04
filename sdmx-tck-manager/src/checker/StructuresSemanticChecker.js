@@ -106,7 +106,6 @@ class StructuresSemanticChecker {
     };
 
     static checkReferences(query, sdmxObjects) {
-
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
         }
@@ -118,7 +117,10 @@ class StructuresSemanticChecker {
         if(query.item!=="all"){
             itemArray = query.item.split('+');
         }
-        let structureRef = new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(query.resource), query.agency, query.id, query.version,itemArray);
+        // avoid creation of invalid structure reference for the threee organisation schemes
+        let version = query.version && query.version === 'latest' ? null : query.version;
+
+        let structureRef = new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(query.resource), query.agency, query.id, version,itemArray);
         let result;
         // get the requested structure from workspace
         let structureObject = sdmxObjects.getSdmxObject(structureRef);
@@ -205,7 +207,7 @@ class StructuresSemanticChecker {
                 var childObject = sdmxObjects.getSdmxObject(childRef)
                 if (!Utils.isDefined(childObject)
                 || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCED_STUBS && childObject.isStub() === false)
-                || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS && childObject.isCompleteStub() === false)
+                || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS && childObject.isCompleteStub() === false && childObject.isStub() === false)
                 || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL &&
                     (structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key || structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.MSD.key) &&
                     childObject.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key && !StructuresSemanticChecker._checkIfPartial(childRef, childObject))) {
@@ -217,8 +219,10 @@ class StructuresSemanticChecker {
                 if (Utils.isDefined(structuresList) && structuresList instanceof Array) {
                     structuresList.forEach((structure) => {
                         if ((query.detail === STRUCTURE_QUERY_DETAIL.FULL && structure.isFull() === false) ||
+                            (query.detail === STRUCTURE_QUERY_DETAIL.FULL && structure.getStructureType() === SDMX_STRUCTURE_TYPE.CODE_LIST.key && structure.getHasExtensions() === true) ||
+                            (query.detail === STRUCTURE_QUERY_DETAIL.RAW && structure.isFull() === false) ||
                             (query.detail === STRUCTURE_QUERY_DETAIL.ALL_STUBS && structure.isStub() === false) ||
-                            (query.detail === STRUCTURE_QUERY_DETAIL.ALL_COMPLETE_STUBS && structure.isCompleteStub() === false)) {
+                            (query.detail === STRUCTURE_QUERY_DETAIL.ALL_COMPLETE_STUBS && structure.isCompleteStub() === false && structure.isStub() === false)) {
                             errors.push(structure.asReference()); // use this array to gather information about the structures that didn't pass this check.
                         }
                     });
@@ -405,7 +409,10 @@ class StructuresSemanticChecker {
             throw new Error("Error in response validation. No workspace provided");
         }
         let matchingStructures = sdmxObjects.getSdmxObjectsWithCriteria(structureType, agencyId, id, version);
-        return { status: (matchingStructures.length === 1) ? SUCCESS_CODE : FAILURE_CODE };
+        if (matchingStructures.length === 1) {
+            return { status: SUCCESS_CODE };
+        }
+        return { status: FAILURE_CODE, error: "Expected result: exactly one artefact" };
     };
 
     static exactlyOneArtefactWithCorrectNumOfItems(sdmxObjects, structureType, agencyId, id, version, item) {
@@ -430,7 +437,10 @@ class StructuresSemanticChecker {
                 itemsStr = itemsStr.concat(items[i].id + "+")
             }
         }
-        return { status: (matchingStructures.length === 1 && countItemsFromResponse === countItemsTestRequest && itemsStr === item) ? SUCCESS_CODE : FAILURE_CODE };
+        if (matchingStructures.length === 1 && countItemsFromResponse === countItemsTestRequest && itemsStr === item) {
+            return { status: SUCCESS_CODE };
+        }
+        return { status: FAILURE_CODE, error: "Expected result: exactly one artefact with " + countItemsTestRequest + " items"};
     };
 
     static atLeastOneArtefact(sdmxObjects, structureType, agencyId, id, version) {
@@ -438,7 +448,10 @@ class StructuresSemanticChecker {
             throw new Error("Error in response validation. No workspace provided");
         }
         let matchingStructures = sdmxObjects.getSdmxObjectsWithCriteria(structureType, agencyId, id, version);
-        return { status: (matchingStructures.length >= 1) ? SUCCESS_CODE : FAILURE_CODE };
+        if (matchingStructures.length >= 1) {
+            return { status: SUCCESS_CODE };
+        }
+        return { status: FAILURE_CODE, error: "Expected result: at least one artefact" };
     }
 };
 

@@ -28,7 +28,7 @@ class HelperManager {
                         }
                         return toRun.httpResponse.text();
                     }).then((xmlBody) => {
-                        return new SdmxXmlParser().getIMObjects(xmlBody);
+                        return new SdmxXmlParser().getIMObjects(xmlBody,apiVersion);
                     }).then((workspace) => {
                         toRun.workspace = workspace.toJSON();
                         resolve(workspace)
@@ -41,10 +41,10 @@ class HelperManager {
 
     static  getPreparedRequest(toRun,apiVersion,endpoint){
         if(toRun.index === "Structure"){
-            return  StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
+            return StructureRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
                 toRun.identifiers.agency, toRun.identifiers.id, toRun.identifiers.version, toRun.items)
         }else if(toRun.index === "Data"){
-            return   DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun)
+            return DataRequestBuilder.prepareRequest(endpoint, apiVersion,toRun)
         }
     }
 };

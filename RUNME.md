@@ -5,41 +5,46 @@
 1.  Having installed Node v14.16.0
 2.  With Node installation Node Package Manager (npm) is also installed.
 3.  In order to verify that you have the correct Node version run the following command in terminal:
-    > node -v
+    <code>node -v</code>
 4.  In order to verify that you have the correct npm version run the following command in terminal:
-    > npm -v
-5.  Navigate inside every module's folder (ex. cd sdmx-tck-manager) and run the following command in order to install all necessary packages:
+    <code>npm -v</code>
+5.  Navigate inside every module's folder (ex. cd sdmx-tck-manager) and run <code>npm install</code> to install all necessary packages.  
+The order in installing these packages inside every module should be the following:  
+    1.  sdmx-tck-api
+    2.  sdmx-tck-parsers
+    3.  sdmx-tck-manager
+    4.  sdmx-tck-client
+    5.  sdmx-tck-reporter
 
-    > npm install
+## To run TCK in Development Mode:
+1. Navigate to the directory of TCK.
+2. Run TCK server:  
+    <code>
+        cd sdmx-tck-manager  
+        npm run start-server  
+    </code>
+3. Run TCK client:  
+    <code>
+        cd sdmx-tck-client  
+        npm start  
+    </code>  
+    Note: In Unix-based environments, steps 2 and 3 can be executed with one command: <code>cd sdmx-tck-manager && npm run dev</code>
 
-        Note: The order in installing these packages inside every module should be the following:
-            1.sdmx-tck-api
-            2.sdmx-tck-parsers
-            3.sdmx-tck-manager
-            4.sdmx-tck-client
-            5.sdmx-tck-reporter
+3. When ready the app will load in your browser in the following address: http://localhost:3000
 
-## To start:
-
+## To run TCK in Production Mode:
 1.  Navigate to the directory of TCK.
-2.  Use the following commands in order to start TCK :
-    > cd sdmx-tck-manager && npm run dev
-3.  In Windows env. there is a possibility that the command above will not work, so server and client should be started sepparately:
-    Please make sure that you are in sdmx-tck-modules directory in order to navigate from a module to another.
-
-            Note:
-            Start server in a terminal using the following commands:
-
-                1. cd sdmx-tck-manager
-                2. npm run start-server
-
-            Start client separately in another terminal
-            using the following commands:
-
-                1. cd sdmx-tck-client
-                2. npm start
-
-4.  When ready the app will load in your browser in the following address: http://localhost:3000
+2.  Run TCK server as described above.
+3.  Run TCK client:
+    1. <code>cd sdmx-tck-client</code>
+    2. Open the <code>package.json</code> file, and configure the production environment variable <code>REACT_APP_API_URL</code> to point to the address of TCK server.
+    3. Package TCK client for production:
+        <code>npm run build</code> (This will create a "build" folder in the project root directory)
+    4. Deploy the application production build on port <code>PORT</code> (e.g., 8102) using pm2 and serve:  
+        <code>pm2 serve build PORT --name tckclient</code>  
+        Prerequisite: pm2 to have been installed (<code>npm install pm2 -g</code>)  
+        The command <code>pm2 stop tckclient</code> can terminate the tckclient process  
+    
 
 ## How to use it:
 

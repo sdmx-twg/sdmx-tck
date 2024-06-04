@@ -22,7 +22,8 @@ class SdmxV21JsonForStubsParser {
         } else if (structureType === SDMX_STRUCTURE_TYPE.REPORTING_TAXONOMY.key) {
             return props.hasOwnProperty("ReportingCategory");
         } else if (structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key) {
-            return (props.hasOwnProperty("StructureUsage") || props.hasOwnProperty("DataProvider"));
+            // StructureUsage became Dataflow in SDMX 3.0
+            return (props.hasOwnProperty("StructureUsage") || props.hasOwnProperty("DataProvider") || props.hasOwnProperty("Dataflow"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.HIERARCHICAL_CODELIST.key) {
             return (props.hasOwnProperty("IncludedCodelist") || props.hasOwnProperty("Hierarchy"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.STRUCTURE_SET.key) {
@@ -39,7 +40,9 @@ class SdmxV21JsonForStubsParser {
             return (props.hasOwnProperty("Source") || props.hasOwnProperty("Target"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key ||
             structureType === SDMX_STRUCTURE_TYPE.ALLOWED_CONTRAINT.key ||
-            structureType === SDMX_STRUCTURE_TYPE.ACTUAL_CONSTRAINT.key) {
+            structureType === SDMX_STRUCTURE_TYPE.ACTUAL_CONSTRAINT.key ||
+            structureType === SDMX_STRUCTURE_TYPE.DATA_CONSTRAINT.key ||
+            structureType === SDMX_STRUCTURE_TYPE.METADATA_CONSTRAINT.key) {
             return (props.hasOwnProperty("ConstraintAttachment"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.CATEGORY_SCHEME.key) {
             return (props.hasOwnProperty("Category"));
@@ -55,7 +58,25 @@ class SdmxV21JsonForStubsParser {
             return (props.hasOwnProperty("DataProvider"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.DATA_CONSUMER_SCHEME.key) {
             return (props.hasOwnProperty("DataConsumer"));
-        }
+        } else if (structureType === SDMX_STRUCTURE_TYPE.VALUE_LIST.key) { // SDMX_3 artefact
+            return (props.hasOwnProperty("ValueItem"));
+        } else if (structureType === SDMX_STRUCTURE_TYPE.HIERARCHY.key) { // SDMX_3 artefact
+            return (props.hasOwnProperty("HierarchicalCode"));
+        } else if (structureType === SDMX_STRUCTURE_TYPE.HIERARCHY_ASSOCIATION.key) { // SDMX_3 artefact
+            return (props.hasOwnProperty("LinkedHierarchy") || props.hasOwnProperty("LinkedObject"));
+        } else if (structureType === SDMX_STRUCTURE_TYPE.METADATA_PROVIDER_SCHEME.key) { // SDMX_3 artefact
+            return (props.hasOwnProperty("MetadataProvider"));
+        } else if (structureType === SDMX_STRUCTURE_TYPE.METADATA_PROVISION_AGREEMENT.key) { // SDMX_3 artefact
+            return (props.hasOwnProperty("Metadataflow") || props.hasOwnProperty("MetadataProvider"));
+        } else if (structureType === SDMX_STRUCTURE_TYPE.ORGANISATION_SCHEME_MAP.key ||
+            structureType === SDMX_STRUCTURE_TYPE.CATEGORY_SCHEME_MAP.key ||
+            structureType === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME_MAP.key ||
+            structureType === SDMX_STRUCTURE_TYPE.REPORTING_TAXONOMY_MAP.key ||
+            structureType === SDMX_STRUCTURE_TYPE.STRUCTURE_MAP.key) { // SDMX_3 artefact
+            return (props.hasOwnProperty("Source") || props.hasOwnProperty("Target"));
+        } else if (structureType === SDMX_STRUCTURE_TYPE.REPRESENTATION_MAP.key) { // SDMX_3 artefact
+            return (props.hasOwnProperty("SourceCodelist") || props.hasOwnProperty("SourceDataType"));
+        } 
     };
 
     static isCompleteStub (props)  {
