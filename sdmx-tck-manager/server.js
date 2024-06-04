@@ -17,8 +17,8 @@ var TestInfo = require('../sdmx-tck-reporter/src/TestInfo.js')
 var Report = require('../sdmx-tck-reporter/src/Report.js')
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 
-const server = app.listen(5000, () => {
-    console.log("Server is listening on port: 5000");
+const server = app.listen(5002, () => {
+    console.log("Server is listening on port: 5002");
 });
 
 var configuredTimeout = 120 * 60 * 1000; // 2 hours

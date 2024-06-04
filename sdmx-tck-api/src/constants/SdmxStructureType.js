@@ -20,14 +20,33 @@ var SDMX_STRUCTURE_TYPE = {
     CONTENT_CONSTRAINT: { key: "CONTENT_CONSTRAINT", getClass() { return "ContentConstraint" }, isBasic: true },
     ATTACHMENT_CONSTRAINT: { key: "ATTACHMENT_CONSTRAINT", getClass() { return "AttachmentConstraint" }, isBasic: false },
     ALLOWED_CONTRAINT: { key: "ALLOWED_CONTRAINT", getClass() { return "AllowedConstraint" }, isBasic: false },
-    ACTUAL_CONSTRAINT: { key: "ACTUAL_CONSTRAINT", getClass() { return "ActualConstraint" }, isBasic: false }
+    ACTUAL_CONSTRAINT: { key: "ACTUAL_CONSTRAINT", getClass() { return "ActualConstraint" }, isBasic: false },
+    HIERARCHY: { key: "HIERARCHY", getClass() { return "Hierarchy" }, isBasic: false }, // or true
+    HIERARCHY_ASSOCIATION: { key: "HIERARCHY_ASSOCIATION", getClass() { return "HierarchyAssociation" }, isBasic: false }, // or true
+    VALUE_LIST: { key: "VALUE_LIST", getClass() { return "ValueList" }, isBasic: false },
+    STRUCTURE_MAP: { key: "STRUCTURE_MAP", getClass() { return "StructureMap" }, isBasic: false },
+    REPRESENTATION_MAP: { key: "REPRESENTATION_MAP", getClass() { return "RepresentationMap" }, isBasic: false },
+    CONCEPT_SCHEME_MAP: { key: "CONCEPT_SCHEME_MAP", getClass() { return "ConceptSchemeMap" }, isBasic: false },
+    CATEGORY_SCHEME_MAP: { key: "CATEGORY_SCHEME_MAP", getClass() { return "CategorySchemeMap" }, isBasic: false },
+    ORGANISATION_SCHEME_MAP: { key: "ORGANISATION_SCHEME_MAP", getClass() { return "OrganisationSchemeMap" }, isBasic: false },
+    REPORTING_TAXONOMY_MAP: { key: "REPORTING_TAXONOMY_MAP", getClass() { return "ReportingTaxonomyMap" }, isBasic: false },
+    METADATA_PROVIDER_SCHEME: { key: "METADATA_PROVIDER_SCHEME", getClass() { return "MetadataProviderScheme" }, isBasic: false },
+    METADATA_PROVISION_AGREEMENT: { key: "METADATA_PROVISION_AGREEMENT", getClass() { return "MetadataProvisionAgreement" }, isBasic: false },
+    DATA_CONSTRAINT: { key: "DATA_CONSTRAINT", getClass() { return "DataConstraint" }, isBasic: true },
+    METADATA_CONSTRAINT: { key: "METADATA_CONSTRAINT", getClass() { return "MetadataConstraint" }, isBasic: false }
+    // TRANSFORMATION_SCHEME: { key: "TRANSFORMATION_SCHEME", getClass() { return "TransformationScheme" }, isBasic: false },
+    // RULESET_SCHEME: { key: "RULESET_SCHEME", getClass() { return "RulesetScheme" }, isBasic: false },
+    // USER_DEFINED_OPERATOR_SCHEME: { key: "USER_DEFINED_OPERATOR_SCHEME", getClass() { return "UserDefinedOperatorScheme" }, isBasic: false },
+    // CUSTOM_TYPE_SCHEME: { key: "CUSTOM_TYPE_SCHEME", getClass() { return "CustomTypeScheme" }, isBasic: false },
+    // NAME_PERSONALISATION_SCHEME: { key: "NAME_PERSONALISATION_SCHEME", getClass() { return "NamePersonalisationScheme" }, isBasic: false },
+    // VTL_MAPPING_SCHEME: { key: "VTL_MAPPING_SCHEME", getClass() { return "VtlMappingScheme" }, isBasic: false }
 
 };
 
 SDMX_STRUCTURE_TYPE.CATEGORY = { key: "CATEGORY", getClass() { return "Category" }, maintainableParent: SDMX_STRUCTURE_TYPE.CATEGORY_SCHEME };
 SDMX_STRUCTURE_TYPE.CONCEPT = { key: "CONCEPT", getClass() { return "Concept" }, maintainableParent: SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME };
 SDMX_STRUCTURE_TYPE.CODE = { key: "CODE", getClass() { return "Code" }, maintainableParent: SDMX_STRUCTURE_TYPE.CODE_LIST };
-SDMX_STRUCTURE_TYPE.HIERARCHY = { key: "HIERARCHY", getClass() { return "Hierarchy" }, maintainableParent: SDMX_STRUCTURE_TYPE.HIERARCHICAL_CODELIST };
+//SDMX_STRUCTURE_TYPE.HIERARCHY = { key: "HIERARCHY", getClass() { return "Hierarchy" }, maintainableParent: SDMX_STRUCTURE_TYPE.HIERARCHICAL_CODELIST };
 SDMX_STRUCTURE_TYPE.AGENCY = { key: "AGENCY", getClass() { return "Agency" }, maintainableParent: SDMX_STRUCTURE_TYPE.AGENCY_SCHEME };
 SDMX_STRUCTURE_TYPE.DATA_PROVIDER = { key: "DATA_PROVIDER", getClass() { return "DataProvider" }, maintainableParent: SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME };
 SDMX_STRUCTURE_TYPE.DATA_CONSUMER = { key: "DATA_CONSUMER", getClass() { return "DataConsumer" }, maintainableParent: SDMX_STRUCTURE_TYPE.DATA_CONSUMER_SCHEME };
@@ -89,6 +108,44 @@ SDMX_STRUCTURE_TYPE.fromRestResource = function (restResource) {
             return this.ACTUAL_CONSTRAINT.key;
         case "reportingtaxonomy":
             return this.REPORTING_TAXONOMY.key;
+        case "hierarchy":
+            return this.HIERARCHY.key;
+        case "hierarchyassociation":
+            return this.HIERARCHY_ASSOCIATION.key;
+        case "valuelist":
+            return this.VALUE_LIST.key;
+        case "structuremap":
+            return this.STRUCTURE_MAP.key;
+        case "representationmap":
+            return this.REPRESENTATION_MAP.key;
+        case "conceptschememap":
+            return this.CONCEPT_SCHEME_MAP.key;
+        case "categoryschememap":
+            return this.CATEGORY_SCHEME_MAP.key;
+        case "organisationschememap":
+            return this.ORGANISATION_SCHEME_MAP.key;
+        case "reportingtaxonomymap":
+            return this.REPORTING_TAXONOMY_MAP.key;
+        case "metadataproviderscheme":
+            return this.METADATA_PROVIDER_SCHEME.key;
+        case "metadataprovisionagreement":
+            return this.METADATA_PROVISION_AGREEMENT.key;
+        case "dataconstraint":
+            return this.DATA_CONSTRAINT.key;
+        case "metadataconstraint":
+            return this.METADATA_CONSTRAINT.key;
+        // case "transformationscheme":
+        //     return this.TRANSFORMATION_SCHEME.key;
+        // case "rulesetscheme":
+        //     return this.RULESET_SCHEME.key;
+        // case "userdefinedoperatorscheme":
+        //     return this.USER_DEFINED_OPERATOR_SCHEME.key;
+        // case "customtypescheme":
+        //     return this.CUSTOM_TYPE_SCHEME.key;
+        // case "namepersonalisationscheme":
+        //     return this.NAME_PERSONALISATION_SCHEME.key;
+        // case "vtlmappingscheme":
+        //     return this.VTL_MAPPING_SCHEME.key;
         default:
             return null;
     }
@@ -152,13 +209,7 @@ SDMX_STRUCTURE_TYPE.matchPathToMaintainable = function(path){
 } 
 
 SDMX_STRUCTURE_TYPE.getMaintainableStructureTypeByClass = function (urnClass) {
-    if (urnClass == null) {
-        throw new Error("SDMX structure type cannot be extracted from a null urn class.");
-    }
-    let structureType = this.getStructureTypeByClass(urnClass);
-    if (!structureType) {
-        throw new Error("Could not find structure type for urn class '" + urnClass + "'");
-    }
+    let structureType = this.getIdentifiableStructureTypeByClass(urnClass);
     if (!this[structureType].maintainableParent) {
         return structureType;
     } else {
@@ -170,6 +221,17 @@ SDMX_STRUCTURE_TYPE.getStructureTypeByClass = function (urnClass) {
     return Object.keys(SDMX_STRUCTURE_TYPE).find(
         key => SDMX_STRUCTURE_TYPE[key] && typeof SDMX_STRUCTURE_TYPE[key] !== "function" && SDMX_STRUCTURE_TYPE[key].getClass() === urnClass
     );
+};
+
+SDMX_STRUCTURE_TYPE.getIdentifiableStructureTypeByClass = function (urnClass) {
+    if (urnClass == null) {
+        throw new Error("SDMX structure type cannot be extracted from a null urn class.");
+    }
+    let structureType = this.getStructureTypeByClass(urnClass);
+    if (!structureType) {
+        throw new Error("Could not find structure type for urn class '" + urnClass + "'");
+    }
+    return structureType;
 };
 
 SDMX_STRUCTURE_TYPE.getMaintainableTypes = function () {

@@ -9,6 +9,9 @@ const MetadataReferences = require('sdmx-rest').metadata.MetadataReferences
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const StructureReference = require('sdmx-tck-api/src/model/structure-queries-models/StructureReference');
+const STRUCTURE_QUERY_REPRESENTATIONS = require('sdmx-tck-api').constants.STRUCTURE_QUERY_REPRESENTATIONS;
+const DATA_QUERY_REPRESENTATIONS = require('sdmx-tck-api').constants.DATA_QUERY_REPRESENTATIONS;
+const API_VERSIONS = require('sdmx-tck-api').constants.API_VERSIONS;
 
 class DataQueriesDataBuilder {
 
@@ -74,13 +77,14 @@ class DataQueriesDataBuilder {
      */
     static async buildDataQueriesFromDF (endpoint,apiVersion){
        try{
-        //Test obj creation to get all the PRAs
+        let structureFormat = (API_VERSIONS[apiVersion] >= API_VERSIONS["v2.0.0"]) ? STRUCTURE_QUERY_REPRESENTATIONS.SDMX_ML_3 : STRUCTURE_QUERY_REPRESENTATIONS.SDMX_ML_21;
+        //Test obj creation to get all the Dataflows
         let configParams = {
             testId: "/" + STRUCTURES_REST_RESOURCE.dataflow + "/all/all/all?detail=full",
             index: TEST_INDEX.Structure,
             apiVersion: apiVersion,
             resource: STRUCTURES_REST_RESOURCE.dataflow,
-            reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.FULL},
+            reqTemplate: { agency: 'all', id: 'all', version: 'all', detail: MetadataDetail.FULL, representation: structureFormat},
             identifiers: { structureType: "", agency: "all", id: "all", version: "all" },
             testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
         }
@@ -88,18 +92,19 @@ class DataQueriesDataBuilder {
         let workspace = await HelperManager.getWorkspace(configObj, apiVersion, endpoint)
 
         let arrayOfDFs = workspace.getSdmxObjectsList().filter(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.DATAFLOW.key)
+        let dataFormat = DATA_QUERY_REPRESENTATIONS.getStructureSpecific(apiVersion);
         for(let i in arrayOfDFs){
             let refDf = new StructureReference(arrayOfDFs[i].getStructureType(),arrayOfDFs[i].getAgencyId(),arrayOfDFs[i].getId(),arrayOfDFs[i].getVersion())
             let helpTestParams = {
                 index: TEST_INDEX.Data,
                 apiVersion: apiVersion,
                 resource: STRUCTURES_REST_RESOURCE.dataflow,
-                reqTemplate: {representation:"application/vnd.sdmx.structurespecificdata+xml;version=2.1"},
+                reqTemplate: {representation: dataFormat},
                 identifiers: {structureType:STRUCTURES_REST_RESOURCE.dataflow,agency:refDf.getAgencyId(),id:refDf.getId(),version:refDf.getVersion()},
                 testType: TEST_TYPE.DATA_IDENTIFICATION_PARAMETERS
             }
             let fullDataWorkspace = await HelperManager.getWorkspace(TestObjectBuilder.getTestObject(helpTestParams),apiVersion,endpoint);
-            
+
             //Checks that df has Data, if thats not the case keep looking for another df
             if(fullDataWorkspace.getAllObservations().length>0 && fullDataWorkspace.getAllSeries().length>0){
                 return {refDf:refDf,indicativeSeries:fullDataWorkspace.getAllSeries()[0]}

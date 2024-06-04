@@ -59,13 +59,10 @@ class DataSemanticChecker {
         let identificationValidation = this._checkIdentification(query, workspace)
         if(identificationValidation.status === FAILURE_CODE){return identificationValidation}
         
-        if (query.provider !== "all") {
+        if (query.provider && query.provider !== "all") {
             return this._checkProviderIdentification(test, query, workspace)
         }
         return identificationValidation;
-        
-       
-
     }
 
     static _checkProviderIdentification(test, query, workspace) {

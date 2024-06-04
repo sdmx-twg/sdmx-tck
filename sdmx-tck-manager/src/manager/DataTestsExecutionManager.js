@@ -98,7 +98,7 @@ class DataTestsExecutionManager {
             if (toRun.testType === TEST_TYPE.DATA_REPRESENTATION_SUPPORT_PARAMETERS || toRun.testType === TEST_TYPE.DATA_OTHER_FEATURES) {
                 let httpResponseHeadersValidation;
                 if(toRun.testType === TEST_TYPE.DATA_REPRESENTATION_SUPPORT_PARAMETERS){
-                    httpResponseHeadersValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
+                    httpResponseHeadersValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse, apiVersion);
                 }else{
                     httpResponseHeadersValidation = ResponseValidator.validateOtherHeaders(toRun.reqTemplate, httpResponse);
                 }
@@ -111,7 +111,7 @@ class DataTestsExecutionManager {
 
             //// WORKSPACE CREATION ////
             let response =await httpResponse.text() 
-            let workspace = await new SdmxXmlParser().getIMObjects(response);
+            let workspace = await new SdmxXmlParser().getIMObjects(response, apiVersion);
             testResult.workspace = workspace;
             console.log("Test: " + toRun.testId + " SDMX workspace created.");
       

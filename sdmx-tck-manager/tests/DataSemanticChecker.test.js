@@ -16,6 +16,18 @@ describe('Tests DataQuery semantic validation in Resource Identification Test', 
         })
     });
 });
+describe.only('Tests SDMX3 DataQuery semantic validation in Resource Identification Test', function () {
+    it('It should assert semantic validation result', async () => {
+        let test = {} ;
+        //let query = {context: "dataflow=ECB:EXR(*)"} // this requires DataQuery2
+        let query = {flow: "EXR"};
+        xmlMessage = fs.readFileSync('./tests/resources/dataIdentification_sdmx30.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage,'v2.0.0').then(function (sdmxObjects) {
+            let result = DataSemanticChecker._checkResourceIdentification(test,query,sdmxObjects);
+            console.assert(result.status === 1)
+        })
+    });
+});
 describe('Tests DataQuery semantic validation in Resource Provider Identification Test', function () {
     it('It should assert semantic validation result', async () => {
         

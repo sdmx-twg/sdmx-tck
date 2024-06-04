@@ -13,6 +13,7 @@ class IndexSelect extends React.Component {
           <option value={TEST_INDEX.Structure}>Structure Index</option>
           <option value={TEST_INDEX.Data}>Data Index</option>
           <option value={TEST_INDEX.Schema}>Schema Index</option>
+          <option value={TEST_INDEX.Availability}>Availability Index</option>
           <option value={TEST_INDEX.Structure.Metadata}>Metadata Index</option>
         </select>
       </div>
