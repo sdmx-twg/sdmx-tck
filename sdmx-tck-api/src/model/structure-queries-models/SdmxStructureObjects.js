@@ -46,6 +46,18 @@ class SdmxStructureObjects extends SdmxObjects{
 		}
 		return sdmxObject.getChildren();
 	};
+	getRandomSdmxObjectOfRestResource(restResource) {
+		restResource =
+			(restResource === STRUCTURES_REST_RESOURCE.allowedconstraint ||
+				restResource === STRUCTURES_REST_RESOURCE.actualconstraint)
+			? STRUCTURES_REST_RESOURCE.contentconstraint
+			: restResource;
+
+		let randomStructure = (restResource === STRUCTURES_REST_RESOURCE.structure)
+			? this.getRandomSdmxObject()
+			: this.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(restResource));
+		return randomStructure;
+	}
 	getRandomSdmxObject() {
 		// Randomly pick a structure type from the available structures in the workspace.
 		let structureTypesArray = this.getSdmxObjectsList();
@@ -117,6 +129,26 @@ class SdmxStructureObjects extends SdmxObjects{
 				expression = expression && (version === structure.getVersion());
 			}
 			return expression === true;
+		});
+	};
+
+	getProviderRefs() {
+		let providerRefs = [];
+		let provisionAgreements = this.getSdmxObjectsList().filter(obj =>
+			obj.getStructureType() === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key
+		);
+		provisionAgreements.forEach(pra => {
+			providerRefs.push(pra.getChildren().find(ref =>
+				(ref.getStructureType() === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key)
+			));
+		});
+		return providerRefs;
+	};
+
+	getDataConstraints() {
+		return this.getSdmxObjectsList().filter(obj => {
+			return (obj.structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key
+				|| obj.structureType === SDMX_STRUCTURE_TYPE.DATA_CONSTRAINT.key);
 		});
 	};
 
@@ -228,42 +260,64 @@ class SdmxStructureObjects extends SdmxObjects{
 	return null;
 	}
 
-	getRandomKeysPairFromAvailableConstraint(dsdObj){
+	/**
+	 * @deprecated To be removed (GPP)
+	 * Random keys are taken from data, and more specifically the attributes of the first two series.
+	 * @param {*} dsdObj 
+	 * @returns 
+	 */
+	getRandomKeysPairFromAvailableConstraint(dsdObj) {
 		let randomKey1 = {}
 		let randomKey2 = {}
 		let randomKeysArr = []
-		let constraint = this.getSdmxObjectsList().find(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
-		if(!constraint){return;}
-
-		let cubeRegions = constraint.getCubeRegions()
-		if(cubeRegions.length === 0){return;}
 		
-		let keyValues = cubeRegions[0].getKeyValues();
-		if(keyValues.length === 0){return;}
+		let constraints = this.getDataConstraints();
+		if (constraints.length === 0) {
+			console.warn("Cannot get random keys. No constraint found.");
+			return []; // return empty array
+		}
+		if (constraints.length > 1) {
+			console.warn("Cannot get random keys. Expected one onstraint but got " + constraints.length);
+			return []; // return empty array
+		}
+		// Take the first constraint because we expect there to be only one in the workspace.
+		let constraint = constraints[0];
+		let cubeRegions = constraint.getCubeRegions();
+		if (cubeRegions.length === 0) {
+			console.warn("Cannot get random keys. No cube region found.");
+			return []; // return empty array
+		}
 
+		let keyValues = cubeRegions[0].getKeyValues();
+		if (keyValues.length === 0) {
+			console.warn("Cannot get random keys. The first cube region has no key values.");
+			return []; // return empty array
+		}
+		
 		keyValues.forEach(keyValue => {
-			randomKey1[keyValue.getId()] = keyValue.getValues()[0]
-			if(keyValue.getValues().length === 1){
-				randomKey2[keyValue.getId()] = keyValue.getValues()[0]
-			}else if(keyValue.getValues().length>1){
-				randomKey2[keyValue.getId()] = keyValue.getValues()[1]
+			// Iterate all KeyValues and get the first value for each one.
+			randomKey1[keyValue.getId()] = keyValue.getValues()[0];
+			if (keyValue.getValues().length === 1) {
+				randomKey2[keyValue.getId()] = keyValue.getValues()[0];
+			} else if (keyValue.getValues().length > 1) {
+				randomKey2[keyValue.getId()] = keyValue.getValues()[1];
 			}
-		})
+		});
+		
 		//We need a pair of randomKeys for the queries that need many keys (ex. A.B1+B2.C).
 		//If all the keyvalues have only 1 value, randomKey1 & randomKey2 will be exaclty the same
 		//so the key will be A.B1+B1.C which is meaningless.
-		let areRandomKeysEqual = keyValues.every(keyValue => keyValue.getValues().length === 1)
+		let areRandomKeysEqual = keyValues.every(keyValue => keyValue.getValues().length === 1);
 
-		randomKeysArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey1))
-		
-		if(!areRandomKeysEqual){
-			randomKeysArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey2))
+		randomKeysArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey1));
+
+		if (!areRandomKeysEqual) {
+			randomKeysArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey2));
 		}
-		
+		console.log("Random keys selected from available constraint=", randomKeysArr);
 		return randomKeysArr;
-
-
 	}
+
 	static fromJson(sdmxObjectsJson){
 		if(!sdmxObjectsJson){throw new Error("Invalid parameter 'sdmxObjectsJson' ")}
 		let parentWorkspaceMap = new Map();

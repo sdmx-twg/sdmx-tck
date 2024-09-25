@@ -6,7 +6,11 @@ class SdmxObjects {
 	getSdmxObjects() {
 		return this.sdmxObjects;
 	};
-	
+
+	getSdmxObjectsOfType(structureType) {
+		return this.getSdmxObjectsList().filter(obj => obj.getStructureType() === structureType);
+	};
+
 	getSdmxObjectsList() {
 		let array = [];
 		this.getSdmxObjects().forEach((sdmxObjectsList) => {

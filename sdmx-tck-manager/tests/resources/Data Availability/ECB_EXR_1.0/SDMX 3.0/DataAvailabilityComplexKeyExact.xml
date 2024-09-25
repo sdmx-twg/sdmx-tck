@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<message:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common">
+    <message:Header>
+        <message:ID>IREF409680</message:ID>
+        <message:Test>false</message:Test>
+        <message:Prepared>2024-02-19T11:09:23Z</message:Prepared>
+        <message:Sender id="ZZZ"></message:Sender>
+        <message:Receiver id="not_supplied"></message:Receiver>
+    </message:Header>
+    <message:Structures>
+        <str:DataConstraints>
+            <str:DataConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:2F2282E7-EEA2-4AD3-996B-773E03D72475(1.0)" role="Actual" isExternalReference="false" agencyID="ECB" id="2F2282E7-EEA2-4AD3-996B-773E03D72475" version="1.0">
+                <com:Annotations>
+                    <com:Annotation id="series_count">
+                        <com:AnnotationTitle>8</com:AnnotationTitle>
+                        <com:AnnotationType>sdmx_metrics</com:AnnotationType>
+                    </com:Annotation>
+                </com:Annotations>
+                <com:Name xml:lang="en">Exchange Rates</com:Name>
+                <str:ConstraintAttachment>
+                    <str:Dataflow>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)</str:Dataflow>
+                </str:ConstraintAttachment>
+                <str:CubeRegion include="true">
+                    <str:KeyValue id="CURRENCY">
+                        <str:Value>H42</str:Value>
+                        <str:Value>H7</str:Value>
+                    </str:KeyValue>
+                    <str:KeyValue id="CURRENCY_DENOM">
+                        <str:Value>DEM</str:Value>
+                        <str:Value>HKD</str:Value>
+                    </str:KeyValue>
+                    <str:KeyValue id="EXR_SUFFIX">
+                        <str:Value>A</str:Value>
+                        <str:Value>T</str:Value>
+                    </str:KeyValue>
+                    <str:KeyValue id="FREQ">
+                        <str:Value>M</str:Value>
+                        <str:Value>Q</str:Value>
+                    </str:KeyValue>
+                    <str:KeyValue id="EXR_TYPE">
+                        <str:Value>NRC0</str:Value>
+                    </str:KeyValue>
+                </str:CubeRegion>
+            </str:DataConstraint>
+        </str:DataConstraints>
+    </message:Structures>
+</message:Structure>

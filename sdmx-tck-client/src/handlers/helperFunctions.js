@@ -175,29 +175,33 @@ export function passConstraintDataToSchemaTests(schemaTests,schemaTestsData){
 		}
 	}
 }
-export function passDataToDataQueries(dataTests,dataQueriesData){
-	
+export function passDataToDataQueries(dataTests, dataQueriesData) {
+	// Pass the correct identifiers based on the resource (context) property of the test.
 	if (dataTests.subTests && Array.isArray(dataTests.subTests)) {
 		for (let i = 0; i < dataTests.subTests.length; i++) {
-			if(dataQueriesData.refDf && dataQueriesData.indicativeSeries){
-				dataTests.subTests[i].identifiers.structureType = dataQueriesData.refDf.structureType
-				dataTests.subTests[i].identifiers.agency = dataQueriesData.refDf.agencyId
-				dataTests.subTests[i].identifiers.id = dataQueriesData.refDf.id
-				dataTests.subTests[i].identifiers.version = dataQueriesData.refDf.version
+			let subTest = dataTests.subTests[i];
+			let structureRef = dataQueriesData[subTest.resource].structureRef;
+			let indicativeSeries = dataQueriesData[subTest.resource].indicativeSeries;
+			let indicativeSeriesAttributes = dataQueriesData[subTest.resource].indicativeSeriesAttributes;
+			if (structureRef) {
+				subTest.identifiers.structureType = structureRef.structureType
+				subTest.identifiers.agency = structureRef.agencyId
+				subTest.identifiers.id = structureRef.id
+				subTest.identifiers.version = structureRef.version
 
-				if(dataTests.subTests[i].reqTemplate.startPeriod 
-					|| dataTests.subTests[i].reqTemplate.endPeriod
-					|| dataTests.subTests[i].reqTemplate.firstNObservations
-					|| dataTests.subTests[i].reqTemplate.lastNObservations
-					|| dataTests.subTests[i].reqTemplate.updatedAfter){
+				if (subTest.reqTemplate.startPeriod
+					|| subTest.reqTemplate.endPeriod
+					|| subTest.reqTemplate.firstNObservations
+					|| subTest.reqTemplate.lastNObservations
+					|| subTest.reqTemplate.updatedAfter) {
 
-						dataTests.subTests[i].indicativeSeries = dataQueriesData.indicativeSeries;
+					subTest.indicativeSeries = indicativeSeries;
 				}
-				if (dataTests.subTests[i].subTests && Array.isArray(dataTests.subTests[i].subTests)) {
-					passDataToDataQueries(dataTests.subTests[i],dataQueriesData)
+				subTest.indicativeSeriesAttributes = indicativeSeriesAttributes;
+				if (subTest.subTests && Array.isArray(subTest.subTests)) {
+					passDataToDataQueries(subTest, dataQueriesData)
 				}
 			}
-			
 		}
 	}
 }
