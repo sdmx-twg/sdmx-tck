@@ -44,9 +44,27 @@ class ConstraintKeyValueObject {
                 valuesEqual
     }
 
+    getNumberOfValues() {
+        return this.values.length;
+    }
+
     hasOnlyNValues(numOfValues){
         if(typeof(numOfValues) != "number" || !Number.isInteger(numOfValues)){return false;}
         return this.values.length === numOfValues
+    }
+
+    hasAtLeastNValues(numOfValues) {
+        if (typeof (numOfValues) != "number" || !Number.isInteger(numOfValues)) {
+            return false;
+        }
+        return this.values.length >= numOfValues;
+    }
+
+    hasAtMostNValues(numOfValues) {
+        if (typeof (numOfValues) != "number" || !Number.isInteger(numOfValues)) {
+            return false;
+        }
+        return this.values.length <= numOfValues;
     }
 
     hasValue(value){

@@ -37,6 +37,9 @@ class ItemObject {
     getParentCode(){
         return this.parentCode;
     }
+    hasParent() {
+        return !!this.parentCode;
+    }
 }
 
 module.exports = ItemObject;

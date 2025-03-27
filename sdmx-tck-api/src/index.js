@@ -31,6 +31,7 @@ const SchemaElementConstants = require('./constants/schema-queries-constants/Sch
 const SchemaSimpleTypeConstants = require('./constants/schema-queries-constants/SchemaSimpleTypeConstants.js')
 const SchemaOccurenciesConstants = require('./constants/schema-queries-constants/SchemaOccurenciesConstants.js')
 const DataQueryDetail = require('./constants/data-queries-constants/DataQueryDetail.js');
+const DataContext = require('./constants/data-queries-constants/DataContext.js');
 const DataIdentificationParameters = require('./constants/data-queries-constants/DataIdentificationParameters.js')
 const DataExtendedResourceIdentification = require('./constants/data-queries-constants/DataExtendedResourceIdentification.js')
 const DataComponentsTypes = require('./constants/data-queries-constants/DataComponentsTypes.js')
@@ -87,6 +88,7 @@ var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
 var DateTransformations = require('./utils/DateTransformations.js');
 var DatesHandling = require('./utils/DatesHandling.js');
+var TestUtils = require('./utils/TestUtils.js');
 
 module.exports = {
     constants: {
@@ -95,6 +97,7 @@ module.exports = {
         API_VERSIONS: ApiVersions.API_VERSIONS,
         API_CONSTANTS: ApiConstants.API_CONSTANTS,
         DATA_QUERY_DETAIL: DataQueryDetail.DATA_QUERY_DETAIL,
+        DATA_CONTEXT: DataContext.DATA_CONTEXT,
         ITEM_SCHEME_TYPES: ItemSchemeTypes.ITEM_SCHEME_TYPES,
         SDMX_STRUCTURE_TYPE: SdmxStructureType.SDMX_STRUCTURE_TYPE,
         StructureDetail: StructureDetail.StructureDetail,
@@ -190,6 +193,7 @@ module.exports = {
 
     },
     utils: {
+		TestUtils,
         Utils,
         DateTransformations:DateTransformations,
         DatesHandling:DatesHandling,

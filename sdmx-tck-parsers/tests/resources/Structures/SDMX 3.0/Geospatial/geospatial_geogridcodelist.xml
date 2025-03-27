@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message ../../schemas/SDMXMessage.xsd">
+    <mes:Header>
+        <mes:ID>IREF257793</mes:ID>
+        <mes:Test>false</mes:Test>
+        <mes:Prepared>2021-03-08T17:49:35Z</mes:Prepared>
+        <mes:Sender id="Unknown" />
+        <mes:Receiver id="not_supplied" /></mes:Header>
+    <mes:Structures>
+		<str:Codelists>
+   	 		<str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=IMF:CL_WEO_UNIT(1.0)" isExternalReference="false" agencyID="IMF" id="CL_WEO_UNIT" version="1.0">
+                <com:Name xml:lang="en">Unit code list</com:Name>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).A" id="A">
+                    <com:Name xml:lang="en">Current international dollar</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).B" id="B">
+                    <com:Name xml:lang="en">Index</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).C" id="C">
+                    <com:Name xml:lang="en">Index$ 2000=100</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).D" id="D">
+                    <com:Name xml:lang="en">Index$ 2005=100</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).E" id="E">
+                    <com:Name xml:lang="en">National currency</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).F" id="F">
+                    <com:Name xml:lang="en">National currency per current international dollar</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).G" id="G">
+                    <com:Name xml:lang="en">Percent</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).H" id="H">
+                    <com:Name xml:lang="en">Percent change</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).I" id="I">
+                    <com:Name xml:lang="en">Percent change (market exchange rates)</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).J" id="J">
+                    <com:Name xml:lang="en">Percent of exports of goods and services</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).K" id="K">
+                    <com:Name xml:lang="en">Percent of GDP</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).L" id="L">
+                    <com:Name xml:lang="en">Percent of potential GDP</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).M" id="M">
+                    <com:Name xml:lang="en">Percent of total labor force</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).N" id="N">
+                    <com:Name xml:lang="en">Persons</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).O" id="O">
+                    <com:Name xml:lang="en">U.S. cents</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).P" id="P">
+                    <com:Name xml:lang="en">U.S. dollars</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).Q" id="Q">
+                    <com:Name xml:lang="en">U.S. dollars; annual percent change</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).R" id="R">
+                    <com:Name xml:lang="en">U.S. dollars; index$ 2000=100</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).S" id="S">
+                    <com:Name xml:lang="en">Purchasing power parity; 2017 international dollar</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).T" id="T">
+                    <com:Name xml:lang="en">Purchasing power parity; international dollars</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).U" id="U">
+                    <com:Name xml:lang="en">Index$ 2016=100</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=IMF:CL_WEO_UNIT(1.0).V" id="V">
+                    <com:Name xml:lang="en">Purchasing power parity; percent change</com:Name>
+                </str:Code>
+	        </str:Codelist>
+        </str:Codelists>
+        <str:GeoGridCodelists>
+            <str:GeoGridCodelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=EXAMPLE:CL_GRID_LOCATION(1.0)" agencyID="EXAMPLE" id="CL_GRID_LOCATION" version="1.0" geoType="GeoGridCodelist">
+                <com:Name xml:lang="en">Grid Location</com:Name>
+                <com:Description xml:lang="en">Example GeoGrid Codelist. The grid system is defined at the code list level, with each code being assigned to a specific cell in the grid by defining its row and column in GeoCell.</com:Description>
+                
+                <str:GeoGridCode urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=EXAMPLE:CL_GRID_LOCATION(1.0).L1" id="L1">
+                    <com:Name xml:lang="en">Location 1</com:Name>
+                    <str:GeoCell>
+						GEO_COL, GEO_ROW: GEO_TAG
+                    </str:GeoCell>
+                </str:GeoGridCode>
+                
+                <str:GeoGridCode urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=EXAMPLE:CL_GRID_LOCATION(1.0).L2" id="L2">
+                    <com:Name xml:lang="en">Location 2</com:Name>
+                    <str:GeoCell>
+						GEO_COL, GEO_ROW: GEO_TAG
+                    </str:GeoCell>
+                </str:GeoGridCode>    
+                
+                <str:GeoGridCode urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=EXAMPLE:CL_GRID_LOCATION(1.0).L3" id="L3">
+                    <com:Name xml:lang="en">Location 3</com:Name>
+                    <str:GeoCell>
+						GEO_COL, GEO_ROW: GEO_TAG
+                    </str:GeoCell>
+                </str:GeoGridCode>                                    
+                
+                <str:GridDefinition>
+                    CRS:REFERENCE_CORNER; X_COORDINATE, Y_COORDINATE; CELL_WIDTH, CELL_HEIGHT: GEO_STD
+                </str:GridDefinition>
+        
+            </str:GeoGridCodelist>
+        </str:GeoGridCodelists>
+    </mes:Structures>
+</mes:Structure>

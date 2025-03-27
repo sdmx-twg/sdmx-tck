@@ -1,5 +1,5 @@
 const sdmx_rest = require('sdmx-rest');
-const DATA_QUERY_KEY = require('sdmx-tck-api').constants.DATA_QUERY_KEY;
+const DATA_QUERY_REPRESENTATIONS = require('sdmx-tck-api').constants.DATA_QUERY_REPRESENTATIONS;
 var TckError = require('sdmx-tck-api').errors.TckError;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE
 var DataRequestPropsBuilder = require('./DataRequestPropsBuilder.js')
@@ -14,7 +14,7 @@ class DataRequestBuilder {
                 
                 var request = {
                     flow:DataRequestPropsBuilder.getFlow(toRun.identifiers,toRun.reqTemplate),
-                    key: DataRequestPropsBuilder.getKey(toRun.randomKeys,toRun.dsdObj,toRun.reqTemplate),
+                    key: DataRequestPropsBuilder.getKey(apiVersion, toRun.randomKeys,toRun.dsdObj,toRun.reqTemplate),
                     provider: DataRequestPropsBuilder.getProvider(toRun.providerRefs,toRun.reqTemplate),
                     detail: toRun.reqTemplate.detail,
                     firstNObs:DataRequestPropsBuilder.getNumOfFirstNObservations(toRun.indicativeSeries,toRun.reqTemplate),
@@ -37,9 +37,13 @@ class DataRequestBuilder {
                 }
     
                 let headers = {};
-                if (toRun.reqTemplate.representation) {
-                    headers = { headers: { accept: toRun.reqTemplate.representation } }
+                let representation = toRun.reqTemplate.representation;
+                if (!representation) {
+                    // Get default XML representation
+                    representation = DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC;
                 }
+                headers = { headers: { accept: representation } }
+
                 if (toRun.reqTemplate.accept_encoding) {
                     if(Object.keys(headers).length === 0){
                         headers = { headers: { "Accept-Encoding": toRun.reqTemplate.accept_encoding } }
