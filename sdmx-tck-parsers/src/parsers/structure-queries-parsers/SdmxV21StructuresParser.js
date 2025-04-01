@@ -138,11 +138,7 @@ class SdmxV21StructuresParser {
                 }
                 //console.log(constraints[c].DataKeySet[0].Key[0].KeyValue[0].Value)
                 structures.get(structureType).push(
-<<<<<<< HEAD
-                    new ContentConstraintObject(constraints[c],
-=======
                     new ContentConstraintObject(structureType, constraints[c],
->>>>>>> v4.8.0
                         SdmxV21StructureReferencesParser.getReferences(constraints[c]),
                         SdmxV21JsonForStubsParser.getDetail(structureType, constraints[c]),
                         SdmxV21JsonCubeRegionParser.getCubeRegions(constraints[c]),
@@ -236,16 +232,10 @@ class SdmxV21StructuresParser {
                     structures.set(structureType, []);
                 }
                 structures.get(structureType).push(
-<<<<<<< HEAD
-                    new MaintainableObject(structureType, hierarchicalCodelist,
-                        SdmxV21StructureReferencesParser.getReferences(hierarchicalCodelist),
-                        SdmxV21JsonForStubsParser.getDetail(structureType, hierarchicalCodelist)
-=======
                     new ItemSchemeObject(structureType, hierarchicalCodelist,
                         SdmxV21StructureReferencesParser.getReferences(hierarchicalCodelist),
                         SdmxV21JsonForStubsParser.getDetail(structureType, hierarchicalCodelist),
                         SdmxV21JsonItemsParser.getItems(structureType, hierarchicalCodelist)
->>>>>>> v4.8.0
                     )
                 );
             }

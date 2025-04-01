@@ -39,12 +39,7 @@ class StructureTestExecutionManager {
             httpResponseValidation = await ResponseValidator.validateHttpResponse(preparedRequest.request, httpResponse);
             testResult.httpResponseValidation = httpResponseValidation;
             console.log("Test: " + toRun.testId + " HTTP response validated. " + JSON.stringify(httpResponseValidation));
-<<<<<<< HEAD
-            if (httpResponseValidation.status === FAILURE_CODE 
-                || (httpResponseValidation.status === SUCCESS_CODE && (httpResponseValidation.httpStatus === 404 || httpResponseValidation.httpStatus === 501))) {
-=======
             if (httpResponseValidation.status === FAILURE_CODE) {
->>>>>>> v4.8.0
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
  
@@ -57,30 +52,6 @@ class StructureTestExecutionManager {
                 }
                 return testResult
             }
-<<<<<<< HEAD
-           
-
-            //// WORKSPACE VALIDATION ////
-            let workspace = await new SdmxXmlParser().getIMObjects(await httpResponse.text());
-            testResult.workspace = workspace;
-            console.log("Test: " + toRun.testId + " SDMX workspace created.");
-        
-            // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
-            var randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
-            if (toRun.resource === "structure") {
-                randomStructure = workspace.getRandomSdmxObject();
-            }
-            testResult.randomStructure = {
-                structureType: randomStructure.getStructureType(),
-                agencyId: randomStructure.getAgencyId(),
-                id: randomStructure.getId(),
-                version: randomStructure.getVersion(),
-            };
-            if (randomStructure instanceof ItemSchemeObject) {
-                testResult.randomItems = randomStructure.getItemsCombination();
-            }
-
-=======
 
 
             //// WORKSPACE VALIDATION ////
@@ -93,7 +64,6 @@ class StructureTestExecutionManager {
 
             testResult.randomStructures = workspace.getRandomStructureRefsOfRestResource(toRun.resource);
             
->>>>>>> v4.8.0
             // WORKSPACE VALIDATION
             let workspaceValidation = await SemanticCheckerFactory.getChecker(toRun).checkWorkspace(toRun, preparedRequest, workspace);
             testResult.workspaceValidation = workspaceValidation;

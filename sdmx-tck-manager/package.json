@@ -1,10 +1,6 @@
 {
   "name": "sdmx-tck-manager",
-<<<<<<< HEAD
-  "version": "4.1.0",
-=======
   "version": "4.8.0",
->>>>>>> v4.8.0
   "description": "SDMX TCK MANAGER",
   "main": "index.js",
   "scripts": {

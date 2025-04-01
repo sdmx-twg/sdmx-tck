@@ -2,8 +2,6 @@ const { SDMX_STRUCTURE_TYPE } = require("../constants/SdmxStructureType");
 const StructureReference = require("../model/structure-queries-models/StructureReference");
 
 class UrnUtil {
-<<<<<<< HEAD
-=======
 
     static _getUrnPrefix(urn) {
         return urn.split('=')[0];
@@ -79,7 +77,6 @@ class UrnUtil {
         return structureType;
 	}
 
->>>>>>> v4.8.0
     /**
      * Returns the Artefact Type from its URN.
      */

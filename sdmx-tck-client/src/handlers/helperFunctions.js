@@ -96,25 +96,6 @@ const searchChildTestsToPassIdentifiers = (test, runTest) => {
 		// if the test is found, pass identifiers to its children.
 		if (test.subTests && Array.isArray(test.subTests)) {
 			for (let i = 0; i < test.subTests.length; i++) {
-<<<<<<< HEAD
-				if (test.subTests[i].requireRandomSdmxObject === true) {
-					test.subTests[i].identifiers.structureType = runTest.randomStructure.structureType;
-					test.subTests[i].identifiers.agency = runTest.randomStructure.agencyId;
-					test.subTests[i].identifiers.id = runTest.randomStructure.id;
-					test.subTests[i].identifiers.version = runTest.randomStructure.version;
-				}
-				if (test.subTests[i].requireItems) {
-					//In Target category case we need only one item in the form of array
-					if(test.subTests[i].testType === TEST_TYPE.STRUCTURE_TARGET_CATEGORY){
-						test.subTests[i].items = [runTest.randomItems[0]];
-					}else{
-						test.subTests[i].items = runTest.randomItems;
-					}
-					
-				}
-				if(test.subTests[i].requireRandomKey === true){
-					test.subTests[i].randomKeys = runTest.randomKeys;
-=======
 				let subTest = test.subTests[i];
 				if (subTest.requireRandomSdmxObject === true) {
 					subTest.identifiers.structureType = runTest.randomStructures[0].structureType;
@@ -146,7 +127,6 @@ const searchChildTestsToPassIdentifiers = (test, runTest) => {
 				}
 				if (subTest.requireRandomKey === true) {
 					subTest.randomKeys = runTest.randomKeys;
->>>>>>> v4.8.0
 				}
 			}
 		}
@@ -209,31 +189,6 @@ export function passConstraintDataToSchemaTests(schemaTests,schemaTestsData){
 		}
 	}
 }
-<<<<<<< HEAD
-export function passDataToDataQueries(dataTests,dataQueriesData){
-	
-	if (dataTests.subTests && Array.isArray(dataTests.subTests)) {
-		for (let i = 0; i < dataTests.subTests.length; i++) {
-			if(dataQueriesData.refDf && dataQueriesData.indicativeSeries){
-				dataTests.subTests[i].identifiers.structureType = dataQueriesData.refDf.structureType
-				dataTests.subTests[i].identifiers.agency = dataQueriesData.refDf.agencyId
-				dataTests.subTests[i].identifiers.id = dataQueriesData.refDf.id
-				dataTests.subTests[i].identifiers.version = dataQueriesData.refDf.version
-
-				if(dataTests.subTests[i].reqTemplate.startPeriod 
-					|| dataTests.subTests[i].reqTemplate.endPeriod
-					|| dataTests.subTests[i].reqTemplate.firstNObservations
-					|| dataTests.subTests[i].reqTemplate.lastNObservations
-					|| dataTests.subTests[i].reqTemplate.updatedAfter){
-
-						dataTests.subTests[i].indicativeSeries = dataQueriesData.indicativeSeries;
-				}
-				if (dataTests.subTests[i].subTests && Array.isArray(dataTests.subTests[i].subTests)) {
-					passDataToDataQueries(dataTests.subTests[i],dataQueriesData)
-				}
-			}
-			
-=======
 export function passDataToDataQueries(dataTests, dataQueriesData) {
 	// Pass the correct identifiers based on the resource (context) property of the test.
 	if (dataTests.subTests && Array.isArray(dataTests.subTests)) {
@@ -261,7 +216,6 @@ export function passDataToDataQueries(dataTests, dataQueriesData) {
 					passDataToDataQueries(subTest, dataQueriesData)
 				}
 			}
->>>>>>> v4.8.0
 		}
 	}
 }

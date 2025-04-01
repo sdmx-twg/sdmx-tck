@@ -44,20 +44,15 @@ class ConstraintKeyValueObject {
                 valuesEqual
     }
 
-<<<<<<< HEAD
-=======
     getNumberOfValues() {
         return this.values.length;
     }
 
->>>>>>> v4.8.0
     hasOnlyNValues(numOfValues){
         if(typeof(numOfValues) != "number" || !Number.isInteger(numOfValues)){return false;}
         return this.values.length === numOfValues
     }
 
-<<<<<<< HEAD
-=======
     hasAtLeastNValues(numOfValues) {
         if (typeof (numOfValues) != "number" || !Number.isInteger(numOfValues)) {
             return false;
@@ -72,7 +67,6 @@ class ConstraintKeyValueObject {
         return this.values.length <= numOfValues;
     }
 
->>>>>>> v4.8.0
     hasValue(value){
         if(typeof(value) !== "string"){return false;}
         return this.values.indexOf(value) !== -1

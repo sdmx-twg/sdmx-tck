@@ -22,11 +22,7 @@ class HttpResponseValidator {
             } catch (err) {
                 let tckStatus = FAILURE_CODE;
                 let code = httpResponse != null ? httpResponse.status : void 0;
-<<<<<<< HEAD
-                if (code === 404 || code === 501) {
-=======
                 if (code === 404 || code === 501 || code === 406) {
->>>>>>> v4.8.0
                     tckStatus = SUCCESS_CODE;
                 }
                 resolve({ status: tckStatus, url: httpResponse.url, httpStatus: httpResponse.status, error: err.toString() });
@@ -55,11 +51,7 @@ class HttpResponseValidator {
         if (!isDefined(response) && !response.status) {
             throw new TckError('No response status')
         }
-<<<<<<< HEAD
-        if (response.status !== "406") {
-=======
         if (response.status !== 406) {
->>>>>>> v4.8.0
             throw new TckError("Response status was not 406 but " + response.status + " instead");
         }
     }

@@ -1,19 +1,13 @@
 const SDMX_STRUCTURE_TYPE = require("../SdmxStructureType.js").SDMX_STRUCTURE_TYPE;
 var isDefined = require('../../utils/Utils.js').isDefined;
 const API_VERSIONS = require('../ApiVersions.js').API_VERSIONS;
-<<<<<<< HEAD
-=======
 const TEST_REQUEST_MODE = require('../TestRequestMode.js').TEST_REQUEST_MODE;
->>>>>>> v4.8.0
 
 const STRUCTURE_REFERENCE_DETAIL = {
     NONE: "none",
     PARENTS: "parents",
     PARENTS_SIBLINGS: "parentsandsiblings",
-<<<<<<< HEAD
-=======
     ANCESTORS: "ancestors",
->>>>>>> v4.8.0
     CHILDREN: "children",
     DESCENDANTS: "descendants",
     ALL: "all",
@@ -39,8 +33,6 @@ const STRUCTURE_REFERENCE_DETAIL = {
     CATEGORISATION: "categorisation",
     CONTENT_CONSTRAINT: "contentconstraint",
     ATTACHMENT_CONSTRAINT: "attachmentconstraint",
-<<<<<<< HEAD
-=======
     // SDMX 3.0 artefacts
     HIERARCHY: "hierarchy",
     HIERARCHY_ASSOCIATION: "hierarchyassociation",
@@ -55,7 +47,6 @@ const STRUCTURE_REFERENCE_DETAIL = {
     METADATA_PROVISION_AGREEMENT: "metadataprovisionagreement",
     DATA_CONSTRAINT: "dataconstraint",
     METADATA_CONSTRAINT: "metadataconstraint",
->>>>>>> v4.8.0
 
     getValues() {
         let references = Object.values(this).filter((value) => {
@@ -72,221 +63,22 @@ const STRUCTURE_REFERENCE_DETAIL = {
                 STRUCTURE_REFERENCE_DETAIL[r] !== STRUCTURE_REFERENCE_DETAIL.NONE &&
                 STRUCTURE_REFERENCE_DETAIL[r] !== STRUCTURE_REFERENCE_DETAIL.PARENTS &&
                 STRUCTURE_REFERENCE_DETAIL[r] !== STRUCTURE_REFERENCE_DETAIL.PARENTS_SIBLINGS &&
-<<<<<<< HEAD
-=======
                 STRUCTURE_REFERENCE_DETAIL[r] !== STRUCTURE_REFERENCE_DETAIL.ANCESTORS &&
->>>>>>> v4.8.0
                 STRUCTURE_REFERENCE_DETAIL[r] !== STRUCTURE_REFERENCE_DETAIL.CHILDREN &&
                 STRUCTURE_REFERENCE_DETAIL[r] !== STRUCTURE_REFERENCE_DETAIL.DESCENDANTS &&
                 STRUCTURE_REFERENCE_DETAIL[r] !== STRUCTURE_REFERENCE_DETAIL.ALL;
         });
     },
-<<<<<<< HEAD
-=======
     getSdmxStructureTypesValues: function() {
         return STRUCTURE_REFERENCE_DETAIL.getSdmxStructureTypes().map((key) => {
             return STRUCTURE_REFERENCE_DETAIL[key];
         });
     },
->>>>>>> v4.8.0
     getSdmxStructureType: function (structureReferenceDetail) {
         return STRUCTURE_REFERENCE_DETAIL.getSdmxStructureTypes().find(r => {
             return STRUCTURE_REFERENCE_DETAIL[r] === structureReferenceDetail;
         });
     },
-<<<<<<< HEAD
-    getApplicableReferences: function (structureType) {
-        if (structureType === SDMX_STRUCTURE_TYPE.AGENCY_SCHEME.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.MSD,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.CATEGORISATION.key ||
-            structureType === SDMX_STRUCTURE_TYPE.PROCESS.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.DSD,
-                STRUCTURE_REFERENCE_DETAIL.MSD,
-                STRUCTURE_REFERENCE_DETAIL.CATEGORY_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.CONCEPT_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.CODE_LIST,
-                STRUCTURE_REFERENCE_DETAIL.HIERARCHICAL_CODELIST,
-                STRUCTURE_REFERENCE_DETAIL.ORGANISATION_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.AGENCY_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.DATA_PROVIDER_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.DATA_CONSUMER_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.ORGANISATION_UNIT_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.DATAFLOW,
-                STRUCTURE_REFERENCE_DETAIL.METADATA_FLOW,
-                STRUCTURE_REFERENCE_DETAIL.REPORTING_TAXONOMY,
-                STRUCTURE_REFERENCE_DETAIL.PROVISION_AGREEMENT,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.CONTENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.ATTACHMENT_CONSTRAINT
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.CATEGORY_SCHEME.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.CODE_LIST.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.HIERARCHICAL_CODELIST,
-                STRUCTURE_REFERENCE_DETAIL.CONCEPT_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.DSD,
-                STRUCTURE_REFERENCE_DETAIL.MSD,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.CODE_LIST,
-                STRUCTURE_REFERENCE_DETAIL.DSD,
-                STRUCTURE_REFERENCE_DETAIL.MSD,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key ||
-            structureType === SDMX_STRUCTURE_TYPE.ATTACHMENT_CONSTRAINT.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.DATA_PROVIDER_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.DSD,
-                STRUCTURE_REFERENCE_DETAIL.DATAFLOW,
-                STRUCTURE_REFERENCE_DETAIL.MSD,
-                STRUCTURE_REFERENCE_DETAIL.METADATA_FLOW,
-                STRUCTURE_REFERENCE_DETAIL.PROVISION_AGREEMENT
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.DATA_CONSUMER_SCHEME.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.MSD,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.DATAFLOW.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.CONTENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.ATTACHMENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.DSD,
-                STRUCTURE_REFERENCE_DETAIL.PROVISION_AGREEMENT,
-                STRUCTURE_REFERENCE_DETAIL.REPORTING_TAXONOMY,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.DATA_PROVIDER_SCHEME.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.CONTENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.ATTACHMENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.PROVISION_AGREEMENT,
-                STRUCTURE_REFERENCE_DETAIL.MSD,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.DSD.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.CODE_LIST,
-                STRUCTURE_REFERENCE_DETAIL.CONCEPT_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.CONTENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.ATTACHMENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.DATAFLOW,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.HIERARCHICAL_CODELIST.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.CODE_LIST,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.METADATA_FLOW.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.CONTENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.ATTACHMENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.MSD,
-                STRUCTURE_REFERENCE_DETAIL.PROVISION_AGREEMENT,
-                STRUCTURE_REFERENCE_DETAIL.REPORTING_TAXONOMY,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.MSD.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.CONCEPT_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.CODE_LIST,
-                STRUCTURE_REFERENCE_DETAIL.DATA_PROVIDER_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.DATA_CONSUMER_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.AGENCY_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.ORGANISATION_UNIT_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.CONTENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.ATTACHMENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.METADATA_FLOW,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.ORGANISATION_UNIT_SCHEME.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.CONTENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.ATTACHMENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.MSD,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.DATA_PROVIDER_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.DATAFLOW,
-                STRUCTURE_REFERENCE_DETAIL.METADATA_FLOW,
-                STRUCTURE_REFERENCE_DETAIL.CONTENT_CONSTRAINT,
-                STRUCTURE_REFERENCE_DETAIL.ATTACHMENT_CONSTRAINT
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.REPORTING_TAXONOMY.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.DATAFLOW,
-                STRUCTURE_REFERENCE_DETAIL.METADATA_FLOW,
-                STRUCTURE_REFERENCE_DETAIL.STRUCTURE_SET
-            ];
-        } else if (structureType === SDMX_STRUCTURE_TYPE.STRUCTURE_SET.key) {
-            return [
-                STRUCTURE_REFERENCE_DETAIL.CATEGORISATION,
-                STRUCTURE_REFERENCE_DETAIL.PROCESS,
-                STRUCTURE_REFERENCE_DETAIL.DSD,
-                STRUCTURE_REFERENCE_DETAIL.MSD,
-                STRUCTURE_REFERENCE_DETAIL.CATEGORY_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.DATA_PROVIDER_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.DATA_CONSUMER_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.AGENCY_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.ORGANISATION_UNIT_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.CONCEPT_SCHEME,
-                STRUCTURE_REFERENCE_DETAIL.CODE_LIST,
-                STRUCTURE_REFERENCE_DETAIL.REPORTING_TAXONOMY,
-                STRUCTURE_REFERENCE_DETAIL.HIERARCHICAL_CODELIST,
-                STRUCTURE_REFERENCE_DETAIL.DATAFLOW,
-                STRUCTURE_REFERENCE_DETAIL.METADATA_FLOW
-            ];
-        }
-        return [];
-    },
-    isApplicableReference: function (structureType, structureReferenceDetail) {
-        let applicableReferences = STRUCTURE_REFERENCE_DETAIL.getApplicableReferences(structureType);
-=======
     getApplicableReferences: function (structureType, apiVersion) {
         let applicableRefs = [];
         switch (structureType) {
@@ -598,7 +390,6 @@ const STRUCTURE_REFERENCE_DETAIL = {
     ////////////////////////////////////////////////////////////////////////////
     isApplicableReference: function (structureType, structureReferenceDetail, apiVersion) {
         let applicableReferences = STRUCTURE_REFERENCE_DETAIL.getApplicableReferences(structureType, apiVersion);
->>>>>>> v4.8.0
         return applicableReferences.some((ref) => {
             return ref === structureReferenceDetail;
         });
@@ -608,12 +399,9 @@ const STRUCTURE_REFERENCE_DETAIL = {
         references.push(STRUCTURE_REFERENCE_DETAIL.NONE);
         references.push(STRUCTURE_REFERENCE_DETAIL.PARENTS);
         references.push(STRUCTURE_REFERENCE_DETAIL.PARENTS_SIBLINGS);
-<<<<<<< HEAD
-=======
         if (API_VERSIONS[apiVersion] >= API_VERSIONS["v2.0.0"]) {
             references.push(STRUCTURE_REFERENCE_DETAIL.ANCESTORS);
         }
->>>>>>> v4.8.0
         references.push(STRUCTURE_REFERENCE_DETAIL.CHILDREN);
         references.push(STRUCTURE_REFERENCE_DETAIL.DESCENDANTS);
         references.push(STRUCTURE_REFERENCE_DETAIL.ALL);
@@ -641,10 +429,6 @@ const STRUCTURE_REFERENCE_DETAIL = {
             references.push(STRUCTURE_REFERENCE_DETAIL.CONTENT_CONSTRAINT);
             references.push(STRUCTURE_REFERENCE_DETAIL.ATTACHMENT_CONSTRAINT);
         }
-<<<<<<< HEAD
-        // TODO apiVersion v2.0.0
-        return references;
-=======
         if (API_VERSIONS[apiVersion] >= API_VERSIONS["v2.0.0"]) {
             references.push(STRUCTURE_REFERENCE_DETAIL.HIERARCHY);
             references.push(STRUCTURE_REFERENCE_DETAIL.HIERARCHY_ASSOCIATION);
@@ -667,7 +451,6 @@ const STRUCTURE_REFERENCE_DETAIL = {
         let refStructureIsBasic = SDMX_STRUCTURE_TYPE.isStructureBasic(refStructureType);
         return (requestMode === TEST_REQUEST_MODE.FULL) ||
                 (requestMode === TEST_REQUEST_MODE.BASIC && refStructureIsBasic);
->>>>>>> v4.8.0
     }
 };
 

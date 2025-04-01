@@ -10,15 +10,6 @@ var Utils = require('../../utils/Utils.js')
 
 
 class ContentConstraintObject extends MaintainableObject {
-<<<<<<< HEAD
-    constructor(props, children, detail, cubeRegions, dataKeySets, referencePeriod,annotations) {
-        super(SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key, props, children, detail);
-        this.setType(props.$.type);
-        this.setCubeRegions(cubeRegions);
-        this.setDataKeySets(dataKeySets);
-        this.setReferencePeriod(referencePeriod);
-        this.setAnnotations(annotations)
-=======
     constructor(structureType, props, children, detail, cubeRegions, dataKeySets, referencePeriod, annotations) {
         super(structureType, props, children, detail);
         if (structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key) {
@@ -30,7 +21,6 @@ class ContentConstraintObject extends MaintainableObject {
         this.setDataKeySets(dataKeySets);
         this.setReferencePeriod(referencePeriod);
         this.setAnnotations(annotations);
->>>>>>> v4.8.0
     };
     setDataKeySets(dataKeySets){
         this.dataKeySets = dataKeySets;
@@ -172,16 +162,10 @@ class ContentConstraintObject extends MaintainableObject {
 
         return;
     }
-<<<<<<< HEAD
-    static fromJSON(jsObj){
-        if(jsObj.structureType !== SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key){
-            throw new Error("Cannot create "+SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key+" object.")
-=======
     static fromJSON(jsObj) {
         if (jsObj.structureType !== SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key
             && jsObj.structureType !== SDMX_STRUCTURE_TYPE.DATA_CONSTRAINT.key) {
             throw new Error("Cannot create object for structure type: " + jsObj.structureType)
->>>>>>> v4.8.0
         }
         let props = {
             $:{
@@ -203,11 +187,7 @@ class ContentConstraintObject extends MaintainableObject {
         })
         let detail = (jsObj.detail)?jsObj.detail:""
 
-<<<<<<< HEAD
-       
-=======
 
->>>>>>> v4.8.0
         let cubeRegions = (jsObj.cubeRegions)?jsObj.cubeRegions:[];
 
         let cubeRegionsArr = []
@@ -243,13 +223,8 @@ class ContentConstraintObject extends MaintainableObject {
         annotations.forEach(annotation =>{
             annotationsArr.push(new ConstraintAnnotationObject(annotation.id,annotation.type,annotation.title))
         });
-<<<<<<< HEAD
-
-        return new ContentConstraintObject (props,childrenArr,detail,cubeRegionsArr,dataKeySetsArr,referencePeriod,annotationsArr)
-=======
         
         return new ContentConstraintObject (jsObj.structureType,props,childrenArr,detail,cubeRegionsArr,dataKeySetsArr,referencePeriod,annotationsArr)
->>>>>>> v4.8.0
 
     }
 };

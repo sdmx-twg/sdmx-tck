@@ -22,12 +22,8 @@ class SdmxV21JsonForStubsParser {
         } else if (structureType === SDMX_STRUCTURE_TYPE.REPORTING_TAXONOMY.key) {
             return props.hasOwnProperty("ReportingCategory");
         } else if (structureType === SDMX_STRUCTURE_TYPE.PROVISION_AGREEMENT.key) {
-<<<<<<< HEAD
-            return (props.hasOwnProperty("StructureUsage") || props.hasOwnProperty("DataProvider"));
-=======
             // StructureUsage became Dataflow in SDMX 3.0
             return (props.hasOwnProperty("StructureUsage") || props.hasOwnProperty("DataProvider") || props.hasOwnProperty("Dataflow"));
->>>>>>> v4.8.0
         } else if (structureType === SDMX_STRUCTURE_TYPE.HIERARCHICAL_CODELIST.key) {
             return (props.hasOwnProperty("IncludedCodelist") || props.hasOwnProperty("Hierarchy"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.STRUCTURE_SET.key) {
@@ -44,26 +40,18 @@ class SdmxV21JsonForStubsParser {
             return (props.hasOwnProperty("Source") || props.hasOwnProperty("Target"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key ||
             structureType === SDMX_STRUCTURE_TYPE.ALLOWED_CONTRAINT.key ||
-<<<<<<< HEAD
-            structureType === SDMX_STRUCTURE_TYPE.ACTUAL_CONSTRAINT.key) {
-=======
             structureType === SDMX_STRUCTURE_TYPE.ACTUAL_CONSTRAINT.key ||
             structureType === SDMX_STRUCTURE_TYPE.DATA_CONSTRAINT.key ||
             structureType === SDMX_STRUCTURE_TYPE.METADATA_CONSTRAINT.key) {
->>>>>>> v4.8.0
             return (props.hasOwnProperty("ConstraintAttachment"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.CATEGORY_SCHEME.key) {
             return (props.hasOwnProperty("Category"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key) {
             return (props.hasOwnProperty("Concept"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.CODE_LIST.key) {
-<<<<<<< HEAD
-            return (props.hasOwnProperty("Code"));
-=======
             return (props.hasOwnProperty("Code")
                 || props.hasOwnProperty("GeoFeatureSetCode")
                 || props.hasOwnProperty("GeoGridCode"));
->>>>>>> v4.8.0
         } else if (structureType === SDMX_STRUCTURE_TYPE.ORGANISATION_UNIT_SCHEME.key) {
             return (props.hasOwnProperty("OrganisationUnit"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.AGENCY_SCHEME.key) {
@@ -72,9 +60,6 @@ class SdmxV21JsonForStubsParser {
             return (props.hasOwnProperty("DataProvider"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.DATA_CONSUMER_SCHEME.key) {
             return (props.hasOwnProperty("DataConsumer"));
-<<<<<<< HEAD
-        }
-=======
         } else if (structureType === SDMX_STRUCTURE_TYPE.VALUE_LIST.key) { // SDMX_3 artefact
             return (props.hasOwnProperty("ValueItem"));
         } else if (structureType === SDMX_STRUCTURE_TYPE.HIERARCHY.key) { // SDMX_3 artefact
@@ -94,7 +79,6 @@ class SdmxV21JsonForStubsParser {
         } else if (structureType === SDMX_STRUCTURE_TYPE.REPRESENTATION_MAP.key) { // SDMX_3 artefact
             return (props.hasOwnProperty("SourceCodelist") || props.hasOwnProperty("SourceDataType"));
         } 
->>>>>>> v4.8.0
     };
 
     static isCompleteStub (props)  {

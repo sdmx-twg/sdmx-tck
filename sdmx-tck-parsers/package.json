@@ -1,10 +1,6 @@
 {
   "name": "sdmx-tck-parsers",
-<<<<<<< HEAD
-  "version": "3.0.2",
-=======
   "version": "4.8.0",
->>>>>>> v4.8.0
   "description": "SDMX TCK PARSERS",
   "main": "src/index.js",
   "scripts": {

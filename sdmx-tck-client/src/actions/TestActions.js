@@ -5,16 +5,10 @@ import TckError from 'sdmx-tck-api/src/errors/TckError';
 
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-<<<<<<< HEAD
-const DATA_QUERY_MODE = require('sdmx-tck-api').constants.DATA_QUERY_MODE;
-=======
->>>>>>> v4.8.0
 const TCK_VERSION = require('sdmx-tck-api').constants.TCK_VERSION;
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 var Utils = require('sdmx-tck-api').utils.Utils;
 
-<<<<<<< HEAD
-=======
 export function getServerUrl() {
   if (process.env.NODE_ENV === "development") {
     return "";
@@ -23,7 +17,6 @@ export function getServerUrl() {
   }
 }
 
->>>>>>> v4.8.0
 export function initialiseTestsModel(tests) {
     return { type: 'INITIALISE_TESTS_MODEL', tests: tests };
 };
@@ -63,11 +56,7 @@ export function DataQueriesData(dataQueriesData,testIndex){
 
 export function fetchTests(endpoint, apiVersion, testIndices, requestMode) {
     let body = { endpoint, apiVersion, testIndices, requestMode };
-<<<<<<< HEAD
-    return fetch('/tck-api/prepare-tests', {
-=======
     return fetch(getServerUrl() + '/tck-api/prepare-tests', {
->>>>>>> v4.8.0
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -80,11 +69,7 @@ async function requestTestRun(endpoint, test) {
      try{
         
         let body = { endpoint, test };
-<<<<<<< HEAD
-        const response = await fetch('/tck-api/execute-test', {
-=======
         const response = await fetch(getServerUrl() + '/tck-api/execute-test', {
->>>>>>> v4.8.0
             method: 'POST',
            
             headers: {
@@ -102,11 +87,7 @@ async function requestTestRun(endpoint, test) {
 async function configureSchemaTests(endpoint,apiVersion) {
     try{
        let body = { endpoint,apiVersion };
-<<<<<<< HEAD
-       const response = await fetch('/tck-api/configure-schema-tests', {
-=======
        const response = await fetch(getServerUrl() + '/tck-api/configure-schema-tests', {
->>>>>>> v4.8.0
            method: 'POST',
           
            headers: {
@@ -124,11 +105,7 @@ async function configureSchemaTests(endpoint,apiVersion) {
 async function configureDataTests(endpoint,apiVersion) {
     try{
        let body = { endpoint,apiVersion };
-<<<<<<< HEAD
-       const response = await fetch('/tck-api/configure-data-tests', {
-=======
        const response = await fetch(getServerUrl() + '/tck-api/configure-data-tests', {
->>>>>>> v4.8.0
            method: 'POST',
           
            headers: {
@@ -162,11 +139,7 @@ export async function exportReport(wsInfo,apiVersion,format,tests,scores) {
     try{
         let swVersion = TCK_VERSION;
         let body = { swVersion,apiVersion,wsInfo,format,tests ,scores};
-<<<<<<< HEAD
-        const response =  await fetch('/tck-api/export-report', {
-=======
         const response =  await fetch(getServerUrl() + '/tck-api/export-report', {
->>>>>>> v4.8.0
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

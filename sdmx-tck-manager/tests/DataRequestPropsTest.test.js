@@ -6,10 +6,7 @@ var DataStructureObject = require('sdmx-tck-api').model.DataStructureObject;
 var StructureReference = require('sdmx-tck-api').model.StructureReference;
 var SeriesObject = require('sdmx-tck-api').model.SeriesObject;
 const DIMENSION_AT_OBSERVATION_CONSTANTS = require('sdmx-tck-api').constants.DIMENSION_AT_OBSERVATION_CONSTANTS;
-<<<<<<< HEAD
-=======
 const assert = require('assert');
->>>>>>> v4.8.0
 
 describe('Tests Flow of Data requests from identifiers', function () {
     it('It should assert the flow', async () => {
@@ -41,54 +38,6 @@ describe('Tests Component of Data requests from randomKey', function () {
 });
 
 describe('Tests Key of Data requests from randomKey', function () {
-<<<<<<< HEAD
-    it('It should assert the key', async () => {
-        let dsdObj;
-        let template = {key:DATA_QUERY_KEY.FULL_KEY}
-        let randomKeys = [{FREQ:"A",REF_AREA:"B",ADJUSTMENT:"C",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"},
-        {FREQ:"A",REF_AREA:"B",ADJUSTMENT:"C",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"}]
-
-        xmlMessage = fs.readFileSync('./tests/resources/ECB_ECB_TRED1_1.xml','utf8')
-        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
-           dsdObj = structureWorkspace.sdmxObjects.get("DSD")[0];
-           console.assert(dsdObj instanceof DataStructureObject)
-        })
-
-        let key = DataRequestPropsBuilder.getKey(randomKeys,dsdObj,template)
-        console.assert(key === "A.B.C.D.E.F.G.H")
-    });
-    it('It should assert the key', async () => {
-        let dsdObj;
-        let template = {key:DATA_QUERY_KEY.PARTIAL_KEY}
-        let randomKeys = [{FREQ:"A",REF_AREA:"B",ADJUSTMENT:"C",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"},
-        {FREQ:"A",REF_AREA:"B",ADJUSTMENT:"C",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"}]
-
-        xmlMessage = fs.readFileSync('./tests/resources/ECB_ECB_TRED1_1.xml','utf8')
-        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
-           dsdObj = structureWorkspace.sdmxObjects.get("DSD")[0];
-           console.assert(dsdObj instanceof DataStructureObject)
-        })
-
-        let key = DataRequestPropsBuilder.getKey(randomKeys,dsdObj,template)
-        console.assert(key === "A.B..D.E.F.G.H")
-    });
-    it('It should assert the key', async () => {
-        let dsdObj;
-        let template = {key:DATA_QUERY_KEY.MANY_KEYS}
-        let randomKeys = [{FREQ:"A",REF_AREA:"B",ADJUSTMENT:"C",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"},
-        {FREQ:"A",REF_AREA:"B",ADJUSTMENT:"I",TRD_FLOW:"D",TRD_PRODUCT:"E",COUNT_AREA:"F",STS_INSTITUTION:"G",TRD_SUFFIX:"H"}]
-
-        xmlMessage = fs.readFileSync('./tests/resources/ECB_ECB_TRED1_1.xml','utf8')
-        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (structureWorkspace) {
-           dsdObj = structureWorkspace.sdmxObjects.get("DSD")[0];
-           console.assert(dsdObj instanceof DataStructureObject)
-        })
-
-        let key = DataRequestPropsBuilder.getKey(randomKeys,dsdObj,template)
-        console.assert(key === "A.B.C+I.D.E.F.G.H")
-    });
-   
-=======
     it('It should assert the full key', async () => {
         let dsdObj;
         let template = { key: DATA_QUERY_KEY.FULL_KEY, keyInPath: true };
@@ -154,7 +103,6 @@ describe('Tests Key of Data requests from randomKey', function () {
         console.log("key=", keyV14);
         assert.equal(keyV14, "A.B.C+I.D.E.F.G.H");
     });
->>>>>>> v4.8.0
 });
 
 describe('Tests provider data of Data requests', function () {
@@ -336,8 +284,6 @@ describe('Tests dimension at observation of Data requests', function () {
         obsDimension = DataRequestPropsBuilder.getObsDimension(dsdObj,template)
         console.assert(obsDimension === DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD)
     });
-<<<<<<< HEAD
-=======
 });
 
 describe('Tests structure identification information extraction from data request', function () {
@@ -376,5 +322,4 @@ describe('Tests structure identification information extraction from data reques
         assert.equal(ref.id, 'RAIL_TF_PASSMOV');
         assert.equal(ref.version, '1.2.0');
     });
->>>>>>> v4.8.0
 });

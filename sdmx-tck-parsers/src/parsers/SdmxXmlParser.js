@@ -2,11 +2,7 @@ const xml2js = require('xml2js');
 const stripNamespaces = require('xml2js').processors.stripPrefix;
 const validator = require('@authenio/xsd-schema-validator');
 var SdmxObjectsFactory = require('sdmx-tck-api').model.SdmxObjectsFactory;
-<<<<<<< HEAD
-var SdmxV21JsonParser = require('./SdmxV21JsonParser.js');
-=======
 var SdmxIntenalJsonParser = require('./SdmxIntenalJsonParser.js');
->>>>>>> v4.8.0
 
 class SdmxXmlParser {
 
@@ -43,11 +39,7 @@ class SdmxXmlParser {
         });
     };
 
-<<<<<<< HEAD
-        getIMObjects(xmlMessage) {
-=======
     getIMObjects(xmlMessage, apiVersion) {
->>>>>>> v4.8.0
         return new Promise((resolve, reject) => {
             var parserOptions = {
                 explicitArray: true,
@@ -59,14 +51,6 @@ class SdmxXmlParser {
             xml2js.parseString(xmlMessage, parserOptions, function (err, result) {
                 if (xmlMessage === null || xmlMessage === undefined) {
                     reject("XML cannot be parsed. A valid XML should be provided.");
-<<<<<<< HEAD
-                }
-                if (err !== null) {
-                    reject("An error occurred during the SDMX-ML parsing. " + err);
-                }
-
-                var sdmxObjects = SdmxV21JsonParser.parse(result);
-=======
                     return;
                 }
                 if (err !== null) {
@@ -75,7 +59,6 @@ class SdmxXmlParser {
                 }
 
                 var sdmxObjects = SdmxIntenalJsonParser.parse(result, apiVersion);
->>>>>>> v4.8.0
                 resolve(SdmxObjectsFactory.getWorkspace(sdmxObjects, result));
             });
         });

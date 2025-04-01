@@ -1,9 +1,4 @@
 var isDefined = require('../../utils/Utils.js').isDefined;
-<<<<<<< HEAD
-
-class StructureReference {
-    constructor(structureType, agencyId, id, version, ids) {
-=======
 const SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
 
 class StructureReference {
@@ -17,7 +12,6 @@ class StructureReference {
             structureType === SDMX_STRUCTURE_TYPE.METADATA_PROVIDER_SCHEME.key) ) {
             version = '1.0';
         }
->>>>>>> v4.8.0
         if (!isDefined(structureType) ||
             !isDefined(agencyId) ||
             !isDefined(id) ||

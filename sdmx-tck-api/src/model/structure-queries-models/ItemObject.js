@@ -37,12 +37,9 @@ class ItemObject {
     getParentCode(){
         return this.parentCode;
     }
-<<<<<<< HEAD
-=======
     hasParent() {
         return !!this.parentCode;
     }
->>>>>>> v4.8.0
 }
 
 module.exports = ItemObject;

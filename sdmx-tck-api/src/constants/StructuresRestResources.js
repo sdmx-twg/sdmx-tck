@@ -36,21 +36,12 @@ const STRUCTURES_REST_RESOURCE = {
         contentconstraint: "contentconstraint",
         dataconstraint: "dataconstraint",
         metadataconstraint: "metadataconstraint",
-<<<<<<< HEAD
-        transformationscheme: "transformationscheme",
-        rulesetscheme: "rulesetscheme",
-        userdefinedoperatorscheme: "userdefinedoperatorscheme",
-        customtypescheme: "customtypescheme",
-        namepersonalisationscheme: "namepersonalisationscheme",
-        vtlmappingscheme: "vtlmappingscheme",
-=======
         // transformationscheme: "transformationscheme",
         // rulesetscheme: "rulesetscheme",
         // userdefinedoperatorscheme: "userdefinedoperatorscheme",
         // customtypescheme: "customtypescheme",
         // namepersonalisationscheme: "namepersonalisationscheme",
         // vtlmappingscheme: "vtlmappingscheme",
->>>>>>> v4.8.0
         attachmentconstraint: "attachmentconstraint",
         structure: "structure",
 
@@ -99,11 +90,7 @@ const STRUCTURES_REST_RESOURCE = {
                 resources.push(this.process);
                 resources.push(this.categorisation);
                 resources.push(this.structure);
-<<<<<<< HEAD
-            
-=======
 
->>>>>>> v4.8.0
                 if (API_VERSIONS[apiVersion] <= API_VERSIONS["v1.4.0"]) {
                         resources.push(this.hierarchicalcodelist);
                         resources.push(this.organisationscheme);
@@ -130,21 +117,12 @@ const STRUCTURES_REST_RESOURCE = {
                         resources.push(this.metadataprovisionagreement);
                         resources.push(this.dataconstraint);
                         resources.push(this.metadataconstraint);
-<<<<<<< HEAD
-                        resources.push(this.transformationscheme);
-                        resources.push(this.rulesetscheme);
-                        resources.push(this.userdefinedoperatorscheme);
-                        resources.push(this.customtypescheme);
-                        resources.push(this.namepersonalisationscheme);
-                        resources.push(this.vtlmappingscheme);
-=======
                         // resources.push(this.transformationscheme);
                         // resources.push(this.rulesetscheme);
                         // resources.push(this.userdefinedoperatorscheme);
                         // resources.push(this.customtypescheme);
                         // resources.push(this.namepersonalisationscheme);
                         // resources.push(this.vtlmappingscheme);
->>>>>>> v4.8.0
                 }
                 return resources;
         }

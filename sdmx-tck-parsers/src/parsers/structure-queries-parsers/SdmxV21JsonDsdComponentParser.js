@@ -23,15 +23,6 @@ class SdmxV21JsonDsdComponentParser {
         for(let i in dimensions){
             let id = (dimensions[i] && dimensions[i].$ && dimensions[i].$.id) ? dimensions[i].$.id : jsonPath.query(dimensions[i].ConceptIdentity[0],'$..Ref')[0][0].$.id
             //Push in an array the dimension id and the artefact references of the dimension
-<<<<<<< HEAD
-            datastructureComponents.push(
-                new DataStructureComponentObject(
-                    id,
-                    DSD_COMPONENTS_NAMES.DIMENSION,
-                    SdmxV21StructureReferencesParser.getReferences(dimensions[i]),
-                    SdmxV21JsonComponentRepresentationParser.getRepresentation(dimensions[i])))
-            
-=======
             let dimension = new DataStructureComponentObject(
                 id,
                 DSD_COMPONENTS_NAMES.DIMENSION,
@@ -40,7 +31,6 @@ class SdmxV21JsonDsdComponentParser {
             dimension.setPosition(dimensions[i].$.position);
             
             datastructureComponents.push(dimension);
->>>>>>> v4.8.0
         }
         for(let i in timeDimensions){
             let id = (timeDimensions[i] && timeDimensions[i].$ && timeDimensions[i].$.id) ? timeDimensions[i].$.id : jsonPath.query(timeDimensions[i].ConceptIdentity[0],'$..Ref')[0][0].$.id

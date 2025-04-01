@@ -1,13 +1,8 @@
 var SdmxObjects = require('../SdmxObjects.js');
-<<<<<<< HEAD
-const DataflowObject = require('./DataflowObject.js');
-var isDefined = require('../../utils/Utils.js').isDefined;
-=======
 var ItemSchemeObject = require('../structure-queries-models/ItemSchemeObject.js');
 const DataflowObject = require('./DataflowObject.js');
 var isDefined = require('../../utils/Utils.js').isDefined;
 var getRandomItem = require('../../utils/Utils.js').getRandomItem;
->>>>>>> v4.8.0
 var SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
 var getResources = require('../../constants/StructuresRestResources.js').getResources
 const TEST_INDEX = require('../../constants/TestIndex.js').TEST_INDEX
@@ -53,17 +48,6 @@ class SdmxStructureObjects extends SdmxObjects{
 		}
 		return sdmxObject.getChildren();
 	};
-<<<<<<< HEAD
-	getRandomSdmxObject() {
-		// Randomly pick a structure type from the available structures in the workspace.
-		let structureTypesArray = this.getSdmxObjectsList();
-
-		// Randomly pick an index from the available array of artefacts.
-		let randomIndex = Math.floor(Math.random() * structureTypesArray.length);
-		return structureTypesArray[randomIndex];
-	};
-	getRandomSdmxObjectOfType(structureType) {
-=======
 	getSdmxObjectsOfRestResource(restResource) {
 		restResource =
 			(restResource === STRUCTURES_REST_RESOURCE.allowedconstraint ||
@@ -77,7 +61,6 @@ class SdmxStructureObjects extends SdmxObjects{
 		return structures;
 	};
 	getSdmxObjectsOfType(structureType) {
->>>>>>> v4.8.0
 		if (!isDefined(structureType)) {
 			throw new Error('Missing mandatory parameter \'structureType\'');
 		}
@@ -107,8 +90,6 @@ class SdmxStructureObjects extends SdmxObjects{
 		if (!isDefined(arrayOfStructures) || arrayOfStructures.length === 0) {
 			return null;
 		}
-<<<<<<< HEAD
-=======
 		return arrayOfStructures;
     };
 	getRandomStructureRefsOfRestResource(restResource) {
@@ -150,16 +131,11 @@ class SdmxStructureObjects extends SdmxObjects{
 	getRandomSdmxObjectOfType(structureType) {
 		let arrayOfStructures = this.getSdmxObjectsOfType(structureType);
 		
->>>>>>> v4.8.0
 		// Randomly pick an index from the available array of artefacts.
 		let randomIndex = Math.floor(Math.random() * arrayOfStructures.length);
 		return arrayOfStructures[randomIndex];
     };
-<<<<<<< HEAD
-    
-=======
 	
->>>>>>> v4.8.0
     getSdmxObjectsWithCriteria(structureType, agencyId, id, version) {
 		return this.getSdmxObjectsList().filter((structure) => {
 			let expression = true;
@@ -179,15 +155,6 @@ class SdmxStructureObjects extends SdmxObjects{
 				}
 			}
 			if (isDefined(agencyId)) {
-<<<<<<< HEAD
-				expression = expression && (agencyId === structure.getAgencyId());
-			}
-			if (isDefined(id)) {
-				expression = expression && (id === structure.getId());
-			}
-			if (isDefined(version)) {
-				expression = expression && (version === structure.getVersion());
-=======
 				let agencies = agencyId.split("+"); // support multiple values
 				expression = expression && (agencies.includes(structure.getAgencyId()));
 			}
@@ -198,14 +165,11 @@ class SdmxStructureObjects extends SdmxObjects{
 			if (isDefined(version)) {
 				let versions = version.split("+"); // support multiple values
 				expression = expression && (versions.includes(structure.getVersion()));
->>>>>>> v4.8.0
 			}
 			return expression === true;
 		});
 	};
 
-<<<<<<< HEAD
-=======
 	getProviderRefs() {
 		let providerRefs = [];
 		let provisionAgreements = this.getSdmxObjectsList().filter(obj =>
@@ -226,7 +190,6 @@ class SdmxStructureObjects extends SdmxObjects{
 		});
 	};
 
->>>>>>> v4.8.0
 	getDSDObjectForXSDTests(structureType,agency,id,version){
 		let structure = this.getSdmxObjectsWithCriteria(structureType,agency,id,version)
 		if(structure.length === 0){return null;}
@@ -335,44 +298,6 @@ class SdmxStructureObjects extends SdmxObjects{
 	return null;
 	}
 
-<<<<<<< HEAD
-	getRandomKeysPairFromAvailableConstraint(dsdObj){
-		let randomKey1 = {}
-		let randomKey2 = {}
-		let randomKeysArr = []
-		let constraint = this.getSdmxObjectsList().find(obj => obj.getStructureType() === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key)
-		if(!constraint){return;}
-
-		let cubeRegions = constraint.getCubeRegions()
-		if(cubeRegions.length === 0){return;}
-		
-		let keyValues = cubeRegions[0].getKeyValues();
-		if(keyValues.length === 0){return;}
-
-		keyValues.forEach(keyValue => {
-			randomKey1[keyValue.getId()] = keyValue.getValues()[0]
-			if(keyValue.getValues().length === 1){
-				randomKey2[keyValue.getId()] = keyValue.getValues()[0]
-			}else if(keyValue.getValues().length>1){
-				randomKey2[keyValue.getId()] = keyValue.getValues()[1]
-			}
-		})
-		//We need a pair of randomKeys for the queries that need many keys (ex. A.B1+B2.C).
-		//If all the keyvalues have only 1 value, randomKey1 & randomKey2 will be exaclty the same
-		//so the key will be A.B1+B1.C which is meaningless.
-		let areRandomKeysEqual = keyValues.every(keyValue => keyValue.getValues().length === 1)
-
-		randomKeysArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey1))
-		
-		if(!areRandomKeysEqual){
-			randomKeysArr.push(dsdObj.sortRandomKeyAccordingToDimensions(randomKey2))
-		}
-		
-		return randomKeysArr;
-
-
-	}
-=======
 	/**
 	 * @deprecated To be removed (GPP)
 	 * Random keys are taken from data, and more specifically the attributes of the first two series.
@@ -431,7 +356,6 @@ class SdmxStructureObjects extends SdmxObjects{
 		return randomKeysArr;
 	}
 
->>>>>>> v4.8.0
 	static fromJson(sdmxObjectsJson){
 		if(!sdmxObjectsJson){throw new Error("Invalid parameter 'sdmxObjectsJson' ")}
 		let parentWorkspaceMap = new Map();

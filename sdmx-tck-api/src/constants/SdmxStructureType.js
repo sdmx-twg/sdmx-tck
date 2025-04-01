@@ -32,16 +32,6 @@ var SDMX_STRUCTURE_TYPE = {
     REPORTING_TAXONOMY_MAP: { key: "REPORTING_TAXONOMY_MAP", getClass() { return "ReportingTaxonomyMap" }, isBasic: false },
     METADATA_PROVIDER_SCHEME: { key: "METADATA_PROVIDER_SCHEME", getClass() { return "MetadataProviderScheme" }, isBasic: false },
     METADATA_PROVISION_AGREEMENT: { key: "METADATA_PROVISION_AGREEMENT", getClass() { return "MetadataProvisionAgreement" }, isBasic: false },
-<<<<<<< HEAD
-    DATA_CONSTRAINT: { key: "DATA_CONSTRAINT", getClass() { return "DataConstraing" }, isBasic: false }, // or true
-    METADATA_CONSTRAINT: { key: "METADATA_CONSTRAINT", getClass() { return "MetadataConstraing" }, isBasic: false },
-    TRANSFORMATION_SCHEME: { key: "TRANSFORMATION_SCHEME", getClass() { return "TransformationScheme" }, isBasic: false },
-    RULESET_SCHEME: { key: "RULESET_SCHEME", getClass() { return "RulesetScheme" }, isBasic: false },
-    USER_DEFINED_OPERATOR_SCHEME: { key: "USER_DEFINED_OPERATOR_SCHEME", getClass() { return "UserDefinedOperatorScheme" }, isBasic: false },
-    CUSTOM_TYPE_SCHEME: { key: "CUSTOM_TYPE_SCHEME", getClass() { return "CustomTypeScheme" }, isBasic: false },
-    NAME_PERSONALISATION_SCHEME: { key: "NAME_PERSONALISATION_SCHEME", getClass() { return "NamePersonalisationScheme" }, isBasic: false },
-    VTL_MAPPING_SCHEME: { key: "VTL_MAPPING_SCHEME", getClass() { return "VtlMappingScheme" }, isBasic: false }
-=======
     DATA_CONSTRAINT: { key: "DATA_CONSTRAINT", getClass() { return "DataConstraint" }, isBasic: true },
     METADATA_CONSTRAINT: { key: "METADATA_CONSTRAINT", getClass() { return "MetadataConstraint" }, isBasic: false }
     // TRANSFORMATION_SCHEME: { key: "TRANSFORMATION_SCHEME", getClass() { return "TransformationScheme" }, isBasic: false },
@@ -50,7 +40,6 @@ var SDMX_STRUCTURE_TYPE = {
     // CUSTOM_TYPE_SCHEME: { key: "CUSTOM_TYPE_SCHEME", getClass() { return "CustomTypeScheme" }, isBasic: false },
     // NAME_PERSONALISATION_SCHEME: { key: "NAME_PERSONALISATION_SCHEME", getClass() { return "NamePersonalisationScheme" }, isBasic: false },
     // VTL_MAPPING_SCHEME: { key: "VTL_MAPPING_SCHEME", getClass() { return "VtlMappingScheme" }, isBasic: false }
->>>>>>> v4.8.0
 
 };
 
@@ -145,20 +134,6 @@ SDMX_STRUCTURE_TYPE.fromRestResource = function (restResource) {
             return this.DATA_CONSTRAINT.key;
         case "metadataconstraint":
             return this.METADATA_CONSTRAINT.key;
-<<<<<<< HEAD
-        case "transformationscheme":
-            return this.TRANSFORMATION_SCHEME.key;
-        case "rulesetscheme":
-            return this.RULESET_SCHEME.key;
-        case "userdefinedoperatorscheme":
-            return this.USER_DEFINED_OPERATOR_SCHEME.key;
-        case "customtypescheme":
-            return this.CUSTOM_TYPE_SCHEME.key;
-        case "namepersonalisationscheme":
-            return this.NAME_PERSONALISATION_SCHEME.key;
-        case "vtlmappingscheme":
-            return this.VTL_MAPPING_SCHEME.key;
-=======
         // case "transformationscheme":
         //     return this.TRANSFORMATION_SCHEME.key;
         // case "rulesetscheme":
@@ -171,7 +146,6 @@ SDMX_STRUCTURE_TYPE.fromRestResource = function (restResource) {
         //     return this.NAME_PERSONALISATION_SCHEME.key;
         // case "vtlmappingscheme":
         //     return this.VTL_MAPPING_SCHEME.key;
->>>>>>> v4.8.0
         default:
             return null;
     }
@@ -235,17 +209,7 @@ SDMX_STRUCTURE_TYPE.matchPathToMaintainable = function(path){
 } 
 
 SDMX_STRUCTURE_TYPE.getMaintainableStructureTypeByClass = function (urnClass) {
-<<<<<<< HEAD
-    if (urnClass == null) {
-        throw new Error("SDMX structure type cannot be extracted from a null urn class.");
-    }
-    let structureType = this.getStructureTypeByClass(urnClass);
-    if (!structureType) {
-        throw new Error("Could not find structure type for urn class '" + urnClass + "'");
-    }
-=======
     let structureType = this.getIdentifiableStructureTypeByClass(urnClass);
->>>>>>> v4.8.0
     if (!this[structureType].maintainableParent) {
         return structureType;
     } else {
@@ -259,8 +223,6 @@ SDMX_STRUCTURE_TYPE.getStructureTypeByClass = function (urnClass) {
     );
 };
 
-<<<<<<< HEAD
-=======
 SDMX_STRUCTURE_TYPE.getIdentifiableStructureTypeByClass = function (urnClass) {
     if (urnClass == null) {
         throw new Error("SDMX structure type cannot be extracted from a null urn class.");
@@ -272,7 +234,6 @@ SDMX_STRUCTURE_TYPE.getIdentifiableStructureTypeByClass = function (urnClass) {
     return structureType;
 };
 
->>>>>>> v4.8.0
 SDMX_STRUCTURE_TYPE.getMaintainableTypes = function () {
     let maintainableTypes = Object.keys(SDMX_STRUCTURE_TYPE).filter((key) => {
         return SDMX_STRUCTURE_TYPE.isMaintainable(key) === true;

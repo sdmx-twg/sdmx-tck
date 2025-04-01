@@ -26,12 +26,9 @@ class MaintainableObject {
     getVersion() {
         return this.version;
     };
-<<<<<<< HEAD
-=======
     setVersion(val) {
         this.version = val;
     };
->>>>>>> v4.8.0
     getDetail() {
         return this.detail;
     };
