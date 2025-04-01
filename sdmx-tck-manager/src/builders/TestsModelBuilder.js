@@ -96,6 +96,7 @@ class TestsModelBuilder {
                 schemaTest2 = schemaTest1.concat(SchemaFurtherDescribingResultsParamTestsBuilder.getSchemaFurtherDescribingResultsParamTests(index,x,apiVersion,arrayOfRestResources[j]))
                 allTests = allTests.concat(schemaTest2)
             }
+<<<<<<< HEAD
             
             
             return allTests;
@@ -147,6 +148,19 @@ class TestsModelBuilder {
             
             return allTests;
         }else if (index === TEST_INDEX.Metadata) {
+=======
+            return allTests;
+        } else if (index === TEST_INDEX.Data) {
+            let allTests = [];
+            allTests = allTests.concat(DataIdentificationParametersTestBuilder.getTests(index, x, apiVersion));
+            allTests = allTests.concat(DataExtendedResourceIdentificationTestBuilder.getTests(index, x, apiVersion));
+            allTests = allTests.concat(DataFurtherDescribingResultsTestBuilder.getTests(index, x, apiVersion));
+            allTests = allTests.concat(DataRepresentationSupportTestBuilder.getTests(index, x, apiVersion));
+            allTests = allTests.concat(DataOtherFeatureTestBuilder.getTests(index, x, apiVersion));
+            allTests = allTests.concat(DataAvailabilityTestBuilder.getTests(index, x, apiVersion));
+            return allTests;
+        } else if (index === TEST_INDEX.Metadata) {
+>>>>>>> v4.8.0
             return [];
         }
     }

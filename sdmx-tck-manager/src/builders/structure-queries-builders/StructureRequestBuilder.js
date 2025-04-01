@@ -1,5 +1,9 @@
 const sdmx_rest = require('sdmx-rest');
 var TckError = require('sdmx-tck-api').errors.TckError;
+<<<<<<< HEAD
+=======
+const STRUCTURE_QUERY_REPRESENTATIONS = require('sdmx-tck-api').constants.STRUCTURE_QUERY_REPRESENTATIONS;
+>>>>>>> v4.8.0
 
 class StructureRequestBuilder {
 
@@ -26,9 +30,18 @@ class StructureRequestBuilder {
                 };
 
                 let headers = {};
+<<<<<<< HEAD
                 if (template.representation) {
                     headers = { headers: { accept: template.representation } }
                 }
+=======
+                let representation = template.representation;
+                if (!representation) {
+                    // Get default XML representation
+                    representation = STRUCTURE_QUERY_REPRESENTATIONS.getXMLRepresentation(apiVersion);
+                }
+                headers = { headers: { accept: representation } }
+>>>>>>> v4.8.0
                 
                 let preparedRequest = { request: sdmx_rest.getMetadataQuery(request), service: service, headers: headers };
 

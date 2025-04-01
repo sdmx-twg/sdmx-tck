@@ -67,7 +67,11 @@ class ExportReport extends React.Component {
     render() {
         const buttonStyle = {
             display: (this.props.finished) ? 'inline-block' : 'none',
+<<<<<<< HEAD
             marginLeft: (this.props.finished) ? '2%' : 0,
+=======
+            marginLeft: (this.props.finished) ? '5px' : 0,
+>>>>>>> v4.8.0
         }
         const formats = EXPORT_FORMATS.getValues().map((format) =>
                 <option key={format}>{format}</option>

@@ -18,6 +18,10 @@ class TestObjectBuilder{
             state: TEST_STATE.WAITING,
             failReason: "",
             testType: (testParams.hasOwnProperty("testType")) ? testParams.testType : "",
+<<<<<<< HEAD
+=======
+            isParent: (testParams.hasOwnProperty("isParent")) ? testParams.isParent : false,
+>>>>>>> v4.8.0
             subTests: (testParams.hasOwnProperty("subTests")) ? testParams.subTests : []
         }
         if(testParams.hasOwnProperty('needsItem') && testParams.needsItem === true){

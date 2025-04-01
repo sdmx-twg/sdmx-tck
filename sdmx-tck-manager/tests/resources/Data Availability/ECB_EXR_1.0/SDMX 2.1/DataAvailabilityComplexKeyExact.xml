@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+    <mes:Header>
+        <mes:ID>IREF174889</mes:ID>
+        <mes:Test>false</mes:Test>
+        <mes:Prepared>2024-02-16T21:04:40Z</mes:Prepared>
+        <mes:Sender id="ZZZ"></mes:Sender>
+        <mes:Receiver id="not_supplied"></mes:Receiver>
+    </mes:Header>
+    <mes:Structures>
+        <str:Constraints>
+            <str:ContentConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:BA0D6BDC-2344-45A2-B16E-6B3C2886D9A2(1.0)" isExternalReference="false" agencyID="ECB" id="BA0D6BDC-2344-45A2-B16E-6B3C2886D9A2" isFinal="false" type="Actual" version="1.0">
+                <com:Annotations>
+                    <com:Annotation id="series_count">
+                        <com:AnnotationTitle>8</com:AnnotationTitle>
+                        <com:AnnotationType>sdmx_metrics</com:AnnotationType>
+                    </com:Annotation>
+                </com:Annotations>
+                <com:Name xml:lang="en">Exchange Rates</com:Name>
+                <str:ConstraintAttachment>
+                    <str:Dataflow>
+                        <Ref package="datastructure" agencyID="ECB" id="EXR" version="1.0" class="Dataflow"></Ref>
+                    </str:Dataflow>
+                </str:ConstraintAttachment>
+                <str:CubeRegion include="true">
+                    <com:KeyValue id="CURRENCY">
+                        <com:Value>H42</com:Value>
+                        <com:Value>H7</com:Value>
+                    </com:KeyValue>
+                    <com:KeyValue id="CURRENCY_DENOM">
+                        <com:Value>DEM</com:Value>
+                        <com:Value>HKD</com:Value>
+                    </com:KeyValue>
+                    <com:KeyValue id="EXR_SUFFIX">
+                        <com:Value>A</com:Value>
+                        <com:Value>T</com:Value>
+                    </com:KeyValue>
+                    <com:KeyValue id="FREQ">
+                        <com:Value>M</com:Value>
+                        <com:Value>Q</com:Value>
+                    </com:KeyValue>
+                    <com:KeyValue id="EXR_TYPE">
+                        <com:Value>NRC0</com:Value>
+                    </com:KeyValue>
+                </str:CubeRegion>
+            </str:ContentConstraint>
+        </str:Constraints>
+    </mes:Structures>
+</mes:Structure>

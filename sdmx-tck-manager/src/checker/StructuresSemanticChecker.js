@@ -24,7 +24,11 @@ class StructuresSemanticChecker {
             try {
                 let validation = {};
                 if (test.testType === TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS) {
+<<<<<<< HEAD
                     validation = StructuresSemanticChecker.checkIdentification(query, workspace)
+=======
+                    validation = StructuresSemanticChecker.checkIdentification(test, query, workspace)
+>>>>>>> v4.8.0
                 } else if (test.testType === TEST_TYPE.STRUCTURE_REFERENCE_PARAMETER) {
                     validation = StructuresSemanticChecker.checkReferences(query, workspace);
                 } else if (test.testType === TEST_TYPE.STRUCTURE_DETAIL_PARAMETER) {
@@ -64,22 +68,31 @@ class StructuresSemanticChecker {
        return StructuresSemanticChecker.checkReferences(query,sdmxObjects)
         
     }
+<<<<<<< HEAD
     static checkIdentification(query, sdmxObjects) {
+=======
+    static checkIdentification(test, query, sdmxObjects) {
+>>>>>>> v4.8.0
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
         }
         if (!Utils.isDefined(sdmxObjects) || !(sdmxObjects instanceof SdmxStructureObjects)) {
             throw new Error("Missing mandatory parameter 'sdmxObjects'.");
         }
+<<<<<<< HEAD
 
         let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.resource);
         let agency = query.agency;
         let id = query.id;
+=======
+        
+>>>>>>> v4.8.0
         // WORKAROUND - Until a better solution is found.
         // Because the version is extracted from the request it can contain values such as 'latest', 'all'. 
         // In case of 'latest' we check if the workspace contains exactly one structure 
         // but the problem here is that the version of the returned structure is not known beforehand 
         // and the workspace cannot be filtered using the 'latest' for the structure version.
+<<<<<<< HEAD
         let version = query.version && query.version === 'latest' ? null : query.version;
 
         if (!Utils.isSpecificAgency(query) && !Utils.isSpecificId(query) && !Utils.isSpecificVersion(query)) {
@@ -102,11 +115,38 @@ class StructuresSemanticChecker {
         }
         else if (Utils.isSpecificAgency(query) && !Utils.isSpecificId(query) && !Utils.isSpecificVersion(query)) {
             return StructuresSemanticChecker.atLeastOneArtefact(sdmxObjects, structureType, agency, undefined, undefined);
+=======
+        
+        // NOTE: structureType is null for the rest resource = 'structure'
+        let structureType = SDMX_STRUCTURE_TYPE.fromRestResource(query.resource);
+        let agency = Utils.isSpecificAgency(query) ? query.agency : undefined;
+        let id = Utils.isSpecificId(query) ? query.id : undefined;
+        let version = Utils.isSpecificVersion(query) && query.version !== 'latest' ? query.version : undefined;
+        let item = Utils.isSpecificItem(query) ? query.item : undefined;
+
+        if (!agency && !id && !version) {
+            return { status: SUCCESS_CODE };
+        } else if (structureType && agency && id && Utils.isSpecificVersion(query) && item) {
+            return StructuresSemanticChecker.exactlyOneArtefactWithCorrectNumOfItems(sdmxObjects, structureType, agency, id, version, item);
+        } else if (structureType && agency && id && Utils.isSpecificVersion(query) && !item) {
+            if (test.reqTemplate.multipleAgencies === true
+                || test.reqTemplate.multipleIds === true
+                || test.reqTemplate.multipleVersion === true) {
+                return StructuresSemanticChecker.atLeastOneArtefact(sdmxObjects, structureType, agency, id, version,);
+            } else {
+                return StructuresSemanticChecker.exactlyOneArtefact(sdmxObjects, structureType, agency, id, version);
+            }
+        } else {
+            return StructuresSemanticChecker.atLeastOneArtefact(sdmxObjects, structureType, agency, id, version,);
+>>>>>>> v4.8.0
         }
     };
 
     static checkReferences(query, sdmxObjects) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> v4.8.0
         if (!Utils.isDefined(query)) {
             throw new Error("Missing mandatory parameter 'query'.");
         }
@@ -118,7 +158,14 @@ class StructuresSemanticChecker {
         if(query.item!=="all"){
             itemArray = query.item.split('+');
         }
+<<<<<<< HEAD
         let structureRef = new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(query.resource), query.agency, query.id, query.version,itemArray);
+=======
+        // avoid creation of invalid structure reference for the threee organisation schemes
+        let version = query.version && query.version === 'latest' ? null : query.version;
+
+        let structureRef = new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(query.resource), query.agency, query.id, version,itemArray);
+>>>>>>> v4.8.0
         let result;
         // get the requested structure from workspace
         let structureObject = sdmxObjects.getSdmxObject(structureRef);
@@ -131,6 +178,11 @@ class StructuresSemanticChecker {
             result = StructuresSemanticChecker._getParents(sdmxObjects, structureObject, structureRef);
         } else if (query.references === STRUCTURE_REFERENCE_DETAIL.PARENTS_SIBLINGS) {
             result = StructuresSemanticChecker._getParentsSiblings(sdmxObjects, structureObject, structureRef);
+<<<<<<< HEAD
+=======
+        } else if (query.references === STRUCTURE_REFERENCE_DETAIL.ANCESTORS) {
+            result = StructuresSemanticChecker._getAncestors(sdmxObjects, structureObject, structureRef);
+>>>>>>> v4.8.0
         } else if (query.references === STRUCTURE_REFERENCE_DETAIL.CHILDREN) {
             result = StructuresSemanticChecker._getChildren(sdmxObjects, structureObject);
         } else if (query.references === STRUCTURE_REFERENCE_DETAIL.DESCENDANTS) {
@@ -196,7 +248,11 @@ class StructuresSemanticChecker {
         let errors = [];
         if (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCED_STUBS ||
             query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS ||
+<<<<<<< HEAD
             query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL ){
+=======
+            query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL) {
+>>>>>>> v4.8.0
 
             let structureRef = new StructureReference(SDMX_STRUCTURE_TYPE.fromRestResource(query.resource), query.agency, query.id, query.version);
 
@@ -205,7 +261,11 @@ class StructuresSemanticChecker {
                 var childObject = sdmxObjects.getSdmxObject(childRef)
                 if (!Utils.isDefined(childObject)
                 || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCED_STUBS && childObject.isStub() === false)
+<<<<<<< HEAD
                 || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS && childObject.isCompleteStub() === false)
+=======
+                || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_COMPLETE_STUBS && childObject.isCompleteStub() === false && childObject.isStub() === false)
+>>>>>>> v4.8.0
                 || (query.detail === STRUCTURE_QUERY_DETAIL.REFERENCE_PARTIAL &&
                     (structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.DSD.key || structureObject.getStructureType() === SDMX_STRUCTURE_TYPE.MSD.key) &&
                     childObject.getStructureType() === SDMX_STRUCTURE_TYPE.CONCEPT_SCHEME.key && !StructuresSemanticChecker._checkIfPartial(childRef, childObject))) {
@@ -217,8 +277,15 @@ class StructuresSemanticChecker {
                 if (Utils.isDefined(structuresList) && structuresList instanceof Array) {
                     structuresList.forEach((structure) => {
                         if ((query.detail === STRUCTURE_QUERY_DETAIL.FULL && structure.isFull() === false) ||
+<<<<<<< HEAD
                             (query.detail === STRUCTURE_QUERY_DETAIL.ALL_STUBS && structure.isStub() === false) ||
                             (query.detail === STRUCTURE_QUERY_DETAIL.ALL_COMPLETE_STUBS && structure.isCompleteStub() === false)) {
+=======
+                            (query.detail === STRUCTURE_QUERY_DETAIL.FULL && structure.getStructureType() === SDMX_STRUCTURE_TYPE.CODE_LIST.key && structure.getHasExtensions() === true) ||
+                            (query.detail === STRUCTURE_QUERY_DETAIL.RAW && structure.isFull() === false) ||
+                            (query.detail === STRUCTURE_QUERY_DETAIL.ALL_STUBS && structure.isStub() === false) ||
+                            (query.detail === STRUCTURE_QUERY_DETAIL.ALL_COMPLETE_STUBS && structure.isCompleteStub() === false && structure.isStub() === false)) {
+>>>>>>> v4.8.0
                             errors.push(structure.asReference()); // use this array to gather information about the structures that didn't pass this check.
                         }
                     });
@@ -364,6 +431,25 @@ class StructuresSemanticChecker {
         return result;
     };
 
+<<<<<<< HEAD
+=======
+    static _getAncestors(sdmxObjects, structureObject) {
+        let result = [];
+        StructuresSemanticChecker._getAncestorsInternal(sdmxObjects, structureObject, result);
+        return result;
+    }
+
+    static _getAncestorsInternal(sdmxObjects, structureObject, result) {     
+        let parents = StructuresSemanticChecker._getParents(sdmxObjects, structureObject, structureObject.asReference());
+        for (let parent of parents) {
+            let parentRef = new StructureReference(parent.ref.structureType, parent.ref.agencyId, parent.ref.id, parent.ref.version);
+            let parentObject = sdmxObjects.getSdmxObject(parentRef);
+            result.push(parent);
+            StructuresSemanticChecker._getAncestorsInternal(sdmxObjects, parentObject, result);
+        }
+    }
+
+>>>>>>> v4.8.0
     /**
      * Returns an array containing parents and children of the requested structure and an indication whether they are found in workspace or not.
      * @param {*} sdmxObjects the workspace
@@ -405,7 +491,14 @@ class StructuresSemanticChecker {
             throw new Error("Error in response validation. No workspace provided");
         }
         let matchingStructures = sdmxObjects.getSdmxObjectsWithCriteria(structureType, agencyId, id, version);
+<<<<<<< HEAD
         return { status: (matchingStructures.length === 1) ? SUCCESS_CODE : FAILURE_CODE };
+=======
+        if (matchingStructures.length === 1) {
+            return { status: SUCCESS_CODE };
+        }
+        return { status: FAILURE_CODE, error: "Expected result: exactly one artefact" };
+>>>>>>> v4.8.0
     };
 
     static exactlyOneArtefactWithCorrectNumOfItems(sdmxObjects, structureType, agencyId, id, version, item) {
@@ -430,7 +523,14 @@ class StructuresSemanticChecker {
                 itemsStr = itemsStr.concat(items[i].id + "+")
             }
         }
+<<<<<<< HEAD
         return { status: (matchingStructures.length === 1 && countItemsFromResponse === countItemsTestRequest && itemsStr === item) ? SUCCESS_CODE : FAILURE_CODE };
+=======
+        if (matchingStructures.length === 1 && countItemsFromResponse === countItemsTestRequest && itemsStr === item) {
+            return { status: SUCCESS_CODE };
+        }
+        return { status: FAILURE_CODE, error: "Expected result: exactly one artefact with " + countItemsTestRequest + " items"};
+>>>>>>> v4.8.0
     };
 
     static atLeastOneArtefact(sdmxObjects, structureType, agencyId, id, version) {
@@ -438,7 +538,17 @@ class StructuresSemanticChecker {
             throw new Error("Error in response validation. No workspace provided");
         }
         let matchingStructures = sdmxObjects.getSdmxObjectsWithCriteria(structureType, agencyId, id, version);
+<<<<<<< HEAD
         return { status: (matchingStructures.length >= 1) ? SUCCESS_CODE : FAILURE_CODE };
+=======
+        if (matchingStructures.length < 1) {
+            return { status: FAILURE_CODE, error: "Expected result: at least one artefact" };
+        }
+        if (sdmxObjects.getNoOfObjects() > matchingStructures.length) {
+            return { status: FAILURE_CODE, error: "The number of artifacts contained in the workspace is not as expected." };
+        }
+        return { status: SUCCESS_CODE };
+>>>>>>> v4.8.0
     }
 };
 

@@ -1,0 +1,612 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mes:Structure xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IREF005816</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2020-07-31T13:03:03Z</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:DataStructures>
+			<str:DataStructure agencyID="ECB" id="ECB_RAI1" isExternalReference="false" isFinal="false" uri="https://www.ecb.europa.eu/vocabulary/stats/rai/1" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ECB:ECB_RAI1(1.0)" version="1.0">
+				<com:Name xml:lang="en">Risk Assessment Indicators</com:Name>
+				<str:DataStructureComponents>
+					<str:DimensionList id="DimensionDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=ECB:ECB_RAI1(1.0).DimensionDescriptor">
+						<str:Dimension id="FREQ" position="1" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_RAI1(1.0).FREQ">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="FREQ" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_FREQ" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="REF_AREA" position="2" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_RAI1(1.0).REF_AREA">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="REF_AREA" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_AREA_EE" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="2" minLength="2" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="DD_ECON_CONCEPT" position="3" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_RAI1(1.0).DD_ECON_CONCEPT">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="DD_ECON_CONCEPT" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_DD_ECON_CONCEPT" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="12" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="CURRENCY_TRANS" position="4" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_RAI1(1.0).CURRENCY_TRANS">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="CURRENCY_TRANS" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_CURRENCY" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="3" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="SOURCE_DATA" position="5" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_RAI1(1.0).SOURCE_DATA">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="SOURCE_DATA" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_SOURCE_DATA" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="4" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="DD_SUFFIX" position="6" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_RAI1(1.0).DD_SUFFIX">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="DD_SUFFIX" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_BS_SUFFIX" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="3" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:TimeDimension id="TIME_PERIOD" position="7" urn="urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=ECB:ECB_RAI1(1.0).TIME_PERIOD">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="TIME_PERIOD" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="ObservationalTimePeriod"/>
+							</str:LocalRepresentation>
+						</str:TimeDimension>
+					</str:DimensionList>
+					<str:Group id="Group" urn="urn:sdmx:org.sdmx.infomodel.datastructure.GroupDimensionDescriptor=ECB:ECB_RAI1(1.0).Group">
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="REF_AREA"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="DD_ECON_CONCEPT"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="CURRENCY_TRANS"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="SOURCE_DATA"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+						<str:GroupDimension>
+							<str:DimensionReference>
+								<Ref id="DD_SUFFIX"/>
+							</str:DimensionReference>
+						</str:GroupDimension>
+					</str:Group>
+					<str:AttributeList id="AttributeDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=ECB:ECB_RAI1(1.0).AttributeDescriptor">
+						<str:Attribute assignmentStatus="Mandatory" id="TIME_FORMAT" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).TIME_FORMAT">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="TIME_FORMAT" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="3" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="OBS_STATUS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).OBS_STATUS">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="OBS_STATUS" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_OBS_STATUS" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="OBS_CONF" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).OBS_CONF">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="OBS_CONF" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_OBS_CONF" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="OBS_PRE_BREAK" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).OBS_PRE_BREAK">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="OBS_PRE_BREAK" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="15" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="OBS_COM" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).OBS_COM">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="OBS_COM" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="1050" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:PrimaryMeasure>
+									<Ref id="OBS_VALUE"/>
+								</str:PrimaryMeasure>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="BREAKS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).BREAKS">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="BREAKS" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="350" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="COLLECTION" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).COLLECTION">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="COLLECTION" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_COLLECTION" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="1" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="COMPILING_ORG" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).COMPILING_ORG">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="COMPILING_ORG" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_ORGANISATION" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="6" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="DATA_COMP" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).DATA_COMP">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="DATA_COMP" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="4000" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="DISS_ORG" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).DISS_ORG">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="DISS_ORG" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_ORGANISATION" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="6" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="PUBL_ECB" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).PUBL_ECB">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="PUBL_ECB" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="1050" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="PUBL_MU" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).PUBL_MU">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="PUBL_MU" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="1050" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="PUBL_PUBLIC" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).PUBL_PUBLIC">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="PUBL_PUBLIC" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="1050" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="FREQ"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="COVERAGE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).COVERAGE">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="COVERAGE" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="350" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="DECIMALS" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).DECIMALS">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="DECIMALS" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_DECIMALS" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="2" minLength="1" textType="BigInteger"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Conditional" id="TITLE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).TITLE">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="TITLE" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="200" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="TITLE_COMPL" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).TITLE_COMPL">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="TITLE_COMPL" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="1050" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="UNIT" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).UNIT">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="UNIT" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_UNIT" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="13" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute assignmentStatus="Mandatory" id="UNIT_MULT" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_RAI1(1.0).UNIT_MULT">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="UNIT_MULT" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>
+									<Ref agencyID="ECB" class="Codelist" id="CL_UNIT_MULT" package="codelist" version="1.0"/>
+								</str:Enumeration>
+								<str:EnumerationFormat maxLength="3" minLength="1" textType="String"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>
+									<Ref id="REF_AREA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_ECON_CONCEPT"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="CURRENCY_TRANS"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="SOURCE_DATA"/>
+								</str:Dimension>
+								<str:Dimension>
+									<Ref id="DD_SUFFIX"/>
+								</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+					</str:AttributeList>
+					<str:MeasureList id="MeasureDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=ECB:ECB_RAI1(1.0).MeasureDescriptor">
+						<str:PrimaryMeasure id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=ECB:ECB_RAI1(1.0).OBS_VALUE">
+							<str:ConceptIdentity>
+								<Ref agencyID="ECB" class="Concept" id="OBS_VALUE" maintainableParentID="ECB_CONCEPTS" maintainableParentVersion="1.0" package="conceptscheme"/>
+							</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat maxLength="15" textType="String"/>
+							</str:LocalRepresentation>
+						</str:PrimaryMeasure>
+					</str:MeasureList>
+				</str:DataStructureComponents>
+			</str:DataStructure>
+		</str:DataStructures>
+	</mes:Structures>
+</mes:Structure>

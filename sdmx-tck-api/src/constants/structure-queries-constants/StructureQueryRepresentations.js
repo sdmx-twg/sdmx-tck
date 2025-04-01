@@ -22,6 +22,10 @@ const STRUCTURE_QUERY_REPRESENTATIONS = {
         return API_VERSIONS[apiVersion] < API_VERSIONS["v2.0.0"] ? 
                 STRUCTURE_QUERY_REPRESENTATIONS.SDMX_ML_21 : STRUCTURE_QUERY_REPRESENTATIONS.SDMX_JSON_200;
     },
+    getXMLRepresentation(apiVersion) {
+        return API_VERSIONS[apiVersion] < API_VERSIONS["v2.0.0"] ? 
+                STRUCTURE_QUERY_REPRESENTATIONS.SDMX_ML_21 : STRUCTURE_QUERY_REPRESENTATIONS.SDMX_ML_3;
+    },
     getStructureQueryRepresentations(apiVersion) {
         var representations = [];
         representations.push(STRUCTURE_QUERY_REPRESENTATIONS.EMPTY);

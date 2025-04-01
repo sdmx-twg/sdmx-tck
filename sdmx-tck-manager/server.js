@@ -1,4 +1,5 @@
 var express = require('express');
+<<<<<<< HEAD
 const app = express();
 
 var TestObjectBuilder = require('./src/builders/TestObjectBuilder.js');
@@ -10,10 +11,21 @@ var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST
 const MetadataDetail = require('sdmx-rest').metadata.MetadataDetail;
 const MetadataReferences = require('sdmx-rest').metadata.MetadataReferences
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
+=======
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
+const path = require('path');
+
+var TestsModelBuilder = require('./src/builders/TestsModelBuilder.js');
+var TestExecutionManagerFactory = require('./src/manager/TestExecutionManagerFactory.js')
+var STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
+>>>>>>> v4.8.0
 var XSDTestsDataBuilder = require('./src/builders/schema-queries-builders/XSDTestsDataBuilder.js')
 var DataQueriesDataBuilder = require('./src/builders/data-queries-builders/DataQueriesDataBuilder.js')
 var SdmxReporter = require('sdmx-tck-reporter').reporter.SdmxReporter
 var TestInfo = require('../sdmx-tck-reporter/src/TestInfo.js')
+<<<<<<< HEAD
 var Report = require('../sdmx-tck-reporter/src/Report.js')
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 
@@ -30,6 +42,40 @@ app.use(express.json({ limit: '50mb' }))
 app.post("/tck-api/prepare-tests", (req, res) => {
     let payload = req.body;
     
+=======
+const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
+
+var privateKey = fs.readFileSync('self-signed-certificate.key', 'utf8');
+var certificate = fs.readFileSync('self-signed-certificate.cert', 'utf8');
+var credentials = { key: privateKey, cert: certificate };
+
+var app = express();
+app.use(express.json({ limit: '50mb' }));
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../sdmx-tck-client/build')));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../sdmx-tck-client/build', 'index.html'));
+});
+
+const configuredTimeout = 120 * 60 * 1000; // 2 hours
+
+var httpServer = http.createServer(app);
+httpServer.setTimeout(configuredTimeout);
+httpServer.listen(5002, () => {
+    console.log("HTTP Server is listening on port: 5002");
+});
+
+var httpsServer = https.createServer(credentials, app);
+httpsServer.setTimeout(configuredTimeout);
+httpsServer.listen(8443, () => {
+    console.log("HTTPS Server is listening on port: 8443");
+});
+
+app.post("/tck-api/prepare-tests", (req, res) => {
+    let payload = req.body;
+
+>>>>>>> v4.8.0
     let apiVersion = payload.apiVersion;
     let testIndices = payload.testIndices;
     let requestMode = payload.requestMode;
@@ -45,6 +91,7 @@ app.post("/tck-api/configure-schema-tests", async(req, res) => {
                           datastructure:undefined,
                           dataflow:undefined,
                           provisionagreement:undefined}
+<<<<<<< HEAD
                         }
     let payload = req.body;
     let endpoint = payload.endpoint;
@@ -53,6 +100,16 @@ app.post("/tck-api/configure-schema-tests", async(req, res) => {
     //PREPARE SCHEMA TESTS THAT RELY ON DSDs,DFs,PRAs FOUND AS CONTRAINT CONSTRAINABLES
     configData.constraintData =  await XSDTestsDataBuilder.buildXSDDataFromConstraint(endpoint,apiVersion)
     
+=======
+    }
+    let payload = req.body;
+    let endpoint = payload.endpoint;
+    let apiVersion = payload.apiVersion;
+
+    //PREPARE SCHEMA TESTS THAT RELY ON DSDs,DFs,PRAs FOUND AS CONTRAINT CONSTRAINABLES
+    configData.constraintData =  await XSDTestsDataBuilder.buildXSDDataFromConstraint(endpoint,apiVersion)
+
+>>>>>>> v4.8.0
     //PREPARE SCHEMA TESTS THAT RELY ON RANDOM DSDs,DFs,PRAs
 
     //DSD DATA
@@ -72,12 +129,17 @@ app.post("/tck-api/configure-data-tests", async(req, res) => {
     let payload = req.body;
     let endpoint = payload.endpoint;
     let apiVersion = payload.apiVersion;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> v4.8.0
     let configData =  await DataQueriesDataBuilder.buildDataQueriesData(endpoint,apiVersion)
     res.send(JSON.stringify(configData))
 });
 
 app.post("/tck-api/execute-test", (req, res) => {
+<<<<<<< HEAD
         let payload = req.body;
         let test = payload.test;
         let apiVersion = test.apiVersion;
@@ -93,6 +155,23 @@ app.post("/tck-api/execute-test", (req, res) => {
                 console.log("Test: " + test.testId + " failed. Cause: " + error);
                 res.send(error) 
             });
+=======
+    let payload = req.body;
+    let test = payload.test;
+    let apiVersion = test.apiVersion;
+    //let apiVersion = payload.apiVersion;
+    let endpoint = payload.endpoint;
+
+    TestExecutionManagerFactory.getTestsManager(test.index).executeTest(test, apiVersion, endpoint).then(
+        (result) => {
+            console.log("Test: " + test.testId + " completed.");
+            res.send(JSON.stringify(result))
+        },
+        (error) => {
+            console.log("Test: " + test.testId + " failed. Cause: " + error);
+            res.send(error)
+        });
+>>>>>>> v4.8.0
 });
 
 app.post("/tck-api/export-report", async (req, res) => {
@@ -121,6 +200,7 @@ app.post("/tck-api/export-report", async (req, res) => {
         res.set('Content-Disposition', 'attachment; filename='+filename);
         res.set('Content-Type', contenType);
 
+<<<<<<< HEAD
         
         //Init Reporter
         SdmxReporter.init(wsInfo,apiVersion,swVersion,scores)
@@ -128,6 +208,15 @@ app.post("/tck-api/export-report", async (req, res) => {
         //Record tests
         tests.forEach(t => SdmxReporter.record(TestInfo.fromJSON(t)));
         
+=======
+
+        //Init Reporter
+        SdmxReporter.init(wsInfo,apiVersion,swVersion,scores)
+
+        //Record tests
+        tests.forEach(t => SdmxReporter.record(TestInfo.fromJSON(t)));
+
+>>>>>>> v4.8.0
         //Write buffer to res
         res.write(await SdmxReporter.publishReport(format))
         res.end()

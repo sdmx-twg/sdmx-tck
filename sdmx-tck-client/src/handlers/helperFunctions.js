@@ -96,6 +96,7 @@ const searchChildTestsToPassIdentifiers = (test, runTest) => {
 		// if the test is found, pass identifiers to its children.
 		if (test.subTests && Array.isArray(test.subTests)) {
 			for (let i = 0; i < test.subTests.length; i++) {
+<<<<<<< HEAD
 				if (test.subTests[i].requireRandomSdmxObject === true) {
 					test.subTests[i].identifiers.structureType = runTest.randomStructure.structureType;
 					test.subTests[i].identifiers.agency = runTest.randomStructure.agencyId;
@@ -113,6 +114,39 @@ const searchChildTestsToPassIdentifiers = (test, runTest) => {
 				}
 				if(test.subTests[i].requireRandomKey === true){
 					test.subTests[i].randomKeys = runTest.randomKeys;
+=======
+				let subTest = test.subTests[i];
+				if (subTest.requireRandomSdmxObject === true) {
+					subTest.identifiers.structureType = runTest.randomStructures[0].structureType;
+					let agency = runTest.randomStructures[0].agencyId;
+					if (subTest.reqTemplate && subTest.reqTemplate.multipleAgencies === true) {
+						agency += "+" + runTest.randomStructures[1].agencyId;
+					}
+					subTest.identifiers.agency = agency;
+					
+					let identifier = runTest.randomStructures[0].id;
+					if (subTest.reqTemplate && subTest.reqTemplate.multipleIds === true) {
+						identifier += "+" + runTest.randomStructures[1].id;
+					}
+					subTest.identifiers.id = identifier;
+					
+					let version = runTest.randomStructures[0].version;
+					if (subTest.reqTemplate && subTest.reqTemplate.multipleVersions === true) {
+						version += "+" + runTest.randomStructures[1].version;
+					}
+					subTest.identifiers.version = version;
+				}
+				if (subTest.requireItems) {
+					//In Target category case we need only one item in the form of array
+					if (subTest.testType === TEST_TYPE.STRUCTURE_TARGET_CATEGORY){
+						subTest.items = [runTest.randomStructures[0].randomItems[0]];
+					} else {
+						subTest.items = runTest.randomStructures[0].randomItems;
+					}	
+				}
+				if (subTest.requireRandomKey === true) {
+					subTest.randomKeys = runTest.randomKeys;
+>>>>>>> v4.8.0
 				}
 			}
 		}
@@ -175,6 +209,7 @@ export function passConstraintDataToSchemaTests(schemaTests,schemaTestsData){
 		}
 	}
 }
+<<<<<<< HEAD
 export function passDataToDataQueries(dataTests,dataQueriesData){
 	
 	if (dataTests.subTests && Array.isArray(dataTests.subTests)) {
@@ -198,6 +233,35 @@ export function passDataToDataQueries(dataTests,dataQueriesData){
 				}
 			}
 			
+=======
+export function passDataToDataQueries(dataTests, dataQueriesData) {
+	// Pass the correct identifiers based on the resource (context) property of the test.
+	if (dataTests.subTests && Array.isArray(dataTests.subTests)) {
+		for (let i = 0; i < dataTests.subTests.length; i++) {
+			let subTest = dataTests.subTests[i];
+			let structureRef = dataQueriesData[subTest.resource].structureRef;
+			let indicativeSeries = dataQueriesData[subTest.resource].indicativeSeries;
+			let indicativeSeriesAttributes = dataQueriesData[subTest.resource].indicativeSeriesAttributes;
+			if (structureRef) {
+				subTest.identifiers.structureType = structureRef.structureType
+				subTest.identifiers.agency = structureRef.agencyId
+				subTest.identifiers.id = structureRef.id
+				subTest.identifiers.version = structureRef.version
+
+				if (subTest.reqTemplate.startPeriod
+					|| subTest.reqTemplate.endPeriod
+					|| subTest.reqTemplate.firstNObservations
+					|| subTest.reqTemplate.lastNObservations
+					|| subTest.reqTemplate.updatedAfter) {
+
+					subTest.indicativeSeries = indicativeSeries;
+				}
+				subTest.indicativeSeriesAttributes = indicativeSeriesAttributes;
+				if (subTest.subTests && Array.isArray(subTest.subTests)) {
+					passDataToDataQueries(subTest, dataQueriesData)
+				}
+			}
+>>>>>>> v4.8.0
 		}
 	}
 }

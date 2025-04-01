@@ -1,6 +1,10 @@
 var SdmxV21JsonForStubsParser = require('./parsers/structure-queries-parsers/SdmxV21JsonForStubsParser.js');
 var SdmxV21JsonItemsParser = require('./parsers/structure-queries-parsers/SdmxV21JsonItemsParser.js');
+<<<<<<< HEAD
 var SdmxV21JsonParser = require('./parsers/SdmxV21JsonParser.js');
+=======
+var SdmxIntenalJsonParser = require('./parsers/SdmxIntenalJsonParser.js');
+>>>>>>> v4.8.0
 var SdmxV21StructureReferencesParser = require('./parsers/structure-queries-parsers/SdmxV21StructureReferencesParser.js');
 var SdmxV21JsonCubeRegionParser = require('./parsers/structure-queries-parsers/SdmxV21JsonCubeRegionParser.js');
 var SdmxV21JsonDataKeySetParser = require('./parsers/structure-queries-parsers/SdmxV21JsonDataKeySetParser.js');
@@ -8,6 +12,14 @@ var SdmxV21ConstraintKeyValueParser = require('./parsers/structure-queries-parse
 var SdmxV21JsonReferencePeriodParser = require('./parsers/structure-queries-parsers/SdmxV21JsonReferencePeriodParser.js')
 var SdmxV21JsonAnnotationParser = require('./parsers/structure-queries-parsers/SdmxV21JsonAnnotationParser.js')
 var SdmxXmlParser = require('./parsers/SdmxXmlParser.js');
+<<<<<<< HEAD
+=======
+var SdmxJsonParserFactory = require('./parsers/SdmxJsonParserFactory.js');
+var SdmxV30JsonItemsParser = require('./parsers/structure-queries-parsers/SdmxV30JsonItemsParser.js');
+var SdmxV30JsonDsdComponentParser = require('./parsers/structure-queries-parsers/SdmxV30JsonDsdComponentParser.js');
+var SdmxV30StructuresParser = require('./parsers/structure-queries-parsers/SdmxV30StructuresParser.js');
+var SdmxV30StructureReferencesParser = require('./parsers/structure-queries-parsers/SdmxV30StructureReferencesParser.js');
+>>>>>>> v4.8.0
 var SdmxV21JsonDsdComponentParser = require('./parsers/structure-queries-parsers/SdmxV21JsonDsdComponentParser.js')
 var SdmxV21StructuresParser = require('./parsers/structure-queries-parsers/SdmxV21StructuresParser.js')
 var SdmxV21SchemasParser = require('./parsers/schema-queries-parsers/SdmxV21SchemasParser.js')
@@ -26,7 +38,11 @@ module.exports = {
     parsers: {
         SdmxV21JsonForStubsParser: SdmxV21JsonForStubsParser,
         SdmxV21JsonItemsParser: SdmxV21JsonItemsParser,
+<<<<<<< HEAD
         SdmxV21JsonParser: SdmxV21JsonParser,
+=======
+        SdmxIntenalJsonParser: SdmxIntenalJsonParser,
+>>>>>>> v4.8.0
         SdmxV21StructuresParser:SdmxV21StructuresParser,
         SdmxV21SchemasParser:SdmxV21SchemasParser,
         SdmxV21SchemaEnumerationParser:SdmxV21SchemaEnumerationParser,
@@ -47,6 +63,15 @@ module.exports = {
         SdmxV21DatasetParser:SdmxV21DatasetParser,
         SdmxV21DatasetComponentsAttributesParser:SdmxV21DatasetComponentsAttributesParser,
         SdmxV21DataGroup:SdmxV21DataGroup,
+<<<<<<< HEAD
         SdmxXmlParser: SdmxXmlParser
+=======
+        SdmxXmlParser: SdmxXmlParser,
+        SdmxJsonParserFactory: SdmxJsonParserFactory,
+        SdmxV30JsonItemsParser: SdmxV30JsonItemsParser,
+        SdmxV30JsonDsdComponentParser: SdmxV30JsonDsdComponentParser,
+        SdmxV30StructuresParser:SdmxV30StructuresParser,
+        SdmxV30StructureReferencesParser: SdmxV30StructureReferencesParser
+>>>>>>> v4.8.0
     }
 };

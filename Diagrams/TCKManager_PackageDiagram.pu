@@ -1,0 +1,209 @@
+@startuml "TCKManager_PackageDiagram"
+
+component sdmx-tck-manager as sdmx_tck_manager #ddd {
+    package "Package manager" as manager #fff {
+        left to right direction    
+        class TestExecutionManagerFactory {
+            + getTestsManager(index) : TestExecutionManager
+        }
+        class StructureTestExecutionManager {
+            + executeTest(test, apiVersion, endpoint): Promise
+        }
+        class SchemaTestExecutionManager {
+            + executeTest(test, apiVersion, endpoint): Promise
+        }
+        class DataTestsExecutionManager {
+            + executeTest(test, apiVersion, endpoint): Promise
+        }
+    }
+    ' Relationships
+    TestExecutionManagerFactory --> StructureTestExecutionManager : <<returns>>
+    TestExecutionManagerFactory --> SchemaTestExecutionManager : <<returns>>
+    TestExecutionManagerFactory --> DataTestsExecutionManager : <<returns>>   
+}
+
+newpage
+component sdmx-tck-manager #ddd {
+    ' skinparam linetype ortho
+    skinparam linetype polyline
+    skinparam SameClassWidth true
+    left to right direction
+    
+    package "Package checker" as checker #fff {
+        class SemanticCheckerFactory {
+            + getChecker(test): SemanticChecker
+        }
+        class DataSemanticChecker {
+            + checkWorkspace(test, request, workspace): Promise
+            - _checkResourceIdentification(test, query, workspace) : Object
+            - _checkProviderIdentification(test, query, workspace) : Object
+            - _checkIdentification(test, query, workspace) : Object
+            - _checkExtendedResourceIdentification(test, query, workspace) : Object
+            - _validateSeriesAgainstKey(test, query, workspace) : Object
+            - _checkFurtherDescribingResults(test, query, workspace) : Object
+            - _checkDimensionAtObservation(test, query, workspace) : Object
+            - _validateAttributesPositioning(workspace, test) : Object
+            - _validateDimAtObsTimePeriod(workspace) : Object
+            - _validateDimAtObsDimension(workspace, dimensionAtObservationId) : Object
+            - _validateDimAtObsAllDimensions(workspace) : Object
+            - _validateDimAtObsNotProvided(workspace, test) : Object
+            - _checkDetail(test, workspace) : Object
+            - _checkPeriods(periods, workspace) : Object
+            - _checkObservations(test, query, workspace) : Object
+            - _checkDataAvailability(test, query, workspace) : Object
+            - _checkModeExact(test, query, constraint) : Object
+            - _checkModeAvailable(test, query, constraint) : Object
+            - _checkTemporalCoverage(test, constraint) : Object
+            - _checkMetrics(constraint) : Object
+            - _checkSingleDimension(test, query, constraint) : Object
+            - _checkReferences(test, query, workspace, constraint) : Object
+            - _checkReferencedDSD(test, query, workspace, constraint) : Object
+            - _checkReferencedDF(test, query, workspace, constraint) : Object
+            - _checkReferencedCodelists(test, workspace, constraint) : Object
+            - _findNotUsedCodes(allCodes, keyValues) : Array
+            - _findParents(codelistCodes, code, parents) : Array
+            - _checkReferencedConceptSchemes(test, query, workspace, constraint) : Object
+            - _checkReferencedProviderScheme(test, query, workspace) : Object
+            - _checkAllReferences(test, query, workspace, constraint) : Object
+        }
+        class SchemasSemanticChecker {
+            + checkWorkspace(test, request, workspace): Promise
+            - checkXSDComponents(test, query, workspace) : 
+            - checkDefaultRules(dsdObject, workspace, dimensionAtObservation) : Object
+            - checkXSDSimpleTypes(test, query, dsdObject, workspace) : Object
+            - checkXSDSimpleTypesWithoutEnums(dsdObject, workspace) : Object
+            - checkXSDSimpleTypesWithEnums(test, query, dsdObject, workspace) : Object
+            - validateKeyValueAgainstSimpleTypeEnum(workspace, keyValue, constraintObj) : Object
+            - checkXSDComplexTypes(test, dsdObject, query, workspace, dimensionAtObservation) : Object
+            - checkXSDDataSetType(test, dsdObject, workspace, dimensionAtObservation) : Object
+            - checkXSDSeriesType(test, dsdObject, workspace, dimensionAtObservation) : Object
+            - checkXSDGroupType(test, dsdObject, workspace, dimensionAtObservation) : Object
+            - checkXSDAbstractGroupType(dsdObject, workspace) : Object
+            - checkSimpleTypeGroupID(dsdObject, workspace) : Object
+            - checkSpecificXSDGroupType(test, dsdObject, workspace) : Object
+            - checkXSDObsType(test, dsdObject, query, sdmxObjects, dimensionAtObservation) : Object
+            - checkObsTypeContentModel(test, dsdObject, query, sdmxObjects, dimensionAtObservation) : Object
+            - checkComplexTypesOfMeasureDimensionConcepts(test, dsdObject, sdmxObjects) : Object
+        }
+        class ContentConstraintReferencePartialChecker {
+            + checkWorkspace(test, request, workspace): Promise        
+            - getDataFromConstraint(workspace, constraint) : Object
+            - constraintValuesValidation(keyValue, codesArray, constraint) : boolean
+            - checkReferencePartialTestWorkspace(workspace, keyValueData, codeListRef, constraint) : Object
+            - getDsdFromConstrainable(workspace, constrainableArtefactRef) : Object
+            - referencepartialTestBuilder(test, constrainable) : Object
+            - getRefOfSpecificStructureType(childrenRefs, structureType) : StructureReference
+        }
+        class StructuresSemanticChecker {
+            + checkWorkspace(test, request, workspace) : Promise
+            + checkIdentification(query, workspace) : Object
+            - _exactlyOneArtefactWithCorrectNumOfItems(workspace, structureType, ...) : Object
+            - _exactlyOneArtefact(workspace, structureType, agencyId, id, version) : Object
+            - _atLeastOneArtefact(workspace, structureType, agencyId, id, version) : object
+            + checkReferences(query, workspace) : object
+            - _getParents(workspace, structureObject, structureRef) : Array
+            - _getParentsSiblings(workspace, structureObject, structureRef) : Array
+            - _getChildren(workspace, structureObject) : Array
+            - _getDescendants(workspace, structureObject) : Array
+            - _getAll(workspace, structureObject, structureRef) : Array
+            - _getParentsChildren(workspace, structureObject, structureRef) : Array
+            + checkDetails(query, workspace) : Object
+            - _checkIfPartial(structureRef, itemScheme) : boolean
+            + checkTargetCategory(query, workspace) : Object
+            - _checkCategorisationIds(workspace, item) : Object
+        }
+        class HttpResponseValidator {
+            + validateHttpResponse(query, httpResponse) : Promise
+            + validateRepresentation(requestedRepresentation, response, apiVersion) : Promise
+            - checkEmptyRepresentationTestResponse(response) : Void
+            - validateOtherHeaders(template, response) : Object 
+            - checkCompression(response) : Void
+            - checkCaching(response) : Void
+        }
+        class ContentConstraintTypeValidator {
+            + getContentConstraintOfAllowedType(test) : Object
+            + changeContentConstraintIfNeeded(test,parentWorkspaceObj) : Object
+        }
+        ' Relationships
+        SemanticCheckerFactory --> StructuresSemanticChecker : <<returns>>
+        SemanticCheckerFactory --> ContentConstraintReferencePartialChecker : <<returns>>
+        SemanticCheckerFactory --> SchemasSemanticChecker : <<returns>>
+        SemanticCheckerFactory --> DataSemanticChecker : <<returns>>
+        ' Hidden Relationships
+        StructuresSemanticChecker -[hidden]- HttpResponseValidator
+        StructuresSemanticChecker -[hidden]- ContentConstraintTypeValidator
+    }
+}
+newpage
+component sdmx-tck-manager #ddd {
+    ' This class diagram contains the classes of checker package but without private methods.
+    ' skinparam linetype ortho
+    skinparam linetype polyline
+    skinparam SameClassWidth true
+    left to right direction
+    
+    package "Package checker" as checker #fff {
+        class SemanticCheckerFactory {
+            + getChecker(test): SemanticChecker
+        }
+        class DataSemanticChecker {
+            + checkWorkspace(test, request, workspace): Promise
+        }
+        class SchemasSemanticChecker {
+            + checkWorkspace(test, request, workspace): Promise
+        }
+        class ContentConstraintReferencePartialChecker {
+            + checkWorkspace(test, request, workspace): Promise
+        }
+        class StructuresSemanticChecker {
+            + checkWorkspace(test, request, workspace) : Promise
+        }
+        class HttpResponseValidator {
+            + validateHttpResponse(query, httpResponse) : Promise
+            + validateRepresentation(requestedRepresentation, response, apiVersion) : Promise
+        }
+        class ContentConstraintTypeValidator {
+            + getContentConstraintOfAllowedType(test) : Object
+        }
+        ' Relationships
+        SemanticCheckerFactory --> StructuresSemanticChecker : <<returns>>
+        SemanticCheckerFactory --> ContentConstraintReferencePartialChecker : <<returns>>
+        SemanticCheckerFactory --> SchemasSemanticChecker : <<returns>>
+        SemanticCheckerFactory --> DataSemanticChecker : <<returns>>
+        ' Hidden Relationships
+        StructuresSemanticChecker -[hidden]- HttpResponseValidator
+        StructuresSemanticChecker -[hidden]- ContentConstraintTypeValidator
+    }
+}
+   
+    ' package "Package builders" as builders #fff {
+        ' left to right direction
+        ' class TestsModelBuilder {
+
+        ' }
+        ' package "Package data-queries-builders" as data_queries_builders #fff {
+        '     class DataAvailabilityTestBuilder {
+        '         + getTests(index, x, apiVersion): [] 
+        '     }
+        '     class DataExtendedResourceIdentificationTestBuilder {
+        '         + getTests(index, x, apiVersion): [] 
+        '     }
+        '     class DataFurtherDescribingResultsTestBuilder {
+        '         + getTests(index, x, apiVersion): [] 
+        '     }
+        '     class DataIdentificationParametersTestBuilder {
+        '         + getTests(index, x, apiVersion): []
+        '     }
+        '     class DataOtherFeatureTestBuilder {
+        '         + getTests(index, x, apiVersion): []
+        '     }
+        ' package "Package schema-queries-builders" as schema_queries_builders  #fff {
+        
+        ' }
+        ' package "Package structure-queries-builders" as structure_queries_builders  #fff {
+        
+        ' }
+    ' }
+    'manager -[hidden]right--- checker
+
+@enduml

@@ -1,0 +1,2443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mes:Structure xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+  <mes:Header>
+    <mes:ID>REGISTRY_RESPONSE</mes:ID>
+    <mes:Test>false</mes:Test>
+    <mes:Prepared>2019-10-14T09:30:56.989Z</mes:Prepared>
+    <mes:Sender id="ESTAT"/>
+    <mes:Receiver id="unknown"/>
+  </mes:Header>
+  <mes:Structures>
+    <str:Codelists>
+      <str:Codelist id="CL_AREA_EE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_AREA_EE(1.0)" agencyID="ECB" version="1.0" isExternalReference="false" isFinal="true" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/codelist/ECB/CL_AREA_EE/1.0">
+        <com:Name xml:lang="en">Area code list</com:Name>
+        <str:Code id="1A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1A">
+          <com:Name xml:lang="en">1A</com:Name>
+          <com:Description xml:lang="en" xml:customprop="gpp_name">International organisations</com:Description>
+        </str:Code>
+        <str:Code id="1B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1B">
+          <com:Name xml:lang="en">1B</com:Name>
+          <com:Description xml:lang="en">UN organisations</com:Description>
+        </str:Code>
+        <str:Code id="1C" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1C">
+          <com:Name xml:lang="en">1C</com:Name>
+          <com:Description xml:lang="en">International Monetary Fund</com:Description>
+        </str:Code>
+        <str:Code id="1D" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1D">
+          <com:Name xml:lang="en">1D</com:Name>
+          <com:Description xml:lang="en">World Trade Organisation</com:Description>
+        </str:Code>
+        <str:Code id="1E" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1E">
+          <com:Name xml:lang="en">1E</com:Name>
+          <com:Description xml:lang="en">International Bank for Reconstruction and Development</com:Description>
+        </str:Code>
+        <str:Code id="1F" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1F">
+          <com:Name xml:lang="en">1F</com:Name>
+          <com:Description xml:lang="en">International Development Association</com:Description>
+        </str:Code>
+        <str:Code id="1G" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1G">
+          <com:Name xml:lang="en">1G</com:Name>
+          <com:Description xml:lang="en">Other UN Organisations (includes 1H, 1J-1T)</com:Description>
+        </str:Code>
+        <str:Code id="1H" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1H">
+          <com:Name xml:lang="en">1H</com:Name>
+          <com:Description xml:lang="en">UNESCO (United Nations Educational, Scientific and Cultural Organisati on)</com:Description>
+        </str:Code>
+        <str:Code id="1J" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1J">
+          <com:Name xml:lang="en">1J</com:Name>
+          <com:Description xml:lang="en">FAO (Food and Agriculture Organisation)</com:Description>
+        </str:Code>
+        <str:Code id="1K" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1K">
+          <com:Name xml:lang="en">1K</com:Name>
+          <com:Description xml:lang="en">WHO (World Health Organisation)</com:Description>
+        </str:Code>
+        <str:Code id="1L" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1L">
+          <com:Name xml:lang="en">1L</com:Name>
+          <com:Description xml:lang="en">IFAD (International Fund for Agricultural Development)</com:Description>
+        </str:Code>
+        <str:Code id="1M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1M">
+          <com:Name xml:lang="en">1M</com:Name>
+          <com:Description xml:lang="en">IFC (International Finance Corporation)</com:Description>
+        </str:Code>
+        <str:Code id="1N" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1N">
+          <com:Name xml:lang="en">1N</com:Name>
+          <com:Description xml:lang="en">MIGA (Multilateral Investment Guarantee Agency)</com:Description>
+        </str:Code>
+        <str:Code id="1O" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1O">
+          <com:Name xml:lang="en">1O</com:Name>
+          <com:Description xml:lang="en">UNICEF (United Nations Children Fund)</com:Description>
+        </str:Code>
+        <str:Code id="1P" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1P">
+          <com:Name xml:lang="en">1P</com:Name>
+          <com:Description xml:lang="en">UNHCR (United Nations High Commissioner for Refugees)</com:Description>
+        </str:Code>
+        <str:Code id="1Q" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1Q">
+          <com:Name xml:lang="en">1Q</com:Name>
+          <com:Description xml:lang="en">UNRWA (United Nations Relief and Works Agency for Palestine)</com:Description>
+        </str:Code>
+        <str:Code id="1R" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1R">
+          <com:Name xml:lang="en">1R</com:Name>
+          <com:Description xml:lang="en">IAEA (International Atomic Energy Agency)</com:Description>
+        </str:Code>
+        <str:Code id="1S" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1S">
+          <com:Name xml:lang="en">1S</com:Name>
+          <com:Description xml:lang="en">ILO (International Labour Organisation)</com:Description>
+        </str:Code>
+        <str:Code id="1T" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1T">
+          <com:Name xml:lang="en">1T</com:Name>
+          <com:Description xml:lang="en">ITU (International Telecommunication Union)</com:Description>
+        </str:Code>
+        <str:Code id="1Z" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).1Z">
+          <com:Name xml:lang="en">1Z</com:Name>
+          <com:Description xml:lang="en">Rest of UN Organisations n.i.e.</com:Description>
+        </str:Code>
+        <str:Code id="4A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4A">
+          <com:Name xml:lang="en">4A</com:Name>
+          <com:Description xml:lang="en">European Community Institutions, Organs and Organisms</com:Description>
+        </str:Code>
+        <str:Code id="4B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4B">
+          <com:Name xml:lang="en">4B</com:Name>
+          <com:Description xml:lang="en">EMS (European Monetary System)</com:Description>
+        </str:Code>
+        <str:Code id="4C" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4C">
+          <com:Name xml:lang="en">4C</com:Name>
+          <com:Description xml:lang="en">European Investment Bank</com:Description>
+        </str:Code>
+        <str:Code id="4D" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4D">
+          <com:Name xml:lang="en">4D</com:Name>
+          <com:Description xml:lang="en">European Commission</com:Description>
+        </str:Code>
+        <str:Code id="4E" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4E">
+          <com:Name xml:lang="en">4E</com:Name>
+          <com:Description xml:lang="en">European Development Fund</com:Description>
+        </str:Code>
+        <str:Code id="4F" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4F">
+          <com:Name xml:lang="en">4F</com:Name>
+          <com:Description xml:lang="en">European Central Bank</com:Description>
+        </str:Code>
+        <str:Code id="4G" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4G">
+          <com:Name xml:lang="en">4G</com:Name>
+          <com:Description xml:lang="en">EIF (European Investment Fund)</com:Description>
+        </str:Code>
+        <str:Code id="4H" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4H">
+          <com:Name xml:lang="en">4H</com:Name>
+          <com:Description xml:lang="en">European Community of Steel and Coal</com:Description>
+        </str:Code>
+        <str:Code id="4J" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4J">
+          <com:Name xml:lang="en">4J</com:Name>
+          <com:Description xml:lang="en">Other EC Institutions, Organs and Organisms covered by General budget</com:Description>
+        </str:Code>
+        <str:Code id="4K" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4K">
+          <com:Name xml:lang="en">4K</com:Name>
+          <com:Description xml:lang="en">European Parliament</com:Description>
+        </str:Code>
+        <str:Code id="4L" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4L">
+          <com:Name xml:lang="en">4L</com:Name>
+          <com:Description xml:lang="en">European Council</com:Description>
+        </str:Code>
+        <str:Code id="4M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4M">
+          <com:Name xml:lang="en">4M</com:Name>
+          <com:Description xml:lang="en">Court of Justice</com:Description>
+        </str:Code>
+        <str:Code id="4N" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4N">
+          <com:Name xml:lang="en">4N</com:Name>
+          <com:Description xml:lang="en">Court of Auditors</com:Description>
+        </str:Code>
+        <str:Code id="4P" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4P">
+          <com:Name xml:lang="en">4P</com:Name>
+          <com:Description xml:lang="en">Economic and Social Committee</com:Description>
+        </str:Code>
+        <str:Code id="4Q" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4Q">
+          <com:Name xml:lang="en">4Q</com:Name>
+          <com:Description xml:lang="en">Committee of Regions</com:Description>
+        </str:Code>
+        <str:Code id="4Z" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).4Z">
+          <com:Name xml:lang="en">4Z</com:Name>
+          <com:Description xml:lang="en">Other European Community Institutions, Organs and Organisms</com:Description>
+        </str:Code>
+        <str:Code id="5A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5A">
+          <com:Name xml:lang="en">5A</com:Name>
+          <com:Description xml:lang="en">Organisation for Economic Cooperation and Development</com:Description>
+        </str:Code>
+        <str:Code id="5B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5B">
+          <com:Name xml:lang="en">5B</com:Name>
+          <com:Description xml:lang="en">Bank for International Settlements</com:Description>
+        </str:Code>
+        <str:Code id="5C" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5C">
+          <com:Name xml:lang="en">5C</com:Name>
+          <com:Description xml:lang="en">Inter-American Development Bank</com:Description>
+        </str:Code>
+        <str:Code id="5D" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5D">
+          <com:Name xml:lang="en">5D</com:Name>
+          <com:Description xml:lang="en">African Development Bank</com:Description>
+        </str:Code>
+        <str:Code id="5E" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5E">
+          <com:Name xml:lang="en">5E</com:Name>
+          <com:Description xml:lang="en">Asian Development Bank</com:Description>
+        </str:Code>
+        <str:Code id="5F" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5F">
+          <com:Name xml:lang="en">5F</com:Name>
+          <com:Description xml:lang="en">European Bank for Reconstruction and Development</com:Description>
+        </str:Code>
+        <str:Code id="5G" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5G">
+          <com:Name xml:lang="en">5G</com:Name>
+          <com:Description xml:lang="en">IIC (Inter-American Investment Corporation)</com:Description>
+        </str:Code>
+        <str:Code id="5H" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5H">
+          <com:Name xml:lang="en">5H</com:Name>
+          <com:Description xml:lang="en">NIB (Nordic Investment Bank)</com:Description>
+        </str:Code>
+        <str:Code id="5J" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5J">
+          <com:Name xml:lang="en">5J</com:Name>
+          <com:Description xml:lang="en">IBEC (International Bank for Economic Co-operation)</com:Description>
+        </str:Code>
+        <str:Code id="5K" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5K">
+          <com:Name xml:lang="en">5K</com:Name>
+          <com:Description xml:lang="en">IIB (International Investment Bank)</com:Description>
+        </str:Code>
+        <str:Code id="5L" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5L">
+          <com:Name xml:lang="en">5L</com:Name>
+          <com:Description xml:lang="en">CDB (Caribbean Development Bank)</com:Description>
+        </str:Code>
+        <str:Code id="5M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5M">
+          <com:Name xml:lang="en">5M</com:Name>
+          <com:Description xml:lang="en">AMF (Arab Monetary Fund)</com:Description>
+        </str:Code>
+        <str:Code id="5N" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5N">
+          <com:Name xml:lang="en">5N</com:Name>
+          <com:Description xml:lang="en">BADEA (Banque arabe pour le développement économique en Afrique)</com:Description>
+        </str:Code>
+        <str:Code id="5P" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5P">
+          <com:Name xml:lang="en">5P</com:Name>
+          <com:Description xml:lang="en">CASDB (Central African States Development Bank)</com:Description>
+        </str:Code>
+        <str:Code id="5Q" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5Q">
+          <com:Name xml:lang="en">5Q</com:Name>
+          <com:Description xml:lang="en">African Development Fund</com:Description>
+        </str:Code>
+        <str:Code id="5R" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5R">
+          <com:Name xml:lang="en">5R</com:Name>
+          <com:Description xml:lang="en">Asian Development Fund</com:Description>
+        </str:Code>
+        <str:Code id="5S" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5S">
+          <com:Name xml:lang="en">5S</com:Name>
+          <com:Description xml:lang="en">Fonds spécial unifié de développement</com:Description>
+        </str:Code>
+        <str:Code id="5T" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5T">
+          <com:Name xml:lang="en">5T</com:Name>
+          <com:Description xml:lang="en">CABEI (Central American Bank for Economic Integration)</com:Description>
+        </str:Code>
+        <str:Code id="5U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5U">
+          <com:Name xml:lang="en">5U</com:Name>
+          <com:Description xml:lang="en">ADC (Andean Development Corporation)</com:Description>
+        </str:Code>
+        <str:Code id="5V" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5V">
+          <com:Name xml:lang="en">5V</com:Name>
+          <com:Description xml:lang="en">Other International Organisations (financial institutions)</com:Description>
+        </str:Code>
+        <str:Code id="5Z" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).5Z">
+          <com:Name xml:lang="en">5Z</com:Name>
+          <com:Description xml:lang="en">Other International Financial Organisations n.i.e.</com:Description>
+        </str:Code>
+        <str:Code id="6A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6A">
+          <com:Name xml:lang="en">6A</com:Name>
+          <com:Description xml:lang="en">Other International Organisations (non-financial institutions)</com:Description>
+        </str:Code>
+        <str:Code id="6B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6B">
+          <com:Name xml:lang="en">6B</com:Name>
+          <com:Description xml:lang="en">NATO (North Atlantic Treaty Organisation)</com:Description>
+        </str:Code>
+        <str:Code id="6C" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6C">
+          <com:Name xml:lang="en">6C</com:Name>
+          <com:Description xml:lang="en">Council of Europe</com:Description>
+        </str:Code>
+        <str:Code id="6D" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6D">
+          <com:Name xml:lang="en">6D</com:Name>
+          <com:Description xml:lang="en">ICRC (International Committee of the Red Cross)</com:Description>
+        </str:Code>
+        <str:Code id="6E" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6E">
+          <com:Name xml:lang="en">6E</com:Name>
+          <com:Description xml:lang="en">ESA (European Space Agency)</com:Description>
+        </str:Code>
+        <str:Code id="6F" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6F">
+          <com:Name xml:lang="en">6F</com:Name>
+          <com:Description xml:lang="en">EPO (European Patent Office)</com:Description>
+        </str:Code>
+        <str:Code id="6G" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6G">
+          <com:Name xml:lang="en">6G</com:Name>
+          <com:Description xml:lang="en">EUROCONTROL (European Organisation for the Safety of Air Navigation)</com:Description>
+        </str:Code>
+        <str:Code id="6H" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6H">
+          <com:Name xml:lang="en">6H</com:Name>
+          <com:Description xml:lang="en">EUTELSAT (European Telecommunications Satellite Organisation)</com:Description>
+        </str:Code>
+        <str:Code id="6J" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6J">
+          <com:Name xml:lang="en">6J</com:Name>
+          <com:Description xml:lang="en">INTELSAT (International Telecommunications Satellite Organisation)</com:Description>
+        </str:Code>
+        <str:Code id="6K" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6K">
+          <com:Name xml:lang="en">6K</com:Name>
+          <com:Description xml:lang="en">EBU/UER (European Broadcasting Union/Union européenne de radio-télévis ion)</com:Description>
+        </str:Code>
+        <str:Code id="6L" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6L">
+          <com:Name xml:lang="en">6L</com:Name>
+          <com:Description xml:lang="en">EUMETSAT (European Organisation for the Exploitation of Meteorological  Satellites)</com:Description>
+        </str:Code>
+        <str:Code id="6M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6M">
+          <com:Name xml:lang="en">6M</com:Name>
+          <com:Description xml:lang="en">ESO (European Southern Observatory)</com:Description>
+        </str:Code>
+        <str:Code id="6N" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6N">
+          <com:Name xml:lang="en">6N</com:Name>
+          <com:Description xml:lang="en">ECMWF (European Centre for Medium-Range Weather Forecasts)</com:Description>
+        </str:Code>
+        <str:Code id="6O" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6O">
+          <com:Name xml:lang="en">6O</com:Name>
+          <com:Description xml:lang="en">EMBL (European Molecular Biology Laboratory)</com:Description>
+        </str:Code>
+        <str:Code id="6P" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6P">
+          <com:Name xml:lang="en">6P</com:Name>
+          <com:Description xml:lang="en">CERN (European Organisation for Nuclear Research)</com:Description>
+        </str:Code>
+        <str:Code id="6Q" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6Q">
+          <com:Name xml:lang="en">6Q</com:Name>
+          <com:Description xml:lang="en">IOM (International Organisation for Migration)</com:Description>
+        </str:Code>
+        <str:Code id="6Z" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).6Z">
+          <com:Name xml:lang="en">6Z</com:Name>
+          <com:Description xml:lang="en">Other International Non-Financial Organisations n.i.e.</com:Description>
+        </str:Code>
+        <str:Code id="7Z" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).7Z">
+          <com:Name xml:lang="en">7Z</com:Name>
+          <com:Description xml:lang="en">International Organisations excluding Eur.Community Institutions (4A)</com:Description>
+        </str:Code>
+        <str:Code id="A0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).A0">
+          <com:Name xml:lang="en">A0</com:Name>
+          <com:Description xml:lang="en">Other EEA countries (all countries excluding the reference area)</com:Description>
+        </str:Code>
+        <str:Code id="A1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).A1">
+          <com:Name xml:lang="en">A1</com:Name>
+          <com:Description xml:lang="en">World (all entities)</com:Description>
+        </str:Code>
+        <str:Code id="A2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).A2">
+          <com:Name xml:lang="en">A2</com:Name>
+          <com:Description xml:lang="en">EUR12 (Intra Eur12)</com:Description>
+        </str:Code>
+        <str:Code id="A3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).A3">
+          <com:Name xml:lang="en">A3</com:Name>
+          <com:Description xml:lang="en">Belgo-Luxembourg Economic Union</com:Description>
+        </str:Code>
+        <str:Code id="A4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).A4">
+          <com:Name xml:lang="en">A4</com:Name>
+          <com:Description xml:lang="en">Extra EUR12</com:Description>
+        </str:Code>
+        <str:Code id="A5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).A5">
+          <com:Name xml:lang="en">A5</com:Name>
+          <com:Description xml:lang="en">European Free Trade Association</com:Description>
+        </str:Code>
+        <str:Code id="A6" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).A6">
+          <com:Name xml:lang="en">A6</com:Name>
+          <com:Description xml:lang="en">European Economic Area</com:Description>
+        </str:Code>
+        <str:Code id="A7" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).A7">
+          <com:Name xml:lang="en">A7</com:Name>
+          <com:Description xml:lang="en">Extra EEA</com:Description>
+        </str:Code>
+        <str:Code id="A8" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).A8">
+          <com:Name xml:lang="en">A8</com:Name>
+          <com:Description xml:lang="en">OECD countries</com:Description>
+        </str:Code>
+        <str:Code id="A9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).A9">
+          <com:Name xml:lang="en">A9</com:Name>
+          <com:Description xml:lang="en">Countries from Central and Eastern Europe</com:Description>
+        </str:Code>
+        <str:Code id="AD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AD">
+          <com:Name xml:lang="en">AD</com:Name>
+          <com:Description xml:lang="en">Andorra</com:Description>
+        </str:Code>
+        <str:Code id="AE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AE">
+          <com:Name xml:lang="en">AE</com:Name>
+          <com:Description xml:lang="en">United Arab Emirates</com:Description>
+        </str:Code>
+        <str:Code id="AF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AF">
+          <com:Name xml:lang="en">AF</com:Name>
+          <com:Description xml:lang="en">Afghanistan</com:Description>
+        </str:Code>
+        <str:Code id="AG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AG">
+          <com:Name xml:lang="en">AG</com:Name>
+          <com:Description xml:lang="en">Antigua and Barbuda</com:Description>
+        </str:Code>
+        <str:Code id="AI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AI">
+          <com:Name xml:lang="en">AI</com:Name>
+          <com:Description xml:lang="en">Anguilla</com:Description>
+        </str:Code>
+        <str:Code id="AL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AL">
+          <com:Name xml:lang="en">AL</com:Name>
+          <com:Description xml:lang="en">Albania</com:Description>
+        </str:Code>
+        <str:Code id="AM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AM">
+          <com:Name xml:lang="en">AM</com:Name>
+          <com:Description xml:lang="en">Armenia</com:Description>
+        </str:Code>
+        <str:Code id="AN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AN">
+          <com:Name xml:lang="en">AN</com:Name>
+          <com:Description xml:lang="en">Netherlands Antilles</com:Description>
+        </str:Code>
+        <str:Code id="AO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AO">
+          <com:Name xml:lang="en">AO</com:Name>
+          <com:Description xml:lang="en">Angola</com:Description>
+        </str:Code>
+        <str:Code id="AQ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AQ">
+          <com:Name xml:lang="en">AQ</com:Name>
+          <com:Description xml:lang="en">Antarctica</com:Description>
+        </str:Code>
+        <str:Code id="AR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AR">
+          <com:Name xml:lang="en">AR</com:Name>
+          <com:Description xml:lang="en">Argentina</com:Description>
+        </str:Code>
+        <str:Code id="AS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AS">
+          <com:Name xml:lang="en">AS</com:Name>
+          <com:Description xml:lang="en">American Samoa</com:Description>
+        </str:Code>
+        <str:Code id="AT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AT">
+          <com:Name xml:lang="en">AT</com:Name>
+          <com:Description xml:lang="en">Austria</com:Description>
+        </str:Code>
+        <str:Code id="AU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AU">
+          <com:Name xml:lang="en">AU</com:Name>
+          <com:Description xml:lang="en">Australia</com:Description>
+        </str:Code>
+        <str:Code id="AW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AW">
+          <com:Name xml:lang="en">AW</com:Name>
+          <com:Description xml:lang="en">Aruba</com:Description>
+        </str:Code>
+        <str:Code id="AX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AX">
+          <com:Name xml:lang="en">AX</com:Name>
+          <com:Description xml:lang="en">Aland Islands</com:Description>
+        </str:Code>
+        <str:Code id="AZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).AZ">
+          <com:Name xml:lang="en">AZ</com:Name>
+          <com:Description xml:lang="en">Azerbaijan</com:Description>
+        </str:Code>
+        <str:Code id="B1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).B1">
+          <com:Name xml:lang="en">B1</com:Name>
+          <com:Description xml:lang="en">North American Free Trade Association</com:Description>
+        </str:Code>
+        <str:Code id="B2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).B2">
+          <com:Name xml:lang="en">B2</com:Name>
+          <com:Description xml:lang="en">Latin America</com:Description>
+        </str:Code>
+        <str:Code id="B3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).B3">
+          <com:Name xml:lang="en">B3</com:Name>
+          <com:Description xml:lang="en">Countries for the Association of South-East Asian Nations</com:Description>
+        </str:Code>
+        <str:Code id="B4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).B4">
+          <com:Name xml:lang="en">B4</com:Name>
+          <com:Description xml:lang="en">Organization of Petroleum Exporting Countries</com:Description>
+        </str:Code>
+        <str:Code id="B5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).B5">
+          <com:Name xml:lang="en">B5</com:Name>
+          <com:Description xml:lang="en">African, Caribbean and Pacific countries (Lomé convention)</com:Description>
+        </str:Code>
+        <str:Code id="B6" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).B6">
+          <com:Name xml:lang="en">B6</com:Name>
+          <com:Description xml:lang="en">African ACP countries</com:Description>
+        </str:Code>
+        <str:Code id="B7" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).B7">
+          <com:Name xml:lang="en">B7</com:Name>
+          <com:Description xml:lang="en">Caribbean ACP countries</com:Description>
+        </str:Code>
+        <str:Code id="B8" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).B8">
+          <com:Name xml:lang="en">B8</com:Name>
+          <com:Description xml:lang="en">Pacific ACP countries</com:Description>
+        </str:Code>
+        <str:Code id="B9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).B9">
+          <com:Name xml:lang="en">B9</com:Name>
+          <com:Description xml:lang="en">Core Newly Industrializing Countries</com:Description>
+        </str:Code>
+        <str:Code id="BA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BA">
+          <com:Name xml:lang="en">BA</com:Name>
+          <com:Description xml:lang="en">Bosnia and Herzegovina</com:Description>
+        </str:Code>
+        <str:Code id="BB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BB">
+          <com:Name xml:lang="en">BB</com:Name>
+          <com:Description xml:lang="en">Barbados</com:Description>
+        </str:Code>
+        <str:Code id="BD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BD">
+          <com:Name xml:lang="en">BD</com:Name>
+          <com:Description xml:lang="en">Bangladesh</com:Description>
+        </str:Code>
+        <str:Code id="BE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BE">
+          <com:Name xml:lang="en">BE</com:Name>
+          <com:Description xml:lang="en">Belgium</com:Description>
+        </str:Code>
+        <str:Code id="BF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BF">
+          <com:Name xml:lang="en">BF</com:Name>
+          <com:Description xml:lang="en">Burkina Faso</com:Description>
+        </str:Code>
+        <str:Code id="BG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BG">
+          <com:Name xml:lang="en">BG</com:Name>
+          <com:Description xml:lang="en">Bulgaria</com:Description>
+        </str:Code>
+        <str:Code id="BH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BH">
+          <com:Name xml:lang="en">BH</com:Name>
+          <com:Description xml:lang="en">Bahrain</com:Description>
+        </str:Code>
+        <str:Code id="BI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BI">
+          <com:Name xml:lang="en">BI</com:Name>
+          <com:Description xml:lang="en">Burundi</com:Description>
+        </str:Code>
+        <str:Code id="BJ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BJ">
+          <com:Name xml:lang="en">BJ</com:Name>
+          <com:Description xml:lang="en">Benin</com:Description>
+        </str:Code>
+        <str:Code id="BM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BM">
+          <com:Name xml:lang="en">BM</com:Name>
+          <com:Description xml:lang="en">Bermuda</com:Description>
+        </str:Code>
+        <str:Code id="BN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BN">
+          <com:Name xml:lang="en">BN</com:Name>
+          <com:Description xml:lang="en">Brunei Darussalam</com:Description>
+        </str:Code>
+        <str:Code id="BO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BO">
+          <com:Name xml:lang="en">BO</com:Name>
+          <com:Description xml:lang="en">Bolivia</com:Description>
+        </str:Code>
+        <str:Code id="BR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BR">
+          <com:Name xml:lang="en">BR</com:Name>
+          <com:Description xml:lang="en">Brazil</com:Description>
+        </str:Code>
+        <str:Code id="BS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BS">
+          <com:Name xml:lang="en">BS</com:Name>
+          <com:Description xml:lang="en">Bahamas</com:Description>
+        </str:Code>
+        <str:Code id="BT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BT">
+          <com:Name xml:lang="en">BT</com:Name>
+          <com:Description xml:lang="en">Bhutan</com:Description>
+        </str:Code>
+        <str:Code id="BV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BV">
+          <com:Name xml:lang="en">BV</com:Name>
+          <com:Description xml:lang="en">Bouvet Island</com:Description>
+        </str:Code>
+        <str:Code id="BW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BW">
+          <com:Name xml:lang="en">BW</com:Name>
+          <com:Description xml:lang="en">Botswana</com:Description>
+        </str:Code>
+        <str:Code id="BY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BY">
+          <com:Name xml:lang="en">BY</com:Name>
+          <com:Description xml:lang="en">Belarus</com:Description>
+        </str:Code>
+        <str:Code id="BZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).BZ">
+          <com:Name xml:lang="en">BZ</com:Name>
+          <com:Description xml:lang="en">Belize</com:Description>
+        </str:Code>
+        <str:Code id="C1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).C1">
+          <com:Name xml:lang="en">C1</com:Name>
+          <com:Description xml:lang="en">Asian NICs of the second wave of industrialization</com:Description>
+        </str:Code>
+        <str:Code id="C2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).C2">
+          <com:Name xml:lang="en">C2</com:Name>
+          <com:Description xml:lang="en">Latin American NICs of the second wave of industrialization</com:Description>
+        </str:Code>
+        <str:Code id="C3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).C3">
+          <com:Name xml:lang="en">C3</com:Name>
+          <com:Description xml:lang="en">Mediterranean Basin countries</com:Description>
+        </str:Code>
+        <str:Code id="C4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).C4">
+          <com:Name xml:lang="en">C4</com:Name>
+          <com:Description xml:lang="en">Offshore financial centers</com:Description>
+        </str:Code>
+        <str:Code id="C5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).C5">
+          <com:Name xml:lang="en">C5</com:Name>
+          <com:Description xml:lang="en">French Franc zone</com:Description>
+        </str:Code>
+        <str:Code id="C6" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).C6">
+          <com:Name xml:lang="en">C6</com:Name>
+          <com:Description xml:lang="en">Community of Independant States</com:Description>
+        </str:Code>
+        <str:Code id="C7" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).C7">
+          <com:Name xml:lang="en">C7</com:Name>
+          <com:Description xml:lang="en">Maghreb countries</com:Description>
+        </str:Code>
+        <str:Code id="C8" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).C8">
+          <com:Name xml:lang="en">C8</com:Name>
+          <com:Description xml:lang="en">Mashrek Countries</com:Description>
+        </str:Code>
+        <str:Code id="C9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).C9">
+          <com:Name xml:lang="en">C9</com:Name>
+          <com:Description xml:lang="en">Mercado comun de los paises del cono sur</com:Description>
+        </str:Code>
+        <str:Code id="CA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CA">
+          <com:Name xml:lang="en">CA</com:Name>
+          <com:Description xml:lang="en">Canada</com:Description>
+        </str:Code>
+        <str:Code id="CC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CC">
+          <com:Name xml:lang="en">CC</com:Name>
+          <com:Description xml:lang="en">Cocos (Keeling) Islands</com:Description>
+        </str:Code>
+        <str:Code id="CD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CD">
+          <com:Name xml:lang="en">CD</com:Name>
+          <com:Description xml:lang="en">Democratic Republic of the Congo</com:Description>
+        </str:Code>
+        <str:Code id="CF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CF">
+          <com:Name xml:lang="en">CF</com:Name>
+          <com:Description xml:lang="en">Central African Republic</com:Description>
+        </str:Code>
+        <str:Code id="CG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CG">
+          <com:Name xml:lang="en">CG</com:Name>
+          <com:Description xml:lang="en">Congo</com:Description>
+        </str:Code>
+        <str:Code id="CH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CH">
+          <com:Name xml:lang="en">CH</com:Name>
+          <com:Description xml:lang="en">Switzerland</com:Description>
+        </str:Code>
+        <str:Code id="CI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CI">
+          <com:Name xml:lang="en">CI</com:Name>
+          <com:Description xml:lang="en">Côte d`Ivoire</com:Description>
+        </str:Code>
+        <str:Code id="CK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CK">
+          <com:Name xml:lang="en">CK</com:Name>
+          <com:Description xml:lang="en">Cook Islands</com:Description>
+        </str:Code>
+        <str:Code id="CL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CL">
+          <com:Name xml:lang="en">CL</com:Name>
+          <com:Description xml:lang="en">Chile</com:Description>
+        </str:Code>
+        <str:Code id="CM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CM">
+          <com:Name xml:lang="en">CM</com:Name>
+          <com:Description xml:lang="en">Cameroon</com:Description>
+        </str:Code>
+        <str:Code id="CN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CN">
+          <com:Name xml:lang="en">CN</com:Name>
+          <com:Description xml:lang="en">China</com:Description>
+        </str:Code>
+        <str:Code id="CO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CO">
+          <com:Name xml:lang="en">CO</com:Name>
+          <com:Description xml:lang="en">Colombia</com:Description>
+        </str:Code>
+        <str:Code id="CR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CR">
+          <com:Name xml:lang="en">CR</com:Name>
+          <com:Description xml:lang="en">Costa Rica</com:Description>
+        </str:Code>
+        <str:Code id="CS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CS">
+          <com:Name xml:lang="en">CS</com:Name>
+          <com:Description xml:lang="en">Serbia and Montenegro</com:Description>
+        </str:Code>
+        <str:Code id="CU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CU">
+          <com:Name xml:lang="en">CU</com:Name>
+          <com:Description xml:lang="en">Cuba</com:Description>
+        </str:Code>
+        <str:Code id="CV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CV">
+          <com:Name xml:lang="en">CV</com:Name>
+          <com:Description xml:lang="en">Cape Verde</com:Description>
+        </str:Code>
+        <str:Code id="CX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CX">
+          <com:Name xml:lang="en">CX</com:Name>
+          <com:Description xml:lang="en">Christmas Island</com:Description>
+        </str:Code>
+        <str:Code id="CY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CY">
+          <com:Name xml:lang="en">CY</com:Name>
+          <com:Description xml:lang="en">Cyprus</com:Description>
+        </str:Code>
+        <str:Code id="CZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).CZ">
+          <com:Name xml:lang="en">CZ</com:Name>
+          <com:Description xml:lang="en">Czech Republic</com:Description>
+        </str:Code>
+        <str:Code id="D0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).D0">
+          <com:Name xml:lang="en">D0</com:Name>
+          <com:Description xml:lang="en">EU (changing composition)</com:Description>
+        </str:Code>
+        <str:Code id="D1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).D1">
+          <com:Name xml:lang="en">D1</com:Name>
+          <com:Description xml:lang="en">Asia-Pacific Economic Co-operation</com:Description>
+        </str:Code>
+        <str:Code id="D2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).D2">
+          <com:Name xml:lang="en">D2</com:Name>
+          <com:Description xml:lang="en">EU 15 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="D3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).D3">
+          <com:Name xml:lang="en">D3</com:Name>
+          <com:Description xml:lang="en">EU 25 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="D4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).D4">
+          <com:Name xml:lang="en">D4</com:Name>
+          <com:Description xml:lang="en">Extra-EU 15 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="D5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).D5">
+          <com:Name xml:lang="en">D5</com:Name>
+          <com:Description xml:lang="en">Extra-EU 25 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="D6" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).D6">
+          <com:Name xml:lang="en">D6</com:Name>
+          <com:Description xml:lang="en">Candidate Countries (CCs)</com:Description>
+        </str:Code>
+        <str:Code id="D7" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).D7">
+          <com:Name xml:lang="en">D7</com:Name>
+          <com:Description xml:lang="en">Mediterranean countries in the Euro-Mediterranean Partnership</com:Description>
+        </str:Code>
+        <str:Code id="D8" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).D8">
+          <com:Name xml:lang="en">D8</com:Name>
+          <com:Description xml:lang="en">New EU Member States 2004 (CY,CZ,EE,HU,LV,LT,MT,PL,SK,SI)</com:Description>
+        </str:Code>
+        <str:Code id="D9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).D9">
+          <com:Name xml:lang="en">D9</com:Name>
+          <com:Description xml:lang="en">Extra-EU (changing composition)</com:Description>
+        </str:Code>
+        <str:Code id="DE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).DE">
+          <com:Name xml:lang="en">DE</com:Name>
+          <com:Description xml:lang="en">Germany</com:Description>
+        </str:Code>
+        <str:Code id="DJ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).DJ">
+          <com:Name xml:lang="en">DJ</com:Name>
+          <com:Description xml:lang="en">Djibouti</com:Description>
+        </str:Code>
+        <str:Code id="DK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).DK">
+          <com:Name xml:lang="en">DK</com:Name>
+          <com:Description xml:lang="en">Denmark</com:Description>
+        </str:Code>
+        <str:Code id="DM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).DM">
+          <com:Name xml:lang="en">DM</com:Name>
+          <com:Description xml:lang="en">Dominica</com:Description>
+        </str:Code>
+        <str:Code id="DO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).DO">
+          <com:Name xml:lang="en">DO</com:Name>
+          <com:Description xml:lang="en">Dominican Republic</com:Description>
+        </str:Code>
+        <str:Code id="DZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).DZ">
+          <com:Name xml:lang="en">DZ</com:Name>
+          <com:Description xml:lang="en">Algeria</com:Description>
+        </str:Code>
+        <str:Code id="E1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).E1">
+          <com:Name xml:lang="en">E1</com:Name>
+          <com:Description xml:lang="en">Europe</com:Description>
+        </str:Code>
+        <str:Code id="E2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).E2">
+          <com:Name xml:lang="en">E2</com:Name>
+          <com:Description xml:lang="en">Other European countries (not EU nor EFTA)</com:Description>
+        </str:Code>
+        <str:Code id="E3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).E3">
+          <com:Name xml:lang="en">E3</com:Name>
+          <com:Description xml:lang="en">Baltic countries</com:Description>
+        </str:Code>
+        <str:Code id="E4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).E4">
+          <com:Name xml:lang="en">E4</com:Name>
+          <com:Description xml:lang="en">Africa</com:Description>
+        </str:Code>
+        <str:Code id="E5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).E5">
+          <com:Name xml:lang="en">E5</com:Name>
+          <com:Description xml:lang="en">North Africa countries</com:Description>
+        </str:Code>
+        <str:Code id="E6" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).E6">
+          <com:Name xml:lang="en">E6</com:Name>
+          <com:Description xml:lang="en">Central and South Africa countries</com:Description>
+        </str:Code>
+        <str:Code id="E7" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).E7">
+          <com:Name xml:lang="en">E7</com:Name>
+          <com:Description xml:lang="en">America</com:Description>
+        </str:Code>
+        <str:Code id="E8" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).E8">
+          <com:Name xml:lang="en">E8</com:Name>
+          <com:Description xml:lang="en">North American countries</com:Description>
+        </str:Code>
+        <str:Code id="E9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).E9">
+          <com:Name xml:lang="en">E9</com:Name>
+          <com:Description xml:lang="en">Central American countries</com:Description>
+        </str:Code>
+        <str:Code id="EC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).EC">
+          <com:Name xml:lang="en">EC</com:Name>
+          <com:Description xml:lang="en">Ecuador</com:Description>
+        </str:Code>
+        <str:Code id="EE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).EE">
+          <com:Name xml:lang="en">EE</com:Name>
+          <com:Description xml:lang="en">Estonia</com:Description>
+        </str:Code>
+        <str:Code id="EG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).EG">
+          <com:Name xml:lang="en">EG</com:Name>
+          <com:Description xml:lang="en">Egypt</com:Description>
+        </str:Code>
+        <str:Code id="EH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).EH">
+          <com:Name xml:lang="en">EH</com:Name>
+          <com:Description xml:lang="en">Western Sahara</com:Description>
+        </str:Code>
+        <str:Code id="ER" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).ER">
+          <com:Name xml:lang="en">ER</com:Name>
+          <com:Description xml:lang="en">Eritrea</com:Description>
+        </str:Code>
+        <str:Code id="ES" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).ES">
+          <com:Name xml:lang="en">ES</com:Name>
+          <com:Description xml:lang="en">Spain</com:Description>
+        </str:Code>
+        <str:Code id="ET" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).ET">
+          <com:Name xml:lang="en">ET</com:Name>
+          <com:Description xml:lang="en">Ethiopia</com:Description>
+        </str:Code>
+        <str:Code id="F1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).F1">
+          <com:Name xml:lang="en">F1</com:Name>
+          <com:Description xml:lang="en">South American countries</com:Description>
+        </str:Code>
+        <str:Code id="F2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).F2">
+          <com:Name xml:lang="en">F2</com:Name>
+          <com:Description xml:lang="en">Asia</com:Description>
+        </str:Code>
+        <str:Code id="F3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).F3">
+          <com:Name xml:lang="en">F3</com:Name>
+          <com:Description xml:lang="en">Near and Middle East countries</com:Description>
+        </str:Code>
+        <str:Code id="F4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).F4">
+          <com:Name xml:lang="en">F4</com:Name>
+          <com:Description xml:lang="en">Gulf Arabian Countries</com:Description>
+        </str:Code>
+        <str:Code id="F5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).F5">
+          <com:Name xml:lang="en">F5</com:Name>
+          <com:Description xml:lang="en">Other Near and Middle East countries</com:Description>
+        </str:Code>
+        <str:Code id="F6" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).F6">
+          <com:Name xml:lang="en">F6</com:Name>
+          <com:Description xml:lang="en">Other Asian countries</com:Description>
+        </str:Code>
+        <str:Code id="F7" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).F7">
+          <com:Name xml:lang="en">F7</com:Name>
+          <com:Description xml:lang="en">Australia, Oceania and other territories</com:Description>
+        </str:Code>
+        <str:Code id="F8" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).F8">
+          <com:Name xml:lang="en">F8</com:Name>
+          <com:Description xml:lang="en">Australian Oceania</com:Description>
+        </str:Code>
+        <str:Code id="F9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).F9">
+          <com:Name xml:lang="en">F9</com:Name>
+          <com:Description xml:lang="en">American Oceania</com:Description>
+        </str:Code>
+        <str:Code id="FI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).FI">
+          <com:Name xml:lang="en">FI</com:Name>
+          <com:Description xml:lang="en">Finland</com:Description>
+        </str:Code>
+        <str:Code id="FJ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).FJ">
+          <com:Name xml:lang="en">FJ</com:Name>
+          <com:Description xml:lang="en">Fiji</com:Description>
+        </str:Code>
+        <str:Code id="FK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).FK">
+          <com:Name xml:lang="en">FK</com:Name>
+          <com:Description xml:lang="en">Falkland Islands (Malvinas)</com:Description>
+        </str:Code>
+        <str:Code id="FM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).FM">
+          <com:Name xml:lang="en">FM</com:Name>
+          <com:Description xml:lang="en">Micronesia, Federated States of</com:Description>
+        </str:Code>
+        <str:Code id="FO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).FO">
+          <com:Name xml:lang="en">FO</com:Name>
+          <com:Description xml:lang="en">Faroe Islands</com:Description>
+        </str:Code>
+        <str:Code id="FR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).FR">
+          <com:Name xml:lang="en">FR</com:Name>
+          <com:Description xml:lang="en">France</com:Description>
+        </str:Code>
+        <str:Code id="G1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).G1">
+          <com:Name xml:lang="en">G1</com:Name>
+          <com:Description xml:lang="en">New Zealand Oceania</com:Description>
+        </str:Code>
+        <str:Code id="G2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).G2">
+          <com:Name xml:lang="en">G2</com:Name>
+          <com:Description xml:lang="en">Polar regions</com:Description>
+        </str:Code>
+        <str:Code id="GA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GA">
+          <com:Name xml:lang="en">GA</com:Name>
+          <com:Description xml:lang="en">Gabon</com:Description>
+        </str:Code>
+        <str:Code id="GB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GB">
+          <com:Name xml:lang="en">GB</com:Name>
+          <com:Description xml:lang="en">United Kingdom</com:Description>
+        </str:Code>
+        <str:Code id="GD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GD">
+          <com:Name xml:lang="en">GD</com:Name>
+          <com:Description xml:lang="en">Grenada</com:Description>
+        </str:Code>
+        <str:Code id="GE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GE">
+          <com:Name xml:lang="en">GE</com:Name>
+          <com:Description xml:lang="en">Georgia</com:Description>
+        </str:Code>
+        <str:Code id="GF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GF">
+          <com:Name xml:lang="en">GF</com:Name>
+          <com:Description xml:lang="en">French Guiana</com:Description>
+        </str:Code>
+        <str:Code id="GG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GG">
+          <com:Name xml:lang="en">GG</com:Name>
+          <com:Description xml:lang="en">Guernsey (No official ISO 3166-1 country code, exceptionnally reserved  code elements)</com:Description>
+        </str:Code>
+        <str:Code id="GH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GH">
+          <com:Name xml:lang="en">GH</com:Name>
+          <com:Description xml:lang="en">Ghana</com:Description>
+        </str:Code>
+        <str:Code id="GI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GI">
+          <com:Name xml:lang="en">GI</com:Name>
+          <com:Description xml:lang="en">Gibraltar</com:Description>
+        </str:Code>
+        <str:Code id="GL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GL">
+          <com:Name xml:lang="en">GL</com:Name>
+          <com:Description xml:lang="en">Greenland</com:Description>
+        </str:Code>
+        <str:Code id="GM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GM">
+          <com:Name xml:lang="en">GM</com:Name>
+          <com:Description xml:lang="en">Gambia</com:Description>
+        </str:Code>
+        <str:Code id="GN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GN">
+          <com:Name xml:lang="en">GN</com:Name>
+          <com:Description xml:lang="en">Guinea</com:Description>
+        </str:Code>
+        <str:Code id="GP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GP">
+          <com:Name xml:lang="en">GP</com:Name>
+          <com:Description xml:lang="en">Guadeloupe</com:Description>
+        </str:Code>
+        <str:Code id="GQ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GQ">
+          <com:Name xml:lang="en">GQ</com:Name>
+          <com:Description xml:lang="en">Equatorial Guinea</com:Description>
+        </str:Code>
+        <str:Code id="GR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GR">
+          <com:Name xml:lang="en">GR</com:Name>
+          <com:Description xml:lang="en">Greece</com:Description>
+        </str:Code>
+        <str:Code id="GS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GS">
+          <com:Name xml:lang="en">GS</com:Name>
+          <com:Description xml:lang="en">South Georgia and the South Sandwich Islands</com:Description>
+        </str:Code>
+        <str:Code id="GT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GT">
+          <com:Name xml:lang="en">GT</com:Name>
+          <com:Description xml:lang="en">Guatemala</com:Description>
+        </str:Code>
+        <str:Code id="GU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GU">
+          <com:Name xml:lang="en">GU</com:Name>
+          <com:Description xml:lang="en">Guam</com:Description>
+        </str:Code>
+        <str:Code id="GW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GW">
+          <com:Name xml:lang="en">GW</com:Name>
+          <com:Description xml:lang="en">Guinea-Bissau</com:Description>
+        </str:Code>
+        <str:Code id="GY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).GY">
+          <com:Name xml:lang="en">GY</com:Name>
+          <com:Description xml:lang="en">Guyana</com:Description>
+        </str:Code>
+        <str:Code id="H0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).H0">
+          <com:Name xml:lang="en">H0</com:Name>
+          <com:Description xml:lang="en">EEA except the euro area and reference area</com:Description>
+        </str:Code>
+        <str:Code id="HK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).HK">
+          <com:Name xml:lang="en">HK</com:Name>
+          <com:Description xml:lang="en">Hong Kong</com:Description>
+        </str:Code>
+        <str:Code id="HM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).HM">
+          <com:Name xml:lang="en">HM</com:Name>
+          <com:Description xml:lang="en">Heard Island and McDonald Islands</com:Description>
+        </str:Code>
+        <str:Code id="HN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).HN">
+          <com:Name xml:lang="en">HN</com:Name>
+          <com:Description xml:lang="en">Honduras</com:Description>
+        </str:Code>
+        <str:Code id="HR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).HR">
+          <com:Name xml:lang="en">HR</com:Name>
+          <com:Description xml:lang="en">Croatia</com:Description>
+        </str:Code>
+        <str:Code id="HT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).HT">
+          <com:Name xml:lang="en">HT</com:Name>
+          <com:Description xml:lang="en">Haiti</com:Description>
+        </str:Code>
+        <str:Code id="HU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).HU">
+          <com:Name xml:lang="en">HU</com:Name>
+          <com:Description xml:lang="en">Hungary</com:Description>
+        </str:Code>
+        <str:Code id="I1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).I1">
+          <com:Name xml:lang="en">I1</com:Name>
+          <com:Description xml:lang="en">Euro area 11 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="I2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).I2">
+          <com:Name xml:lang="en">I2</com:Name>
+          <com:Description xml:lang="en">Euro area 12 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="I3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).I3">
+          <com:Name xml:lang="en">I3</com:Name>
+          <com:Description xml:lang="en">Euro area 13 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="I4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).I4">
+          <com:Name xml:lang="en">I4</com:Name>
+          <com:Description xml:lang="en">Euro area 15 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="ID" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).ID">
+          <com:Name xml:lang="en">ID</com:Name>
+          <com:Description xml:lang="en">Indonesia</com:Description>
+        </str:Code>
+        <str:Code id="IE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).IE">
+          <com:Name xml:lang="en">IE</com:Name>
+          <com:Description xml:lang="en">Ireland</com:Description>
+        </str:Code>
+        <str:Code id="IL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).IL">
+          <com:Name xml:lang="en">IL</com:Name>
+          <com:Description xml:lang="en">Israel</com:Description>
+        </str:Code>
+        <str:Code id="IM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).IM">
+          <com:Name xml:lang="en">IM</com:Name>
+          <com:Description xml:lang="en">Isle of Man</com:Description>
+        </str:Code>
+        <str:Code id="IN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).IN">
+          <com:Name xml:lang="en">IN</com:Name>
+          <com:Description xml:lang="en">India</com:Description>
+        </str:Code>
+        <str:Code id="IO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).IO">
+          <com:Name xml:lang="en">IO</com:Name>
+          <com:Description xml:lang="en">British Indian Ocean territory</com:Description>
+        </str:Code>
+        <str:Code id="IQ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).IQ">
+          <com:Name xml:lang="en">IQ</com:Name>
+          <com:Description xml:lang="en">Iraq</com:Description>
+        </str:Code>
+        <str:Code id="IR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).IR">
+          <com:Name xml:lang="en">IR</com:Name>
+          <com:Description xml:lang="en">Iran, Islamic Republic of</com:Description>
+        </str:Code>
+        <str:Code id="IS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).IS">
+          <com:Name xml:lang="en">IS</com:Name>
+          <com:Description xml:lang="en">Iceland</com:Description>
+        </str:Code>
+        <str:Code id="IT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).IT">
+          <com:Name xml:lang="en">IT</com:Name>
+          <com:Description xml:lang="en">Italy</com:Description>
+        </str:Code>
+        <str:Code id="J1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).J1">
+          <com:Name xml:lang="en">J1</com:Name>
+          <com:Description xml:lang="en">Extra-Euro area 11 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="J2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).J2">
+          <com:Name xml:lang="en">J2</com:Name>
+          <com:Description xml:lang="en">Extra-Euro area 12 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="J3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).J3">
+          <com:Name xml:lang="en">J3</com:Name>
+          <com:Description xml:lang="en">Extra-Euro area 13 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="J4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).J4">
+          <com:Name xml:lang="en">J4</com:Name>
+          <com:Description xml:lang="en">Extra-Euro area 15 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="JE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).JE">
+          <com:Name xml:lang="en">JE</com:Name>
+          <com:Description xml:lang="en">Jersey (No official ISO 3166-1 country code, exceptionnally reserved c ode elements)</com:Description>
+        </str:Code>
+        <str:Code id="JM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).JM">
+          <com:Name xml:lang="en">JM</com:Name>
+          <com:Description xml:lang="en">Jamaica</com:Description>
+        </str:Code>
+        <str:Code id="JO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).JO">
+          <com:Name xml:lang="en">JO</com:Name>
+          <com:Description xml:lang="en">Jordan</com:Description>
+        </str:Code>
+        <str:Code id="JP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).JP">
+          <com:Name xml:lang="en">JP</com:Name>
+          <com:Description xml:lang="en">Japan</com:Description>
+        </str:Code>
+        <str:Code id="K1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).K1">
+          <com:Name xml:lang="en">K1</com:Name>
+          <com:Description xml:lang="en">EU member states not belonging to Euro area 11 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="K2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).K2">
+          <com:Name xml:lang="en">K2</com:Name>
+          <com:Description xml:lang="en">EU member states not belonging to Euro area 12 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="K3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).K3">
+          <com:Name xml:lang="en">K3</com:Name>
+          <com:Description xml:lang="en">EU member states not belonging to Euro area 13 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="K4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).K4">
+          <com:Name xml:lang="en">K4</com:Name>
+          <com:Description xml:lang="en">EU member states not belonging to Euro area 15 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="KE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).KE">
+          <com:Name xml:lang="en">KE</com:Name>
+          <com:Description xml:lang="en">Kenya</com:Description>
+        </str:Code>
+        <str:Code id="KG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).KG">
+          <com:Name xml:lang="en">KG</com:Name>
+          <com:Description xml:lang="en">Kyrgyzstan</com:Description>
+        </str:Code>
+        <str:Code id="KH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).KH">
+          <com:Name xml:lang="en">KH</com:Name>
+          <com:Description xml:lang="en">Cambodia</com:Description>
+        </str:Code>
+        <str:Code id="KI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).KI">
+          <com:Name xml:lang="en">KI</com:Name>
+          <com:Description xml:lang="en">Kiribati</com:Description>
+        </str:Code>
+        <str:Code id="KM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).KM">
+          <com:Name xml:lang="en">KM</com:Name>
+          <com:Description xml:lang="en">Comoros</com:Description>
+        </str:Code>
+        <str:Code id="KN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).KN">
+          <com:Name xml:lang="en">KN</com:Name>
+          <com:Description xml:lang="en">Saint Kitts and Nevis</com:Description>
+        </str:Code>
+        <str:Code id="KP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).KP">
+          <com:Name xml:lang="en">KP</com:Name>
+          <com:Description xml:lang="en">Korea, Democratic People`s Republic of</com:Description>
+        </str:Code>
+        <str:Code id="KR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).KR">
+          <com:Name xml:lang="en">KR</com:Name>
+          <com:Description xml:lang="en">Korea, Republic of</com:Description>
+        </str:Code>
+        <str:Code id="KW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).KW">
+          <com:Name xml:lang="en">KW</com:Name>
+          <com:Description xml:lang="en">Kuwait</com:Description>
+        </str:Code>
+        <str:Code id="KY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).KY">
+          <com:Name xml:lang="en">KY</com:Name>
+          <com:Description xml:lang="en">Cayman Islands</com:Description>
+        </str:Code>
+        <str:Code id="KZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).KZ">
+          <com:Name xml:lang="en">KZ</com:Name>
+          <com:Description xml:lang="en">Kazakstan</com:Description>
+        </str:Code>
+        <str:Code id="L0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).L0">
+          <com:Name xml:lang="en">L0</com:Name>
+          <com:Description xml:lang="en">Other EU member states (all countries except the reference area)</com:Description>
+        </str:Code>
+        <str:Code id="L1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).L1">
+          <com:Name xml:lang="en">L1</com:Name>
+          <com:Description xml:lang="en">Other Euro area 11 member states (fixed composition - all countries ex cept the reference area)</com:Description>
+        </str:Code>
+        <str:Code id="L2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).L2">
+          <com:Name xml:lang="en">L2</com:Name>
+          <com:Description xml:lang="en">Other Euro area 12 member states (fixed composition - all countries ex cept the reference area)</com:Description>
+        </str:Code>
+        <str:Code id="L3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).L3">
+          <com:Name xml:lang="en">L3</com:Name>
+          <com:Description xml:lang="en">Other Euro area 13 member states (fixed composition - all countries ex cept the reference area)</com:Description>
+        </str:Code>
+        <str:Code id="L4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).L4">
+          <com:Name xml:lang="en">L4</com:Name>
+          <com:Description xml:lang="en">Other Euro area 15 member states (fixed composition - all countries ex cept the reference area)</com:Description>
+        </str:Code>
+        <str:Code id="LA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).LA">
+          <com:Name xml:lang="en">LA</com:Name>
+          <com:Description xml:lang="en">Lao People`s Democratic Republic</com:Description>
+        </str:Code>
+        <str:Code id="LB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).LB">
+          <com:Name xml:lang="en">LB</com:Name>
+          <com:Description xml:lang="en">Lebanon</com:Description>
+        </str:Code>
+        <str:Code id="LC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).LC">
+          <com:Name xml:lang="en">LC</com:Name>
+          <com:Description xml:lang="en">Saint Lucia</com:Description>
+        </str:Code>
+        <str:Code id="LI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).LI">
+          <com:Name xml:lang="en">LI</com:Name>
+          <com:Description xml:lang="en">Liechtenstein</com:Description>
+        </str:Code>
+        <str:Code id="LK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).LK">
+          <com:Name xml:lang="en">LK</com:Name>
+          <com:Description xml:lang="en">Sri Lanka</com:Description>
+        </str:Code>
+        <str:Code id="LR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).LR">
+          <com:Name xml:lang="en">LR</com:Name>
+          <com:Description xml:lang="en">Liberia</com:Description>
+        </str:Code>
+        <str:Code id="LS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).LS">
+          <com:Name xml:lang="en">LS</com:Name>
+          <com:Description xml:lang="en">Lesotho</com:Description>
+        </str:Code>
+        <str:Code id="LT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).LT">
+          <com:Name xml:lang="en">LT</com:Name>
+          <com:Description xml:lang="en">Lithuania</com:Description>
+        </str:Code>
+        <str:Code id="LU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).LU">
+          <com:Name xml:lang="en">LU</com:Name>
+          <com:Description xml:lang="en">Luxembourg</com:Description>
+        </str:Code>
+        <str:Code id="LV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).LV">
+          <com:Name xml:lang="en">LV</com:Name>
+          <com:Description xml:lang="en">Latvia</com:Description>
+        </str:Code>
+        <str:Code id="LY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).LY">
+          <com:Name xml:lang="en">LY</com:Name>
+          <com:Description xml:lang="en">Libyan Arab Jamahiriya</com:Description>
+        </str:Code>
+        <str:Code id="M0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).M0">
+          <com:Name xml:lang="en">M0</com:Name>
+          <com:Description xml:lang="en">All areas other than EU 15 and reference/home area</com:Description>
+        </str:Code>
+        <str:Code id="M1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).M1">
+          <com:Name xml:lang="en">M1</com:Name>
+          <com:Description xml:lang="en">All areas other than Euro area 11 (fixed composition) and reference/ho me area</com:Description>
+        </str:Code>
+        <str:Code id="M2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).M2">
+          <com:Name xml:lang="en">M2</com:Name>
+          <com:Description xml:lang="en">All areas other than Euro area 12 (fixed composition) and reference/ho me area</com:Description>
+        </str:Code>
+        <str:Code id="M3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).M3">
+          <com:Name xml:lang="en">M3</com:Name>
+          <com:Description xml:lang="en">All areas other than Euro area 13 (fixed composition) and reference/ho me area</com:Description>
+        </str:Code>
+        <str:Code id="M4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).M4">
+          <com:Name xml:lang="en">M4</com:Name>
+          <com:Description xml:lang="en">All areas other than Euro area 15 (fixed composition) and reference/ho me area</com:Description>
+        </str:Code>
+        <str:Code id="MA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MA">
+          <com:Name xml:lang="en">MA</com:Name>
+          <com:Description xml:lang="en">Morocco</com:Description>
+        </str:Code>
+        <str:Code id="MC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MC">
+          <com:Name xml:lang="en">MC</com:Name>
+          <com:Description xml:lang="en">Monaco</com:Description>
+        </str:Code>
+        <str:Code id="MD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MD">
+          <com:Name xml:lang="en">MD</com:Name>
+          <com:Description xml:lang="en">Moldova, Republic of</com:Description>
+        </str:Code>
+        <str:Code id="ME" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).ME">
+          <com:Name xml:lang="en">ME</com:Name>
+          <com:Description xml:lang="en">Montenegro</com:Description>
+        </str:Code>
+        <str:Code id="MG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MG">
+          <com:Name xml:lang="en">MG</com:Name>
+          <com:Description xml:lang="en">Madagascar</com:Description>
+        </str:Code>
+        <str:Code id="MH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MH">
+          <com:Name xml:lang="en">MH</com:Name>
+          <com:Description xml:lang="en">Marshall islands</com:Description>
+        </str:Code>
+        <str:Code id="MK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MK">
+          <com:Name xml:lang="en">MK</com:Name>
+          <com:Description xml:lang="en">Macedonia, The Former Yugoslav Republic of</com:Description>
+        </str:Code>
+        <str:Code id="ML" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).ML">
+          <com:Name xml:lang="en">ML</com:Name>
+          <com:Description xml:lang="en">Mali</com:Description>
+        </str:Code>
+        <str:Code id="MM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MM">
+          <com:Name xml:lang="en">MM</com:Name>
+          <com:Description xml:lang="en">Myanmar</com:Description>
+        </str:Code>
+        <str:Code id="MN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MN">
+          <com:Name xml:lang="en">MN</com:Name>
+          <com:Description xml:lang="en">Mongolia</com:Description>
+        </str:Code>
+        <str:Code id="MO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MO">
+          <com:Name xml:lang="en">MO</com:Name>
+          <com:Description xml:lang="en">Macau</com:Description>
+        </str:Code>
+        <str:Code id="MP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MP">
+          <com:Name xml:lang="en">MP</com:Name>
+          <com:Description xml:lang="en">Northern Mariana Islands</com:Description>
+        </str:Code>
+        <str:Code id="MQ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MQ">
+          <com:Name xml:lang="en">MQ</com:Name>
+          <com:Description xml:lang="en">Martinique</com:Description>
+        </str:Code>
+        <str:Code id="MR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MR">
+          <com:Name xml:lang="en">MR</com:Name>
+          <com:Description xml:lang="en">Mauritania</com:Description>
+        </str:Code>
+        <str:Code id="MS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MS">
+          <com:Name xml:lang="en">MS</com:Name>
+          <com:Description xml:lang="en">Montserrat</com:Description>
+        </str:Code>
+        <str:Code id="MT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MT">
+          <com:Name xml:lang="en">MT</com:Name>
+          <com:Description xml:lang="en">Malta</com:Description>
+        </str:Code>
+        <str:Code id="MU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MU">
+          <com:Name xml:lang="en">MU</com:Name>
+          <com:Description xml:lang="en">Mauritius</com:Description>
+        </str:Code>
+        <str:Code id="MV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MV">
+          <com:Name xml:lang="en">MV</com:Name>
+          <com:Description xml:lang="en">Maldives</com:Description>
+        </str:Code>
+        <str:Code id="MW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MW">
+          <com:Name xml:lang="en">MW</com:Name>
+          <com:Description xml:lang="en">Malawi</com:Description>
+        </str:Code>
+        <str:Code id="MX" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MX">
+          <com:Name xml:lang="en">MX</com:Name>
+          <com:Description xml:lang="en">Mexico</com:Description>
+        </str:Code>
+        <str:Code id="MY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MY">
+          <com:Name xml:lang="en">MY</com:Name>
+          <com:Description xml:lang="en">Malaysia</com:Description>
+        </str:Code>
+        <str:Code id="MZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).MZ">
+          <com:Name xml:lang="en">MZ</com:Name>
+          <com:Description xml:lang="en">Mozambique</com:Description>
+        </str:Code>
+        <str:Code id="N1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).N1">
+          <com:Name xml:lang="en">N1</com:Name>
+          <com:Description xml:lang="en">Intra-Euro area 11 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="N2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).N2">
+          <com:Name xml:lang="en">N2</com:Name>
+          <com:Description xml:lang="en">Intra-Euro area 12 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="N3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).N3">
+          <com:Name xml:lang="en">N3</com:Name>
+          <com:Description xml:lang="en">Intra-Euro area 13 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="N4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).N4">
+          <com:Name xml:lang="en">N4</com:Name>
+          <com:Description xml:lang="en">Intra-Euro area 15 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="NA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NA">
+          <com:Name xml:lang="en">NA</com:Name>
+          <com:Description xml:lang="en">Namibia</com:Description>
+        </str:Code>
+        <str:Code id="NC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NC">
+          <com:Name xml:lang="en">NC</com:Name>
+          <com:Description xml:lang="en">New Caledonia</com:Description>
+        </str:Code>
+        <str:Code id="NE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NE">
+          <com:Name xml:lang="en">NE</com:Name>
+          <com:Description xml:lang="en">Niger</com:Description>
+        </str:Code>
+        <str:Code id="NF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NF">
+          <com:Name xml:lang="en">NF</com:Name>
+          <com:Description xml:lang="en">Norfolk Island</com:Description>
+        </str:Code>
+        <str:Code id="NG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NG">
+          <com:Name xml:lang="en">NG</com:Name>
+          <com:Description xml:lang="en">Nigeria</com:Description>
+        </str:Code>
+        <str:Code id="NI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NI">
+          <com:Name xml:lang="en">NI</com:Name>
+          <com:Description xml:lang="en">Nicaragua</com:Description>
+        </str:Code>
+        <str:Code id="NL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NL">
+          <com:Name xml:lang="en">NL</com:Name>
+          <com:Description xml:lang="en">Netherlands</com:Description>
+        </str:Code>
+        <str:Code id="NO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NO">
+          <com:Name xml:lang="en">NO</com:Name>
+          <com:Description xml:lang="en">Norway</com:Description>
+        </str:Code>
+        <str:Code id="NP" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NP">
+          <com:Name xml:lang="en">NP</com:Name>
+          <com:Description xml:lang="en">Nepal</com:Description>
+        </str:Code>
+        <str:Code id="NR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NR">
+          <com:Name xml:lang="en">NR</com:Name>
+          <com:Description xml:lang="en">Nauru</com:Description>
+        </str:Code>
+        <str:Code id="NU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NU">
+          <com:Name xml:lang="en">NU</com:Name>
+          <com:Description xml:lang="en">Niue</com:Description>
+        </str:Code>
+        <str:Code id="NZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).NZ">
+          <com:Name xml:lang="en">NZ</com:Name>
+          <com:Description xml:lang="en">New Zealand</com:Description>
+        </str:Code>
+        <str:Code id="O1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).O1">
+          <com:Name xml:lang="en">O1</com:Name>
+          <com:Description xml:lang="en">Extra-Euro area 11 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="O2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).O2">
+          <com:Name xml:lang="en">O2</com:Name>
+          <com:Description xml:lang="en">Extra-Euro area 12 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="O3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).O3">
+          <com:Name xml:lang="en">O3</com:Name>
+          <com:Description xml:lang="en">Extra-Euro area 13 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="O4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).O4">
+          <com:Name xml:lang="en">O4</com:Name>
+          <com:Description xml:lang="en">Extra-Euro area 15 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="OM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).OM">
+          <com:Name xml:lang="en">OM</com:Name>
+          <com:Description xml:lang="en">Oman</com:Description>
+        </str:Code>
+        <str:Code id="P1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).P1">
+          <com:Name xml:lang="en">P1</com:Name>
+          <com:Description xml:lang="en">World not allocated (Euro area 11 - fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="P2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).P2">
+          <com:Name xml:lang="en">P2</com:Name>
+          <com:Description xml:lang="en">World not allocated (Euro area 12 - fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="P3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).P3">
+          <com:Name xml:lang="en">P3</com:Name>
+          <com:Description xml:lang="en">World not allocated (Euro area 13 - fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="P4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).P4">
+          <com:Name xml:lang="en">P4</com:Name>
+          <com:Description xml:lang="en">World not allocated (Euro area 15 - fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="PA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PA">
+          <com:Name xml:lang="en">PA</com:Name>
+          <com:Description xml:lang="en">Panama</com:Description>
+        </str:Code>
+        <str:Code id="PE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PE">
+          <com:Name xml:lang="en">PE</com:Name>
+          <com:Description xml:lang="en">Peru</com:Description>
+        </str:Code>
+        <str:Code id="PF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PF">
+          <com:Name xml:lang="en">PF</com:Name>
+          <com:Description xml:lang="en">French Polynesia</com:Description>
+        </str:Code>
+        <str:Code id="PG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PG">
+          <com:Name xml:lang="en">PG</com:Name>
+          <com:Description xml:lang="en">Papua New Guinea</com:Description>
+        </str:Code>
+        <str:Code id="PH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PH">
+          <com:Name xml:lang="en">PH</com:Name>
+          <com:Description xml:lang="en">Philippines</com:Description>
+        </str:Code>
+        <str:Code id="PK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PK">
+          <com:Name xml:lang="en">PK</com:Name>
+          <com:Description xml:lang="en">Pakistan</com:Description>
+        </str:Code>
+        <str:Code id="PL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PL">
+          <com:Name xml:lang="en">PL</com:Name>
+          <com:Description xml:lang="en">Poland</com:Description>
+        </str:Code>
+        <str:Code id="PM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PM">
+          <com:Name xml:lang="en">PM</com:Name>
+          <com:Description xml:lang="en">Saint Pierre and Miquelon</com:Description>
+        </str:Code>
+        <str:Code id="PN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PN">
+          <com:Name xml:lang="en">PN</com:Name>
+          <com:Description xml:lang="en">Pitcairn</com:Description>
+        </str:Code>
+        <str:Code id="PR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PR">
+          <com:Name xml:lang="en">PR</com:Name>
+          <com:Description xml:lang="en">Puerto Rico</com:Description>
+        </str:Code>
+        <str:Code id="PS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PS">
+          <com:Name xml:lang="en">PS</com:Name>
+          <com:Description xml:lang="en">Palestinian Territory, Occupied</com:Description>
+        </str:Code>
+        <str:Code id="PT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PT">
+          <com:Name xml:lang="en">PT</com:Name>
+          <com:Description xml:lang="en">Portugal</com:Description>
+        </str:Code>
+        <str:Code id="PW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PW">
+          <com:Name xml:lang="en">PW</com:Name>
+          <com:Description xml:lang="en">Palau</com:Description>
+        </str:Code>
+        <str:Code id="PY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).PY">
+          <com:Name xml:lang="en">PY</com:Name>
+          <com:Description xml:lang="en">Paraguay</com:Description>
+        </str:Code>
+        <str:Code id="QA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).QA">
+          <com:Name xml:lang="en">QA</com:Name>
+          <com:Description xml:lang="en">Qatar</com:Description>
+        </str:Code>
+        <str:Code id="R1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).R1">
+          <com:Name xml:lang="en">R1</com:Name>
+          <com:Description xml:lang="en">West Germany</com:Description>
+        </str:Code>
+        <str:Code id="R2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).R2">
+          <com:Name xml:lang="en">R2</com:Name>
+          <com:Description xml:lang="en">East Germany</com:Description>
+        </str:Code>
+        <str:Code id="RE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).RE">
+          <com:Name xml:lang="en">RE</com:Name>
+          <com:Description xml:lang="en">Réunion</com:Description>
+        </str:Code>
+        <str:Code id="RO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).RO">
+          <com:Name xml:lang="en">RO</com:Name>
+          <com:Description xml:lang="en">Romania</com:Description>
+        </str:Code>
+        <str:Code id="RS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).RS">
+          <com:Name xml:lang="en">RS</com:Name>
+          <com:Description xml:lang="en">Serbia</com:Description>
+        </str:Code>
+        <str:Code id="RU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).RU">
+          <com:Name xml:lang="en">RU</com:Name>
+          <com:Description xml:lang="en">Russian Federation</com:Description>
+        </str:Code>
+        <str:Code id="RW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).RW">
+          <com:Name xml:lang="en">RW</com:Name>
+          <com:Description xml:lang="en">Rwanda</com:Description>
+        </str:Code>
+        <str:Code id="S1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).S1">
+          <com:Name xml:lang="en">S1</com:Name>
+          <com:Description xml:lang="en">EU 15 (fixed composition) excluding LU</com:Description>
+        </str:Code>
+        <str:Code id="S2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).S2">
+          <com:Name xml:lang="en">S2</com:Name>
+          <com:Description xml:lang="en">EU 12 (fixed composition) including West Germany</com:Description>
+        </str:Code>
+        <str:Code id="S3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).S3">
+          <com:Name xml:lang="en">S3</com:Name>
+          <com:Description xml:lang="en">EU 27 member states, outside the euro area 13, excluding DK, SE, GB (C Y,CZ,EE,HU,LV,LT,MT,PL,SK,RO,BG)</com:Description>
+        </str:Code>
+        <str:Code id="SA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SA">
+          <com:Name xml:lang="en">SA</com:Name>
+          <com:Description xml:lang="en">Saudi Arabia</com:Description>
+        </str:Code>
+        <str:Code id="SB" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SB">
+          <com:Name xml:lang="en">SB</com:Name>
+          <com:Description xml:lang="en">Solomon Islands</com:Description>
+        </str:Code>
+        <str:Code id="SC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SC">
+          <com:Name xml:lang="en">SC</com:Name>
+          <com:Description xml:lang="en">Seychelles</com:Description>
+        </str:Code>
+        <str:Code id="SD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SD">
+          <com:Name xml:lang="en">SD</com:Name>
+          <com:Description xml:lang="en">Sudan</com:Description>
+        </str:Code>
+        <str:Code id="SE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SE">
+          <com:Name xml:lang="en">SE</com:Name>
+          <com:Description xml:lang="en">Sweden</com:Description>
+        </str:Code>
+        <str:Code id="SG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SG">
+          <com:Name xml:lang="en">SG</com:Name>
+          <com:Description xml:lang="en">Singapore</com:Description>
+        </str:Code>
+        <str:Code id="SH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SH">
+          <com:Name xml:lang="en">SH</com:Name>
+          <com:Description xml:lang="en">Saint Helena</com:Description>
+        </str:Code>
+        <str:Code id="SI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SI">
+          <com:Name xml:lang="en">SI</com:Name>
+          <com:Description xml:lang="en">Slovenia</com:Description>
+        </str:Code>
+        <str:Code id="SJ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SJ">
+          <com:Name xml:lang="en">SJ</com:Name>
+          <com:Description xml:lang="en">Svalbard and Jan Mayen</com:Description>
+        </str:Code>
+        <str:Code id="SK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SK">
+          <com:Name xml:lang="en">SK</com:Name>
+          <com:Description xml:lang="en">Slovakia</com:Description>
+        </str:Code>
+        <str:Code id="SL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SL">
+          <com:Name xml:lang="en">SL</com:Name>
+          <com:Description xml:lang="en">Sierra Leone</com:Description>
+        </str:Code>
+        <str:Code id="SM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SM">
+          <com:Name xml:lang="en">SM</com:Name>
+          <com:Description xml:lang="en">San Marino</com:Description>
+        </str:Code>
+        <str:Code id="SN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SN">
+          <com:Name xml:lang="en">SN</com:Name>
+          <com:Description xml:lang="en">Senegal</com:Description>
+        </str:Code>
+        <str:Code id="SO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SO">
+          <com:Name xml:lang="en">SO</com:Name>
+          <com:Description xml:lang="en">Somalia</com:Description>
+        </str:Code>
+        <str:Code id="SR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SR">
+          <com:Name xml:lang="en">SR</com:Name>
+          <com:Description xml:lang="en">Suriname</com:Description>
+        </str:Code>
+        <str:Code id="ST" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).ST">
+          <com:Name xml:lang="en">ST</com:Name>
+          <com:Description xml:lang="en">Sao Tome and Principe</com:Description>
+        </str:Code>
+        <str:Code id="SV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SV">
+          <com:Name xml:lang="en">SV</com:Name>
+          <com:Description xml:lang="en">El Salvador</com:Description>
+        </str:Code>
+        <str:Code id="SY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SY">
+          <com:Name xml:lang="en">SY</com:Name>
+          <com:Description xml:lang="en">Syrian Arab Republic</com:Description>
+        </str:Code>
+        <str:Code id="SZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).SZ">
+          <com:Name xml:lang="en">SZ</com:Name>
+          <com:Description xml:lang="en">Swaziland</com:Description>
+        </str:Code>
+        <str:Code id="T1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).T1">
+          <com:Name xml:lang="en">T1</com:Name>
+          <com:Description xml:lang="en">Euro area 11 (fixed composition) excluding LU</com:Description>
+        </str:Code>
+        <str:Code id="TC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TC">
+          <com:Name xml:lang="en">TC</com:Name>
+          <com:Description xml:lang="en">Turks and Caicos Islands</com:Description>
+        </str:Code>
+        <str:Code id="TD" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TD">
+          <com:Name xml:lang="en">TD</com:Name>
+          <com:Description xml:lang="en">Chad</com:Description>
+        </str:Code>
+        <str:Code id="TF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TF">
+          <com:Name xml:lang="en">TF</com:Name>
+          <com:Description xml:lang="en">French Southern Territories</com:Description>
+        </str:Code>
+        <str:Code id="TG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TG">
+          <com:Name xml:lang="en">TG</com:Name>
+          <com:Description xml:lang="en">Togo</com:Description>
+        </str:Code>
+        <str:Code id="TH" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TH">
+          <com:Name xml:lang="en">TH</com:Name>
+          <com:Description xml:lang="en">Thailand</com:Description>
+        </str:Code>
+        <str:Code id="TJ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TJ">
+          <com:Name xml:lang="en">TJ</com:Name>
+          <com:Description xml:lang="en">Tajikistan</com:Description>
+        </str:Code>
+        <str:Code id="TK" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TK">
+          <com:Name xml:lang="en">TK</com:Name>
+          <com:Description xml:lang="en">Tokelau</com:Description>
+        </str:Code>
+        <str:Code id="TL" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TL">
+          <com:Name xml:lang="en">TL</com:Name>
+          <com:Description xml:lang="en">Timor-Leste</com:Description>
+        </str:Code>
+        <str:Code id="TM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TM">
+          <com:Name xml:lang="en">TM</com:Name>
+          <com:Description xml:lang="en">Turkmenistan</com:Description>
+        </str:Code>
+        <str:Code id="TN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TN">
+          <com:Name xml:lang="en">TN</com:Name>
+          <com:Description xml:lang="en">Tunisia</com:Description>
+        </str:Code>
+        <str:Code id="TO" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TO">
+          <com:Name xml:lang="en">TO</com:Name>
+          <com:Description xml:lang="en">Tonga</com:Description>
+        </str:Code>
+        <str:Code id="TR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TR">
+          <com:Name xml:lang="en">TR</com:Name>
+          <com:Description xml:lang="en">Turkey</com:Description>
+        </str:Code>
+        <str:Code id="TT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TT">
+          <com:Name xml:lang="en">TT</com:Name>
+          <com:Description xml:lang="en">Trinidad and Tobago</com:Description>
+        </str:Code>
+        <str:Code id="TV" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TV">
+          <com:Name xml:lang="en">TV</com:Name>
+          <com:Description xml:lang="en">Tuvalu</com:Description>
+        </str:Code>
+        <str:Code id="TW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TW">
+          <com:Name xml:lang="en">TW</com:Name>
+          <com:Description xml:lang="en">Taiwan, Province of China</com:Description>
+        </str:Code>
+        <str:Code id="TZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).TZ">
+          <com:Name xml:lang="en">TZ</com:Name>
+          <com:Description xml:lang="en">Tanzania, United Republic of</com:Description>
+        </str:Code>
+        <str:Code id="U0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).U0">
+          <com:Name xml:lang="en">U0</com:Name>
+          <com:Description xml:lang="en">EU excluding the euro area and reference area</com:Description>
+        </str:Code>
+        <str:Code id="U2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).U2">
+          <com:Name xml:lang="en">U2</com:Name>
+          <com:Description xml:lang="en">Euro area (changing composition)</com:Description>
+        </str:Code>
+        <str:Code id="U3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).U3">
+          <com:Name xml:lang="en">U3</com:Name>
+          <com:Description xml:lang="en">EU member states not belonging to the Euro area</com:Description>
+        </str:Code>
+        <str:Code id="U4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).U4">
+          <com:Name xml:lang="en">U4</com:Name>
+          <com:Description xml:lang="en">Extra Euro area</com:Description>
+        </str:Code>
+        <str:Code id="U5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).U5">
+          <com:Name xml:lang="en">U5</com:Name>
+          <com:Description xml:lang="en">Other Euro area member states (all countries except the reference area )</com:Description>
+        </str:Code>
+        <str:Code id="U6" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).U6">
+          <com:Name xml:lang="en">U6</com:Name>
+          <com:Description xml:lang="en">Domestic (home or reference area)</com:Description>
+        </str:Code>
+        <str:Code id="U7" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).U7">
+          <com:Name xml:lang="en">U7</com:Name>
+          <com:Description xml:lang="en">Euro area and the reference area</com:Description>
+        </str:Code>
+        <str:Code id="U8" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).U8">
+          <com:Name xml:lang="en">U8</com:Name>
+          <com:Description xml:lang="en">All areas other than Euro area and ref./home area</com:Description>
+        </str:Code>
+        <str:Code id="U9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).U9">
+          <com:Name xml:lang="en">U9</com:Name>
+          <com:Description xml:lang="en">All areas other than EU and ref./home area</com:Description>
+        </str:Code>
+        <str:Code id="UA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).UA">
+          <com:Name xml:lang="en">UA</com:Name>
+          <com:Description xml:lang="en">Ukraine</com:Description>
+        </str:Code>
+        <str:Code id="UG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).UG">
+          <com:Name xml:lang="en">UG</com:Name>
+          <com:Description xml:lang="en">Uganda</com:Description>
+        </str:Code>
+        <str:Code id="UM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).UM">
+          <com:Name xml:lang="en">UM</com:Name>
+          <com:Description xml:lang="en">United States Minor outlying islands</com:Description>
+        </str:Code>
+        <str:Code id="US" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).US">
+          <com:Name xml:lang="en">US</com:Name>
+          <com:Description xml:lang="en">United States</com:Description>
+        </str:Code>
+        <str:Code id="UY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).UY">
+          <com:Name xml:lang="en">UY</com:Name>
+          <com:Description xml:lang="en">Uruguay</com:Description>
+        </str:Code>
+        <str:Code id="UZ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).UZ">
+          <com:Name xml:lang="en">UZ</com:Name>
+          <com:Description xml:lang="en">Uzbekistan</com:Description>
+        </str:Code>
+        <str:Code id="V1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).V1">
+          <com:Name xml:lang="en">V1</com:Name>
+          <com:Description xml:lang="en">EU 27 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="V2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).V2">
+          <com:Name xml:lang="en">V2</com:Name>
+          <com:Description xml:lang="en">Extra-EU 27 (fixed composition)</com:Description>
+        </str:Code>
+        <str:Code id="VA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).VA">
+          <com:Name xml:lang="en">VA</com:Name>
+          <com:Description xml:lang="en">Holy See (Vatican City State)</com:Description>
+        </str:Code>
+        <str:Code id="VC" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).VC">
+          <com:Name xml:lang="en">VC</com:Name>
+          <com:Description xml:lang="en">Saint Vincent and the Grenadines</com:Description>
+        </str:Code>
+        <str:Code id="VE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).VE">
+          <com:Name xml:lang="en">VE</com:Name>
+          <com:Description xml:lang="en">Venezuela</com:Description>
+        </str:Code>
+        <str:Code id="VG" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).VG">
+          <com:Name xml:lang="en">VG</com:Name>
+          <com:Description xml:lang="en">Virgin Islands, British</com:Description>
+        </str:Code>
+        <str:Code id="VI" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).VI">
+          <com:Name xml:lang="en">VI</com:Name>
+          <com:Description xml:lang="en">Virgin Islands, U.S.</com:Description>
+        </str:Code>
+        <str:Code id="VN" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).VN">
+          <com:Name xml:lang="en">VN</com:Name>
+          <com:Description xml:lang="en">Viet Nam</com:Description>
+        </str:Code>
+        <str:Code id="VU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).VU">
+          <com:Name xml:lang="en">VU</com:Name>
+          <com:Description xml:lang="en">Vanuatu</com:Description>
+        </str:Code>
+        <str:Code id="W0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).W0">
+          <com:Name xml:lang="en">W0</com:Name>
+          <com:Description xml:lang="en">Intra-EU (changing composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="W1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).W1">
+          <com:Name xml:lang="en">W1</com:Name>
+          <com:Description xml:lang="en">Gaza and Jericho</com:Description>
+        </str:Code>
+        <str:Code id="W2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).W2">
+          <com:Name xml:lang="en">W2</com:Name>
+          <com:Description xml:lang="en">Intra-Euro area not allocated</com:Description>
+        </str:Code>
+        <str:Code id="W4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).W4">
+          <com:Name xml:lang="en">W4</com:Name>
+          <com:Description xml:lang="en">Extra-Euro area not allocated</com:Description>
+        </str:Code>
+        <str:Code id="W5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).W5">
+          <com:Name xml:lang="en">W5</com:Name>
+          <com:Description xml:lang="en">Extra-EU 25 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="W6" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).W6">
+          <com:Name xml:lang="en">W6</com:Name>
+          <com:Description xml:lang="en">Residual for BOP &amp; IIP step 3 ECB needs (J2-DK-GB-SE-4A-D8-CH-CA-US-JP -C4-7Z)</com:Description>
+        </str:Code>
+        <str:Code id="W7" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).W7">
+          <com:Name xml:lang="en">W7</com:Name>
+          <com:Description xml:lang="en">Intra-EU 25 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="W8" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).W8">
+          <com:Name xml:lang="en">W8</com:Name>
+          <com:Description xml:lang="en">Intra-EU 27 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="W9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).W9">
+          <com:Name xml:lang="en">W9</com:Name>
+          <com:Description xml:lang="en">Extra-EU 27 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="WF" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).WF">
+          <com:Name xml:lang="en">WF</com:Name>
+          <com:Description xml:lang="en">Wallis and Futuna</com:Description>
+        </str:Code>
+        <str:Code id="WS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).WS">
+          <com:Name xml:lang="en">WS</com:Name>
+          <com:Description xml:lang="en">Samoa</com:Description>
+        </str:Code>
+        <str:Code id="X0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).X0">
+          <com:Name xml:lang="en">X0</com:Name>
+          <com:Description xml:lang="en">Not applicable</com:Description>
+        </str:Code>
+        <str:Code id="YE" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).YE">
+          <com:Name xml:lang="en">YE</com:Name>
+          <com:Description xml:lang="en">Yemen</com:Description>
+        </str:Code>
+        <str:Code id="YT" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).YT">
+          <com:Name xml:lang="en">YT</com:Name>
+          <com:Description xml:lang="en">Mayotte</com:Description>
+        </str:Code>
+        <str:Code id="YU" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).YU">
+          <com:Name xml:lang="en">YU</com:Name>
+          <com:Description xml:lang="en">Yugoslavia</com:Description>
+        </str:Code>
+        <str:Code id="Z0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).Z0">
+          <com:Name xml:lang="en">Z0</com:Name>
+          <com:Description xml:lang="en">World not allocated (EU 12)</com:Description>
+        </str:Code>
+        <str:Code id="Z1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).Z1">
+          <com:Name xml:lang="en">Z1</com:Name>
+          <com:Description xml:lang="en">World not allocated (EU 15)</com:Description>
+        </str:Code>
+        <str:Code id="Z2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).Z2">
+          <com:Name xml:lang="en">Z2</com:Name>
+          <com:Description xml:lang="en">Intra-EU 12 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="Z3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).Z3">
+          <com:Name xml:lang="en">Z3</com:Name>
+          <com:Description xml:lang="en">World not allocated (Euro area)</com:Description>
+        </str:Code>
+        <str:Code id="Z4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).Z4">
+          <com:Name xml:lang="en">Z4</com:Name>
+          <com:Description xml:lang="en">Extra-EU 12 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="Z5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).Z5">
+          <com:Name xml:lang="en">Z5</com:Name>
+          <com:Description xml:lang="en">World not allocated (geographically)</com:Description>
+        </str:Code>
+        <str:Code id="Z6" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).Z6">
+          <com:Name xml:lang="en">Z6</com:Name>
+          <com:Description xml:lang="en">Intra-EU 15 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="Z7" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).Z7">
+          <com:Name xml:lang="en">Z7</com:Name>
+          <com:Description xml:lang="en">Equally-shared control of UCIs (ultimate controlling institutional uni ts of a foreign affiliate) of more than one EU member state</com:Description>
+        </str:Code>
+        <str:Code id="Z8" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).Z8">
+          <com:Name xml:lang="en">Z8</com:Name>
+          <com:Description xml:lang="en">Extra-EU 15 (fixed composition) not allocated</com:Description>
+        </str:Code>
+        <str:Code id="Z9" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).Z9">
+          <com:Name xml:lang="en">Z9</com:Name>
+          <com:Description xml:lang="en">Rest of the World</com:Description>
+        </str:Code>
+        <str:Code id="ZA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).ZA">
+          <com:Name xml:lang="en">ZA</com:Name>
+          <com:Description xml:lang="en">South Africa</com:Description>
+        </str:Code>
+        <str:Code id="ZM" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).ZM">
+          <com:Name xml:lang="en">ZM</com:Name>
+          <com:Description xml:lang="en">Zambia</com:Description>
+        </str:Code>
+        <str:Code id="ZW" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_AREA_EE(1.0).ZW">
+          <com:Name xml:lang="en">ZW</com:Name>
+          <com:Description xml:lang="en">Zimbabwe</com:Description>
+        </str:Code>
+      </str:Codelist>
+      <str:Codelist id="CL_COLLECTION" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_COLLECTION(1.0)" agencyID="ECB" version="1.0" validFrom="2013-10-08T00:00:00.000Z" validTo="2013-12-10T00:00:00.000Z" isExternalReference="false" isFinal="true" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/codelist/ECB/CL_COLLECTION/1.0">
+        <com:Name xml:lang="en">Collection indicator code list</com:Name>
+        <str:Code id="A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_COLLECTION(1.0).A">
+          <com:Name xml:lang="en">A</com:Name>
+          <com:Description xml:lang="en">Average of observations through period</com:Description>
+        </str:Code>
+        <str:Code id="B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_COLLECTION(1.0).B">
+          <com:Name xml:lang="en">B</com:Name>
+          <com:Description xml:lang="en">Beginning of period</com:Description>
+        </str:Code>
+        <str:Code id="E" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_COLLECTION(1.0).E">
+          <com:Name xml:lang="en">E</com:Name>
+          <com:Description xml:lang="en">End of period</com:Description>
+        </str:Code>
+        <str:Code id="H" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_COLLECTION(1.0).H">
+          <com:Name xml:lang="en">H</com:Name>
+          <com:Description xml:lang="en">Highest in period</com:Description>
+        </str:Code>
+        <str:Code id="L" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_COLLECTION(1.0).L">
+          <com:Name xml:lang="en">L</com:Name>
+          <com:Description xml:lang="en">Lowest in period</com:Description>
+        </str:Code>
+        <str:Code id="M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_COLLECTION(1.0).M">
+          <com:Name xml:lang="en">M</com:Name>
+          <com:Description xml:lang="en">Middle of period</com:Description>
+        </str:Code>
+        <str:Code id="S" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_COLLECTION(1.0).S">
+          <com:Name xml:lang="en">S</com:Name>
+          <com:Description xml:lang="en">Summed through period</com:Description>
+        </str:Code>
+        <str:Code id="U" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_COLLECTION(1.0).U">
+          <com:Name xml:lang="en">U</com:Name>
+          <com:Description xml:lang="en">Unknown</com:Description>
+        </str:Code>
+        <str:Code id="V" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_COLLECTION(1.0).V">
+          <com:Name xml:lang="en">V</com:Name>
+          <com:Description xml:lang="en">Other</com:Description>
+        </str:Code>
+        <str:Code id="Y" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_COLLECTION(1.0).Y">
+          <com:Name xml:lang="en">Y</com:Name>
+          <com:Description xml:lang="en">Annualised summed</com:Description>
+        </str:Code>
+      </str:Codelist>
+      <str:Codelist id="CL_DECIMALS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_DECIMALS(1.0)" agencyID="ECB" version="1.0" isExternalReference="false" isFinal="true" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/codelist/ECB/CL_DECIMALS/1.0">
+        <com:Name xml:lang="en">Decimals codelist</com:Name>
+        <str:Code id="0" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_DECIMALS(1.0).0">
+          <com:Name xml:lang="en">0</com:Name>
+          <com:Description xml:lang="en">Zero</com:Description>
+        </str:Code>
+        <str:Code id="1" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_DECIMALS(1.0).1">
+          <com:Name xml:lang="en">1</com:Name>
+          <com:Description xml:lang="en">One</com:Description>
+        </str:Code>
+        <str:Code id="2" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_DECIMALS(1.0).2">
+          <com:Name xml:lang="en">2</com:Name>
+          <com:Description xml:lang="en">Two</com:Description>
+        </str:Code>
+        <str:Code id="3" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_DECIMALS(1.0).3">
+          <com:Name xml:lang="en">3</com:Name>
+          <com:Description xml:lang="en">Three</com:Description>
+        </str:Code>
+        <str:Code id="4" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_DECIMALS(1.0).4">
+          <com:Name xml:lang="en">4</com:Name>
+          <com:Description xml:lang="en">Four</com:Description>
+        </str:Code>
+        <str:Code id="5" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_DECIMALS(1.0).5">
+          <com:Name xml:lang="en">5</com:Name>
+          <com:Description xml:lang="en">Five</com:Description>
+        </str:Code>
+        <str:Code id="6" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_DECIMALS(1.0).6">
+          <com:Name xml:lang="en">6</com:Name>
+          <com:Description xml:lang="en">Six</com:Description>
+        </str:Code>
+        <str:Code id="7" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_DECIMALS(1.0).7">
+          <com:Name xml:lang="en">7</com:Name>
+          <com:Description xml:lang="en">Seven</com:Description>
+        </str:Code>
+      </str:Codelist>
+      <str:Codelist id="CL_FREQ" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_FREQ(1.0)" agencyID="ECB" version="1.0" validFrom="2013-12-03T00:00:00.000Z" validTo="2014-01-24T00:00:00.000Z" isExternalReference="false" isFinal="true" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/codelist/ECB/CL_FREQ/1.0">
+        <com:Name xml:lang="en">Frequency code list</com:Name>
+        <str:Code id="A" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).A">
+          <com:Name xml:lang="en">A</com:Name>
+          <com:Description xml:lang="en">Annual</com:Description>
+        </str:Code>
+        <str:Code id="B" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).B">
+          <com:Name xml:lang="en">B</com:Name>
+          <com:Description xml:lang="en">Business (not supported)</com:Description>
+        </str:Code>
+        <str:Code id="D" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).D">
+          <com:Name xml:lang="en">D</com:Name>
+          <com:Description xml:lang="en">Daily</com:Description>
+        </str:Code>
+        <str:Code id="E" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).E">
+          <com:Name xml:lang="en">E</com:Name>
+          <com:Description xml:lang="en">Event (not supported)</com:Description>
+        </str:Code>
+        <str:Code id="H" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).H">
+          <com:Name xml:lang="en">H</com:Name>
+          <com:Description xml:lang="en">Half-yearly</com:Description>
+        </str:Code>
+        <str:Code id="M" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).M">
+          <com:Name xml:lang="en">M</com:Name>
+          <com:Description xml:lang="en">Monthly</com:Description>
+        </str:Code>
+        <str:Code id="Q" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).Q">
+          <com:Name xml:lang="en">Q</com:Name>
+          <com:Description xml:lang="en">Quarterly</com:Description>
+        </str:Code>
+        <str:Code id="W" urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_FREQ(1.0).W">
+          <com:Name xml:lang="en">W</com:Name>
+          <com:Description xml:lang="en">Weekly</com:Description>
+        </str:Code>
+      </str:Codelist>
+      <str:Codelist id="CL_AREA" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_AREA(1.9)" agencyID="ESTAT" version="1.9" isExternalReference="true" isFinal="false" structureURL="https://registry.sdmx.org/FusionRegistry/ws/rest/datastructure/IMF/CL_AREA/1.9">
+        <com:Name xml:lang="en">Area code list</com:Name>
+      </str:Codelist>
+      <str:Codelist id="CL_AVAILABILITY" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_AVAILABILITY(1.0)" agencyID="ESTAT" version="1.0" validFrom="2007-01-01T00:00:00.000Z" validTo="2007-12-31T00:00:00.000Z" isExternalReference="true" isFinal="true" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/codelist/ESTAT/CL_AVAILABILITY/1.0">
+        <com:Annotations>
+          <com:Annotation>
+            <com:AnnotationTitle>SCOPE</com:AnnotationTitle>
+            <com:AnnotationType>PRIVATE</com:AnnotationType>
+          </com:Annotation>
+        </com:Annotations>
+        <com:Name xml:lang="en">Organisation availability code list</com:Name>
+      </str:Codelist>
+      <str:Codelist id="CL_STPFS_TRANS" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_STPFS_TRANS(1.0)" agencyID="ESTAT" version="1.0" isExternalReference="true" isFinal="true" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/codelist/ESTAT/CL_STPFS_TRANS/1.0">
+        <com:Annotations>
+          <com:Annotation>
+            <com:AnnotationTitle>SCOPE</com:AnnotationTitle>
+            <com:AnnotationType>PRIVATE</com:AnnotationType>
+          </com:Annotation>
+        </com:Annotations>
+        <com:Name xml:lang="en">Transactions codes following questionnaire ESA 95</com:Name>
+      </str:Codelist>
+      <str:Codelist id="CL_STS_INDICATOR" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_STS_INDICATOR(1.0)" agencyID="ESTAT" version="1.0" validFrom="2007-01-01T00:00:00.000Z" validTo="2012-01-01T00:00:00.000Z" isExternalReference="true" isFinal="true" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/codelist/ESTAT/CL_STS_INDICATOR/1.0">
+        <com:Annotations>
+          <com:Annotation>
+            <com:AnnotationTitle>SCOPE</com:AnnotationTitle>
+            <com:AnnotationType>PRIVATE</com:AnnotationType>
+          </com:Annotation>
+        </com:Annotations>
+        <com:Name xml:lang="en">Indicators index code</com:Name>
+        <com:Description xml:lang="en">Indicators index code</com:Description>
+      </str:Codelist>
+      <str:Codelist id="CL_STS_INSTITUTION" urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_STS_INSTITUTION(1.0)" agencyID="ESTAT" version="1.0" validFrom="2007-01-01T00:00:00.000Z" validTo="2007-12-31T00:00:00.000Z" isExternalReference="true" isFinal="true" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/codelist/ESTAT/CL_STS_INSTITUTION/1.0">
+        <com:Annotations>
+          <com:Annotation>
+            <com:AnnotationTitle>SCOPE</com:AnnotationTitle>
+            <com:AnnotationType>PRIVATE</com:AnnotationType>
+          </com:Annotation>
+        </com:Annotations>
+        <com:Name xml:lang="en">Institution originating STS dataflow code list (ECB)</com:Name>
+      </str:Codelist>
+    </str:Codelists>
+    <str:Concepts>
+      <str:ConceptScheme id="COMPONENT_ROLES" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.ConceptScheme=ESTAT:COMPONENT_ROLES(0.1)" agencyID="ESTAT" version="0.1" isExternalReference="false" isFinal="false" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/conceptscheme/ESTAT/COMPONENT_ROLES/0.1">
+        <com:Name xml:lang="en">COMPONENT_ROLES</com:Name>
+        <str:Concept id="COUNT" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(0.1).COUNT">
+          <com:Name xml:lang="en">COUNT</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="ENTITY" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(0.1).ENTITY">
+          <com:Name xml:lang="en">ENTITY</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="FREQUENCY" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(0.1).FREQUENCY">
+          <com:Name xml:lang="en">FREQUENCY</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="GEOGRAPHY" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(0.1).GEOGRAPHY">
+          <com:Name xml:lang="en">GEOGRAPHY</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="IDENTITY" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(0.1).IDENTITY">
+          <com:Name xml:lang="en">IDENTITY</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="NON_OBS_TIME" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(0.1).NON_OBS_TIME">
+          <com:Name xml:lang="en">NON_OBS_TIME</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="UNIT_OF_MEASURE" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(0.1).UNIT_OF_MEASURE">
+          <com:Name xml:lang="en">UNIT_OF_MEASURE</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+      </str:ConceptScheme>
+      <str:ConceptScheme id="COMPONENT_ROLES" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.ConceptScheme=ESTAT:COMPONENT_ROLES(1.0)" agencyID="ESTAT" version="1.0" isExternalReference="false" isFinal="false" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/conceptscheme/ESTAT/COMPONENT_ROLES/1.0">
+        <com:Name xml:lang="en">COMPONENT_ROLES</com:Name>
+        <str:Concept id="FREQUENCY" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(1.0).FREQUENCY">
+          <com:Name xml:lang="en">FREQUENCY</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="COUNT" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(1.0).COUNT">
+          <com:Name xml:lang="en">COUNT</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="GEOGRAPHY" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(1.0).GEOGRAPHY">
+          <com:Name xml:lang="en">GEOGRAPHY</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="IDENTITY" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(1.0).IDENTITY">
+          <com:Name xml:lang="en">IDENTITY</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="NON_OBS_TIME" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(1.0).NON_OBS_TIME">
+          <com:Name xml:lang="en">NON_OBS_TIME</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="TIME_FORMAT" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(1.0).TIME_FORMAT">
+          <com:Name xml:lang="en">Time Format</com:Name>
+        </str:Concept>
+        <str:Concept id="UNIT_OF_MEASURE" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(1.0).UNIT_OF_MEASURE">
+          <com:Name xml:lang="en">UNIT_OF_MEASURE</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+        <str:Concept id="ENTITY" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:COMPONENT_ROLES(1.0).ENTITY">
+          <com:Name xml:lang="en">ENTITY</com:Name>
+          <str:CoreRepresentation>
+            <str:TextFormat textType="String"/>
+          </str:CoreRepresentation>
+        </str:Concept>
+      </str:ConceptScheme>
+      <str:ConceptScheme id="STS_SCHEME" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.ConceptScheme=ESTAT:STS_SCHEME(1.0)" agencyID="ESTAT" version="1.0" validFrom="2007-01-01T00:00:00.000Z" validTo="2007-12-31T00:00:00.000Z" isExternalReference="true" isFinal="true" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/conceptscheme/ESTAT/STS_SCHEME/1.0">
+        <com:Annotations>
+          <com:Annotation>
+            <com:AnnotationTitle>SCOPE</com:AnnotationTitle>
+            <com:AnnotationType>PRIVATE</com:AnnotationType>
+          </com:Annotation>
+        </com:Annotations>
+        <com:Name xml:lang="en">Short Term Statistics Concepts</com:Name>
+      </str:ConceptScheme>
+      <str:ConceptScheme id="VALIDATION_CONCEPTS" urn="urn:sdmx:org.sdmx.infomodel.conceptscheme.ConceptScheme=ESTAT:VALIDATION_CONCEPTS(3.0)" agencyID="ESTAT" version="3.0" isExternalReference="true" isFinal="true" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/conceptscheme/ESTAT/VALIDATION_CONCEPTS/3.0">
+        <com:Annotations>
+          <com:Annotation>
+            <com:AnnotationTitle>SCOPE</com:AnnotationTitle>
+            <com:AnnotationType>PRIVATE</com:AnnotationType>
+          </com:Annotation>
+        </com:Annotations>
+        <com:Name xml:lang="en">Edamis domain concept scheme</com:Name>
+      </str:ConceptScheme>
+    </str:Concepts>
+    <str:DataStructures>
+      <str:DataStructure id="STS_OECD" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:STS_OECD(1.4)" agencyID="ESTAT" version="1.4" validFrom="2007-11-01T00:00:00.000Z" isExternalReference="false" isFinal="false" structureURL="http://intragate.test.ec.europa.eu/sdmxregistry/rest/datastructure/ESTAT/STS_OECD/1.4">
+        <com:Name xml:lang="hr">hr name</com:Name>
+        <com:Name xml:lang="bg">bg NAME</com:Name>
+        <com:Name xml:lang="en">Short Term Statistics.</com:Name>
+        <com:Description xml:lang="bg">bg DESCRIPTION</com:Description>
+        <com:Description xml:lang="en">f</com:Description>
+        <str:DataStructureComponents>
+          <str:DimensionList id="DimensionDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=ESTAT:STS_OECD(1.4).DimensionDescriptor">
+            <str:Dimension id="STS_INSTITUTION" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:STS_OECD(1.4).STS_INSTITUTION" position="1">
+              <com:Annotations>
+                <com:Annotation id="STS_INSTITUTION_ANNOT_ID_1">
+                  <com:AnnotationTitle>STS_INSTITUTION_ANNOT_TITLE_1</com:AnnotationTitle>
+                  <com:AnnotationType>STS_INSTITUTION_ANNOT_TYPE_1</com:AnnotationType>
+                  <com:AnnotationURL>STS_INSTITUTION_ANNOT_URL_1</com:AnnotationURL>
+                  <com:AnnotationText xml:lang="bg">(bg) STS_INSTITUTION_ANNOT_TEXT_1</com:AnnotationText>
+                  <com:AnnotationText xml:lang="en">(en) STS_INSTITUTION_ANNOT_TEXT_1</com:AnnotationText>
+                </com:Annotation>
+                <com:Annotation id="STS_INSTITUTION_ANNOT_ID_2">
+                  <com:AnnotationTitle>STS_INSTITUTION_ANNOT_TITLE_2</com:AnnotationTitle>
+                  <com:AnnotationType>STS_INSTITUTION_ANNOT_TYPE_2</com:AnnotationType>
+                  <com:AnnotationURL>STS_INSTITUTION_ANNOT_URL_2</com:AnnotationURL>
+                  <com:AnnotationText xml:lang="bg">(bg) STS_INSTITUTION_ANNOT_TEXT_2</com:AnnotationText>
+                  <com:AnnotationText xml:lang="en">(en) STS_INSTITUTION_ANNOT_TEXT_2</com:AnnotationText>
+                </com:Annotation>
+                <com:Annotation id="STS_INSTITUTION_ANNOT_ID_3">
+                  <com:AnnotationTitle>STS_INSTITUTION_ANNOT_TITLE_3</com:AnnotationTitle>
+                  <com:AnnotationType>STS_INSTITUTION_ANNOT_TYPE_3</com:AnnotationType>
+                  <com:AnnotationURL>STS_INSTITUTION_ANNOT_URL_3</com:AnnotationURL>
+                  <com:AnnotationText xml:lang="en">(en) STS_INSTITUTION_ANNOT_TEXT_3</com:AnnotationText>
+                </com:Annotation>
+              </com:Annotations>
+              <str:ConceptIdentity>
+                <Ref id="STS_INSTITUTION" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_STS_INSTITUTION" version="1.0" agencyID="ESTAT" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+                <str:EnumerationFormat textType="BigInteger" isSequence="true" minLength="90" maxLength="100" minValue="12" maxValue="24" startValue="20" endValue="60" interval="14"/>
+              </str:LocalRepresentation>
+              <str:ConceptRole>
+                <Ref id="ENTITY" maintainableParentID="COMPONENT_ROLES" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptRole>
+              <str:ConceptRole>
+                <Ref id="COUNT" maintainableParentID="COMPONENT_ROLES" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptRole>
+              <str:ConceptRole>
+                <Ref id="FREQUENCY" maintainableParentID="COMPONENT_ROLES" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptRole>
+            </str:Dimension>
+            <str:Dimension id="ADJUSTMENT" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:STS_OECD(1.4).ADJUSTMENT" position="2">
+              <com:Annotations>
+                <com:Annotation id="ADJ_ANNOT_ID_1">
+                  <com:AnnotationTitle>ADJ_ANNOT_TITLE_1</com:AnnotationTitle>
+                  <com:AnnotationType>ADJ_ANNOT_TYPE_1</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) ADJ_ANNOT_TEXT_1</com:AnnotationText>
+                </com:Annotation>
+                <com:Annotation id="ADJ_ANNOT_ID_2">
+                  <com:AnnotationTitle>ADJ_ANNOT_TITLE_2</com:AnnotationTitle>
+                  <com:AnnotationType>ADJ_ANNOT_TYPE_2</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) ADJ_ANNOT_TEXT_2</com:AnnotationText>
+                </com:Annotation>
+                <com:Annotation id="ADJ_ANNOT_ID_3">
+                  <com:AnnotationTitle>ADJ_ANNOT_TITLE_3</com:AnnotationTitle>
+                  <com:AnnotationType>ADJ_ANNOT_TYPE_3</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) ADJ_ANNOT_TEXT_3</com:AnnotationText>
+                </com:Annotation>
+              </com:Annotations>
+              <str:ConceptIdentity>
+                <Ref id="ADJUSTMENT" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_AREA" version="1.9" agencyID="ESTAT" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+            </str:Dimension>
+            <str:TimeDimension id="TIME_PERIOD" urn="urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=ESTAT:STS_OECD(1.4).TIME_PERIOD" position="3">
+              <com:Annotations>
+                <com:Annotation id="TIME_PERIOD_ANNOT_ID_2">
+                  <com:AnnotationTitle>TIME_PERIOD_ANNOT_TITLE_2</com:AnnotationTitle>
+                  <com:AnnotationType>TIME_PERIOD_ANNOT_TYPE_2</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) TIME_PERIOD_ANNOT_TEXT_2</com:AnnotationText>
+                </com:Annotation>
+                <com:Annotation id="TIME_PERIOD_ANNOT_ID_1">
+                  <com:AnnotationTitle>TIME_PERIOD_ANNOT_TITLE_1</com:AnnotationTitle>
+                  <com:AnnotationType>TIME_PERIOD_ANNOT_TYPE_1</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) TIME_PERIOD_ANNOT_TEXT_1</com:AnnotationText>
+                </com:Annotation>
+              </com:Annotations>
+              <str:ConceptIdentity>
+                <Ref id="TIME_PERIOD" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_STS_INSTITUTION" version="1.0" agencyID="GPP" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+            </str:TimeDimension>
+            <str:Dimension id="STS_INDICATOR" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:STS_OECD(1.4).STS_INDICATOR" position="4">
+              <com:Annotations>
+                <com:Annotation id="INDICATOR_ANNOT_ID_2">
+                  <com:AnnotationTitle>INDICATOR_ANNOT_TTILE_2</com:AnnotationTitle>
+                  <com:AnnotationType>INDICATOR_ANNOT_TYPE_2</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) INDICATOR_ANNOT_TEXT_2</com:AnnotationText>
+                </com:Annotation>
+                <com:Annotation id="INDICATOR_ANNOT_ID_1">
+                  <com:AnnotationTitle>INDICATOR_ANNOT_TITLE_1</com:AnnotationTitle>
+                  <com:AnnotationType>INDICATOR_ANNOT_TYPE_1</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) INDICATOR_ANNOT_TEXT_1</com:AnnotationText>
+                </com:Annotation>
+              </com:Annotations>
+              <str:ConceptIdentity>
+                <Ref id="STS_INDICATOR" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_STS_INDICATOR" version="1.0" agencyID="ESTAT" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+                <str:EnumerationFormat textType="ReportingMonth"/>
+              </str:LocalRepresentation>
+              <str:ConceptRole>
+                <Ref id="TIME_FORMAT" maintainableParentID="COMPONENT_ROLES" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptRole>
+            </str:Dimension>
+            <str:Dimension id="CMP_WITH_ROLE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:STS_OECD(1.4).CMP_WITH_ROLE" position="5">
+              <com:Annotations>
+                <com:Annotation id="maria_ANNOT_ID_1">
+                  <com:AnnotationTitle>maria_ANNOT_TITLE_1</com:AnnotationTitle>
+                  <com:AnnotationType>maria_ANNOT_TYPE_1</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) maria_ANNOT_TEXT_1</com:AnnotationText>
+                </com:Annotation>
+                <com:Annotation id="maria_ANNOT_ID_2">
+                  <com:AnnotationTitle>maria_ANNOT_TITLE_2</com:AnnotationTitle>
+                  <com:AnnotationType>maria_ANNOT_TYPE_2</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) maria_ANNOT_TEXT_2</com:AnnotationText>
+                </com:Annotation>
+              </com:Annotations>
+              <str:ConceptIdentity>
+                <Ref id="ESTIMATED_FLAG" maintainableParentID="VALIDATION_CONCEPTS" maintainableParentVersion="3.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_STPFS_TRANS" version="1.0" agencyID="ESTAT" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+            </str:Dimension>
+            <str:Dimension id="REF_AREA" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:STS_OECD(1.4).REF_AREA" position="6">
+              <com:Annotations>
+                <com:Annotation id="REF_AREA_ANNOT_ID_1">
+                  <com:AnnotationTitle>REF_AREA_ANNOT_TITLE_1</com:AnnotationTitle>
+                  <com:AnnotationType>REF_AREA_ANNOT_TYPE_1</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) REF_AREA_ANNOT_TEXT_1</com:AnnotationText>
+                </com:Annotation>
+                <com:Annotation id="REF_AREA_ANNOT_ID_2">
+                  <com:AnnotationTitle>REF_AREA_ANNOT_TITLE_2</com:AnnotationTitle>
+                  <com:AnnotationType>REF_AREA_ANNOT_TYPE_2</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) REF_AREA_ANNOT_TEXT_2</com:AnnotationText>
+                </com:Annotation>
+              </com:Annotations>
+              <str:ConceptIdentity>
+                <Ref id="REF_AREA" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_AREA_EE" version="1.0" agencyID="ECB" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+            </str:Dimension>
+            <str:Dimension id="FREQ" urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:STS_OECD(1.4).FREQ" position="7">
+              <com:Annotations>
+                <com:Annotation id="FREQ_ANNOT_ID_2">
+                  <com:AnnotationTitle>FREQ_ANNOT_TITLE_2</com:AnnotationTitle>
+                  <com:AnnotationType>FREQ_ANNOT_TYPE_2</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) FREQ_ANNOT_TEXT_2</com:AnnotationText>
+                </com:Annotation>
+                <com:Annotation id="FREQ_ANNOT_ID_1">
+                  <com:AnnotationTitle>FREQ_ANNOT_TITLE_1</com:AnnotationTitle>
+                  <com:AnnotationType>FREQ_ANNOT_TYPE_1</com:AnnotationType>
+                  <com:AnnotationText xml:lang="hr">(hr) FREQ_ANNOT_TEXT_1</com:AnnotationText>
+                </com:Annotation>
+              </com:Annotations>
+              <str:ConceptIdentity>
+                <Ref id="FREQ" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_FREQ" version="1.0" agencyID="ECB" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+              <str:ConceptRole>
+                <Ref id="FREQUENCY" maintainableParentID="COMPONENT_ROLES" maintainableParentVersion="0.1" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptRole>
+            </str:Dimension>
+          </str:DimensionList>
+          <str:Group id="Sibling" urn="urn:sdmx:org.sdmx.infomodel.datastructure.GroupDimensionDescriptor=ESTAT:STS_OECD(1.4).Sibling">
+            <com:Annotations>
+              <com:Annotation id="GROUP_ANNOT_ID_1">
+                <com:AnnotationTitle>GROUP_ANNOT_TITLE_1</com:AnnotationTitle>
+                <com:AnnotationType>GROUP_ANNOT_TYPE_1</com:AnnotationType>
+                <com:AnnotationURL>GROUP_ANNOT_URL_1</com:AnnotationURL>
+                <com:AnnotationText xml:lang="en">GROUP_ANNOT_TEXT_1</com:AnnotationText>
+              </com:Annotation>
+              <com:Annotation id="GROUP_ANNOT_ID_2">
+                <com:AnnotationTitle>GROUP_ANNOT_TITLE_2</com:AnnotationTitle>
+                <com:AnnotationType>GROUP_ANNOT_TYPE_2</com:AnnotationType>
+                <com:AnnotationURL>GROUP_ANNOT_URL_2</com:AnnotationURL>
+                <com:AnnotationText xml:lang="en">GROUP_ANNOT_TEXT_2</com:AnnotationText>
+              </com:Annotation>
+            </com:Annotations>
+            <str:GroupDimension>
+              <str:DimensionReference>
+                <Ref id="STS_INSTITUTION"/>
+              </str:DimensionReference>
+            </str:GroupDimension>
+            <str:GroupDimension>
+              <str:DimensionReference>
+                <Ref id="STS_INDICATOR"/>
+              </str:DimensionReference>
+            </str:GroupDimension>
+            <str:GroupDimension>
+              <str:DimensionReference>
+                <Ref id="REF_AREA"/>
+              </str:DimensionReference>
+            </str:GroupDimension>
+          </str:Group>
+          <str:AttributeList id="AttributeDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=ESTAT:STS_OECD(1.4).AttributeDescriptor">
+            <str:Attribute id="ATT_2" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:STS_OECD(1.4).ATT_2" assignmentStatus="Conditional">
+              <str:ConceptIdentity>
+                <Ref id="ADJUSTMENT" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_AVAILABILITY" version="1.0" agencyID="ESTAT" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+              <str:AttributeRelationship>
+                <str:None/>
+              </str:AttributeRelationship>
+            </str:Attribute>
+            <str:Attribute id="ATT_3" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:STS_OECD(1.4).ATT_3" assignmentStatus="Conditional">
+              <str:ConceptIdentity>
+                <Ref id="BREAKS" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:AttributeRelationship>
+                <str:None/>
+              </str:AttributeRelationship>
+            </str:Attribute>
+            <str:Attribute id="ATT_4" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:STS_OECD(1.4).ATT_4" assignmentStatus="Conditional">
+              <str:ConceptIdentity>
+                <Ref id="COLLECTION" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_COLLECTION" version="1.0" agencyID="ECB" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+              <str:AttributeRelationship>
+                <str:None/>
+              </str:AttributeRelationship>
+            </str:Attribute>
+            <str:Attribute id="ATT_5" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:STS_OECD(1.4).ATT_5" assignmentStatus="Conditional">
+              <str:ConceptIdentity>
+                <Ref id="COMPILATION" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:AttributeRelationship>
+                <str:None/>
+              </str:AttributeRelationship>
+            </str:Attribute>
+            <str:Attribute id="ATT_10" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:STS_OECD(1.4).ATT_10" assignmentStatus="Conditional">
+              <str:ConceptIdentity>
+                <Ref id="COVERAGE" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:AttributeRelationship>
+                <str:None/>
+              </str:AttributeRelationship>
+            </str:Attribute>
+            <str:Attribute id="ATT_9" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:STS_OECD(1.4).ATT_9" assignmentStatus="Conditional">
+              <str:ConceptIdentity>
+                <Ref id="DECIMALS" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_DECIMALS" version="1.0" agencyID="ECB" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+              </str:LocalRepresentation>
+              <str:AttributeRelationship>
+                <str:Group>
+                  <Ref id="Sibling"/>
+                </str:Group>
+              </str:AttributeRelationship>
+            </str:Attribute>
+            <str:Attribute id="ATT_8" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:STS_OECD(1.4).ATT_8" assignmentStatus="Conditional">
+              <str:ConceptIdentity>
+                <Ref id="DOM_SER_IDS" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:AttributeRelationship>
+                <str:None/>
+              </str:AttributeRelationship>
+            </str:Attribute>
+            <str:Attribute id="ATT_7" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:STS_OECD(1.4).ATT_7" assignmentStatus="Conditional">
+              <str:ConceptIdentity>
+                <Ref id="NAT_TITLE" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:AttributeRelationship>
+                <str:Group>
+                  <Ref id="Sibling"/>
+                </str:Group>
+              </str:AttributeRelationship>
+            </str:Attribute>
+            <str:Attribute id="ATT_6" urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:STS_OECD(1.4).ATT_6" assignmentStatus="Conditional">
+              <str:ConceptIdentity>
+                <Ref id="OBS_COM" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:TextFormat textType="String"/>
+              </str:LocalRepresentation>
+              <str:AttributeRelationship>
+                <str:PrimaryMeasure>
+                  <Ref id="OBS_VALUE"/>
+                </str:PrimaryMeasure>
+              </str:AttributeRelationship>
+            </str:Attribute>
+          </str:AttributeList>
+          <str:MeasureList id="MeasureDescriptor" urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=ESTAT:STS_OECD(1.4).MeasureDescriptor">
+            <str:PrimaryMeasure id="OBS_VALUE" urn="urn:sdmx:org.sdmx.infomodel.datastructure.PrimaryMeasure=ESTAT:STS_OECD(1.4).OBS_VALUE">
+              <str:ConceptIdentity>
+                <Ref id="OBS_VALUE" maintainableParentID="STS_SCHEME" maintainableParentVersion="1.0" agencyID="ESTAT" package="conceptscheme" class="Concept"/>
+              </str:ConceptIdentity>
+              <str:LocalRepresentation>
+                <str:Enumeration>
+                  <Ref id="CL_COLLECTION" version="1.0" agencyID="BIS" package="codelist" class="Codelist"/>
+                </str:Enumeration>
+                <str:EnumerationFormat textType="Double"/>
+              </str:LocalRepresentation>
+            </str:PrimaryMeasure>
+          </str:MeasureList>
+        </str:DataStructureComponents>
+      </str:DataStructure>
+    </str:DataStructures>
+  </mes:Structures>
+</mes:Structure>

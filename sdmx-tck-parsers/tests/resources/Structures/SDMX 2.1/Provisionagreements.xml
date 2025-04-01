@@ -1,0 +1,85 @@
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd">
+<mes:Header>
+<mes:ID>IREF748867</mes:ID>
+<mes:Test>false</mes:Test>
+<mes:Prepared>2020-10-13T07:41:26Z</mes:Prepared>
+<mes:Sender id="SDMX"/>
+<mes:Receiver id="not_supplied"/>
+</mes:Header>
+<mes:Structures>
+<str:ProvisionAgreements>
+<str:ProvisionAgreement urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:PA_NAMAIN_IDC_N(1.0)" isExternalReference="false" agencyID="ESTAT" id="PA_NAMAIN_IDC_N" isFinal="true" version="1.0">
+<com:Name xml:lang="en">PA_NAMAIN_IDC_N</com:Name>
+<str:StructureUsage>
+<Ref package="datastructure" agencyID="ESTAT" id="NAMAIN_IDC_N" version="1.6" class="Dataflow"/>
+</str:StructureUsage>
+<str:DataProvider>
+<Ref maintainableParentID="DATA_PROVIDERS" package="base" maintainableParentVersion="1.0" agencyID="ESTAT" id="ESTAT" class="DataProvider"/>
+</str:DataProvider>
+</str:ProvisionAgreement>
+<str:ProvisionAgreement urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:PA_NAMAIN_IDC_N(1.9)" isExternalReference="false" agencyID="ESTAT" id="PA_NAMAIN_IDC_N" isFinal="false" version="1.9">
+<com:Name xml:lang="en">PA_NAMAIN_IDC_N</com:Name>
+<str:StructureUsage>
+<Ref package="datastructure" agencyID="ESTAT" id="NAMAIN_IDC_N" version="1.9" class="Dataflow"/>
+</str:StructureUsage>
+<str:DataProvider>
+<Ref maintainableParentID="DATA_PROVIDERS" package="base" maintainableParentVersion="1.0" agencyID="ESTAT" id="ESTAT" class="DataProvider"/>
+</str:DataProvider>
+</str:ProvisionAgreement>
+<str:ProvisionAgreement urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:PA_NAMAIN_IDC_N_ESTAT(1.9)" isExternalReference="false" agencyID="ESTAT" id="PA_NAMAIN_IDC_N_ESTAT" isFinal="false" version="1.9">
+<com:Name xml:lang="en">PA_NAMAIN_IDC_N_ESTAT</com:Name>
+<str:StructureUsage>
+<Ref package="datastructure" agencyID="ESTAT" id="NAMAIN_IDC_N" version="1.9" class="Dataflow"/>
+</str:StructureUsage>
+<str:DataProvider>
+<Ref maintainableParentID="DATA_PROVIDERS" package="base" maintainableParentVersion="1.0" agencyID="ESTAT" id="ESTAT" class="DataProvider"/>
+</str:DataProvider>
+</str:ProvisionAgreement>
+<str:ProvisionAgreement urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:PA_NAMAIN_IDC_N_IMF(1.9)" isExternalReference="false" agencyID="ESTAT" id="PA_NAMAIN_IDC_N_IMF" isFinal="false" version="1.9">
+<com:Name xml:lang="en">PA_NAMAIN_IDC_N_IMF</com:Name>
+<str:StructureUsage>
+<Ref package="datastructure" agencyID="ESTAT" id="NAMAIN_IDC_N" version="1.9" class="Dataflow"/>
+</str:StructureUsage>
+<str:DataProvider>
+<Ref maintainableParentID="DATA_PROVIDERS" package="base" maintainableParentVersion="1.0" agencyID="ESTAT" id="IMF" class="DataProvider"/>
+</str:DataProvider>
+</str:ProvisionAgreement>
+<str:ProvisionAgreement urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:PA_NAMAIN_IDC_N_OECD(1.9)" isExternalReference="false" agencyID="ESTAT" id="PA_NAMAIN_IDC_N_OECD" isFinal="false" version="1.9">
+<com:Name xml:lang="en">PA_NAMAIN_IDC_N_OECD</com:Name>
+<str:StructureUsage>
+<Ref package="datastructure" agencyID="ESTAT" id="NAMAIN_IDC_N" version="1.9" class="Dataflow"/>
+</str:StructureUsage>
+<str:DataProvider>
+<Ref maintainableParentID="DATA_PROVIDERS" package="base" maintainableParentVersion="1.0" agencyID="ESTAT" id="OECD" class="DataProvider"/>
+</str:DataProvider>
+</str:ProvisionAgreement>
+<str:ProvisionAgreement urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:PA_NAMAIN_IDC_N_UNSD(1.9)" isExternalReference="false" agencyID="ESTAT" id="PA_NAMAIN_IDC_N_UNSD" isFinal="false" version="1.9">
+<com:Name xml:lang="en">PA_NAMAIN_IDC_N_UNSD</com:Name>
+<str:StructureUsage>
+<Ref package="datastructure" agencyID="ESTAT" id="NAMAIN_IDC_N" version="1.9" class="Dataflow"/>
+</str:StructureUsage>
+<str:DataProvider>
+<Ref maintainableParentID="DATA_PROVIDERS" package="base" maintainableParentVersion="1.0" agencyID="ESTAT" id="UNSD" class="DataProvider"/>
+</str:DataProvider>
+</str:ProvisionAgreement>
+<str:ProvisionAgreement urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:PA_NASEC_IDCFINA_Q_ECB(1.9)" isExternalReference="false" agencyID="ESTAT" id="PA_NASEC_IDCFINA_Q_ECB" isFinal="false" version="1.9">
+<com:Name xml:lang="en">PA_NASEC_IDCFINA_Q_ECB</com:Name>
+<str:StructureUsage>
+<Ref package="datastructure" agencyID="ESTAT" id="NASEC_IDCFINA_Q" version="1.9" class="Dataflow"/>
+</str:StructureUsage>
+<str:DataProvider>
+<Ref maintainableParentID="DATA_PROVIDERS" package="base" maintainableParentVersion="1.0" agencyID="SDMX" id="ECB" class="DataProvider"/>
+</str:DataProvider>
+</str:ProvisionAgreement>
+<str:ProvisionAgreement urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=ESTAT:PA_NASEC_T0800_A(1.0)" isExternalReference="false" agencyID="ESTAT" id="PA_NASEC_T0800_A" isFinal="true" version="1.0">
+<com:Name xml:lang="en">Provision Agreement for NASEC_T0800_A</com:Name>
+<str:StructureUsage>
+<Ref package="datastructure" agencyID="ESTAT" id="NASEC_T0800_A" version="1.7" class="Dataflow"/>
+</str:StructureUsage>
+<str:DataProvider>
+<Ref maintainableParentID="DATA_PROVIDERS" package="base" maintainableParentVersion="1.0" agencyID="ESTAT" id="ESTAT" class="DataProvider"/>
+</str:DataProvider>
+</str:ProvisionAgreement>
+</str:ProvisionAgreements>
+</mes:Structures>
+</mes:Structure>

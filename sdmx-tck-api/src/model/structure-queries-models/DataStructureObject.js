@@ -127,6 +127,12 @@ class DataStructureObject extends MaintainableObject {
        return  this.getComponents().filter(
             component => (component.getType() === DSD_COMPONENTS_NAMES.DIMENSION));
     }
+<<<<<<< HEAD
+=======
+    getDimensionById(dimensionId) {
+        return this.getDimensions().find(dim => (dim.getId() === dimensionId));
+    }
+>>>>>>> v4.8.0
     getAttributes(){
         return  this.getComponents().filter(
             component => (component.getType() === DSD_COMPONENTS_NAMES.ATTRIBUTE));
@@ -156,6 +162,7 @@ class DataStructureObject extends MaintainableObject {
     hasTimeDimension(){
         return this.getComponents().some(comp=>comp.getType() === DSD_COMPONENTS_NAMES.TIME_DIMENSION)
     }
+<<<<<<< HEAD
 
     sortRandomKeyAccordingToDimensions(randomKeys){
         if(!randomKeys || typeof randomKeys !== 'object'){
@@ -168,6 +175,37 @@ class DataStructureObject extends MaintainableObject {
         let sortedKeys = {}
         dimensions.forEach(dimension => {
             sortedKeys[dimension.getId()] = randomKeys[dimension.getId()]
+=======
+    filterDimensions(seriesAttributes) {
+        let output = [];
+        for (let attr in seriesAttributes) {
+            let filteredAttributes = {};
+            let dimensions = this.getDimensions();
+            for (let dim in dimensions) {
+                let dimension = dimensions[dim];
+                if (Object.prototype.hasOwnProperty.call(seriesAttributes[attr], dimension.getId())) {
+                    filteredAttributes[dimension.getId()] = seriesAttributes[attr][dimension.getId()];
+                }
+            }
+            output.push(filteredAttributes);
+        }
+        return output;
+    }
+    sortRandomKeyAccordingToDimensions(randomKeys) {
+        if (!randomKeys || typeof randomKeys !== 'object') {
+            throw new Error("Missing mandatory parameter 'randomKey'");
+        }
+        if (!Object.keys(randomKeys).every(key => this.getDimensions().some(dim => dim.getId() === key))) {
+            throw new Error("Unable to sort randomKey because it does not contain all DSD dimensions.");
+        }
+        let dimensions = this.getDimensions();
+        // TODO: (GPP) Does this code really work? 
+        // I see an attempt to sort keys, but they are then inserted again into a JavaScript object 
+        // where the order of attributes is not preserved.
+        let sortedKeys = {}
+        dimensions.forEach(dimension => {
+            sortedKeys[dimension.getId()] = randomKeys[dimension.getId()];
+>>>>>>> v4.8.0
         });
         return sortedKeys;
     }

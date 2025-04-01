@@ -1,0 +1,1076 @@
+[
+    {
+        "testId": "/availability/agency,dataflow,version/all",
+        "index": "Data",
+        "run": false,
+        "apiVersion": "v2.0.0",
+        "resource": "dataflow",
+        "reqTemplate": {},
+        "identifiers": {
+            "structureType": "",
+            "agency": "",
+            "id": "",
+            "version": ""
+        },
+        "state": "Waiting",
+        "failReason": "",
+        "testType": "Data Availability",
+        "subTests": [
+            {
+                "testId": "/availability/agency,dataflow,version/A.B.C?mode=exact",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "mode": "exact",
+                    "key": "Full Key",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/A.B.C?mode=available",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "mode": "available",
+                    "key": "Full Key",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/all?startPeriod=2010-01",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "startPeriod": "2010-01",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/all?endPeriod=2020-01",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "endPeriod": "2020-01",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/all?startPeriod=2010-01&endPeriod=2020-01",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "startPeriod": "2010-01",
+                    "endPeriod": "2020-01",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/all (metrics)",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "metrics": true,
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/all/all/DIM1",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "component": true,
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/A1+A2.B.C?mode=exact",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "mode": "exact",
+                    "key": "Many Keys",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/A1+A2.B.C?mode=available",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "mode": "available",
+                    "key": "Many Keys",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/all?references=all",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "references": "all",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/all?references=datastructure",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "references": "datastructure",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/all?references=dataflow",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "references": "dataflow",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/all?references=codelist",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "references": "codelist",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/all?references=conceptschemes",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "references": "conceptscheme",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,dataflow,version/all/PROVIDER?references=dataproviderscheme",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "dataflow",
+                "reqTemplate": {
+                    "provider": {
+                        "num": 1,
+                        "providerId": true
+                    },
+                    "references": "dataproviderscheme",
+                    "context": "dataflow"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            }
+        ]
+    },
+    {
+        "testId": "/availability/agency,datastructure,version/all",
+        "index": "Data",
+        "run": false,
+        "apiVersion": "v2.0.0",
+        "resource": "datastructure",
+        "reqTemplate": {},
+        "identifiers": {
+            "structureType": "",
+            "agency": "",
+            "id": "",
+            "version": ""
+        },
+        "state": "Waiting",
+        "failReason": "",
+        "testType": "Data Availability",
+        "subTests": [
+            {
+                "testId": "/availability/agency,datastructure,version/A.B.C?mode=exact",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "mode": "exact",
+                    "key": "Full Key",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/A.B.C?mode=available",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "mode": "available",
+                    "key": "Full Key",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/all?startPeriod=2010-01",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "startPeriod": "2010-01",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/all?endPeriod=2020-01",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "endPeriod": "2020-01",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/all?startPeriod=2010-01&endPeriod=2020-01",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "startPeriod": "2010-01",
+                    "endPeriod": "2020-01",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/all (metrics)",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "metrics": true,
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/all/all/DIM1",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "component": true,
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/A1+A2.B.C?mode=exact",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "mode": "exact",
+                    "key": "Many Keys",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/A1+A2.B.C?mode=available",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "mode": "available",
+                    "key": "Many Keys",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/all?references=all",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "references": "all",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/all?references=datastructure",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "references": "datastructure",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/all?references=dataflow",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "references": "dataflow",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/all?references=codelist",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "references": "codelist",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/all?references=conceptschemes",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "references": "conceptscheme",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,datastructure,version/all/PROVIDER?references=dataproviderscheme",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "datastructure",
+                "reqTemplate": {
+                    "provider": {
+                        "num": 1,
+                        "providerId": true
+                    },
+                    "references": "dataproviderscheme",
+                    "context": "datastructure"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            }
+        ]
+    },
+    {
+        "testId": "/availability/agency,provisionagreement,version/all",
+        "index": "Data",
+        "run": false,
+        "apiVersion": "v2.0.0",
+        "resource": "provisionagreement",
+        "reqTemplate": {},
+        "identifiers": {
+            "structureType": "",
+            "agency": "",
+            "id": "",
+            "version": ""
+        },
+        "state": "Waiting",
+        "failReason": "",
+        "testType": "Data Availability",
+        "subTests": [
+            {
+                "testId": "/availability/agency,provisionagreement,version/A.B.C?mode=exact",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "mode": "exact",
+                    "key": "Full Key",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/A.B.C?mode=available",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "mode": "available",
+                    "key": "Full Key",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/all?startPeriod=2010-01",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "startPeriod": "2010-01",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/all?endPeriod=2020-01",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "endPeriod": "2020-01",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/all?startPeriod=2010-01&endPeriod=2020-01",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "startPeriod": "2010-01",
+                    "endPeriod": "2020-01",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/all (metrics)",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "metrics": true,
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/all/all/DIM1",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "component": true,
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/A1+A2.B.C?mode=exact",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "mode": "exact",
+                    "key": "Many Keys",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/A1+A2.B.C?mode=available",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "mode": "available",
+                    "key": "Many Keys",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/all?references=all",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "references": "all",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/all?references=datastructure",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "references": "datastructure",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/all?references=dataflow",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "references": "dataflow",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/all?references=codelist",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "references": "codelist",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/all?references=conceptschemes",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "references": "conceptscheme",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            },
+            {
+                "testId": "/availability/agency,provisionagreement,version/all/PROVIDER?references=dataproviderscheme",
+                "index": "Data",
+                "run": false,
+                "apiVersion": "v2.0.0",
+                "resource": "provisionagreement",
+                "reqTemplate": {
+                    "provider": {
+                        "num": 1,
+                        "providerId": true
+                    },
+                    "references": "dataproviderscheme",
+                    "context": "provisionagreement"
+                },
+                "identifiers": {
+                    "structureType": "",
+                    "agency": "",
+                    "id": "",
+                    "version": ""
+                },
+                "state": "Waiting",
+                "failReason": "",
+                "testType": "Data Availability",
+                "subTests": [],
+                "requireRandomKey": true
+            }
+        ]
+    }
+]

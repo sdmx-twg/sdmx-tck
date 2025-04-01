@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { extractSelectedTests, extractScore } from "../handlers/helperFunctions";
 import TestDetails from './TestDetails';
+<<<<<<< HEAD
 import { exportReport } from '../actions/TestActions';
+=======
+>>>>>>> v4.8.0
 
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 
