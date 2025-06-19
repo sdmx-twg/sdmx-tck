@@ -20,7 +20,7 @@ class SeriesObject {
     getObservations(){
         return this.observations;
     }
-
+    //@deprecated To be removed (GPP)
     complyWithRequestedKey(reqKey){
         reqKey = reqKey.split(".")
         let attributeValues = Object.values(this.getAttributes());

@@ -1,0 +1,89 @@
+@startuml StrcuctureTestExecutionManager_SequenceDiagram
+
+skinparam sequence {
+    ' ArrowColor DeepSkyBlue
+    ' ActorBorderColor DeepSkyBlue
+    LifeLineBorderColor blue
+    LifeLineBackgroundColor #A9DCDF
+    ParticipantBorderColor DeepSkyBlue
+    ParticipantBackgroundColor #cfe4ff
+    ParticipantFontName Consolas
+    ParticipantFontSize 14
+    ' ParticipantFontColor #A9DCDF
+    ' ActorBackgroundColor aqua
+    ' ActorFontColor #A9DCDF
+    ActorFontSize 14
+    ActorFontName Consolas
+}
+actor User as u
+participant "StructureTestExecutionManager" as STM
+participant "StructureRequestBuilder" as SRB
+box sdmx-rest4js
+participant "UrlGenerator" as UG
+participant "sdmx_requestor" as SR
+end box
+participant "ResponseValidator" as RV
+participant "SdmxXmlParser" as SXP
+participant "SemanticCheckerFactory" as SCF
+
+u -> STM: executeTest(test, apiVersion, endpoint)
+activate STM
+' alt testType = STRUCTURE_REFERENCE_PARTIAL
+'     STM -> STM: identifiers = ContentConstraintTypeValidator.getContentConstraintOfAllowedType(toRun)
+' end
+
+' TODO: prepareRequest to be further broken down.
+STM -> SRB: prepareRequest(endpoint, apiVersion, resource, ...)
+activate SRB
+SRB --> STM: preparedRequest
+deactivate SRB
+
+STM -> UG: getUrl(query, service, skipDefaults=true)
+activate UG
+UG --> STM: url
+deactivate UG
+
+STM -> SR: request2(url, preparedRequest.headers)
+activate SR
+SR --> STM: httpResponse
+deactivate SR
+
+group HTTP Validation
+    ' validateHttpResponse to be further broken down
+    STM -> RV: validateHttpResponse(preparedRequest.request, httpResponse)
+    activate RV
+    RV --> STM: HTTP Validation outcome
+    deactivate RV
+    break HTTP Validation failed
+        STM --> STM: throw TckError("HTTP validation failed")
+    end
+    
+    alt testType == 'Structure Query Representation'
+        STM -> RV: validateRepresentation(representation, httpResponse, apiVersion)
+        activate RV
+        RV --> STM: HTTP Validation outcome
+        deactivate RV
+        break Validation failed
+            STM --> STM: throw TckError("HTTP validation failed")
+        end
+        STM --> u: Test Results
+    end
+end
+
+STM -> SXP: getIMObjects(httpResponse, apiVersion)
+activate SXP
+SXP --> STM: workspace
+deactivate SXP
+
+group Workspace Validation
+    STM -> SCF: getChecker(test).checkWorkspace(test, preparedRequest, workspace)
+    activate SCF
+    SCF --> STM: workspaceValidation
+    deactivate SCF
+    break Workspace Validation Failed
+        STM --> STM: throw TckError("Workspace validation failed")
+    end
+end
+STM --> u: Test Results
+deactivate STM
+@enduml

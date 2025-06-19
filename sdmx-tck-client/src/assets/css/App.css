@@ -30,7 +30,7 @@ body {
 }
 
 #appContent {
-  width: 100%;
+  /* width: 100%; */
   border: 1px solid #ddd;
   padding: 20px;
 }
@@ -79,9 +79,13 @@ body {
 }
 .toolTitle {
   margin-bottom: 20px;
-  border-bottom: 5px solid #1b1002;
+  border-bottom: 5px solid #595959;
   padding: 5px 0;
-  max-width: 300px;
+  /* max-width: 300px; */
+}
+.tck-version {
+  font-weight: normal;
+  font-size: small;
 }
 
 .testsTableContainer {
@@ -96,7 +100,7 @@ body {
 .testsTableContainer #testsTable {
   width: 100%;
   border-collapse: collapse;
-  table-layout: auto;
+  /* table-layout: auto; */
 }
 #testsTable td, #testsTable th {
   border: 1px solid #ddd;
@@ -111,6 +115,19 @@ body {
   background-color: #4cafa6;
   color: white;
 }
+#testsTable th, 
+#testsTable td {
+  width: 50px;
+  text-wrap: wrap;
+  overflow: hidden;
+}
+#testsTable th:nth-child(2), 
+#testsTable td:nth-child(2),
+#testsTable th:nth-child(8), 
+#testsTable td:nth-child(8) {
+  width: 300px;
+  word-break: break-all;
+}
 
 #testsTable td.success{
   color: green;
@@ -122,7 +139,7 @@ body {
 
 .scoreContainer table {
   width: 100%;
-  margin: 60px 0px;
+  margin: 35px 0px;
   border-collapse: collapse;
   table-layout: fixed; 
 }
@@ -142,7 +159,7 @@ body {
 /* INPUTS */
 .tck-input-wrapper, .tck-select-wrapper { 
   display: block;
-  padding: 15px 0;  
+  padding: 10px 0;  
 }
 .tck-input-wrapper input, .tck-select-wrapper select {
   width: 100%;
@@ -161,14 +178,14 @@ body {
   font-family: sans-serif;
   padding-right: 10px;
 }
-button.runButton, button.reportButton{
-  margin-top: 3%;
-  width: 150px;
-  padding: 10px 10px;
+button.runButton, button.reportButton {
+  min-width: 150px;
+  padding: 10px;
   font-size: 1rem;
   font-family: monospace;
   background-color: #00a5c9;
-  
+  border: none;
+  border-radius: 5px;
 }
 button.runButton:disabled {
   background-color: #00000036; 

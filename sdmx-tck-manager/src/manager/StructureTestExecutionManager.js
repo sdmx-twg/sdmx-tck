@@ -39,42 +39,31 @@ class StructureTestExecutionManager {
             httpResponseValidation = await ResponseValidator.validateHttpResponse(preparedRequest.request, httpResponse);
             testResult.httpResponseValidation = httpResponseValidation;
             console.log("Test: " + toRun.testId + " HTTP response validated. " + JSON.stringify(httpResponseValidation));
-            if (httpResponseValidation.status === FAILURE_CODE 
-                || (httpResponseValidation.status === SUCCESS_CODE && (httpResponseValidation.httpStatus === 404 || httpResponseValidation.httpStatus === 501))) {
+            if (httpResponseValidation.status === FAILURE_CODE) {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
  
             //REPRESENTATION VALIDATION 
             if (toRun.testType === TEST_TYPE.STRUCTURE_QUERY_REPRESENTATION) {
-                let httpResponseHeadersValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse);
+                let httpResponseHeadersValidation = await ResponseValidator.validateRepresentation(toRun.reqTemplate.representation, httpResponse, apiVersion);
                 testResult.httpResponseHeadersValidation = httpResponseHeadersValidation;
                 if (httpResponseHeadersValidation.status === FAILURE_CODE) {
                     throw new TckError("Representation validation failed. Cause: " + httpResponseHeadersValidation.error);
                 }
                 return testResult
             }
-           
+
 
             //// WORKSPACE VALIDATION ////
-            let workspace = await new SdmxXmlParser().getIMObjects(await httpResponse.text());
+            let workspace = await new SdmxXmlParser().getIMObjects(await httpResponse.text(), apiVersion);
+            if (!workspace) {
+                throw new TckError("Workspace validation failed. Cause: The workspace is empty.");
+            }
             testResult.workspace = workspace;
             console.log("Test: " + toRun.testId + " SDMX workspace created.");
-        
-            // If the Rest Resource is "structure" then we have to call the getRandomSdmxObject() function.
-            var randomStructure = workspace.getRandomSdmxObjectOfType(SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource));
-            if (toRun.resource === "structure") {
-                randomStructure = workspace.getRandomSdmxObject();
-            }
-            testResult.randomStructure = {
-                structureType: randomStructure.getStructureType(),
-                agencyId: randomStructure.getAgencyId(),
-                id: randomStructure.getId(),
-                version: randomStructure.getVersion(),
-            };
-            if (randomStructure instanceof ItemSchemeObject) {
-                testResult.randomItems = randomStructure.getItemsCombination();
-            }
 
+            testResult.randomStructures = workspace.getRandomStructureRefsOfRestResource(toRun.resource);
+            
             // WORKSPACE VALIDATION
             let workspaceValidation = await SemanticCheckerFactory.getChecker(toRun).checkWorkspace(toRun, preparedRequest, workspace);
             testResult.workspaceValidation = workspaceValidation;

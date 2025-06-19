@@ -112,8 +112,7 @@ class SchemaTestExecutionManager {
             }
             testResult.httpResponseValidation = httpResponseValidation;
             console.log("Test: " + toRun.testId + " HTTP response validated. " + JSON.stringify(httpResponseValidation));
-            if (httpResponseValidation.status === FAILURE_CODE
-                || (httpResponseValidation.status === SUCCESS_CODE && (httpResponseValidation.httpStatus === 404 || httpResponseValidation.httpStatus === 501))) {
+            if (httpResponseValidation.status === FAILURE_CODE) {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
 
@@ -125,6 +124,9 @@ class SchemaTestExecutionManager {
            
             //// WORKSPACE CREATION ////
             let workspace = await new SdmxXmlParser().getIMObjects(xsdString);
+            if (!workspace) {
+                throw new TckError("Workspace validation failed. Cause: The workspace is empty.");
+            }
             testResult.workspace = workspace;
             console.log("Test: " + toRun.testId + " SDMX workspace created.");
             

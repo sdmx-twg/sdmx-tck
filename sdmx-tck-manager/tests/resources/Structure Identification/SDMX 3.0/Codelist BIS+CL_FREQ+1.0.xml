@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<message:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common">
+    <message:Header>
+        <message:ID>IREF005656</message:ID>
+        <message:Test>false</message:Test>
+        <message:Prepared>2024-11-28T13:29:22Z</message:Prepared>
+        <message:Sender id="MT"/>
+        <message:Receiver id="not_supplied"/>
+    </message:Header>
+    <message:Structures>
+        <str:Categorisations>
+            <str:Categorisation urn="urn:sdmx:org.sdmx.infomodel.categoryscheme.Categorisation=BIS:A104A40CA7B6DB47EF2F89BB8A618F8C9(1.0)" isExternalReference="false" agencyID="BIS" id="A104A40CA7B6DB47EF2F89BB8A618F8C9" version="1.0">
+                <com:Name xml:lang="en">BIS property prices: selected series</com:Name>
+                <str:Source>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=BIS:WS_SPP(1.0)</str:Source>
+                <str:Target>urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=SDMX:STAT_SUBJECT_MATTER(1.0).DEMO_SOCIAL_STAT.TIME_USE</str:Target>
+            </str:Categorisation>
+        </str:Categorisations>
+        <str:Codelists>
+            <str:Codelist urn="urn:sdmx:org.sdmx.infomodel.codelist.Codelist=BIS:CL_FREQ(1.0)" isExternalReference="false" agencyID="BIS" id="CL_FREQ" version="1.0">
+                <com:Name xml:lang="en">Code list for Frequency (FREQ)</com:Name>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=BIS:CL_FREQ(1.0).A" id="A">
+                    <com:Name xml:lang="en">Annual</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=BIS:CL_FREQ(1.0).B" id="B">
+                    <com:Name xml:lang="en">Daily - business week (not supported)</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=BIS:CL_FREQ(1.0).D" id="D">
+                    <com:Name xml:lang="en">Daily</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=BIS:CL_FREQ(1.0).E" id="E">
+                    <com:Name xml:lang="en">Event (not supported)</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=BIS:CL_FREQ(1.0).H" id="H">
+                    <com:Name xml:lang="en">Half-yearly</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=BIS:CL_FREQ(1.0).M" id="M">
+                    <com:Name xml:lang="en">Monthly</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=BIS:CL_FREQ(1.0).Q" id="Q">
+                    <com:Name xml:lang="en">Quarterly</com:Name>
+                </str:Code>
+                <str:Code urn="urn:sdmx:org.sdmx.infomodel.codelist.Code=BIS:CL_FREQ(1.0).W" id="W">
+                    <com:Name xml:lang="en">Weekly</com:Name>
+                </str:Code>
+            </str:Codelist>
+        </str:Codelists>
+        <str:Dataflows>
+            <str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=BIS:WS_SPP(1.0)" isExternalReference="false" agencyID="BIS" id="WS_SPP" version="1.0">
+                <com:Annotations>
+                    <com:Annotation>
+                        <com:AnnotationTitle>TITLE</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">${REF_AREA}</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>SUBTITLE</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">${VALUE}</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>FOOTER</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">${UNIT_MEASURE}</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>QUICKFILTERS</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">REF_AREA</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>41</com:AnnotationTitle>
+                        <com:AnnotationType>WEBSTATS_DISPLAY_ORDER</com:AnnotationType>
+                    </com:Annotation>
+                </com:Annotations>
+                <com:Name xml:lang="en">BIS property prices: selected series</com:Name>
+                <str:Structure>urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=BIS:BIS_SELECTED_PP(1.0)</str:Structure>
+            </str:Dataflow>
+            <str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=BIS:WS_SPP(2.0)" isExternalReference="false" agencyID="BIS" id="WS_SPP" version="2.0">
+                <com:Annotations>
+                    <com:Annotation>
+                        <com:AnnotationTitle>TITLE</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">${REF_AREA}</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>SUBTITLE</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">${VALUE}</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>FOOTER</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">${UNIT_MEASURE}</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>QUICKFILTERS</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">REF_AREA</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>41</com:AnnotationTitle>
+                        <com:AnnotationType>WEBSTATS_DISPLAY_ORDER</com:AnnotationType>
+                    </com:Annotation>
+                </com:Annotations>
+                <com:Name xml:lang="en">BIS property prices: selected series</com:Name>
+                <str:Structure>urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=BIS:BIS_SELECTED_PP(1.0)</str:Structure>
+            </str:Dataflow>
+            <str:Dataflow urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=BIS:WS_SPP(1.1)" isExternalReference="false" agencyID="BIS" id="WS_SPP" version="1.1">
+                <com:Annotations>
+                    <com:Annotation>
+                        <com:AnnotationTitle>TITLE</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">${REF_AREA}</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>SUBTITLE</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">${VALUE}</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>FOOTER</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">${UNIT_MEASURE}</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>QUICKFILTERS</com:AnnotationTitle>
+                        <com:AnnotationType>SERIES_LIST_DISPLAY</com:AnnotationType>
+                        <com:AnnotationText xml:lang="en">REF_AREA</com:AnnotationText>
+                    </com:Annotation>
+                    <com:Annotation>
+                        <com:AnnotationTitle>41</com:AnnotationTitle>
+                        <com:AnnotationType>WEBSTATS_DISPLAY_ORDER</com:AnnotationType>
+                    </com:Annotation>
+                </com:Annotations>
+                <com:Name xml:lang="en">BIS property prices: selected series</com:Name>
+                <str:Structure>urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=BIS:BIS_SELECTED_PP(1.1)</str:Structure>
+            </str:Dataflow>
+        </str:Dataflows>
+        <str:DataStructures>
+            <str:DataStructure urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=BIS:BIS_SELECTED_PP(1.0)" isExternalReference="false" agencyID="BIS" id="BIS_SELECTED_PP" version="1.0">
+                <com:Name xml:lang="en">BIS Selected property prices</com:Name>
+                <str:DataStructureComponents>
+                    <str:DimensionList urn="urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=BIS:BIS_SELECTED_PP(1.0).DimensionDescriptor" id="DimensionDescriptor">
+                        <str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=BIS:BIS_SELECTED_PP(1.0).FREQ" id="FREQ" position="1">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).FREQ</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=BIS:CL_FREQ(1.0)</str:Enumeration>
+                                <str:EnumerationFormat isSequence="false" minLength="1" textType="String" maxLength="1"/>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=BIS:BIS_SELECTED_PP(1.0).REF_AREA" id="REF_AREA" position="2">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).REF_AREA</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=BIS:CL_AREA(1.0)</str:Enumeration>
+                                <str:EnumerationFormat isSequence="false" minLength="2" textType="String" maxLength="2"/>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=BIS:BIS_SELECTED_PP(1.0).VALUE" id="VALUE" position="3">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).VALUE</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=BIS:CL_VALUE(1.0)</str:Enumeration>
+                                <str:EnumerationFormat isSequence="false" minLength="1" textType="String" maxLength="1"/>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=BIS:BIS_SELECTED_PP(1.0).UNIT_MEASURE" id="UNIT_MEASURE" position="4">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).UNIT_MEASURE</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=BIS:CL_BIS_UNIT(1.0)</str:Enumeration>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:TimeDimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=BIS:BIS_SELECTED_PP(1.0).TIME_PERIOD" id="TIME_PERIOD">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).TIME_PERIOD</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="ObservationalTimePeriod"/>
+                            </str:LocalRepresentation>
+                        </str:TimeDimension>
+                    </str:DimensionList>
+                    <str:Group urn="urn:sdmx:org.sdmx.infomodel.datastructure.GroupDimensionDescriptor=BIS:BIS_SELECTED_PP(1.0).Sibling" id="Sibling">
+                        <str:GroupDimension>
+                            <str:DimensionReference>REF_AREA</str:DimensionReference>
+                        </str:GroupDimension>
+                        <str:GroupDimension>
+                            <str:DimensionReference>VALUE</str:DimensionReference>
+                        </str:GroupDimension>
+                        <str:GroupDimension>
+                            <str:DimensionReference>UNIT_MEASURE</str:DimensionReference>
+                        </str:GroupDimension>
+                    </str:Group>
+                    <str:AttributeList urn="urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=BIS:BIS_SELECTED_PP(1.0).AttributeDescriptor" id="AttributeDescriptor">
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=BIS:BIS_SELECTED_PP(1.0).BREAKS" usage="optional" id="BREAKS">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).BREAKS</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat isSequence="false" textType="String" maxLength="1050"/>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>REF_AREA</str:Dimension>
+                                <str:Dimension>VALUE</str:Dimension>
+                                <str:Dimension>UNIT_MEASURE</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=BIS:BIS_SELECTED_PP(1.0).COVERAGE" usage="optional" id="COVERAGE">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).COVERAGE</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat isSequence="false" textType="String" maxLength="1050"/>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>REF_AREA</str:Dimension>
+                                <str:Dimension>VALUE</str:Dimension>
+                                <str:Dimension>UNIT_MEASURE</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=BIS:BIS_SELECTED_PP(1.0).TITLE_TS" usage="optional" id="TITLE_TS">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).TITLE_TS</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat isSequence="false" textType="String" maxLength="100"/>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>REF_AREA</str:Dimension>
+                                <str:Dimension>VALUE</str:Dimension>
+                                <str:Dimension>UNIT_MEASURE</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=BIS:BIS_SELECTED_PP(1.0).UNIT_MULT" usage="mandatory" id="UNIT_MULT">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).UNIT_MULT</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=BIS:CL_UNIT_MULT(1.0)</str:Enumeration>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dataflow/>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=BIS:BIS_SELECTED_PP(1.0).OBS_STATUS" usage="mandatory" id="OBS_STATUS">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).OBS_STATUS</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=BIS:CL_OBS_STATUS(1.0)</str:Enumeration>
+                                <str:EnumerationFormat isSequence="false" minLength="1" textType="String" maxLength="1"/>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Observation/>
+                            </str:AttributeRelationship>
+                            <str:MeasureRelationship>
+                                <str:Measure>OBS_VALUE</str:Measure>
+                            </str:MeasureRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=BIS:BIS_SELECTED_PP(1.0).OBS_CONF" usage="optional" id="OBS_CONF">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).OBS_CONF</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=BIS:CL_CONF_STATUS(1.0)</str:Enumeration>
+                                <str:EnumerationFormat isSequence="false" minLength="1" textType="String" maxLength="1"/>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Observation/>
+                            </str:AttributeRelationship>
+                            <str:MeasureRelationship>
+                                <str:Measure>OBS_VALUE</str:Measure>
+                            </str:MeasureRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=BIS:BIS_SELECTED_PP(1.0).OBS_PRE_BREAK" usage="optional" id="OBS_PRE_BREAK">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).OBS_PRE_BREAK</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat isSequence="false" minLength="1" textType="String" maxLength="15"/>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Observation/>
+                            </str:AttributeRelationship>
+                            <str:MeasureRelationship>
+                                <str:Measure>OBS_VALUE</str:Measure>
+                            </str:MeasureRelationship>
+                        </str:Attribute>
+                    </str:AttributeList>
+                    <str:MeasureList urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=BIS:BIS_SELECTED_PP(1.0).MeasureDescriptor" id="MeasureDescriptor">
+                        <str:Measure urn="urn:sdmx:org.sdmx.infomodel.datastructure.Measure=BIS:BIS_SELECTED_PP(1.0).OBS_VALUE" usage="optional" id="OBS_VALUE">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=BIS:STANDALONE_CONCEPT_SCHEME(1.0).OBS_VALUE</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat isSequence="false" textType="String" maxLength="15"/>
+                            </str:LocalRepresentation>
+                        </str:Measure>
+                    </str:MeasureList>
+                </str:DataStructureComponents>
+            </str:DataStructure>
+        </str:DataStructures>
+        <str:ProvisionAgreements>
+            <str:ProvisionAgreement urn="urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=BIS:WS_SPP_BIS(1.0)" isExternalReference="false" agencyID="BIS" id="WS_SPP_BIS" version="1.0">
+                <com:Name xml:lang="en">BIS for BIS property prices: selected series</com:Name>
+                <str:Dataflow>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=BIS:WS_SPP(1.0)</str:Dataflow>
+                <str:DataProvider>urn:sdmx:org.sdmx.infomodel.base.DataProvider=BIS:DATA_PROVIDERS(1.0).BIS</str:DataProvider>
+            </str:ProvisionAgreement>
+        </str:ProvisionAgreements>
+    </message:Structures>
+</message:Structure>
