@@ -10,13 +10,17 @@ var Utils = require('../../utils/Utils.js')
 
 
 class ContentConstraintObject extends MaintainableObject {
-    constructor(props, children, detail, cubeRegions, dataKeySets, referencePeriod,annotations) {
-        super(SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key, props, children, detail);
-        this.setType(props.$.type);
+    constructor(structureType, props, children, detail, cubeRegions, dataKeySets, referencePeriod, annotations) {
+        super(structureType, props, children, detail);
+        if (structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key) {
+            this.setType(props.$.type);
+        } else {
+            this.setType(props.$.role); // changed in SDMX 3.0
+        }
         this.setCubeRegions(cubeRegions);
         this.setDataKeySets(dataKeySets);
         this.setReferencePeriod(referencePeriod);
-        this.setAnnotations(annotations)
+        this.setAnnotations(annotations);
     };
     setDataKeySets(dataKeySets){
         this.dataKeySets = dataKeySets;
@@ -158,9 +162,10 @@ class ContentConstraintObject extends MaintainableObject {
 
         return;
     }
-    static fromJSON(jsObj){
-        if(jsObj.structureType !== SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key){
-            throw new Error("Cannot create "+SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key+" object.")
+    static fromJSON(jsObj) {
+        if (jsObj.structureType !== SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key
+            && jsObj.structureType !== SDMX_STRUCTURE_TYPE.DATA_CONSTRAINT.key) {
+            throw new Error("Cannot create object for structure type: " + jsObj.structureType)
         }
         let props = {
             $:{
@@ -182,7 +187,7 @@ class ContentConstraintObject extends MaintainableObject {
         })
         let detail = (jsObj.detail)?jsObj.detail:""
 
-       
+
         let cubeRegions = (jsObj.cubeRegions)?jsObj.cubeRegions:[];
 
         let cubeRegionsArr = []
@@ -218,8 +223,8 @@ class ContentConstraintObject extends MaintainableObject {
         annotations.forEach(annotation =>{
             annotationsArr.push(new ConstraintAnnotationObject(annotation.id,annotation.type,annotation.title))
         });
-
-        return new ContentConstraintObject (props,childrenArr,detail,cubeRegionsArr,dataKeySetsArr,referencePeriod,annotationsArr)
+        
+        return new ContentConstraintObject (jsObj.structureType,props,childrenArr,detail,cubeRegionsArr,dataKeySetsArr,referencePeriod,annotationsArr)
 
     }
 };

@@ -2,6 +2,7 @@ var StructuresSemanticChecker = require("./StructuresSemanticChecker.js");
 var ContentConstraintReferencePartialChecker = require("./ContentConstraintReferencePartialChecker.js")
 var SchemasSemanticChecker = require('./SchemasSemanticChecker.js')
 var DataSemanticChecker = require('./DataSemanticChecker.js')
+var RegistrationSemanticChecker = require('./RegistrationSemanticChecker.js');
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
 
@@ -16,8 +17,10 @@ class SemanticCheckerFactory {
             return SchemasSemanticChecker;
         }else if(test.index === TEST_INDEX.Data){
             return DataSemanticChecker;
+        } else if (test.index === TEST_INDEX.Registration) {
+            return RegistrationSemanticChecker;
         }
-        
+
     }
 };
 

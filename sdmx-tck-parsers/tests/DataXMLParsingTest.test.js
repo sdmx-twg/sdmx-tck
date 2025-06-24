@@ -12,4 +12,18 @@ describe('Tests DataQuery parsing', function () {
             console.assert(sdmxObjects.sdmxObjects.get("DATASETS")[0].getSeries().every(s => s instanceof SeriesObject))
         })
     });
+
+    it.only('It should print dataQuery XML workspce', async () => {
+        let xmlMessage = fs.readFileSync('./tests/resources/DataXMLComposite.xml','utf8')
+        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
+            console.assert(sdmxObjects.sdmxObjects.get("DATASETS")[0] instanceof DatasetObject)
+            sdmxObjects.sdmxObjects.get("DATASETS")[0].getSeries().forEach(series => {
+                let attributes = series.attributes;
+                for (let attrId in attributes) {
+                    let isComplex = series.isComplexAttribute(attrId);
+                    console.log(attrId, attributes[attrId], "isComplex=", isComplex);
+                }
+            });
+        })
+    });
 });

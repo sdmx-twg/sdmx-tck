@@ -16,6 +16,7 @@ const StructureQueryDetail = require('./constants/structure-queries-constants/St
 const StructureReferenceDetail = require('./constants/structure-queries-constants/StructureReferenceDetail.js');
 const StructuresRestResources = require('./constants/StructuresRestResources.js');
 const SchemaIdentificationParameters = require('./constants/schema-queries-constants/SchemaIdentificationParameters.js');
+const RegistrationIdentificationParameters = require('./constants/registry-queries-constants/RegistrationIdentificationParameters.js');
 const TestState = require('./constants/TestState.js');
 const TestIndex = require('./constants/TestIndex.js');
 const TestType = require('./constants/TestType.js');
@@ -31,6 +32,7 @@ const SchemaElementConstants = require('./constants/schema-queries-constants/Sch
 const SchemaSimpleTypeConstants = require('./constants/schema-queries-constants/SchemaSimpleTypeConstants.js')
 const SchemaOccurenciesConstants = require('./constants/schema-queries-constants/SchemaOccurenciesConstants.js')
 const DataQueryDetail = require('./constants/data-queries-constants/DataQueryDetail.js');
+const DataContext = require('./constants/data-queries-constants/DataContext.js');
 const DataIdentificationParameters = require('./constants/data-queries-constants/DataIdentificationParameters.js')
 const DataExtendedResourceIdentification = require('./constants/data-queries-constants/DataExtendedResourceIdentification.js')
 const DataComponentsTypes = require('./constants/data-queries-constants/DataComponentsTypes.js')
@@ -41,6 +43,9 @@ const DataQueryRepresentations = require('./constants/data-queries-constants/Dat
 const DataOtherFeatures = require('./constants/data-queries-constants/DataOtherFeatures.js')
 const DataAvailability = require('./constants/data-queries-constants/DataAvailability.js')
 const DataQueryMode = require('./constants/data-queries-constants/DataQueryMode.js')
+const DataQueryAttributes = require('./constants/data-queries-constants/DataQueryAttributes.js');
+const DataQueryMeasures = require('./constants/data-queries-constants/DataQueryMeasures.js');
+const RegistryQueryRepresentations = require('./constants/registry-queries-constants/RegistryQueryRepresentations.js')
 // ERRORS
 var TckError = require('./errors/TckError.js');
 var SemanticError = require('./errors/SemanticError.js');
@@ -55,6 +60,7 @@ var DataStructureComponentObject = require('./model/structure-queries-models/Dat
 var ItemObject = require('./model/structure-queries-models/ItemObject.js')
 var ComponentRepresentationObject = require('./model/structure-queries-models/ComponentRepresentationObject.js')
 var DataflowObject = require('./model/structure-queries-models/DataflowObject.js');
+var ProvisionAgreementObject = require('./model/structure-queries-models/ProvisionAgreementObject.js');
 var ContentConstraintObject = require('./model/structure-queries-models/ContentConstraintObject.js');
 var ConstraintReferencePeriod = require('./model/structure-queries-models/ConstraintReferencePeriod.js')
 var ConstraintAnnotationObject = require('./model/structure-queries-models/ConstraintAnnotationObject.js')
@@ -75,6 +81,7 @@ var XSDAttribute = require('./model/schema-queries-models/XSDAttribute.js')
 var XSDAnyAttribute = require('./model/schema-queries-models/XSDAnyAttribute.js')
 var XSDCompositor = require('./model/schema-queries-models/XSDCompositor.js')
 var DataStructureAttributeObject = require('./model/structure-queries-models/DataStructureAttributeObject.js')
+var DataStructureMeasureObject = require('./model/structure-queries-models/DataStructureMeasureObject.js')
 var DataStructureAttributeRelationshipObject = require('./model/structure-queries-models/DataStructureAttributeRelationshipObject.js')
 var HeaderStructureObject = require('./model/data-queries-models/HeaderStructureObject.js')
 var SeriesObject = require('./model/data-queries-models/SeriesObject.js')
@@ -82,11 +89,13 @@ var ObservationObject = require('./model/data-queries-models/ObservationObject.j
 var GroupObject = require('./model/data-queries-models/GroupObject.js')
 var SdmxDataObjects = require('./model/data-queries-models/SdmxDataObjects.js')
 var DatasetObject = require('./model/data-queries-models/DatasetObject.js')
+var RegistrationObject = require('./model/structure-queries-models/RegistrationObject.js');
 // UTILS
 var UrnUtil = require('./utils/UrnUtil.js');
 var Utils = require('./utils/Utils.js');
 var DateTransformations = require('./utils/DateTransformations.js');
 var DatesHandling = require('./utils/DatesHandling.js');
+var TestUtils = require('./utils/TestUtils.js');
 
 module.exports = {
     constants: {
@@ -95,6 +104,7 @@ module.exports = {
         API_VERSIONS: ApiVersions.API_VERSIONS,
         API_CONSTANTS: ApiConstants.API_CONSTANTS,
         DATA_QUERY_DETAIL: DataQueryDetail.DATA_QUERY_DETAIL,
+        DATA_CONTEXT: DataContext.DATA_CONTEXT,
         ITEM_SCHEME_TYPES: ItemSchemeTypes.ITEM_SCHEME_TYPES,
         SDMX_STRUCTURE_TYPE: SdmxStructureType.SDMX_STRUCTURE_TYPE,
         StructureDetail: StructureDetail.StructureDetail,
@@ -105,6 +115,7 @@ module.exports = {
         STRUCTURE_QUERY_REPRESENTATIONS:StructureQueryRepresentation.STRUCTURE_QUERY_REPRESENTATIONS,
         STRUCTURE_QUERY_DETAIL: StructureQueryDetail.STRUCTURE_QUERY_DETAIL,
         STRUCTURE_REFERENCE_DETAIL: StructureReferenceDetail.STRUCTURE_REFERENCE_DETAIL,
+        REGISTRATION_IDENTIFICATION_PARAMETERS: RegistrationIdentificationParameters.REGISTRATION_IDENTIFICATION_PARAMETERS,
         STRUCTURES_REST_RESOURCE: StructuresRestResources.STRUCTURES_REST_RESOURCE,
         getResources: StructuresRestResources.getResources,
         SCHEMA_IDENTIFICATION_PARAMETERS:SchemaIdentificationParameters.SCHEMA_IDENTIFICATION_PARAMETERS,
@@ -119,6 +130,7 @@ module.exports = {
         DIMENSION_AT_OBSERVATION_CONSTANTS:DimensionAtObservationConstants.DIMENSION_AT_OBSERVATION_CONSTANTS,
         ATTRIBUTE_RELATIONSHIP_NAMES:DSDAttributeConstants.ATTRIBUTE_RELATIONSHIP_NAMES,
         ATTRIBUTE_ASSIGNMENT_STATUS:DSDAttributeConstants.ATTRIBUTE_ASSIGNMENT_STATUS,
+        USAGE_TYPE:DSDAttributeConstants.USAGE_TYPE,
         RELATIONSHIP_REF_ID:DSDAttributeConstants.RELATIONSHIP_REF_ID,
         ATTRIBUTE_NAMES:DSDAttributeConstants.ATTRIBUTE_NAMES,
         SCHEMA_ATTRIBUTE_USAGE_VALUES:SchemaAttributeConstants.SCHEMA_ATTRIBUTE_USAGE_VALUES,
@@ -144,7 +156,10 @@ module.exports = {
         DATA_QUERY_REPRESENTATIONS:DataQueryRepresentations.DATA_QUERY_REPRESENTATIONS,
         DATA_OTHER_FEATURES:DataOtherFeatures.DATA_OTHER_FEATURES,
         DATA_AVAILABILITY:DataAvailability.DATA_AVAILABILITY,
-        DATA_QUERY_MODE:DataQueryMode.DATA_QUERY_MODE
+        DATA_QUERY_MODE:DataQueryMode.DATA_QUERY_MODE,
+        DATA_QUERY_ATTRIBUTES: DataQueryAttributes.DATA_QUERY_ATTRIBUTES,
+        DATA_QUERY_MEASURES: DataQueryMeasures.DATA_QUERY_MEASURES,
+        REGISTRY_QUERY_REPRESENTATIONS: RegistryQueryRepresentations.REGISTRY_QUERY_REPRESENTATIONS
     },
     errors: {
         TckError: TckError,
@@ -161,7 +176,9 @@ module.exports = {
         ComponentRepresentationObject:ComponentRepresentationObject,
         DataStructureAttributeRelationshipObject:DataStructureAttributeRelationshipObject,
         DataStructureAttributeObject:DataStructureAttributeObject,
+        DataStructureMeasureObject:DataStructureMeasureObject,
         DataflowObject: DataflowObject,
+        ProvisionAgreementObject: ProvisionAgreementObject,
         ContentConstraintObject: ContentConstraintObject,
         SdmxObjects: SdmxObjects,
         SdmxObjectsFactory:SdmxObjectsFactory,
@@ -186,10 +203,11 @@ module.exports = {
         ObservationObject:ObservationObject,
         GroupObject:GroupObject,
         SdmxDataObjects:SdmxDataObjects,
-        DatasetObject:DatasetObject
-
+        DatasetObject:DatasetObject,
+        RegistrationObject:RegistrationObject
     },
     utils: {
+		TestUtils,
         Utils,
         DateTransformations:DateTransformations,
         DatesHandling:DatesHandling,

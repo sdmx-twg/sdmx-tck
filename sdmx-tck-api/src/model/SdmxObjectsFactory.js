@@ -2,13 +2,12 @@ var SdmxStructureObjects = require('./structure-queries-models/SdmxStructureObje
 var SdmxSchemaObjects = require('./schema-queries-models/SdmxSchemaObjects.js')
 var SdmxDataObjects = require('./data-queries-models/SdmxDataObjects.js')
 class SdmxObjectsFactory {
-
-    static getWorkspace(sdmxObjects,sdmxJsonObject){
-        if(sdmxJsonObject.Structure){
+    static getWorkspace(sdmxObjects, sdmxJsonObject) {
+        if (sdmxJsonObject.Structure || sdmxJsonObject.RegistryInterface) {
             return new SdmxStructureObjects(sdmxObjects)
-        }else if(sdmxJsonObject.schema){
+        } else if (sdmxJsonObject.schema) {
             return new SdmxSchemaObjects(sdmxObjects)
-        }else if(sdmxJsonObject.StructureSpecificData){
+        } else if (sdmxJsonObject.StructureSpecificData) {
             return new SdmxDataObjects(sdmxObjects)
         }
     }

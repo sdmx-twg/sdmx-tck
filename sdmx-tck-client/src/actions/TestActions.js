@@ -5,10 +5,17 @@ import TckError from 'sdmx-tck-api/src/errors/TckError';
 
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-const DATA_QUERY_MODE = require('sdmx-tck-api').constants.DATA_QUERY_MODE;
 const TCK_VERSION = require('sdmx-tck-api').constants.TCK_VERSION;
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 var Utils = require('sdmx-tck-api').utils.Utils;
+
+export function getServerUrl() {
+  if (process.env.NODE_ENV === "development") {
+    return "";
+  } else {
+    return process.env.REACT_APP_API_URL;
+  }
+}
 
 export function initialiseTestsModel(tests) {
     return { type: 'INITIALISE_TESTS_MODEL', tests: tests };
@@ -46,10 +53,13 @@ export function XSDTestsData(schemaTestsData,testIndex){
 export function DataQueriesData(dataQueriesData,testIndex){
     return {type: ACTION_NAMES.CONFIG_DATA_TESTS, testIndex:testIndex, dataQueriesData:dataQueriesData}
 }
+export function RegistrationTestsData(data) {
+    return {type: ACTION_NAMES.CONFIG_REGISTRATION_TESTS, testIndex: TEST_INDEX.Registration, data: data}
+}
 
 export function fetchTests(endpoint, apiVersion, testIndices, requestMode) {
     let body = { endpoint, apiVersion, testIndices, requestMode };
-    return fetch('/tck-api/prepare-tests', {
+    return fetch(getServerUrl() + '/tck-api/prepare-tests', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -62,7 +72,7 @@ async function requestTestRun(endpoint, test) {
      try{
         
         let body = { endpoint, test };
-        const response = await fetch('/tck-api/execute-test', {
+        const response = await fetch(getServerUrl() + '/tck-api/execute-test', {
             method: 'POST',
            
             headers: {
@@ -77,40 +87,30 @@ async function requestTestRun(endpoint, test) {
 
 };
 
-async function configureSchemaTests(endpoint,apiVersion) {
-    try{
-       let body = { endpoint,apiVersion };
-       const response = await fetch('/tck-api/configure-schema-tests', {
-           method: 'POST',
-          
-           headers: {
-               'Content-Type': 'application/json'
-           },
-           body: JSON.stringify(body)
-       });
-       return await response.json();
-    }catch(err){
-            return {error:err.toString()};
+async function configureTests(index, endpoint, apiVersion) {
+    let url;
+    if (index === TEST_INDEX.Data) {
+        url = "configure-data-tests";
+    } else if (index === TEST_INDEX.Schema) {
+        url = "configure-schema-tests";
+    } else if (index === TEST_INDEX.Registration) {
+        url = "configure-registration-tests";
+    } else {
+        return { error: "Method not supported for index " + index};
     }
-
-};
-
-async function configureDataTests(endpoint,apiVersion) {
-    try{
-       let body = { endpoint,apiVersion };
-       const response = await fetch('/tck-api/configure-data-tests', {
-           method: 'POST',
-          
-           headers: {
-               'Content-Type': 'application/json'
-           },
-           body: JSON.stringify(body)
-       });
-       return await response.json();
-    }catch(err){
-            return {error:err.toString()};
+    try {
+        let body = { endpoint, apiVersion };
+        const response = await fetch(getServerUrl() + '/tck-api/' + url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+        return await response.json();
+    } catch (err) {
+        return { error: err.toString() };
     }
-
 };
 
 export function prepareTests(endpoint, apiVersion, testIndices, requestMode) {
@@ -132,7 +132,7 @@ export async function exportReport(wsInfo,apiVersion,format,tests,scores) {
     try{
         let swVersion = TCK_VERSION;
         let body = { swVersion,apiVersion,wsInfo,format,tests ,scores};
-        const response =  await fetch('/tck-api/export-report', {
+        const response =  await fetch(getServerUrl() + '/tck-api/export-report', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -222,15 +222,18 @@ async function _downloadExcelReport(response){
 
 
 async function getPrerequisiteDataForTests(endpoint,tests){
-    if(TEST_INDEX.Schema === tests.id){
-        let apiVersion = (tests.subTests && Array.isArray(tests.subTests) && tests.subTests.length>0)?tests.subTests[0].apiVersion:undefined;
-        let schemaTestsData = await configureSchemaTests(endpoint,apiVersion);
-        store.dispatch(XSDTestsData(schemaTestsData,tests.id));  
+    let apiVersion = (tests.subTests && Array.isArray(tests.subTests) && tests.subTests.length>0)?tests.subTests[0].apiVersion:undefined;
+    if (TEST_INDEX.Schema === tests.id) {
+        let schemaTestsData = await configureTests(TEST_INDEX.Schema, endpoint, apiVersion);
+        store.dispatch(XSDTestsData(schemaTestsData, tests.id));
     }
-    if(TEST_INDEX.Data === tests.id){
-        let apiVersion = (tests.subTests && Array.isArray(tests.subTests) && tests.subTests.length>0)?tests.subTests[0].apiVersion:undefined;
-        let dataQueriesData = await configureDataTests(endpoint,apiVersion);
-        store.dispatch(DataQueriesData(dataQueriesData,tests.id))
+    if (TEST_INDEX.Data === tests.id) {
+        let dataQueriesData = await configureTests(TEST_INDEX.Data, endpoint, apiVersion);
+        store.dispatch(DataQueriesData(dataQueriesData, tests.id))
+    }
+    if (TEST_INDEX.Registration === tests.id) {
+        let registrationTestsData = await configureTests(TEST_INDEX.Registration, endpoint, apiVersion);
+        store.dispatch(RegistrationTestsData(registrationTestsData))
     }
 }
 

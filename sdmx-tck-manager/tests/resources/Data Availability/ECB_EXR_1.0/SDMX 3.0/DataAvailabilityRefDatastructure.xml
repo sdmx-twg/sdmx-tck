@@ -1,0 +1,569 @@
+<?xml version="1.0" ?>
+<message:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common">
+    <message:Header>
+        <message:ID>IREF412589</message:ID>
+        <message:Test>false</message:Test>
+        <message:Prepared>2024-02-19T11:14:12Z</message:Prepared>
+        <message:Sender id="ZZZ"></message:Sender>
+        <message:Receiver id="not_supplied"></message:Receiver>
+    </message:Header>
+    <message:Structures>
+        <str:DataConstraints>
+            <str:DataConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:1F6DE75B-F123-4D38-9304-F0F9B6B03757(1.0)" role="Actual" isExternalReference="false" agencyID="ECB" id="1F6DE75B-F123-4D38-9304-F0F9B6B03757" version="1.0">
+                <com:Annotations>
+                    <com:Annotation id="series_count">
+                        <com:AnnotationTitle>6497</com:AnnotationTitle>
+                        <com:AnnotationType>sdmx_metrics</com:AnnotationType>
+                    </com:Annotation>
+                </com:Annotations>
+                <com:Name xml:lang="en">Exchange Rates</com:Name>
+                <str:ConstraintAttachment>
+                    <str:Dataflow>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)</str:Dataflow>
+                </str:ConstraintAttachment>
+                <str:CubeRegion include="true">
+                    <str:KeyValue id="CURRENCY">
+                        <str:Value>ARS</str:Value>
+                        <str:Value>AUD</str:Value>
+                        <str:Value>BGN</str:Value>
+                        <str:Value>BRL</str:Value>
+                        <str:Value>CAD</str:Value>
+                        <str:Value>CHF</str:Value>
+                        <str:Value>CNY</str:Value>
+                        <str:Value>CYP</str:Value>
+                        <str:Value>CZK</str:Value>
+                        <str:Value>DKK</str:Value>
+                        <str:Value>DZD</str:Value>
+                        <str:Value>E0</str:Value>
+                        <str:Value>E01</str:Value>
+                        <str:Value>E02</str:Value>
+                        <str:Value>E03</str:Value>
+                        <str:Value>E5</str:Value>
+                        <str:Value>E7</str:Value>
+                        <str:Value>E8</str:Value>
+                        <str:Value>EEK</str:Value>
+                        <str:Value>EGP</str:Value>
+                        <str:Value>EUR</str:Value>
+                        <str:Value>GBP</str:Value>
+                        <str:Value>GRD</str:Value>
+                        <str:Value>H00</str:Value>
+                        <str:Value>H01</str:Value>
+                        <str:Value>H02</str:Value>
+                        <str:Value>H03</str:Value>
+                        <str:Value>H10</str:Value>
+                        <str:Value>H11</str:Value>
+                        <str:Value>H37</str:Value>
+                        <str:Value>H42</str:Value>
+                        <str:Value>H7</str:Value>
+                        <str:Value>H8</str:Value>
+                        <str:Value>HKD</str:Value>
+                        <str:Value>HRK</str:Value>
+                        <str:Value>HUF</str:Value>
+                        <str:Value>IDR</str:Value>
+                        <str:Value>ILS</str:Value>
+                        <str:Value>INR</str:Value>
+                        <str:Value>ISK</str:Value>
+                        <str:Value>JPY</str:Value>
+                        <str:Value>KRW</str:Value>
+                        <str:Value>LTL</str:Value>
+                        <str:Value>LVL</str:Value>
+                        <str:Value>MAD</str:Value>
+                        <str:Value>MTL</str:Value>
+                        <str:Value>MXN</str:Value>
+                        <str:Value>MYR</str:Value>
+                        <str:Value>NOK</str:Value>
+                        <str:Value>NZD</str:Value>
+                        <str:Value>PHP</str:Value>
+                        <str:Value>PLN</str:Value>
+                        <str:Value>RON</str:Value>
+                        <str:Value>RUB</str:Value>
+                        <str:Value>SEK</str:Value>
+                        <str:Value>SGD</str:Value>
+                        <str:Value>SIT</str:Value>
+                        <str:Value>SKK</str:Value>
+                        <str:Value>THB</str:Value>
+                        <str:Value>TRY</str:Value>
+                        <str:Value>TWD</str:Value>
+                        <str:Value>USD</str:Value>
+                        <str:Value>ZAR</str:Value>
+                    </str:KeyValue>
+                    <str:KeyValue id="EXR_SUFFIX">
+                        <str:Value>A</str:Value>
+                        <str:Value>E</str:Value>
+                        <str:Value>P</str:Value>
+                        <str:Value>R</str:Value>
+                        <str:Value>S</str:Value>
+                        <str:Value>T</str:Value>
+                    </str:KeyValue>
+                    <str:KeyValue id="CURRENCY_DENOM">
+                        <str:Value>AED</str:Value>
+                        <str:Value>ARS</str:Value>
+                        <str:Value>ATS</str:Value>
+                        <str:Value>AUD</str:Value>
+                        <str:Value>BEF</str:Value>
+                        <str:Value>BGN</str:Value>
+                        <str:Value>BRL</str:Value>
+                        <str:Value>CAD</str:Value>
+                        <str:Value>CHF</str:Value>
+                        <str:Value>CLP</str:Value>
+                        <str:Value>CNY</str:Value>
+                        <str:Value>COP</str:Value>
+                        <str:Value>CYP</str:Value>
+                        <str:Value>CZK</str:Value>
+                        <str:Value>DEM</str:Value>
+                        <str:Value>DKK</str:Value>
+                        <str:Value>DZD</str:Value>
+                        <str:Value>EEK</str:Value>
+                        <str:Value>ESP</str:Value>
+                        <str:Value>EUR</str:Value>
+                        <str:Value>FIM</str:Value>
+                        <str:Value>FRF</str:Value>
+                        <str:Value>GBP</str:Value>
+                        <str:Value>GRD</str:Value>
+                        <str:Value>HKD</str:Value>
+                        <str:Value>HRK</str:Value>
+                        <str:Value>HUF</str:Value>
+                        <str:Value>IDR</str:Value>
+                        <str:Value>IEP</str:Value>
+                        <str:Value>ILS</str:Value>
+                        <str:Value>INR</str:Value>
+                        <str:Value>ISK</str:Value>
+                        <str:Value>ITL</str:Value>
+                        <str:Value>JPY</str:Value>
+                        <str:Value>KRW</str:Value>
+                        <str:Value>LTL</str:Value>
+                        <str:Value>LUF</str:Value>
+                        <str:Value>LVL</str:Value>
+                        <str:Value>MAD</str:Value>
+                        <str:Value>MTL</str:Value>
+                        <str:Value>MXN</str:Value>
+                        <str:Value>MYR</str:Value>
+                        <str:Value>NLG</str:Value>
+                        <str:Value>NOK</str:Value>
+                        <str:Value>NZD</str:Value>
+                        <str:Value>PEN</str:Value>
+                        <str:Value>PHP</str:Value>
+                        <str:Value>PLN</str:Value>
+                        <str:Value>PTE</str:Value>
+                        <str:Value>RON</str:Value>
+                        <str:Value>RUB</str:Value>
+                        <str:Value>SAR</str:Value>
+                        <str:Value>SEK</str:Value>
+                        <str:Value>SGD</str:Value>
+                        <str:Value>SIT</str:Value>
+                        <str:Value>SKK</str:Value>
+                        <str:Value>THB</str:Value>
+                        <str:Value>TRY</str:Value>
+                        <str:Value>TWD</str:Value>
+                        <str:Value>UAH</str:Value>
+                        <str:Value>USD</str:Value>
+                        <str:Value>VEF</str:Value>
+                        <str:Value>XAU</str:Value>
+                        <str:Value>ZAR</str:Value>
+                    </str:KeyValue>
+                    <str:KeyValue id="FREQ">
+                        <str:Value>A</str:Value>
+                        <str:Value>D</str:Value>
+                        <str:Value>H</str:Value>
+                        <str:Value>M</str:Value>
+                        <str:Value>Q</str:Value>
+                    </str:KeyValue>
+                    <str:KeyValue id="EXR_TYPE">
+                        <str:Value>EN00</str:Value>
+                        <str:Value>ERC0</str:Value>
+                        <str:Value>ERD0</str:Value>
+                        <str:Value>ERP0</str:Value>
+                        <str:Value>ERU0</str:Value>
+                        <str:Value>ERU1</str:Value>
+                        <str:Value>NN00</str:Value>
+                        <str:Value>NRC0</str:Value>
+                        <str:Value>NRD0</str:Value>
+                        <str:Value>NRP0</str:Value>
+                        <str:Value>NRU1</str:Value>
+                        <str:Value>SP00</str:Value>
+                    </str:KeyValue>
+                </str:CubeRegion>
+            </str:DataConstraint>
+        </str:DataConstraints>
+        <str:DataStructures>
+            <str:DataStructure urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ECB:ECB_EXR1(1.0)" isExternalReference="false" agencyID="ECB" id="ECB_EXR1" uri="https://www.ecb.europa.eu/vocabulary/stats/exr/1" version="1.0">
+                <com:Name xml:lang="en">Exchange Rates</com:Name>
+                <str:DataStructureComponents>
+                    <str:DimensionList urn="urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=ECB:ECB_EXR1(1.0).DimensionDescriptor" id="DimensionDescriptor">
+                        <str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR1(1.0).FREQ" id="FREQ" position="1">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).FREQ</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_FREQ(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="1"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR1(1.0).CURRENCY" id="CURRENCY" position="2">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).CURRENCY</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_CURRENCY(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="3"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR1(1.0).CURRENCY_DENOM" id="CURRENCY_DENOM" position="3">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).CURRENCY_DENOM</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_CURRENCY(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="3"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR1(1.0).EXR_TYPE" id="EXR_TYPE" position="4">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).EXR_TYPE</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_EXR_TYPE(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="4" textType="String" maxLength="4"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:Dimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR1(1.0).EXR_SUFFIX" id="EXR_SUFFIX" position="5">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).EXR_SUFFIX</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_EXR_SUFFIX(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="1"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                        </str:Dimension>
+                        <str:TimeDimension urn="urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=ECB:ECB_EXR1(1.0).TIME_PERIOD" id="TIME_PERIOD">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).TIME_PERIOD</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="ObservationalTimePeriod"></str:TextFormat>
+                            </str:LocalRepresentation>
+                        </str:TimeDimension>
+                    </str:DimensionList>
+                    <str:Group urn="urn:sdmx:org.sdmx.infomodel.datastructure.GroupDimensionDescriptor=ECB:ECB_EXR1(1.0).Group" id="Group">
+                        <str:GroupDimension>
+                            <str:DimensionReference>CURRENCY</str:DimensionReference>
+                        </str:GroupDimension>
+                        <str:GroupDimension>
+                            <str:DimensionReference>CURRENCY_DENOM</str:DimensionReference>
+                        </str:GroupDimension>
+                        <str:GroupDimension>
+                            <str:DimensionReference>EXR_TYPE</str:DimensionReference>
+                        </str:GroupDimension>
+                        <str:GroupDimension>
+                            <str:DimensionReference>EXR_SUFFIX</str:DimensionReference>
+                        </str:GroupDimension>
+                    </str:Group>
+                    <str:AttributeList urn="urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=ECB:ECB_EXR1(1.0).AttributeDescriptor" id="AttributeDescriptor">
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).TIME_FORMAT" usage="mandatory" id="TIME_FORMAT">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).TIME_FORMAT</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="3"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).OBS_STATUS" usage="mandatory" id="OBS_STATUS">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).OBS_STATUS</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_OBS_STATUS(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="1"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Observation></str:Observation>
+                            </str:AttributeRelationship>
+                            <str:MeasureRelationship>
+                                <str:Measure>OBS_VALUE</str:Measure>
+                            </str:MeasureRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).OBS_CONF" usage="optional" id="OBS_CONF">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).OBS_CONF</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_OBS_CONF(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="1"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Observation></str:Observation>
+                            </str:AttributeRelationship>
+                            <str:MeasureRelationship>
+                                <str:Measure>OBS_VALUE</str:Measure>
+                            </str:MeasureRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).OBS_PRE_BREAK" usage="optional" id="OBS_PRE_BREAK">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).OBS_PRE_BREAK</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="30"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Observation></str:Observation>
+                            </str:AttributeRelationship>
+                            <str:MeasureRelationship>
+                                <str:Measure>OBS_VALUE</str:Measure>
+                            </str:MeasureRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).OBS_COM" usage="optional" id="OBS_COM">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).OBS_COM</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="1050"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Observation></str:Observation>
+                            </str:AttributeRelationship>
+                            <str:MeasureRelationship>
+                                <str:Measure>OBS_VALUE</str:Measure>
+                            </str:MeasureRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).BREAKS" usage="optional" id="BREAKS">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).BREAKS</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="350"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).COLLECTION" usage="mandatory" id="COLLECTION">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).COLLECTION</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_COLLECTION(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="1"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).COMPILING_ORG" usage="optional" id="COMPILING_ORG">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).COMPILING_ORG</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_ORGANISATION(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="6"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).DISS_ORG" usage="optional" id="DISS_ORG">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).DISS_ORG</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_ORGANISATION(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="6"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).DOM_SER_IDS" usage="optional" id="DOM_SER_IDS">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).DOM_SER_IDS</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="70"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).PUBL_ECB" usage="optional" id="PUBL_ECB">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).PUBL_ECB</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="1050"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).PUBL_MU" usage="optional" id="PUBL_MU">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).PUBL_MU</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="1050"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).PUBL_PUBLIC" usage="optional" id="PUBL_PUBLIC">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).PUBL_PUBLIC</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="1050"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).UNIT_INDEX_BASE" usage="optional" id="UNIT_INDEX_BASE">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).UNIT_INDEX_BASE</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="35"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>FREQ</str:Dimension>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).COMPILATION" usage="optional" id="COMPILATION">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).COMPILATION</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="1050"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).COVERAGE" usage="optional" id="COVERAGE">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).COVERAGE</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="350"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).DECIMALS" usage="mandatory" id="DECIMALS">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).DECIMALS</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_DECIMALS(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="BigInteger" maxLength="2"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).NAT_TITLE" usage="optional" id="NAT_TITLE">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).NAT_TITLE</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="350"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).SOURCE_AGENCY" usage="optional" id="SOURCE_AGENCY">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).SOURCE_AGENCY</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_ORGANISATION(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="6"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).SOURCE_PUB" usage="optional" id="SOURCE_PUB">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).SOURCE_PUB</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="350"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).TITLE" usage="optional" id="TITLE">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).TITLE</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat textType="String" maxLength="200"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).TITLE_COMPL" usage="mandatory" id="TITLE_COMPL">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).TITLE_COMPL</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat minLength="1" textType="String" maxLength="1050"></str:TextFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).UNIT" usage="mandatory" id="UNIT">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).UNIT</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_UNIT(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="13"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                        <str:Attribute urn="urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).UNIT_MULT" usage="mandatory" id="UNIT_MULT">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).UNIT_MULT</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_UNIT_MULT(1.0)</str:Enumeration>
+                                <str:EnumerationFormat minLength="1" textType="String" maxLength="3"></str:EnumerationFormat>
+                            </str:LocalRepresentation>
+                            <str:AttributeRelationship>
+                                <str:Dimension>CURRENCY</str:Dimension>
+                                <str:Dimension>CURRENCY_DENOM</str:Dimension>
+                                <str:Dimension>EXR_TYPE</str:Dimension>
+                                <str:Dimension>EXR_SUFFIX</str:Dimension>
+                            </str:AttributeRelationship>
+                        </str:Attribute>
+                    </str:AttributeList>
+                    <str:MeasureList urn="urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=ECB:ECB_EXR1(1.0).MeasureDescriptor" id="MeasureDescriptor">
+                        <str:Measure urn="urn:sdmx:org.sdmx.infomodel.datastructure.Measure=ECB:ECB_EXR1(1.0).OBS_VALUE" usage="optional" id="OBS_VALUE">
+                            <str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).OBS_VALUE</str:ConceptIdentity>
+                            <str:LocalRepresentation>
+                                <str:TextFormat isSequence="false" textType="String" maxLength="30"></str:TextFormat>
+                            </str:LocalRepresentation>
+                        </str:Measure>
+                    </str:MeasureList>
+                </str:DataStructureComponents>
+            </str:DataStructure>
+        </str:DataStructures>
+    </message:Structures>
+</message:Structure>

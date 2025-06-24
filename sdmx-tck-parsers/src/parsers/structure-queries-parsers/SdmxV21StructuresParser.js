@@ -2,7 +2,9 @@ var MaintainableObject = require('sdmx-tck-api').model.MaintainableObject;
 var ItemSchemeObject = require('sdmx-tck-api').model.ItemSchemeObject;
 var DataflowObject = require('sdmx-tck-api').model.DataflowObject;
 var DataStructureObject = require('sdmx-tck-api').model.DataStructureObject;
+var ProvisionAgreementObject = require('sdmx-tck-api').model.ProvisionAgreementObject;
 var ContentConstraintObject = require('sdmx-tck-api').model.ContentConstraintObject;
+var RegistrationObject = require('sdmx-tck-api').model.RegistrationObject;
 var SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 var isDefined = require('sdmx-tck-api').utils.Utils.isDefined;
 
@@ -45,6 +47,11 @@ class SdmxV21StructuresParser {
             SdmxV21StructuresParser.parseReportingTaxonomies(structures, s);
             SdmxV21StructuresParser.parseCategorisations(structures, s);
             SdmxV21StructuresParser.parseProvisionAgreements(structures, s);
+        } else if (sdmxJsonObjects
+            && sdmxJsonObjects.RegistryInterface
+            && sdmxJsonObjects.RegistryInterface.QueryRegistrationResponse[0]) {
+            let s = sdmxJsonObjects.RegistryInterface.QueryRegistrationResponse[0];
+            SdmxV21StructuresParser.parseRegistrations(structures, s);
         }
         return structures;
     };
@@ -138,7 +145,7 @@ class SdmxV21StructuresParser {
                 }
                 //console.log(constraints[c].DataKeySet[0].Key[0].KeyValue[0].Value)
                 structures.get(structureType).push(
-                    new ContentConstraintObject(constraints[c],
+                    new ContentConstraintObject(structureType, constraints[c],
                         SdmxV21StructureReferencesParser.getReferences(constraints[c]),
                         SdmxV21JsonForStubsParser.getDetail(structureType, constraints[c]),
                         SdmxV21JsonCubeRegionParser.getCubeRegions(constraints[c]),
@@ -232,9 +239,10 @@ class SdmxV21StructuresParser {
                     structures.set(structureType, []);
                 }
                 structures.get(structureType).push(
-                    new MaintainableObject(structureType, hierarchicalCodelist,
+                    new ItemSchemeObject(structureType, hierarchicalCodelist,
                         SdmxV21StructureReferencesParser.getReferences(hierarchicalCodelist),
-                        SdmxV21JsonForStubsParser.getDetail(structureType, hierarchicalCodelist)
+                        SdmxV21JsonForStubsParser.getDetail(structureType, hierarchicalCodelist),
+                        SdmxV21JsonItemsParser.getItems(structureType, hierarchicalCodelist)
                     )
                 );
             }
@@ -366,9 +374,31 @@ class SdmxV21StructuresParser {
                     structures.set(structureType, []);
                 }
                 structures.get(structureType).push(
-                    new MaintainableObject(structureType, provisionAgreements[p], 
+                    new ProvisionAgreementObject(provisionAgreements[p], 
                         SdmxV21StructureReferencesParser.getReferences(provisionAgreements[p]),
                         SdmxV21JsonForStubsParser.getDetail(structureType, provisionAgreements[p])));
+            }
+        }
+    };
+
+    static parseRegistrations(structures, s) {
+        if (s.QueryResult) {
+            let queryResults = s.QueryResult;
+            for (let i in queryResults) {
+                let dataResult = queryResults[i].DataResult[0];
+                if (dataResult) {
+                    let registration = dataResult.Registration[0];
+
+                    let structureType = SDMX_STRUCTURE_TYPE.REGISTRATION.key;
+                    let array = structures.get(structureType);
+                    if (array === null || array === undefined) {
+                        structures.set(structureType, []);
+                    }
+                    let props = {...registration, ...registration.$};
+                    let children = SdmxV21StructureReferencesParser.getReferences(registration);
+
+                    structures.get(structureType).push(new RegistrationObject(props, children));
+                }
             }
         }
     };

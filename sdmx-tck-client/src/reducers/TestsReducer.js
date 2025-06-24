@@ -1,5 +1,5 @@
 
-import {configSchemaTests,configDataTests,getDataFromParent,updateTestsStatus,increaseRunTestsNum, passIdentifiersToChildren, increaseTestCompliantNumber, increaseTestCoverageNumber } from "../handlers/helperFunctions";
+import {configSchemaTests,configDataTests,configRegistrationTests,getDataFromParent,updateTestsStatus,increaseRunTestsNum, passIdentifiersToChildren, increaseTestCompliantNumber, increaseTestCoverageNumber } from "../handlers/helperFunctions";
 import ACTION_NAMES from '../constants/ActionsNames';
 
 /*
@@ -26,6 +26,8 @@ const testsManagerReducer = (state = [], action) => {
 			return configSchemaTests(state,action)
 		case ACTION_NAMES.CONFIG_DATA_TESTS:
 			return configDataTests(state,action)
+		case ACTION_NAMES.CONFIG_REGISTRATION_TESTS:
+			return configRegistrationTests(state,action)
 		default:
 			return state;
 	}
