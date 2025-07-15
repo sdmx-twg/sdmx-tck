@@ -1,7 +1,7 @@
 class DataStructureGroupObject {
 
-    constructor(props,dimensionReferences) {
-        this.id = props.$.id
+    constructor(groupId,dimensionReferences) {
+        this.id = groupId;
         this.dimensionReferences = dimensionReferences;
     };
 

@@ -14,7 +14,7 @@ class XSDTestsDataBuilder {
      * @param {*} endpoint 
      * @param {*} apiVersion 
      */
-    static async buildXSDDataFromConstraint (endpoint,apiVersion){
+    static async buildXSDDataFromConstraint(endpoint, apiVersion, format) {
         try{
             //Test obj creation to get all the content constraints 
             let configParams = {
@@ -27,7 +27,7 @@ class XSDTestsDataBuilder {
                 testType: TEST_TYPE.PREPARE_SCHEMA_TESTS
             }
             let configObj = TestObjectBuilder.getTestObject(configParams)
-            let workspace = await HelperManager.getWorkspace(configObj, apiVersion, endpoint)
+            let workspace = await HelperManager.getWorkspace(configObj, format, endpoint)
             return workspace.getConstraintDataForXSDTests()
         }catch(err){
             return;
@@ -42,7 +42,7 @@ class XSDTestsDataBuilder {
      * @param {*} endpoint 
      * @param {*} apiVersion 
      */
-    static async buildXSDDataWithoutConstraint (resource,endpoint,apiVersion){
+    static async buildXSDDataWithoutConstraint(resource, endpoint, apiVersion, format) {
         try{
             let references = MetadataReferences.NONE;
             if(resource === STRUCTURES_REST_RESOURCE.dataflow){
@@ -61,12 +61,12 @@ class XSDTestsDataBuilder {
                 testType: TEST_TYPE.PREPARE_SCHEMA_TESTS
             }
             let configObj = TestObjectBuilder.getTestObject(configParams)
-            let workspace = await HelperManager.getWorkspace(configObj, apiVersion, endpoint)
+            let workspace = await HelperManager.getWorkspace(configObj, format, endpoint);
             return workspace.getNonConstraintDataForXSDTests(resource)
         }catch(err){
             return;
         }
-   
+        
     }
 }
 module.exports = XSDTestsDataBuilder;

@@ -1,34 +1,50 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { extractScore } from "../handlers/helperFunctions";
-
+const SDMX_MESSAGE_FORMAT = require('sdmx-tck-api').constants.SDMX_MESSAGE_FORMAT;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
+const API_VERSIONS = require('sdmx-tck-api').constants.API_VERSIONS;
 
 class IndexSelect extends React.Component {
   render() {
+    const handleIndexSelection = (selectedOptions) => {
+      const indices = Array.from(selectedOptions, option => option.value); 
+      this.props.doOnIndexChange(indices);
+    }
+
+    let indices = [
+      <option value={TEST_INDEX.Structure}>Structure Index</option>,
+      <option value={TEST_INDEX.Data}>Data Index</option>,
+      <option value={TEST_INDEX.Schema}>Schema Index</option>
+    ];
+    if (API_VERSIONS[this.props.apiVersion] === API_VERSIONS["v2.0.0"]) {
+      indices = [
+        <option value={TEST_INDEX.Structure}>Structure Index</option>,
+        <option value={TEST_INDEX.Data}>Data Index</option>
+      ];
+    }
+    if (API_VERSIONS[this.props.apiVersion] > API_VERSIONS["v2.0.0"]) {
+      indices = [
+        <option value={TEST_INDEX.Registration}>Registration Index</option>
+      ];
+    }
+    if (this.props.format === SDMX_MESSAGE_FORMAT.JSON_V200.key) {
+      indices = [
+        <option value={TEST_INDEX.Structure}>Structure Index</option>,
+      ];
+    }
+
     return (
       <div className="tck-select-wrapper">
         <label htmlFor="indexSelect">Indices (Select 1 or More)</label>
-        <select multiple id="indexSelect" defaultValue={[]} disabled={this.props.running}>
-          <option value={TEST_INDEX.Structure}>Structure Index</option>
-          <option value={TEST_INDEX.Data}>Data Index</option>
-          <option value={TEST_INDEX.Schema}>Schema Index</option>
-          <option value={TEST_INDEX.Structure.Metadata}>Metadata Index</option>
+        <select 
+          id="indexSelect"
+          multiple={true}
+          value={this.props.indices}
+          disabled={this.props.running}
+          onChange={e => handleIndexSelection(e.target.selectedOptions)} >
+            {indices}
         </select>
       </div>
     );
   }
 };
-
-/*Function that is called every time that the store is updated and returns an object 
-of data that this component needs.*/
-const mapStateToProps = (state) => {
-  var testsArray = [...state];
-  var scores = extractScore(testsArray);
-
-  return {
-      running: (scores.numOfRunTests !== scores.numOfTests) && (scores.numOfRunTests > 0)
-  }
-};
-
-export default connect(mapStateToProps)(IndexSelect);
+export default IndexSelect;

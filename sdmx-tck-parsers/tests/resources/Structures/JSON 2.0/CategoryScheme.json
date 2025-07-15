@@ -1,0 +1,185 @@
+{
+	"$schema":"https://json.sdmx.org/2.1/sdmx-json-structure-schema.json",
+	"meta":{
+		"id":"$",
+		"test":true,
+		"prepared":"2021-09-16T11:04:00Z",
+		"contentLanguages":[
+			"en-GB-oed"
+		],
+		"name":"a",
+		"names":{
+			"en-GB-oed":"a"
+		},
+		"sender":{
+			"id":"$",
+			"name":"a",
+			"names":{
+				"en-GB-oed":"a"
+			},
+			"contacts":[
+				{
+					"id":"$",
+					"name":"a",
+					"names":{
+						"en-GB-oed":"a"
+					},
+					"department":"a",
+					"departments":{
+						"en-GB-oed":"a"
+					},
+					"emails":[
+						"smith@example.org"
+					],
+					"faxes":[
+						"a"
+					],
+					"role":"a",
+					"roles":{
+						"en-GB-oed":"a"
+					},
+					"telephones":[
+						"a"
+					],
+					"uris":[
+						"http://www.example.org/data.json"
+					],
+					"x400s":[
+						"a"
+					]
+				}
+			]
+		},
+		"receivers":[
+			{
+				"id":"$",
+				"name":"a",
+				"names":{
+					"en-GB-oed":"a"
+				},
+				"contacts":[
+					{
+						"id":"$",
+						"name":"a",
+						"names":{
+							"en-GB-oed":"a"
+						},
+						"department":"a",
+						"departments":{
+							"en-GB-oed":"a"
+						},
+						"emails":[
+							"smith@example.org"
+						],
+						"faxes":[
+							"a"
+						],
+						"role":"a",
+						"roles":{
+							"en-GB-oed":"a"
+						},
+						"telephones":[
+							"a"
+						],
+						"uris":[
+							"http://www.example.org/data.json"
+						],
+						"x400s":[
+							"a"
+						]
+					}
+				]
+			}
+		],
+		"links":[
+			{
+				"href":"http://www.example.org/data.json",
+				"rel":"a",
+				"urn":"urn:sdmx:org.sdmx.infomodel.base.DataProvider=ABC:DATA_PROVIDERS(1.0).ABC",
+				"uri":"http://www.example.org/data.json",
+				"title":"a",
+				"titles":{
+					"en-GB-oed":"a"
+				},
+				"type":"a",
+				"hreflang":"en-GB-oed"
+			}
+		]
+	},
+	"data":{
+		"categorySchemes": [
+			{
+				"x-extension": "scheme extension",
+				"id": "MOBILE_NAVI",
+				"version": "1.0",
+				"agencyID": "ECB",
+				"isPartialLanguage":false,
+				"isExternalReference": true,
+				"name": "Economic concepts",
+				"names": {
+					"en": "Economic concepts"
+				},
+				"description": "This category scheme is used for the Data Explorer of the ECB SDW mobile application. It is used for grouping all dataflows following the top-level categories displayed on the SDW portal.",
+				"descriptions": {
+					"en": "This category scheme is used for the Data Explorer of the ECB SDW mobile application. It is used for grouping all dataflows following the top-level categories displayed on the SDW portal."
+				},
+				"links": [
+					{
+						"href": "https://sdw-wsrest.ecb.europa.eu/service/categoryscheme/ECB/MOBILE_NAVI/1.0",
+						"rel": "self",
+						"urn": "urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ECB:MOBILE_NAVI(1.0)",
+						"type": "categoryscheme",
+						"hreflang": "en"
+					}
+				],
+				"isPartial": true,
+				"categories": [
+					{
+						"x-extension": "scheme extension",
+						"id": "00",
+						"name": "Parent category",
+						"names": {
+							"en": "Parent category"
+						},
+						"description": "Parent category example",
+						"descriptions": {
+							"en": "Parent category example"
+						},
+						"links": [
+							{
+								"href": "https://sdw-wsrest.ecb.europa.eu/service/categoryscheme/ECB/MOBILE_NAVI/1.0/00",
+								"rel": "self",
+								"urn": "urn:sdmx:org.sdmx.infomodel.categoryscheme.CategoryScheme=ECB:MOBILE_NAVI(1.0).00",
+								"type": "category",
+								"hreflang": "en"
+							}
+						],
+						"categories": [
+							{
+								"x-extension": "scheme extension",
+								"id": "07",
+								"name": "Exchange rates",
+								"names": {
+									"en": "Exchange rates"
+								},
+								"description": "This section shows the euro foreign exchange reference rates that are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. ECB time (CET). It also shows the nominal effective exchange rates of the euro as calculated by the ECB.",
+								"descriptions": {
+									"en": "This section shows the euro foreign exchange reference rates that are based on the regular daily concertation procedure between central banks within and outside the European System of Central Banks, which normally takes place at 2.15 p.m. ECB time (CET). It also shows the nominal effective exchange rates of the euro as calculated by the ECB."
+								},
+								"links": [
+									{
+										"href": "https://sdw-wsrest.ecb.europa.eu/service/categoryscheme/ECB/MOBILE_NAVI/1.0/07",
+										"rel": "self",
+										"urn": "urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ECB:MOBILE_NAVI(1.0).07",
+										"type": "category",
+										"hreflang": "en"
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,10 +1,10 @@
 const DATA_COMPONENTS_TYPES = require('sdmx-tck-api').constants.DATA_COMPONENTS_TYPES;
 var SdmxV21DataHeaderParser = require('./SdmxV21DataHeaderParser.js')
 var SdmxV21DatasetParser = require('.//SdmxV21DatasetParser.js')
-
+var SdmxDataObjects = require('sdmx-tck-api').model.SdmxDataObjects;
 
 class SdmxV21DataParser{
-    static parseData(sdmxJsonObjects) {
+    static parseMessage(sdmxJsonObjects) {
        
         if (sdmxJsonObjects === null || sdmxJsonObjects === undefined) {
             throw new Error("Missing mandatory parameter.");
@@ -17,7 +17,7 @@ class SdmxV21DataParser{
             SdmxV21DataParser.parseHeader(dataComponents,s);
             SdmxV21DataParser.parseDatasets(dataComponents,s)
         }
-        return dataComponents;
+        return new SdmxDataObjects(dataComponents);
     };
 
     static parseHeader(dataComponents,s){

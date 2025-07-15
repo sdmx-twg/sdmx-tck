@@ -1,52 +1,232 @@
 const DATA_QUERY_DETAIL = require("./DataQueryDetail.js").DATA_QUERY_DETAIL;
-const DATA_QUERY_REPRESENTATIONS = require('./DataQueryRepresentations.js').DATA_QUERY_REPRESENTATIONS
 const DIMENSION_AT_OBSERVATION_CONSTANTS = require('../DimensionAtObservationConstants.js').DIMENSION_AT_OBSERVATION_CONSTANTS;
-const API_VERSIONS = require('../ApiVersions.js').API_VERSIONS;
+const Utils = require('../../utils/Utils.js');
 
 const DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS = {
-    START_PERIOD:{ url: "/agency,id,version/all?startPeriod=YYYYDDMM", template: {startPeriod:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}  },
-    END_PERIOD:{ url: "/agency,id,version/all?endPeriod=YYYYDDMM",template: {endPeriod:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}},
-    START_END_PERIOD:{ url: "/agency,id,version/all?startPeriod=YYYYDDMM&endPeriod=YYYYDDMM", template: {startPeriod:true,endPeriod:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}  },
-    LAST_N_OBSERVATIONS_START_END_PERIOD:{ url: "/agency,id,version/all?lastNObservations=X&startPeriod=YYYYDDMM&endPeriod=YYYYDDMM",template: {startPeriod:true,endPeriod:true,lastNObservations:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}},
-    UPDATED_AFTER:{url:"/agency,id,version/all?updatedAfter=YYYYDDMM", template: {updatedAfter:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
-    FIRST_N_OBSERVATIONS:{ url:"/agency,id,version/all?firstNObservations=X", template: {firstNObservations:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}  },
-    LAST_N_OBSERVATIONS:{ url: "/agency,id,version/all?lastNObservations=X",template: {lastNObservations:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}},
-    INCLUDE_HISTORY:{ url: "/agency,id,version/all?includeHistory=true",template: {includeHistory:true,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC}},
-    FULL_DETAIL:{url:"/agency,id,version/all?detail=full", template: {detail:DATA_QUERY_DETAIL.FULL,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
-    DATA_ONLY_DETAIL:{url:"/agency,id,version/all?detail=dataonly",template: {detail:DATA_QUERY_DETAIL.DATA_ONLY,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
-    SERIES_KEYS_ONLY_DETAIL:{url:"/agency,id,version/all?detail=serieskeysonly",template: {detail:DATA_QUERY_DETAIL.SERIES_KEYS_ONLY,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
-    NO_DATA_DETAIL:{url:"/agency,id,version/all?detail=nodata",template: {detail:DATA_QUERY_DETAIL.NO_DATA,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
-    DIM_OBS_TIME_PERIOD:{url:"/agency,id,version/all?dimensionAtObservation=TIME_PERIOD",template: {dimensionAtObservation:DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
-    DIM_OBS_DIM:{url:"/agency,id,version/all?dimensionAtObservation=DIM",template: {dimensionAtObservation:DIMENSION_AT_OBSERVATION_CONSTANTS.DIMENSION,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
-    DIM_OBS_ALLDIMENSIONS:{url:"/agency,id,version/all?dimensionAtObservation=AllDimensions",template: {dimensionAtObservation:DIMENSION_AT_OBSERVATION_CONSTANTS.ALLDIMENSIONS,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
-    DIM_OBS_NOT_PROVIDED:{url:"/agency,id,version/all (DIMENSION AT OBSEVATION NOT PROVIDED)",template: {dimensionAtObservation:DIMENSION_AT_OBSERVATION_CONSTANTS.NOT_PROVIDED,representation:DATA_QUERY_REPRESENTATIONS.STRUCTURE_SPECIFIC} },
+    START_PERIOD: {
+        key: "START_PERIOD",
+        url: "?startPeriod=YYYYDDMM",
+        template: { startPeriod: true },
+        fromVersion: "v1.0.0", 
+        toVersion: "v1.5.0"
+    },
+    V2_START_PERIOD: {
+        key: "START_PERIOD",
+        url: "?c[TIME_PERIOD]=ge:YYYYDDMM",
+        template: { startPeriod: true },
+        fromVersion: "v2.0.0"
+    },
+    END_PERIOD: {
+        key: "END_PERIOD",
+        url: "?endPeriod=YYYYDDMM",
+        template: { endPeriod: true },
+        fromVersion: "v1.0.0", 
+        toVersion: "v1.5.0"
+    },
+    V2_END_PERIOD: {
+        key: "END_PERIOD",
+        url: "?c[TIME_PERIOD]=le:YYYYDDMM",
+        template: { endPeriod: true },
+        fromVersion: "v2.0.0"
+    },
+    START_END_PERIOD: {
+        key: "START_END_PERIOD",
+        url: "?startPeriod=YYYYDDMM&endPeriod=YYYYDDMM",
+        template: { startPeriod: true, endPeriod: true },
+        fromVersion: "v1.0.0", 
+        toVersion: "v1.5.0"
+    },
+    V2_START_END_PERIOD: {
+        key: "START_END_PERIOD",
+        url: "?c[TIME_PERIOD]=ge:YYYYDDMM+le:YYYYDDMM",
+        template: { startPeriod: true, endPeriod: true },
+        fromVersion: "v2.0.0"
+    },
+    LAST_N_OBS_START_END_PERIOD: {
+        key: "LAST_N_OBS_START_END_PERIOD",
+        url: "?lastNObservations=X&startPeriod=YYYYDDMM&endPeriod=YYYYDDMM",
+        template: { startPeriod: true, endPeriod: true, lastNObservations: true },
+        fromVersion: "v1.0.0", 
+        toVersion: "v1.5.0"
+    },
+    V2_LAST_N_OBS_START_END_PERIOD: {
+        key: "LAST_N_OBS_START_END_PERIOD",
+        url: "?lastNObservations=X&c[TIME_PERIOD]=ge:YYYYDDMM+le:YYYYDDMM",
+        template: { startPeriod: true, endPeriod: true, lastNObservations: true },
+        fromVersion: "v2.0.0"
+    },
+    UPDATED_AFTER: {
+        key: "UPDATED_AFTER",
+        url: "?updatedAfter=YYYYDDMM",
+        template: { updatedAfter: true },
+        fromVersion: "v1.0.0"
+    },
+    FIRST_N_OBS: {
+        key: "FIRST_N_OBS",
+        url: "?firstNObservations=X",
+        template: { firstNObservations: true },
+        fromVersion: "v1.0.0"
+    },
+    LAST_N_OBS: {
+        key: "LAST_N_OBS",
+        url: "?lastNObservations=X",
+        template: { lastNObservations: true },
+        fromVersion: "v1.0.0"
+    },
+    INCLUDE_HISTORY: {
+        key: "INCLUDE_HISTORY",
+        url: "?includeHistory=true", 
+        template: { includeHistory: true },
+        fromVersion: "v1.1.0"
+    },
+    FULL_DETAIL: {
+        key: "FULL_DETAIL",
+        url: "?detail=full",
+        template: { detail: DATA_QUERY_DETAIL.FULL },
+        fromVersion: "v1.0.0", 
+        toVersion: "v1.5.0"
+    },
+    V2_FULL_DETAIL: {
+        key: "FULL_DETAIL",
+        url: "?attributes=all&measures=all",
+        template: { detail: DATA_QUERY_DETAIL.FULL, attributes: "all", measures: "all" },
+        fromVersion: "v2.0.0"
+    },
+    DATA_ONLY_DETAIL: {
+        key: "DATA_ONLY_DETAIL",
+        url: "?detail=dataonly",
+        template: { detail: DATA_QUERY_DETAIL.DATA_ONLY },
+        fromVersion: "v1.0.0", 
+        toVersion: "v1.5.0"
+    },
+    V2_DATA_ONLY_DETAIL: {
+        key: "DATA_ONLY_DETAIL",
+        url: "?attributes=none&measures=all",
+        template: { detail: DATA_QUERY_DETAIL.DATA_ONLY, attributes: "none", measures: "all" },
+        fromVersion: "v2.0.0"
+    },
+    SERIES_KEYS_ONLY_DETAIL: {
+        key: "SERIES_KEYS_ONLY_DETAIL",
+        url: "?detail=serieskeysonly",
+        template: { detail: DATA_QUERY_DETAIL.SERIES_KEYS_ONLY },
+        fromVersion: "v1.0.0", 
+        toVersion: "v1.5.0"
+    },
+    V2_SERIES_KEYS_ONLY_DETAIL: {
+        key: "SERIES_KEYS_ONLY_DETAIL",
+        url: "?attributes=none&measures=none",
+        template: { detail: DATA_QUERY_DETAIL.SERIES_KEYS_ONLY, attributes: "none", measures: "none" },
+        fromVersion: "v2.0.0"
+    },
+    NO_DATA_DETAIL: {
+        key: "NO_DATA_DETAIL",
+        url: "?detail=nodata",
+        template: { detail: DATA_QUERY_DETAIL.NO_DATA },
+        fromVersion: "v1.0.0", 
+        toVersion: "v1.5.0"
+    },
+    V2_NO_DATA_DETAIL: {
+        key: "NO_DATA_DETAIL",
+        url: "?attributes=series&measures=none",
+        template: { detail: DATA_QUERY_DETAIL.NO_DATA, attributes: "series", measures: "none" },
+        fromVersion: "v2.0.0"
+    },
+    DIM_OBS_TIME_PERIOD: {
+        key: "DIM_OBS_TIME_PERIOD",
+        url: "?dimensionAtObservation=TIME_PERIOD",
+        template: { dimensionAtObservation: DIMENSION_AT_OBSERVATION_CONSTANTS.TIME_PERIOD },
+        fromVersion: "v1.0.0"
+    },
+    DIM_OBS_DIM: {
+        key: "DIM_OBS_DIM",
+        url: "?dimensionAtObservation=DIM",
+        template: { dimensionAtObservation: DIMENSION_AT_OBSERVATION_CONSTANTS.DIMENSION },
+        fromVersion: "v1.0.0"
+    },
+    DIM_OBS_ALLDIMENSIONS: {
+        key: "DIM_OBS_ALLDIMENSIONS",
+        url: "?dimensionAtObservation=AllDimensions",
+        template: { dimensionAtObservation: DIMENSION_AT_OBSERVATION_CONSTANTS.ALLDIMENSIONS },
+        fromVersion: "v1.0.0"
+    },
+    DIM_OBS_NOT_PROVIDED: {
+        key: "DIM_OBS_NOT_PROVIDED",
+        url: "?dimensionAtObservation=(DIMENSION AT OBSEVATION NOT PROVIDED)",
+        template: { dimensionAtObservation: DIMENSION_AT_OBSERVATION_CONSTANTS.NOT_PROVIDED },
+        fromVersion: "v1.0.0"
+    },
+    V2_ATTRIBUTES_DSD: {
+        key: "V2_ATTRIBUTES_DSD",
+        url: "?attributes=dsd",
+        template: { attributes: "dsd" },
+        fromVersion: "v2.0.0"
+    },
+    V2_ATTRIBUTES_DATASET: {
+        key: "V2_ATTRIBUTES_DATASET",
+        url: "?attributes=dataset",
+        template: { attributes: "dataset" },
+        fromVersion: "v2.0.0"
+    },
+    V2_ATTRIBUTES_SERIES: {
+        key: "V2_ATTRIBUTES_SERIES",
+        url: "?attributes=series",
+        template: { attributes: "series" },
+        fromVersion: "v2.0.0"
+    },
+    V2_ATTRIBUTES_OBS: {
+        key: "V2_ATTRIBUTES_OBS",
+        url: "?attributes=obs",
+        template: { attributes: "obs" },
+        fromVersion: "v2.0.0"
+    },
+    V2_ATTRIBUTES_ALL: {
+        key: "V2_ATTRIBUTES_ALL",
+        url: "?attributes=all",
+        template: { attributes: "all" },
+        fromVersion: "v2.0.0"
+    },
+    V2_ATTRIBUTES_NONE: {
+        key: "V2_ATTRIBUTES_NONE",
+        url: "?attributes=none",
+        template: { attributes: "none" },
+        fromVersion: "v2.0.0"
+    },
+    V2_ATTRIBUTES_ATTRIBUTE_ID: {
+        key: "V2_ATTRIBUTES_ATTRIBUTE_ID",
+        url: "?attributes={attribute_id}",
+        template: { attributes: true },
+        fromVersion: "v2.0.0"
+    },
+    V2_MEASURES_ALL: {
+        key: "V2_MEASURES_ALL",
+        url: "?measures=all",
+        template: { measures: "all" },
+        fromVersion: "v2.0.0"
+    },
+    V2_MEASURES_NONE: {
+        key: "V2_MEASURES_NONE",
+        url: "?measures=none",
+        template: { measures: "none" },
+        fromVersion: "v2.0.0"
+    },
+    V2_MEASURES_MEASURE_ID: {
+        key: "V2_MEASURES_MEASURE_ID",
+        url: "?measures={measure_id}",
+        template: { measures: true },
+        fromVersion: "v2.0.0"
+    },
 
-    getDataFurtherDescribingParameters(apiVersion){
-        var availableTests= [];
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.START_PERIOD);
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.END_PERIOD);
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.START_END_PERIOD);
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.LAST_N_OBSERVATIONS_START_END_PERIOD)
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.UPDATED_AFTER)
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.FIRST_N_OBSERVATIONS);
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.LAST_N_OBSERVATIONS);
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.FULL_DETAIL)
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.DATA_ONLY_DETAIL)
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.SERIES_KEYS_ONLY_DETAIL)
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.NO_DATA_DETAIL);
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.DIM_OBS_TIME_PERIOD);
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.DIM_OBS_DIM);
-            availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.DIM_OBS_ALLDIMENSIONS)
-            if (API_VERSIONS[apiVersion] < API_VERSIONS["v1.1.0"]) {
-                availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.DIM_OBS_NOT_PROVIDED)
-                
+    getParameters(apiVersion) {
+        var tests = [];
+        for (const [key, value] of Object.entries(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS)) {
+            if (typeof value !== 'function') {
+                if (Utils.isVersionWithinRange(apiVersion, value.fromVersion, value.toVersion)) {
+                    tests.push({ ...value });
+                }
             }
-            if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.1.0"]) {
-                availableTests.push(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS.INCLUDE_HISTORY);
-                
-            }
-            return availableTests;
+        }
+        return tests;
     }
-    };
+};
 
 module.exports.DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS = Object.freeze(DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS);

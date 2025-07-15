@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+    <mes:Header>
+        <mes:ID>IREF179491</mes:ID>
+        <mes:Test>false</mes:Test>
+        <mes:Prepared>2024-02-16T21:12:22Z</mes:Prepared>
+        <mes:Sender id="ZZZ"></mes:Sender>
+        <mes:Receiver id="not_supplied"></mes:Receiver>
+    </mes:Header>
+    <mes:Structures>
+        <str:Constraints>
+            <str:ContentConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:A5E2CE91-8301-44B8-9ADD-CEDC52B1D726(1.0)" isExternalReference="false" agencyID="ECB" id="A5E2CE91-8301-44B8-9ADD-CEDC52B1D726" isFinal="false" type="Actual" version="1.0">
+                <com:Annotations>
+                    <com:Annotation id="series_count">
+                        <com:AnnotationTitle>6497</com:AnnotationTitle>
+                        <com:AnnotationType>sdmx_metrics</com:AnnotationType>
+                    </com:Annotation>
+                </com:Annotations>
+                <com:Name xml:lang="en">Exchange Rates</com:Name>
+                <str:ConstraintAttachment>
+                    <str:Dataflow>
+                        <Ref package="datastructure" agencyID="ECB" id="EXR" version="1.0" class="Dataflow"></Ref>
+                    </str:Dataflow>
+                </str:ConstraintAttachment>
+                <str:CubeRegion include="true">
+                    <com:KeyValue id="FREQ">
+                        <com:Value>A</com:Value>
+                        <com:Value>D</com:Value>
+                        <com:Value>H</com:Value>
+                        <com:Value>M</com:Value>
+                        <com:Value>Q</com:Value>
+                    </com:KeyValue>
+                </str:CubeRegion>
+            </str:ContentConstraint>
+        </str:Constraints>
+    </mes:Structures>
+</mes:Structure>

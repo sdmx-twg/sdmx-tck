@@ -1,4 +1,4 @@
-var SdmxV21StructureReferencesParser = require('../structure-queries-parsers/SdmxV21StructureReferencesParser.js')
+var SdmxXmlV21StructureReferencesParser = require('../structure-queries-parsers/SdmxXmlV21StructureReferencesParser.js')
 var HeaderStructureObject = require('sdmx-tck-api').model.HeaderStructureObject
 var jsonPath = require('jsonpath');
 var UrnUtil = require('sdmx-tck-api').utils.UrnUtil
@@ -13,7 +13,7 @@ class SdmxV21DataHeaderParser {
                 if(namespace){
                     structureID =  UrnUtil.getStructureIdentityRef(namespace[0])// structureID[0];
                 }
-                structureData.push(new HeaderStructureObject(structureID,SdmxV21StructureReferencesParser.getReferences(sdmxJsonObject.Structure[i]))) 
+                structureData.push(new HeaderStructureObject(structureID,SdmxXmlV21StructureReferencesParser.getReferences(sdmxJsonObject.Structure[i]))) 
             }
         }
         return structureData; 

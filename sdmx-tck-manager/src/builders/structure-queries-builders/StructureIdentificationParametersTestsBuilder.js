@@ -16,8 +16,8 @@ class StructureIdentificationParametersTestsBuilder{
         let testObjParams = {};
         var itemReq = [];
 
-        for (let i in STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT()) {
-            let test = STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT()[i]
+        for (let i in STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT(apiVersion, currentRestResource)) {
+            let test = STRUCTURES_RESOURCE_IDENTIFICATION_PARAMETERES_SUPPORT(apiVersion, currentRestResource)[i]
             x.numOfTests = x.numOfTests + 1;
             
             if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]

@@ -1,14 +1,13 @@
 const FAILURE_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.FAILURE_CODE;
-const SUCCESS_CODE = require('sdmx-tck-api').constants.API_CONSTANTS.SUCCESS_CODE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
 const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
 const STRUCTURE_REFERENCE_DETAIL = require('sdmx-tck-api').constants.STRUCTURE_REFERENCE_DETAIL;
 const TEST_INDEX = require('sdmx-tck-api').constants.TEST_INDEX;
-const DSD_COMPONENTS_NAMES = require('sdmx-tck-api').constants.DSD_COMPONENTS_NAMES;
-var SdmxXmlParser = require('sdmx-tck-parsers').parsers.SdmxXmlParser;
+var SdmxParser = require('sdmx-tck-parsers').parsers.SdmxParser;
 var TckError = require('sdmx-tck-api').errors.TckError;
-var SchemaRequestBuilder = require('../builders/schema-queries-builders/SchemaRequestBuilder.js');
+var RequestBuilderFactory = require('../builders/RequestBuilderFactory.js');
 var ResponseValidator = require('../checker/HttpResponseValidator.js');
+var SchemaValidator = require('../checker/SchemaValidator.js');
 var SemanticCheckerFactory = require('../checker/SemanticCheckerFactory.js');
 var HelperManager = require('../manager/HelperManager.js')
 var TestObjectBuilder = require("../builders/TestObjectBuilder.js");
@@ -16,7 +15,7 @@ const sdmx_requestor = require('sdmx-rest');
 const {UrlGenerator} = require('sdmx-rest/lib/utils/url-generator')
 
 class SchemaTestExecutionManager {
-    static async executeTest(toRun, apiVersion, endpoint) {
+    static async executeTest(toRun, format, endpoint) {
         let testResult = toRun;
         try {
             /////PREPARING AND SENDING THE TEST REQUEST/////
@@ -45,13 +44,13 @@ class SchemaTestExecutionManager {
             let helpTestParams = {
                 testId: "/"+toRun.resource+"/agency/id/version?references="+template.references,
                 index: TEST_INDEX.Structure,
-                apiVersion: apiVersion,
+                apiVersion: toRun.apiVersion,
                 resource: toRun.resource,
                 reqTemplate: template,
                 identifiers: {structureType:SDMX_STRUCTURE_TYPE.fromRestResource(toRun.resource),agency:toRun.identifiers.agency,id:toRun.identifiers.id,version:toRun.identifiers.version},
                 testType: TEST_TYPE.STRUCTURE_IDENTIFICATION_PARAMETERS
             }
-            toRun.structureWorkspace = await HelperManager.getWorkspace(TestObjectBuilder.getTestObject(helpTestParams),apiVersion,endpoint);
+            toRun.structureWorkspace = await HelperManager.getWorkspace(TestObjectBuilder.getTestObject(helpTestParams), format, endpoint);
             
             let structureType = helpTestParams.identifiers.structureType
             let agency = helpTestParams.identifiers.agency
@@ -92,10 +91,8 @@ class SchemaTestExecutionManager {
             }
 
             //PREPARE REQUEST
-            let preparedRequest = await SchemaRequestBuilder.prepareRequest(endpoint, apiVersion, toRun.resource, toRun.reqTemplate,
-                toRun.identifiers.agency, toRun.identifiers.id, 
-                toRun.identifiers.version,toRun.reqTemplate.dimensionAtObservation,toRun.reqTemplate.explicitMeasure );
-
+            let preparedRequest = await RequestBuilderFactory.getBuilder(toRun.index, toRun.apiVersion).prepareRequest(endpoint, format, toRun);
+            
             console.log("Test: " + toRun.testId + " HTTP request prepared." + JSON.stringify(preparedRequest));
             //Alternative way to pass the url generated as string in order to configure the skipDefaults parameter.
             let url = new UrlGenerator().getUrl(preparedRequest.request, preparedRequest.service, true)
@@ -112,25 +109,27 @@ class SchemaTestExecutionManager {
             }
             testResult.httpResponseValidation = httpResponseValidation;
             console.log("Test: " + toRun.testId + " HTTP response validated. " + JSON.stringify(httpResponseValidation));
-            if (httpResponseValidation.status === FAILURE_CODE
-                || (httpResponseValidation.status === SUCCESS_CODE && (httpResponseValidation.httpStatus === 404 || httpResponseValidation.httpStatus === 501))) {
+            if (httpResponseValidation.status === FAILURE_CODE) {
                 throw new TckError("HTTP validation failed. Cause: " + httpResponseValidation.error);
             }
 
             //XSD VALIDATION
             let xsdString = await httpResponse.text();
-            await new SdmxXmlParser().schemaValidation(xsdString);
+            await new SchemaValidator().schemaValidation(xsdString);
             console.log("Test: " + toRun.testId + " Response (XSD) validated.");
 
            
             //// WORKSPACE CREATION ////
-            let workspace = await new SdmxXmlParser().getIMObjects(xsdString);
+            let workspace = await new SdmxParser().getIMObjects(xsdString, format);
+            if (!workspace) {
+                throw new TckError("Workspace validation failed. Cause: The workspace is empty.");
+            }
             testResult.workspace = workspace;
             console.log("Test: " + toRun.testId + " SDMX workspace created.");
             
             
             // WORKSPACE VALIDATION
-            let workspaceValidation = await SemanticCheckerFactory.getChecker(toRun).checkWorkspace(toRun, preparedRequest, workspace);
+            let workspaceValidation = await SemanticCheckerFactory.getChecker(toRun).checkWorkspace(toRun, preparedRequest, workspace, format);
             testResult.workspaceValidation = workspaceValidation;
             if (workspaceValidation.status === FAILURE_CODE) {
                 throw new TckError("Workspace validation failed: Cause: " + workspaceValidation.error);

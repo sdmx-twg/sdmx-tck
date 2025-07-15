@@ -1,33 +1,38 @@
 class DataStructureComponentObject {
-    constructor(id,type,references,representation){
-        this.id  = id;
-        this.type = type,
+    constructor(id, type, references, representation) {
+        this.id = id;
+        this.type = type;
         this.references = references;
         this.representation = representation;
     }
-
-    setId(id){
-        this.id =id; 
+    setId(id) {
+        this.id = id;
     }
-    getId(){
+    getId() {
         return this.id;
     }
-    setType(type){
+    setType(type) {
         this.type = type;
     }
-    getType(){
+    getType() {
         return this.type;
     }
-    setReferences(references){
+    setPosition(position) {
+        this.position = position;
+    }
+    getPosition() {
+        return this.position;
+    }
+    setReferences(references) {
         this.references = references
     }
-    getReferences(){
+    getReferences() {
         return this.references
     }
-    setRepresentation(representation){
+    setRepresentation(representation) {
         this.representation = representation
     }
-    getRepresentation(){
+    getRepresentation() {
         return this.representation;
     }
 }

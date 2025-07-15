@@ -29,7 +29,12 @@ class SdmxDataObjects extends SdmxObjects{
             allObservations=allObservations.concat(s.getObservations());
         })
         return allObservations;
-
+    }
+    hasObservations() {
+        return this.getAllObservations().length > 0;
+    }
+    hasSeries() {
+        return this.getAllSeries().length > 0;
     }
     getAllSeries(){
         let allSeries = [];
@@ -37,6 +42,20 @@ class SdmxDataObjects extends SdmxObjects{
             allSeries = allSeries.concat(dataset.getSeries())
         })
         return allSeries
+    }
+    getNSeries(num) {
+        return this.getAllSeries()[num-1];
+    }
+    getAttributesFromNSeries(num) {
+        let attributes = [];
+        let series = this.getAllSeries();
+        for (let i = 0; i < series.length; i++) {
+            if (i === num) {
+                break;
+            }
+            attributes.push({ ...series[i].getAttributes() });
+        }
+        return attributes;
     }
     getAllGroups(){
         let allGroups = [];

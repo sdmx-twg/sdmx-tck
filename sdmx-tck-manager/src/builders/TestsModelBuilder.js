@@ -18,7 +18,7 @@ var DataRepresentationSupportTestBuilder = require('../builders/data-queries-bui
 var DataFurtherDescribingResultsTestBuilder = require('./data-queries-builders/DataFurtherDescribingResultsTestBuilder.js');
 var DataAvailabilityTestBuilder = require('./data-queries-builders/DataAvailabilityTestBuilder.js')
 var DataOtherFeatureTestBuilder = require('./data-queries-builders/DataOtherFeatureTestBuilder.js')
-
+var RegistrationIdentificationParametersTestBuilder = require('./registry-queries-builders/RegistrationIdentificationParametersTestBuilder.js');
 class TestsModelBuilder {
     /**
      * Method that creates the model (object) in which the data of the app will be stored.
@@ -28,6 +28,7 @@ class TestsModelBuilder {
         let dataTests = { numOfTests: 0 };
         let schemaTests = { numOfTests: 0 };
         let metadataTests = { numOfTests: 0 };
+        let registrationTests = { numOfTests: 0 };
 
         let testsStruct = [];
         if (indices.includes(TEST_INDEX.Structure)) {
@@ -41,6 +42,9 @@ class TestsModelBuilder {
         }
         if (indices.includes(TEST_INDEX.Metadata)) {
             testsStruct.push({ id: TEST_INDEX.Metadata, subTests: [], numOfValidTestResponses: 0, numOfValidRequests: 0, numOfRunTests: 0, sumOfTests: metadataTests.numOfTests});
+        }
+        if (indices.includes(TEST_INDEX.Registration)) {
+            testsStruct.push({ id: TEST_INDEX.Registration, subTests: TestsModelBuilder.getTests(TEST_INDEX.Registration, registrationTests, apiVersion, ''), numOfValidTestResponses: 0, numOfValidRequests: 0, numOfRunTests: 0, sumOfTests: registrationTests.numOfTests});
         }
         return testsStruct;
     };
@@ -96,58 +100,22 @@ class TestsModelBuilder {
                 schemaTest2 = schemaTest1.concat(SchemaFurtherDescribingResultsParamTestsBuilder.getSchemaFurtherDescribingResultsParamTests(index,x,apiVersion,arrayOfRestResources[j]))
                 allTests = allTests.concat(schemaTest2)
             }
-            
-            
             return allTests;
-        }else if (index === TEST_INDEX.Data) {
-            let dataTest1 = [];
-            let dataTest2 = [];
-            let dataTest3 = [];
-            let dataTest4 = [];
-            let dataTest5 = [];
-            let dataTest6 = [];
+        } else if (index === TEST_INDEX.Data) {
             let allTests = [];
-           
-            dataTest1 = DataIdentificationParametersTestBuilder.getDataIdentificationParametersTests(index,x,apiVersion)
-
-            x.numOfTests = x.numOfTests + 1;
-            let testObjParams = {
-                testId: "/data/agency,id,version/all",
-                index: index,
-                apiVersion: apiVersion,
-                resource: STRUCTURES_REST_RESOURCE.dataflow,
-                reqTemplate: {detail:DATA_QUERY_DETAIL.SERIES_KEYS_ONLY,representation:"application/vnd.sdmx.structurespecificdata+xml;version=2.1"},
-                identifiers: {structureType: "", agency: "", id: "", version: "" },
-                testType: TEST_TYPE.DATA_EXTENDED_RESOURCE_IDENTIFICATION_PARAMETERS,
-                subTests: DataExtendedResourceIdentificationTestBuilder.getDataExtendedResourceIdentificationParametersTests(index,x,apiVersion)
-            }
-            dataTest2 = dataTest2.concat(TestObjectBuilder.getTestObject(testObjParams));
-
-            dataTest3 = DataFurtherDescribingResultsTestBuilder.getDataFurtherDescribingTests(index,x,apiVersion)
-
-            dataTest4 = DataRepresentationSupportTestBuilder.getDataRepresentationSupportTests(index,x,apiVersion)
-            dataTest5 = DataOtherFeatureTestBuilder.getDataOtherFeatureTests(index,x,apiVersion)
-
-            if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]) {
-                x.numOfTests = x.numOfTests + 1;
-                let testObjParams = {
-                    testId: "/availableconstraint/agency,dataflowId,version/all",
-                    index: index,
-                    apiVersion: apiVersion,
-                    resource: STRUCTURES_REST_RESOURCE.dataflow,
-                    reqTemplate: {},
-                    identifiers: {structureType: "", agency: "", id: "", version: "" },
-                    testType: TEST_TYPE.DATA_AVAILABILITY ,
-                    subTests: DataAvailabilityTestBuilder.getDataAvailabilityTests(index,x,apiVersion)
-                }
-                dataTest6 = dataTest6.concat(TestObjectBuilder.getTestObject(testObjParams))
-            }
-
-            allTests = allTests.concat(dataTest1.concat(dataTest2.concat(dataTest3.concat(dataTest4.concat(dataTest5.concat(dataTest6))))))
-            
+            allTests = allTests.concat(DataIdentificationParametersTestBuilder.getTests(index, x, apiVersion));
+            allTests = allTests.concat(DataExtendedResourceIdentificationTestBuilder.getTests(index, x, apiVersion));
+            allTests = allTests.concat(DataFurtherDescribingResultsTestBuilder.getTests(index, x, apiVersion));
+            allTests = allTests.concat(DataRepresentationSupportTestBuilder.getTests(index, x, apiVersion));
+            allTests = allTests.concat(DataOtherFeatureTestBuilder.getTests(index, x, apiVersion));
+            allTests = allTests.concat(DataAvailabilityTestBuilder.getTests(index, x, apiVersion));
             return allTests;
-        }else if (index === TEST_INDEX.Metadata) {
+        } else if (index === TEST_INDEX.Metadata) {
             return [];
+        } else if (index === TEST_INDEX.Registration) {
+            let allTests = [];
+            allTests = allTests.concat(RegistrationIdentificationParametersTestBuilder.getTests(index, x, apiVersion));
+            return allTests;
         }
     }
 };

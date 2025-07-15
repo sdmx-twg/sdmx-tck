@@ -1,18 +1,15 @@
-var SdmxXmlParser = require('../../sdmx-tck-parsers/src/parsers/SdmxXmlParser.js');
+var SdmxParser = require('../../sdmx-tck-parsers/src/parsers/SdmxParser.js');
 const fs = require('fs');
 var SchemasSemanticChecker = require('../../sdmx-tck-manager/src/checker/SchemasSemanticChecker.js')
-
-var StructureDetail = require('sdmx-tck-api').constants.StructureDetail;
-const SDMX_STRUCTURE_TYPE = require('sdmx-tck-api').constants.SDMX_STRUCTURE_TYPE;
+const SDMX_MESSAGE_FORMAT = require('sdmx-tck-api').constants.SDMX_MESSAGE_FORMAT;
 
 describe('XSD Simple Types validation test', function () {
     it('It should assert the validation the XSD', async () => {
-       
+        let format = SDMX_MESSAGE_FORMAT.XML_V21.key;
         let xmlMessage = fs.readFileSync('./tests/resources/testXml.xml','utf8')
         let artefact;
         let structWrkspce;
-        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
-            // console inside of getIMObjects
+        await new SdmxParser().getIMObjects(xmlMessage, format).then(function (sdmxObjects) {
             artefact = sdmxObjects.sdmxObjects.get("DSD")[0]
             structWrkspce = sdmxObjects
         }).catch(function (err) {
@@ -21,18 +18,15 @@ describe('XSD Simple Types validation test', function () {
 
         let xsdMessage = fs.readFileSync('./tests/resources/testXsd.xsd','utf8')
         let xsdWorkspace;
-        await new SdmxXmlParser().getIMObjects(xsdMessage).then(function (sdmxObjects) {
-            // console inside of getIMObjects
+        await new SdmxParser().getIMObjects(xsdMessage, format).then(function (sdmxObjects) {
             xsdWorkspace = sdmxObjects;
         }).catch(function (err) {
             console.log(err);
         });
 
-
         let constraint = fs.readFileSync('./tests/resources/contentconstraint_WB_GCI_1.0.xml','utf8')
         let constraintWorkspace;
-        await new SdmxXmlParser().getIMObjects(constraint).then(function (sdmxObjects) {
-            // console inside of getIMObjects
+        await new SdmxParser().getIMObjects(constraint, format).then(function (sdmxObjects) {
             constraintWorkspace = sdmxObjects;
         }).catch(function (err) {
             console.log(err);
@@ -48,18 +42,18 @@ describe('XSD Simple Types validation test', function () {
 });
 describe('XSD with Multiple Groups test', function () {
     it('It should assert the validation of the XSD group types', async () => {
-       
+        let format = SDMX_MESSAGE_FORMAT.XML_V21.key;
         let xmlMessage = fs.readFileSync('./tests/resources/dsdMultipleGroups.xml','utf8')
         let artefact;
         let structWrkspce;
-        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
+        await new SdmxParser().getIMObjects(xmlMessage, format).then(function (sdmxObjects) {
             artefact = sdmxObjects.sdmxObjects.get("DSD")[0]
             structWrkspce = sdmxObjects
 
         })
         let xsdMessage = fs.readFileSync('./tests/resources/XSDMultipleGroups.xsd','utf8')
         let xsdWorkspace;
-        await new SdmxXmlParser().getIMObjects(xsdMessage).then(function (sdmxObjects) {
+        await new SdmxParser().getIMObjects(xsdMessage, format).then(function (sdmxObjects) {
             xsdWorkspace = sdmxObjects;
         })
         let test = {structureWorkspace:structWrkspce,dsdObject:artefact}
@@ -71,18 +65,18 @@ describe('XSD with Multiple Groups test', function () {
 
 describe('XSD default rules test', function () {
     it('It should validate the XSD group types', async () => {
-       
+        let format = SDMX_MESSAGE_FORMAT.XML_V21.key;
         let xmlMessage = fs.readFileSync('./tests/resources/dsd.xml','utf8')
         let artefact;
         let structWrkspce;
-        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
+        await new SdmxParser().getIMObjects(xmlMessage, format).then(function (sdmxObjects) {
             artefact = sdmxObjects.sdmxObjects.get("DSD")[0]
             structWrkspce = sdmxObjects
         })
 
         let xsdMessage = fs.readFileSync('./tests/resources/dsd_xsd_example.xsd','utf8')
         let xsdWorkspace;
-        await new SdmxXmlParser().getIMObjects(xsdMessage).then(function (sdmxObjects) {
+        await new SdmxParser().getIMObjects(xsdMessage, format).then(function (sdmxObjects) {
             xsdWorkspace = sdmxObjects;
         })
         let result = SchemasSemanticChecker.checkDefaultRules(artefact,xsdWorkspace,"TIME_PERIOD")
@@ -91,19 +85,19 @@ describe('XSD default rules test', function () {
 });
 
 describe('XSD Complex types of measure dimension concpets test', function () {
-    it('It should assert the XSD validation', async () => {
-       
+    it.only('It should assert the XSD validation', async () => {
+        let format = SDMX_MESSAGE_FORMAT.XML_V21.key;
         let xmlMessage = fs.readFileSync('./tests/resources/xmlForObsType.xml','utf8')
         let artefact;
         let structWrkspce;
-        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
+        await new SdmxParser().getIMObjects(xmlMessage, format).then(function (sdmxObjects) {
             artefact = sdmxObjects.sdmxObjects.get("DSD")[0]
             structWrkspce = sdmxObjects
         })
 
         let xsdMessage = fs.readFileSync('./tests/resources/xsdForObsType.xsd','utf8')
         let xsdWorkspace;
-        await new SdmxXmlParser().getIMObjects(xsdMessage).then(function (sdmxObjects) {
+        await new SdmxParser().getIMObjects(xsdMessage, format).then(function (sdmxObjects) {
             xsdWorkspace = sdmxObjects;
         })
         let result  = SchemasSemanticChecker.checkComplexTypesOfMeasureDimensionConcepts({structureWorkspace:structWrkspce},artefact,xsdWorkspace)

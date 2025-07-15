@@ -6,7 +6,11 @@ class SdmxObjects {
 	getSdmxObjects() {
 		return this.sdmxObjects;
 	};
-	
+
+	getSdmxObjectsOfType(structureType) {
+		return this.getSdmxObjectsList().filter(obj => obj.getStructureType() === structureType);
+	};
+
 	getSdmxObjectsList() {
 		let array = [];
 		this.getSdmxObjects().forEach((sdmxObjectsList) => {
@@ -15,6 +19,15 @@ class SdmxObjects {
 			});
 		});
 		return array;
+	};
+
+	getNoOfObjects() {
+		let count = 0;
+		// Iterate over the map and sum the lengths of all arrays
+		for (const array of this.getSdmxObjects().values()) {
+			count += array.length;
+		}
+		return count;
 	};
 
 	toJSON() {

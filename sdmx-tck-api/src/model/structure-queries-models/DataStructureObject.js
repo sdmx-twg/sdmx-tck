@@ -18,7 +18,21 @@ class DataStructureObject extends MaintainableObject {
         this.groups = groups;
     }
     getGroups(){
-        return this.groups
+        return this.groups;
+    }
+    hasGroups() {
+        return Array.isArray(this.groups) && this.groups.length > 0;
+    }
+    getGroup(dimensions) {
+        let group = null;
+        if (this.hasGroups()) {
+            group = this.getGroups().find(function (g) {
+                let groupDimensions = g.getDimensionReferences();
+                return dimensions.length === groupDimensions.length &&
+                    groupDimensions.every(d => dimensions.indexOf(d) >= 0);
+            });
+        }
+        return group;
     }
     setComponents(components) {
         this.components = components;
@@ -107,6 +121,26 @@ class DataStructureObject extends MaintainableObject {
 		return dimensions[randomIndex];
     }
 
+    getRandomAttribute() {
+        let mandatoryAttributes = this.getMandatoryAttributes();
+        if (mandatoryAttributes.length > 0) {
+            return mandatoryAttributes[Math.floor(Math.random() * mandatoryAttributes.length)];
+        }
+        let attributes = this.getAttributes();
+        if (attributes.length > 0) {
+            return attributes[Math.floor(Math.random() * attributes.length)];
+        }
+        return null;
+    }
+
+    getRandomMeasure() {
+        let measures = this.getMeasures();
+        if (measures.length > 0) {
+            return measures[Math.floor(Math.random() * measures.length)];
+        }
+        return null;
+    }
+
     getComponentsWithFacets(){
         return this.getComponents().filter(comp=> 
             (comp.getRepresentation()) 
@@ -127,12 +161,25 @@ class DataStructureObject extends MaintainableObject {
        return  this.getComponents().filter(
             component => (component.getType() === DSD_COMPONENTS_NAMES.DIMENSION));
     }
+    getDimensionById(dimensionId) {
+        return this.getDimensions().find(dim => (dim.getId() === dimensionId));
+    }
     getAttributes(){
         return  this.getComponents().filter(
             component => (component.getType() === DSD_COMPONENTS_NAMES.ATTRIBUTE));
     }
+    getAttributeById(attributeId) {
+        return this.getAttributes().find(attr => attr.getId() === attributeId);
+    }
+    getAttributesWithRelationship(relationship) {
+        return this.getAttributes().filter(att => {
+            return att.getAttributeRelationship().some(rel => {
+                return rel.getRelationshipType() === relationship;
+            });
+        });
+    }
     getMandatoryAttributes(){
-        return this.getAttributes().filter(component=>(component.getAssignementStatus()===ATTRIBUTE_ASSIGNMENT_STATUS.MANDATORY))
+        return this.getAttributes().filter(component=>(component.getAssignmentStatus()===ATTRIBUTE_ASSIGNMENT_STATUS.MANDATORY))
     }
     getDimensionsAndAttributes(){
         return  this.getComponents().filter(
@@ -156,18 +203,42 @@ class DataStructureObject extends MaintainableObject {
     hasTimeDimension(){
         return this.getComponents().some(comp=>comp.getType() === DSD_COMPONENTS_NAMES.TIME_DIMENSION)
     }
-
-    sortRandomKeyAccordingToDimensions(randomKeys){
-        if(!randomKeys || typeof randomKeys !== 'object'){
-            throw new Error("Missing mandatory parameter 'randomKey'")
+    getMeasures() {
+        return this.getComponents().filter(
+            component => (component.getType() === DSD_COMPONENTS_NAMES.MEASURE));
+    }
+    getMeasureById(measureId) {
+        return this.getMeasures().find(m => m.getId() === measureId);
+    }
+    filterDimensions(seriesAttributes) {
+        let output = [];
+        for (let attr in seriesAttributes) {
+            let filteredAttributes = {};
+            let dimensions = this.getDimensions();
+            for (let dim in dimensions) {
+                let dimension = dimensions[dim];
+                if (Object.prototype.hasOwnProperty.call(seriesAttributes[attr], dimension.getId())) {
+                    filteredAttributes[dimension.getId()] = seriesAttributes[attr][dimension.getId()];
+                }
+            }
+            output.push(filteredAttributes);
         }
-        if(!Object.keys(randomKeys).every(key => this.getDimensions().some(dim => dim.getId() === key))){
-            throw new Error("Unable to sort randomKey because it does not contain all DSD dimensions.")
+        return output;
+    }
+    sortRandomKeyAccordingToDimensions(randomKeys) {
+        if (!randomKeys || typeof randomKeys !== 'object') {
+            throw new Error("Missing mandatory parameter 'randomKey'");
+        }
+        if (!Object.keys(randomKeys).every(key => this.getDimensions().some(dim => dim.getId() === key))) {
+            throw new Error("Unable to sort randomKey because it does not contain all DSD dimensions.");
         }
         let dimensions = this.getDimensions();
+        // TODO: (GPP) Does this code really work? 
+        // I see an attempt to sort keys, but they are then inserted again into a JavaScript object 
+        // where the order of attributes is not preserved.
         let sortedKeys = {}
         dimensions.forEach(dimension => {
-            sortedKeys[dimension.getId()] = randomKeys[dimension.getId()]
+            sortedKeys[dimension.getId()] = randomKeys[dimension.getId()];
         });
         return sortedKeys;
     }

@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "id": "IREF117446",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-06-27T08:09:08Z",
+    "contentLanguages": [
+      "de",
+      "en",
+      "fr"
+    ],
+    "sender": {
+      "id": "MT"
+    }
+  },
+  "data": {
+    "dataflows": [
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "dataflow",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ESTAT:ACF_D_LO1(1.0)"
+          }
+        ],
+        "id": "ACF_D_LO1",
+        "name": "Reasons for partial success or lack of success in obtaining loan finance, by type of enterprise and NACE Rev. 2",
+        "names": {
+          "en": "Reasons for partial success or lack of success in obtaining loan finance, by type of enterprise and NACE Rev. 2"
+        },
+        "version": "1.0",
+        "agencyID": "ESTAT",
+        "isExternalReference": false,
+        "isFinal": false,
+        "structure": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:ACF_D_LO1_DSD(1.0)"
+      }
+    ]
+  }
+}
