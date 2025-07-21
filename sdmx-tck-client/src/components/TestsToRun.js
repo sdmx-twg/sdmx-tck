@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { extractSelectedTests, extractScore } from "../handlers/helperFunctions";
 import TestDetails from './TestDetails';
-import { exportReport } from '../actions/TestActions';
 
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 
@@ -97,7 +96,7 @@ class TestsToRun extends React.Component {
 of data that this component (TestsToRun) needs. In this particular case it returns an object
 containing the array of the selected tests to run*/
 const mapStateToProps = (state) => {
-  var testsArray = [...state];
+  var testsArray = [...state.tests];
   var selectedTestsArray = extractSelectedTests(testsArray);
   var scores = extractScore(testsArray);
   return {

@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "sdmx-tck-reporter"
+		},
+		{
+			"path": "sdmx-tck-parsers"
+		},
+		{
+			"path": "sdmx-tck-manager"
+		},
+		{
+			"path": "sdmx-tck-client"
+		},
+		{
+			"path": "sdmx-tck-api"
+		}
+	],
+	"settings": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+}

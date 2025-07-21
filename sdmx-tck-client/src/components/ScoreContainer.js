@@ -43,7 +43,7 @@ class ScoreContainer extends React.Component {
 of data that this component (ScoreContainer) needs. In this particular case it returns an object
 containing the array of the selected tests to run*/
 const mapStateToProps = (state) => {
-    var testsArray = [...state];
+    var testsArray = [...state.tests];
     var scores = extractScore(testsArray);
     return {
         compliance: scores.complianceScore,

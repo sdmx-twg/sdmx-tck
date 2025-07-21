@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "id": "IREF575925",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-06-25T13:19:59Z",
+    "contentLanguages": [
+      "br",
+      "de",
+      "en",
+      "fr"
+    ],
+    "sender": {
+      "id": "MT"
+    }
+  },
+  "data": {
+    "dataStructures": [
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "datastructure",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ESTAT:RAIL_TF_PASSMOV_DSD(1.0)"
+          }
+        ],
+        "id": "RAIL_TF_PASSMOV_DSD",
+        "name": "rail_tf_passmov_DSD",
+        "names": {
+          "en": "rail_tf_passmov_DSD"
+        },
+        "version": "1.0",
+        "agencyID": "ESTAT",
+        "isExternalReference": false,
+        "isFinal": false,
+        "dataStructureComponents": {
+          "attributeList": {
+            "links": [
+              {
+                "rel": "self",
+                "type": "attributedescriptor",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=ESTAT:RAIL_TF_PASSMOV_DSD(1.0).AttributeDescriptor"
+              }
+            ],
+            "id": "AttributeDescriptor",
+            "attributes": [
+              {
+                "usage": "mandatory",
+                "attributeRelationship": {
+                  "dimensions": [
+                    "FREQ",
+                    "unit",
+                    "vehicle",
+                    "geo"
+                  ]
+                },
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "dataattribute",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:RAIL_TF_PASSMOV_DSD(1.0).TIME_FORMAT"
+                  }
+                ],
+                "id": "TIME_FORMAT",
+                "localRepresentation": {
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_TIME_FORMAT(1.0)"
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:CONCEPTS(1.0).TIME_FORMAT"
+              },
+              {
+                "usage": "optional",
+                "attributeRelationship": {
+                  "observation": {
+
+                  }
+                },
+                "measureRelationship": [
+                  "OBS_VALUE"
+                ],
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "dataattribute",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ESTAT:RAIL_TF_PASSMOV_DSD(1.0).OBS_STATUS"
+                  }
+                ],
+                "id": "OBS_STATUS",
+                "localRepresentation": {
+                  "enumerationFormat": {
+                    "textType": "String"
+                  },
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_OBS_STATUS(1.0)"
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:CONCEPTS(1.0).OBS_STATUS"
+              }
+            ]
+          },
+          "dimensionList": {
+            "links": [
+              {
+                "rel": "self",
+                "type": "dimensiondescriptor",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=ESTAT:RAIL_TF_PASSMOV_DSD(1.0).DimensionDescriptor"
+              }
+            ],
+            "id": "DimensionDescriptor",
+            "dimensions": [
+              {
+                "position": 1,
+                "type": "Dimension",
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "dimension",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:RAIL_TF_PASSMOV_DSD(1.0).FREQ"
+                  }
+                ],
+                "id": "FREQ",
+                "localRepresentation": {
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=SDMX:CL_FREQ(1.0)"
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:CONCEPTS(1.0).FREQ"
+              },
+              {
+                "position": 2,
+                "type": "Dimension",
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "dimension",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:RAIL_TF_PASSMOV_DSD(1.0).unit"
+                  }
+                ],
+                "id": "unit",
+                "localRepresentation": {
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_UNIT(1.0)"
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:CONCEPTS(1.0).unit"
+              },
+              {
+                "position": 3,
+                "type": "Dimension",
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "dimension",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:RAIL_TF_PASSMOV_DSD(1.0).vehicle"
+                  }
+                ],
+                "id": "vehicle",
+                "localRepresentation": {
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_VEHICLE(1.0)"
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:CONCEPTS(1.0).vehicle"
+              },
+              {
+                "position": 4,
+                "type": "Dimension",
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "dimension",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ESTAT:RAIL_TF_PASSMOV_DSD(1.0).geo"
+                  }
+                ],
+                "id": "geo",
+                "localRepresentation": {
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ESTAT:CL_GEO(1.0)"
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:CONCEPTS(1.0).geo"
+              }
+            ],
+            "timeDimensions": [
+              {
+                "position": 5,
+                "type": "TimeDimension",
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "timedimension",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=ESTAT:RAIL_TF_PASSMOV_DSD(1.0).TIME_PERIOD"
+                  }
+                ],
+                "id": "TIME_PERIOD",
+                "localRepresentation": {
+                  "format": {
+                    "textType": "ObservationalTimePeriod"
+                  }
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:CONCEPTS(1.0).TIME_PERIOD"
+              }
+            ]
+          },
+          "measureList": {
+            "links": [
+              {
+                "rel": "self",
+                "type": "measuredescriptor",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=ESTAT:RAIL_TF_PASSMOV_DSD(1.0).MeasureDescriptor"
+              }
+            ],
+            "id": "MeasureDescriptor",
+            "measures": [
+              {
+                "usage": "optional",
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "primarymeasure",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Measure=ESTAT:RAIL_TF_PASSMOV_DSD(1.0).OBS_VALUE"
+                  }
+                ],
+                "id": "OBS_VALUE",
+                "localRepresentation": {
+                  "format": {
+                    "textType": "Double"
+                  }
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ESTAT:CONCEPTS(1.0).OBS_VALUE"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

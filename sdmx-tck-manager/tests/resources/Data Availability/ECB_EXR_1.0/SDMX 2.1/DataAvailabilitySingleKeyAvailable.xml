@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+    <mes:Header>
+        <mes:ID>IREF171488</mes:ID>
+        <mes:Test>false</mes:Test>
+        <mes:Prepared>2024-02-16T20:59:09Z</mes:Prepared>
+        <mes:Sender id="ZZZ"></mes:Sender>
+        <mes:Receiver id="not_supplied"></mes:Receiver>
+    </mes:Header>
+    <mes:Structures>
+        <str:Constraints>
+            <str:ContentConstraint urn="urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:5253FDF6-6FBD-46FC-9AE6-22FB3F4C6AFF(1.0)" isExternalReference="false" agencyID="ECB" id="5253FDF6-6FBD-46FC-9AE6-22FB3F4C6AFF" isFinal="false" type="Actual" version="1.0">
+                <com:Annotations>
+                    <com:Annotation id="series_count">
+                        <com:AnnotationTitle>1</com:AnnotationTitle>
+                        <com:AnnotationType>sdmx_metrics</com:AnnotationType>
+                    </com:Annotation>
+                </com:Annotations>
+                <com:Name xml:lang="en">Exchange Rates</com:Name>
+                <str:ConstraintAttachment>
+                    <str:Dataflow>
+                        <Ref package="datastructure" agencyID="ECB" id="EXR" version="1.0" class="Dataflow"></Ref>
+                    </str:Dataflow>
+                </str:ConstraintAttachment>
+                <str:CubeRegion include="true">
+                    <com:KeyValue id="CURRENCY">
+                        <com:Value>H37</com:Value>
+                        <com:Value>H42</com:Value>
+                    </com:KeyValue>
+                    <com:KeyValue id="CURRENCY_DENOM">
+                        <com:Value>ATS</com:Value>
+                        <com:Value>AUD</com:Value>
+                        <com:Value>BEF</com:Value>
+                        <com:Value>BGN</com:Value>
+                        <com:Value>BRL</com:Value>
+                        <com:Value>CAD</com:Value>
+                        <com:Value>CHF</com:Value>
+                        <com:Value>CNY</com:Value>
+                        <com:Value>CYP</com:Value>
+                        <com:Value>CZK</com:Value>
+                        <com:Value>DEM</com:Value>
+                        <com:Value>DKK</com:Value>
+                        <com:Value>EEK</com:Value>
+                        <com:Value>ESP</com:Value>
+                        <com:Value>EUR</com:Value>
+                        <com:Value>FIM</com:Value>
+                        <com:Value>FRF</com:Value>
+                        <com:Value>GBP</com:Value>
+                        <com:Value>GRD</com:Value>
+                        <com:Value>HKD</com:Value>
+                        <com:Value>HRK</com:Value>
+                        <com:Value>HUF</com:Value>
+                        <com:Value>IEP</com:Value>
+                        <com:Value>ITL</com:Value>
+                        <com:Value>JPY</com:Value>
+                        <com:Value>KRW</com:Value>
+                        <com:Value>LTL</com:Value>
+                        <com:Value>LUF</com:Value>
+                        <com:Value>LVL</com:Value>
+                        <com:Value>MTL</com:Value>
+                        <com:Value>MXN</com:Value>
+                        <com:Value>NLG</com:Value>
+                        <com:Value>NOK</com:Value>
+                        <com:Value>NZD</com:Value>
+                        <com:Value>PLN</com:Value>
+                        <com:Value>PTE</com:Value>
+                        <com:Value>RON</com:Value>
+                        <com:Value>RUB</com:Value>
+                        <com:Value>SEK</com:Value>
+                        <com:Value>SIT</com:Value>
+                        <com:Value>SKK</com:Value>
+                        <com:Value>TRY</com:Value>
+                        <com:Value>USD</com:Value>
+                    </com:KeyValue>
+                    <com:KeyValue id="EXR_SUFFIX">
+                        <com:Value>A</com:Value>
+                        <com:Value>T</com:Value>
+                    </com:KeyValue>
+                    <com:KeyValue id="FREQ">
+                        <com:Value>A</com:Value>
+                        <com:Value>Q</com:Value>
+                    </com:KeyValue>
+                    <com:KeyValue id="EXR_TYPE">
+                        <com:Value>NRC0</com:Value>
+                    </com:KeyValue>
+                </str:CubeRegion>
+            </str:ContentConstraint>
+        </str:Constraints>
+    </mes:Structures>
+</mes:Structure>

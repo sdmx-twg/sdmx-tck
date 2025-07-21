@@ -5,18 +5,22 @@ var DataKeySetObject = require('./DataKeySetObject.js');
 var ConstraintKeyValueObject = require('./ConstraintKeyValueObject.js')
 var ConstraintReferencePeriod = require('./ConstraintReferencePeriod.js')
 var StructureReference = require('./StructureReference.js')
-var ConstraintAnnotationObject = require('./ConstraintAnnotationObject.js')
+var AnnotationObject = require('./AnnotationObject.js')
 var Utils = require('../../utils/Utils.js')
 
 
 class ContentConstraintObject extends MaintainableObject {
-    constructor(props, children, detail, cubeRegions, dataKeySets, referencePeriod,annotations) {
-        super(SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key, props, children, detail);
-        this.setType(props.$.type);
+    constructor(structureType, props, children, detail, cubeRegions, dataKeySets, referencePeriod, annotations) {
+        super(structureType, props, children, detail);
+        if (structureType === SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key) {
+            this.setType(props.type);
+        } else {
+            this.setType(props.role); // changed in SDMX 3.0
+        }
         this.setCubeRegions(cubeRegions);
         this.setDataKeySets(dataKeySets);
         this.setReferencePeriod(referencePeriod);
-        this.setAnnotations(annotations)
+        this.setAnnotations(annotations);
     };
     setDataKeySets(dataKeySets){
         this.dataKeySets = dataKeySets;
@@ -158,23 +162,18 @@ class ContentConstraintObject extends MaintainableObject {
 
         return;
     }
-    static fromJSON(jsObj){
-        if(jsObj.structureType !== SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key){
-            throw new Error("Cannot create "+SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key+" object.")
+    static fromJSON(jsObj) {
+        if (jsObj.structureType !== SDMX_STRUCTURE_TYPE.CONTENT_CONSTRAINT.key
+            && jsObj.structureType !== SDMX_STRUCTURE_TYPE.DATA_CONSTRAINT.key) {
+            throw new Error("Cannot create object for structure type: " + jsObj.structureType)
         }
         let props = {
-            $:{
-                structureType:(jsObj.structureType)?jsObj.structureType:"",
-                agencyID:(jsObj.agencyId)?jsObj.agencyId:"",
-                id:(jsObj.id)?jsObj.id:"",
-                version:(jsObj.version)?jsObj.version:"",
-                urn:(jsObj.urn)?jsObj.urn:"",
-                isFinal:(jsObj.isFinal)?jsObj.isFinal:"",
-                isExternalReference:(jsObj.isExternalReference)?jsObj.isExternalReference:"",
-                structureURL:(jsObj.structureURL)?jsObj.structureURL:"",
-                type:(jsObj.type)?jsObj.type:""
-            }
-        }
+            structureType: (jsObj.structureType) ? jsObj.structureType : "",
+            agencyID: (jsObj.agencyId) ? jsObj.agencyId : "",
+            id: (jsObj.id) ? jsObj.id : "",
+            version: (jsObj.version) ? jsObj.version : "",
+            type: (jsObj.type) ? jsObj.type : ""
+        };
         let children= (jsObj.children)?jsObj.children:[]
         let childrenArr = []
         children.forEach(child=>{
@@ -182,16 +181,16 @@ class ContentConstraintObject extends MaintainableObject {
         })
         let detail = (jsObj.detail)?jsObj.detail:""
 
-       
+
         let cubeRegions = (jsObj.cubeRegions)?jsObj.cubeRegions:[];
 
         let cubeRegionsArr = []
         cubeRegions.forEach(cubeRegion => {
             let keyValues = []
             cubeRegion.keyValue.forEach(keyValue => {
-                keyValues.push(new ConstraintKeyValueObject({$:{id:keyValue.id}},CubeRegionObject.name,keyValue.includeType,keyValue.values))
+                keyValues.push(new ConstraintKeyValueObject(keyValue.id,CubeRegionObject.name,keyValue.includeType,keyValue.values))
             })
-            cubeRegionsArr.push(new CubeRegionObject({$:{includeType:cubeRegion.includeType}},keyValues))
+            cubeRegionsArr.push(new CubeRegionObject(cubeRegion.includeType,keyValues))
         })
 
         let dataKeySets = (jsObj.dataKeySets)?jsObj.dataKeySets:[];
@@ -201,11 +200,11 @@ class ContentConstraintObject extends MaintainableObject {
             dataKeySet.keys.forEach(key => {
                 let keyValues = []
                 key.forEach(keyValue =>{
-                    keyValues.push(new ConstraintKeyValueObject({$:{id:keyValue.id}},DataKeySetObject.name,keyValue.includeType,keyValue.values))
+                    keyValues.push(new ConstraintKeyValueObject(keyValue.id,DataKeySetObject.name,keyValue.includeType,keyValue.values))
                 })
                 keys.push(keyValues);
             })
-            dataKeySetsArr.push(new DataKeySetObject({$:{includeType:dataKeySet.includeType}},keys))
+            dataKeySetsArr.push(new DataKeySetObject(dataKeySet.includeType, keys))
         })
 
         let referencePeriod = (jsObj.referencePeriod)?jsObj.referencePeriod:undefined
@@ -216,10 +215,10 @@ class ContentConstraintObject extends MaintainableObject {
         let annotations = (jsObj.annotations)?jsObj.annotations:[]
         let annotationsArr = []
         annotations.forEach(annotation =>{
-            annotationsArr.push(new ConstraintAnnotationObject(annotation.id,annotation.type,annotation.title))
+            annotationsArr.push(new AnnotationObject(annotation.id,annotation.type,annotation.title))
         });
-
-        return new ContentConstraintObject (props,childrenArr,detail,cubeRegionsArr,dataKeySetsArr,referencePeriod,annotationsArr)
+        
+        return new ContentConstraintObject (jsObj.structureType,props,childrenArr,detail,cubeRegionsArr,dataKeySetsArr,referencePeriod,annotationsArr)
 
     }
 };

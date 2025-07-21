@@ -33,7 +33,7 @@ class ContentConstraintReferencePartialChecker {
      * @param {*} preparedRequest the http query parameters
      * @param {*} workspace the workspace of content constraint descendants
      */
-    static checkWorkspace(test, preparedRequest, workspace) {
+    static checkWorkspace(test, preparedRequest, workspace, format) {
         return new Promise((resolve, reject) => {
             try {
                 //Get the constraint obj from workspace
@@ -53,7 +53,7 @@ class ContentConstraintReferencePartialChecker {
                 //Get the reference partial test object.
                 let referencePartialTest = ContentConstraintReferencePartialChecker.referencepartialTestBuilder(test,constrainable);
                 /*Executes the request to get the partial codelist*/
-                HelperManager.getWorkspace(referencePartialTest, test.apiVersion, preparedRequest.service.url).
+                HelperManager.getWorkspace(referencePartialTest, format, preparedRequest.service.url).
                     then((referencePartialTestWorkspace) => {
                         /* The referencepartial test's workspace validation*/
                         let validation = ContentConstraintReferencePartialChecker.checkReferencePartialTestWorkspace(referencePartialTestWorkspace,keyValueToCheckData,codeListRef,constraint);

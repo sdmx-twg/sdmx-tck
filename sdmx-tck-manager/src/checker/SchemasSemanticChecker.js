@@ -40,12 +40,12 @@ var DataStructureAttributeObject = require('sdmx-tck-api').model.DataStructureAt
 var DataStructureObject  = require('sdmx-tck-api').model.DataStructureObject
 class SchemasSemanticChecker {
 
-    static checkWorkspace(test, preparedRequest, workspace) { 
+    static checkWorkspace(test, preparedRequest, workspace, format) { 
         return new Promise((resolve, reject) => {
             var query = preparedRequest.request;
             try {
                 let validation = {};
-                validation = SchemasSemanticChecker.checkXSDComponents(test,query, workspace)
+                validation = SchemasSemanticChecker.checkXSDComponents(test, query, workspace)
                 resolve(validation);
             } catch (err) {
                 reject(new TckError(err));

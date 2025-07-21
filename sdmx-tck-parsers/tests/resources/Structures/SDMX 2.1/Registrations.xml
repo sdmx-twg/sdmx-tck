@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mes:RegistryInterface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:reg="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/registry" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common">
+	<mes:Header>
+		<mes:ID>IREF938738</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2025-04-04T19:11:18Z</mes:Prepared>
+		<mes:Sender id="ZZZ"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:QueryRegistrationResponse>
+		<reg:StatusMessage status="Success"/>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-04-11T13:54:30" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="7E77864A778CC0F6ABE8517FAC85C6F7" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="BIS" id="WS_SPP_BIS" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-04-07T17:43:39" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="17BAF640C10E64273BA3522E155E530A" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="CD2030" id="CD2030_ALL_CD2030_CD2030" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-10-04T11:30:35" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="2A998D21277CF97F745CA1592719D94" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="ECB" id="BSI_ECB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2024-09-26T16:14:28" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="3420D6A1895AA3669832084986369665" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="ECB" id="TRD_ECB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2025-04-01T12:00:35" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="D29B0E9CC4BE928B4829EDA3A3F3497C" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="ECB" id="EXR_ECB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2023-08-18T15:56:26" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="2371CD5C04FA9D9F5053D01A09210C6E" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="ESTAT" id="ACF_D_LO1_ESTAT" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2023-08-18T15:55:53" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="2956BD57616EBDA11366D41EAE2335AB" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="ESTAT" id="AVIA_PAOC_ESTAT" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-04-08T08:08:05" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="4F5985C9039D8B2E82FE1C67290426A1" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="ESTAT" id="CENS_91SMSTA_ESTAT" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-04-11T13:57:49" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="5F99E907CDEC2626B469BBE14525E285" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="ESTAT" id="RAIL_TF_PASSMOV_ESTAT" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2025-03-04T15:19:07" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="C0F49346C149540026272C5F95A5F3B2" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="LB" id="PFSPROVISIONAGREEMENT" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-04-07T17:37:38" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="FE5713DAB6916CBAB3800BCFBDF246D9" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="MENARO" id="MENARO_MENARO" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2023-02-14T10:41:31" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="7411F35473CE16D18415174A59F477A6" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="OECD.DAF" id="DSD_DEBT_TRANS_DDOWN@DF_DDOWN_OECD_DAF" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2024-06-05T15:23:36" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="3CE49C30DD46477151CFF6C66E21F1B3" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="SDMX" id="ESPROVISIONAGREEMENT" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-04-08T08:10:28" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="A5A0E546DD1C1E9D9C3B811534BEE538" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="UNICEF" id="IMMUNISATION_UNICEF" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-04-08T08:10:11" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="BCF04704B56A13ECCC31D75A3B9D85D3" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="UNICEF" id="CAUSE_OF_DEATH_UNICEF" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-04-08T13:37:22" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="DCB62228EE812FE282BE1D5902CD745C" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="UNICEF" id="NUTRITION_UNICEF_UNICEF" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2024-02-09T09:53:41" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="57D4AF2DA606772BFEBF7075F9E257B" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="UNPD" id="UNPD_DEMOGRAPHY_UNPD" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-05-27T13:14:49" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="15FB6D95D6B16F50FE8CA9468FBA8BDF" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="WB" id="PRIVATE_SECTOR_TRADE_WB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2024-10-30T12:39:38" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="2BF736934F71FF4F394D0DA5D2ED806E" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="WB" id="WDI_ECON_POL_DEBT_WB_WB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-05-27T13:14:41" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="6243FD8456D9CD3BA3CABBB9E3DE8451" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="WB" id="WDI_LABOR_SOC_PROTECT_WB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-04-07T18:49:54" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="6342F215FCAB141660EC9F46B68F52CE" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="WB" id="WDI_HEALTH_WB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-04-07T18:49:35" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="9613D0455A9C6EF9133DA9A0AC6F343" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="WB" id="WDI_EDUCATION_WB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-05-27T13:15:10" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="9BFE50228ECAE62ADFEC33482EB6143F" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="WB" id="WDI_FINANCIAL_SECTOR_WB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-05-27T13:15:04" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="A66723FCAE19E363A168B07B29DEED43" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="WB" id="WDI_INFRASTRUCTURE_WB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-04-07T18:52:49" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="AAA15370BF49CD2966E84F280FFDFEE" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="WB" id="WDI_POVERTY_WB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-05-27T13:14:54" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="B650098A2E8DD48DBACD251829D88B52" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="WB" id="WDI_PUBLIC_SECTOR_WB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+		<reg:QueryResult timeSeriesMatch="false">
+			<reg:DataResult>
+				<reg:Registration lastUpdated="2022-05-27T13:14:35" indexReportingPeriod="false" indexDataSet="false" indexAttributes="false" id="B678F85B05D5B5E1B362F7998D2A7F77" indexTimeSeries="true">
+					<reg:ProvisionAgreement>
+						<Ref package="registry" agencyID="WB" id="GCI_WB" version="1.0" class="ProvisionAgreement"/>
+					</reg:ProvisionAgreement>
+					<reg:Datasource>
+						<reg:QueryableDataSource isRESTDatasource="true" isWebServiceDatasource="false">
+							<com:DataURL>https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest</com:DataURL>
+						</reg:QueryableDataSource>
+					</reg:Datasource>
+				</reg:Registration>
+			</reg:DataResult>
+		</reg:QueryResult>
+	</mes:QueryRegistrationResponse>
+</mes:RegistryInterface>

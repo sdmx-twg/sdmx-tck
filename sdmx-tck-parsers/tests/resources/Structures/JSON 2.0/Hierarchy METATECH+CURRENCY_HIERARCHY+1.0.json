@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "id": "IREF443125",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-07-02T08:18:31Z",
+    "contentLanguages": [
+      "en"
+    ],
+    "sender": {
+      "id": "MT"
+    }
+  },
+  "data": {
+    "hierarchies": [
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "hierarchy",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.codelist.Hierarchy=METATECH:CURRENCY_HIERARCHY(1.0)"
+          }
+        ],
+        "id": "CURRENCY_HIERARCHY",
+        "name": "Currency",
+        "names": {
+          "en": "Currency"
+        },
+        "version": "1.0",
+        "agencyID": "METATECH",
+        "isExternalReference": false,
+        "isFinal": false,
+        "hasFormalLevels": false,
+        "hierarchicalCodes": [
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "hierarchicalcode",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.codelist.HierarchicalCode=METATECH:CURRENCY_HIERARCHY(1.0)._T"
+              }
+            ],
+            "id": "_T",
+            "code": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0)._T",
+            "hierarchicalCodes": [
+              {
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "hierarchicalcode",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.codelist.HierarchicalCode=METATECH:CURRENCY_HIERARCHY(1.0)._T.AED"
+                  }
+                ],
+                "id": "AED",
+                "code": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0).AED"
+              },
+              {
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "hierarchicalcode",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.codelist.HierarchicalCode=METATECH:CURRENCY_HIERARCHY(1.0)._T.AFN"
+                  }
+                ],
+                "id": "AFN",
+                "code": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0).AFN"
+              },
+              {
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "hierarchicalcode",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.codelist.HierarchicalCode=METATECH:CURRENCY_HIERARCHY(1.0)._T.ANG"
+                  }
+                ],
+                "id": "ANG",
+                "code": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0).ANG"
+              },
+              {
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "hierarchicalcode",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.codelist.HierarchicalCode=METATECH:CURRENCY_HIERARCHY(1.0)._T.AFA"
+                  }
+                ],
+                "id": "AFA",
+                "code": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0).AFA"
+              },
+              {
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "hierarchicalcode",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.codelist.HierarchicalCode=METATECH:CURRENCY_HIERARCHY(1.0)._T.ALL"
+                  }
+                ],
+                "id": "ALL",
+                "code": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0).ALL"
+              },
+              {
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "hierarchicalcode",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.codelist.HierarchicalCode=METATECH:CURRENCY_HIERARCHY(1.0)._T.AMD"
+                  }
+                ],
+                "id": "AMD",
+                "code": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0).AMD"
+              },
+              {
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "hierarchicalcode",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.codelist.HierarchicalCode=METATECH:CURRENCY_HIERARCHY(1.0)._T.AOA"
+                  }
+                ],
+                "id": "AOA",
+                "code": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0).AOA"
+              },
+              {
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "hierarchicalcode",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.codelist.HierarchicalCode=METATECH:CURRENCY_HIERARCHY(1.0)._T.AOR"
+                  }
+                ],
+                "id": "AOR",
+                "code": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0).AOR"
+              },
+              {
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "hierarchicalcode",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.codelist.HierarchicalCode=METATECH:CURRENCY_HIERARCHY(1.0)._T.AON"
+                  }
+                ],
+                "id": "AON",
+                "code": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0).AON"
+              },
+              {
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "hierarchicalcode",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.codelist.HierarchicalCode=METATECH:CURRENCY_HIERARCHY(1.0)._T.ARS"
+                  }
+                ],
+                "id": "ARS",
+                "code": "urn:sdmx:org.sdmx.infomodel.codelist.Code=ECB:CL_CURRENCY(1.0).ARS"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,11 +1,12 @@
 class DatasetObject {
 
-    constructor(id,attributes,series,groups,observations){
+    constructor(id,attributes,series,groups,observations, linkedStructureRefs){
         this.id = id;
         this.attributes=attributes;
         this.series = series;
         this.groups = groups;
-        this.observations = observations;     
+        this.observations = observations;
+        this.linkedStructureRefs = linkedStructureRefs;
     }
 
     setId(id){
@@ -37,6 +38,12 @@ class DatasetObject {
     }
     getObservations(){
         return this.observations;
+    }
+    setLinkedStructureRefs(linkedStructureRefs) {
+        this.linkedStructureRefs = linkedStructureRefs;
+    }
+    getLinkedStructureRefs() {
+        return this.linkedStructureRefs;
     }
     timeSeriesViewOfData(){
         return this.getSeries().length > 0 && this.getSeries().every(s=>s.getObservations().length>0) && this.getObservations.length === 0;

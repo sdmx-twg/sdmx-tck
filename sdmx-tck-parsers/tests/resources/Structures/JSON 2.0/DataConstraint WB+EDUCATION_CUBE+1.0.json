@@ -1,0 +1,1103 @@
+{
+  "meta": {
+    "id": "IREF837427",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-07-01T15:29:05Z",
+    "contentLanguages": [
+      "en"
+    ],
+    "sender": {
+      "id": "MT"
+    }
+  },
+  "data": {
+    "dataConstraints": [
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "dataconstraint",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:EXR(1.0)"
+          }
+        ],
+        "id": "EXR",
+        "name": "EXR",
+        "names": {
+          "en": "EXR"
+        },
+        "version": "1.0",
+        "agencyID": "ECB",
+        "isExternalReference": false,
+        "isFinal": false,
+        "role": "Allowed",
+        "constraintAttachment": {
+          "dataflows": [
+            "urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)"
+          ]
+        },
+        "cubeRegions": [
+          {
+            "include": true,
+            "keyValues": [
+              {
+                "id": "FREQ",
+                "values": [
+                  {
+                    "value": "A"
+                  },
+                  {
+                    "value": "D"
+                  },
+                  {
+                    "value": "M"
+                  },
+                  {
+                    "value": "Q"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "dataconstraint",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=WB:BRA(1.0)"
+          }
+        ],
+        "id": "BRA",
+        "name": "Brazil",
+        "names": {
+          "en": "Brazil"
+        },
+        "version": "1.0",
+        "agencyID": "WB",
+        "isExternalReference": false,
+        "isFinal": false,
+        "role": "Allowed",
+        "constraintAttachment": {
+          "provisionAgreements": [
+            "urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=WB:WDI_EDUCATION_BRAZIL_CO_BRAZIL_CO(1.0)"
+          ]
+        },
+        "cubeRegions": [
+          {
+            "include": true,
+            "keyValues": [
+              {
+                "id": "REF_AREA",
+                "values": [
+                  {
+                    "value": "BRA"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "dataconstraint",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=WB:DEMO_SERIES(1.0)"
+          }
+        ],
+        "id": "DEMO_SERIES",
+        "name": "DEMO_SERIES",
+        "names": {
+          "en": "DEMO_SERIES"
+        },
+        "version": "1.0",
+        "agencyID": "WB",
+        "isExternalReference": false,
+        "isFinal": false,
+        "role": "Allowed",
+        "constraintAttachment": {
+          "dataStructures": [
+            "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=WB:WDI(1.0)"
+          ]
+        },
+        "dataKeySets": [
+          {
+            "isIncluded": true,
+            "keys": [
+              {
+                "keyValues": [
+                  {
+                    "id": "FREQ",
+                    "value": "A"
+                  }
+                ],
+                "components": [
+                  {
+                    "id": "FREQ",
+                    "values": [
+                      {
+                        "value": "A"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "dataconstraint",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=WB:EDUCATION_CUBE(1.0)"
+          }
+        ],
+        "id": "EDUCATION_CUBE",
+        "name": "Constraining Education",
+        "names": {
+          "en": "Constraining Education"
+        },
+        "description": "Constraint built from dataset constraining the Dataflow Education (urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=WB:WDI_EDUCATION(1.0))",
+        "descriptions": {
+          "en": "Constraint built from dataset constraining the Dataflow Education (urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=WB:WDI_EDUCATION(1.0))"
+        },
+        "version": "1.0",
+        "agencyID": "WB",
+        "isExternalReference": false,
+        "isFinal": false,
+        "role": "Allowed",
+        "constraintAttachment": {
+          "dataflows": [
+            "urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=WB:WDI_EDUCATION(1.0)"
+          ]
+        },
+        "cubeRegions": [
+          {
+            "include": true,
+            "keyValues": [
+              {
+                "id": "REF_AREA",
+                "values": [
+                  {
+                    "value": "ABW"
+                  },
+                  {
+                    "value": "ADO"
+                  },
+                  {
+                    "value": "AFG"
+                  },
+                  {
+                    "value": "AGO"
+                  },
+                  {
+                    "value": "ALB"
+                  },
+                  {
+                    "value": "ARE"
+                  },
+                  {
+                    "value": "ARG"
+                  },
+                  {
+                    "value": "ARM"
+                  },
+                  {
+                    "value": "ASM"
+                  },
+                  {
+                    "value": "ATG"
+                  },
+                  {
+                    "value": "AUS"
+                  },
+                  {
+                    "value": "AUT"
+                  },
+                  {
+                    "value": "AZE"
+                  },
+                  {
+                    "value": "BDI"
+                  },
+                  {
+                    "value": "BEL"
+                  },
+                  {
+                    "value": "BEN"
+                  },
+                  {
+                    "value": "BFA"
+                  },
+                  {
+                    "value": "BGD"
+                  },
+                  {
+                    "value": "BGR"
+                  },
+                  {
+                    "value": "BHR"
+                  },
+                  {
+                    "value": "BHS"
+                  },
+                  {
+                    "value": "BIH"
+                  },
+                  {
+                    "value": "BLR"
+                  },
+                  {
+                    "value": "BLZ"
+                  },
+                  {
+                    "value": "BMU"
+                  },
+                  {
+                    "value": "BOL"
+                  },
+                  {
+                    "value": "BRA"
+                  },
+                  {
+                    "value": "BRB"
+                  },
+                  {
+                    "value": "BRN"
+                  },
+                  {
+                    "value": "BTN"
+                  },
+                  {
+                    "value": "BWA"
+                  },
+                  {
+                    "value": "CAF"
+                  },
+                  {
+                    "value": "CAN"
+                  },
+                  {
+                    "value": "CHE"
+                  },
+                  {
+                    "value": "CHL"
+                  },
+                  {
+                    "value": "CHN"
+                  },
+                  {
+                    "value": "CIV"
+                  },
+                  {
+                    "value": "CMR"
+                  },
+                  {
+                    "value": "COG"
+                  },
+                  {
+                    "value": "COL"
+                  },
+                  {
+                    "value": "COM"
+                  },
+                  {
+                    "value": "CPV"
+                  },
+                  {
+                    "value": "CRI"
+                  },
+                  {
+                    "value": "CUB"
+                  },
+                  {
+                    "value": "CYM"
+                  },
+                  {
+                    "value": "CYP"
+                  },
+                  {
+                    "value": "CZE"
+                  },
+                  {
+                    "value": "DEU"
+                  },
+                  {
+                    "value": "DJI"
+                  },
+                  {
+                    "value": "DMA"
+                  },
+                  {
+                    "value": "DNK"
+                  },
+                  {
+                    "value": "DOM"
+                  },
+                  {
+                    "value": "DZA"
+                  },
+                  {
+                    "value": "ECU"
+                  },
+                  {
+                    "value": "EGY"
+                  },
+                  {
+                    "value": "ERI"
+                  },
+                  {
+                    "value": "ESP"
+                  },
+                  {
+                    "value": "EST"
+                  },
+                  {
+                    "value": "ETH"
+                  },
+                  {
+                    "value": "FIN"
+                  },
+                  {
+                    "value": "FJI"
+                  },
+                  {
+                    "value": "FRA"
+                  },
+                  {
+                    "value": "FRO"
+                  },
+                  {
+                    "value": "FSM"
+                  },
+                  {
+                    "value": "GAB"
+                  },
+                  {
+                    "value": "GBR"
+                  },
+                  {
+                    "value": "GEO"
+                  },
+                  {
+                    "value": "GHA"
+                  },
+                  {
+                    "value": "GIN"
+                  },
+                  {
+                    "value": "GMB"
+                  },
+                  {
+                    "value": "GNB"
+                  },
+                  {
+                    "value": "GNQ"
+                  },
+                  {
+                    "value": "GRC"
+                  },
+                  {
+                    "value": "GRD"
+                  },
+                  {
+                    "value": "GTM"
+                  },
+                  {
+                    "value": "GUM"
+                  },
+                  {
+                    "value": "GUY"
+                  },
+                  {
+                    "value": "HKG"
+                  },
+                  {
+                    "value": "HND"
+                  },
+                  {
+                    "value": "HRV"
+                  },
+                  {
+                    "value": "HTI"
+                  },
+                  {
+                    "value": "HUN"
+                  },
+                  {
+                    "value": "IDN"
+                  },
+                  {
+                    "value": "IND"
+                  },
+                  {
+                    "value": "IRL"
+                  },
+                  {
+                    "value": "IRN"
+                  },
+                  {
+                    "value": "IRQ"
+                  },
+                  {
+                    "value": "ISL"
+                  },
+                  {
+                    "value": "ISR"
+                  },
+                  {
+                    "value": "ITA"
+                  },
+                  {
+                    "value": "JAM"
+                  },
+                  {
+                    "value": "JOR"
+                  },
+                  {
+                    "value": "JPN"
+                  },
+                  {
+                    "value": "KAZ"
+                  },
+                  {
+                    "value": "KEN"
+                  },
+                  {
+                    "value": "KGZ"
+                  },
+                  {
+                    "value": "KHM"
+                  },
+                  {
+                    "value": "KIR"
+                  },
+                  {
+                    "value": "KNA"
+                  },
+                  {
+                    "value": "KOR"
+                  },
+                  {
+                    "value": "KWT"
+                  },
+                  {
+                    "value": "LAO"
+                  },
+                  {
+                    "value": "LBN"
+                  },
+                  {
+                    "value": "LBR"
+                  },
+                  {
+                    "value": "LBY"
+                  },
+                  {
+                    "value": "LCA"
+                  },
+                  {
+                    "value": "LIE"
+                  },
+                  {
+                    "value": "LKA"
+                  },
+                  {
+                    "value": "LSO"
+                  },
+                  {
+                    "value": "LTU"
+                  },
+                  {
+                    "value": "LUX"
+                  },
+                  {
+                    "value": "LVA"
+                  },
+                  {
+                    "value": "MAC"
+                  },
+                  {
+                    "value": "MAR"
+                  },
+                  {
+                    "value": "MCO"
+                  },
+                  {
+                    "value": "MDA"
+                  },
+                  {
+                    "value": "MDG"
+                  },
+                  {
+                    "value": "MDV"
+                  },
+                  {
+                    "value": "MEX"
+                  },
+                  {
+                    "value": "MHL"
+                  },
+                  {
+                    "value": "MKD"
+                  },
+                  {
+                    "value": "MLI"
+                  },
+                  {
+                    "value": "MLT"
+                  },
+                  {
+                    "value": "MMR"
+                  },
+                  {
+                    "value": "MNE"
+                  },
+                  {
+                    "value": "MNG"
+                  },
+                  {
+                    "value": "MOZ"
+                  },
+                  {
+                    "value": "MRT"
+                  },
+                  {
+                    "value": "MUS"
+                  },
+                  {
+                    "value": "MWI"
+                  },
+                  {
+                    "value": "MYS"
+                  },
+                  {
+                    "value": "NAM"
+                  },
+                  {
+                    "value": "NCL"
+                  },
+                  {
+                    "value": "NER"
+                  },
+                  {
+                    "value": "NGA"
+                  },
+                  {
+                    "value": "NIC"
+                  },
+                  {
+                    "value": "NLD"
+                  },
+                  {
+                    "value": "NOR"
+                  },
+                  {
+                    "value": "NPL"
+                  },
+                  {
+                    "value": "NZL"
+                  },
+                  {
+                    "value": "OMN"
+                  },
+                  {
+                    "value": "PAK"
+                  },
+                  {
+                    "value": "PAN"
+                  },
+                  {
+                    "value": "PER"
+                  },
+                  {
+                    "value": "PHL"
+                  },
+                  {
+                    "value": "PLW"
+                  },
+                  {
+                    "value": "PNG"
+                  },
+                  {
+                    "value": "POL"
+                  },
+                  {
+                    "value": "PRI"
+                  },
+                  {
+                    "value": "PRK"
+                  },
+                  {
+                    "value": "PRT"
+                  },
+                  {
+                    "value": "PRY"
+                  },
+                  {
+                    "value": "PYF"
+                  },
+                  {
+                    "value": "QAT"
+                  },
+                  {
+                    "value": "ROM"
+                  },
+                  {
+                    "value": "RUS"
+                  },
+                  {
+                    "value": "RWA"
+                  },
+                  {
+                    "value": "SAU"
+                  },
+                  {
+                    "value": "SDN"
+                  },
+                  {
+                    "value": "SEN"
+                  },
+                  {
+                    "value": "SGP"
+                  },
+                  {
+                    "value": "SLB"
+                  },
+                  {
+                    "value": "SLE"
+                  },
+                  {
+                    "value": "SLV"
+                  },
+                  {
+                    "value": "SMR"
+                  },
+                  {
+                    "value": "SOM"
+                  },
+                  {
+                    "value": "SRB"
+                  },
+                  {
+                    "value": "STP"
+                  },
+                  {
+                    "value": "SUR"
+                  },
+                  {
+                    "value": "SVK"
+                  },
+                  {
+                    "value": "SVN"
+                  },
+                  {
+                    "value": "SWE"
+                  },
+                  {
+                    "value": "SWZ"
+                  },
+                  {
+                    "value": "SYC"
+                  },
+                  {
+                    "value": "SYR"
+                  },
+                  {
+                    "value": "TCA"
+                  },
+                  {
+                    "value": "TCD"
+                  },
+                  {
+                    "value": "TGO"
+                  },
+                  {
+                    "value": "THA"
+                  },
+                  {
+                    "value": "TJK"
+                  },
+                  {
+                    "value": "TKM"
+                  },
+                  {
+                    "value": "TMP"
+                  },
+                  {
+                    "value": "TON"
+                  },
+                  {
+                    "value": "TTO"
+                  },
+                  {
+                    "value": "TUN"
+                  },
+                  {
+                    "value": "TUR"
+                  },
+                  {
+                    "value": "TUV"
+                  },
+                  {
+                    "value": "TZA"
+                  },
+                  {
+                    "value": "UGA"
+                  },
+                  {
+                    "value": "UKR"
+                  },
+                  {
+                    "value": "URY"
+                  },
+                  {
+                    "value": "USA"
+                  },
+                  {
+                    "value": "UZB"
+                  },
+                  {
+                    "value": "VCT"
+                  },
+                  {
+                    "value": "VEN"
+                  },
+                  {
+                    "value": "VIR"
+                  },
+                  {
+                    "value": "VNM"
+                  },
+                  {
+                    "value": "VUT"
+                  },
+                  {
+                    "value": "WBG"
+                  },
+                  {
+                    "value": "WSM"
+                  },
+                  {
+                    "value": "YEM"
+                  },
+                  {
+                    "value": "ZAF"
+                  },
+                  {
+                    "value": "ZAR"
+                  },
+                  {
+                    "value": "ZMB"
+                  },
+                  {
+                    "value": "ZWE"
+                  }
+                ]
+              },
+              {
+                "id": "SERIES",
+                "values": [
+                  {
+                    "value": "SE_ADT_1524_LT_FE_ZS"
+                  },
+                  {
+                    "value": "SE_ADT_1524_LT_FM_ZS"
+                  },
+                  {
+                    "value": "SE_ADT_1524_LT_MA_ZS"
+                  },
+                  {
+                    "value": "SE_ADT_1524_LT_ZS"
+                  },
+                  {
+                    "value": "SE_ADT_LITR_FE_ZS"
+                  },
+                  {
+                    "value": "SE_ADT_LITR_MA_ZS"
+                  },
+                  {
+                    "value": "SE_ADT_LITR_ZS"
+                  },
+                  {
+                    "value": "SE_ENR_PRIM_FM_ZS"
+                  },
+                  {
+                    "value": "SE_ENR_PRSC_FM_ZS"
+                  },
+                  {
+                    "value": "SE_ENR_SECO_FM_ZS"
+                  },
+                  {
+                    "value": "SE_ENR_TERT_FM_ZS"
+                  },
+                  {
+                    "value": "SE_PRE_ENRR"
+                  },
+                  {
+                    "value": "SE_PRE_ENRR_FE"
+                  },
+                  {
+                    "value": "SE_PRE_ENRR_MA"
+                  },
+                  {
+                    "value": "SE_PRM_AGES"
+                  },
+                  {
+                    "value": "SE_PRM_CMPT_FE_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_CMPT_MA_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_CMPT_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_DURS"
+                  },
+                  {
+                    "value": "SE_PRM_ENRL"
+                  },
+                  {
+                    "value": "SE_PRM_ENRL_FE_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_ENRL_TC_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_ENRR"
+                  },
+                  {
+                    "value": "SE_PRM_ENRR_FE"
+                  },
+                  {
+                    "value": "SE_PRM_ENRR_MA"
+                  },
+                  {
+                    "value": "SE_PRM_GINT_FE_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_GINT_MA_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_GINT_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_NENR"
+                  },
+                  {
+                    "value": "SE_PRM_NENR_FE"
+                  },
+                  {
+                    "value": "SE_PRM_NENR_MA"
+                  },
+                  {
+                    "value": "SE_PRM_NINT_FE_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_NINT_MA_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_NINT_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_PRIV_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_PRS5_FE_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_PRS5_MA_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_PRS5_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_PRSL_FE_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_PRSL_MA_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_PRSL_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_REPT_FE_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_REPT_MA_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_REPT_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_TCAQ_FE_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_TCAQ_MA_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_TCAQ_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_TCHR"
+                  },
+                  {
+                    "value": "SE_PRM_TCHR_FE_ZS"
+                  },
+                  {
+                    "value": "SE_PRM_TENR"
+                  },
+                  {
+                    "value": "SE_PRM_TENR_FE"
+                  },
+                  {
+                    "value": "SE_PRM_TENR_MA"
+                  },
+                  {
+                    "value": "SE_PRM_UNER"
+                  },
+                  {
+                    "value": "SE_PRM_UNER_FE"
+                  },
+                  {
+                    "value": "SE_PRM_UNER_MA"
+                  },
+                  {
+                    "value": "SE_SEC_AGES"
+                  },
+                  {
+                    "value": "SE_SEC_DURS"
+                  },
+                  {
+                    "value": "SE_SEC_ENRL"
+                  },
+                  {
+                    "value": "SE_SEC_ENRL_FE_ZS"
+                  },
+                  {
+                    "value": "SE_SEC_ENRL_GC"
+                  },
+                  {
+                    "value": "SE_SEC_ENRL_GC_FE_ZS"
+                  },
+                  {
+                    "value": "SE_SEC_ENRL_TC_ZS"
+                  },
+                  {
+                    "value": "SE_SEC_ENRL_VO"
+                  },
+                  {
+                    "value": "SE_SEC_ENRL_VO_FE_ZS"
+                  },
+                  {
+                    "value": "SE_SEC_ENRR"
+                  },
+                  {
+                    "value": "SE_SEC_ENRR_FE"
+                  },
+                  {
+                    "value": "SE_SEC_ENRR_MA"
+                  },
+                  {
+                    "value": "SE_SEC_NENR"
+                  },
+                  {
+                    "value": "SE_SEC_NENR_FE"
+                  },
+                  {
+                    "value": "SE_SEC_NENR_MA"
+                  },
+                  {
+                    "value": "SE_SEC_PRIV_ZS"
+                  },
+                  {
+                    "value": "SE_SEC_PROG_FE_ZS"
+                  },
+                  {
+                    "value": "SE_SEC_PROG_MA_ZS"
+                  },
+                  {
+                    "value": "SE_SEC_PROG_ZS"
+                  },
+                  {
+                    "value": "SE_SEC_REPT_FE_ZS"
+                  },
+                  {
+                    "value": "SE_SEC_REPT_MA_ZS"
+                  },
+                  {
+                    "value": "SE_SEC_REPT_ZS"
+                  },
+                  {
+                    "value": "SE_SEC_TCHR"
+                  },
+                  {
+                    "value": "SE_SEC_TCHR_FE"
+                  },
+                  {
+                    "value": "SE_SEC_TCHR_FE_ZS"
+                  },
+                  {
+                    "value": "SE_TER_ENRR"
+                  },
+                  {
+                    "value": "SE_TER_ENRR_FE"
+                  },
+                  {
+                    "value": "SE_TER_ENRR_MA"
+                  },
+                  {
+                    "value": "SE_TER_TCHR_FE_ZS"
+                  },
+                  {
+                    "value": "SE_XPD_PRIM_PC_ZS"
+                  },
+                  {
+                    "value": "SE_XPD_SECO_PC_ZS"
+                  },
+                  {
+                    "value": "SE_XPD_TERT_PC_ZS"
+                  },
+                  {
+                    "value": "SE_XPD_TOTL_GB_ZS"
+                  },
+                  {
+                    "value": "SE_XPD_TOTL_GD_ZS"
+                  }
+                ]
+              },
+              {
+                "id": "FREQ",
+                "values": [
+                  {
+                    "value": "A"
+                  }
+                ]
+              }
+            ],
+            "components": [
+              {
+                "id": "UNIT_MULT",
+                "values": [
+                  {
+                    "value": "0"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

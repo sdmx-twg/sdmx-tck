@@ -10,12 +10,14 @@ var js2xmlparser = require("js2xmlparser");
 class SdmxReporter {
 
     //Initiation of reporting module
-    static init(endpoint,apiVersion,swVersion,scores){
+    static init(endpoint, apiVersion, format, requestMode, swVersion, scores) {
         
         this.reportObj = new Report();
-        
+
         this.reportObj.setEndpoint(endpoint)
         this.reportObj.setApiVersion(apiVersion)
+        this.reportObj.setFormat(format);
+        this.reportObj.setRequestMode(requestMode);
         this.reportObj.setSwVersion(swVersion)
         this.reportObj.setCompliance(scores.complianceScore);
         this.reportObj.setCoverage(scores.coverageScore)
@@ -35,19 +37,19 @@ class SdmxReporter {
     }
 
     //Publish a report
-    static async  publishReport(format){
-        if(!Utils.isDefined(format)){
+    static async  publishReport(reportFormat){
+        if(!Utils.isDefined(reportFormat)){
             throw new Error("Missing Mandatory parameter 'format' ");
         }
-        if(!EXPORT_FORMATS.isValidFormat(format)){
+        if(!EXPORT_FORMATS.isValidFormat(reportFormat)){
             throw new Error("Unsupported format for TCK report ");
         }
         let report;
-        if(format === EXPORT_FORMATS.JSON){
+        if(reportFormat === EXPORT_FORMATS.JSON){
             report = this._createJSONReport();
-        }else if(format === EXPORT_FORMATS.EXCEL){
+        }else if(reportFormat === EXPORT_FORMATS.EXCEL){
             report = await this._createExcelReport();
-        }else if(format === EXPORT_FORMATS.XML){
+        }else if(reportFormat === EXPORT_FORMATS.XML){
             report = this._createXMLReport();
         }
         
@@ -60,6 +62,7 @@ class SdmxReporter {
             Information:{
                 SoftwareVersion:this.reportObj.getSwVersion(),
                 ApiVersion:this.reportObj.getApiVersion(),
+                Format:this.reportObj.getFormat(),
                 ServiceTested:this.reportObj.getEndpoint(),
                 ReportCreationDate:new Date().toString()
             },
@@ -83,7 +86,7 @@ class SdmxReporter {
         const infoWorksheet = workbook.addWorksheet("Information");   
         const worksheet = workbook.addWorksheet("SDMX-TCK-Report"); 
         const generalInfoRowIndex = 1;
-        const tckResultsRowIndex = 7;
+        const tckResultsRowIndex = 8;
 
         //Data sheet columns
         worksheet.columns = [    
@@ -113,6 +116,7 @@ class SdmxReporter {
             ["General Information"],
             ["Software Information",this.reportObj.getSwVersion()],
             ["Api Version",this.reportObj.getApiVersion()],
+            ["Format", this.reportObj.getFormat()],
             ["ServiceTested",this.reportObj.getEndpoint()],
             ["Report Creation Date",new Date().toString()],
         ];
@@ -177,6 +181,7 @@ class SdmxReporter {
                 Information:{
                     SoftwareVersion:this.reportObj.getSwVersion(),
                     ApiVersion:this.reportObj.getApiVersion(),
+                    Format:this.reportObj.getFormat(),
                     ServiceTested:this.reportObj.getEndpoint(),
                     ReportCreationDate:new Date().toString()
                 },

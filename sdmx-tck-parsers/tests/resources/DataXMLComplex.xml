@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<message:StructureSpecificData xmlns:ss="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/structurespecific" xmlns:footer="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message/footer" xmlns:ns1="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://registry.sdmx.org/schemas/v2_1/SDMXMessage.xsd urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD https://demo.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest/schema/dataflow/ECB/EXR/1.0?format=sdmx-2.1">
+	<message:Header>
+		<message:ID>IREF349492</message:ID>
+		<message:Test>false</message:Test>
+		<message:Prepared>2020-11-30T11:15:41Z</message:Prepared>
+		<message:Sender id="Unknown"/>
+		<message:Receiver id="ANONYMOUS"/>
+		<message:Structure structureID="EXAMPLE_DRAFT" namespace="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD" dimensionAtObservation="TIME_PERIOD">
+			<common:StructureUsage>
+				<Ref agencyID="ECB" id="EXR" version="1.0"/>
+			</common:StructureUsage>
+		</message:Structure>
+		<message:DataSetAction>Information</message:DataSetAction>
+		<message:Extracted>2020-11-30T11:15:41</message:Extracted>
+		<message:ReportingBegin>1980-01-01T00:00:00</message:ReportingBegin>
+		<message:ReportingEnd>2020-01-10T00:00:00</message:ReportingEnd>
+	</message:Header>
+	<message:DataSet xsi:type="ns1:DataSetType" ss:structureRef="EXAMPLE_DRAFT">
+		<Series FREQ="A" CURRENCY="CAD" TIME_FORMAT="P1Y">
+			<Comp id="XXX" xsi:type="ns1:ObsStatusCompType">
+					<Value>X1</Value>
+					<Value>X2</Value>
+			</Comp>
+			<Comp id="ZZZ" xsi:type="ns1:ObsStatusCompType">
+					<Value>Z1</Value>
+					<Value>Z2</Value>
+			</Comp>
+			<Comp id="VVV" xsi:type="ns1:ObsStatusCompType">
+				<Value>
+					<common:Text xml:lang="en">a comment in English</common:Text>
+					<common:Text xml:lang="de">ein Kommentar auf Deutsch</common:Text>
+				</Value>
+			</Comp>
+			<!-- Measures OBS_VALUE and MEASURE1 because they are single simple value they appear under <Obs>-->
+			<Obs TIME_PERIOD="1999" OBS_VALUE="1.583993822393823" MEASURE1="123.456">
+				<!-- MEASURE2 expects array value with 2 items -->
+				<Comp id="MEASURE2" xsi:type="ns1:MEASURE2Type">
+					<Value>2.3</Value>
+					<Value>NaN</Value>
+				</Comp>
+				<!-- OBS_STATUS expects array value with 1 to 4 items -->
+				<Comp id="OBS_STATUS" xsi:type="ns1:ObsStatusCompType">
+					<Value>A</Value>
+					<Value>N</Value>
+					<Value>L</Value>
+					<Value>D</Value>
+				</Comp>
+				<!-- OBS_COM expects a single multi-lingual value -->
+				<Comp id="OBS_COM" xsi:type="ns1:OBS_COMType">
+					<Value>
+						<common:Text xml:lang="en">a comment in English</common:Text>
+						<common:Text xml:lang="de">ein Kommentar auf Deutsch</common:Text>
+					</Value>
+				</Comp>
+			</Obs>
+			<Obs TIME_PERIOD="2000" OBS_VALUE="1.37058431372549" MEASURE1="13.456">
+				<Comp id="OBS_STATUS" xsi:type="ns1:ObsStatusCompType">
+					<Value>N</Value>
+					<Value>L</Value>
+					<Value>S</Value>
+				</Comp>
+				<Comp id="MEASURE2" xsi:type="ns1:MEASURE2Type">
+					<Value>30000</Value>
+					<Value>INF</Value>
+				</Comp>
+			</Obs>
+			<!-- OBS_PRE_BREAK is using the Sentinel value -->
+			<Obs TIME_PERIOD="2001" OBS_VALUE="NaN" MEASURE1="34.56" OBS_PRE_BREAK="-1">
+				<Comp id="OBS_STATUS" xsi:type="ns1:ObsStatusCompType">
+					<Value>M</Value>
+					<Value>L</Value>
+				</Comp>
+				<Comp id="MEASURE2" xsi:type="ns1:MEASURE2Type">
+					<Value>30000</Value>
+					<Value>22.3434353</Value>
+				</Comp>
+			</Obs>
+		</Series>
+	</message:DataSet>
+</message:StructureSpecificData>
