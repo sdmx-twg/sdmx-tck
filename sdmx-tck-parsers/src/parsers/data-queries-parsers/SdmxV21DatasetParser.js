@@ -5,9 +5,10 @@ var SeriesObject = require('sdmx-tck-api').model.SeriesObject;
 var GroupObject = require('sdmx-tck-api').model.GroupObject;
 var ObservationObject = require('sdmx-tck-api').model.ObservationObject;
 var DatasetObject = require('sdmx-tck-api').model.DatasetObject;
+var UrnUtil = require('sdmx-tck-api').utils.UrnUtil;
 
 class SdmxV21DatasetParser {
-    static getDataset(dataset){
+    static getDataset(dataset, header){
         let datasetId;
         let attributes = {};
         let seriesArray = [];
@@ -49,8 +50,22 @@ class SdmxV21DatasetParser {
                     );
             }
         }
+        const linkedStructuresRefs = this._parseLinkedStructures(datasetId, header);
+        return new DatasetObject(datasetId, attributes, seriesArray, groupsArray, obsArray, linkedStructuresRefs);
+    }
 
-        return new DatasetObject(datasetId,attributes,seriesArray,groupsArray,obsArray)
+    static _parseLinkedStructures (structureRefId, header) {
+        let linkedStructures = [];
+        for (let structure of header.Structure) {
+            if (structure.$.structureID ===  structureRefId) {
+                let structureID; 
+                if (structure.$.namespace) {
+                    structureID = UrnUtil.getStructureIdentityRef(structure.$.namespace);
+                }
+                linkedStructures.push(structureID);
+            }
+        }
+        return linkedStructures;
     }
    
 }

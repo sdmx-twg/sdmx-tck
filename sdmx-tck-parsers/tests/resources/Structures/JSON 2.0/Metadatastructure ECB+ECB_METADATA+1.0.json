@@ -1,0 +1,584 @@
+{
+  "meta": {
+    "id": "IREF645047",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-07-01T10:08:24Z",
+    "contentLanguages": [
+      "en"
+    ],
+    "sender": {
+      "id": "MT"
+    }
+  },
+  "data": {
+    "metadataStructures": [
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "metadatastructure",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataStructure=ECB:ECB_METADATA(1.0)"
+          }
+        ],
+        "id": "ECB_METADATA",
+        "name": "ECB Metadata",
+        "names": {
+          "en": "ECB Metadata"
+        },
+        "description": "Example from here:\nhttps://sdw.ecb.europa.eu/browseExplanation.do?node=1495",
+        "descriptions": {
+          "en": "Example from here:\nhttps://sdw.ecb.europa.eu/browseExplanation.do?node=1495"
+        },
+        "version": "1.0",
+        "agencyID": "ECB",
+        "isExternalReference": false,
+        "isFinal": false,
+        "metadataStructureComponents": {
+          "metadataAttributeList": {
+            "id": "MetadataAttributeDescriptor",
+            "metadataAttributes": [
+              {
+                "isPresentational": true,
+                "minOccurs": 1,
+                "maxOccurs": 1,
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "metadataattribute",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).ADMINISTRATIVE"
+                  }
+                ],
+                "id": "ADMINISTRATIVE",
+                "localRepresentation": {
+                  
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).ADMINISTRATIVE",
+                "metadataAttributes": [
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).ADMINISTRATIVE.DATA_SOURCE"
+                      }
+                    ],
+                    "id": "DATA_SOURCE",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).DATA_SOURCE"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).ADMINISTRATIVE.CONTACT_EMAIL"
+                      }
+                    ],
+                    "id": "CONTACT_EMAIL",
+                    "localRepresentation": {
+                      "textFormat": {
+                        "isMultiLingual": false,
+                        "textType": "XHTML"
+                      }
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).CONTACT_EMAIL"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).ADMINISTRATIVE.CONTACT_ORG"
+                      }
+                    ],
+                    "id": "CONTACT_ORG",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).CONTACT_ORG"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).ADMINISTRATIVE.CONTACT_ORG_LIST"
+                      }
+                    ],
+                    "id": "CONTACT_ORG_LIST",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).CONTACT_ORG_LIST"
+                  }
+                ]
+              },
+              {
+                "isPresentational": true,
+                "minOccurs": 1,
+                "maxOccurs": 1,
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "metadataattribute",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).TECHNICAL"
+                  }
+                ],
+                "id": "TECHNICAL",
+                "localRepresentation": {
+
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).TECHNICAL",
+                "metadataAttributes": [
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 0,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).TECHNICAL.LAST_UPDATED"
+                      }
+                    ],
+                    "id": "LAST_UPDATED",
+                    "localRepresentation": {
+                      "textFormat": {
+                        "isSequence": false,
+                        "textType": "DateTime"
+                      }
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).LAST_UPDATED"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).TECHNICAL.CATALOG"
+                      }
+                    ],
+                    "id": "CATALOG",
+                    "localRepresentation": {
+                      "textFormat": {
+                        "isMultiLingual": false,
+                        "textType": "XHTML"
+                      }
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).CATALOG"
+                  }
+                ]
+              },
+              {
+                "isPresentational": true,
+                "minOccurs": 1,
+                "maxOccurs": 1,
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "metadataattribute",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).SCOPE"
+                  }
+                ],
+                "id": "SCOPE",
+                "localRepresentation": {
+
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).SCOPE",
+                "metadataAttributes": [
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).SCOPE.PRESENTATION_SUMMARY"
+                      }
+                    ],
+                    "id": "PRESENTATION_SUMMARY",
+                    "localRepresentation": {
+                      "textFormat": {
+                        "isMultiLingual": false,
+                        "textType": "XHTML"
+                      }
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).PRESENTATION_SUMMARY"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).SCOPE.PRESENTATION_DETAILED"
+                      }
+                    ],
+                    "id": "PRESENTATION_DETAILED",
+                    "localRepresentation": {
+                      "textFormat": {
+                        "isMultiLingual": false,
+                        "textType": "XHTML"
+                      }
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).PRESENTATION_DETAILED"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 0,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).SCOPE.TIME_COVERAGE"
+                      }
+                    ],
+                    "id": "TIME_COVERAGE",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).TIME_COVERAGE"
+                  }
+                ]
+              },
+              {
+                "isPresentational": true,
+                "minOccurs": 1,
+                "maxOccurs": 1,
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "metadataattribute",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).METHOD"
+                  }
+                ],
+                "id": "METHOD",
+                "localRepresentation": {
+
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).METHOD",
+                "metadataAttributes": [
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 0,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).METHOD.SOURCE"
+                      }
+                    ],
+                    "id": "SOURCE",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).SOURCE"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 0,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).METHOD.TIME_PERIOD"
+                      }
+                    ],
+                    "id": "TIME_PERIOD",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).TIME_PERIOD"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 0,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).METHOD.TIME_PERIOD_COLLECT"
+                      }
+                    ],
+                    "id": "TIME_PERIOD_COLLECT",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).TIME_PERIOD_COLLECT"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 0,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).METHOD.BASE_PERIOD"
+                      }
+                    ],
+                    "id": "BASE_PERIOD",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).BASE_PERIOD"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 0,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).METHOD.BASE_WEIGHT"
+                      }
+                    ],
+                    "id": "BASE_WEIGHT",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).BASE_WEIGHT"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 0,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).METHOD.FREQ_COLL"
+                      }
+                    ],
+                    "id": "FREQ_COLL",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).FREQ_COLL"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 0,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).METHOD.CLASSIFICATION_SYSTEM"
+                      }
+                    ],
+                    "id": "CLASSIFICATION_SYSTEM",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).CLASSIFICATION_SYSTEM"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 0,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).METHOD.CONCEPTS_DEFINITIONS"
+                      }
+                    ],
+                    "id": "CONCEPTS_DEFINITIONS",
+                    "localRepresentation": {
+                      "textFormat": {
+                        "isMultiLingual": false,
+                        "textType": "XHTML"
+                      }
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).CONCEPTS_DEFINITIONS"
+                  }
+                ]
+              },
+              {
+                "isPresentational": true,
+                "minOccurs": 1,
+                "maxOccurs": 1,
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "metadataattribute",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).STAT_PROCESSING"
+                  }
+                ],
+                "id": "STAT_PROCESSING",
+                "localRepresentation": {
+
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).STAT_PROCESSING",
+                "metadataAttributes": [
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).STAT_PROCESSING.ADJ"
+                      }
+                    ],
+                    "id": "ADJ",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).ADJ"
+                  }
+                ]
+              },
+              {
+                "isPresentational": true,
+                "minOccurs": 1,
+                "maxOccurs": 1,
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "metadataattribute",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).DISSEMINATION"
+                  }
+                ],
+                "id": "DISSEMINATION",
+                "localRepresentation": {
+
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).DISSEMINATION",
+                "metadataAttributes": [
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).DISSEMINATION.DISS_FORMAT"
+                      }
+                    ],
+                    "id": "DISS_FORMAT",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).DISS_FORMAT"
+                  },
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 0,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).DISSEMINATION.RELEASE_POLICY"
+                      }
+                    ],
+                    "id": "RELEASE_POLICY",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).RELEASE_POLICY"
+                  }
+                ]
+              },
+              {
+                "isPresentational": true,
+                "minOccurs": 1,
+                "maxOccurs": 1,
+                "links": [
+                  {
+                    "rel": "self",
+                    "type": "metadataattribute",
+                    "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).MISC"
+                  }
+                ],
+                "id": "MISC",
+                "localRepresentation": {
+
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).MISC",
+                "metadataAttributes": [
+                  {
+                    "isPresentational": false,
+                    "minOccurs": 1,
+                    "maxOccurs": 1,
+                    "links": [
+                      {
+                        "rel": "self",
+                        "type": "metadataattribute",
+                        "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                        "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataAttribute=ECB:ECB_METADATA(1.0).MISC.METADATA_LAST_UPDATE"
+                      }
+                    ],
+                    "id": "METADATA_LAST_UPDATE",
+                    "localRepresentation": {
+
+                    },
+                    "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=METATECH:METADATA_CONCEPTS(1.0).METADATA_LAST_UPDATE"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

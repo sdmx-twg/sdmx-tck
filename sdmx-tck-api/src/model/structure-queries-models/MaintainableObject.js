@@ -4,13 +4,9 @@ var StructureDetail = require('../../constants/structure-queries-constants/Struc
 class MaintainableObject {
     constructor(structureType, props, children, detail) {
         this.structureType = structureType;
-        this.agencyId = props.$.agencyID;
-        this.id = props.$.id;
-        this.version = props.$.version;
-        this.urn = props.$.urn;
-        this.isFinal = props.$.isFinal;
-        this.isExternalReference = props.$.isExternalReference;
-        this.structureURL = props.$.structureURL;
+        this.agencyId = props.agencyID;
+        this.id = props.id;
+        this.version = props.version;
         this.children = children;
         this.detail = detail;
     };
@@ -26,6 +22,9 @@ class MaintainableObject {
     getVersion() {
         return this.version;
     };
+    setVersion(val) {
+        this.version = val;
+    };
     getDetail() {
         return this.detail;
     };
@@ -37,18 +36,6 @@ class MaintainableObject {
     };
     isCompleteStub() {
         return this.detail === StructureDetail.CompleteStub;
-    };
-    getUrn() {
-        return this.urn;
-    };
-    getIsFinal() {
-        return this.isFinal;
-    };
-    getIsExternalReference() {
-        return this.isExternalReference;
-    };
-    getStructureURL() {
-        return this.structureURL;
     };
     /**
 	 * Returns a list of structure references, that are children of the objectRef.
@@ -73,10 +60,6 @@ class MaintainableObject {
         str.push("agencyId=" + this.getAgencyId());
         str.push("id=" + this.getId());
         str.push("version=" + this.getVersion());
-        str.push("urn=" + this.getUrn());
-        str.push("isFinal=" + this.getIsFinal());
-        str.push("isExternalReference=" + this.getIsExternalReference());
-        str.push("structureURL=" + this.getStructureURL());
         str.push("children=[" + this.getChildren() + "]")
 
         return str.join(",");

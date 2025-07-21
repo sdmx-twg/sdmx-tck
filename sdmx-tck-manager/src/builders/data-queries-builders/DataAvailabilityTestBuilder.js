@@ -1,33 +1,54 @@
-const DATA_AVAILABILITY_TESTS = require('../../constants/TestConstants.js').DATA_AVAILABILITY_TESTS;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-const STRUCTURES_REST_RESOURCE = require('sdmx-tck-api').constants.STRUCTURES_REST_RESOURCE;
-
+const DATA_CONTEXT = require('sdmx-tck-api').constants.DATA_CONTEXT;
+const API_VERSIONS = require('sdmx-tck-api').constants.API_VERSIONS
+const DATA_AVAILABILITY = require('sdmx-tck-api').constants.DATA_AVAILABILITY;
+const TestUtils = require('sdmx-tck-api').utils.TestUtils;
 var TestObjectBuilder = require("../TestObjectBuilder.js");
 
 class DataAvailabilityTestBuilder {
-    
-    static getDataAvailabilityTests(index,x,apiVersion){
+    static getTests(index, x, apiVersion) {
         let dataAvailablityTests = [];
-        let testObjParams = {};
+        // Data availability queries were instroduced on version 1.3.0 of the REST api.
+        if (API_VERSIONS[apiVersion] >= API_VERSIONS["v1.3.0"]) {
+            let contextList = DATA_CONTEXT.getApplicableValuesList(apiVersion);
+            contextList.forEach(context => {
+                dataAvailablityTests.push(DataAvailabilityTestBuilder.getTestsForContext(index, x, apiVersion, context));
+            });
+        }
+        return dataAvailablityTests;
+    }
 
-        var dataAvailabilityTestsArray = DATA_AVAILABILITY_TESTS(apiVersion);
-        for (let i=0;i<dataAvailabilityTestsArray.length;i++){
-            let test = dataAvailabilityTestsArray[i];
-            
+    static getTestsForContext(index, x, apiVersion, context) {
+        // Create the list of child tests
+        let childTests = [];
+        DATA_AVAILABILITY.getParameters(apiVersion, context).forEach((test) => {
             x.numOfTests = x.numOfTests + 1;
-            testObjParams = {
-                testId: "/availableconstraint" + test.url,
+            let testObjParams = {
+                testId: TestUtils.getDataAvailabilityTestId(apiVersion, context, test.key, test.url),
                 index: index,
                 apiVersion: apiVersion,
-                resource: STRUCTURES_REST_RESOURCE.dataflow,
-                reqTemplate: test.reqTemplate,
+                resource: DATA_CONTEXT.getRestResource(context),
+                reqTemplate: {...test.template },
                 identifiers: { structureType: "", agency: "", id: "", version: "" },
-                requireRandomKey:true,
+                requireRandomKey: true,
                 testType: TEST_TYPE.DATA_AVAILABILITY,
             }
-            dataAvailablityTests.push(TestObjectBuilder.getTestObject(testObjParams));
-        };
-        return dataAvailablityTests;
+            childTests.push(TestObjectBuilder.getTestObject(testObjParams));
+        });
+
+        // Create the parent test
+        x.numOfTests = x.numOfTests + 1;
+        let parentTest = {
+            testId: TestUtils.getDataAvailabilityTestId(apiVersion, context, "AVAILABILITY_PARENT"),
+            index: index,
+            apiVersion: apiVersion,
+            resource: DATA_CONTEXT.getRestResource(context),
+            identifiers: { structureType: "", agency: "", id: "", version: "" },
+            testType: TEST_TYPE.DATA_AVAILABILITY,
+            isParent: true,
+            subTests: childTests
+        }
+        return TestObjectBuilder.getTestObject(parentTest);
     }
 }
 

@@ -1,3 +1,3 @@
-const TCK_VERSION = "3.4.0"
+const TCK_VERSION = "5.2.1"
 
 module.exports.TCK_VERSION = Object.freeze(TCK_VERSION);

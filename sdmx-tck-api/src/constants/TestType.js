@@ -21,7 +21,10 @@ const TEST_TYPE = {
     DATA_FURTHER_DESCRIBING_RESULTS_PARAMETERS:"Data Further Describing Results Parameters",
     DATA_REPRESENTATION_SUPPORT_PARAMETERS:"Data Representation Support Parameters",
     DATA_OTHER_FEATURES:"Data Other Features",
-    DATA_AVAILABILITY:"Data Availability"
+    DATA_AVAILABILITY:"Data Availability",
+
+    //REGISTRY TEST TYPES
+    REGISTRATION_IDENTIFICATION_PARAMETERS: "Registration Identification Parameters"
 };
 
 module.exports.TEST_TYPE = Object.freeze(TEST_TYPE);

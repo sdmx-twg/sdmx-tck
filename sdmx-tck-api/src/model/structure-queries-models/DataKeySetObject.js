@@ -1,9 +1,8 @@
 var isDefined = require('../../utils/Utils').isDefined;
 
 class DataKeySetObject {
-
-    constructor(props,keys) {
-        this.includeType = (props.$ && props.$.isIncluded) ? props.$.isIncluded : "true"
+    constructor(included, keys) {
+        this.includeType = included ? included : "true";
         this.keys = keys;
     };
 

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<message:StructureSpecificData xmlns:ss="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/data/structurespecific" xmlns:footer="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message/footer" xmlns:ns1="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD" xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message https://registry.sdmx.org/schemas/v3_0/SDMXMessage.xsd urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD https://demo11.metadatatechnology.com/FusionRegistry/ws/public/sdmxapi/rest/schema/dataflow/ECB/EXR/1.0?format=sdmx-3.0">
+	<message:Header>
+		<message:ID>IREF631282</message:ID>
+		<message:Test>false</message:Test>
+		<message:Prepared>2025-07-18T18:25:20Z</message:Prepared>
+		<message:Sender id="MT"/>
+		<message:Receiver id="guest"/>
+		<message:Structure structureID="ECB_EXR_1_0" namespace="urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0):ObsLevelDim:TIME_PERIOD" dimensionAtObservation="TIME_PERIOD">
+			<common:StructureUsage>urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)</common:StructureUsage>
+		</message:Structure>
+		<message:DataSetAction>Information</message:DataSetAction>
+		<message:DataSetID>ef72f0b7-7847-4ef7-9ad4-4b0e0e2192e2</message:DataSetID>
+		<message:Extracted>2025-07-18T18:25:20</message:Extracted>
+		<message:ReportingBegin>2025-01-01T00:00:00</message:ReportingBegin>
+		<message:ReportingEnd>2025-03-31T23:59:59</message:ReportingEnd>
+	</message:Header>
+	<message:DataSet xsi:type="ns1:DataSetType" ss:structureRef="ECB_EXR_1_0">
+		<Series FREQ="Q" CURRENCY="USD" CURRENCY_DENOM="EUR" EXR_TYPE="SP00" EXR_SUFFIX="E" COLLECTION="E" UNIT="USD" DECIMALS="4" SOURCE_AGENCY="4F0" TITLE="Euro/US dollar" UNIT_MULT="0" TIME_FORMAT="P3M" TITLE_COMPL="ECB reference exchange rate, Euro/US dollar, 2:15 pm (C.E.T.)">
+			<Obs TIME_PERIOD="2025-Q1" OBS_VALUE="1.0815" OBS_STATUS="A" OBS_CONF="F"/>
+		</Series>
+		<Series FREQ="Q" CURRENCY="USD" CURRENCY_DENOM="EUR" EXR_TYPE="SP00" EXR_SUFFIX="A" COLLECTION="A" UNIT="USD" DECIMALS="4" SOURCE_AGENCY="4F0" TITLE="Euro/US dollar" UNIT_MULT="0" TIME_FORMAT="P3M" TITLE_COMPL="ECB reference exchange rate, Euro/US dollar, 2:15 pm (C.E.T.)">
+			<Obs TIME_PERIOD="2025-Q1" OBS_VALUE="1.0523412698413" OBS_STATUS="A" OBS_CONF="F"/>
+		</Series>
+		<Series FREQ="D" CURRENCY="USD" CURRENCY_DENOM="EUR" EXR_TYPE="SP00" EXR_SUFFIX="A" COLLECTION="A" UNIT="USD" DECIMALS="4" SOURCE_AGENCY="4F0" TITLE="Euro/US dollar" UNIT_MULT="0" TIME_FORMAT="P1D" TITLE_COMPL="ECB reference exchange rate, Euro/US dollar, 2:15 pm (C.E.T.)">
+			<Obs TIME_PERIOD="2025-01-02" OBS_VALUE="1.0321" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-03" OBS_VALUE="1.0299" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-06" OBS_VALUE="1.0426" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-07" OBS_VALUE="1.0393" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-08" OBS_VALUE="1.0286" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-09" OBS_VALUE="1.0305" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-10" OBS_VALUE="1.0304" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-13" OBS_VALUE="1.0198" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-14" OBS_VALUE="1.0245" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-15" OBS_VALUE="1.03" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-16" OBS_VALUE="1.0272" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-17" OBS_VALUE="1.0298" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-20" OBS_VALUE="1.0316" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-21" OBS_VALUE="1.0357" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-22" OBS_VALUE="1.0443" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-23" OBS_VALUE="1.0404" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-24" OBS_VALUE="1.0472" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-27" OBS_VALUE="1.053" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-28" OBS_VALUE="1.0421" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-29" OBS_VALUE="1.0396" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-30" OBS_VALUE="1.0403" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-01-31" OBS_VALUE="1.0393" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-03" OBS_VALUE="1.0274" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-04" OBS_VALUE="1.0335" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-05" OBS_VALUE="1.0422" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-06" OBS_VALUE="1.036" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-07" OBS_VALUE="1.0377" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-10" OBS_VALUE="1.032" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-11" OBS_VALUE="1.0324" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-12" OBS_VALUE="1.037" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-13" OBS_VALUE="1.039" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-14" OBS_VALUE="1.0478" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-17" OBS_VALUE="1.0473" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-18" OBS_VALUE="1.0447" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-19" OBS_VALUE="1.0434" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-20" OBS_VALUE="1.0443" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-21" OBS_VALUE="1.0465" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-24" OBS_VALUE="1.0466" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-25" OBS_VALUE="1.0497" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-26" OBS_VALUE="1.0487" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-27" OBS_VALUE="1.0477" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02-28" OBS_VALUE="1.0411" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-03" OBS_VALUE="1.0465" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-04" OBS_VALUE="1.0557" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-05" OBS_VALUE="1.0694" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-06" OBS_VALUE="1.0796" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-07" OBS_VALUE="1.0857" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-10" OBS_VALUE="1.0845" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-11" OBS_VALUE="1.0912" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-12" OBS_VALUE="1.0886" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-13" OBS_VALUE="1.083" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-14" OBS_VALUE="1.0889" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-17" OBS_VALUE="1.0903" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-18" OBS_VALUE="1.0918" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-19" OBS_VALUE="1.0897" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-20" OBS_VALUE="1.0833" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-21" OBS_VALUE="1.0827" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-24" OBS_VALUE="1.0824" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-25" OBS_VALUE="1.0825" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-26" OBS_VALUE="1.0788" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-27" OBS_VALUE="1.0785" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-28" OBS_VALUE="1.0797" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03-31" OBS_VALUE="1.0815" OBS_STATUS="A" OBS_CONF="F"/>
+		</Series>
+		<Series FREQ="M" CURRENCY="USD" CURRENCY_DENOM="EUR" EXR_TYPE="SP00" EXR_SUFFIX="A" COLLECTION="A" UNIT="USD" DECIMALS="4" SOURCE_AGENCY="4F0" TITLE="Euro/US dollar" UNIT_MULT="0" TIME_FORMAT="P1M" TITLE_COMPL="ECB reference exchange rate, Euro/US dollar, 2:15 pm (C.E.T.)">
+			<Obs TIME_PERIOD="2025-01" OBS_VALUE="1.0353727272727" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02" OBS_VALUE="1.04125" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03" OBS_VALUE="1.080680952381" OBS_STATUS="A" OBS_CONF="F"/>
+		</Series>
+		<Series FREQ="M" CURRENCY="USD" CURRENCY_DENOM="EUR" EXR_TYPE="SP00" EXR_SUFFIX="E" COLLECTION="E" UNIT="USD" DECIMALS="4" SOURCE_AGENCY="4F0" TITLE="Euro/US dollar" UNIT_MULT="0" TIME_FORMAT="P1M" TITLE_COMPL="ECB reference exchange rate, Euro/US dollar, 2:15 pm (C.E.T.)">
+			<Obs TIME_PERIOD="2025-01" OBS_VALUE="1.0393" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-02" OBS_VALUE="1.0411" OBS_STATUS="A" OBS_CONF="F"/>
+			<Obs TIME_PERIOD="2025-03" OBS_VALUE="1.0815" OBS_STATUS="A" OBS_CONF="F"/>
+		</Series>
+	</message:DataSet>
+</message:StructureSpecificData>

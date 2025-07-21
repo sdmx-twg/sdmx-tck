@@ -1,14 +1,10 @@
-var MaintainableObject = require('./MaintainableObject.js');
-const SDMX_STRUCTURE_TYPE = require('../../constants/SdmxStructureType.js').SDMX_STRUCTURE_TYPE;
-
 class ConstraintKeyValueObject {
-    constructor(props,origin,includeType, values) {
-        this.id = props.$.id;
+    constructor(id, origin, includeType, values) {
+        this.id = id;
         //origin property stores the info about whether the keyValue belongs to cubeRegion or DataKeySet
-        this.origin = origin; 
-        this.includeType = includeType
-        this.values = values
-        
+        this.origin = origin;
+        this.includeType = includeType;
+        this.values = values;
     };
     setId(id){
         this.id=id;
@@ -44,9 +40,27 @@ class ConstraintKeyValueObject {
                 valuesEqual
     }
 
+    getNumberOfValues() {
+        return this.values.length;
+    }
+
     hasOnlyNValues(numOfValues){
         if(typeof(numOfValues) != "number" || !Number.isInteger(numOfValues)){return false;}
         return this.values.length === numOfValues
+    }
+
+    hasAtLeastNValues(numOfValues) {
+        if (typeof (numOfValues) != "number" || !Number.isInteger(numOfValues)) {
+            return false;
+        }
+        return this.values.length >= numOfValues;
+    }
+
+    hasAtMostNValues(numOfValues) {
+        if (typeof (numOfValues) != "number" || !Number.isInteger(numOfValues)) {
+            return false;
+        }
+        return this.values.length <= numOfValues;
     }
 
     hasValue(value){

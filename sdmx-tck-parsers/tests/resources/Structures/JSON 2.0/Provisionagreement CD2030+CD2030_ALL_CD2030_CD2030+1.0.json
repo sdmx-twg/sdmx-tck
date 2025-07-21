@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "id": "IREF740286",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-07-01T12:47:03Z",
+    "contentLanguages": [
+      "en"
+    ],
+    "sender": {
+      "id": "MT"
+    }
+  },
+  "data": {
+    "provisionAgreements": [
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "provisionagreement",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.registry.ProvisionAgreement=CD2030:CD2030_ALL_CD2030_CD2030(1.0)"
+          }
+        ],
+        "id": "CD2030_ALL_CD2030_CD2030",
+        "name": "Countdown 2030 for CD2030 All",
+        "names": {
+          "en": "Countdown 2030 for CD2030 All"
+        },
+        "version": "1.0",
+        "agencyID": "CD2030",
+        "isExternalReference": false,
+        "isFinal": false,
+        "dataflow": "urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=CD2030:CONSOLIDATED(1.0)",
+        "dataProvider": "urn:sdmx:org.sdmx.infomodel.base.DataProvider=CD2030:DATA_PROVIDERS(1.0).CD2030"
+      }
+    ]
+  }
+}

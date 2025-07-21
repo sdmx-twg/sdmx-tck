@@ -1,0 +1,324 @@
+{
+  "meta": {
+    "id": "IREF969575",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-06-30T15:22:33Z",
+    "contentLanguages": [
+      "en"
+    ],
+    "sender": {
+      "id": "MT"
+    }
+  },
+  "data": {
+    "conceptSchemes": [
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "conceptscheme",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.ConceptScheme=CD2030:CS_CONSOLIDATED_CD2030(1.0)"
+          }
+        ],
+        "id": "CS_CONSOLIDATED_CD2030",
+        "name": "Consolidated CD2030 Scheme",
+        "names": {
+          "en": "Consolidated CD2030 Scheme"
+        },
+        "description": "This is a result of having remodeled the old CD2030 that suffered from restrictions owing to it's deployment in .Stat7 and the inability to have any non numeric values.",
+        "descriptions": {
+          "en": "This is a result of having remodeled the old CD2030 that suffered from restrictions owing to it's deployment in .Stat7 and the inability to have any non numeric values."
+        },
+        "version": "1.0",
+        "agencyID": "CD2030",
+        "isExternalReference": false,
+        "isFinal": false,
+        "isPartial": false,
+        "concepts": [
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).DOMAIN"
+              }
+            ],
+            "id": "DOMAIN",
+            "name": "Domain",
+            "names": {
+              "en": "Domain"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_DOMAIN(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).SUBREGION"
+              }
+            ],
+            "id": "SUBREGION",
+            "name": "Sub-region",
+            "names": {
+              "en": "Sub-region"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_SUBREGION(1.0)"
+            },
+			"parent" : "DOMAIN"
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).INDICATOR"
+              }
+            ],
+            "id": "INDICATOR",
+            "name": "Indicator",
+            "names": {
+              "en": "Indicator"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_INDICATOR(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).SECTOR"
+              }
+            ],
+            "id": "SECTOR",
+            "name": "Sector",
+            "names": {
+              "en": "Sector"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_SECTOR(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).PROFESSION"
+              }
+            ],
+            "id": "PROFESSION",
+            "name": "Profession",
+            "names": {
+              "en": "Profession"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_PROFESSION(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).BMI"
+              }
+            ],
+            "id": "BMI",
+            "name": "Body Mass Index",
+            "names": {
+              "en": "Body Mass Index"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_BMI(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).DEATH_CAUSE"
+              }
+            ],
+            "id": "DEATH_CAUSE",
+            "name": "Cause of Death",
+            "names": {
+              "en": "Cause of Death"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_DEATH_CAUSE(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).WASH_SERVICE"
+              }
+            ],
+            "id": "WASH_SERVICE",
+            "name": "WASH Service Level",
+            "names": {
+              "en": "WASH Service Level"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_WASH_SERVICE_LEVEL(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).ABORTION_RESTRICTION"
+              }
+            ],
+            "id": "ABORTION_RESTRICTION",
+            "name": "Abortion Restriction",
+            "names": {
+              "en": "Abortion Restriction"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_ABORTION_RESTRICTION(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).UNIT_MEASURE"
+              }
+            ],
+            "id": "UNIT_MEASURE",
+            "name": "Unit of Measure",
+            "names": {
+              "en": "Unit of Measure"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_CD2030_UNITS(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).IS_LATEST_DATA"
+              }
+            ],
+            "id": "IS_LATEST_DATA",
+            "name": "Is Latest Data",
+            "names": {
+              "en": "Is Latest Data"
+            },
+            "coreRepresentation": {
+              "format": {
+                "isSequence": false,
+                "textType": "Integer"
+              }
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).DATA_SOURCE"
+              }
+            ],
+            "id": "DATA_SOURCE",
+            "name": "Data Source",
+            "names": {
+              "en": "Data Source"
+            },
+            "description": "CD2030 Data Sources",
+            "descriptions": {
+              "en": "CD2030 Data Sources"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_DATA_SOURCE(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).MIDWIFE_TASK"
+              }
+            ],
+            "id": "MIDWIFE_TASK",
+            "name": "Midwife Task",
+            "names": {
+              "en": "Midwife Task"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_MIDWIFE_TASK(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).SUBDOMAIN"
+              }
+            ],
+            "id": "SUBDOMAIN",
+            "name": "Subdomain",
+            "names": {
+              "en": "Subdomain"
+            },
+            "coreRepresentation": {
+              "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=CD2030:CL_SUBDOMAIN(1.0)"
+            }
+          },
+          {
+            "links": [
+              {
+                "rel": "self",
+                "type": "concept",
+                "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+                "urn": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=CD2030:CS_CONSOLIDATED_CD2030(1.0).OBS_FOOTNOTE"
+              }
+            ],
+            "id": "OBS_FOOTNOTE",
+            "name": "Observation footnote",
+            "names": {
+              "en": "Observation footnote"
+            },
+            "coreRepresentation": {
+              "format": {
+                "textType": "String"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

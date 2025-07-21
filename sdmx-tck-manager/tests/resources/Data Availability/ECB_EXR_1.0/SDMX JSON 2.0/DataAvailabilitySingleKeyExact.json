@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "id": "IREF984972",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-07-16T20:41:30Z",
+    "contentLanguages": [
+      "en"
+    ],
+    "sender": {
+      "id": "FusionRegistry"
+    }
+  },
+  "data": {
+    "dataConstraints": [
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "dataconstraint",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:EXR-8C2CA800-E7DC-4FCE-86CC-ED81711302AB(1.0)"
+          }
+        ],
+        "id": "EXR-8C2CA800-E7DC-4FCE-86CC-ED81711302AB",
+        "annotations": [
+          {
+            "id": "series_count",
+            "title": "1",
+            "type": "sdmx_metrics"
+          }
+        ],
+        "name": "Exchange Rates",
+        "names": {
+          "en": "Exchange Rates"
+        },
+        "version": "1.0",
+        "agencyID": "ECB",
+        "isExternalReference": false,
+        "isFinal": false,
+        "role": "Actual",
+        "constraintAttachment": {
+          "dataflows": [
+            "urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)"
+          ]
+        },
+        "cubeRegions": [
+          {
+            "include": true,
+            "keyValues": [
+              {
+                "id": "CURRENCY",
+                "values": [
+                  {
+                    "value": "H42"
+                  }
+                ]
+              },
+              {
+                "id": "CURRENCY_DENOM",
+                "values": [
+                  {
+                    "value": "HKD"
+                  }
+                ]
+              },
+              {
+                "id": "EXR_SUFFIX",
+                "values": [
+                  {
+                    "value": "T"
+                  }
+                ]
+              },
+              {
+                "id": "FREQ",
+                "values": [
+                  {
+                    "value": "Q"
+                  }
+                ]
+              },
+              {
+                "id": "EXR_TYPE",
+                "values": [
+                  {
+                    "value": "NRC0"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
