@@ -1,24 +1,25 @@
 const sdmx_rest = require('sdmx-rest');
 var TckError = require('sdmx-tck-api').errors.TckError;
+const STRUCTURE_QUERY_REPRESENTATIONS = require('sdmx-tck-api').constants.STRUCTURE_QUERY_REPRESENTATIONS;
 
 class StructureRequestBuilder {
-
-    static prepareRequest(endpoint, apiVersion, resource, template, agency, id, version, items) {
+    static prepareRequest(endpoint, format, toRun) {
         return new Promise((resolve, reject) => {
             try {
-                var service = sdmx_rest.getService({ url: endpoint, api: apiVersion });
+                var service = sdmx_rest.getService({ url: endpoint, api: toRun.apiVersion });
                 // Inititalize request from parameters
                 var request = {
-                    resource: resource,
-                    agency: agency,
-                    id: id,
-                    version: version,
+                    resource: toRun.resource,
+                    agency: toRun.identifiers.agency,
+                    id: toRun.identifiers.id,
+                    version: toRun.identifiers.version,
                 };
-                if (items && Array.isArray(items) && items.length > 0) {
-                    request.item = items.join("+");
+                if (toRun.items && Array.isArray(toRun.items) && toRun.items.length > 0) {
+                    request.item = toRun.items.join("+");
                 }
 
                 // Copy the values from the template to the final request
+                let template = toRun.reqTemplate;
                 for (var k in template) {
                     if (template[k] !== null && template[k] !== null) {
                         request[k] = template[k];
@@ -26,9 +27,11 @@ class StructureRequestBuilder {
                 };
 
                 let headers = {};
-                if (template.representation) {
-                    headers = { headers: { accept: template.representation } }
+                let representation = template.representation;
+                if (!representation) {
+                    representation = STRUCTURE_QUERY_REPRESENTATIONS.getRepresentation(format);
                 }
+                headers = { headers: { accept: representation } }
                 
                 let preparedRequest = { request: sdmx_rest.getMetadataQuery(request), service: service, headers: headers };
 

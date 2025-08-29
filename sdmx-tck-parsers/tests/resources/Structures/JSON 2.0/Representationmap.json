@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "id": "IREF462229",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-07-02T08:50:21Z",
+    "contentLanguages": [
+      "en"
+    ],
+    "sender": {
+      "id": "MT"
+    }
+  },
+  "data": {
+    "representationMaps": [
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "representationmap",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.structuremapping.RepresentationMap=ISO:MAP_ISO_COUNTRY_CODE_ALPHA2_ALPHA3(1.0)"
+          }
+        ],
+        "id": "MAP_ISO_COUNTRY_CODE_ALPHA2_ALPHA3",
+        "name": "Map ISO 2 to 3 Alpha Codes",
+        "names": {
+          "en": "Map ISO 2 to 3 Alpha Codes"
+        },
+        "version": "1.0",
+        "agencyID": "ISO",
+        "isExternalReference": false,
+        "isFinal": false,
+        "source": [
+          {
+            "codelist": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ISO:COUNTRY_ALPHA2(1.0)"
+          }
+        ],
+        "target": [
+          {
+            "codelist": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ISO:COUNTRY_ALPHA3(1.0)"
+          }
+        ],
+        "representationMappings": [
+          {
+            "sourceValues": [
+              {
+                "value": "AF"
+              }
+            ],
+            "targetValues": [
+              "AFG"
+            ]
+          },
+          {
+            "sourceValues": [
+              {
+                "value": "AX"
+              }
+            ],
+            "targetValues": [
+              "ALA"
+            ]
+          }
+        ]
+      },
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "representationmap",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.structuremapping.RepresentationMap=SDMX:FREQ_FORMAT_MAPPING(1.0)"
+          }
+        ],
+        "id": "FREQ_FORMAT_MAPPING",
+        "name": "Frequency Format Mapping",
+        "names": {
+          "en": "Frequency Format Mapping"
+        },
+        "description": "Used by Publication Table",
+        "descriptions": {
+          "en": "Used by Publication Table"
+        },
+        "version": "1.0",
+        "agencyID": "SDMX",
+        "isExternalReference": false,
+        "isFinal": false,
+        "source": [
+          {
+            "dataType": "String"
+          }
+        ],
+        "target": [
+          {
+            "dataType": "String"
+          }
+        ],
+        "representationMappings": [
+          {
+            "sourceValues": [
+              {
+                "value": "M"
+              }
+            ],
+            "targetValues": [
+              "MMM YYYY"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

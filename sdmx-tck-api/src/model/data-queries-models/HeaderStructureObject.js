@@ -1,22 +1,13 @@
 class HeaderStructureObject {
 
-    constructor(identification,references){
-        this.identification = identification;
+    constructor(references) {
         this.references = references;
     }
-
-    setIdentification(identification){
-        this.identification = identification;
+    setReferences(references) {
+        this.references = references
     }
-    getIdentification(){
-        return this.identification;
-    }
-    setReferences(references){
-        this.references= references
-    }
-    getReferences(){
+    getReferences() {
         return this.references;
     }
 }
-
 module.exports = HeaderStructureObject;

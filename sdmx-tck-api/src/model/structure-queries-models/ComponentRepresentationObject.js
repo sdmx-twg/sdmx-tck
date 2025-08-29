@@ -1,65 +1,63 @@
 class ComponentRepresentationObject {
-    constructor(props,type){
-        this.type = type,
-        this.minLength = props.$.minLength,
-        this.maxLength = props.$.maxLength,
-        this.minValue = props.$.minValue
-        this.maxValue = props.$.maxValue,
-        this.decimals = props.$.decimals,
-        this.pattern = props.$.pattern,
-        this.textType = props.$.textType
+    constructor(props, type) {
+        this.type = type;
+        this.minLength = props.minLength;
+        this.maxLength = props.maxLength;
+        this.minValue = props.minValue;
+        this.maxValue = props.maxValue;
+        this.decimals = props.decimals;
+        this.pattern = props.pattern;
+        this.textType = props.textType;
     }
-
-    setType(type){
+    setType(type) {
         this.type = type;
     }
-    getType(){
+    getType() {
         return this.type;
     }
-    setMinLength(minLength){
+    setMinLength(minLength) {
         this.minLength = minLength;
     }
-    getMinLength(){
+    getMinLength() {
         return this.minLength;
     }
-    setMaxLength(maxLength){
+    setMaxLength(maxLength) {
         this.maxLength = maxLength;
     }
-    getMaxLength(){
+    getMaxLength() {
         return this.maxLength;
     }
-    setMinValue(minValue){
+    setMinValue(minValue) {
         this.minValue = minValue
     }
-    getMinValue(){
+    getMinValue() {
         return this.minValue
     }
-    setMaxValue(maxValue){
-        this.maxValue =maxValue
+    setMaxValue(maxValue) {
+        this.maxValue = maxValue
     }
-    getMaxValue(){
+    getMaxValue() {
         return this.maxValue;
     }
-    setDecimals(decimals){
+    setDecimals(decimals) {
         this.decimals = decimals
     }
-    getDecimals(){
+    getDecimals() {
         return this.decimals;
     }
-    setPattern(pattern){
-        this.pattern=pattern
+    setPattern(pattern) {
+        this.pattern = pattern
     }
-    getPattern(){
+    getPattern() {
         return this.pattern;
     }
-    setTextType(textType){
+    setTextType(textType) {
         this.textType = textType;
     }
-    getTextType(){
+    getTextType() {
         return this.textType;
     }
-
-    equals(repObj){
+    equals(repObj) {
         let isEqual = this.getDecimals() === repObj.getDecimals()
             && this.getMaxLength() === repObj.getMaxLength()
             && this.getMaxValue() === repObj.getMaxValue()

@@ -6,9 +6,10 @@ var SdmxV21SchemaEnumerationParser = require('./SdmxV21SchemaEnumerationParser.j
 var SdmxV21SchemaFacetsParser = require('./SdmxV21SchemaFacetsParser.js')
 var SdmxV21SchemaCompositorsParser = require('./SdmxV21SchemaCompositorsParser.js')
 var SdmxV21SchemaAttributeParser = require('./SdmxV21SchemaAttributeParser.js')
+var SdmxSchemaObjects = require('sdmx-tck-api').model.SdmxSchemaObjects;
 
 class SdmxV21SchemasParser {
-    static parseXSD(sdmxJsonObjects) {
+    static parseMessage(sdmxJsonObjects) {
        
         if (sdmxJsonObjects === null || sdmxJsonObjects === undefined) {
             throw new Error("Missing mandatory parameter.");
@@ -22,7 +23,7 @@ class SdmxV21SchemasParser {
             SdmxV21SchemasParser.parseSimpleTypes(schemaComponents, s);
             SdmxV21SchemasParser.parseComplexTypes(schemaComponents, s);
         }
-        return schemaComponents;
+        return new SdmxSchemaObjects(schemaComponents)
     };
     static parseGlobalElements(schemaComponents, s) {
         if (s.element) {

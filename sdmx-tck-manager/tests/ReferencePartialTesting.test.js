@@ -1,12 +1,13 @@
 
+const { SDMX_MESSAGE_FORMAT } = require('sdmx-tck-api/src/constants/SdmxMessageFormat.js');
 var SdmxXmlParser = require('../../sdmx-tck-parsers/src/parsers/SdmxXmlParser.js');
 const ContentConstraintReferencePartialChecker = require('../src/checker/ContentConstraintReferencePartialChecker.js');
 
 const fs = require('fs');
 describe('Tests if DataKeySet obj gets the DataKeySet', function () {
     it('It should return the obj', async () => {
+        let format = SDMX_MESSAGE_FORMAT.XML_V21.key;
         let xmlMessage = fs.readFileSync('./tests/resources/WB-GCI_GHA-1.0.xml', 'utf8');
-
         let preparedRequest = 
         {   service:
             { id: undefined,
@@ -16,8 +17,7 @@ describe('Tests if DataKeySet obj gets the DataKeySet', function () {
               format: undefined }
           }
 
-        await new SdmxXmlParser().getIMObjects(xmlMessage).then(function (sdmxObjects) {
-           
+        await new SdmxXmlParser().getIMObjects(xmlMessage, format).then(function (sdmxObjects) {
             test = {
                 testId: "Test for Reference Partial",
                 index: "Structure",

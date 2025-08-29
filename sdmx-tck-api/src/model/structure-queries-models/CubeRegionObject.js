@@ -1,9 +1,7 @@
-var isDefined = require('../../utils/Utils').isDefined;
-
 class CubeRegionObject {
-    constructor(props,keyValue) {
-        this.includeType = (props.$ && props.$.include) ? props.$.include : "true";
-        this.keyValue = keyValue
+    constructor(include, keyValue) {
+        this.includeType = include ? include : "true";
+        this.keyValue = keyValue;
     };
     setKeyValues(keyValue){
         this.keyValue = keyValue;
@@ -17,7 +15,7 @@ class CubeRegionObject {
     getIncludeValue() {
         return this.includeType;
     };
-    
+
     getKeyValueById(id){
         if(!id){return;}
         return this.getKeyValues().find(keyVal=>keyVal.getId() === id)

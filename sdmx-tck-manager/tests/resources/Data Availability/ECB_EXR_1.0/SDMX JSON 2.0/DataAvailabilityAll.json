@@ -1,0 +1,532 @@
+{
+  "meta": {
+    "id": "IREF006508",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-07-16T21:17:31Z",
+    "contentLanguages": [
+      "en"
+    ],
+    "sender": {
+      "id": "FusionRegistry"
+    }
+  },
+  "data": {
+    "dataConstraints": [
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "dataconstraint",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.registry.DataConstraint=ECB:EXR-054812A3-7DD8-48D8-9481-D1C19D9531E3(1.0)"
+          }
+        ],
+        "id": "EXR-054812A3-7DD8-48D8-9481-D1C19D9531E3",
+        "annotations": [
+          {
+            "id": "series_count",
+            "title": "6640",
+            "type": "sdmx_metrics"
+          }
+        ],
+        "name": "Exchange Rates",
+        "names": {
+          "en": "Exchange Rates"
+        },
+        "version": "1.0",
+        "agencyID": "ECB",
+        "isExternalReference": false,
+        "isFinal": false,
+        "role": "Actual",
+        "constraintAttachment": {
+          "dataflows": [
+            "urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:EXR(1.0)"
+          ]
+        },
+        "cubeRegions": [
+          {
+            "include": true,
+            "keyValues": [
+              {
+                "id": "CURRENCY",
+                "values": [
+                  {
+                    "value": "ARS"
+                  },
+                  {
+                    "value": "AUD"
+                  },
+                  {
+                    "value": "BGN"
+                  },
+                  {
+                    "value": "BRL"
+                  },
+                  {
+                    "value": "CAD"
+                  },
+                  {
+                    "value": "CHF"
+                  },
+                  {
+                    "value": "CNY"
+                  },
+                  {
+                    "value": "CYP"
+                  },
+                  {
+                    "value": "CZK"
+                  },
+                  {
+                    "value": "DKK"
+                  },
+                  {
+                    "value": "DZD"
+                  },
+                  {
+                    "value": "E0"
+                  },
+                  {
+                    "value": "E01"
+                  },
+                  {
+                    "value": "E02"
+                  },
+                  {
+                    "value": "E03"
+                  },
+                  {
+                    "value": "E5"
+                  },
+                  {
+                    "value": "E7"
+                  },
+                  {
+                    "value": "E8"
+                  },
+                  {
+                    "value": "EEK"
+                  },
+                  {
+                    "value": "EGP"
+                  },
+                  {
+                    "value": "EUR"
+                  },
+                  {
+                    "value": "GBP"
+                  },
+                  {
+                    "value": "GRD"
+                  },
+                  {
+                    "value": "H00"
+                  },
+                  {
+                    "value": "H01"
+                  },
+                  {
+                    "value": "H02"
+                  },
+                  {
+                    "value": "H03"
+                  },
+                  {
+                    "value": "H10"
+                  },
+                  {
+                    "value": "H11"
+                  },
+                  {
+                    "value": "H37"
+                  },
+                  {
+                    "value": "H42"
+                  },
+                  {
+                    "value": "H7"
+                  },
+                  {
+                    "value": "H8"
+                  },
+                  {
+                    "value": "HKD"
+                  },
+                  {
+                    "value": "HRK"
+                  },
+                  {
+                    "value": "HUF"
+                  },
+                  {
+                    "value": "IDR"
+                  },
+                  {
+                    "value": "ILS"
+                  },
+                  {
+                    "value": "INR"
+                  },
+                  {
+                    "value": "ISK"
+                  },
+                  {
+                    "value": "JPY"
+                  },
+                  {
+                    "value": "KRW"
+                  },
+                  {
+                    "value": "LTL"
+                  },
+                  {
+                    "value": "LVL"
+                  },
+                  {
+                    "value": "MAD"
+                  },
+                  {
+                    "value": "MTL"
+                  },
+                  {
+                    "value": "MXN"
+                  },
+                  {
+                    "value": "MYR"
+                  },
+                  {
+                    "value": "NOK"
+                  },
+                  {
+                    "value": "NZD"
+                  },
+                  {
+                    "value": "PHP"
+                  },
+                  {
+                    "value": "PLN"
+                  },
+                  {
+                    "value": "RON"
+                  },
+                  {
+                    "value": "RUB"
+                  },
+                  {
+                    "value": "SEK"
+                  },
+                  {
+                    "value": "SGD"
+                  },
+                  {
+                    "value": "SIT"
+                  },
+                  {
+                    "value": "SKK"
+                  },
+                  {
+                    "value": "THB"
+                  },
+                  {
+                    "value": "TRY"
+                  },
+                  {
+                    "value": "TWD"
+                  },
+                  {
+                    "value": "USD"
+                  },
+                  {
+                    "value": "ZAR"
+                  }
+                ]
+              },
+              {
+                "id": "EXR_SUFFIX",
+                "values": [
+                  {
+                    "value": "A"
+                  },
+                  {
+                    "value": "E"
+                  },
+                  {
+                    "value": "P"
+                  },
+                  {
+                    "value": "R"
+                  },
+                  {
+                    "value": "S"
+                  },
+                  {
+                    "value": "T"
+                  }
+                ]
+              },
+              {
+                "id": "CURRENCY_DENOM",
+                "values": [
+                  {
+                    "value": "AED"
+                  },
+                  {
+                    "value": "ARS"
+                  },
+                  {
+                    "value": "ATS"
+                  },
+                  {
+                    "value": "AUD"
+                  },
+                  {
+                    "value": "BEF"
+                  },
+                  {
+                    "value": "BGN"
+                  },
+                  {
+                    "value": "BRL"
+                  },
+                  {
+                    "value": "CAD"
+                  },
+                  {
+                    "value": "CHF"
+                  },
+                  {
+                    "value": "CLP"
+                  },
+                  {
+                    "value": "CNY"
+                  },
+                  {
+                    "value": "COP"
+                  },
+                  {
+                    "value": "CYP"
+                  },
+                  {
+                    "value": "CZK"
+                  },
+                  {
+                    "value": "DEM"
+                  },
+                  {
+                    "value": "DKK"
+                  },
+                  {
+                    "value": "DZD"
+                  },
+                  {
+                    "value": "EEK"
+                  },
+                  {
+                    "value": "ESP"
+                  },
+                  {
+                    "value": "EUR"
+                  },
+                  {
+                    "value": "FIM"
+                  },
+                  {
+                    "value": "FRF"
+                  },
+                  {
+                    "value": "GBP"
+                  },
+                  {
+                    "value": "GRD"
+                  },
+                  {
+                    "value": "HKD"
+                  },
+                  {
+                    "value": "HRK"
+                  },
+                  {
+                    "value": "HUF"
+                  },
+                  {
+                    "value": "IDR"
+                  },
+                  {
+                    "value": "IEP"
+                  },
+                  {
+                    "value": "ILS"
+                  },
+                  {
+                    "value": "INR"
+                  },
+                  {
+                    "value": "ISK"
+                  },
+                  {
+                    "value": "ITL"
+                  },
+                  {
+                    "value": "JPY"
+                  },
+                  {
+                    "value": "KRW"
+                  },
+                  {
+                    "value": "LTL"
+                  },
+                  {
+                    "value": "LUF"
+                  },
+                  {
+                    "value": "LVL"
+                  },
+                  {
+                    "value": "MAD"
+                  },
+                  {
+                    "value": "MTL"
+                  },
+                  {
+                    "value": "MXN"
+                  },
+                  {
+                    "value": "MYR"
+                  },
+                  {
+                    "value": "NLG"
+                  },
+                  {
+                    "value": "NOK"
+                  },
+                  {
+                    "value": "NZD"
+                  },
+                  {
+                    "value": "PEN"
+                  },
+                  {
+                    "value": "PHP"
+                  },
+                  {
+                    "value": "PLN"
+                  },
+                  {
+                    "value": "PTE"
+                  },
+                  {
+                    "value": "RON"
+                  },
+                  {
+                    "value": "RUB"
+                  },
+                  {
+                    "value": "SAR"
+                  },
+                  {
+                    "value": "SEK"
+                  },
+                  {
+                    "value": "SGD"
+                  },
+                  {
+                    "value": "SIT"
+                  },
+                  {
+                    "value": "SKK"
+                  },
+                  {
+                    "value": "THB"
+                  },
+                  {
+                    "value": "TRY"
+                  },
+                  {
+                    "value": "TWD"
+                  },
+                  {
+                    "value": "UAH"
+                  },
+                  {
+                    "value": "USD"
+                  },
+                  {
+                    "value": "VEF"
+                  },
+                  {
+                    "value": "XAU"
+                  },
+                  {
+                    "value": "ZAR"
+                  }
+                ]
+              },
+              {
+                "id": "FREQ",
+                "values": [
+                  {
+                    "value": "A"
+                  },
+                  {
+                    "value": "D"
+                  },
+                  {
+                    "value": "H"
+                  },
+                  {
+                    "value": "M"
+                  },
+                  {
+                    "value": "Q"
+                  }
+                ]
+              },
+              {
+                "id": "EXR_TYPE",
+                "values": [
+                  {
+                    "value": "EN00"
+                  },
+                  {
+                    "value": "ERC0"
+                  },
+                  {
+                    "value": "ERD0"
+                  },
+                  {
+                    "value": "ERP0"
+                  },
+                  {
+                    "value": "ERU0"
+                  },
+                  {
+                    "value": "ERU1"
+                  },
+                  {
+                    "value": "NN00"
+                  },
+                  {
+                    "value": "NRC0"
+                  },
+                  {
+                    "value": "NRD0"
+                  },
+                  {
+                    "value": "NRP0"
+                  },
+                  {
+                    "value": "NRU1"
+                  },
+                  {
+                    "value": "SP00"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

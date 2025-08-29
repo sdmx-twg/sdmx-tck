@@ -5,10 +5,17 @@ import TckError from 'sdmx-tck-api/src/errors/TckError';
 
 const TEST_STATE = require('sdmx-tck-api').constants.TEST_STATE;
 const TEST_TYPE = require('sdmx-tck-api').constants.TEST_TYPE;
-const DATA_QUERY_MODE = require('sdmx-tck-api').constants.DATA_QUERY_MODE;
 const TCK_VERSION = require('sdmx-tck-api').constants.TCK_VERSION;
 const EXPORT_FORMATS = require('sdmx-tck-api').constants.EXPORT_FORMATS;
 var Utils = require('sdmx-tck-api').utils.Utils;
+
+export function getServerUrl() {
+  if (process.env.NODE_ENV === "development") {
+    return "";
+  } else {
+    return process.env.REACT_APP_API_URL;
+  }
+}
 
 export function initialiseTestsModel(tests) {
     return { type: 'INITIALISE_TESTS_MODEL', tests: tests };
@@ -46,10 +53,16 @@ export function XSDTestsData(schemaTestsData,testIndex){
 export function DataQueriesData(dataQueriesData,testIndex){
     return {type: ACTION_NAMES.CONFIG_DATA_TESTS, testIndex:testIndex, dataQueriesData:dataQueriesData}
 }
+export function RegistrationTestsData(data) {
+    return {type: ACTION_NAMES.CONFIG_REGISTRATION_TESTS, testIndex: TEST_INDEX.Registration, data: data}
+}
+export const prerequisitesFailed = (error) => {
+	return { type: ACTION_NAMES.PREREQUISITES_FAILED, error: error};
+}
 
 export function fetchTests(endpoint, apiVersion, testIndices, requestMode) {
     let body = { endpoint, apiVersion, testIndices, requestMode };
-    return fetch('/tck-api/prepare-tests', {
+    return fetch(getServerUrl() + '/tck-api/prepare-tests', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -58,11 +71,10 @@ export function fetchTests(endpoint, apiVersion, testIndices, requestMode) {
     });
 };
 
-async function requestTestRun(endpoint, test) {
-     try{
-        
-        let body = { endpoint, test };
-        const response = await fetch('/tck-api/execute-test', {
+async function requestTestRun(endpoint, test, format) {
+     try {
+        let body = { endpoint, test, format};
+        const response = await fetch(getServerUrl() + '/tck-api/execute-test', {
             method: 'POST',
            
             headers: {
@@ -70,50 +82,40 @@ async function requestTestRun(endpoint, test) {
             },
             body: JSON.stringify(body)
         });
-        return await response.json();
-     }catch(err){
-             return {error:err.toString()};
+         return await response.json();
+     } catch (err) {
+         return { error: err.toString() };
      }
-
 };
 
-async function configureSchemaTests(endpoint,apiVersion) {
-    try{
-       let body = { endpoint,apiVersion };
-       const response = await fetch('/tck-api/configure-schema-tests', {
-           method: 'POST',
-          
-           headers: {
-               'Content-Type': 'application/json'
-           },
-           body: JSON.stringify(body)
-       });
-       return await response.json();
-    }catch(err){
-            return {error:err.toString()};
+async function configureTests(index, endpoint, apiVersion, format) {
+    let url;
+    if (index === TEST_INDEX.Data) {
+        url = "configure-data-tests";
+    } else if (index === TEST_INDEX.Schema) {
+        url = "configure-schema-tests";
+    } else if (index === TEST_INDEX.Registration) {
+        url = "configure-registration-tests";
+    } else {
+        throw new Error("Method not supported for index " + index);
     }
-
-};
-
-async function configureDataTests(endpoint,apiVersion) {
-    try{
-       let body = { endpoint,apiVersion };
-       const response = await fetch('/tck-api/configure-data-tests', {
-           method: 'POST',
-          
-           headers: {
-               'Content-Type': 'application/json'
-           },
-           body: JSON.stringify(body)
-       });
-       return await response.json();
-    }catch(err){
-            return {error:err.toString()};
+    let body = { endpoint, apiVersion, format };
+    const response = await fetch(getServerUrl() + '/tck-api/' + url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    });
+    
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error);
     }
-
+    return await response.json();
 };
 
-export function prepareTests(endpoint, apiVersion, testIndices, requestMode) {
+export function prepareTests(endpoint, apiVersion, testIndices, requestMode, format) {
     return function (dispatch) {
         return fetchTests(endpoint, apiVersion, testIndices, requestMode)
             .then((response) => {
@@ -121,18 +123,18 @@ export function prepareTests(endpoint, apiVersion, testIndices, requestMode) {
             }).then((tests) => {
                 return dispatch(initialiseTestsModel(tests));
             }).then((action) => {
-                runTests(endpoint, action.tests);
+                return runTests(endpoint, action.tests, format);
             }).catch((error) => {
                 dispatch(prepareTestsFailed(error));
             });
     };
 };
 
-export async function exportReport(wsInfo,apiVersion,format,tests,scores) {
+export async function exportReport(wsInfo, apiVersion, format, requestMode, reportFormat, tests, scores) {
     try{
         let swVersion = TCK_VERSION;
-        let body = { swVersion,apiVersion,wsInfo,format,tests ,scores};
-        const response =  await fetch('/tck-api/export-report', {
+        let body = { swVersion, apiVersion, wsInfo, format, requestMode, reportFormat, tests, scores };
+        const response =  await fetch(getServerUrl() + '/tck-api/export-report', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -143,7 +145,7 @@ export async function exportReport(wsInfo,apiVersion,format,tests,scores) {
         if(response.status >= 400){
             throw new TckError("Error while exporting TCK Report.")
         }
-        await _downloadReport(format,response)
+        await _downloadReport(reportFormat,response)
       
     }catch(err){
         return {error:err.toString()};
@@ -221,29 +223,36 @@ async function _downloadExcelReport(response){
 }
 
 
-async function getPrerequisiteDataForTests(endpoint,tests){
-    if(TEST_INDEX.Schema === tests.id){
+async function getPrerequisiteDataForTests(endpoint, tests, format) {
+    try {
         let apiVersion = (tests.subTests && Array.isArray(tests.subTests) && tests.subTests.length>0)?tests.subTests[0].apiVersion:undefined;
-        let schemaTestsData = await configureSchemaTests(endpoint,apiVersion);
-        store.dispatch(XSDTestsData(schemaTestsData,tests.id));  
-    }
-    if(TEST_INDEX.Data === tests.id){
-        let apiVersion = (tests.subTests && Array.isArray(tests.subTests) && tests.subTests.length>0)?tests.subTests[0].apiVersion:undefined;
-        let dataQueriesData = await configureDataTests(endpoint,apiVersion);
-        store.dispatch(DataQueriesData(dataQueriesData,tests.id))
+        if (TEST_INDEX.Schema === tests.id) {
+            let schemaTestsData = await configureTests(TEST_INDEX.Schema, endpoint, apiVersion, format);
+            store.dispatch(XSDTestsData(schemaTestsData, tests.id));
+        }
+        if (TEST_INDEX.Data === tests.id) {
+            let dataQueriesData = await configureTests(TEST_INDEX.Data, endpoint, apiVersion, format);
+            store.dispatch(DataQueriesData(dataQueriesData, tests.id));
+        }
+        if (TEST_INDEX.Registration === tests.id) {
+            let registrationTestsData = await configureTests(TEST_INDEX.Registration, endpoint, apiVersion, format);
+            store.dispatch(RegistrationTestsData(registrationTestsData));
+        }
+    } catch (e) {
+        store.dispatch(prerequisitesFailed("Test run aborted: Prerequisites failed or are missing. " + e.message));
     }
 }
 
-async function runTests(endpoint, tests) {
+async function runTests(endpoint, tests, format) {
     for (let i = 0; i < tests.length; i++) {
-        await getPrerequisiteDataForTests(endpoint,tests[i]);
-        for (let j = 0; j < tests[i].subTests.length; j++) {
-            await runTest(endpoint, tests[i].subTests[j]);
+        await getPrerequisiteDataForTests(endpoint, tests[i], format);
+            for (let j = 0; j < tests[i].subTests.length; j++) {
+                await runTest(endpoint, tests[i].subTests[j], format);
         }
     }
 };
 
-export async function runTest(endpoint, test) {
+export async function runTest(endpoint, test, format) {
     /*
     1) Reference partial testing requires a Content Constraint of "allowed" type.
     In the case that the identifiers given to this test by its parent do not lead
@@ -257,7 +266,7 @@ export async function runTest(endpoint, test) {
         store.dispatch(dataFromParent(test));
     }
     if(test.state!==TEST_STATE.COMPLETED && test.state!==TEST_STATE.FAILED && test.state!==TEST_STATE.UNABLE_TO_RUN ){
-        let testResults = await requestTestRun(endpoint, test);
+        let testResults = await requestTestRun(endpoint, test, format);
         if(Object.keys(testResults).length === 1 && testResults.hasOwnProperty("error")){
             test.failReason  = testResults.error;
             store.dispatch(updateTestState(test, TEST_STATE.FAILED, false, false));
@@ -290,7 +299,7 @@ export async function runTest(endpoint, test) {
                 store.dispatch(updateTestState(test.subTests[j], TEST_STATE.UNABLE_TO_RUN, false, false));
                 store.dispatch(updateTestsNumber(test.subTests[j].index));
             }else {
-                await runTest(endpoint, test.subTests[j]);
+                await runTest(endpoint, test.subTests[j], format);
             }
         }
     }    

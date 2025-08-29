@@ -1,11 +1,11 @@
-const SdmxReporter = require("./SdmxReporter");
-
 class Report {
 
    
     constructor(){
         this.swVersion;
         this.apiVersion;
+        this.format;
+        this.requestMode;
         this.endpoint;
         this.numberOfTests;
         this.compliance;
@@ -28,6 +28,18 @@ class Report {
         return this.apiVersion
     }
 
+    setFormat(format) {
+        this.format = format;
+    }
+    getFormat() {
+        return this.format;
+    }
+    setRequestMode(requestMode) {
+        this.requestMode = requestMode;
+    }
+    getRequestMode() {
+        return this.requestMode;
+    }
 
     setEndpoint(endpoint){
         this.endpoint = endpoint;

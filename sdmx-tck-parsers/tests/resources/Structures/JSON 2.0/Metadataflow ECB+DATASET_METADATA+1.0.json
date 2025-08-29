@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "id": "IREF727482",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-07-01T12:25:48Z",
+    "contentLanguages": [
+      "en"
+    ],
+    "sender": {
+      "id": "MT"
+    }
+  },
+  "data": {
+    "metadataflows": [
+      {
+        "links": [
+          {
+            "rel": "self",
+            "type": "metadataflow",
+            "uri": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+            "urn": "urn:sdmx:org.sdmx.infomodel.metadatastructure.Metadataflow=ECB:DATASET_METADATA(1.0)"
+          }
+        ],
+        "id": "DATASET_METADATA",
+        "name": "Dataset Metadata (ECB)",
+        "names": {
+          "en": "Dataset Metadata (ECB)"
+        },
+        "version": "1.0",
+        "agencyID": "ECB",
+        "isExternalReference": false,
+        "isFinal": false,
+        "structure": "urn:sdmx:org.sdmx.infomodel.metadatastructure.MetadataStructure=ECB:ECB_METADATA(1.0)",
+        "targets": [
+          "urn:sdmx:org.sdmx.infomodel.datastructure.Dataflow=ECB:*(*)"
+        ]
+      }
+    ]
+  }
+}

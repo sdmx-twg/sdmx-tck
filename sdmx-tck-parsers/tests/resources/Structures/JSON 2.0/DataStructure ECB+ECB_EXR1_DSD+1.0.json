@@ -1,0 +1,273 @@
+{
+  "meta": {
+    "id": "IREF575925",
+    "test": false,
+    "schema": "https://raw.githubusercontent.com/sdmx-twg/sdmx-json/develop/structure-message/tools/schemas/2.0.0/sdmx-json-structure-schema.json",
+    "prepared": "2025-06-25T13:19:59Z",
+    "contentLanguages": [
+      "br",
+      "de",
+      "en",
+      "fr"
+    ],
+    "sender": {
+      "id": "MT"
+    }
+  },
+  "data": {
+    "dataStructures": [
+      {
+        "x-extension": "scheme extension",
+        "id": "ECB_EXR1",
+        "version": "1.0",
+        "agencyID": "ECB",
+        "isPartialLanguage": false,
+        "isExternalReference": false,
+        "name": "Exchange Rates",
+        "names": {
+          "en": "Exchange Rates"
+        },
+        "links": [
+          {
+            "href": "https://sdw-wsrest.ecb.europa.eu/service/datastructure/ECB/ECB_EXR1/1.0",
+            "rel": "self",
+            "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ECB:ECB_EXR1(1.0)",
+            "type": "datastructure",
+            "hreflang": "en"
+          }
+        ],
+        "dataStructureComponents": {
+          "attributeList": {
+            "id": "AttributeDescriptor",
+            "links": [
+              {
+                "rel": "self",
+                "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.AttributeDescriptor=ECB:ECB_EXR1(1.0).AttributeDescriptor",
+                "hreflang": "en"
+              }
+            ],
+            "attributes": [
+              {
+                "x-extension": "scheme extension",
+                "id": "TIME_FORMAT",
+                "links": [
+                  {
+                    "rel": "self",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).TIME_FORMAT",
+                    "hreflang": "en"
+                  }
+                ],
+                "usage": "mandatory",
+                "attributeRelationship": {
+                  "dimensions": [
+                    "FREQ",
+                    "CURRENCY",
+                    "CURRENCY_DENOM",
+                    "EXR_TYPE",
+                    "EXR_SUFFIX"
+                  ]
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).TIME_FORMAT",
+                "conceptRoles": [
+                  "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).TIME_FORMAT"
+                ],
+                "localRepresentation": {
+                  "x-extension": "scheme extension",
+                  "format": {
+                    "maxLength": 3,
+                    "minLength": 3,
+                    "dataType": "String"
+                  }
+                }
+              },
+              {
+                "id": "OBS_CONF",
+                "links": [
+                  {
+                    "rel": "self",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.DataAttribute=ECB:ECB_EXR1(1.0).OBS_CONF",
+                    "hreflang": "en"
+                  }
+                ],
+                "usage": "optional",
+                "attributeRelationship": {
+                  "observation": {}
+                },
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).OBS_CONF",
+                "localRepresentation": {
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_OBS_CONF(1.0)"
+                }
+              }
+            ]
+          },
+          "dimensionList": {
+            "id": "DimensionDescriptor",
+            "links": [
+              {
+                "rel": "self",
+                "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.DimensionDescriptor=ECB:ECB_EXR1(1.0).DimensionDescriptor",
+                "hreflang": "en"
+              }
+            ],
+            "dimensions": [
+              {
+                "x-extension": "scheme extension",
+                "id": "FREQ",
+                "links": [
+                  {
+                    "rel": "self",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR1(1.0).FREQ",
+                    "hreflang": "en"
+                  }
+                ],
+                "position": 1,
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).FREQ",
+                "conceptRoles": [
+                  "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).FREQ"
+                ],
+                "localRepresentation": {
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_FREQ(1.0)"
+                }
+              },
+              {
+                "id": "CURRENCY",
+                "links": [
+                  {
+                    "rel": "self",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR1(1.0).CURRENCY",
+                    "hreflang": "en"
+                  }
+                ],
+                "position": 2,
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).CURRENCY",
+                "localRepresentation": {
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_CURRENCY(1.0)"
+                }
+              },
+              {
+                "id": "CURRENCY_DENOM",
+                "links": [
+                  {
+                    "rel": "self",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR1(1.0).CURRENCY_DENOM",
+                    "hreflang": "en"
+                  }
+                ],
+                "position": 3,
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).CURRENCY_DENOM",
+                "localRepresentation": {
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_CURRENCY(1.0)"
+                }
+              },
+              {
+                "id": "EXR_TYPE",
+                "links": [
+                  {
+                    "rel": "self",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR1(1.0).EXR_TYPE",
+                    "hreflang": "en"
+                  }
+                ],
+                "position": 4,
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).EXR_TYPE",
+                "localRepresentation": {
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_EXR_TYPE(1.0)"
+                }
+              },
+              {
+                "id": "EXR_SUFFIX",
+                "links": [
+                  {
+                    "rel": "self",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Dimension=ECB:ECB_EXR1(1.0).EXR_SUFFIX",
+                    "hreflang": "en"
+                  }
+                ],
+                "position": 5,
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).EXR_SUFFIX",
+                "localRepresentation": {
+                  "enumeration": "urn:sdmx:org.sdmx.infomodel.codelist.Codelist=ECB:CL_EXR_SUFFIX(1.0)"
+                }
+              }
+            ],
+            "timeDimension": {
+              "x-extension": "scheme extension",
+              "id": "TIME_PERIOD",
+              "links": [
+                {
+                  "rel": "self",
+                  "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.TimeDimension=ECB:ECB_EXR1(1.0).TIME_PERIOD",
+                  "hreflang": "en"
+                }
+              ],
+              "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCPTS(1.0).TIME_PERIOD",
+              "localRepresentation": {
+                "format": {
+                  "dataType": "ObservationalTimePeriod"
+                }
+              }
+            }
+          },
+          "groups": [
+            {
+              "x-extension": "scheme extension",
+              "id": "Group",
+              "links": [
+                {
+                  "rel": "self",
+                  "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.GroupDimensionDescriptor=ECB:ECB_EXR1(1.0).Group",
+                  "hreflang": "en"
+                }
+              ],
+              "groupDimensions": [
+                "CURRENCY",
+                "CURRENCY_DENOM",
+                "EXR_TYPE",
+                "EXR_SUFFIX"
+              ]
+            },
+            {
+              "x-extension": "scheme extension",
+              "id": "Group2",
+              "links": [
+                {
+                  "rel": "self",
+                  "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.GroupDimensionDescriptor=ECB:ECB_EXR1(1.0).Group",
+                  "hreflang": "en"
+                }
+              ],
+              "groupDimensions": [
+                "CURRENCY"
+              ]
+            }
+          ],
+          "measureList": {
+            "x-extension": "scheme extension",
+            "id": "MeasureDescriptor",
+            "links": [
+              {
+                "rel": "self",
+                "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.MeasureDescriptor=ECB:ECB_EXR1(1.0).MeasureDescriptor",
+                "hreflang": "en"
+              }
+            ],
+            "measures": [
+              {
+                "x-extension": "scheme extension",
+                "id": "OBS_VALUE",
+                "links": [
+                  {
+                    "rel": "self",
+                    "urn": "urn:sdmx:org.sdmx.infomodel.datastructure.Measure=ECB:ECB_EXR1(1.0).OBS_VALUE",
+                    "hreflang": "en"
+                  }
+                ],
+                "conceptIdentity": "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=ECB:ECB_CONCEPTS(1.0).OBS_VALUE"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

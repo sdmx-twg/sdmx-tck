@@ -41,12 +41,14 @@ class ExportReport extends React.Component {
     handleExport = async () => {
        
         /* Get the selected version value from app GUI */
-        var endpoint = document.getElementById("ws-url").value;
-        var apiVersion = document.getElementById("selectVersion").value;
-        var format = document.getElementById("selectFormat").value;
-        
+        var endpoint = this.props.endpoint;
+        var apiVersion = this.props.apiVersion;
+        var format = this.props.format;
+        var requestMode = this.props.requestMode;
+        var reportFormat = document.getElementById("selectFormat").value;
+
         let testsForReport = getTestsDataForReport(this.props.testsArray)
-        let result = await exportReport(endpoint, apiVersion,format,testsForReport,this.props.scores);
+        let result = await exportReport(endpoint, apiVersion, format, requestMode, reportFormat, testsForReport, this.props.scores);
         if(result && result.error){
             toast.error(result.error, {
                 position: "top-right",
@@ -67,7 +69,7 @@ class ExportReport extends React.Component {
     render() {
         const buttonStyle = {
             display: (this.props.finished) ? 'inline-block' : 'none',
-            marginLeft: (this.props.finished) ? '2%' : 0,
+            marginLeft: (this.props.finished) ? '5px' : 0,
         }
         const formats = EXPORT_FORMATS.getValues().map((format) =>
                 <option key={format}>{format}</option>
@@ -105,7 +107,7 @@ class ExportReport extends React.Component {
 /*Function that is called every time that the store is updated and returns an object 
 of data that this component needs.*/
 const mapStateToProps = (state) => {
-    var testsArray = [...state];
+    var testsArray = [...state.tests];
     var scores = extractScore(testsArray);
     var selectedTestsArray = extractSelectedTests(testsArray);
     return {

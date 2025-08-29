@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mes:Structure xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mes="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message" xmlns:str="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/structure" xmlns:com="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/common" xsi:schemaLocation="http://www.sdmx.org/resources/sdmxml/schemas/v3_0/message ../../schemas/SDMXMessage.xsd">
+	<mes:Header>
+		<mes:ID>IREF257793</mes:ID>
+		<mes:Test>false</mes:Test>
+		<mes:Prepared>2021-03-08T17:49:35Z</mes:Prepared>
+		<mes:Sender id="Unknown"/>
+		<mes:Receiver id="not_supplied"/>
+	</mes:Header>
+	<mes:Structures>
+		<str:Dataflows>
+			<str:Dataflow agencyID="EXAMPLE" id="DF_NEW_FEATURE" isExternalReference="false" isFinal="false" version="1.0">
+				<com:Name xml:lang="en">Securities - Published series</com:Name>
+				<str:Structure>
+					urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=EXAMPLE:DSD_NEW_FEATURE(1.0)
+				</str:Structure>
+			</str:Dataflow>
+		</str:Dataflows>
+		<str:DataStructures>
+			<str:DataStructure agencyID="EXAMPLE" id="DSD_NEW_FEATURE" version="1.0.3">
+				<com:Name xml:lang="en">Example</com:Name>
+				<str:DataStructureComponents>
+					<str:DimensionList>
+						<str:Dimension id="FREQ" position="1">
+							<str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=EXAMPLE:EXAMPLE_CONCEPTS(1.0.0).FREQ</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=EXAMPLE:CL_FREQ(1.0.0)</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:Dimension id="CURRENCY" position="2">
+							<str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=EXAMPLE:EXAMPLE_CONCEPTS(1.0.0).CURRENCY</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=EXAMPLE:CL_CURRENCY(1.0.0)</str:Enumeration>
+							</str:LocalRepresentation>
+						</str:Dimension>
+						<str:TimeDimension>
+							<str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=EXAMPLE:EXAMPLE_CONCEPTS(1.0.0).TIME_PERIOD</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="ObservationalTimePeriod"/>
+							</str:LocalRepresentation>
+						</str:TimeDimension>
+					</str:DimensionList>
+
+					 <str:Group urn="urn:sdmx:org.sdmx.infomodel.datastructure.GroupDimensionDescriptor=EXAMPLE:DSD_NEW_FEATURE(1.0.3).Group" id="Group1">
+                        <str:GroupDimension>
+                            <str:DimensionReference>CURRENCY</str:DimensionReference>
+                        </str:GroupDimension>
+                        <str:GroupDimension>
+                            <str:DimensionReference>FREQ</str:DimensionReference>
+                        </str:GroupDimension>                        
+                    </str:Group>
+
+					<str:Group urn="urn:sdmx:org.sdmx.infomodel.datastructure.GroupDimensionDescriptor=EXAMPLE:DSD_NEW_FEATURE(1.0.3).Group" id="Group2">
+                        <str:GroupDimension>
+                            <str:DimensionReference>FREQ</str:DimensionReference>
+                        </str:GroupDimension>                        
+                    </str:Group>
+
+					<str:AttributeList>
+						<str:Attribute id="TIME_FORMAT">
+							<str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=EXAMPLE:EXAMPLE_CONCEPTS(1.0.0).TIME_FORMAT</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat minLength="3" maxLength="3"/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Dimension>FREQ</str:Dimension>
+								<str:Dimension>CURRENCY</str:Dimension>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute id="OBS_STATUS" usage="mandatory">
+							<str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=EXAMPLE:EXAMPLE_CONCEPTS(1.0.0).OBS_STATUS</str:ConceptIdentity>
+							<str:LocalRepresentation maxOccurs="4">
+								<str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=EXAMPLE:CL_OBS_STATUS(1.0.0)</str:Enumeration>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Observation/>
+							</str:AttributeRelationship>
+							<str:MeasureRelationship>
+								<str:Measure>OBS_VALUE</str:Measure>
+								<str:Measure>MEASURE2</str:Measure>
+							</str:MeasureRelationship>
+						</str:Attribute>
+						<str:Attribute id="OBS_CONF">
+							<str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=EXAMPLE:EXAMPLE_CONCEPTS(1.0.0).OBS_CONF</str:ConceptIdentity>
+							<str:LocalRepresentation minOccurs="0">
+								<str:Enumeration>urn:sdmx:org.sdmx.infomodel.codelist.Codelist=EXAMPLE:CL_OBS_CONF(1.0.0)</str:Enumeration>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Observation/>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute>
+							<str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=EXAMPLE:EXAMPLE_CONCEPTS(1.0.0).OBS_PRE_BREAK</str:ConceptIdentity>
+							<str:LocalRepresentation minOccurs="0">
+								<str:TextFormat maxLength="15">
+									<str:SentinelValue value="-1">
+										<com:Name xml:lang="en">Non applicable value</com:Name>
+									</str:SentinelValue>
+								</str:TextFormat>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Observation/>
+							</str:AttributeRelationship>
+						</str:Attribute>
+						<str:Attribute id="OBS_COM" usage="mandatory">
+							<str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=EXAMPLE:EXAMPLE_CONCEPTS(1.0.0).OBS_COM</str:ConceptIdentity>
+							<str:LocalRepresentation minOccurs="0">
+								<str:TextFormat/>
+							</str:LocalRepresentation>
+							<str:AttributeRelationship>
+								<str:Observation/>
+							</str:AttributeRelationship>
+						</str:Attribute>
+					</str:AttributeList>
+					<str:MeasureList>
+						<str:Measure id="OBS_VALUE">
+							<str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=EXAMPLE:EXAMPLE_CONCEPTS(1.0.0).OBS_VALUE</str:ConceptIdentity>
+						</str:Measure>
+						<str:Measure>
+							<str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=EXAMPLE:EXAMPLE_CONCEPTS(1.0.0).MEASURE1</str:ConceptIdentity>
+							<str:LocalRepresentation>
+								<str:TextFormat textType="Double"/>
+							</str:LocalRepresentation>
+						</str:Measure>
+						<str:Measure id="MEASURE2">
+							<str:ConceptIdentity>urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=EXAMPLE:EXAMPLE_CONCEPTS(1.0.0).MEASURE2</str:ConceptIdentity>
+							<str:LocalRepresentation minOccurs="2" maxOccurs="2">
+								<str:TextFormat textType="Double"/>
+							</str:LocalRepresentation>
+						</str:Measure>
+					</str:MeasureList>
+				</str:DataStructureComponents>
+			</str:DataStructure>
+		</str:DataStructures>
+	</mes:Structures>
+</mes:Structure>
