@@ -1,7 +1,10 @@
 FROM node:16.20.2
 
-RUN apt-get update
-RUN apt-get install openjdk-11-jdk -y
+# Combine update and install in one RUN command
+RUN apt-get update && apt-get install -y openjdk-11-jdk
+
+# Clean up to reduce image size
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
 
