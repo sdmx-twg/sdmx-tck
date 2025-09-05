@@ -1,4 +1,4 @@
-FROM node:16.20.2
+FROM node:16-bullseye
 
 # Combine update and install in one RUN command
 RUN apt-get update && apt-get install -y openjdk-11-jdk
