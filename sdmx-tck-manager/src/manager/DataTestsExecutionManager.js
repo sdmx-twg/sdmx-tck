@@ -80,6 +80,10 @@ class DataTestsExecutionManager {
             
             //Alternative way to pass the url generated as string in order to configure the skipDefaults parameter.
             let url = new UrlGenerator().getUrl(preparedRequest.request, preparedRequest.service, true)
+			
+			//Encode the following charcters:  [ ] +
+			url = url.replace(/\[/g, '%5B').replace(/\]/g, '%5D').replace('+','%2B');
+					   
             let httpResponse = await sdmx_requestor.request2(url, preparedRequest.headers);
             //let httpResponse = await sdmx_requestor.request2(preparedRequest.request, preparedRequest.service, preparedRequest.headers);
             console.log("Test: " + toRun.testId + " HTTP response received.");
